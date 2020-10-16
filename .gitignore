@@ -1,14 +1,8 @@
 # macOS
 .DS_Store
 
-# Next.js
-/.next
-/out
-
-# Node.js
-/*.log*
-/.env
+# Node
 /node_modules
 
-# Production
-/build
+# Yarn
+/*.log*
