@@ -1,0 +1,10 @@
+@mixin pointer-events {
+	$ampersand: get-dynamic-ampersand();
+
+	#{$ampersand}no-pointer-events {
+		pointer-events: none;
+	}
+	#{$ampersand}pointer-events {
+		pointer-events: auto;
+	}
+}

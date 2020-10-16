@@ -1,0 +1,6 @@
+@function get-dynamic-ampersand() {
+	@if not & {
+		@return ".";
+	}
+	@return & + $separator;
+}

@@ -1,0 +1,23 @@
+@mixin generate-from-map($properties, $shorthand, $map, $unit-fn) {
+	$ampersand: get-dynamic-ampersand();
+
+	@each $key, $value in $map {
+		#{$ampersand}#{$shorthand}-#{$key} {
+			@each $property in $properties {
+				#{$property}: call(get-function($unit-fn), $value);
+			}
+		}
+	}
+}
+
+@mixin generate-from-named-map($properties, $named-map, $unit-fn) {
+	$ampersand: get-dynamic-ampersand();
+
+	@each $key, $value in $named-map {
+		#{$ampersand}#{$key} {
+			@each $property in $properties {
+				#{$property}: call(get-function($unit-fn), $value);
+			}
+		}
+	}
+}

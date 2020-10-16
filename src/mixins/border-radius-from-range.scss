@@ -1,0 +1,20 @@
+@mixin _border-radius-impl($properties, $shorthand, $range, $unit-fn) {
+	$ampersand: get-dynamic-ampersand();
+
+	@include generate-from-range($properties, $shorthand, $range, $unit-fn);
+	#{$ampersand}-#{$shorthand}-full {
+		@each $property in $properties {
+			#{$property}: 9999px;
+		}
+	}
+}
+
+@mixin border-radius-from-range($range, $unit-fn) {
+	@include _border-radius-impl((border-radius), "rounded", $range, $unit-fn);
+	@include _border-radius-impl((border-top-left-radius, border-top-right-radius), "rounded-t", $range, $unit-fn);
+	@include _border-radius-impl((border-top-left-radius), "rounded-tl", $range, $unit-fn);
+	@include _border-radius-impl((border-top-right-radius), "rounded-tr", $range, $unit-fn);
+	@include _border-radius-impl((border-bottom-left-radius, border-bottom-right-radius), "rounded-b", $range, $unit-fn);
+	@include _border-radius-impl((border-bottom-left-radius), "rounded-bl", $range, $unit-fn);
+	@include _border-radius-impl((border-bottom-right-radius), "rounded-br", $range, $unit-fn);
+}

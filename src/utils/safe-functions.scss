@@ -1,0 +1,13 @@
+@function safe-compare-negative($value) {
+	@if (type-of($value) != "number") {
+		@return false;
+	}
+	@return $value < 0;
+}
+
+@function safe-abs($value) {
+	@if (type-of($value) != "number") {
+		@return $value;
+	}
+	@return abs($value);
+}

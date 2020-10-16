@@ -1,0 +1,12 @@
+@mixin generate-from-range($properties, $shorthand, $range, $unit-fn) {
+	$ampersand: get-dynamic-ampersand();
+
+	@each $value in $range {
+		$negative: if(safe-compare-negative($value), "-", "");
+		#{$ampersand}#{$negative}#{$shorthand}-#{safe-abs($value)} {
+			@each $property in $properties {
+				#{$property}: call(get-function($unit-fn), $value);
+			}
+		}
+	}
+}

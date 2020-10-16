@@ -1,0 +1,3 @@
+@mixin z-index-from-range($range, $unit-fn) {
+	@include generate-from-range((z-index), "z", $range, $unit-fn);
+}

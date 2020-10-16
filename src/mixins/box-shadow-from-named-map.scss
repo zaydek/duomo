@@ -1,0 +1,3 @@
+@mixin box-shadow-from-named-map($named-map, $unit-fn) {
+	@include generate-from-named-map((box-shadow), $named-map, $unit-fn);
+}

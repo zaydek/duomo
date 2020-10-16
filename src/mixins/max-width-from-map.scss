@@ -1,0 +1,3 @@
+@mixin max-width-from-map($map, $unit-fn) {
+	@include generate-from-map((max-width), "max-w", $map, $unit-fn);
+}
