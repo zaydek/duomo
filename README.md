@@ -24,14 +24,14 @@ Sorcery SCSS ([v0.1](https://github.com/sorcery-src/sorcery/releases)) is utilit
 Furthermore, Sorcery SCSS is simpler than Tailwind CSS for the following reasons:
 
 - The API surface area is dramatically smaller
-- More consistent class names
+- More consistent class
 - Numerical values are specified using `px` equivalents, not Tailwind units
 - There are intentionally no `hover:`, `focus:`, etc. pseudo classes
 - You are encouraged to use Sorcery SCSS and CSS or SCSS, not exclusively Tailwind CSS or Sorcery SCSS
 
 The problem with almost every CSS library and framework is they attempt to _solve_ frontend. Frontend is not a solvable problem. Frontend is the amalgamation of _many_ tools coming together to create user experiences for people. How Sorcery SCSS fits into this equation is by making it dead-easy to prototype responsive skeletons.
 
-The key to understanding Sorcery SCSS is to understand that it **does not attempt** to map every CSS property to an arbitrary class name. What Sorcery SCSS does is makes it easier to reason about responsive skeletons, and encourages you to lean into CSS or SCSS when you’re ready to retrofit your skeleton-app with content.
+The key to understanding Sorcery SCSS is to understand that it **does not attempt** to map every CSS property to an arbitrary class. What Sorcery SCSS does is makes it easier to reason about responsive skeletons, and encourages you to lean into CSS or SCSS when you’re ready to retrofit your skeleton-app with content.
 
 ## Table of contents (API)
 
