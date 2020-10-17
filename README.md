@@ -276,6 +276,7 @@ This means you can think in terms of `x` and `y` axes without worrying about the
 ### `width` and `height`
 
 ✅ Uses the standard extended scale, `auto` and `0-512`.<br>
+✅ Adds `w-full w-screen` and `h-full h-screen` for `100%` and `100vw` and `100vh` respectively.<br>
 ✅ Media queries are supported for this property.<br>
 
 ## Contributing
