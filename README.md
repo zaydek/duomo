@@ -20,6 +20,8 @@ The key to understanding Sorcery SCSS is to understand that it **does not attemp
 - [`padding`](###padding)
 - [`position`](###position)
 - [`display`](###display)
+- [`width` and `height`](###width-and-height)
+<!-- - [`background-color` and dark mode `background-color`](###background-color-and-dark-mode-background-color) -->
 
 ### Implementation details
 
@@ -27,11 +29,11 @@ Breakpoints are defined as the following and are not currently customizable (yet
 
 <!-- prettier-ignore -->
 ```scss
-$xs: 40 * 16; //  640
-$sm: 48 * 16; //  768
-$md: 56 * 16; //  896
-$lg: 64 * 16; // 1024
-$xl: 80 * 16; // 1280
+$xs: 40 * 16; //  640px
+$sm: 48 * 16; //  768px
+$md: 56 * 16; //  896px
+$lg: 64 * 16; // 1024px
+$xl: 80 * 16; // 1280px
 ```
 
 The standard scale used for numeric utilities:
@@ -58,14 +60,17 @@ $extended-range:
 	 64,  72,  80,  88,  96, 104, 112, 120, //  +8
 	128, 144, 160, 176, 192, 208, 224, 240, // +16
 	256, 288, 320, 352, 384, 416, 448, 480, // +32
-	512, $xs, $sm, $md, $lg, $xl;
+	512;
 ```
 
-###
+Note that the standard and extended scales always convert to `rem` units behind-the-scenes. This means you can think in terms of `px` units and receive the benefits of `rem` units.
+
+If you’re unfamiliar with the benefits of `rem` units, they are essentially they are more user-friendly in terms accessibility. Sorcery SCSS almost always defers to `rem` units for this reason.
 
 ### `margin`
 
-✅ Uses the standard range scale, from `1-256`.<br>
+✅ Uses the standard range scale, `auto` and `0-256`.<br>
+✅ Adds the inverted standard scale, `-1-256`.
 ✅ Media queries are supported for this property.<br>
 
 Note that the `m` utilities also support `auto` and an inverted scale for negative values.
@@ -98,7 +103,7 @@ Note that the `m` utilities also support `auto` and an inverted scale for negati
 
 ### `padding`
 
-✅ Uses the standard range scale, from `1-256`.<br>
+✅ Uses the standard range scale, `0-256`.<br>
 ✅ Media queries are supported for this property.<br>
 
 ```scss
@@ -236,7 +241,7 @@ Note that `static`, `relative`, `absolute`, `fixed`, and `sticky` are supported.
 	align-items: flex-end;
 }
 
-// ...
+/* ... */
 
 .flex-col.x-start,
 .inline-flex-col.x-start {
@@ -267,6 +272,11 @@ Note that `static`, `relative`, `absolute`, `fixed`, and `sticky` are supported.
 This means you can think in terms of `x` and `y` axes without worrying about the nature of `flex-direction: row;` and `flex-direction: column;`.
 
 `no-wrap`, `wrap`, and `wrap-reverse` are also supported.
+
+### `width` and `height`
+
+✅ Uses the standard extended scale, `auto` and `0-512`.<br>
+✅ Media queries are supported for this property.<br>
 
 ## Contributing
 
