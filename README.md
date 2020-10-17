@@ -61,7 +61,7 @@ $extended-range:
 	512, $xs, $sm, $md, $lg, $xl;
 ```
 
-### 
+###
 
 ### `margin`
 
@@ -235,13 +235,9 @@ Note that `static`, `relative`, `absolute`, `fixed`, and `sticky` are supported.
 .inline-flex-row.y-end {
 	align-items: flex-end;
 }
-```
 
-This means you can think in terms of `x` and `y` axes. 👍
+// ...
 
-Conversely, for `flex-col-*` utilities, you can use `x` and `y` to also orchestrate `justify-content` and `align-content` without worrying about the nature of `flex-direction: row;` and `flex-direction: column;`.
-
-```scss
 .flex-col.x-start,
 .inline-flex-col.x-start {
 	align-items: flex-start;
@@ -267,6 +263,8 @@ Conversely, for `flex-col-*` utilities, you can use `x` and `y` to also orchestr
 	justify-content: flex-end;
 }
 ```
+
+This means you can think in terms of `x` and `y` axes without worrying about the nature of `flex-direction: row;` and `flex-direction: column;`.
 
 `no-wrap`, `wrap`, and `wrap-reverse` are also supported.
 
