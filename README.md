@@ -56,19 +56,19 @@ The key to understanding Sorcery SCSS is to understand that it **does not attemp
 Sorcery SCSS specifically solves for the following properties:
 
 ```scss
-margin
-padding
-position
-display
-width
-max-width
-height
-background-color
-border-radius
-box-shadow
-z-index
-overflow
-pointer-events
+.m { margin: ... }
+.p { padding: ... }
+.static, .relative, .absolute, .fixed, .sticky { position: ... }
+.block, .inline-block, .inline, .flex-row, .inline-flex-row, .flex-col. .inline-flex-col { display: ... }
+.w { width: ... }
+.max-w { max-width: ... }
+.h { height: ... }
+.bg { background-color: ... }
+.rounded { border-radius: ... }
+.shadow { box-shadow: ... }
+.z { z-index: ... }
+.overflow { overflow: ... }
+.pointer-events { pointer-events: ... }
 ```
 
 More properties may be added over time, but the goal of Sorcery SCSS is to carve out a limited API that solves for responsive skeleton prototyping. Many properties are intentionally omitted for this reason. Furthermore, you are encouraged to use Sorcery SCSS _and_ CSS or SCSS together.
