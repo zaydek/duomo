@@ -21,7 +21,13 @@ Sorcery SCSS ([v0.1](https://github.com/sorcery-src/sorcery/releases)) is utilit
 - Multiple CDN links for prototyping, add breakpoints as needed
 - Classes map to utilities but can encompass higher-order patterns like `m-gap`
 
-Furthermore, Sorcery SCSS is much simpler to learn and use than Tailwind CSS because there are no `hover:`, `focus:`, `group:` pseudo classes. Use Sorcery SCSS to rapidly prototype responsive skeletons, and then use SCSS for everything else.
+Furthermore, Sorcery SCSS is simpler than Tailwind CSS for the following reasons:
+
+- The API surface area is dramatically smaller
+- More consistent class names
+- Numerical values are specified using `px` equivalents, not Tailwind units
+- There are intentionally no `hover:`, `focus:`, etc. pseudo classes
+- You are encouraged to use Sorcery SCSS _and_ CSS or SCSS, not just Tailwind CSS or Sorcery SCSS
 
 The problem with almost every CSS library and framework is they attempt to _solve_ frontend. Frontend is not a solvable problem. Frontend is the amalgamation of _many_ tools coming together to create user experiences for people. How Sorcery SCSS fits into this equation is by making it dead-easy to prototype responsive skeleton UIs.
 
@@ -31,6 +37,7 @@ The key to understanding Sorcery SCSS is to understand that it **does not attemp
 
 - [Implementation details](#implementation-details)
 - [`margin`](#margin)
+<!-- - [`m-gap`](#m-gap) -->
 - [`padding`](#padding)
 - [`position`](#position)
 - [`display`](#display)
@@ -40,9 +47,32 @@ The key to understanding Sorcery SCSS is to understand that it **does not attemp
 - [`border-radius`](#border-radius)
 - [`box-shadow`](#box-shadow)
 - [`z-index`](#z-index)
+<!-- TODO: overflow -->
 - [pointer-events`](#pointer-events)
 
 ### Implementation details
+
+Sorcery SCSS specifically solves for the following properties:
+
+```scss
+margin
+padding
+position
+display
+width
+max-width
+height
+background-color
+border-radius
+box-shadow
+z-index
+overflow
+pointer-events
+```
+
+More properties may be added over time, but the goal of Sorcery SCSS is to carve out a limited API that solves for responsive skeleton prototyping. Many properties are intentionally omitted for this reason. Furthermore, you are encouraged to use Sorcery SCSS _and_ CSS or SCSS together.
+
+All properties are implemented using utility classes, and most classes use conjunction classes to further specify which properties to tack on. For example: `.mx-16` is a standalone utility class, but `.x-center` is used in conjunction with `.flex-row` or `.flex-col` to center nested elements.
 
 Breakpoints are defined as the following and are not currently customizable (yet):
 
