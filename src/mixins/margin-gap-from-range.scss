@@ -1,0 +1,25 @@
+@mixin _impl($properties, $shorthand, $range, $unit-fn) {
+	$ampersand: get-dynamic-ampersand();
+
+	@each $value in $range {
+		#{$ampersand}#{$shorthand}-gap-#{$value}.flex-row,
+		#{$ampersand}#{$shorthand}-gap-#{$value}.inline-flex-row,
+		#{$ampersand}#{$shorthand}-gap-#{$value}.flex-col,
+		#{$ampersand}#{$shorthand}-gap-#{$value}.inline-flex-col {
+			@each $property in $properties {
+				#{$property}: call(get-function($unit-fn), if(type-of($value) != "number", $value, -1 * $value / 2));
+			}
+			& > * {
+				@each $property in $properties {
+					margin: call(get-function($unit-fn), if(type-of($value) != "number", $value, $value / 2));
+				}
+			}
+		}
+	}
+}
+
+@mixin margin-gap-from-range($range, $unit-fn) {
+	@include _impl((margin), "m", $range, $unit-fn);
+	@include _impl((margin-left, margin-right), "mx", $range, $unit-fn);
+	@include _impl((margin-top, margin-bottom), "my", $range, $unit-fn);
+}

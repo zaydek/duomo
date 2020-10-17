@@ -13,6 +13,12 @@ $breakpoint-map: (
 );
 
 // prettier-ignore
+$short-range:
+	  0,  1,  2,  3,  4,  5,  6,  7, //  +1
+	  8, 10, 12, 14, 16, 18, 20, 22, //  +2
+	 24, 28, 32; //  +4
+
+// prettier-ignore
 $range:
 	  0,   1,   2,   3,   4,   5,   6,   7, //  +1
 	  8,  10,  12,  14,  16,  18,  20,  22, //  +2
@@ -39,12 +45,6 @@ $-range:
 	 -64,  -72,  -80,  -88,  -96, -104, -112, -120, //  -8
 	-128, -144, -160, -176, -192, -208, -224, -240, // -16
 	-256;
-
-// prettier-ignore
-$border-radius-range:
-	  0,  1,  2,  3,  4,  5,  6,  7,
-	  8, 10, 12, 14, 16, 18, 20, 22,
-	 24;
 
 // https://tailwindcss.com/docs/font-family#sans-serif
 $sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",

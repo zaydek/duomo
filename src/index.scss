@@ -8,6 +8,7 @@
 @import "./mixins/flex";
 @import "./mixins/height-from-range";
 @import "./mixins/margin-from-range";
+@import "./mixins/margin-gap-from-range";
 @import "./mixins/max-width-from-map";
 @import "./mixins/padding-from-range";
 @import "./mixins/pointer-events";
@@ -15,11 +16,11 @@
 @import "./mixins/width-from-range";
 @import "./mixins/z-index-from-range";
 
+@import "./utils/conv-functions";
 @import "./utils/generate-from-map";
 @import "./utils/generate-from-range";
 @import "./utils/get-dynamic-ampersand";
 @import "./utils/safe-functions";
-@import "./utils/unit-functions";
 
 @import "./vars";
 
@@ -27,18 +28,19 @@ $separator: "\\:";
 
 @mixin props($breakpoint: "") {
 	@include margin-from-range(join(join($-range, auto), $range), rem);
+	@include margin-gap-from-range(join(auto, $short-range), rem);
 	@include padding-from-range($range, rem);
 	@include position-from-range((auto, 0), passthrough);
 	@include display;
 	@include flex;
-	@include width-from-range(join((auto), $extended-range), rem);
+	@include width-from-range(join(auto, $extended-range), rem);
 	@include max-width-from-map($breakpoint-map, px);
-	@include height-from-range(join((auto), $extended-range), rem);
+	@include height-from-range(join(auto, $extended-range), rem);
 	@if not & {
 		@include background-color-from-map($background-color-map, passthrough);
 		@include dark-background-color-from-map($background-color-map, passthrough);
 	}
-	@include border-radius-from-range($border-radius-range, rem);
+	@include border-radius-from-range($short-range, rem);
 	@include box-shadow-from-named-map($box-shadow-named-map, passthrough);
 	@include z-index-from-range((-50, -40, -30, -20, -10, auto, 0, 10, 20, 30, 40, 50), passthrough);
 	@include pointer-events;

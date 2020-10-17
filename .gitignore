@@ -4,5 +4,8 @@
 # Node
 /node_modules
 
+# VS Code
+/.vscode
+
 # Yarn
 /*.log*
