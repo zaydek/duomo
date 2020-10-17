@@ -400,7 +400,7 @@ TODO
 
 ## Contributing
 
-Contribution is welcome. To get started, check out the issues page — library maintainers will often hastily create issues to document an idea and context. If you need help understanding how the library works or need some deeper orientation, don’t hesitate to DM @username_ZAYDEK on Twitter. If there’s enough demand, we can create a Discord server to better support the community.
+Contribution is welcome. To get started, check out the issues page — library maintainers will often hastily create issues to document an idea and context. If you need help understanding how the library works or need some deeper orientation, don’t hesitate to DM [@username_ZAYDEK on Twitter](https://twitter.com/username_ZAYDEK). If there’s enough demand, we can create a Discord server to better support the community.
 
 ## License
 
