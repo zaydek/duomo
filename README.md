@@ -27,7 +27,7 @@ Furthermore, Sorcery SCSS is simpler than Tailwind CSS for the following reasons
 - More consistent class names
 - Numerical values are specified using `px` equivalents, not Tailwind units
 - There are intentionally no `hover:`, `focus:`, etc. pseudo classes
-- You are encouraged to use Sorcery SCSS and_CSS or SCSS, not exclusively Tailwind CSS or Sorcery SCSS
+- You are encouraged to use Sorcery SCSS and CSS or SCSS, not exclusively Tailwind CSS or Sorcery SCSS
 
 The problem with almost every CSS library and framework is they attempt to _solve_ frontend. Frontend is not a solvable problem. Frontend is the amalgamation of _many_ tools coming together to create user experiences for people. How Sorcery SCSS fits into this equation is by making it dead-easy to prototype responsive skeleton UIs.
 
@@ -336,8 +336,6 @@ This means you can think in terms of `x` and `y` axes without worrying about the
 ✅ Dark mode variants are supported for this property.<br>
 ❌ Media queries are not supported for this property.<br>
 
-The following `background-color`s are supported, where `*` represents shades 50-900:
-
 ```scss
 .bg-currentColor {
 	/* ... */
@@ -351,70 +349,70 @@ The following `background-color`s are supported, where `*` represents shades 50-
 .bg-black {
 	/* ... */
 }
-.bg-gray-* {
+.bg-gray-(50|100-900) {
 	/* ... */
 }
-.bg-cool-gray-* {
+.bg-cool-gray-(50|100-900) {
 	/* ... */
 }
-.bg-red-* {
+.bg-red-(50|100-900) {
 	/* ... */
 }
-.bg-orange-* {
+.bg-orange-(50|100-900) {
 	/* ... */
 }
-.bg-yellow-* {
+.bg-yellow-(50|100-900) {
 	/* ... */
 }
-.bg-green-* {
+.bg-green-(50|100-900) {
 	/* ... */
 }
-.bg-teal-* {
+.bg-teal-(50|100-900) {
 	/* ... */
 }
-.bg-blue-* {
+.bg-blue-(50|100-900) {
 	/* ... */
 }
-.bg-indigo-* {
+.bg-indigo-(50|100-900) {
 	/* ... */
 }
-.bg-purple-* {
+.bg-purple-(50|100-900) {
 	/* ... */
 }
-.bg-pink-* {
+.bg-pink-(50|100-900) {
 	/* ... */
 }
-.bg-gray-* {
+.bg-gray-(50|100-900) {
 	/* ... */
 }
-.bg-cool-gray-* {
+.bg-cool-gray-(50|100-900) {
 	/* ... */
 }
-.bg-red-* {
+.bg-red-(50|100-900) {
 	/* ... */
 }
-.bg-orange-* {
+.bg-orange-(50|100-900) {
 	/* ... */
 }
-.bg-yellow-* {
+.bg-yellow-(50|100-900) {
 	/* ... */
 }
-.bg-green-* {
+.bg-green-(50|100-900) {
 	/* ... */
 }
-.bg-teal-* {
+.bg-teal-(50|100-900) {
 	/* ... */
 }
-.bg-blue-* {
+.bg-blue-(50|100-900) {
 	/* ... */
 }
-.bg-indigo-* {
+.bg-indigo-(50|100-900) {
 	/* ... */
 }
-.bg-purple-* {
+.bg-purple-(50|100-900) {
 	/* ... */
 }
-.bg-pink-* {
+.bg-pink-(50|100-900) {
 	/* ... */
 }
 ```
@@ -434,70 +432,70 @@ Dark mode `background-color`s are also supported:
 [data-theme="dark"] .bg-black {
 	/* ... */
 }
-[data-theme="dark"] .bg-gray-* {
+[data-theme="dark"] .bg-gray-(50|100-900) {
 	/* ... */
 }
-[data-theme="dark"] .bg-cool-gray-* {
+[data-theme="dark"] .bg-cool-gray-(50|100-900) {
 	/* ... */
 }
-[data-theme="dark"] .bg-red-* {
+[data-theme="dark"] .bg-red-(50|100-900) {
 	/* ... */
 }
-[data-theme="dark"] .bg-orange-* {
+[data-theme="dark"] .bg-orange-(50|100-900) {
 	/* ... */
 }
-[data-theme="dark"] .bg-yellow-* {
+[data-theme="dark"] .bg-yellow-(50|100-900) {
 	/* ... */
 }
-[data-theme="dark"] .bg-green-* {
+[data-theme="dark"] .bg-green-(50|100-900) {
 	/* ... */
 }
-[data-theme="dark"] .bg-teal-* {
+[data-theme="dark"] .bg-teal-(50|100-900) {
 	/* ... */
 }
-[data-theme="dark"] .bg-blue-* {
+[data-theme="dark"] .bg-blue-(50|100-900) {
 	/* ... */
 }
-[data-theme="dark"] .bg-indigo-* {
+[data-theme="dark"] .bg-indigo-(50|100-900) {
 	/* ... */
 }
-[data-theme="dark"] .bg-purple-* {
+[data-theme="dark"] .bg-purple-(50|100-900) {
 	/* ... */
 }
-[data-theme="dark"] .bg-pink-* {
+[data-theme="dark"] .bg-pink-(50|100-900) {
 	/* ... */
 }
-[data-theme="dark"] .bg-gray-* {
+[data-theme="dark"] .bg-gray-(50|100-900) {
 	/* ... */
 }
-[data-theme="dark"] .bg-cool-gray-* {
+[data-theme="dark"] .bg-cool-gray-(50|100-900) {
 	/* ... */
 }
-[data-theme="dark"] .bg-red-* {
+[data-theme="dark"] .bg-red-(50|100-900) {
 	/* ... */
 }
-[data-theme="dark"] .bg-orange-* {
+[data-theme="dark"] .bg-orange-(50|100-900) {
 	/* ... */
 }
-[data-theme="dark"] .bg-yellow-* {
+[data-theme="dark"] .bg-yellow-(50|100-900) {
 	/* ... */
 }
-[data-theme="dark"] .bg-green-* {
+[data-theme="dark"] .bg-green-(50|100-900) {
 	/* ... */
 }
-[data-theme="dark"] .bg-teal-* {
+[data-theme="dark"] .bg-teal-(50|100-900) {
 	/* ... */
 }
-[data-theme="dark"] .bg-blue-* {
+[data-theme="dark"] .bg-blue-(50|100-900) {
 	/* ... */
 }
-[data-theme="dark"] .bg-indigo-* {
+[data-theme="dark"] .bg-indigo-(50|100-900) {
 	/* ... */
 }
-[data-theme="dark"] .bg-purple-* {
+[data-theme="dark"] .bg-purple-(50|100-900) {
 	/* ... */
 }
-[data-theme="dark"] .bg-pink-* {
+[data-theme="dark"] .bg-pink-(50|100-900) {
 	/* ... */
 }
 ```
@@ -505,8 +503,8 @@ Dark mode `background-color`s are also supported:
 Furthermore, `background-color`s are specifically implemented using the following pattern. This enables `[data-theme="dark"]` to activate dark mode `background-color`s without the need for arbitrarily nested elements.
 
 ```scss
-[data-theme="dark"].bg-indigo-*,
-[data-theme="dark"] .bg-indigo-* {
+[data-theme="dark"].bg-indigo-(50|100-900),
+[data-theme="dark"] .bg-indigo-(50|100-900) {
 	/* ... */
 }
 ```
