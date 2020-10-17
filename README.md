@@ -27,7 +27,7 @@ Furthermore, Sorcery SCSS is simpler than Tailwind CSS for the following reasons
 - More consistent class names
 - Numerical values are specified using `px` equivalents, not Tailwind units
 - There are intentionally no `hover:`, `focus:`, etc. pseudo classes
-- You are encouraged to use Sorcery SCSS _and_ CSS or SCSS, not just Tailwind CSS or Sorcery SCSS
+- You are encouraged to use Sorcery SCSS and_CSS or SCSS, not exclusively Tailwind CSS or Sorcery SCSS
 
 The problem with almost every CSS library and framework is they attempt to _solve_ frontend. Frontend is not a solvable problem. Frontend is the amalgamation of _many_ tools coming together to create user experiences for people. How Sorcery SCSS fits into this equation is by making it dead-easy to prototype responsive skeleton UIs.
 
