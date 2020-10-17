@@ -10,6 +10,7 @@
 @import "./mixins/margin-from-range";
 @import "./mixins/margin-gap-from-range";
 @import "./mixins/max-width-from-map";
+@import "./mixins/min-h-from-range";
 @import "./mixins/padding-from-range";
 @import "./mixins/pointer-events";
 @import "./mixins/position-from-range";
@@ -36,6 +37,7 @@ $separator: "\\:";
 	@include width-from-range(join(auto, $extended-scale), rem);
 	@include max-width-from-map($breakpoint-map, px);
 	@include height-from-range(join(auto, $extended-scale), rem);
+	@include min-height-from-range(join(auto, 0), rem);
 	@if not & {
 		@include background-color-from-map($background-color-map, passthrough);
 		@include dark-background-color-from-map($background-color-map, passthrough);
