@@ -37,6 +37,10 @@ The key to understanding Sorcery SCSS is to understand that it **does not attemp
 - [`width` and `height`](#width-and-height)
 - [`max-width`](#max-width)
 - [`background-color` and dark mode `background-color`](#background-color-and-dark-mode-background-color)
+- [`border-radius`](#border-radius)
+- [`box-shadow`](#box-shadow)
+- [`z-index`](#z-index)
+- [pointer-events`](#pointer-events)
 
 ### Implementation details
 
@@ -371,6 +375,28 @@ Furthermore, `background-color`s are specifically implemented using the followin
 	/* ... */
 }
 ```
+
+### `border-radius`
+
+<!-- 0-32 -->
+
+TODO
+
+### `box-shadow`
+
+TODO
+
+### `z-index`
+
+<!-- -50 --- 50 -->
+
+TODO
+
+### `pointer-events`
+
+TODO
+
+---
 
 ## Contributing
 
