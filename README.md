@@ -3,7 +3,7 @@
 Sorcery SCSS ([v0.1](https://github.com/sorcery-src/sorcery/releases)) is utility-first framework for rapid development. Sorcery SCSS is most similar to Tailwind CSS but differentiates itself in these key ways:
 
 - Emphasis on zero-configuration
-- SCSS based, designed to be extended
+- SCSS-based, designed to be extended
 - Limited API set, oriented for responsive skeleton prototyping
 - Intended to be used in conjunction with CSS or SCSS
 - Multiple CDN links for prototyping, add breakpoints as needed
@@ -19,6 +19,7 @@ The key to understanding Sorcery SCSS is to understand that it **does not attemp
 - [`margin`](###margin)
 - [`padding`](###padding)
 - [`position`](###position)
+- [`display`](###display)
 
 ### Implementation details
 
@@ -174,6 +175,100 @@ Note that `static`, `relative`, `absolute`, `fixed`, and `sticky` are supported.
 	right: 0;
 }
 ```
+
+### `display`
+
+✅ Media queries are supported for this property.<br>
+
+```scss
+.block {
+	display: block;
+}
+.inline-block {
+	display: inline-block;
+}
+.inline {
+	display: inline;
+}
+.flex-row {
+	display: flex;
+	flex-direction: row;
+}
+.flex-col {
+	display: flex;
+	flex-direction: column;
+}
+.inline-flex-row {
+	display: inline-flex;
+	flex-direction: row;
+}
+.inline-flex-col {
+	display: inline-flex;
+	flex-direction: column;
+}
+```
+
+`flex-*` and `inline-flex-*` utilities also support more natural APIs for `justify-content` and `align-items`:
+
+```scss
+.flex-row.x-start,
+.inline-flex-row.x-start {
+	justify-content: flex-start;
+}
+.flex-row.x-center,
+.inline-flex-row.x-center {
+	justify-content: center;
+}
+.flex-row.x-end,
+.inline-flex-row.x-end {
+	justify-content: flex-end;
+}
+.flex-row.y-start,
+.inline-flex-row.y-start {
+	align-items: flex-start;
+}
+.flex-row.y-center,
+.inline-flex-row.y-center {
+	align-items: center;
+}
+.flex-row.y-end,
+.inline-flex-row.y-end {
+	align-items: flex-end;
+}
+```
+
+This means you can think in terms of `x` and `y` axes. 👍
+
+Conversely, for `flex-col-*` utilities, you can use `x` and `y` to also orchestrate `justify-content` and `align-content` without worrying about the nature of `flex-direction: row;` and `flex-direction: column;`.
+
+```scss
+.flex-col.x-start,
+.inline-flex-col.x-start {
+	align-items: flex-start;
+}
+.flex-col.x-center,
+.inline-flex-col.x-center {
+	align-items: center;
+}
+.flex-col.x-end,
+.inline-flex-col.x-end {
+	align-items: flex-end;
+}
+.flex-col.y-start,
+.inline-flex-col.y-start {
+	justify-content: flex-start;
+}
+.flex-col.y-center,
+.inline-flex-col.y-center {
+	justify-content: center;
+}
+.flex-col.y-end,
+.inline-flex-col.y-end {
+	justify-content: flex-end;
+}
+```
+
+`no-wrap`, `wrap`, and `wrap-reverse` are also supported.
 
 ## Contributing
 
