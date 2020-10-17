@@ -49,13 +49,11 @@ $separator: "\\:";
 }
 
 @at-root {
-	// @include flex;
 	@include props;
 	@each $key, $value in $breakpoint-map {
 		@media (min-width: px($value)) {
 			.#{$key} {
 				@at-root {
-					// @include flex;
 					@include props;
 				}
 			}

@@ -2,10 +2,8 @@
 	$ampersand: get-dynamic-ampersand();
 
 	@each $value in $range {
-		#{$ampersand}#{$shorthand}-gap-#{$value}.flex-row,
-		#{$ampersand}#{$shorthand}-gap-#{$value}.inline-flex-row,
-		#{$ampersand}#{$shorthand}-gap-#{$value}.flex-col,
-		#{$ampersand}#{$shorthand}-gap-#{$value}.inline-flex-col {
+		[class*="flex-row"]#{$ampersand}#{$shorthand}-gap-#{$value},
+		[class*="flex-col"]#{$ampersand}#{$shorthand}-gap-#{$value} {
 			@each $property in $properties {
 				#{$property}: call(get-function($conv-fn), if(type-of($value) != "number", $value, -1 * $value / 2));
 			}
