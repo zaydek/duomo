@@ -27,7 +27,7 @@ The key to understanding Sorcery SCSS is to understand that it **does not attemp
 
 ## Table of contents (API)
 
-- [Implementation details](#Implementation details)
+- [Implementation details](#implementation-details)
 - [`margin`](#margin)
 - [`padding`](#padding)
 - [`position`](#position)
@@ -77,11 +77,9 @@ If you’re unfamiliar with the benefits of `rem` units, they are essentially th
 
 ### `margin`
 
-✅ Uses the standard range scale, `auto` and `0-256`.<br>
-✅ Adds the inverted standard scale, `-1-256`.<br>
+✅ Uses the standard range scale, `auto` and `-256-256`.<br>
+✅ Resolves to `rem`.<br>
 ✅ Media queries are supported for this property.<br>
-
-Note that the `m` utilities also support `auto` and an inverted scale for negative values.
 
 ```scss
 .m-0 {
@@ -112,6 +110,7 @@ Note that the `m` utilities also support `auto` and an inverted scale for negati
 ### `padding`
 
 ✅ Uses the standard range scale, `0-256`.<br>
+✅ Resolves to `rem`.<br>
 ✅ Media queries are supported for this property.<br>
 
 ```scss
@@ -284,12 +283,15 @@ This means you can think in terms of `x` and `y` axes without worrying about the
 ### `width` and `height`
 
 ✅ Uses the standard extended scale, `auto` and `0-512`.<br>
-✅ Adds `w-full w-screen` and `h-full h-screen` for `100%` and `100vw` and `100vh` respectively.<br>
+✅ Resolves to `rem`.<br>
+✅ Adds `w-full w-screen` and `h-full h-screen` for `100%` and `100vw` or `100vh` respectively.<br>
 ✅ Media queries are supported for this property.<br>
 
 ### `max-width`
 
-TODO
+✅ Uses the breakpoint scale, `xs sm md lg xl`.<br>
+✅ Resolves to `px`.<br>
+✅ Media queries are supported for this property.<br>
 
 ## Contributing
 
