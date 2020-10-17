@@ -17,6 +17,7 @@ The key to understanding Sorcery SCSS is to understand that it **does not attemp
 
 Breakpoints are defined as the following and are not currently customizable (yet):
 
+<!-- prettier-ignore -->
 ```scss
 $xs: 40 * 16; //  640
 $sm: 48 * 16; //  768
@@ -27,15 +28,14 @@ $xl: 80 * 16; // 1280
 
 The standard scale used for numeric utilities:
 
+<!-- prettier-ignore -->
 ```scss
-$range: 0, 1, 2, 3, 4, 5, 6, 7,
-	//  +1
-	8, 10, 12, 14, 16, 18, 20, 22, //  +2
-	24, 28, 32, 36, 40, 44, 48, 52,
-	//  +4
-	64, 72, 80, 88, 96, 104, 112, 120, //  +8
-	128, 144, 160, 176, 192, 208, 224, 240,
-	// +16
+$range:
+	  0,   1,   2,   3,   4,   5,   6,   7, //  +1
+	  8,  10,  12,  14,  16,  18,  20,  22, //  +2
+	 24,  28,  32,  36,  40,  44,  48,  52, //  +4
+	 64,  72,  80,  88,  96, 104, 112, 120, //  +8
+	128, 144, 160, 176, 192, 208, 224, 240, // +16
 	256;
 ```
 
