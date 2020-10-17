@@ -1,4 +1,4 @@
-# Sorcery SCSS
+# Sorcery SCSS 🔮
 
 Sorcery SCSS ([v0.1](https://github.com/sorcery-src/sorcery/releases)) is utility-first framework for rapid development. Sorcery SCSS is most similar to Tailwind CSS but differentiates itself in these key ways:
 
@@ -70,7 +70,7 @@ If you’re unfamiliar with the benefits of `rem` units, they are essentially th
 ### `margin`
 
 ✅ Uses the standard range scale, `auto` and `0-256`.<br>
-✅ Adds the inverted standard scale, `-1-256`.
+✅ Adds the inverted standard scale, `-1-256`.<br>
 ✅ Media queries are supported for this property.<br>
 
 Note that the `m` utilities also support `auto` and an inverted scale for negative values.
