@@ -1,8 +1,8 @@
-@mixin dark-background-color-from-map($map, $unit-fn) {
+@mixin dark-background-color-from-map($map, $conv-fn) {
 	@each $key, $value in $map {
 		[data-theme="dark"].dark#{$separator}bg-#{$key},
 		[data-theme="dark"] .dark#{$separator}bg-#{$key} {
-			background-color: call(get-function($unit-fn), $value);
+			background-color: call(get-function($conv-fn), $value);
 		}
 	}
 }

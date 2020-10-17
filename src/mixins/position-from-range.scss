@@ -1,80 +1,80 @@
-@mixin _position-impl($properties, $shorthand, $range, $unit-fn) {
+@mixin _position-impl($properties, $shorthand, $range, $conv-fn) {
 	@each $value in $range {
 		$negative: if(safe-compare-negative($value), "-", "");
 		&.#{$negative}#{$shorthand}-#{safe-abs($value)} {
 			@each $property in $properties {
-				#{$property}: call(get-function($unit-fn), $value);
+				#{$property}: call(get-function($conv-fn), $value);
 			}
 		}
 	}
 }
 
-@mixin position-from-range($range, $unit-fn) {
+@mixin position-from-range($range, $conv-fn) {
 	$ampersand: get-dynamic-ampersand();
 
 	#{$ampersand}static {
 		position: static;
-		@include _position-impl((left, right), "x", $range, $unit-fn);
-		@include _position-impl((left), "l", $range, $unit-fn);
-		@include _position-impl((right), "r", $range, $unit-fn);
-		@include _position-impl((top, bottom), "y", $range, $unit-fn);
-		@include _position-impl((top), "t", $range, $unit-fn);
-		@include _position-impl((bottom), "b", $range, $unit-fn);
-		@include _position-impl((top, left), "tl", $range, $unit-fn);
-		@include _position-impl((top, right), "tr", $range, $unit-fn);
-		@include _position-impl((bottom, left), "bl", $range, $unit-fn);
-		@include _position-impl((bottom, right), "br", $range, $unit-fn);
+		@include _position-impl((left, right), "x", $range, $conv-fn);
+		@include _position-impl((left), "l", $range, $conv-fn);
+		@include _position-impl((right), "r", $range, $conv-fn);
+		@include _position-impl((top, bottom), "y", $range, $conv-fn);
+		@include _position-impl((top), "t", $range, $conv-fn);
+		@include _position-impl((bottom), "b", $range, $conv-fn);
+		@include _position-impl((top, left), "tl", $range, $conv-fn);
+		@include _position-impl((top, right), "tr", $range, $conv-fn);
+		@include _position-impl((bottom, left), "bl", $range, $conv-fn);
+		@include _position-impl((bottom, right), "br", $range, $conv-fn);
 	}
 	#{$ampersand}relative {
 		position: relative;
-		@include _position-impl((left, right), "x", $range, $unit-fn);
-		@include _position-impl((left), "l", $range, $unit-fn);
-		@include _position-impl((right), "r", $range, $unit-fn);
-		@include _position-impl((top, bottom), "y", $range, $unit-fn);
-		@include _position-impl((top), "t", $range, $unit-fn);
-		@include _position-impl((bottom), "b", $range, $unit-fn);
-		@include _position-impl((top, left), "tl", $range, $unit-fn);
-		@include _position-impl((top, right), "tr", $range, $unit-fn);
-		@include _position-impl((bottom, left), "bl", $range, $unit-fn);
-		@include _position-impl((bottom, right), "br", $range, $unit-fn);
+		@include _position-impl((left, right), "x", $range, $conv-fn);
+		@include _position-impl((left), "l", $range, $conv-fn);
+		@include _position-impl((right), "r", $range, $conv-fn);
+		@include _position-impl((top, bottom), "y", $range, $conv-fn);
+		@include _position-impl((top), "t", $range, $conv-fn);
+		@include _position-impl((bottom), "b", $range, $conv-fn);
+		@include _position-impl((top, left), "tl", $range, $conv-fn);
+		@include _position-impl((top, right), "tr", $range, $conv-fn);
+		@include _position-impl((bottom, left), "bl", $range, $conv-fn);
+		@include _position-impl((bottom, right), "br", $range, $conv-fn);
 	}
 	#{$ampersand}absolute {
 		position: absolute;
-		@include _position-impl((left, right), "x", $range, $unit-fn);
-		@include _position-impl((left), "l", $range, $unit-fn);
-		@include _position-impl((right), "r", $range, $unit-fn);
-		@include _position-impl((top, bottom), "y", $range, $unit-fn);
-		@include _position-impl((top), "t", $range, $unit-fn);
-		@include _position-impl((bottom), "b", $range, $unit-fn);
-		@include _position-impl((top, left), "tl", $range, $unit-fn);
-		@include _position-impl((top, right), "tr", $range, $unit-fn);
-		@include _position-impl((bottom, left), "bl", $range, $unit-fn);
-		@include _position-impl((bottom, right), "br", $range, $unit-fn);
+		@include _position-impl((left, right), "x", $range, $conv-fn);
+		@include _position-impl((left), "l", $range, $conv-fn);
+		@include _position-impl((right), "r", $range, $conv-fn);
+		@include _position-impl((top, bottom), "y", $range, $conv-fn);
+		@include _position-impl((top), "t", $range, $conv-fn);
+		@include _position-impl((bottom), "b", $range, $conv-fn);
+		@include _position-impl((top, left), "tl", $range, $conv-fn);
+		@include _position-impl((top, right), "tr", $range, $conv-fn);
+		@include _position-impl((bottom, left), "bl", $range, $conv-fn);
+		@include _position-impl((bottom, right), "br", $range, $conv-fn);
 	}
 	#{$ampersand}fixed {
 		position: fixed;
-		@include _position-impl((left, right), "x", $range, $unit-fn);
-		@include _position-impl((left), "l", $range, $unit-fn);
-		@include _position-impl((right), "r", $range, $unit-fn);
-		@include _position-impl((top, bottom), "y", $range, $unit-fn);
-		@include _position-impl((top), "t", $range, $unit-fn);
-		@include _position-impl((bottom), "b", $range, $unit-fn);
-		@include _position-impl((top, left), "tl", $range, $unit-fn);
-		@include _position-impl((top, right), "tr", $range, $unit-fn);
-		@include _position-impl((bottom, left), "bl", $range, $unit-fn);
-		@include _position-impl((bottom, right), "br", $range, $unit-fn);
+		@include _position-impl((left, right), "x", $range, $conv-fn);
+		@include _position-impl((left), "l", $range, $conv-fn);
+		@include _position-impl((right), "r", $range, $conv-fn);
+		@include _position-impl((top, bottom), "y", $range, $conv-fn);
+		@include _position-impl((top), "t", $range, $conv-fn);
+		@include _position-impl((bottom), "b", $range, $conv-fn);
+		@include _position-impl((top, left), "tl", $range, $conv-fn);
+		@include _position-impl((top, right), "tr", $range, $conv-fn);
+		@include _position-impl((bottom, left), "bl", $range, $conv-fn);
+		@include _position-impl((bottom, right), "br", $range, $conv-fn);
 	}
 	#{$ampersand}sticky {
 		position: sticky;
-		@include _position-impl((left, right), "x", $range, $unit-fn);
-		@include _position-impl((left), "l", $range, $unit-fn);
-		@include _position-impl((right), "r", $range, $unit-fn);
-		@include _position-impl((top, bottom), "y", $range, $unit-fn);
-		@include _position-impl((top), "t", $range, $unit-fn);
-		@include _position-impl((bottom), "b", $range, $unit-fn);
-		@include _position-impl((top, left), "tl", $range, $unit-fn);
-		@include _position-impl((top, right), "tr", $range, $unit-fn);
-		@include _position-impl((bottom, left), "bl", $range, $unit-fn);
-		@include _position-impl((bottom, right), "br", $range, $unit-fn);
+		@include _position-impl((left, right), "x", $range, $conv-fn);
+		@include _position-impl((left), "l", $range, $conv-fn);
+		@include _position-impl((right), "r", $range, $conv-fn);
+		@include _position-impl((top, bottom), "y", $range, $conv-fn);
+		@include _position-impl((top), "t", $range, $conv-fn);
+		@include _position-impl((bottom), "b", $range, $conv-fn);
+		@include _position-impl((top, left), "tl", $range, $conv-fn);
+		@include _position-impl((top, right), "tr", $range, $conv-fn);
+		@include _position-impl((bottom, left), "bl", $range, $conv-fn);
+		@include _position-impl((bottom, right), "br", $range, $conv-fn);
 	}
 }

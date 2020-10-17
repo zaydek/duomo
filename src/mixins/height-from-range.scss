@@ -1,7 +1,7 @@
-@mixin height-from-range($range, $unit-fn) {
+@mixin height-from-range($range, $conv-fn) {
 	$ampersand: get-dynamic-ampersand();
 
-	@include generate-from-range((height), "h", $range, $unit-fn);
+	@include generate-from-range((height), "h", $range, $conv-fn);
 	#{$ampersand}h-full {
 		height: 100%;
 	}

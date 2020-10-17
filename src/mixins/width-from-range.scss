@@ -1,7 +1,7 @@
-@mixin width-from-range($range, $unit-fn) {
+@mixin width-from-range($range, $conv-fn) {
 	$ampersand: get-dynamic-ampersand();
 
-	@include generate-from-range((width), "w", $range, $unit-fn);
+	@include generate-from-range((width), "w", $range, $conv-fn);
 	#{$ampersand}w-full {
 		width: 100%;
 	}

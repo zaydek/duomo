@@ -1,9 +1,9 @@
-@mixin padding-from-range($range, $unit-fn) {
-	@include generate-from-range((padding), "p", $range, $unit-fn);
-	@include generate-from-range((padding-left, padding-right), "px", $range, $unit-fn);
-	@include generate-from-range((padding-left), "pl", $range, $unit-fn);
-	@include generate-from-range((padding-right), "pr", $range, $unit-fn);
-	@include generate-from-range((padding-top, padding-bottom), "py", $range, $unit-fn);
-	@include generate-from-range((padding-top), "pt", $range, $unit-fn);
-	@include generate-from-range((padding-bottom), "pb", $range, $unit-fn);
+@mixin padding-from-range($range, $conv-fn) {
+	@include generate-from-range((padding), "p", $range, $conv-fn);
+	@include generate-from-range((padding-left, padding-right), "px", $range, $conv-fn);
+	@include generate-from-range((padding-left), "pl", $range, $conv-fn);
+	@include generate-from-range((padding-right), "pr", $range, $conv-fn);
+	@include generate-from-range((padding-top, padding-bottom), "py", $range, $conv-fn);
+	@include generate-from-range((padding-top), "pt", $range, $conv-fn);
+	@include generate-from-range((padding-bottom), "pb", $range, $conv-fn);
 }
