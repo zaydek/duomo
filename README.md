@@ -56,19 +56,54 @@ The key to understanding Sorcery SCSS is to understand that it **does not attemp
 Sorcery SCSS specifically solves for the following properties:
 
 ```scss
-.m { margin: ... }
-.p { padding: ... }
-.static, .relative, .absolute, .fixed, .sticky { position: ... }
-.block, .inline-block, .inline, .flex-row, .inline-flex-row, .flex-col. .inline-flex-col { display: ... }
-.w { width: ... }
-.max-w { max-width: ... }
-.h { height: ... }
-.bg { background-color: ... }
-.rounded { border-radius: ... }
-.shadow { box-shadow: ... }
-.z { z-index: ... }
-.overflow { overflow: ... }
-.pointer-events { pointer-events: ... }
+.m {
+	margin: ...;
+}
+.p {
+	padding: ...;
+}
+.static,
+.relative,
+.absolute,
+.fixed,
+.sticky {
+	position: ...;
+}
+.block,
+.inline-block,
+.inline,
+.flex-row,
+.inline-flex-row,
+.flex-col. .inline-flex-col {
+	display: ...;
+}
+.w {
+	width: ...;
+}
+.max-w {
+	max-width: ...;
+}
+.h {
+	height: ...;
+}
+.bg {
+	background-color: ...;
+}
+.rounded {
+	border-radius: ...;
+}
+.shadow {
+	box-shadow: ...;
+}
+.z {
+	z-index: ...;
+}
+.overflow {
+	overflow: ...;
+}
+.pointer-events {
+	pointer-events: ...;
+}
 ```
 
 More properties may be added over time, but the goal of Sorcery SCSS is to carve out a limited API that solves for responsive skeleton prototyping. Many properties are intentionally omitted for this reason. Furthermore, you are encouraged to use Sorcery SCSS _and_ CSS or SCSS together.
@@ -339,63 +374,167 @@ This means you can think in terms of `x` and `y` axes without worrying about the
 With the exception of `currentColor transparent white black`, `background-color`s use shades `50 100 200 300 400 500 600 700 800 900` where 50 is the lightest and 900 is the darkest.
 
 ```scss
-.bg-currentColor { background-color: ... }
-.bg-transparent  { background-color: ... }
-.bg-white        { background-color: ... }
-.bg-black        { background-color: ... }
-.bg-gray         { background-color: ... }
-.bg-cool-gray    { background-color: ... }
-.bg-red          { background-color: ... }
-.bg-orange       { background-color: ... }
-.bg-yellow       { background-color: ... }
-.bg-green        { background-color: ... }
-.bg-teal         { background-color: ... }
-.bg-blue         { background-color: ... }
-.bg-indigo       { background-color: ... }
-.bg-purple       { background-color: ... }
-.bg-pink         { background-color: ... }
-.bg-gray         { background-color: ... }
-.bg-cool-gray    { background-color: ... }
-.bg-red          { background-color: ... }
-.bg-orange       { background-color: ... }
-.bg-yellow       { background-color: ... }
-.bg-green        { background-color: ... }
-.bg-teal         { background-color: ... }
-.bg-blue         { background-color: ... }
-.bg-indigo       { background-color: ... }
-.bg-purple       { background-color: ... }
-.bg-pink         { background-color: ... }
+.bg-currentColor {
+	background-color: ...;
+}
+.bg-transparent {
+	background-color: ...;
+}
+.bg-white {
+	background-color: ...;
+}
+.bg-black {
+	background-color: ...;
+}
+.bg-gray {
+	background-color: ...;
+}
+.bg-cool-gray {
+	background-color: ...;
+}
+.bg-red {
+	background-color: ...;
+}
+.bg-orange {
+	background-color: ...;
+}
+.bg-yellow {
+	background-color: ...;
+}
+.bg-green {
+	background-color: ...;
+}
+.bg-teal {
+	background-color: ...;
+}
+.bg-blue {
+	background-color: ...;
+}
+.bg-indigo {
+	background-color: ...;
+}
+.bg-purple {
+	background-color: ...;
+}
+.bg-pink {
+	background-color: ...;
+}
+.bg-gray {
+	background-color: ...;
+}
+.bg-cool-gray {
+	background-color: ...;
+}
+.bg-red {
+	background-color: ...;
+}
+.bg-orange {
+	background-color: ...;
+}
+.bg-yellow {
+	background-color: ...;
+}
+.bg-green {
+	background-color: ...;
+}
+.bg-teal {
+	background-color: ...;
+}
+.bg-blue {
+	background-color: ...;
+}
+.bg-indigo {
+	background-color: ...;
+}
+.bg-purple {
+	background-color: ...;
+}
+.bg-pink {
+	background-color: ...;
+}
 ```
 
 Dark mode `background-color`s are also supported:
 
 ```scss
-[data-theme="dark"] .bg-currentColor { background-color: ... }
-[data-theme="dark"] .bg-transparent  { background-color: ... }
-[data-theme="dark"] .bg-white        { background-color: ... }
-[data-theme="dark"] .bg-black        { background-color: ... }
-[data-theme="dark"] .bg-gray         { background-color: ... }
-[data-theme="dark"] .bg-cool-gray    { background-color: ... }
-[data-theme="dark"] .bg-red          { background-color: ... }
-[data-theme="dark"] .bg-orange       { background-color: ... }
-[data-theme="dark"] .bg-yellow       { background-color: ... }
-[data-theme="dark"] .bg-green        { background-color: ... }
-[data-theme="dark"] .bg-teal         { background-color: ... }
-[data-theme="dark"] .bg-blue         { background-color: ... }
-[data-theme="dark"] .bg-indigo       { background-color: ... }
-[data-theme="dark"] .bg-purple       { background-color: ... }
-[data-theme="dark"] .bg-pink         { background-color: ... }
-[data-theme="dark"] .bg-gray         { background-color: ... }
-[data-theme="dark"] .bg-cool-gray    { background-color: ... }
-[data-theme="dark"] .bg-red          { background-color: ... }
-[data-theme="dark"] .bg-orange       { background-color: ... }
-[data-theme="dark"] .bg-yellow       { background-color: ... }
-[data-theme="dark"] .bg-green        { background-color: ... }
-[data-theme="dark"] .bg-teal         { background-color: ... }
-[data-theme="dark"] .bg-blue         { background-color: ... }
-[data-theme="dark"] .bg-indigo       { background-color: ... }
-[data-theme="dark"] .bg-purple       { background-color: ... }
-[data-theme="dark"] .bg-pink         { background-color: ... }
+[data-theme="dark"] .bg-currentColor {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-transparent {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-white {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-black {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-gray {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-cool-gray {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-red {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-orange {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-yellow {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-green {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-teal {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-blue {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-indigo {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-purple {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-pink {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-gray {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-cool-gray {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-red {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-orange {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-yellow {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-green {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-teal {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-blue {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-indigo {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-purple {
+	background-color: ...;
+}
+[data-theme="dark"] .bg-pink {
+	background-color: ...;
+}
 ```
 
 Furthermore, `background-color`s are specifically implemented using the following pattern. This enables `[data-theme="dark"]` to activate dark mode `background-color`s without the need for arbitrarily nested elements.
@@ -445,6 +584,15 @@ TODO
 ## Contributing
 
 Contribution is welcome. To get started, check out the issues page — library maintainers will often hastily create issues to document an idea and context. If you need help understanding how the library works or need some deeper orientation, don’t hesitate to DM [@username_ZAYDEK on Twitter](https://twitter.com/username_ZAYDEK). If there’s enough demand, we can create a Discord server to better support the community.
+
+## Inspiration
+
+Sorcery SCSS is inspired by the following libraries:
+
+- [Bulma CSS](https://bulma.io)
+- [Fortune CSS](https://github.com/atav1k/fortune)
+- [normalize.css](https://necolas.github.io/normalize.css)
+- [Tailwind CSS](https://tailwindcss.com)
 
 ## License
 
