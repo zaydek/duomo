@@ -1,4 +1,14 @@
-# Sorcery SCSS 🔮
+<div align="center">
+  <h1>
+    <br>
+    <br>
+    Sorcery SCSS 🔮
+    <br>
+    <br>
+    <br>
+    <br>
+  </h1>
+</div>
 
 Sorcery SCSS ([v0.1](https://github.com/sorcery-src/sorcery/releases)) is utility-first framework for rapid development. Sorcery SCSS is most similar to Tailwind CSS but differentiates itself in these key ways:
 
@@ -15,12 +25,13 @@ The key to understanding Sorcery SCSS is to understand that it **does not attemp
 
 ## Table of contents (API)
 
-- [Implementation details](###Implementation details)
-- [`margin`](###margin)
-- [`padding`](###padding)
-- [`position`](###position)
-- [`display`](###display)
-- [`width` and `height`](###width-and-height)
+- [Implementation details](#Implementation details)
+- [`margin`](#margin)
+- [`padding`](#padding)
+- [`position`](#position)
+- [`display`](#display)
+- [`width` and `height`](#width-and-height)
+- [`max-width`](#max-width)
 <!-- - [`background-color` and dark mode `background-color`](###background-color-and-dark-mode-background-color) -->
 
 ### Implementation details
@@ -29,14 +40,14 @@ Breakpoints are defined as the following and are not currently customizable (yet
 
 <!-- prettier-ignore -->
 ```scss
-$xs: 40 * 16; //  640px
-$sm: 48 * 16; //  768px
-$md: 56 * 16; //  896px
-$lg: 64 * 16; // 1024px
-$xl: 80 * 16; // 1280px
+$xs: 40 * 16; // ->  640px
+$sm: 48 * 16; // ->  768px
+$md: 56 * 16; // ->  896px
+$lg: 64 * 16; // -> 1024px
+$xl: 80 * 16; // -> 1280px
 ```
 
-The standard scale used for numeric utilities:
+The standard scale is used for numeric utilities and the extended standard scale is used for layout utilities `width` and `height`:
 
 <!-- prettier-ignore -->
 ```scss
@@ -47,12 +58,7 @@ $range:
 	 64,  72,  80,  88,  96, 104, 112, 120, //  +8
 	128, 144, 160, 176, 192, 208, 224, 240, // +16
 	256;
-```
 
-The standard extended scale used for layout utilities `w`, `max-w`, and `h`:
-
-<!-- prettier-ignore -->
-```scss
 $extended-range:
 	  0,   1,   2,   3,   4,   5,   6,   7, //  +1
 	  8,  10,  12,  14,  16,  18,  20,  22, //  +2
@@ -278,6 +284,10 @@ This means you can think in terms of `x` and `y` axes without worrying about the
 ✅ Uses the standard extended scale, `auto` and `0-512`.<br>
 ✅ Adds `w-full w-screen` and `h-full h-screen` for `100%` and `100vw` and `100vh` respectively.<br>
 ✅ Media queries are supported for this property.<br>
+
+### `max-width`
+
+TODO
 
 ## Contributing
 
