@@ -10,6 +10,8 @@
   </h1>
 </div>
 
+<br>
+
 Sorcery SCSS ([v0.1](https://github.com/sorcery-src/sorcery/releases)) is utility-first framework for rapid development. Sorcery SCSS is most similar to Tailwind CSS but differentiates itself in these key ways:
 
 - Emphasis on zero-configuration
