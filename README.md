@@ -21,6 +21,8 @@ Sorcery SCSS ([v0.1](https://github.com/sorcery-src/sorcery/releases)) is utilit
 - Multiple CDN links for prototyping, add breakpoints as needed
 - Classes map to utilities but can encompass higher-order patterns like `m-gap`
 
+Furthermore, Sorcery SCSS is much simpler to learn and use than Tailwind CSS because there are no `hover:`, `focus:`, `group:` pseudo classes. Use Sorcery SCSS to rapidly prototype responsive skeletons, and then use SCSS for everything else.
+
 The problem with almost every CSS library and framework is they attempt to _solve_ frontend. Frontend is not a solvable problem. Frontend is the amalgamation of _many_ tools coming together to create user experiences for people. How Sorcery SCSS fits into this equation is by making it dead-easy to prototype responsive skeleton UIs.
 
 The key to understanding Sorcery SCSS is to understand that it **does not attempt** to map every CSS property to an arbitrary class name. What Sorcery SCSS does is makes it easier to reason about responsive skeletons, and encourages you to lean into CSS or SCSS when you’re ready to retrofit your skeleton-app with content.
@@ -34,7 +36,7 @@ The key to understanding Sorcery SCSS is to understand that it **does not attemp
 - [`display`](#display)
 - [`width` and `height`](#width-and-height)
 - [`max-width`](#max-width)
-<!-- - [`background-color` and dark mode `background-color`](###background-color-and-dark-mode-background-color) -->
+- [`background-color` and dark mode `background-color`](#background-color-and-dark-mode-background-color)
 
 ### Implementation details
 
@@ -292,6 +294,83 @@ This means you can think in terms of `x` and `y` axes without worrying about the
 ✅ Uses the breakpoint scale, `xs sm md lg xl`.<br>
 ✅ Resolves to `px`.<br>
 ✅ Media queries are supported for this property.<br>
+
+### `background-color` and dark mode `background-color`
+
+✅ Uses Tailwind CSS’s uniform color palette (since [v1.7](https://github.com/tailwindlabs/tailwindcss/releases/tag/v1.7.0#new-color-palette)<br>
+✅ Dark mode variants are supported for this property.<br>
+❌ Media queries are not supported for this property.<br>
+
+The following `background-color`s are supported, where `*` represents shades 50-900:
+
+```scss
+.bg-currentColor { /* ... */ }
+.bg-transparent  { /* ... */ }
+.bg-white        { /* ... */ }
+.bg-black        { /* ... */ }
+.bg-gray-*       { /* ... */ }
+.bg-cool-gray-*  { /* ... */ }
+.bg-red-*        { /* ... */ }
+.bg-orange-*     { /* ... */ }
+.bg-yellow-*     { /* ... */ }
+.bg-green-*      { /* ... */ }
+.bg-teal-*       { /* ... */ }
+.bg-blue-*       { /* ... */ }
+.bg-indigo-*     { /* ... */ }
+.bg-purple-*     { /* ... */ }
+.bg-pink-*       { /* ... */ }
+.bg-gray-*       { /* ... */ }
+.bg-cool-gray-*  { /* ... */ }
+.bg-red-*        { /* ... */ }
+.bg-orange-*     { /* ... */ }
+.bg-yellow-*     { /* ... */ }
+.bg-green-*      { /* ... */ }
+.bg-teal-*       { /* ... */ }
+.bg-blue-*       { /* ... */ }
+.bg-indigo-*     { /* ... */ }
+.bg-purple-*     { /* ... */ }
+.bg-pink-*       { /* ... */ }
+```
+
+Dark mode `background-color`s are also supported:
+
+```scss
+[data-theme="dark"] bg-currentColor { /* ... */ }
+[data-theme="dark"] bg-transparent  { /* ... */ }
+[data-theme="dark"] bg-white        { /* ... */ }
+[data-theme="dark"] bg-black        { /* ... */ }
+[data-theme="dark"] bg-gray-*       { /* ... */ }
+[data-theme="dark"] bg-cool-gray-*  { /* ... */ }
+[data-theme="dark"] bg-red-*        { /* ... */ }
+[data-theme="dark"] bg-orange-*     { /* ... */ }
+[data-theme="dark"] bg-yellow-*     { /* ... */ }
+[data-theme="dark"] bg-green-*      { /* ... */ }
+[data-theme="dark"] bg-teal-*       { /* ... */ }
+[data-theme="dark"] bg-blue-*       { /* ... */ }
+[data-theme="dark"] bg-indigo-*     { /* ... */ }
+[data-theme="dark"] bg-purple-*     { /* ... */ }
+[data-theme="dark"] bg-pink-*       { /* ... */ }
+[data-theme="dark"] bg-gray-*       { /* ... */ }
+[data-theme="dark"] bg-cool-gray-*  { /* ... */ }
+[data-theme="dark"] bg-red-*        { /* ... */ }
+[data-theme="dark"] bg-orange-*     { /* ... */ }
+[data-theme="dark"] bg-yellow-*     { /* ... */ }
+[data-theme="dark"] bg-green-*      { /* ... */ }
+[data-theme="dark"] bg-teal-*       { /* ... */ }
+[data-theme="dark"] bg-blue-*       { /* ... */ }
+[data-theme="dark"] bg-indigo-*     { /* ... */ }
+[data-theme="dark"] bg-purple-*     { /* ... */ }
+[data-theme="dark"] bg-pink-*       { /* ... */ }
+```
+
+Furthermore, `background-color`s are specifically implemented using the following pattern. This enables `[data-theme="dark"]` to activate dark mode `background-color`s without the need for arbitrarily nested elements.
+
+```scss
+[data-theme="dark"]bg-indigo-*,
+[data-theme="dark"] bg-indigo-* {
+	/* ... */
+}
+```
 
 ## Contributing
 
