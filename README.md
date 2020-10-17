@@ -48,7 +48,7 @@ The key to understanding Sorcery SCSS is to understand that it **does not attemp
 - [`box-shadow`](#box-shadow)
 - [`z-index`](#z-index)
 <!-- TODO: overflow -->
-- [pointer-events`](#pointer-events)
+- [`pointer-events`](#pointer-events)
 
 ### Implementation details
 
