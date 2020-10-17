@@ -331,70 +331,174 @@ This means you can think in terms of `x` and `y` axes without worrying about the
 
 ### `background-color` and dark mode `background-color`
 
-✅ Uses Tailwind CSS’s uniform color palette (since [v1.7](https://github.com/tailwindlabs/tailwindcss/releases/tag/v1.7.0#new-color-palette)<br>
+✅ Uses Tailwind CSS’s uniform color palette (since [v1.7](https://github.com/tailwindlabs/tailwindcss/releases/tag/v1.7.0#new-color-palette))<br>
 ✅ Dark mode variants are supported for this property.<br>
 ❌ Media queries are not supported for this property.<br>
 
 The following `background-color`s are supported, where `*` represents shades 50-900:
 
 ```scss
-.bg-currentColor { /* ... */ }
-.bg-transparent  { /* ... */ }
-.bg-white        { /* ... */ }
-.bg-black        { /* ... */ }
-.bg-gray-*       { /* ... */ }
-.bg-cool-gray-*  { /* ... */ }
-.bg-red-*        { /* ... */ }
-.bg-orange-*     { /* ... */ }
-.bg-yellow-*     { /* ... */ }
-.bg-green-*      { /* ... */ }
-.bg-teal-*       { /* ... */ }
-.bg-blue-*       { /* ... */ }
-.bg-indigo-*     { /* ... */ }
-.bg-purple-*     { /* ... */ }
-.bg-pink-*       { /* ... */ }
-.bg-gray-*       { /* ... */ }
-.bg-cool-gray-*  { /* ... */ }
-.bg-red-*        { /* ... */ }
-.bg-orange-*     { /* ... */ }
-.bg-yellow-*     { /* ... */ }
-.bg-green-*      { /* ... */ }
-.bg-teal-*       { /* ... */ }
-.bg-blue-*       { /* ... */ }
-.bg-indigo-*     { /* ... */ }
-.bg-purple-*     { /* ... */ }
-.bg-pink-*       { /* ... */ }
+.bg-currentColor {
+	/* ... */
+}
+.bg-transparent {
+	/* ... */
+}
+.bg-white {
+	/* ... */
+}
+.bg-black {
+	/* ... */
+}
+.bg-gray-* {
+	/* ... */
+}
+.bg-cool-gray-* {
+	/* ... */
+}
+.bg-red-* {
+	/* ... */
+}
+.bg-orange-* {
+	/* ... */
+}
+.bg-yellow-* {
+	/* ... */
+}
+.bg-green-* {
+	/* ... */
+}
+.bg-teal-* {
+	/* ... */
+}
+.bg-blue-* {
+	/* ... */
+}
+.bg-indigo-* {
+	/* ... */
+}
+.bg-purple-* {
+	/* ... */
+}
+.bg-pink-* {
+	/* ... */
+}
+.bg-gray-* {
+	/* ... */
+}
+.bg-cool-gray-* {
+	/* ... */
+}
+.bg-red-* {
+	/* ... */
+}
+.bg-orange-* {
+	/* ... */
+}
+.bg-yellow-* {
+	/* ... */
+}
+.bg-green-* {
+	/* ... */
+}
+.bg-teal-* {
+	/* ... */
+}
+.bg-blue-* {
+	/* ... */
+}
+.bg-indigo-* {
+	/* ... */
+}
+.bg-purple-* {
+	/* ... */
+}
+.bg-pink-* {
+	/* ... */
+}
 ```
 
 Dark mode `background-color`s are also supported:
 
 ```scss
-[data-theme="dark"] .bg-currentColor { /* ... */ }
-[data-theme="dark"] .bg-transparent  { /* ... */ }
-[data-theme="dark"] .bg-white        { /* ... */ }
-[data-theme="dark"] .bg-black        { /* ... */ }
-[data-theme="dark"] .bg-gray-*       { /* ... */ }
-[data-theme="dark"] .bg-cool-gray-*  { /* ... */ }
-[data-theme="dark"] .bg-red-*        { /* ... */ }
-[data-theme="dark"] .bg-orange-*     { /* ... */ }
-[data-theme="dark"] .bg-yellow-*     { /* ... */ }
-[data-theme="dark"] .bg-green-*      { /* ... */ }
-[data-theme="dark"] .bg-teal-*       { /* ... */ }
-[data-theme="dark"] .bg-blue-*       { /* ... */ }
-[data-theme="dark"] .bg-indigo-*     { /* ... */ }
-[data-theme="dark"] .bg-purple-*     { /* ... */ }
-[data-theme="dark"] .bg-pink-*       { /* ... */ }
-[data-theme="dark"] .bg-gray-*       { /* ... */ }
-[data-theme="dark"] .bg-cool-gray-*  { /* ... */ }
-[data-theme="dark"] .bg-red-*        { /* ... */ }
-[data-theme="dark"] .bg-orange-*     { /* ... */ }
-[data-theme="dark"] .bg-yellow-*     { /* ... */ }
-[data-theme="dark"] .bg-green-*      { /* ... */ }
-[data-theme="dark"] .bg-teal-*       { /* ... */ }
-[data-theme="dark"] .bg-blue-*       { /* ... */ }
-[data-theme="dark"] .bg-indigo-*     { /* ... */ }
-[data-theme="dark"] .bg-purple-*     { /* ... */ }
-[data-theme="dark"] .bg-pink-*       { /* ... */ }
+[data-theme="dark"] .bg-currentColor {
+	/* ... */
+}
+[data-theme="dark"] .bg-transparent {
+	/* ... */
+}
+[data-theme="dark"] .bg-white {
+	/* ... */
+}
+[data-theme="dark"] .bg-black {
+	/* ... */
+}
+[data-theme="dark"] .bg-gray-* {
+	/* ... */
+}
+[data-theme="dark"] .bg-cool-gray-* {
+	/* ... */
+}
+[data-theme="dark"] .bg-red-* {
+	/* ... */
+}
+[data-theme="dark"] .bg-orange-* {
+	/* ... */
+}
+[data-theme="dark"] .bg-yellow-* {
+	/* ... */
+}
+[data-theme="dark"] .bg-green-* {
+	/* ... */
+}
+[data-theme="dark"] .bg-teal-* {
+	/* ... */
+}
+[data-theme="dark"] .bg-blue-* {
+	/* ... */
+}
+[data-theme="dark"] .bg-indigo-* {
+	/* ... */
+}
+[data-theme="dark"] .bg-purple-* {
+	/* ... */
+}
+[data-theme="dark"] .bg-pink-* {
+	/* ... */
+}
+[data-theme="dark"] .bg-gray-* {
+	/* ... */
+}
+[data-theme="dark"] .bg-cool-gray-* {
+	/* ... */
+}
+[data-theme="dark"] .bg-red-* {
+	/* ... */
+}
+[data-theme="dark"] .bg-orange-* {
+	/* ... */
+}
+[data-theme="dark"] .bg-yellow-* {
+	/* ... */
+}
+[data-theme="dark"] .bg-green-* {
+	/* ... */
+}
+[data-theme="dark"] .bg-teal-* {
+	/* ... */
+}
+[data-theme="dark"] .bg-blue-* {
+	/* ... */
+}
+[data-theme="dark"] .bg-indigo-* {
+	/* ... */
+}
+[data-theme="dark"] .bg-purple-* {
+	/* ... */
+}
+[data-theme="dark"] .bg-pink-* {
+	/* ... */
+}
 ```
 
 Furthermore, `background-color`s are specifically implemented using the following pattern. This enables `[data-theme="dark"]` to activate dark mode `background-color`s without the need for arbitrarily nested elements.
@@ -415,6 +519,7 @@ Furthermore, `background-color`s are specifically implemented using the followin
 ### `box-shadow`
 
 <!-- ✅ Uses a limited scale, `-50-50`.<br> -->
+
 ✅ Resolves to `px`.<br>
 ✅ Media queries are supported for this property.<br>
 
