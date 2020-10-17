@@ -13,7 +13,14 @@ The problem with almost every CSS library and framework is they attempt to _solv
 
 The key to understanding Sorcery SCSS is to understand that it **does not attempt** to map every CSS property to an arbitrary class name. What Sorcery SCSS does is makes it easier to reason about responsive skeletons, and encourages you to lean into CSS or SCSS when you’re ready to retrofit your skeleton-app with content.
 
-### API
+## Table of contents (API)
+
+- [Implementation details](###Implementation details)
+- [`margin`](###margin)
+- [`padding`](###padding)
+- [`position`](###position)
+
+### Implementation details
 
 Breakpoints are defined as the following and are not currently customizable (yet):
 
@@ -39,13 +46,21 @@ $range:
 	256;
 ```
 
-Note that the `margin` utilities also support an inverted scale for negative values.
+The standard extended scale used for layout utilities `w`, `max-w`, and `h`:
 
-## API table of contents
+<!-- prettier-ignore -->
+```scss
+$extended-range:
+	  0,   1,   2,   3,   4,   5,   6,   7, //  +1
+	  8,  10,  12,  14,  16,  18,  20,  22, //  +2
+	 24,  28,  32,  36,  40,  44,  48,  52, //  +4
+	 64,  72,  80,  88,  96, 104, 112, 120, //  +8
+	128, 144, 160, 176, 192, 208, 224, 240, // +16
+	256, 288, 320, 352, 384, 416, 448, 480, // +32
+	512, $xs, $sm, $md, $lg, $xl;
+```
 
-- [`margin`](###margin)
-- [`padding`](###padding)
-- [`position`](###position)
+### 
 
 ### `margin`
 
@@ -120,43 +135,43 @@ Note that `static`, `relative`, `absolute`, `fixed`, and `sticky` are supported.
 
 ```scss
 .absolute {
+	position: absolute;
+}
+.absolute.x-0 {
 	left: 0;
-	&.x-0 {
-		left: 0;
-		right: 0;
-	}
-	&.l-0 {
-		left: 0;
-	}
-	&.r-0 {
-		right: 0;
-	}
-	&.y-0 {
-		top: 0;
-		bottom: 0;
-	}
-	&.t-0 {
-		top: 0;
-	}
-	&.b-0 {
-		bottom: 0;
-	}
-	&.tl-0 {
-		top: 0;
-		left: 0;
-	}
-	&.tr-0 {
-		top: 0;
-		right: 0;
-	}
-	&.bl-0 {
-		bottom: 0;
-		left: 0;
-	}
-	&.br-0 {
-		bottom: 0;
-		right: 0;
-	}
+	right: 0;
+}
+.absolute.l-0 {
+	left: 0;
+}
+.absolute.r-0 {
+	right: 0;
+}
+.absolute.y-0 {
+	top: 0;
+	bottom: 0;
+}
+.absolute.t-0 {
+	top: 0;
+}
+.absolute.b-0 {
+	bottom: 0;
+}
+.absolute.tl-0 {
+	top: 0;
+	left: 0;
+}
+.absolute.tr-0 {
+	top: 0;
+	right: 0;
+}
+.absolute.bl-0 {
+	bottom: 0;
+	left: 0;
+}
+.absolute.br-0 {
+	bottom: 0;
+	right: 0;
 }
 ```
 
