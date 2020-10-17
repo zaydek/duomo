@@ -336,6 +336,8 @@ This means you can think in terms of `x` and `y` axes without worrying about the
 ✅ Dark mode variants are supported for this property.<br>
 ❌ Media queries are not supported for this property.<br>
 
+With the exception of `currentColor transparent white black`, `background-color`s use shades `50 100 200 300 400 500 600 700 800 900` where 50 is the lightest and 900 is the darkest.
+
 ```scss
 .bg-currentColor {
 	/* ... */
@@ -349,70 +351,70 @@ This means you can think in terms of `x` and `y` axes without worrying about the
 .bg-black {
 	/* ... */
 }
-.bg-gray-(50|100-900) {
+.bg-gray {
 	/* ... */
 }
-.bg-cool-gray-(50|100-900) {
+.bg-cool-gray {
 	/* ... */
 }
-.bg-red-(50|100-900) {
+.bg-red {
 	/* ... */
 }
-.bg-orange-(50|100-900) {
+.bg-orange {
 	/* ... */
 }
-.bg-yellow-(50|100-900) {
+.bg-yellow {
 	/* ... */
 }
-.bg-green-(50|100-900) {
+.bg-green {
 	/* ... */
 }
-.bg-teal-(50|100-900) {
+.bg-teal {
 	/* ... */
 }
-.bg-blue-(50|100-900) {
+.bg-blue {
 	/* ... */
 }
-.bg-indigo-(50|100-900) {
+.bg-indigo {
 	/* ... */
 }
-.bg-purple-(50|100-900) {
+.bg-purple {
 	/* ... */
 }
-.bg-pink-(50|100-900) {
+.bg-pink {
 	/* ... */
 }
-.bg-gray-(50|100-900) {
+.bg-gray {
 	/* ... */
 }
-.bg-cool-gray-(50|100-900) {
+.bg-cool-gray {
 	/* ... */
 }
-.bg-red-(50|100-900) {
+.bg-red {
 	/* ... */
 }
-.bg-orange-(50|100-900) {
+.bg-orange {
 	/* ... */
 }
-.bg-yellow-(50|100-900) {
+.bg-yellow {
 	/* ... */
 }
-.bg-green-(50|100-900) {
+.bg-green {
 	/* ... */
 }
-.bg-teal-(50|100-900) {
+.bg-teal {
 	/* ... */
 }
-.bg-blue-(50|100-900) {
+.bg-blue {
 	/* ... */
 }
-.bg-indigo-(50|100-900) {
+.bg-indigo {
 	/* ... */
 }
-.bg-purple-(50|100-900) {
+.bg-purple {
 	/* ... */
 }
-.bg-pink-(50|100-900) {
+.bg-pink {
 	/* ... */
 }
 ```
@@ -432,70 +434,70 @@ Dark mode `background-color`s are also supported:
 [data-theme="dark"] .bg-black {
 	/* ... */
 }
-[data-theme="dark"] .bg-gray-(50|100-900) {
+[data-theme="dark"] .bg-gray {
 	/* ... */
 }
-[data-theme="dark"] .bg-cool-gray-(50|100-900) {
+[data-theme="dark"] .bg-cool-gray {
 	/* ... */
 }
-[data-theme="dark"] .bg-red-(50|100-900) {
+[data-theme="dark"] .bg-red {
 	/* ... */
 }
-[data-theme="dark"] .bg-orange-(50|100-900) {
+[data-theme="dark"] .bg-orange {
 	/* ... */
 }
-[data-theme="dark"] .bg-yellow-(50|100-900) {
+[data-theme="dark"] .bg-yellow {
 	/* ... */
 }
-[data-theme="dark"] .bg-green-(50|100-900) {
+[data-theme="dark"] .bg-green {
 	/* ... */
 }
-[data-theme="dark"] .bg-teal-(50|100-900) {
+[data-theme="dark"] .bg-teal {
 	/* ... */
 }
-[data-theme="dark"] .bg-blue-(50|100-900) {
+[data-theme="dark"] .bg-blue {
 	/* ... */
 }
-[data-theme="dark"] .bg-indigo-(50|100-900) {
+[data-theme="dark"] .bg-indigo {
 	/* ... */
 }
-[data-theme="dark"] .bg-purple-(50|100-900) {
+[data-theme="dark"] .bg-purple {
 	/* ... */
 }
-[data-theme="dark"] .bg-pink-(50|100-900) {
+[data-theme="dark"] .bg-pink {
 	/* ... */
 }
-[data-theme="dark"] .bg-gray-(50|100-900) {
+[data-theme="dark"] .bg-gray {
 	/* ... */
 }
-[data-theme="dark"] .bg-cool-gray-(50|100-900) {
+[data-theme="dark"] .bg-cool-gray {
 	/* ... */
 }
-[data-theme="dark"] .bg-red-(50|100-900) {
+[data-theme="dark"] .bg-red {
 	/* ... */
 }
-[data-theme="dark"] .bg-orange-(50|100-900) {
+[data-theme="dark"] .bg-orange {
 	/* ... */
 }
-[data-theme="dark"] .bg-yellow-(50|100-900) {
+[data-theme="dark"] .bg-yellow {
 	/* ... */
 }
-[data-theme="dark"] .bg-green-(50|100-900) {
+[data-theme="dark"] .bg-green {
 	/* ... */
 }
-[data-theme="dark"] .bg-teal-(50|100-900) {
+[data-theme="dark"] .bg-teal {
 	/* ... */
 }
-[data-theme="dark"] .bg-blue-(50|100-900) {
+[data-theme="dark"] .bg-blue {
 	/* ... */
 }
-[data-theme="dark"] .bg-indigo-(50|100-900) {
+[data-theme="dark"] .bg-indigo {
 	/* ... */
 }
-[data-theme="dark"] .bg-purple-(50|100-900) {
+[data-theme="dark"] .bg-purple {
 	/* ... */
 }
-[data-theme="dark"] .bg-pink-(50|100-900) {
+[data-theme="dark"] .bg-pink {
 	/* ... */
 }
 ```
@@ -503,8 +505,8 @@ Dark mode `background-color`s are also supported:
 Furthermore, `background-color`s are specifically implemented using the following pattern. This enables `[data-theme="dark"]` to activate dark mode `background-color`s without the need for arbitrarily nested elements.
 
 ```scss
-[data-theme="dark"].bg-indigo-(50|100-900),
-[data-theme="dark"] .bg-indigo-(50|100-900) {
+[data-theme="dark"].bg-indigo,
+[data-theme="dark"] .bg-indigo {
 	/* ... */
 }
 ```
