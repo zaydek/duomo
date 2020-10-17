@@ -45,10 +45,12 @@ Note that the `margin` utilities also support an inverted scale for negative val
 
 - [`margin`](###margin)
 - [`padding`](###padding)
+- [`position`](###position)
 
 ### `margin`
 
-Uses the standard range scale, from `1-256`. Note that `px` values are statically converted to `rem` values behind-the-scenes.
+✅ Uses the standard range scale, from `1-256`.<br>
+✅ Media queries are supported for this property.<br>
 
 Note that the `m` utilities also support `auto` and an inverted scale for negative values.
 
@@ -80,7 +82,8 @@ Note that the `m` utilities also support `auto` and an inverted scale for negati
 
 ### `padding`
 
-Uses the standard range scale, from `1-256`. Note that `px` values are statically converted to `rem` values behind-the-scenes.
+✅ Uses the standard range scale, from `1-256`.<br>
+✅ Media queries are supported for this property.<br>
 
 ```scss
 .p-#{$v} {
@@ -105,6 +108,55 @@ Uses the standard range scale, from `1-256`. Note that `px` values are staticall
 }
 .pb-#{$v} {
 	padding-bottom: rem($v);
+}
+```
+
+### `position`
+
+✅ Uses a limited scale, `auto` and `0`.<br>
+✅ Media queries are supported for this property.<br>
+
+Note that `static`, `relative`, `absolute`, `fixed`, and `sticky` are supported. `absolute` and `auto` are used for demonstration purposes.
+
+```scss
+.absolute {
+	left: auto;
+	&.x-auto {
+		left: auto;
+		right: auto;
+	}
+	&.l-auto {
+		left: auto;
+	}
+	&.r-auto {
+		right: auto;
+	}
+	&.y-auto {
+		top: auto;
+		bottom: auto;
+	}
+	&.t-auto {
+		top: auto;
+	}
+	&.b-auto {
+		bottom: auto;
+	}
+	&.tl-auto {
+		top: auto;
+		left: auto;
+	}
+	&.tr-auto {
+		top: auto;
+		right: auto;
+	}
+	&.bl-auto {
+		bottom: auto;
+		left: auto;
+	}
+	&.br-auto {
+		bottom: auto;
+		right: auto;
+	}
 }
 ```
 
