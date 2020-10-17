@@ -55,28 +55,28 @@ Note that the `margin` utilities also support an inverted scale for negative val
 Note that the `m` utilities also support `auto` and an inverted scale for negative values.
 
 ```scss
-.m-#{$v} {
-	margin: rem($v);
+.m-0 {
+	margin: 0;
 }
-.mx-#{$v} {
-	margin-left: rem($v);
-	margin-right: rem($v);
+.mx-0 {
+	margin-left: 0;
+	margin-right: 0;
 }
-.ml-#{$v} {
-	margin-left: rem($v);
+.ml-0 {
+	margin-left: 0;
 }
-.mr-#{$v} {
-	margin-right: rem($v);
+.mr-0 {
+	margin-right: 0;
 }
-.my-#{$v} {
-	margin-top: rem($v);
-	margin-bottom: rem($v);
+.my-0 {
+	margin-top: 0;
+	margin-bottom: 0;
 }
-.mt-#{$v} {
-	margin-top: rem($v);
+.mt-0 {
+	margin-top: 0;
 }
-.mb-#{$v} {
-	margin-bottom: rem($v);
+.mb-0 {
+	margin-bottom: 0;
 }
 ```
 
@@ -86,28 +86,28 @@ Note that the `m` utilities also support `auto` and an inverted scale for negati
 ✅ Media queries are supported for this property.<br>
 
 ```scss
-.p-#{$v} {
-	padding: rem($v);
+.p-0 {
+	padding: 0;
 }
-.px-#{$v} {
-	padding-left: rem($v);
-	padding-right: rem($v);
+.px-0 {
+	padding-left: 0;
+	padding-right: 0;
 }
-.pl-#{$v} {
-	padding-left: rem($v);
+.pl-0 {
+	padding-left: 0;
 }
-.pr-#{$v} {
-	padding-right: rem($v);
+.pr-0 {
+	padding-right: 0;
 }
-.py-#{$v} {
-	padding-top: rem($v);
-	padding-bottom: rem($v);
+.py-0 {
+	padding-top: 0;
+	padding-bottom: 0;
 }
-.pt-#{$v} {
-	padding-top: rem($v);
+.pt-0 {
+	padding-top: 0;
 }
-.pb-#{$v} {
-	padding-bottom: rem($v);
+.pb-0 {
+	padding-bottom: 0;
 }
 ```
 
@@ -116,46 +116,46 @@ Note that the `m` utilities also support `auto` and an inverted scale for negati
 ✅ Uses a limited scale, `auto` and `0`.<br>
 ✅ Media queries are supported for this property.<br>
 
-Note that `static`, `relative`, `absolute`, `fixed`, and `sticky` are supported. `absolute` and `auto` are used for demonstration purposes.
+Note that `static`, `relative`, `absolute`, `fixed`, and `sticky` are supported.
 
 ```scss
 .absolute {
-	left: auto;
-	&.x-auto {
-		left: auto;
-		right: auto;
+	left: 0;
+	&.x-0 {
+		left: 0;
+		right: 0;
 	}
-	&.l-auto {
-		left: auto;
+	&.l-0 {
+		left: 0;
 	}
-	&.r-auto {
-		right: auto;
+	&.r-0 {
+		right: 0;
 	}
-	&.y-auto {
-		top: auto;
-		bottom: auto;
+	&.y-0 {
+		top: 0;
+		bottom: 0;
 	}
-	&.t-auto {
-		top: auto;
+	&.t-0 {
+		top: 0;
 	}
-	&.b-auto {
-		bottom: auto;
+	&.b-0 {
+		bottom: 0;
 	}
-	&.tl-auto {
-		top: auto;
-		left: auto;
+	&.tl-0 {
+		top: 0;
+		left: 0;
 	}
-	&.tr-auto {
-		top: auto;
-		right: auto;
+	&.tr-0 {
+		top: 0;
+		right: 0;
 	}
-	&.bl-auto {
-		bottom: auto;
-		left: auto;
+	&.bl-0 {
+		bottom: 0;
+		left: 0;
 	}
-	&.br-auto {
-		bottom: auto;
-		right: auto;
+	&.br-0 {
+		bottom: 0;
+		right: 0;
 	}
 }
 ```
