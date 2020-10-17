@@ -41,9 +41,14 @@ $range:
 
 Note that the `margin` utilities also support an inverted scale for negative values.
 
+## API table of contents
+
+- [`margin`](###margin)
+- [`padding`](###padding)
+
 ### `margin`
 
-Uses the standard range scale, from `1-256`. Note that `px` values are converted to `rem` values behind-the-scenes.
+Uses the standard range scale, from `1-256`. Note that `px` values are statically converted to `rem` values behind-the-scenes.
 
 Note that the `m` utilities also support `auto` and an inverted scale for negative values.
 
@@ -70,6 +75,36 @@ Note that the `m` utilities also support `auto` and an inverted scale for negati
 }
 .mb-#{$v} {
 	margin-bottom: rem($v);
+}
+```
+
+### `padding`
+
+Uses the standard range scale, from `1-256`. Note that `px` values are statically converted to `rem` values behind-the-scenes.
+
+```scss
+.p-#{$v} {
+	padding: rem($v);
+}
+.px-#{$v} {
+	padding-left: rem($v);
+	padding-right: rem($v);
+}
+.pl-#{$v} {
+	padding-left: rem($v);
+}
+.pr-#{$v} {
+	padding-right: rem($v);
+}
+.py-#{$v} {
+	padding-top: rem($v);
+	padding-bottom: rem($v);
+}
+.pt-#{$v} {
+	padding-top: rem($v);
+}
+.pb-#{$v} {
+	padding-bottom: rem($v);
 }
 ```
 
