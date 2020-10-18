@@ -55,54 +55,56 @@ The key to understanding Sorcery SCSS is to understand that it **does not attemp
 
 Sorcery SCSS specifically solves for the following properties:
 
+<!-- prettier-ignore -->
 ```scss
 .m {
-	margin: ...;
+	margin: ...
 }
 .p {
-	padding: ...;
+	padding: ...
 }
 .static,
 .relative,
 .absolute,
 .fixed,
 .sticky {
-	position: ...;
+	position: ...
 }
 .block,
 .inline-block,
 .inline,
 .flex-row,
 .inline-flex-row,
-.flex-col. .inline-flex-col {
-	display: ...;
+.flex-col.
+.inline-flex-col {
+	display: ...
 }
 .w {
-	width: ...;
+	width: ...
 }
 .max-w {
-	max-width: ...;
+	max-width: ...
 }
 .h {
-	height: ...;
+	height: ...
 }
 .bg {
-	background-color: ...;
+	background-color: ...
 }
 .rounded {
-	border-radius: ...;
+	border-radius: ...
 }
 .shadow {
-	box-shadow: ...;
+	box-shadow: ...
 }
 .z {
-	z-index: ...;
+	z-index: ...
 }
 .overflow {
-	overflow: ...;
+	overflow: ...
 }
 .pointer-events {
-	pointer-events: ...;
+	pointer-events: ...
 }
 ```
 
@@ -373,176 +375,179 @@ This means you can think in terms of `x` and `y` axes without worrying about the
 
 With the exception of `currentColor transparent white black`, `background-color`s use shades `50 100 200 300 400 500 600 700 800 900` where 50 is the lightest and 900 is the darkest.
 
+<!-- prettier-ignore -->
 ```scss
 .bg-currentColor {
-	background-color: ...;
+	background-color: ...
 }
 .bg-transparent {
-	background-color: ...;
+	background-color: ...
 }
 .bg-white {
-	background-color: ...;
+	background-color: ...
 }
 .bg-black {
-	background-color: ...;
+	background-color: ...
 }
 .bg-gray {
-	background-color: ...;
+	background-color: ...
 }
 .bg-cool-gray {
-	background-color: ...;
+	background-color: ...
 }
 .bg-red {
-	background-color: ...;
+	background-color: ...
 }
 .bg-orange {
-	background-color: ...;
+	background-color: ...
 }
 .bg-yellow {
-	background-color: ...;
+	background-color: ...
 }
 .bg-green {
-	background-color: ...;
+	background-color: ...
 }
 .bg-teal {
-	background-color: ...;
+	background-color: ...
 }
 .bg-blue {
-	background-color: ...;
+	background-color: ...
 }
 .bg-indigo {
-	background-color: ...;
+	background-color: ...
 }
 .bg-purple {
-	background-color: ...;
+	background-color: ...
 }
 .bg-pink {
-	background-color: ...;
+	background-color: ...
 }
 .bg-gray {
-	background-color: ...;
+	background-color: ...
 }
 .bg-cool-gray {
-	background-color: ...;
+	background-color: ...
 }
 .bg-red {
-	background-color: ...;
+	background-color: ...
 }
 .bg-orange {
-	background-color: ...;
+	background-color: ...
 }
 .bg-yellow {
-	background-color: ...;
+	background-color: ...
 }
 .bg-green {
-	background-color: ...;
+	background-color: ...
 }
 .bg-teal {
-	background-color: ...;
+	background-color: ...
 }
 .bg-blue {
-	background-color: ...;
+	background-color: ...
 }
 .bg-indigo {
-	background-color: ...;
+	background-color: ...
 }
 .bg-purple {
-	background-color: ...;
+	background-color: ...
 }
 .bg-pink {
-	background-color: ...;
+	background-color: ...
 }
 ```
 
 Dark mode `background-color`s are also supported:
 
+<!-- prettier-ignore -->
 ```scss
 [data-theme="dark"] .bg-currentColor {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-transparent {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-white {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-black {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-gray {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-cool-gray {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-red {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-orange {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-yellow {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-green {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-teal {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-blue {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-indigo {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-purple {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-pink {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-gray {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-cool-gray {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-red {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-orange {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-yellow {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-green {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-teal {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-blue {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-indigo {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-purple {
-	background-color: ...;
+	background-color: ...
 }
 [data-theme="dark"] .bg-pink {
-	background-color: ...;
+	background-color: ...
 }
 ```
 
 Furthermore, `background-color`s are specifically implemented using the following pattern. This enables `[data-theme="dark"]` to activate dark mode `background-color`s without the need for arbitrarily nested elements.
 
+<!-- prettier-ignore -->
 ```scss
 [data-theme="dark"].bg-indigo,
 [data-theme="dark"] .bg-indigo {
-	/* ... */
+	background-color: ...
 }
 ```
 
