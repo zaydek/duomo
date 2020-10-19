@@ -15,7 +15,7 @@
 	$ampersand: get-dynamic-ampersand();
 
 	@each $key, $value in $map {
-		#{$ampersand}h:#{$shorthand}-#{$key}:hover {
+		#{$ampersand}h\:#{$shorthand}-#{$key}:hover {
 			@each $property in $properties {
 				#{$property}: call(get-function($conv-fn), $value);
 			}
@@ -28,7 +28,7 @@
 	$ampersand: get-dynamic-ampersand();
 
 	@each $key, $value in $map {
-		#{$ampersand}f:#{$shorthand}-#{$key}:focus {
+		#{$ampersand}f\:#{$shorthand}-#{$key}:focus {
 			@each $property in $properties {
 				#{$property}: call(get-function($conv-fn), $value);
 			}
