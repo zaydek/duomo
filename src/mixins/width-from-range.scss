@@ -2,6 +2,9 @@
 	$ampersand: get-dynamic-ampersand();
 
 	@include generate-from-range((width), "w", $range, $conv-fn);
+	#{$ampersand}w-px {
+		width: 1px;
+	}
 	#{$ampersand}w-full {
 		width: 100%;
 	}

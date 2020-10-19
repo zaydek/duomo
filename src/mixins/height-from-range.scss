@@ -2,6 +2,9 @@
 	$ampersand: get-dynamic-ampersand();
 
 	@include generate-from-range((height), "h", $range, $conv-fn);
+	#{$ampersand}h-px {
+		height: 1px;
+	}
 	#{$ampersand}h-full {
 		height: 100%;
 	}

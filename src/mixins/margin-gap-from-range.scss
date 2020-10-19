@@ -1,23 +1,23 @@
-@mixin _impl($properties, $shorthand, $range, $conv-fn) {
+@mixin _margin-gap-impl($properties, $shorthand, $range, $conv-fn) {
 	$ampersand: get-dynamic-ampersand();
 
 	@each $value in $range {
-		[class*="flex-row"]#{$ampersand}#{$shorthand}-gap-#{$value},
-		[class*="flex-col"]#{$ampersand}#{$shorthand}-gap-#{$value} {
+		#{$ampersand}#{$shorthand}-#{$value} > * + * {
 			@each $property in $properties {
-				#{$property}: call(get-function($conv-fn), if(type-of($value) != "number", $value, -1 * $value / 2));
+				// #{$property}: call(get-function($conv-fn), if(type-of($value) != "number", $value, -1 * $value / 2));
+				#{$property}: call(get-function($conv-fn), $value);
 			}
-			& > * {
-				@each $property in $properties {
-					margin: call(get-function($conv-fn), if(type-of($value) != "number", $value, $value / 2));
-				}
-			}
+			// & > * {
+			// 	@each $property in $properties {
+			// 		#{$property}: call(get-function($conv-fn), if(type-of($value) != "number", $value, $value / 2));
+			// 	}
+			// }
 		}
 	}
 }
 
 @mixin margin-gap-from-range($range, $conv-fn) {
-	@include _impl((margin), "m", $range, $conv-fn);
-	@include _impl((margin-left, margin-right), "mx", $range, $conv-fn);
-	@include _impl((margin-top, margin-bottom), "my", $range, $conv-fn);
+	// @include _margin-gap-impl((margin), "m-gap", $range, $conv-fn);
+	@include _margin-gap-impl((margin-left), "mx-gap", $range, $conv-fn);
+	@include _margin-gap-impl((margin-top), "my-gap", $range, $conv-fn);
 }

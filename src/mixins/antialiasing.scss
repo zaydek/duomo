@@ -1,0 +1,12 @@
+@mixin antialiasing {
+	$ampersand: get-dynamic-ampersand();
+
+	#{$ampersand}antialiasing {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+	#{$ampersand}no-antialising {
+		-webkit-font-smoothing: auto;
+		-moz-osx-font-smoothing: auto;
+	}
+}

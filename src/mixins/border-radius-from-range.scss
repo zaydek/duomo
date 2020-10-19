@@ -2,7 +2,7 @@
 	$ampersand: get-dynamic-ampersand();
 
 	@include generate-from-range($properties, $shorthand, $range, $conv-fn);
-	#{$ampersand}-#{$shorthand}-full {
+	#{$ampersand}#{$shorthand}-full {
 		@each $property in $properties {
 			#{$property}: 9999px;
 		}

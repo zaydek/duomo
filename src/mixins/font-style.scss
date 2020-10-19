@@ -1,0 +1,9 @@
+@mixin font-style {
+	$ampersand: get-dynamic-ampersand();
+
+	@each $style in normal, italic {
+		#{$ampersand}style-#{$style} {
+			font-style: $style;
+		}
+	}
+}

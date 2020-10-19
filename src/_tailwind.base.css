@@ -1,3 +1,5 @@
+/* purgecss start ignore */
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
@@ -590,3 +592,5 @@ video {
 	max-width: 100%;
 	height: auto;
 }
+
+/* purgecss end ignore */

@@ -1,11 +1,14 @@
-@import "./_tailwind.base.1.x";
+@import "./_tailwind.base";
 
-@import "./mixins/background-color-from-map";
+@import "./mixins/antialiasing";
 @import "./mixins/border-radius-from-range";
 @import "./mixins/box-shadow-from-named-map";
-@import "./mixins/dark-background-color-from-map";
+@import "./mixins/color-from-map";
 @import "./mixins/display";
 @import "./mixins/flex";
+@import "./mixins/font-size-from-range";
+@import "./mixins/font-style";
+@import "./mixins/font-weight";
 @import "./mixins/height-from-range";
 @import "./mixins/margin-from-range";
 @import "./mixins/margin-gap-from-range";
@@ -23,28 +26,35 @@
 @import "./utils/get-dynamic-ampersand";
 @import "./utils/safe-functions";
 
+@import "./tailwind-colors";
 @import "./vars";
 
 $separator: "\\:";
 
 @mixin props($breakpoint: "") {
+	@if not & {
+		@include antialiasing;
+	}
 	@include margin-from-range(join(join($-scale, auto), $scale), rem);
-	@include margin-gap-from-range(join(auto, $short-scale), rem);
+	@include margin-gap-from-range(join(auto, $scale), rem);
 	@include padding-from-range($scale, rem);
-	@include position-from-range((auto, 0), passthrough);
+	@include position-from-range((auto, 0));
 	@include display;
 	@include flex;
 	@include width-from-range(join(auto, $extended-scale), rem);
 	@include max-width-from-map($breakpoint-map, px);
 	@include height-from-range(join(auto, $extended-scale), rem);
-	@include min-height-from-range(join(auto, 0), rem);
+	@include min-height-from-range(join(auto, 0), rem /* TODO: Change to px? */);
+	@include font-style;
+	@include font-weight;
+	@include font-size-from-range($font-size-scale, rem);
 	@if not & {
-		@include background-color-from-map($background-color-map, passthrough);
-		@include dark-background-color-from-map($background-color-map, passthrough);
+		@include color-from-map((color), "text", $color-map);
+		@include color-from-map((background-color), "bg", $color-map);
 	}
-	@include border-radius-from-range($short-scale, rem);
-	@include box-shadow-from-named-map($box-shadow-named-map, passthrough);
-	@include z-index-from-range((-50, -40, -30, -20, -10, auto, 0, 10, 20, 30, 40, 50), passthrough);
+	@include border-radius-from-range($border-radius-scale, rem);
+	@include box-shadow-from-named-map($box-shadow-named-map);
+	@include z-index-from-range((auto, 0, 10, 20, 30, 40, 50));
 	@include pointer-events;
 }
 

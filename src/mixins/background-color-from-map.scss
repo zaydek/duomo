@@ -1,3 +1,0 @@
-@mixin background-color-from-map($map, $conv-fn) {
-	@include generate-from-map((background-color), "bg", $map, $conv-fn);
-}
