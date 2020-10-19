@@ -18,6 +18,6 @@
 
 @mixin margin-gap-from-range($range, $conv-fn) {
 	// @include _margin-gap-impl((margin), "m-gap", $range, $conv-fn);
-	@include _margin-gap-impl((margin-left), "mx-gap", $range, $conv-fn);
-	@include _margin-gap-impl((margin-top), "my-gap", $range, $conv-fn);
+	@include _margin-gap-impl((margin-left), "space-x", $range, $conv-fn);
+	@include _margin-gap-impl((margin-top), "space-y", $range, $conv-fn);
 }
