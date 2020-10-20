@@ -15,7 +15,7 @@
 	$ampersand: get-dynamic-ampersand();
 
 	@each $key, $value in $map {
-		#{$ampersand}h\:#{$shorthand}-#{$key}:hover {
+		#{$ampersand}hover\:#{$shorthand}-#{$key}:hover {
 			@each $property in $properties {
 				#{$property}: call(get-function($conv-fn), $value);
 			}
@@ -23,12 +23,12 @@
 	}
 }
 
-// TODO: Expose `f:` as a variable?
+// TODO: Expose `f:` as a variablge?
 @mixin generate-from-map-focus($properties, $shorthand, $map, $conv-fn) {
 	$ampersand: get-dynamic-ampersand();
 
 	@each $key, $value in $map {
-		#{$ampersand}f\:#{$shorthand}-#{$key}:focus {
+		#{$ampersand}focus\:#{$shorthand}-#{$key}:focus {
 			@each $property in $properties {
 				#{$property}: call(get-function($conv-fn), $value);
 			}

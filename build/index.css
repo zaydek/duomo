@@ -5747,915 +5747,915 @@ html {
 	color: #751a3d;
 }
 
-.h\:text-currentColor:hover {
+.hover\:text-currentColor:hover {
 	color: currentColor;
 }
 
-.h\:text-transparent:hover {
+.hover\:text-transparent:hover {
 	color: transparent;
 }
 
-.h\:text-white:hover {
+.hover\:text-white:hover {
 	color: #ffffff;
 }
 
-.h\:text-black:hover {
+.hover\:text-black:hover {
 	color: #000000;
 }
 
-.h\:text-gray-50:hover {
+.hover\:text-gray-50:hover {
 	color: #f9fafb;
 }
 
-.h\:text-gray-100:hover {
+.hover\:text-gray-100:hover {
 	color: #f4f5f7;
 }
 
-.h\:text-gray-200:hover {
+.hover\:text-gray-200:hover {
 	color: #e5e7eb;
 }
 
-.h\:text-gray-300:hover {
+.hover\:text-gray-300:hover {
 	color: #d2d6dc;
 }
 
-.h\:text-gray-400:hover {
+.hover\:text-gray-400:hover {
 	color: #9fa6b2;
 }
 
-.h\:text-gray-500:hover {
+.hover\:text-gray-500:hover {
 	color: #6b7280;
 }
 
-.h\:text-gray-600:hover {
+.hover\:text-gray-600:hover {
 	color: #4b5563;
 }
 
-.h\:text-gray-700:hover {
+.hover\:text-gray-700:hover {
 	color: #374151;
 }
 
-.h\:text-gray-800:hover {
+.hover\:text-gray-800:hover {
 	color: #252f3f;
 }
 
-.h\:text-gray-900:hover {
+.hover\:text-gray-900:hover {
 	color: #161e2e;
 }
 
-.h\:text-cool-gray-50:hover {
+.hover\:text-cool-gray-50:hover {
 	color: #f8fafc;
 }
 
-.h\:text-cool-gray-100:hover {
+.hover\:text-cool-gray-100:hover {
 	color: #f1f5f9;
 }
 
-.h\:text-cool-gray-200:hover {
+.hover\:text-cool-gray-200:hover {
 	color: #e2e8f0;
 }
 
-.h\:text-cool-gray-300:hover {
+.hover\:text-cool-gray-300:hover {
 	color: #cfd8e3;
 }
 
-.h\:text-cool-gray-400:hover {
+.hover\:text-cool-gray-400:hover {
 	color: #97a6ba;
 }
 
-.h\:text-cool-gray-500:hover {
+.hover\:text-cool-gray-500:hover {
 	color: #64748b;
 }
 
-.h\:text-cool-gray-600:hover {
+.hover\:text-cool-gray-600:hover {
 	color: #475569;
 }
 
-.h\:text-cool-gray-700:hover {
+.hover\:text-cool-gray-700:hover {
 	color: #364152;
 }
 
-.h\:text-cool-gray-800:hover {
+.hover\:text-cool-gray-800:hover {
 	color: #27303f;
 }
 
-.h\:text-cool-gray-900:hover {
+.hover\:text-cool-gray-900:hover {
 	color: #1a202e;
 }
 
-.h\:text-red-50:hover {
+.hover\:text-red-50:hover {
 	color: #fdf2f2;
 }
 
-.h\:text-red-100:hover {
+.hover\:text-red-100:hover {
 	color: #fde8e8;
 }
 
-.h\:text-red-200:hover {
+.hover\:text-red-200:hover {
 	color: #fbd5d5;
 }
 
-.h\:text-red-300:hover {
+.hover\:text-red-300:hover {
 	color: #f8b4b4;
 }
 
-.h\:text-red-400:hover {
+.hover\:text-red-400:hover {
 	color: #f98080;
 }
 
-.h\:text-red-500:hover {
+.hover\:text-red-500:hover {
 	color: #f05252;
 }
 
-.h\:text-red-600:hover {
+.hover\:text-red-600:hover {
 	color: #e02424;
 }
 
-.h\:text-red-700:hover {
+.hover\:text-red-700:hover {
 	color: #c81e1e;
 }
 
-.h\:text-red-800:hover {
+.hover\:text-red-800:hover {
 	color: #9b1c1c;
 }
 
-.h\:text-red-900:hover {
+.hover\:text-red-900:hover {
 	color: #771d1d;
 }
 
-.h\:text-orange-50:hover {
+.hover\:text-orange-50:hover {
 	color: #fff8f1;
 }
 
-.h\:text-orange-100:hover {
+.hover\:text-orange-100:hover {
 	color: #feecdc;
 }
 
-.h\:text-orange-200:hover {
+.hover\:text-orange-200:hover {
 	color: #fcd9bd;
 }
 
-.h\:text-orange-300:hover {
+.hover\:text-orange-300:hover {
 	color: #fdba8c;
 }
 
-.h\:text-orange-400:hover {
+.hover\:text-orange-400:hover {
 	color: #ff8a4c;
 }
 
-.h\:text-orange-500:hover {
+.hover\:text-orange-500:hover {
 	color: #ff5a1f;
 }
 
-.h\:text-orange-600:hover {
+.hover\:text-orange-600:hover {
 	color: #d03801;
 }
 
-.h\:text-orange-700:hover {
+.hover\:text-orange-700:hover {
 	color: #b43403;
 }
 
-.h\:text-orange-800:hover {
+.hover\:text-orange-800:hover {
 	color: #8a2c0d;
 }
 
-.h\:text-orange-900:hover {
+.hover\:text-orange-900:hover {
 	color: #73230d;
 }
 
-.h\:text-yellow-50:hover {
+.hover\:text-yellow-50:hover {
 	color: #fdfdea;
 }
 
-.h\:text-yellow-100:hover {
+.hover\:text-yellow-100:hover {
 	color: #fdf6b2;
 }
 
-.h\:text-yellow-200:hover {
+.hover\:text-yellow-200:hover {
 	color: #fce96a;
 }
 
-.h\:text-yellow-300:hover {
+.hover\:text-yellow-300:hover {
 	color: #faca15;
 }
 
-.h\:text-yellow-400:hover {
+.hover\:text-yellow-400:hover {
 	color: #e3a008;
 }
 
-.h\:text-yellow-500:hover {
+.hover\:text-yellow-500:hover {
 	color: #c27803;
 }
 
-.h\:text-yellow-600:hover {
+.hover\:text-yellow-600:hover {
 	color: #9f580a;
 }
 
-.h\:text-yellow-700:hover {
+.hover\:text-yellow-700:hover {
 	color: #8e4b10;
 }
 
-.h\:text-yellow-800:hover {
+.hover\:text-yellow-800:hover {
 	color: #723b13;
 }
 
-.h\:text-yellow-900:hover {
+.hover\:text-yellow-900:hover {
 	color: #633112;
 }
 
-.h\:text-green-50:hover {
+.hover\:text-green-50:hover {
 	color: #f3faf7;
 }
 
-.h\:text-green-100:hover {
+.hover\:text-green-100:hover {
 	color: #def7ec;
 }
 
-.h\:text-green-200:hover {
+.hover\:text-green-200:hover {
 	color: #bcf0da;
 }
 
-.h\:text-green-300:hover {
+.hover\:text-green-300:hover {
 	color: #84e1bc;
 }
 
-.h\:text-green-400:hover {
+.hover\:text-green-400:hover {
 	color: #31c48d;
 }
 
-.h\:text-green-500:hover {
+.hover\:text-green-500:hover {
 	color: #0e9f6e;
 }
 
-.h\:text-green-600:hover {
+.hover\:text-green-600:hover {
 	color: #057a55;
 }
 
-.h\:text-green-700:hover {
+.hover\:text-green-700:hover {
 	color: #046c4e;
 }
 
-.h\:text-green-800:hover {
+.hover\:text-green-800:hover {
 	color: #03543f;
 }
 
-.h\:text-green-900:hover {
+.hover\:text-green-900:hover {
 	color: #014737;
 }
 
-.h\:text-teal-50:hover {
+.hover\:text-teal-50:hover {
 	color: #edfafa;
 }
 
-.h\:text-teal-100:hover {
+.hover\:text-teal-100:hover {
 	color: #d5f5f6;
 }
 
-.h\:text-teal-200:hover {
+.hover\:text-teal-200:hover {
 	color: #afecef;
 }
 
-.h\:text-teal-300:hover {
+.hover\:text-teal-300:hover {
 	color: #7edce2;
 }
 
-.h\:text-teal-400:hover {
+.hover\:text-teal-400:hover {
 	color: #16bdca;
 }
 
-.h\:text-teal-500:hover {
+.hover\:text-teal-500:hover {
 	color: #0694a2;
 }
 
-.h\:text-teal-600:hover {
+.hover\:text-teal-600:hover {
 	color: #047481;
 }
 
-.h\:text-teal-700:hover {
+.hover\:text-teal-700:hover {
 	color: #036672;
 }
 
-.h\:text-teal-800:hover {
+.hover\:text-teal-800:hover {
 	color: #05505c;
 }
 
-.h\:text-teal-900:hover {
+.hover\:text-teal-900:hover {
 	color: #014451;
 }
 
-.h\:text-blue-50:hover {
+.hover\:text-blue-50:hover {
 	color: #ebf5ff;
 }
 
-.h\:text-blue-100:hover {
+.hover\:text-blue-100:hover {
 	color: #e1effe;
 }
 
-.h\:text-blue-200:hover {
+.hover\:text-blue-200:hover {
 	color: #c3ddfd;
 }
 
-.h\:text-blue-300:hover {
+.hover\:text-blue-300:hover {
 	color: #a4cafe;
 }
 
-.h\:text-blue-400:hover {
+.hover\:text-blue-400:hover {
 	color: #76a9fa;
 }
 
-.h\:text-blue-500:hover {
+.hover\:text-blue-500:hover {
 	color: #3f83f8;
 }
 
-.h\:text-blue-600:hover {
+.hover\:text-blue-600:hover {
 	color: #1c64f2;
 }
 
-.h\:text-blue-700:hover {
+.hover\:text-blue-700:hover {
 	color: #1a56db;
 }
 
-.h\:text-blue-800:hover {
+.hover\:text-blue-800:hover {
 	color: #1e429f;
 }
 
-.h\:text-blue-900:hover {
+.hover\:text-blue-900:hover {
 	color: #233876;
 }
 
-.h\:text-indigo-50:hover {
+.hover\:text-indigo-50:hover {
 	color: #f0f5ff;
 }
 
-.h\:text-indigo-100:hover {
+.hover\:text-indigo-100:hover {
 	color: #e5edff;
 }
 
-.h\:text-indigo-200:hover {
+.hover\:text-indigo-200:hover {
 	color: #cddbfe;
 }
 
-.h\:text-indigo-300:hover {
+.hover\:text-indigo-300:hover {
 	color: #b4c6fc;
 }
 
-.h\:text-indigo-400:hover {
+.hover\:text-indigo-400:hover {
 	color: #8da2fb;
 }
 
-.h\:text-indigo-500:hover {
+.hover\:text-indigo-500:hover {
 	color: #6875f5;
 }
 
-.h\:text-indigo-600:hover {
+.hover\:text-indigo-600:hover {
 	color: #5850ec;
 }
 
-.h\:text-indigo-700:hover {
+.hover\:text-indigo-700:hover {
 	color: #5145cd;
 }
 
-.h\:text-indigo-800:hover {
+.hover\:text-indigo-800:hover {
 	color: #42389d;
 }
 
-.h\:text-indigo-900:hover {
+.hover\:text-indigo-900:hover {
 	color: #362f78;
 }
 
-.h\:text-purple-50:hover {
+.hover\:text-purple-50:hover {
 	color: #f6f5ff;
 }
 
-.h\:text-purple-100:hover {
+.hover\:text-purple-100:hover {
 	color: #edebfe;
 }
 
-.h\:text-purple-200:hover {
+.hover\:text-purple-200:hover {
 	color: #dcd7fe;
 }
 
-.h\:text-purple-300:hover {
+.hover\:text-purple-300:hover {
 	color: #cabffd;
 }
 
-.h\:text-purple-400:hover {
+.hover\:text-purple-400:hover {
 	color: #ac94fa;
 }
 
-.h\:text-purple-500:hover {
+.hover\:text-purple-500:hover {
 	color: #9061f9;
 }
 
-.h\:text-purple-600:hover {
+.hover\:text-purple-600:hover {
 	color: #7e3af2;
 }
 
-.h\:text-purple-700:hover {
+.hover\:text-purple-700:hover {
 	color: #6c2bd9;
 }
 
-.h\:text-purple-800:hover {
+.hover\:text-purple-800:hover {
 	color: #5521b5;
 }
 
-.h\:text-purple-900:hover {
+.hover\:text-purple-900:hover {
 	color: #4a1d96;
 }
 
-.h\:text-pink-50:hover {
+.hover\:text-pink-50:hover {
 	color: #fdf2f8;
 }
 
-.h\:text-pink-100:hover {
+.hover\:text-pink-100:hover {
 	color: #fce8f3;
 }
 
-.h\:text-pink-200:hover {
+.hover\:text-pink-200:hover {
 	color: #fad1e8;
 }
 
-.h\:text-pink-300:hover {
+.hover\:text-pink-300:hover {
 	color: #f8b4d9;
 }
 
-.h\:text-pink-400:hover {
+.hover\:text-pink-400:hover {
 	color: #f17eb8;
 }
 
-.h\:text-pink-500:hover {
+.hover\:text-pink-500:hover {
 	color: #e74694;
 }
 
-.h\:text-pink-600:hover {
+.hover\:text-pink-600:hover {
 	color: #d61f69;
 }
 
-.h\:text-pink-700:hover {
+.hover\:text-pink-700:hover {
 	color: #bf125d;
 }
 
-.h\:text-pink-800:hover {
+.hover\:text-pink-800:hover {
 	color: #99154b;
 }
 
-.h\:text-pink-900:hover {
+.hover\:text-pink-900:hover {
 	color: #751a3d;
 }
 
-.f\:text-currentColor:focus {
+.focus\:text-currentColor:focus {
 	color: currentColor;
 }
 
-.f\:text-transparent:focus {
+.focus\:text-transparent:focus {
 	color: transparent;
 }
 
-.f\:text-white:focus {
+.focus\:text-white:focus {
 	color: #ffffff;
 }
 
-.f\:text-black:focus {
+.focus\:text-black:focus {
 	color: #000000;
 }
 
-.f\:text-gray-50:focus {
+.focus\:text-gray-50:focus {
 	color: #f9fafb;
 }
 
-.f\:text-gray-100:focus {
+.focus\:text-gray-100:focus {
 	color: #f4f5f7;
 }
 
-.f\:text-gray-200:focus {
+.focus\:text-gray-200:focus {
 	color: #e5e7eb;
 }
 
-.f\:text-gray-300:focus {
+.focus\:text-gray-300:focus {
 	color: #d2d6dc;
 }
 
-.f\:text-gray-400:focus {
+.focus\:text-gray-400:focus {
 	color: #9fa6b2;
 }
 
-.f\:text-gray-500:focus {
+.focus\:text-gray-500:focus {
 	color: #6b7280;
 }
 
-.f\:text-gray-600:focus {
+.focus\:text-gray-600:focus {
 	color: #4b5563;
 }
 
-.f\:text-gray-700:focus {
+.focus\:text-gray-700:focus {
 	color: #374151;
 }
 
-.f\:text-gray-800:focus {
+.focus\:text-gray-800:focus {
 	color: #252f3f;
 }
 
-.f\:text-gray-900:focus {
+.focus\:text-gray-900:focus {
 	color: #161e2e;
 }
 
-.f\:text-cool-gray-50:focus {
+.focus\:text-cool-gray-50:focus {
 	color: #f8fafc;
 }
 
-.f\:text-cool-gray-100:focus {
+.focus\:text-cool-gray-100:focus {
 	color: #f1f5f9;
 }
 
-.f\:text-cool-gray-200:focus {
+.focus\:text-cool-gray-200:focus {
 	color: #e2e8f0;
 }
 
-.f\:text-cool-gray-300:focus {
+.focus\:text-cool-gray-300:focus {
 	color: #cfd8e3;
 }
 
-.f\:text-cool-gray-400:focus {
+.focus\:text-cool-gray-400:focus {
 	color: #97a6ba;
 }
 
-.f\:text-cool-gray-500:focus {
+.focus\:text-cool-gray-500:focus {
 	color: #64748b;
 }
 
-.f\:text-cool-gray-600:focus {
+.focus\:text-cool-gray-600:focus {
 	color: #475569;
 }
 
-.f\:text-cool-gray-700:focus {
+.focus\:text-cool-gray-700:focus {
 	color: #364152;
 }
 
-.f\:text-cool-gray-800:focus {
+.focus\:text-cool-gray-800:focus {
 	color: #27303f;
 }
 
-.f\:text-cool-gray-900:focus {
+.focus\:text-cool-gray-900:focus {
 	color: #1a202e;
 }
 
-.f\:text-red-50:focus {
+.focus\:text-red-50:focus {
 	color: #fdf2f2;
 }
 
-.f\:text-red-100:focus {
+.focus\:text-red-100:focus {
 	color: #fde8e8;
 }
 
-.f\:text-red-200:focus {
+.focus\:text-red-200:focus {
 	color: #fbd5d5;
 }
 
-.f\:text-red-300:focus {
+.focus\:text-red-300:focus {
 	color: #f8b4b4;
 }
 
-.f\:text-red-400:focus {
+.focus\:text-red-400:focus {
 	color: #f98080;
 }
 
-.f\:text-red-500:focus {
+.focus\:text-red-500:focus {
 	color: #f05252;
 }
 
-.f\:text-red-600:focus {
+.focus\:text-red-600:focus {
 	color: #e02424;
 }
 
-.f\:text-red-700:focus {
+.focus\:text-red-700:focus {
 	color: #c81e1e;
 }
 
-.f\:text-red-800:focus {
+.focus\:text-red-800:focus {
 	color: #9b1c1c;
 }
 
-.f\:text-red-900:focus {
+.focus\:text-red-900:focus {
 	color: #771d1d;
 }
 
-.f\:text-orange-50:focus {
+.focus\:text-orange-50:focus {
 	color: #fff8f1;
 }
 
-.f\:text-orange-100:focus {
+.focus\:text-orange-100:focus {
 	color: #feecdc;
 }
 
-.f\:text-orange-200:focus {
+.focus\:text-orange-200:focus {
 	color: #fcd9bd;
 }
 
-.f\:text-orange-300:focus {
+.focus\:text-orange-300:focus {
 	color: #fdba8c;
 }
 
-.f\:text-orange-400:focus {
+.focus\:text-orange-400:focus {
 	color: #ff8a4c;
 }
 
-.f\:text-orange-500:focus {
+.focus\:text-orange-500:focus {
 	color: #ff5a1f;
 }
 
-.f\:text-orange-600:focus {
+.focus\:text-orange-600:focus {
 	color: #d03801;
 }
 
-.f\:text-orange-700:focus {
+.focus\:text-orange-700:focus {
 	color: #b43403;
 }
 
-.f\:text-orange-800:focus {
+.focus\:text-orange-800:focus {
 	color: #8a2c0d;
 }
 
-.f\:text-orange-900:focus {
+.focus\:text-orange-900:focus {
 	color: #73230d;
 }
 
-.f\:text-yellow-50:focus {
+.focus\:text-yellow-50:focus {
 	color: #fdfdea;
 }
 
-.f\:text-yellow-100:focus {
+.focus\:text-yellow-100:focus {
 	color: #fdf6b2;
 }
 
-.f\:text-yellow-200:focus {
+.focus\:text-yellow-200:focus {
 	color: #fce96a;
 }
 
-.f\:text-yellow-300:focus {
+.focus\:text-yellow-300:focus {
 	color: #faca15;
 }
 
-.f\:text-yellow-400:focus {
+.focus\:text-yellow-400:focus {
 	color: #e3a008;
 }
 
-.f\:text-yellow-500:focus {
+.focus\:text-yellow-500:focus {
 	color: #c27803;
 }
 
-.f\:text-yellow-600:focus {
+.focus\:text-yellow-600:focus {
 	color: #9f580a;
 }
 
-.f\:text-yellow-700:focus {
+.focus\:text-yellow-700:focus {
 	color: #8e4b10;
 }
 
-.f\:text-yellow-800:focus {
+.focus\:text-yellow-800:focus {
 	color: #723b13;
 }
 
-.f\:text-yellow-900:focus {
+.focus\:text-yellow-900:focus {
 	color: #633112;
 }
 
-.f\:text-green-50:focus {
+.focus\:text-green-50:focus {
 	color: #f3faf7;
 }
 
-.f\:text-green-100:focus {
+.focus\:text-green-100:focus {
 	color: #def7ec;
 }
 
-.f\:text-green-200:focus {
+.focus\:text-green-200:focus {
 	color: #bcf0da;
 }
 
-.f\:text-green-300:focus {
+.focus\:text-green-300:focus {
 	color: #84e1bc;
 }
 
-.f\:text-green-400:focus {
+.focus\:text-green-400:focus {
 	color: #31c48d;
 }
 
-.f\:text-green-500:focus {
+.focus\:text-green-500:focus {
 	color: #0e9f6e;
 }
 
-.f\:text-green-600:focus {
+.focus\:text-green-600:focus {
 	color: #057a55;
 }
 
-.f\:text-green-700:focus {
+.focus\:text-green-700:focus {
 	color: #046c4e;
 }
 
-.f\:text-green-800:focus {
+.focus\:text-green-800:focus {
 	color: #03543f;
 }
 
-.f\:text-green-900:focus {
+.focus\:text-green-900:focus {
 	color: #014737;
 }
 
-.f\:text-teal-50:focus {
+.focus\:text-teal-50:focus {
 	color: #edfafa;
 }
 
-.f\:text-teal-100:focus {
+.focus\:text-teal-100:focus {
 	color: #d5f5f6;
 }
 
-.f\:text-teal-200:focus {
+.focus\:text-teal-200:focus {
 	color: #afecef;
 }
 
-.f\:text-teal-300:focus {
+.focus\:text-teal-300:focus {
 	color: #7edce2;
 }
 
-.f\:text-teal-400:focus {
+.focus\:text-teal-400:focus {
 	color: #16bdca;
 }
 
-.f\:text-teal-500:focus {
+.focus\:text-teal-500:focus {
 	color: #0694a2;
 }
 
-.f\:text-teal-600:focus {
+.focus\:text-teal-600:focus {
 	color: #047481;
 }
 
-.f\:text-teal-700:focus {
+.focus\:text-teal-700:focus {
 	color: #036672;
 }
 
-.f\:text-teal-800:focus {
+.focus\:text-teal-800:focus {
 	color: #05505c;
 }
 
-.f\:text-teal-900:focus {
+.focus\:text-teal-900:focus {
 	color: #014451;
 }
 
-.f\:text-blue-50:focus {
+.focus\:text-blue-50:focus {
 	color: #ebf5ff;
 }
 
-.f\:text-blue-100:focus {
+.focus\:text-blue-100:focus {
 	color: #e1effe;
 }
 
-.f\:text-blue-200:focus {
+.focus\:text-blue-200:focus {
 	color: #c3ddfd;
 }
 
-.f\:text-blue-300:focus {
+.focus\:text-blue-300:focus {
 	color: #a4cafe;
 }
 
-.f\:text-blue-400:focus {
+.focus\:text-blue-400:focus {
 	color: #76a9fa;
 }
 
-.f\:text-blue-500:focus {
+.focus\:text-blue-500:focus {
 	color: #3f83f8;
 }
 
-.f\:text-blue-600:focus {
+.focus\:text-blue-600:focus {
 	color: #1c64f2;
 }
 
-.f\:text-blue-700:focus {
+.focus\:text-blue-700:focus {
 	color: #1a56db;
 }
 
-.f\:text-blue-800:focus {
+.focus\:text-blue-800:focus {
 	color: #1e429f;
 }
 
-.f\:text-blue-900:focus {
+.focus\:text-blue-900:focus {
 	color: #233876;
 }
 
-.f\:text-indigo-50:focus {
+.focus\:text-indigo-50:focus {
 	color: #f0f5ff;
 }
 
-.f\:text-indigo-100:focus {
+.focus\:text-indigo-100:focus {
 	color: #e5edff;
 }
 
-.f\:text-indigo-200:focus {
+.focus\:text-indigo-200:focus {
 	color: #cddbfe;
 }
 
-.f\:text-indigo-300:focus {
+.focus\:text-indigo-300:focus {
 	color: #b4c6fc;
 }
 
-.f\:text-indigo-400:focus {
+.focus\:text-indigo-400:focus {
 	color: #8da2fb;
 }
 
-.f\:text-indigo-500:focus {
+.focus\:text-indigo-500:focus {
 	color: #6875f5;
 }
 
-.f\:text-indigo-600:focus {
+.focus\:text-indigo-600:focus {
 	color: #5850ec;
 }
 
-.f\:text-indigo-700:focus {
+.focus\:text-indigo-700:focus {
 	color: #5145cd;
 }
 
-.f\:text-indigo-800:focus {
+.focus\:text-indigo-800:focus {
 	color: #42389d;
 }
 
-.f\:text-indigo-900:focus {
+.focus\:text-indigo-900:focus {
 	color: #362f78;
 }
 
-.f\:text-purple-50:focus {
+.focus\:text-purple-50:focus {
 	color: #f6f5ff;
 }
 
-.f\:text-purple-100:focus {
+.focus\:text-purple-100:focus {
 	color: #edebfe;
 }
 
-.f\:text-purple-200:focus {
+.focus\:text-purple-200:focus {
 	color: #dcd7fe;
 }
 
-.f\:text-purple-300:focus {
+.focus\:text-purple-300:focus {
 	color: #cabffd;
 }
 
-.f\:text-purple-400:focus {
+.focus\:text-purple-400:focus {
 	color: #ac94fa;
 }
 
-.f\:text-purple-500:focus {
+.focus\:text-purple-500:focus {
 	color: #9061f9;
 }
 
-.f\:text-purple-600:focus {
+.focus\:text-purple-600:focus {
 	color: #7e3af2;
 }
 
-.f\:text-purple-700:focus {
+.focus\:text-purple-700:focus {
 	color: #6c2bd9;
 }
 
-.f\:text-purple-800:focus {
+.focus\:text-purple-800:focus {
 	color: #5521b5;
 }
 
-.f\:text-purple-900:focus {
+.focus\:text-purple-900:focus {
 	color: #4a1d96;
 }
 
-.f\:text-pink-50:focus {
+.focus\:text-pink-50:focus {
 	color: #fdf2f8;
 }
 
-.f\:text-pink-100:focus {
+.focus\:text-pink-100:focus {
 	color: #fce8f3;
 }
 
-.f\:text-pink-200:focus {
+.focus\:text-pink-200:focus {
 	color: #fad1e8;
 }
 
-.f\:text-pink-300:focus {
+.focus\:text-pink-300:focus {
 	color: #f8b4d9;
 }
 
-.f\:text-pink-400:focus {
+.focus\:text-pink-400:focus {
 	color: #f17eb8;
 }
 
-.f\:text-pink-500:focus {
+.focus\:text-pink-500:focus {
 	color: #e74694;
 }
 
-.f\:text-pink-600:focus {
+.focus\:text-pink-600:focus {
 	color: #d61f69;
 }
 
-.f\:text-pink-700:focus {
+.focus\:text-pink-700:focus {
 	color: #bf125d;
 }
 
-.f\:text-pink-800:focus {
+.focus\:text-pink-800:focus {
 	color: #99154b;
 }
 
-.f\:text-pink-900:focus {
+.focus\:text-pink-900:focus {
 	color: #751a3d;
 }
 
@@ -7115,915 +7115,915 @@ html {
 	background-color: #751a3d;
 }
 
-.h\:bg-currentColor:hover {
+.hover\:bg-currentColor:hover {
 	background-color: currentColor;
 }
 
-.h\:bg-transparent:hover {
+.hover\:bg-transparent:hover {
 	background-color: transparent;
 }
 
-.h\:bg-white:hover {
+.hover\:bg-white:hover {
 	background-color: #ffffff;
 }
 
-.h\:bg-black:hover {
+.hover\:bg-black:hover {
 	background-color: #000000;
 }
 
-.h\:bg-gray-50:hover {
+.hover\:bg-gray-50:hover {
 	background-color: #f9fafb;
 }
 
-.h\:bg-gray-100:hover {
+.hover\:bg-gray-100:hover {
 	background-color: #f4f5f7;
 }
 
-.h\:bg-gray-200:hover {
+.hover\:bg-gray-200:hover {
 	background-color: #e5e7eb;
 }
 
-.h\:bg-gray-300:hover {
+.hover\:bg-gray-300:hover {
 	background-color: #d2d6dc;
 }
 
-.h\:bg-gray-400:hover {
+.hover\:bg-gray-400:hover {
 	background-color: #9fa6b2;
 }
 
-.h\:bg-gray-500:hover {
+.hover\:bg-gray-500:hover {
 	background-color: #6b7280;
 }
 
-.h\:bg-gray-600:hover {
+.hover\:bg-gray-600:hover {
 	background-color: #4b5563;
 }
 
-.h\:bg-gray-700:hover {
+.hover\:bg-gray-700:hover {
 	background-color: #374151;
 }
 
-.h\:bg-gray-800:hover {
+.hover\:bg-gray-800:hover {
 	background-color: #252f3f;
 }
 
-.h\:bg-gray-900:hover {
+.hover\:bg-gray-900:hover {
 	background-color: #161e2e;
 }
 
-.h\:bg-cool-gray-50:hover {
+.hover\:bg-cool-gray-50:hover {
 	background-color: #f8fafc;
 }
 
-.h\:bg-cool-gray-100:hover {
+.hover\:bg-cool-gray-100:hover {
 	background-color: #f1f5f9;
 }
 
-.h\:bg-cool-gray-200:hover {
+.hover\:bg-cool-gray-200:hover {
 	background-color: #e2e8f0;
 }
 
-.h\:bg-cool-gray-300:hover {
+.hover\:bg-cool-gray-300:hover {
 	background-color: #cfd8e3;
 }
 
-.h\:bg-cool-gray-400:hover {
+.hover\:bg-cool-gray-400:hover {
 	background-color: #97a6ba;
 }
 
-.h\:bg-cool-gray-500:hover {
+.hover\:bg-cool-gray-500:hover {
 	background-color: #64748b;
 }
 
-.h\:bg-cool-gray-600:hover {
+.hover\:bg-cool-gray-600:hover {
 	background-color: #475569;
 }
 
-.h\:bg-cool-gray-700:hover {
+.hover\:bg-cool-gray-700:hover {
 	background-color: #364152;
 }
 
-.h\:bg-cool-gray-800:hover {
+.hover\:bg-cool-gray-800:hover {
 	background-color: #27303f;
 }
 
-.h\:bg-cool-gray-900:hover {
+.hover\:bg-cool-gray-900:hover {
 	background-color: #1a202e;
 }
 
-.h\:bg-red-50:hover {
+.hover\:bg-red-50:hover {
 	background-color: #fdf2f2;
 }
 
-.h\:bg-red-100:hover {
+.hover\:bg-red-100:hover {
 	background-color: #fde8e8;
 }
 
-.h\:bg-red-200:hover {
+.hover\:bg-red-200:hover {
 	background-color: #fbd5d5;
 }
 
-.h\:bg-red-300:hover {
+.hover\:bg-red-300:hover {
 	background-color: #f8b4b4;
 }
 
-.h\:bg-red-400:hover {
+.hover\:bg-red-400:hover {
 	background-color: #f98080;
 }
 
-.h\:bg-red-500:hover {
+.hover\:bg-red-500:hover {
 	background-color: #f05252;
 }
 
-.h\:bg-red-600:hover {
+.hover\:bg-red-600:hover {
 	background-color: #e02424;
 }
 
-.h\:bg-red-700:hover {
+.hover\:bg-red-700:hover {
 	background-color: #c81e1e;
 }
 
-.h\:bg-red-800:hover {
+.hover\:bg-red-800:hover {
 	background-color: #9b1c1c;
 }
 
-.h\:bg-red-900:hover {
+.hover\:bg-red-900:hover {
 	background-color: #771d1d;
 }
 
-.h\:bg-orange-50:hover {
+.hover\:bg-orange-50:hover {
 	background-color: #fff8f1;
 }
 
-.h\:bg-orange-100:hover {
+.hover\:bg-orange-100:hover {
 	background-color: #feecdc;
 }
 
-.h\:bg-orange-200:hover {
+.hover\:bg-orange-200:hover {
 	background-color: #fcd9bd;
 }
 
-.h\:bg-orange-300:hover {
+.hover\:bg-orange-300:hover {
 	background-color: #fdba8c;
 }
 
-.h\:bg-orange-400:hover {
+.hover\:bg-orange-400:hover {
 	background-color: #ff8a4c;
 }
 
-.h\:bg-orange-500:hover {
+.hover\:bg-orange-500:hover {
 	background-color: #ff5a1f;
 }
 
-.h\:bg-orange-600:hover {
+.hover\:bg-orange-600:hover {
 	background-color: #d03801;
 }
 
-.h\:bg-orange-700:hover {
+.hover\:bg-orange-700:hover {
 	background-color: #b43403;
 }
 
-.h\:bg-orange-800:hover {
+.hover\:bg-orange-800:hover {
 	background-color: #8a2c0d;
 }
 
-.h\:bg-orange-900:hover {
+.hover\:bg-orange-900:hover {
 	background-color: #73230d;
 }
 
-.h\:bg-yellow-50:hover {
+.hover\:bg-yellow-50:hover {
 	background-color: #fdfdea;
 }
 
-.h\:bg-yellow-100:hover {
+.hover\:bg-yellow-100:hover {
 	background-color: #fdf6b2;
 }
 
-.h\:bg-yellow-200:hover {
+.hover\:bg-yellow-200:hover {
 	background-color: #fce96a;
 }
 
-.h\:bg-yellow-300:hover {
+.hover\:bg-yellow-300:hover {
 	background-color: #faca15;
 }
 
-.h\:bg-yellow-400:hover {
+.hover\:bg-yellow-400:hover {
 	background-color: #e3a008;
 }
 
-.h\:bg-yellow-500:hover {
+.hover\:bg-yellow-500:hover {
 	background-color: #c27803;
 }
 
-.h\:bg-yellow-600:hover {
+.hover\:bg-yellow-600:hover {
 	background-color: #9f580a;
 }
 
-.h\:bg-yellow-700:hover {
+.hover\:bg-yellow-700:hover {
 	background-color: #8e4b10;
 }
 
-.h\:bg-yellow-800:hover {
+.hover\:bg-yellow-800:hover {
 	background-color: #723b13;
 }
 
-.h\:bg-yellow-900:hover {
+.hover\:bg-yellow-900:hover {
 	background-color: #633112;
 }
 
-.h\:bg-green-50:hover {
+.hover\:bg-green-50:hover {
 	background-color: #f3faf7;
 }
 
-.h\:bg-green-100:hover {
+.hover\:bg-green-100:hover {
 	background-color: #def7ec;
 }
 
-.h\:bg-green-200:hover {
+.hover\:bg-green-200:hover {
 	background-color: #bcf0da;
 }
 
-.h\:bg-green-300:hover {
+.hover\:bg-green-300:hover {
 	background-color: #84e1bc;
 }
 
-.h\:bg-green-400:hover {
+.hover\:bg-green-400:hover {
 	background-color: #31c48d;
 }
 
-.h\:bg-green-500:hover {
+.hover\:bg-green-500:hover {
 	background-color: #0e9f6e;
 }
 
-.h\:bg-green-600:hover {
+.hover\:bg-green-600:hover {
 	background-color: #057a55;
 }
 
-.h\:bg-green-700:hover {
+.hover\:bg-green-700:hover {
 	background-color: #046c4e;
 }
 
-.h\:bg-green-800:hover {
+.hover\:bg-green-800:hover {
 	background-color: #03543f;
 }
 
-.h\:bg-green-900:hover {
+.hover\:bg-green-900:hover {
 	background-color: #014737;
 }
 
-.h\:bg-teal-50:hover {
+.hover\:bg-teal-50:hover {
 	background-color: #edfafa;
 }
 
-.h\:bg-teal-100:hover {
+.hover\:bg-teal-100:hover {
 	background-color: #d5f5f6;
 }
 
-.h\:bg-teal-200:hover {
+.hover\:bg-teal-200:hover {
 	background-color: #afecef;
 }
 
-.h\:bg-teal-300:hover {
+.hover\:bg-teal-300:hover {
 	background-color: #7edce2;
 }
 
-.h\:bg-teal-400:hover {
+.hover\:bg-teal-400:hover {
 	background-color: #16bdca;
 }
 
-.h\:bg-teal-500:hover {
+.hover\:bg-teal-500:hover {
 	background-color: #0694a2;
 }
 
-.h\:bg-teal-600:hover {
+.hover\:bg-teal-600:hover {
 	background-color: #047481;
 }
 
-.h\:bg-teal-700:hover {
+.hover\:bg-teal-700:hover {
 	background-color: #036672;
 }
 
-.h\:bg-teal-800:hover {
+.hover\:bg-teal-800:hover {
 	background-color: #05505c;
 }
 
-.h\:bg-teal-900:hover {
+.hover\:bg-teal-900:hover {
 	background-color: #014451;
 }
 
-.h\:bg-blue-50:hover {
+.hover\:bg-blue-50:hover {
 	background-color: #ebf5ff;
 }
 
-.h\:bg-blue-100:hover {
+.hover\:bg-blue-100:hover {
 	background-color: #e1effe;
 }
 
-.h\:bg-blue-200:hover {
+.hover\:bg-blue-200:hover {
 	background-color: #c3ddfd;
 }
 
-.h\:bg-blue-300:hover {
+.hover\:bg-blue-300:hover {
 	background-color: #a4cafe;
 }
 
-.h\:bg-blue-400:hover {
+.hover\:bg-blue-400:hover {
 	background-color: #76a9fa;
 }
 
-.h\:bg-blue-500:hover {
+.hover\:bg-blue-500:hover {
 	background-color: #3f83f8;
 }
 
-.h\:bg-blue-600:hover {
+.hover\:bg-blue-600:hover {
 	background-color: #1c64f2;
 }
 
-.h\:bg-blue-700:hover {
+.hover\:bg-blue-700:hover {
 	background-color: #1a56db;
 }
 
-.h\:bg-blue-800:hover {
+.hover\:bg-blue-800:hover {
 	background-color: #1e429f;
 }
 
-.h\:bg-blue-900:hover {
+.hover\:bg-blue-900:hover {
 	background-color: #233876;
 }
 
-.h\:bg-indigo-50:hover {
+.hover\:bg-indigo-50:hover {
 	background-color: #f0f5ff;
 }
 
-.h\:bg-indigo-100:hover {
+.hover\:bg-indigo-100:hover {
 	background-color: #e5edff;
 }
 
-.h\:bg-indigo-200:hover {
+.hover\:bg-indigo-200:hover {
 	background-color: #cddbfe;
 }
 
-.h\:bg-indigo-300:hover {
+.hover\:bg-indigo-300:hover {
 	background-color: #b4c6fc;
 }
 
-.h\:bg-indigo-400:hover {
+.hover\:bg-indigo-400:hover {
 	background-color: #8da2fb;
 }
 
-.h\:bg-indigo-500:hover {
+.hover\:bg-indigo-500:hover {
 	background-color: #6875f5;
 }
 
-.h\:bg-indigo-600:hover {
+.hover\:bg-indigo-600:hover {
 	background-color: #5850ec;
 }
 
-.h\:bg-indigo-700:hover {
+.hover\:bg-indigo-700:hover {
 	background-color: #5145cd;
 }
 
-.h\:bg-indigo-800:hover {
+.hover\:bg-indigo-800:hover {
 	background-color: #42389d;
 }
 
-.h\:bg-indigo-900:hover {
+.hover\:bg-indigo-900:hover {
 	background-color: #362f78;
 }
 
-.h\:bg-purple-50:hover {
+.hover\:bg-purple-50:hover {
 	background-color: #f6f5ff;
 }
 
-.h\:bg-purple-100:hover {
+.hover\:bg-purple-100:hover {
 	background-color: #edebfe;
 }
 
-.h\:bg-purple-200:hover {
+.hover\:bg-purple-200:hover {
 	background-color: #dcd7fe;
 }
 
-.h\:bg-purple-300:hover {
+.hover\:bg-purple-300:hover {
 	background-color: #cabffd;
 }
 
-.h\:bg-purple-400:hover {
+.hover\:bg-purple-400:hover {
 	background-color: #ac94fa;
 }
 
-.h\:bg-purple-500:hover {
+.hover\:bg-purple-500:hover {
 	background-color: #9061f9;
 }
 
-.h\:bg-purple-600:hover {
+.hover\:bg-purple-600:hover {
 	background-color: #7e3af2;
 }
 
-.h\:bg-purple-700:hover {
+.hover\:bg-purple-700:hover {
 	background-color: #6c2bd9;
 }
 
-.h\:bg-purple-800:hover {
+.hover\:bg-purple-800:hover {
 	background-color: #5521b5;
 }
 
-.h\:bg-purple-900:hover {
+.hover\:bg-purple-900:hover {
 	background-color: #4a1d96;
 }
 
-.h\:bg-pink-50:hover {
+.hover\:bg-pink-50:hover {
 	background-color: #fdf2f8;
 }
 
-.h\:bg-pink-100:hover {
+.hover\:bg-pink-100:hover {
 	background-color: #fce8f3;
 }
 
-.h\:bg-pink-200:hover {
+.hover\:bg-pink-200:hover {
 	background-color: #fad1e8;
 }
 
-.h\:bg-pink-300:hover {
+.hover\:bg-pink-300:hover {
 	background-color: #f8b4d9;
 }
 
-.h\:bg-pink-400:hover {
+.hover\:bg-pink-400:hover {
 	background-color: #f17eb8;
 }
 
-.h\:bg-pink-500:hover {
+.hover\:bg-pink-500:hover {
 	background-color: #e74694;
 }
 
-.h\:bg-pink-600:hover {
+.hover\:bg-pink-600:hover {
 	background-color: #d61f69;
 }
 
-.h\:bg-pink-700:hover {
+.hover\:bg-pink-700:hover {
 	background-color: #bf125d;
 }
 
-.h\:bg-pink-800:hover {
+.hover\:bg-pink-800:hover {
 	background-color: #99154b;
 }
 
-.h\:bg-pink-900:hover {
+.hover\:bg-pink-900:hover {
 	background-color: #751a3d;
 }
 
-.f\:bg-currentColor:focus {
+.focus\:bg-currentColor:focus {
 	background-color: currentColor;
 }
 
-.f\:bg-transparent:focus {
+.focus\:bg-transparent:focus {
 	background-color: transparent;
 }
 
-.f\:bg-white:focus {
+.focus\:bg-white:focus {
 	background-color: #ffffff;
 }
 
-.f\:bg-black:focus {
+.focus\:bg-black:focus {
 	background-color: #000000;
 }
 
-.f\:bg-gray-50:focus {
+.focus\:bg-gray-50:focus {
 	background-color: #f9fafb;
 }
 
-.f\:bg-gray-100:focus {
+.focus\:bg-gray-100:focus {
 	background-color: #f4f5f7;
 }
 
-.f\:bg-gray-200:focus {
+.focus\:bg-gray-200:focus {
 	background-color: #e5e7eb;
 }
 
-.f\:bg-gray-300:focus {
+.focus\:bg-gray-300:focus {
 	background-color: #d2d6dc;
 }
 
-.f\:bg-gray-400:focus {
+.focus\:bg-gray-400:focus {
 	background-color: #9fa6b2;
 }
 
-.f\:bg-gray-500:focus {
+.focus\:bg-gray-500:focus {
 	background-color: #6b7280;
 }
 
-.f\:bg-gray-600:focus {
+.focus\:bg-gray-600:focus {
 	background-color: #4b5563;
 }
 
-.f\:bg-gray-700:focus {
+.focus\:bg-gray-700:focus {
 	background-color: #374151;
 }
 
-.f\:bg-gray-800:focus {
+.focus\:bg-gray-800:focus {
 	background-color: #252f3f;
 }
 
-.f\:bg-gray-900:focus {
+.focus\:bg-gray-900:focus {
 	background-color: #161e2e;
 }
 
-.f\:bg-cool-gray-50:focus {
+.focus\:bg-cool-gray-50:focus {
 	background-color: #f8fafc;
 }
 
-.f\:bg-cool-gray-100:focus {
+.focus\:bg-cool-gray-100:focus {
 	background-color: #f1f5f9;
 }
 
-.f\:bg-cool-gray-200:focus {
+.focus\:bg-cool-gray-200:focus {
 	background-color: #e2e8f0;
 }
 
-.f\:bg-cool-gray-300:focus {
+.focus\:bg-cool-gray-300:focus {
 	background-color: #cfd8e3;
 }
 
-.f\:bg-cool-gray-400:focus {
+.focus\:bg-cool-gray-400:focus {
 	background-color: #97a6ba;
 }
 
-.f\:bg-cool-gray-500:focus {
+.focus\:bg-cool-gray-500:focus {
 	background-color: #64748b;
 }
 
-.f\:bg-cool-gray-600:focus {
+.focus\:bg-cool-gray-600:focus {
 	background-color: #475569;
 }
 
-.f\:bg-cool-gray-700:focus {
+.focus\:bg-cool-gray-700:focus {
 	background-color: #364152;
 }
 
-.f\:bg-cool-gray-800:focus {
+.focus\:bg-cool-gray-800:focus {
 	background-color: #27303f;
 }
 
-.f\:bg-cool-gray-900:focus {
+.focus\:bg-cool-gray-900:focus {
 	background-color: #1a202e;
 }
 
-.f\:bg-red-50:focus {
+.focus\:bg-red-50:focus {
 	background-color: #fdf2f2;
 }
 
-.f\:bg-red-100:focus {
+.focus\:bg-red-100:focus {
 	background-color: #fde8e8;
 }
 
-.f\:bg-red-200:focus {
+.focus\:bg-red-200:focus {
 	background-color: #fbd5d5;
 }
 
-.f\:bg-red-300:focus {
+.focus\:bg-red-300:focus {
 	background-color: #f8b4b4;
 }
 
-.f\:bg-red-400:focus {
+.focus\:bg-red-400:focus {
 	background-color: #f98080;
 }
 
-.f\:bg-red-500:focus {
+.focus\:bg-red-500:focus {
 	background-color: #f05252;
 }
 
-.f\:bg-red-600:focus {
+.focus\:bg-red-600:focus {
 	background-color: #e02424;
 }
 
-.f\:bg-red-700:focus {
+.focus\:bg-red-700:focus {
 	background-color: #c81e1e;
 }
 
-.f\:bg-red-800:focus {
+.focus\:bg-red-800:focus {
 	background-color: #9b1c1c;
 }
 
-.f\:bg-red-900:focus {
+.focus\:bg-red-900:focus {
 	background-color: #771d1d;
 }
 
-.f\:bg-orange-50:focus {
+.focus\:bg-orange-50:focus {
 	background-color: #fff8f1;
 }
 
-.f\:bg-orange-100:focus {
+.focus\:bg-orange-100:focus {
 	background-color: #feecdc;
 }
 
-.f\:bg-orange-200:focus {
+.focus\:bg-orange-200:focus {
 	background-color: #fcd9bd;
 }
 
-.f\:bg-orange-300:focus {
+.focus\:bg-orange-300:focus {
 	background-color: #fdba8c;
 }
 
-.f\:bg-orange-400:focus {
+.focus\:bg-orange-400:focus {
 	background-color: #ff8a4c;
 }
 
-.f\:bg-orange-500:focus {
+.focus\:bg-orange-500:focus {
 	background-color: #ff5a1f;
 }
 
-.f\:bg-orange-600:focus {
+.focus\:bg-orange-600:focus {
 	background-color: #d03801;
 }
 
-.f\:bg-orange-700:focus {
+.focus\:bg-orange-700:focus {
 	background-color: #b43403;
 }
 
-.f\:bg-orange-800:focus {
+.focus\:bg-orange-800:focus {
 	background-color: #8a2c0d;
 }
 
-.f\:bg-orange-900:focus {
+.focus\:bg-orange-900:focus {
 	background-color: #73230d;
 }
 
-.f\:bg-yellow-50:focus {
+.focus\:bg-yellow-50:focus {
 	background-color: #fdfdea;
 }
 
-.f\:bg-yellow-100:focus {
+.focus\:bg-yellow-100:focus {
 	background-color: #fdf6b2;
 }
 
-.f\:bg-yellow-200:focus {
+.focus\:bg-yellow-200:focus {
 	background-color: #fce96a;
 }
 
-.f\:bg-yellow-300:focus {
+.focus\:bg-yellow-300:focus {
 	background-color: #faca15;
 }
 
-.f\:bg-yellow-400:focus {
+.focus\:bg-yellow-400:focus {
 	background-color: #e3a008;
 }
 
-.f\:bg-yellow-500:focus {
+.focus\:bg-yellow-500:focus {
 	background-color: #c27803;
 }
 
-.f\:bg-yellow-600:focus {
+.focus\:bg-yellow-600:focus {
 	background-color: #9f580a;
 }
 
-.f\:bg-yellow-700:focus {
+.focus\:bg-yellow-700:focus {
 	background-color: #8e4b10;
 }
 
-.f\:bg-yellow-800:focus {
+.focus\:bg-yellow-800:focus {
 	background-color: #723b13;
 }
 
-.f\:bg-yellow-900:focus {
+.focus\:bg-yellow-900:focus {
 	background-color: #633112;
 }
 
-.f\:bg-green-50:focus {
+.focus\:bg-green-50:focus {
 	background-color: #f3faf7;
 }
 
-.f\:bg-green-100:focus {
+.focus\:bg-green-100:focus {
 	background-color: #def7ec;
 }
 
-.f\:bg-green-200:focus {
+.focus\:bg-green-200:focus {
 	background-color: #bcf0da;
 }
 
-.f\:bg-green-300:focus {
+.focus\:bg-green-300:focus {
 	background-color: #84e1bc;
 }
 
-.f\:bg-green-400:focus {
+.focus\:bg-green-400:focus {
 	background-color: #31c48d;
 }
 
-.f\:bg-green-500:focus {
+.focus\:bg-green-500:focus {
 	background-color: #0e9f6e;
 }
 
-.f\:bg-green-600:focus {
+.focus\:bg-green-600:focus {
 	background-color: #057a55;
 }
 
-.f\:bg-green-700:focus {
+.focus\:bg-green-700:focus {
 	background-color: #046c4e;
 }
 
-.f\:bg-green-800:focus {
+.focus\:bg-green-800:focus {
 	background-color: #03543f;
 }
 
-.f\:bg-green-900:focus {
+.focus\:bg-green-900:focus {
 	background-color: #014737;
 }
 
-.f\:bg-teal-50:focus {
+.focus\:bg-teal-50:focus {
 	background-color: #edfafa;
 }
 
-.f\:bg-teal-100:focus {
+.focus\:bg-teal-100:focus {
 	background-color: #d5f5f6;
 }
 
-.f\:bg-teal-200:focus {
+.focus\:bg-teal-200:focus {
 	background-color: #afecef;
 }
 
-.f\:bg-teal-300:focus {
+.focus\:bg-teal-300:focus {
 	background-color: #7edce2;
 }
 
-.f\:bg-teal-400:focus {
+.focus\:bg-teal-400:focus {
 	background-color: #16bdca;
 }
 
-.f\:bg-teal-500:focus {
+.focus\:bg-teal-500:focus {
 	background-color: #0694a2;
 }
 
-.f\:bg-teal-600:focus {
+.focus\:bg-teal-600:focus {
 	background-color: #047481;
 }
 
-.f\:bg-teal-700:focus {
+.focus\:bg-teal-700:focus {
 	background-color: #036672;
 }
 
-.f\:bg-teal-800:focus {
+.focus\:bg-teal-800:focus {
 	background-color: #05505c;
 }
 
-.f\:bg-teal-900:focus {
+.focus\:bg-teal-900:focus {
 	background-color: #014451;
 }
 
-.f\:bg-blue-50:focus {
+.focus\:bg-blue-50:focus {
 	background-color: #ebf5ff;
 }
 
-.f\:bg-blue-100:focus {
+.focus\:bg-blue-100:focus {
 	background-color: #e1effe;
 }
 
-.f\:bg-blue-200:focus {
+.focus\:bg-blue-200:focus {
 	background-color: #c3ddfd;
 }
 
-.f\:bg-blue-300:focus {
+.focus\:bg-blue-300:focus {
 	background-color: #a4cafe;
 }
 
-.f\:bg-blue-400:focus {
+.focus\:bg-blue-400:focus {
 	background-color: #76a9fa;
 }
 
-.f\:bg-blue-500:focus {
+.focus\:bg-blue-500:focus {
 	background-color: #3f83f8;
 }
 
-.f\:bg-blue-600:focus {
+.focus\:bg-blue-600:focus {
 	background-color: #1c64f2;
 }
 
-.f\:bg-blue-700:focus {
+.focus\:bg-blue-700:focus {
 	background-color: #1a56db;
 }
 
-.f\:bg-blue-800:focus {
+.focus\:bg-blue-800:focus {
 	background-color: #1e429f;
 }
 
-.f\:bg-blue-900:focus {
+.focus\:bg-blue-900:focus {
 	background-color: #233876;
 }
 
-.f\:bg-indigo-50:focus {
+.focus\:bg-indigo-50:focus {
 	background-color: #f0f5ff;
 }
 
-.f\:bg-indigo-100:focus {
+.focus\:bg-indigo-100:focus {
 	background-color: #e5edff;
 }
 
-.f\:bg-indigo-200:focus {
+.focus\:bg-indigo-200:focus {
 	background-color: #cddbfe;
 }
 
-.f\:bg-indigo-300:focus {
+.focus\:bg-indigo-300:focus {
 	background-color: #b4c6fc;
 }
 
-.f\:bg-indigo-400:focus {
+.focus\:bg-indigo-400:focus {
 	background-color: #8da2fb;
 }
 
-.f\:bg-indigo-500:focus {
+.focus\:bg-indigo-500:focus {
 	background-color: #6875f5;
 }
 
-.f\:bg-indigo-600:focus {
+.focus\:bg-indigo-600:focus {
 	background-color: #5850ec;
 }
 
-.f\:bg-indigo-700:focus {
+.focus\:bg-indigo-700:focus {
 	background-color: #5145cd;
 }
 
-.f\:bg-indigo-800:focus {
+.focus\:bg-indigo-800:focus {
 	background-color: #42389d;
 }
 
-.f\:bg-indigo-900:focus {
+.focus\:bg-indigo-900:focus {
 	background-color: #362f78;
 }
 
-.f\:bg-purple-50:focus {
+.focus\:bg-purple-50:focus {
 	background-color: #f6f5ff;
 }
 
-.f\:bg-purple-100:focus {
+.focus\:bg-purple-100:focus {
 	background-color: #edebfe;
 }
 
-.f\:bg-purple-200:focus {
+.focus\:bg-purple-200:focus {
 	background-color: #dcd7fe;
 }
 
-.f\:bg-purple-300:focus {
+.focus\:bg-purple-300:focus {
 	background-color: #cabffd;
 }
 
-.f\:bg-purple-400:focus {
+.focus\:bg-purple-400:focus {
 	background-color: #ac94fa;
 }
 
-.f\:bg-purple-500:focus {
+.focus\:bg-purple-500:focus {
 	background-color: #9061f9;
 }
 
-.f\:bg-purple-600:focus {
+.focus\:bg-purple-600:focus {
 	background-color: #7e3af2;
 }
 
-.f\:bg-purple-700:focus {
+.focus\:bg-purple-700:focus {
 	background-color: #6c2bd9;
 }
 
-.f\:bg-purple-800:focus {
+.focus\:bg-purple-800:focus {
 	background-color: #5521b5;
 }
 
-.f\:bg-purple-900:focus {
+.focus\:bg-purple-900:focus {
 	background-color: #4a1d96;
 }
 
-.f\:bg-pink-50:focus {
+.focus\:bg-pink-50:focus {
 	background-color: #fdf2f8;
 }
 
-.f\:bg-pink-100:focus {
+.focus\:bg-pink-100:focus {
 	background-color: #fce8f3;
 }
 
-.f\:bg-pink-200:focus {
+.focus\:bg-pink-200:focus {
 	background-color: #fad1e8;
 }
 
-.f\:bg-pink-300:focus {
+.focus\:bg-pink-300:focus {
 	background-color: #f8b4d9;
 }
 
-.f\:bg-pink-400:focus {
+.focus\:bg-pink-400:focus {
 	background-color: #f17eb8;
 }
 
-.f\:bg-pink-500:focus {
+.focus\:bg-pink-500:focus {
 	background-color: #e74694;
 }
 
-.f\:bg-pink-600:focus {
+.focus\:bg-pink-600:focus {
 	background-color: #d61f69;
 }
 
-.f\:bg-pink-700:focus {
+.focus\:bg-pink-700:focus {
 	background-color: #bf125d;
 }
 
-.f\:bg-pink-800:focus {
+.focus\:bg-pink-800:focus {
 	background-color: #99154b;
 }
 
-.f\:bg-pink-900:focus {
+.focus\:bg-pink-900:focus {
 	background-color: #751a3d;
 }
 
