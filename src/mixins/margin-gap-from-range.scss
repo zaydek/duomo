@@ -22,16 +22,22 @@
 // 	@include _margin-gap-impl((margin-top), "space-y", $range, $conv-fn);
 // }
 
+// [class$="spacer"]:first-child + [class*="spacer"]
+//       ^                               ^
+//       exact                           any
+
+// TODO: Change to [class="spacer"]:empty.
 @mixin margin-gap-from-range($range, $conv-fn) {
 	$ampersand: get-dynamic-ampersand();
 
 	@each $value in $range {
-		[class*="hstack"]#{$ampersand}spacing-#{$value} > * + * {
+		[class*="x-stack"]#{$ampersand}spacing-#{$value} > *:not([class="spacer"]) + *:not([class="spacer"]) {
 			margin-left: call(get-function($conv-fn), $value);
 		}
 	}
+
 	@each $value in $range {
-		[class*="vstack"]#{$ampersand}spacing-#{$value} > * + * {
+		[class*="y-stack"]#{$ampersand}spacing-#{$value} > *:not([class="spacer"]) + *:not([class="spacer"]) {
 			margin-top: call(get-function($conv-fn), $value);
 		}
 	}
