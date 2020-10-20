@@ -1,9 +1,24 @@
 @mixin display {
 	$ampersand: get-dynamic-ampersand();
 
-	@each $key, $value in (block: block, inline-block: inline-block, inline: inline, hidden: none) {
-		#{$ampersand}#{$key} {
-			display: $value;
-		}
+	#{$ampersand}hide {
+		display: none;
 	}
+	#{$ampersand}show {
+		display: block;
+	}
+	[class*="hstack"]#{$ampersand}show {
+		display: flex;
+		flex-direction: row;
+	}
+	[class*="vstack"]#{$ampersand}show {
+		display: flex;
+		flex-direction: column;
+	}
+
+	// @each $key, $value in (block: block, inline-block: inline-block, inline: inline, hidden: none) {
+	// 	#{$ampersand}#{$key} {
+	// 		display: $value;
+	// 	}
+	// }
 }
