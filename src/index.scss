@@ -32,10 +32,15 @@
 $separator: "\\:";
 
 @mixin custom-properties() {
+	// NOTE: Must use #{$value} syntax.
+	//
 	/* purgecss end start */
 	html {
 		@each $key, $value in $color-map {
-			--#{$key}: #{$value}; // NOTE: Must use #{...} syntax.
+			--#{$key}: #{$value};
+		}
+		@each $key, $value in $box-shadow-named-map {
+			--#{$key}: #{$value};
 		}
 	}
 	/* purgecss end ignore */
