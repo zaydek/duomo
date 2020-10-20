@@ -1,9 +1,16 @@
 @mixin font-style {
 	$ampersand: get-dynamic-ampersand();
 
-	@each $style in normal, italic {
-		#{$ampersand}style-#{$style} {
-			font-style: $style;
-		}
+	#{$ampersand}no-italic {
+		font-style: normal;
 	}
+	#{$ampersand}italic {
+		font-style: italic;
+	}
+
+	// @each $style in normal, italic {
+	// 	#{$ampersand}style-#{$style} {
+	// 		font-style: $style;
+	// 	}
+	// }
 }

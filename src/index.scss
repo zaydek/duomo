@@ -46,11 +46,11 @@ $separator: "\\:";
 		@include antialiasing;
 	}
 	@include margin-from-range(join(join($-scale, auto), $scale), rem);
-	@include margin-gap-from-range(join(auto, $scale), rem);
+	@include margin-gap-from-range(join(auto, $border-radius-scale /* FIXME? */), rem);
 	@include padding-from-range($scale, rem);
 	@include position-from-range((auto, 0));
-	@include display;
-	@include flex;
+	// @include display;
+	// @include flex;
 	@include width-from-range(join(auto, $extended-scale), rem);
 	@include max-width-from-map($breakpoint-map, px);
 	@include height-from-range(join(auto, $extended-scale), rem);

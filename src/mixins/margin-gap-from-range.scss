@@ -1,23 +1,38 @@
-@mixin _margin-gap-impl($properties, $shorthand, $range, $conv-fn) {
+// @mixin _margin-gap-impl($properties, $shorthand, $range, $conv-fn) {
+// 	$ampersand: get-dynamic-ampersand();
+
+// 	@each $value in $range {
+// 		#{$ampersand}#{$shorthand}-#{$value} > * + * {
+// 			@each $property in $properties {
+// 				// #{$property}: call(get-function($conv-fn), if(type-of($value) != "number", $value, -1 * $value / 2));
+// 				#{$property}: call(get-function($conv-fn), $value);
+// 			}
+// 			// & > * {
+// 			// 	@each $property in $properties {
+// 			// 		#{$property}: call(get-function($conv-fn), if(type-of($value) != "number", $value, $value / 2));
+// 			// 	}
+// 			// }
+// 		}
+// 	}
+// }
+
+// @mixin margin-gap-from-range($range, $conv-fn) {
+// 	// @include _margin-gap-impl((margin), "m-gap", $range, $conv-fn);
+// 	@include _margin-gap-impl((margin-left), "space-x", $range, $conv-fn);
+// 	@include _margin-gap-impl((margin-top), "space-y", $range, $conv-fn);
+// }
+
+@mixin margin-gap-from-range($range, $conv-fn) {
 	$ampersand: get-dynamic-ampersand();
 
 	@each $value in $range {
-		#{$ampersand}#{$shorthand}-#{$value} > * + * {
-			@each $property in $properties {
-				// #{$property}: call(get-function($conv-fn), if(type-of($value) != "number", $value, -1 * $value / 2));
-				#{$property}: call(get-function($conv-fn), $value);
-			}
-			// & > * {
-			// 	@each $property in $properties {
-			// 		#{$property}: call(get-function($conv-fn), if(type-of($value) != "number", $value, $value / 2));
-			// 	}
-			// }
+		[class$="hstack"]#{$ampersand}stack-gap-#{$value} > * + * {
+			margin-left: call(get-function($conv-fn), $value);
 		}
 	}
-}
-
-@mixin margin-gap-from-range($range, $conv-fn) {
-	// @include _margin-gap-impl((margin), "m-gap", $range, $conv-fn);
-	@include _margin-gap-impl((margin-left), "space-x", $range, $conv-fn);
-	@include _margin-gap-impl((margin-top), "space-y", $range, $conv-fn);
+	@each $value in $range {
+		[class$="vstack"]#{$ampersand}stack-gap-#{$value} > * + * {
+			margin-top: call(get-function($conv-fn), $value);
+		}
+	}
 }
