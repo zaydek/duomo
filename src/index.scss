@@ -60,6 +60,24 @@ $separator: "\\:";
 	@include max-width-from-map($breakpoint-map, px);
 	@include height-from-range(join(auto, $extended-scale), rem);
 	@include min-height-from-range(join(auto, 0), rem /* TODO: Change to px? */);
+
+	// EXPERIMENTAL: wh-*
+	$ampersand: get-dynamic-ampersand();
+
+	@include generate-from-range((width, height), "wh", $extended-scale, rem);
+	#{$ampersand}wh-px {
+		width: 1px;
+		height: 1px;
+	}
+	#{$ampersand}wh-full {
+		width: 100%;
+		height: 100%;
+	}
+	#{$ampersand}wh-screen {
+		width: 100vw;
+		height: 100vw;
+	}
+
 	@include font-style;
 	@include font-weight;
 	@include font-size-from-range($font-size-scale, rem);
