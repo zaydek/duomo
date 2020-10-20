@@ -26,12 +26,12 @@
 	$ampersand: get-dynamic-ampersand();
 
 	@each $value in $range {
-		[class$="hstack"]#{$ampersand}stack-gap-#{$value} > * + * {
+		[class*="hstack"]#{$ampersand}stack-gap-#{$value} > * + * {
 			margin-left: call(get-function($conv-fn), $value);
 		}
 	}
 	@each $value in $range {
-		[class$="vstack"]#{$ampersand}stack-gap-#{$value} > * + * {
+		[class*="vstack"]#{$ampersand}stack-gap-#{$value} > * + * {
 			margin-top: call(get-function($conv-fn), $value);
 		}
 	}
