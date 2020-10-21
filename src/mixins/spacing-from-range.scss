@@ -1,0 +1,35 @@
+@mixin spacing-from-range($range, $conv-fn) {
+	$ampersand: get-dynamic-ampersand();
+
+	// @each $value in $range {
+	// 	[class*="hstack"]#{$ampersand}spacing-#{$value} > *:not([class="spacer"]) + *:not([class="spacer"]) {
+	// 		margin-left: call(get-function($conv-fn), $value);
+	// 	}
+	// }
+	//
+	// @each $value in $range {
+	// 	[class*="vstack"]#{$ampersand}spacing-#{$value} > *:not([class="spacer"]) + *:not([class="spacer"]) {
+	// 		margin-top: call(get-function($conv-fn), $value);
+	// 	}
+	// }
+
+	@each $value in $range {
+		[class*="hstack"]#{$ampersand}spacing-#{$value} > * + * {
+			margin-left: call(get-function($conv-fn), $value);
+		}
+		// TODO: [class*="hstack"]#{$ampersand}spacing-#{$value} > *:first-child + [class*="spacer"],
+		[class*="hstack"]#{$ampersand}spacing-#{$value} > [class*="spacer"]:last-child:empty {
+			margin-left: 0;
+		}
+	}
+
+	@each $value in $range {
+		[class*="vstack"]#{$ampersand}spacing-#{$value} > * + * {
+			margin-top: call(get-function($conv-fn), $value);
+		}
+		// TODO: [class*="vstack"]#{$ampersand}spacing-#{$value} > *:first-child + [class*="spacer"],
+		[class*="vstack"]#{$ampersand}spacing-#{$value} > [class*="spacer"]:last-child:empty {
+			margin-top: 0;
+		}
+	}
+}

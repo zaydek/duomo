@@ -115,8 +115,80 @@ $pink-700: #bf125d;
 $pink-800: #99154b;
 $pink-900: #751a3d;
 
+// // TODO
+// $gray-50: rgba(250, 250, 250, var(--text-opacity));
+// $gray-100: rgba(244, 244, 245, var(--text-opacity));
+// $gray-200: rgba(228, 228, 231, var(--text-opacity));
+// $gray-300: rgba(212, 212, 216, var(--text-opacity));
+// $gray-400: rgba(161, 161, 170, var(--text-opacity));
+// $gray-500: rgba(113, 113, 122, var(--text-opacity));
+// $gray-600: rgba(82, 82, 91, var(--text-opacity));
+// $gray-700: rgba(63, 63, 70, var(--text-opacity));
+// $gray-800: rgba(39, 39, 42, var(--text-opacity));
+// $gray-900: rgba(24, 24, 27, var(--text-opacity));
+// $red-50: rgba(254, 242, 242, var(--text-opacity));
+// $red-100: rgba(254, 226, 226, var(--text-opacity));
+// $red-200: rgba(254, 202, 202, var(--text-opacity));
+// $red-300: rgba(252, 165, 165, var(--text-opacity));
+// $red-400: rgba(248, 113, 113, var(--text-opacity));
+// $red-500: rgba(239, 68, 68, var(--text-opacity));
+// $red-600: rgba(220, 38, 38, var(--text-opacity));
+// $red-700: rgba(185, 28, 28, var(--text-opacity));
+// $red-800: rgba(153, 27, 27, var(--text-opacity));
+// $red-900: rgba(127, 29, 29, var(--text-opacity));
+// $yellow-50: rgba(255, 251, 235, var(--text-opacity));
+// $yellow-100: rgba(254, 243, 199, var(--text-opacity));
+// $yellow-200: rgba(253, 230, 138, var(--text-opacity));
+// $yellow-300: rgba(252, 211, 77, var(--text-opacity));
+// $yellow-400: rgba(251, 191, 36, var(--text-opacity));
+// $yellow-500: rgba(245, 158, 11, var(--text-opacity));
+// $yellow-600: rgba(217, 119, 6, var(--text-opacity));
+// $yellow-700: rgba(180, 83, 9, var(--text-opacity));
+// $yellow-800: rgba(146, 64, 14, var(--text-opacity));
+// $yellow-900: rgba(120, 53, 15, var(--text-opacity));
+// $green-50: rgba(236, 253, 245, var(--text-opacity));
+// $green-100: rgba(209, 250, 229, var(--text-opacity));
+// $green-200: rgba(167, 243, 208, var(--text-opacity));
+// $green-300: rgba(110, 231, 183, var(--text-opacity));
+// $green-400: rgba(52, 211, 153, var(--text-opacity));
+// $green-500: rgba(16, 185, 129, var(--text-opacity));
+// $green-600: rgba(5, 150, 105, var(--text-opacity));
+// $green-700: rgba(4, 120, 87, var(--text-opacity));
+// $green-800: rgba(6, 95, 70, var(--text-opacity));
+// $green-900: rgba(6, 78, 59, var(--text-opacity));
+// $blue-50: rgba(239, 246, 255, var(--text-opacity));
+// $blue-100: rgba(219, 234, 254, var(--text-opacity));
+// $blue-200: rgba(191, 219, 254, var(--text-opacity));
+// $blue-300: rgba(147, 197, 253, var(--text-opacity));
+// $blue-400: rgba(96, 165, 250, var(--text-opacity));
+// $blue-500: rgba(59, 130, 246, var(--text-opacity));
+// $blue-600: rgba(37, 99, 235, var(--text-opacity));
+// $blue-700: rgba(29, 78, 216, var(--text-opacity));
+// $blue-800: rgba(30, 64, 175, var(--text-opacity));
+// $blue-900: rgba(30, 58, 138, var(--text-opacity));
+// $purple-50: rgba(245, 243, 255, var(--text-opacity));
+// $purple-100: rgba(237, 233, 254, var(--text-opacity));
+// $purple-200: rgba(221, 214, 254, var(--text-opacity));
+// $purple-300: rgba(196, 181, 253, var(--text-opacity));
+// $purple-400: rgba(167, 139, 250, var(--text-opacity));
+// $purple-500: rgba(139, 92, 246, var(--text-opacity));
+// $purple-600: rgba(124, 58, 237, var(--text-opacity));
+// $purple-700: rgba(109, 40, 217, var(--text-opacity));
+// $purple-800: rgba(91, 33, 182, var(--text-opacity));
+// $purple-900: rgba(76, 29, 149, var(--text-opacity));
+// $pink-50: rgba(253, 242, 248, var(--text-opacity));
+// $pink-100: rgba(252, 231, 243, var(--text-opacity));
+// $pink-200: rgba(251, 207, 232, var(--text-opacity));
+// $pink-300: rgba(249, 168, 212, var(--text-opacity));
+// $pink-400: rgba(244, 114, 182, var(--text-opacity));
+// $pink-500: rgba(236, 72, 153, var(--text-opacity));
+// $pink-600: rgba(219, 39, 119, var(--text-opacity));
+// $pink-700: rgba(190, 24, 93, var(--text-opacity));
+// $pink-800: rgba(157, 23, 77, var(--text-opacity));
+// $pink-900: rgba(131, 24, 67, var(--text-opacity));
+
 $color-map: (
-	currentColor: $currentColor,
+	current: $currentColor,
 	transparent: $transparent,
 	white: $white,
 	black: $black,

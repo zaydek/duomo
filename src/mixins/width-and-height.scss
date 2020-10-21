@@ -1,0 +1,39 @@
+@mixin width-from-range($range, $conv-fn) {
+	$ampersand: get-dynamic-ampersand();
+
+	@include generate-from-range((width), "w", $range, $conv-fn);
+	#{$ampersand}w-full {
+		width: 100%;
+	}
+	#{$ampersand}w-screen {
+		width: 100vw;
+	}
+}
+
+@mixin max-width-from-map($map, $conv-fn) {
+	@include generate-from-map((max-width), "max-w", $map, $conv-fn);
+}
+
+@mixin height-from-range($range, $conv-fn) {
+	$ampersand: get-dynamic-ampersand();
+
+	@include generate-from-range((height), "h", $range, $conv-fn);
+	#{$ampersand}h-full {
+		height: 100%;
+	}
+	#{$ampersand}h-screen {
+		height: 100vh;
+	}
+}
+
+@mixin min-height-from-range($range, $conv-fn) {
+	$ampersand: get-dynamic-ampersand();
+
+	@include generate-from-range((min-height), "min-h", $range, $conv-fn);
+	#{$ampersand}min-h-full {
+		min-height: 100%;
+	}
+	#{$ampersand}min-h-screen {
+		min-height: 100vh;
+	}
+}

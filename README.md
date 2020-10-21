@@ -12,7 +12,7 @@
 
 <br>
 
-Sorcery SCSS is utility-first framework for rapid development. Sorcery SCSS is most similar to Tailwind CSS but differentiates itself in these key ways:
+Sorcery SCSS is a utility-first framework for rapid development. Sorcery SCSS is most similar to Tailwind CSS but differentiates itself in these key ways:
 
 - Emphasis on zero-configuration
 - SCSS-based, designed to be extended

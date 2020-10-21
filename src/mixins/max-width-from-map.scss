@@ -1,3 +1,0 @@
-@mixin max-width-from-map($map, $conv-fn) {
-	@include generate-from-map((max-width), "max-w", $map, $conv-fn);
-}

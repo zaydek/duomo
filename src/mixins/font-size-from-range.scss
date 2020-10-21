@@ -1,3 +1,0 @@
-@mixin font-size-from-range($range, $conv-fn) {
-	@include generate-from-range((font-size), "text", $range, $conv-fn);
-}

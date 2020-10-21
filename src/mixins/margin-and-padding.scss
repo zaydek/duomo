@@ -1,3 +1,13 @@
+@mixin margin-from-range($range, $conv-fn) {
+	@include generate-from-range((margin), "m", $range, $conv-fn);
+	@include generate-from-range((margin-left, margin-right), "mx", $range, $conv-fn);
+	@include generate-from-range((margin-left), "ml", $range, $conv-fn);
+	@include generate-from-range((margin-right), "mr", $range, $conv-fn);
+	@include generate-from-range((margin-top, margin-bottom), "my", $range, $conv-fn);
+	@include generate-from-range((margin-top), "mt", $range, $conv-fn);
+	@include generate-from-range((margin-bottom), "mb", $range, $conv-fn);
+}
+
 @mixin padding-from-range($range, $conv-fn) {
 	@include generate-from-range((padding), "p", $range, $conv-fn);
 	@include generate-from-range((padding-left, padding-right), "px", $range, $conv-fn);

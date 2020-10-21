@@ -1,11 +1,39 @@
 @mixin _position-impl($properties, $shorthand, $range) {
+	$ampersand: get-dynamic-ampersand();
+
+	@if $shorthand == "t" or $shorthand == "r" or $shorthand == "b" or $shorthand == "l" {
+		// #{$ampersand}-#{$shorthand}-full {
+		// 	@each $property in $properties {
+		// 		#{$property}: -100%;
+		// 	}
+		// }
+		#{$ampersand}-#{$shorthand}-1\/2 {
+			@each $property in $properties {
+				#{$property}: -50%;
+			}
+		}
+	}
+
 	@each $value in $range {
 		$negative: if(safe-compare-negative($value), "-", "");
-		&.#{$negative}#{$shorthand}-#{safe-abs($value)} {
+		#{$ampersand}#{$negative}#{$shorthand}-#{safe-abs($value)} {
 			@each $property in $properties {
 				#{$property}: call(get-function(passthrough), $value);
 			}
 		}
+	}
+
+	@if $shorthand == "t" or $shorthand == "r" or $shorthand == "b" or $shorthand == "l" {
+		#{$ampersand}#{$shorthand}-1\/2 {
+			@each $property in $properties {
+				#{$property}: 50%;
+			}
+		}
+		// #{$ampersand}#{$shorthand}-full {
+		// 	@each $property in $properties {
+		// 		#{$property}: 100%;
+		// 	}
+		// }
 	}
 }
 
