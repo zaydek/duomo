@@ -60,6 +60,7 @@ $z-index-range: -1, auto, 0, 10, 20, 30, 40, 50;
 		@include generate-custom-props-from-map($font-family-map);
 		@include generate-custom-props-from-map($color-map);
 		@include generate-custom-props-from-map($box-shadow-named-map);
+		@include generate-custom-props-from-map($timing-function-map);
 	}
 	/* purgecss end ignore */
 }
@@ -82,6 +83,7 @@ $z-index-range: -1, auto, 0, 10, 20, 30, 40, 50;
 	@include font-style;
 	@include font-weight;
 	@include font-size-from-range($font-size-range, rem);
+	// TODO
 	@include generate-from-map((line-height), "leading", $line-height-map, passthrough);
 	@if not & {
 		@include color-from-map((color), "text", $color-map);
