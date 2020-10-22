@@ -2,12 +2,28 @@
 	$ampersand: get-dynamic-ampersand();
 
 	@include generate-from-map($properties, $shorthand, $map, passthrough);
-	@include generate-from-map-hover($properties, $shorthand, $map, passthrough);
-	@include generate-from-map-focus($properties, $shorthand, $map, passthrough);
+	// @include generate-from-map-hover($properties, $shorthand, $map, passthrough);
+	// @include generate-from-map-focus($properties, $shorthand, $map, passthrough);
 
+	@each $key, $value in $map {
+		[data-theme="dark"]#{$ampersand}dark#{$separator}#{$shorthand}-#{$key},
+		[data-theme="dark"] #{$ampersand}dark#{$separator}#{$shorthand}-#{$key} {
+			@each $property in $properties {
+				#{$property}: call(get-function(passthrough), $value);
+			}
+		}
+	}
 	// @each $key, $value in $map {
-	// 	[data-theme="dark"]#{$ampersand}dark#{$separator}#{$shorthand}-#{$key},
-	// 	[data-theme="dark"] #{$ampersand}dark#{$separator}#{$shorthand}-#{$key} {
+	// 	[data-theme="dark"]#{$ampersand}dark#{$separator}#{$shorthand}-#{$key}:hover,
+	// 	[data-theme="dark"] #{$ampersand}dark#{$separator}#{$shorthand}-#{$key}:hover {
+	// 		@each $property in $properties {
+	// 			#{$property}: call(get-function(passthrough), $value);
+	// 		}
+	// 	}
+	// }
+	// @each $key, $value in $map {
+	// 	[data-theme="dark"]#{$ampersand}dark#{$separator}#{$shorthand}-#{$key}:focus,
+	// 	[data-theme="dark"] #{$ampersand}dark#{$separator}#{$shorthand}-#{$key}:focus {
 	// 		@each $property in $properties {
 	// 			#{$property}: call(get-function(passthrough), $value);
 	// 		}

@@ -20,38 +20,22 @@
 @import "./utils/get-dynamic-ampersand";
 @import "./utils/safe-functions";
 
-@import "./tailwind-colors";
+@import "./tailwind-tokens";
 @import "./vars";
 
 $separator: "\\:";
 
-@mixin custom-properties() {
-	// NOTE: Must use #{$value} syntax.
+@mixin custom-properties {
+	// TOOD: Remove purgecss comments?
 	//
 	/* purgecss end start */
 	html {
-		@each $key, $value in $color-map {
-			--#{$key}: #{$value};
-		}
-		@each $key, $value in $box-shadow-named-map {
-			--#{$key}: #{$value};
-		}
+		@include generate-custom-props-from-map($font-family-map);
+		@include generate-custom-props-from-map($color-map);
+		@include generate-custom-props-from-map($box-shadow-named-map);
 	}
 	/* purgecss end ignore */
 }
-
-// // EXPERIMENTAL: wh-*
-// $ampersand: get-dynamic-ampersand();
-//
-// @include generate-from-range((width, height), "wh", $extended-scale, rem);
-// #{$ampersand}wh-full {
-// 	width: 100%;
-// 	height: 100%;
-// }
-// #{$ampersand}wh-screen {
-// 	width: 100vw;
-// 	height: 100vw;
-// }
 
 // prettier-ignore
 $line-height-map: (
@@ -81,8 +65,9 @@ $line-height-map: (
 @mixin props {
 	@if not & {
 		@include antialiasing;
+		@include custom-properties;
 	}
-	@include spacing-from-range(join(auto, $border-radius-scale /* FIXME? */), rem);
+	@include spacing-from-range(join(auto, $spacing-scale), rem);
 	@include margin-from-range(join(join($-scale, auto), $scale), rem);
 	@include padding-from-range($scale, rem);
 	@include position-from-range((auto, 0));
@@ -95,11 +80,7 @@ $line-height-map: (
 	@include font-style;
 	@include font-weight;
 	@include font-size-from-range($font-size-scale, rem);
-
-	// TODO
-	// @include line-height-from-range((1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6, 1.65, 1.7, 1.75, 1.8, 1.85, 1.9, 1.95, 2), passthrough);
 	@include generate-from-map((line-height), "leading", $line-height-map, passthrough);
-
 	@if not & {
 		@include color-from-map((color), "text", $color-map);
 		@include color-from-map((background-color), "bg", $color-map);
@@ -111,8 +92,6 @@ $line-height-map: (
 }
 
 @at-root {
-	@include custom-properties;
-
 	@include props;
 	@each $key, $value in $breakpoint-map {
 		@media (min-width: px($value)) {

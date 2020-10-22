@@ -2,6 +2,10 @@
 	$ampersand: get-dynamic-ampersand();
 
 	@include generate-from-range((width), "w", $range, $conv-fn);
+
+	// EXPERIMENTAL
+	@include generate-from-map((width), "w", $breakpoint-map, px);
+
 	#{$ampersand}w-full {
 		width: 100%;
 	}
