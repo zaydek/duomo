@@ -1,0 +1,30 @@
+@mixin overflow {
+	$ampersand: get-dynamic-ampersand();
+
+	@each $value in (auto, scroll, hidden) {
+		#{$ampersand}overflow-#{$value} {
+			@if $value == scroll {
+				-webkit-overflow-scrolling: touch;
+			}
+			overflow: $value;
+		}
+	}
+
+	@each $value in (auto, hidden, scroll) {
+		#{$ampersand}overflow-x-#{$value} {
+			@if $value == scroll {
+				-webkit-overflow-scrolling: touch;
+			}
+			overflow-x: $value;
+		}
+	}
+
+	@each $value in (auto, hidden, scroll) {
+		#{$ampersand}overflow-y-#{$value} {
+			@if $value == scroll {
+				-webkit-overflow-scrolling: touch;
+			}
+			overflow-y: $value;
+		}
+	}
+}

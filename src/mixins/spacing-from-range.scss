@@ -1,55 +1,15 @@
-// @mixin spacing-from-range($range, $conv-fn) {
-// 	$ampersand: get-dynamic-ampersand();
-//
-// 	@each $value in $range {
-// 		[class*="hstack"]#{$ampersand}sp-#{$value} {
-// 			--spacing: #{call(get-function($conv-fn), $value)};
-// 		}
-// 	}
-// 	[class*="hstack"] > * + * {
-// 		margin-left: var(--spacing, 0);
-// 	}
-// 	[class*="hstack"] > [class*="spacer"]:first-child:empty + *,
-// 	[class*="hstack"] > [class*="spacer"]:last-child:empty {
-// 		margin-left: 0;
-// 	}
-//
-// 	@each $value in $range {
-// 		[class*="vstack"]#{$ampersand}sp-#{$value} {
-// 			--spacing: #{call(get-function($conv-fn), $value)};
-// 		}
-// 	}
-// 	[class*="vstack"] > * + * {
-// 		margin-top: var(--spacing, 0);
-// 	}
-// 	[class*="vstack"] > [class*="spacer"]:first-child:empty + *,
-// 	[class*="vstack"] > [class*="spacer"]:last-child:empty {
-// 		margin-top: 0;
-// 	}
-// }
-
 @mixin spacing-from-range($range, $conv-fn) {
 	$ampersand: get-dynamic-ampersand();
 
 	@each $value in $range {
-		[class*="hstack"]#{$ampersand}sp-#{$value} > * + * {
-			--spacing: #{call(get-function($conv-fn), $value)};
-			margin-left: var(--spacing, 0);
-		}
-		[class*="hstack"]#{$ampersand}sp-#{$value} > [class*="spacer"]:first-child:empty + *,
-		[class*="hstack"]#{$ampersand}sp-#{$value} > [class*="spacer"]:last-child:empty {
-			margin-left: 0;
+		#{$ampersand}sx-#{$value} > * + * {
+			margin-left: #{call(get-function($conv-fn), $value)};
 		}
 	}
 
 	@each $value in $range {
-		[class*="vstack"]#{$ampersand}sp-#{$value} > * + * {
-			--spacing: #{call(get-function($conv-fn), $value)};
-			margin-top: var(--spacing, 0);
-		}
-		[class*="vstack"]#{$ampersand}sp-#{$value} > [class*="spacer"]:first-child:empty + *,
-		[class*="vstack"]#{$ampersand}sp-#{$value} > [class*="spacer"]:last-child:empty {
-			margin-top: 0;
+		#{$ampersand}sy-#{$value} > * + * {
+			margin-top: #{call(get-function($conv-fn), $value)};
 		}
 	}
 }

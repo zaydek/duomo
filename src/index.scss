@@ -8,9 +8,11 @@
 @import "./mixins/flex";
 @import "./mixins/font";
 @import "./mixins/margin-and-padding";
+@import "./mixins/overflow";
 @import "./mixins/pointer-events";
 @import "./mixins/position-from-range";
 @import "./mixins/spacing-from-range";
+@import "./mixins/stagger-width";
 @import "./mixins/width-and-height";
 @import "./mixins/z-index-from-range";
 
@@ -52,7 +54,7 @@ $line-height-map: (
 
 $z-index-range: -1, auto, 0, 10, 20, 30, 40, 50;
 
-@mixin custom-properties {
+@mixin custom-props {
 	// TOOD: Remove purgecss comments?
 	//
 	/* purgecss end start */
@@ -62,13 +64,19 @@ $z-index-range: -1, auto, 0, 10, 20, 30, 40, 50;
 		@include generate-custom-props-from-map($box-shadow-named-map);
 		@include generate-custom-props-from-map($timing-function-map);
 	}
+
+	[data-debug],
+	[data-debug] * {
+		outline: 2px solid var(--debug-qualified-color, hsla(200, 100%, 50%, 0.25));
+		outline-offset: -1px;
+	}
 	/* purgecss end ignore */
 }
 
 @mixin props {
 	@if not & {
 		@include antialiasing;
-		@include custom-properties;
+		@include custom-props;
 	}
 	@include spacing-from-range(join(auto, $range), rem);
 	@include margin-from-range(join(join($-range, auto), $range), rem);
@@ -77,6 +85,7 @@ $z-index-range: -1, auto, 0, 10, 20, 30, 40, 50;
 	@include display;
 	@include flex;
 	@include width-from-range(join(auto, $range), rem);
+	@include stagger-width;
 	@include max-width-from-map($breakpoint-map, px);
 	@include height-from-range(join(auto, $range), rem);
 	@include min-height-from-range(join(auto, 0), rem /* TODO: Change to px? */);
@@ -91,6 +100,7 @@ $z-index-range: -1, auto, 0, 10, 20, 30, 40, 50;
 	}
 	@include border-radius-from-range($shorter-range, rem);
 	@include box-shadow-from-named-map($box-shadow-named-map);
+	@include overflow;
 	@include z-index-from-range($z-index-range);
 	@include pointer-events;
 }
