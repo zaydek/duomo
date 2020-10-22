@@ -70,7 +70,7 @@ $z-index-range: -1, auto, 0, 10, 20, 30, 40, 50;
 		@include antialiasing;
 		@include custom-properties;
 	}
-	@include spacing-from-range(join(auto, $spacing-range), rem);
+	@include spacing-from-range(join(auto, $range), rem);
 	@include margin-from-range(join(join($-range, auto), $range), rem);
 	@include padding-from-range($range, rem);
 	@include position-from-range((auto, 0));
@@ -82,14 +82,14 @@ $z-index-range: -1, auto, 0, 10, 20, 30, 40, 50;
 	@include min-height-from-range(join(auto, 0), rem /* TODO: Change to px? */);
 	@include font-style;
 	@include font-weight;
-	@include font-size-from-range($font-size-range, rem);
+	@include font-size-from-range($range, rem);
 	// TODO
 	@include generate-from-map((line-height), "leading", $line-height-map, passthrough);
 	@if not & {
 		@include color-from-map((color), "text", $color-map);
 		@include color-from-map((background-color), "bg", $color-map);
 	}
-	@include border-radius-from-range($border-radius-range, rem);
+	@include border-radius-from-range($shorter-range, rem);
 	@include box-shadow-from-named-map($box-shadow-named-map);
 	@include z-index-from-range($z-index-range);
 	@include pointer-events;

@@ -28,6 +28,10 @@
 	#{$ampersand}h-screen {
 		height: 100vh;
 	}
+	// EXPERIMENTAL
+	#{$ampersand}screen {
+		height: 100vh;
+	}
 }
 
 @mixin min-height-from-range($range, $conv-fn) {
