@@ -20,22 +20,10 @@
 @import "./utils/get-dynamic-ampersand";
 @import "./utils/safe-functions";
 
+@import "./ranges";
 @import "./tailwind-tokens";
-@import "./vars";
 
 $separator: "\\:";
-
-@mixin custom-properties {
-	// TOOD: Remove purgecss comments?
-	//
-	/* purgecss end start */
-	html {
-		@include generate-custom-props-from-map($font-family-map);
-		@include generate-custom-props-from-map($color-map);
-		@include generate-custom-props-from-map($box-shadow-named-map);
-	}
-	/* purgecss end ignore */
-}
 
 // prettier-ignore
 $line-height-map: (
@@ -62,32 +50,46 @@ $line-height-map: (
 	"2":      2,
 );
 
+$z-index-range: -1, auto, 0, 10, 20, 30, 40, 50;
+
+@mixin custom-properties {
+	// TOOD: Remove purgecss comments?
+	//
+	/* purgecss end start */
+	html {
+		@include generate-custom-props-from-map($font-family-map);
+		@include generate-custom-props-from-map($color-map);
+		@include generate-custom-props-from-map($box-shadow-named-map);
+	}
+	/* purgecss end ignore */
+}
+
 @mixin props {
 	@if not & {
 		@include antialiasing;
 		@include custom-properties;
 	}
-	@include spacing-from-range(join(auto, $spacing-scale), rem);
-	@include margin-from-range(join(join($-scale, auto), $scale), rem);
-	@include padding-from-range($scale, rem);
+	@include spacing-from-range(join(auto, $spacing-range), rem);
+	@include margin-from-range(join(join($-range, auto), $range), rem);
+	@include padding-from-range($range, rem);
 	@include position-from-range((auto, 0));
 	@include display;
 	@include flex;
-	@include width-from-range(join(auto, $scale), rem);
+	@include width-from-range(join(auto, $range), rem);
 	@include max-width-from-map($breakpoint-map, px);
-	@include height-from-range(join(auto, $scale), rem);
+	@include height-from-range(join(auto, $range), rem);
 	@include min-height-from-range(join(auto, 0), rem /* TODO: Change to px? */);
 	@include font-style;
 	@include font-weight;
-	@include font-size-from-range($font-size-scale, rem);
+	@include font-size-from-range($font-size-range, rem);
 	@include generate-from-map((line-height), "leading", $line-height-map, passthrough);
 	@if not & {
 		@include color-from-map((color), "text", $color-map);
 		@include color-from-map((background-color), "bg", $color-map);
 	}
-	@include border-radius-from-range($border-radius-scale, rem);
+	@include border-radius-from-range($border-radius-range, rem);
 	@include box-shadow-from-named-map($box-shadow-named-map);
-	@include z-index-from-range((-1, auto, 0, 10, 20, 30, 40, 50));
+	@include z-index-from-range($z-index-range);
 	@include pointer-events;
 }
 
