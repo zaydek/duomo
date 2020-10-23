@@ -690,6 +690,22 @@ html {
 	margin-top: 0;
 }
 
+.align-stretch {
+	align-items: stretch;
+}
+
+.align-start {
+	align-items: flex-start;
+}
+
+.align-center {
+	align-items: center;
+}
+
+.align-end {
+	align-items: flex-end;
+}
+
 .spacer {
 	flex-grow: 1;
 	flex-shrink: 0;
@@ -3604,104 +3620,108 @@ html {
 	font-weight: 900;
 }
 
-.text-0 {
-	font-size: 0;
-}
-
-.text-1 {
-	font-size: 0.0625rem;
-}
-
-.text-2 {
-	font-size: 0.125rem;
-}
-
-.text-3 {
-	font-size: 0.1875rem;
-}
-
-.text-4 {
-	font-size: 0.25rem;
-}
-
-.text-5 {
-	font-size: 0.3125rem;
-}
-
-.text-6 {
-	font-size: 0.375rem;
-}
-
-.text-7 {
-	font-size: 0.4375rem;
-}
-
-.text-8 {
-	font-size: 0.5rem;
-}
-
 .text-10 {
 	font-size: 0.625rem;
+}
+
+.text-11 {
+	font-size: 0.6875rem;
 }
 
 .text-12 {
 	font-size: 0.75rem;
 }
 
+.text-13 {
+	font-size: 0.8125rem;
+}
+
 .text-14 {
 	font-size: 0.875rem;
+}
+
+.text-15 {
+	font-size: 0.9375rem;
 }
 
 .text-16 {
 	font-size: 1rem;
 }
 
+.text-17 {
+	font-size: 1.0625rem;
+}
+
+.text-18 {
+	font-size: 1.125rem;
+}
+
+.text-19 {
+	font-size: 1.1875rem;
+}
+
 .text-20 {
 	font-size: 1.25rem;
+}
+
+.text-22 {
+	font-size: 1.375rem;
 }
 
 .text-24 {
 	font-size: 1.5rem;
 }
 
+.text-26 {
+	font-size: 1.625rem;
+}
+
 .text-28 {
 	font-size: 1.75rem;
+}
+
+.text-30 {
+	font-size: 1.875rem;
 }
 
 .text-32 {
 	font-size: 2rem;
 }
 
+.text-34 {
+	font-size: 2.125rem;
+}
+
+.text-36 {
+	font-size: 2.25rem;
+}
+
 .text-40 {
 	font-size: 2.5rem;
+}
+
+.text-44 {
+	font-size: 2.75rem;
 }
 
 .text-48 {
 	font-size: 3rem;
 }
 
+.text-52 {
+	font-size: 3.25rem;
+}
+
 .text-56 {
 	font-size: 3.5rem;
 }
 
+.text-60 {
+	font-size: 3.75rem;
+}
+
 .text-64 {
 	font-size: 4rem;
-}
-
-.text-80 {
-	font-size: 5rem;
-}
-
-.text-96 {
-	font-size: 6rem;
-}
-
-.text-112 {
-	font-size: 7rem;
-}
-
-.text-128 {
-	font-size: 8rem;
 }
 
 .leading-1 {
@@ -6559,6 +6579,18 @@ html {
 	.xs\:vstack > [class="spacer"]:empty + * {
 		margin-top: 0;
 	}
+	.xs\:align-stretch {
+		align-items: stretch;
+	}
+	.xs\:align-start {
+		align-items: flex-start;
+	}
+	.xs\:align-center {
+		align-items: center;
+	}
+	.xs\:align-end {
+		align-items: flex-end;
+	}
 	.xs\:spacer {
 		flex-grow: 1;
 		flex-shrink: 0;
@@ -8790,80 +8822,83 @@ html {
 	.xs\:font-900 {
 		font-weight: 900;
 	}
-	.xs\:text-0 {
-		font-size: 0;
-	}
-	.xs\:text-1 {
-		font-size: 0.0625rem;
-	}
-	.xs\:text-2 {
-		font-size: 0.125rem;
-	}
-	.xs\:text-3 {
-		font-size: 0.1875rem;
-	}
-	.xs\:text-4 {
-		font-size: 0.25rem;
-	}
-	.xs\:text-5 {
-		font-size: 0.3125rem;
-	}
-	.xs\:text-6 {
-		font-size: 0.375rem;
-	}
-	.xs\:text-7 {
-		font-size: 0.4375rem;
-	}
-	.xs\:text-8 {
-		font-size: 0.5rem;
-	}
 	.xs\:text-10 {
 		font-size: 0.625rem;
+	}
+	.xs\:text-11 {
+		font-size: 0.6875rem;
 	}
 	.xs\:text-12 {
 		font-size: 0.75rem;
 	}
+	.xs\:text-13 {
+		font-size: 0.8125rem;
+	}
 	.xs\:text-14 {
 		font-size: 0.875rem;
+	}
+	.xs\:text-15 {
+		font-size: 0.9375rem;
 	}
 	.xs\:text-16 {
 		font-size: 1rem;
 	}
+	.xs\:text-17 {
+		font-size: 1.0625rem;
+	}
+	.xs\:text-18 {
+		font-size: 1.125rem;
+	}
+	.xs\:text-19 {
+		font-size: 1.1875rem;
+	}
 	.xs\:text-20 {
 		font-size: 1.25rem;
+	}
+	.xs\:text-22 {
+		font-size: 1.375rem;
 	}
 	.xs\:text-24 {
 		font-size: 1.5rem;
 	}
+	.xs\:text-26 {
+		font-size: 1.625rem;
+	}
 	.xs\:text-28 {
 		font-size: 1.75rem;
+	}
+	.xs\:text-30 {
+		font-size: 1.875rem;
 	}
 	.xs\:text-32 {
 		font-size: 2rem;
 	}
+	.xs\:text-34 {
+		font-size: 2.125rem;
+	}
+	.xs\:text-36 {
+		font-size: 2.25rem;
+	}
 	.xs\:text-40 {
 		font-size: 2.5rem;
+	}
+	.xs\:text-44 {
+		font-size: 2.75rem;
 	}
 	.xs\:text-48 {
 		font-size: 3rem;
 	}
+	.xs\:text-52 {
+		font-size: 3.25rem;
+	}
 	.xs\:text-56 {
 		font-size: 3.5rem;
 	}
+	.xs\:text-60 {
+		font-size: 3.75rem;
+	}
 	.xs\:text-64 {
 		font-size: 4rem;
-	}
-	.xs\:text-80 {
-		font-size: 5rem;
-	}
-	.xs\:text-96 {
-		font-size: 6rem;
-	}
-	.xs\:text-112 {
-		font-size: 7rem;
-	}
-	.xs\:text-128 {
-		font-size: 8rem;
 	}
 	.xs\:leading-1 {
 		line-height: 1;
@@ -9486,6 +9521,18 @@ html {
 	.sm\:vstack > [class="spacer"]:empty,
 	.sm\:vstack > [class="spacer"]:empty + * {
 		margin-top: 0;
+	}
+	.sm\:align-stretch {
+		align-items: stretch;
+	}
+	.sm\:align-start {
+		align-items: flex-start;
+	}
+	.sm\:align-center {
+		align-items: center;
+	}
+	.sm\:align-end {
+		align-items: flex-end;
 	}
 	.sm\:spacer {
 		flex-grow: 1;
@@ -11718,80 +11765,83 @@ html {
 	.sm\:font-900 {
 		font-weight: 900;
 	}
-	.sm\:text-0 {
-		font-size: 0;
-	}
-	.sm\:text-1 {
-		font-size: 0.0625rem;
-	}
-	.sm\:text-2 {
-		font-size: 0.125rem;
-	}
-	.sm\:text-3 {
-		font-size: 0.1875rem;
-	}
-	.sm\:text-4 {
-		font-size: 0.25rem;
-	}
-	.sm\:text-5 {
-		font-size: 0.3125rem;
-	}
-	.sm\:text-6 {
-		font-size: 0.375rem;
-	}
-	.sm\:text-7 {
-		font-size: 0.4375rem;
-	}
-	.sm\:text-8 {
-		font-size: 0.5rem;
-	}
 	.sm\:text-10 {
 		font-size: 0.625rem;
+	}
+	.sm\:text-11 {
+		font-size: 0.6875rem;
 	}
 	.sm\:text-12 {
 		font-size: 0.75rem;
 	}
+	.sm\:text-13 {
+		font-size: 0.8125rem;
+	}
 	.sm\:text-14 {
 		font-size: 0.875rem;
+	}
+	.sm\:text-15 {
+		font-size: 0.9375rem;
 	}
 	.sm\:text-16 {
 		font-size: 1rem;
 	}
+	.sm\:text-17 {
+		font-size: 1.0625rem;
+	}
+	.sm\:text-18 {
+		font-size: 1.125rem;
+	}
+	.sm\:text-19 {
+		font-size: 1.1875rem;
+	}
 	.sm\:text-20 {
 		font-size: 1.25rem;
+	}
+	.sm\:text-22 {
+		font-size: 1.375rem;
 	}
 	.sm\:text-24 {
 		font-size: 1.5rem;
 	}
+	.sm\:text-26 {
+		font-size: 1.625rem;
+	}
 	.sm\:text-28 {
 		font-size: 1.75rem;
+	}
+	.sm\:text-30 {
+		font-size: 1.875rem;
 	}
 	.sm\:text-32 {
 		font-size: 2rem;
 	}
+	.sm\:text-34 {
+		font-size: 2.125rem;
+	}
+	.sm\:text-36 {
+		font-size: 2.25rem;
+	}
 	.sm\:text-40 {
 		font-size: 2.5rem;
+	}
+	.sm\:text-44 {
+		font-size: 2.75rem;
 	}
 	.sm\:text-48 {
 		font-size: 3rem;
 	}
+	.sm\:text-52 {
+		font-size: 3.25rem;
+	}
 	.sm\:text-56 {
 		font-size: 3.5rem;
 	}
+	.sm\:text-60 {
+		font-size: 3.75rem;
+	}
 	.sm\:text-64 {
 		font-size: 4rem;
-	}
-	.sm\:text-80 {
-		font-size: 5rem;
-	}
-	.sm\:text-96 {
-		font-size: 6rem;
-	}
-	.sm\:text-112 {
-		font-size: 7rem;
-	}
-	.sm\:text-128 {
-		font-size: 8rem;
 	}
 	.sm\:leading-1 {
 		line-height: 1;
@@ -12414,6 +12464,18 @@ html {
 	.md\:vstack > [class="spacer"]:empty,
 	.md\:vstack > [class="spacer"]:empty + * {
 		margin-top: 0;
+	}
+	.md\:align-stretch {
+		align-items: stretch;
+	}
+	.md\:align-start {
+		align-items: flex-start;
+	}
+	.md\:align-center {
+		align-items: center;
+	}
+	.md\:align-end {
+		align-items: flex-end;
 	}
 	.md\:spacer {
 		flex-grow: 1;
@@ -14646,80 +14708,83 @@ html {
 	.md\:font-900 {
 		font-weight: 900;
 	}
-	.md\:text-0 {
-		font-size: 0;
-	}
-	.md\:text-1 {
-		font-size: 0.0625rem;
-	}
-	.md\:text-2 {
-		font-size: 0.125rem;
-	}
-	.md\:text-3 {
-		font-size: 0.1875rem;
-	}
-	.md\:text-4 {
-		font-size: 0.25rem;
-	}
-	.md\:text-5 {
-		font-size: 0.3125rem;
-	}
-	.md\:text-6 {
-		font-size: 0.375rem;
-	}
-	.md\:text-7 {
-		font-size: 0.4375rem;
-	}
-	.md\:text-8 {
-		font-size: 0.5rem;
-	}
 	.md\:text-10 {
 		font-size: 0.625rem;
+	}
+	.md\:text-11 {
+		font-size: 0.6875rem;
 	}
 	.md\:text-12 {
 		font-size: 0.75rem;
 	}
+	.md\:text-13 {
+		font-size: 0.8125rem;
+	}
 	.md\:text-14 {
 		font-size: 0.875rem;
+	}
+	.md\:text-15 {
+		font-size: 0.9375rem;
 	}
 	.md\:text-16 {
 		font-size: 1rem;
 	}
+	.md\:text-17 {
+		font-size: 1.0625rem;
+	}
+	.md\:text-18 {
+		font-size: 1.125rem;
+	}
+	.md\:text-19 {
+		font-size: 1.1875rem;
+	}
 	.md\:text-20 {
 		font-size: 1.25rem;
+	}
+	.md\:text-22 {
+		font-size: 1.375rem;
 	}
 	.md\:text-24 {
 		font-size: 1.5rem;
 	}
+	.md\:text-26 {
+		font-size: 1.625rem;
+	}
 	.md\:text-28 {
 		font-size: 1.75rem;
+	}
+	.md\:text-30 {
+		font-size: 1.875rem;
 	}
 	.md\:text-32 {
 		font-size: 2rem;
 	}
+	.md\:text-34 {
+		font-size: 2.125rem;
+	}
+	.md\:text-36 {
+		font-size: 2.25rem;
+	}
 	.md\:text-40 {
 		font-size: 2.5rem;
+	}
+	.md\:text-44 {
+		font-size: 2.75rem;
 	}
 	.md\:text-48 {
 		font-size: 3rem;
 	}
+	.md\:text-52 {
+		font-size: 3.25rem;
+	}
 	.md\:text-56 {
 		font-size: 3.5rem;
 	}
+	.md\:text-60 {
+		font-size: 3.75rem;
+	}
 	.md\:text-64 {
 		font-size: 4rem;
-	}
-	.md\:text-80 {
-		font-size: 5rem;
-	}
-	.md\:text-96 {
-		font-size: 6rem;
-	}
-	.md\:text-112 {
-		font-size: 7rem;
-	}
-	.md\:text-128 {
-		font-size: 8rem;
 	}
 	.md\:leading-1 {
 		line-height: 1;
@@ -15342,6 +15407,18 @@ html {
 	.lg\:vstack > [class="spacer"]:empty,
 	.lg\:vstack > [class="spacer"]:empty + * {
 		margin-top: 0;
+	}
+	.lg\:align-stretch {
+		align-items: stretch;
+	}
+	.lg\:align-start {
+		align-items: flex-start;
+	}
+	.lg\:align-center {
+		align-items: center;
+	}
+	.lg\:align-end {
+		align-items: flex-end;
 	}
 	.lg\:spacer {
 		flex-grow: 1;
@@ -17574,80 +17651,83 @@ html {
 	.lg\:font-900 {
 		font-weight: 900;
 	}
-	.lg\:text-0 {
-		font-size: 0;
-	}
-	.lg\:text-1 {
-		font-size: 0.0625rem;
-	}
-	.lg\:text-2 {
-		font-size: 0.125rem;
-	}
-	.lg\:text-3 {
-		font-size: 0.1875rem;
-	}
-	.lg\:text-4 {
-		font-size: 0.25rem;
-	}
-	.lg\:text-5 {
-		font-size: 0.3125rem;
-	}
-	.lg\:text-6 {
-		font-size: 0.375rem;
-	}
-	.lg\:text-7 {
-		font-size: 0.4375rem;
-	}
-	.lg\:text-8 {
-		font-size: 0.5rem;
-	}
 	.lg\:text-10 {
 		font-size: 0.625rem;
+	}
+	.lg\:text-11 {
+		font-size: 0.6875rem;
 	}
 	.lg\:text-12 {
 		font-size: 0.75rem;
 	}
+	.lg\:text-13 {
+		font-size: 0.8125rem;
+	}
 	.lg\:text-14 {
 		font-size: 0.875rem;
+	}
+	.lg\:text-15 {
+		font-size: 0.9375rem;
 	}
 	.lg\:text-16 {
 		font-size: 1rem;
 	}
+	.lg\:text-17 {
+		font-size: 1.0625rem;
+	}
+	.lg\:text-18 {
+		font-size: 1.125rem;
+	}
+	.lg\:text-19 {
+		font-size: 1.1875rem;
+	}
 	.lg\:text-20 {
 		font-size: 1.25rem;
+	}
+	.lg\:text-22 {
+		font-size: 1.375rem;
 	}
 	.lg\:text-24 {
 		font-size: 1.5rem;
 	}
+	.lg\:text-26 {
+		font-size: 1.625rem;
+	}
 	.lg\:text-28 {
 		font-size: 1.75rem;
+	}
+	.lg\:text-30 {
+		font-size: 1.875rem;
 	}
 	.lg\:text-32 {
 		font-size: 2rem;
 	}
+	.lg\:text-34 {
+		font-size: 2.125rem;
+	}
+	.lg\:text-36 {
+		font-size: 2.25rem;
+	}
 	.lg\:text-40 {
 		font-size: 2.5rem;
+	}
+	.lg\:text-44 {
+		font-size: 2.75rem;
 	}
 	.lg\:text-48 {
 		font-size: 3rem;
 	}
+	.lg\:text-52 {
+		font-size: 3.25rem;
+	}
 	.lg\:text-56 {
 		font-size: 3.5rem;
 	}
+	.lg\:text-60 {
+		font-size: 3.75rem;
+	}
 	.lg\:text-64 {
 		font-size: 4rem;
-	}
-	.lg\:text-80 {
-		font-size: 5rem;
-	}
-	.lg\:text-96 {
-		font-size: 6rem;
-	}
-	.lg\:text-112 {
-		font-size: 7rem;
-	}
-	.lg\:text-128 {
-		font-size: 8rem;
 	}
 	.lg\:leading-1 {
 		line-height: 1;
@@ -18270,6 +18350,18 @@ html {
 	.xl\:vstack > [class="spacer"]:empty,
 	.xl\:vstack > [class="spacer"]:empty + * {
 		margin-top: 0;
+	}
+	.xl\:align-stretch {
+		align-items: stretch;
+	}
+	.xl\:align-start {
+		align-items: flex-start;
+	}
+	.xl\:align-center {
+		align-items: center;
+	}
+	.xl\:align-end {
+		align-items: flex-end;
 	}
 	.xl\:spacer {
 		flex-grow: 1;
@@ -20502,80 +20594,83 @@ html {
 	.xl\:font-900 {
 		font-weight: 900;
 	}
-	.xl\:text-0 {
-		font-size: 0;
-	}
-	.xl\:text-1 {
-		font-size: 0.0625rem;
-	}
-	.xl\:text-2 {
-		font-size: 0.125rem;
-	}
-	.xl\:text-3 {
-		font-size: 0.1875rem;
-	}
-	.xl\:text-4 {
-		font-size: 0.25rem;
-	}
-	.xl\:text-5 {
-		font-size: 0.3125rem;
-	}
-	.xl\:text-6 {
-		font-size: 0.375rem;
-	}
-	.xl\:text-7 {
-		font-size: 0.4375rem;
-	}
-	.xl\:text-8 {
-		font-size: 0.5rem;
-	}
 	.xl\:text-10 {
 		font-size: 0.625rem;
+	}
+	.xl\:text-11 {
+		font-size: 0.6875rem;
 	}
 	.xl\:text-12 {
 		font-size: 0.75rem;
 	}
+	.xl\:text-13 {
+		font-size: 0.8125rem;
+	}
 	.xl\:text-14 {
 		font-size: 0.875rem;
+	}
+	.xl\:text-15 {
+		font-size: 0.9375rem;
 	}
 	.xl\:text-16 {
 		font-size: 1rem;
 	}
+	.xl\:text-17 {
+		font-size: 1.0625rem;
+	}
+	.xl\:text-18 {
+		font-size: 1.125rem;
+	}
+	.xl\:text-19 {
+		font-size: 1.1875rem;
+	}
 	.xl\:text-20 {
 		font-size: 1.25rem;
+	}
+	.xl\:text-22 {
+		font-size: 1.375rem;
 	}
 	.xl\:text-24 {
 		font-size: 1.5rem;
 	}
+	.xl\:text-26 {
+		font-size: 1.625rem;
+	}
 	.xl\:text-28 {
 		font-size: 1.75rem;
+	}
+	.xl\:text-30 {
+		font-size: 1.875rem;
 	}
 	.xl\:text-32 {
 		font-size: 2rem;
 	}
+	.xl\:text-34 {
+		font-size: 2.125rem;
+	}
+	.xl\:text-36 {
+		font-size: 2.25rem;
+	}
 	.xl\:text-40 {
 		font-size: 2.5rem;
+	}
+	.xl\:text-44 {
+		font-size: 2.75rem;
 	}
 	.xl\:text-48 {
 		font-size: 3rem;
 	}
+	.xl\:text-52 {
+		font-size: 3.25rem;
+	}
 	.xl\:text-56 {
 		font-size: 3.5rem;
 	}
+	.xl\:text-60 {
+		font-size: 3.75rem;
+	}
 	.xl\:text-64 {
 		font-size: 4rem;
-	}
-	.xl\:text-80 {
-		font-size: 5rem;
-	}
-	.xl\:text-96 {
-		font-size: 6rem;
-	}
-	.xl\:text-112 {
-		font-size: 7rem;
-	}
-	.xl\:text-128 {
-		font-size: 8rem;
 	}
 	.xl\:leading-1 {
 		line-height: 1;

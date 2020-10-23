@@ -31,6 +31,19 @@
 		margin-top: 0;
 	}
 
+	#{$ampersand}align-stretch {
+		align-items: stretch;
+	}
+	#{$ampersand}align-start {
+		align-items: flex-start;
+	}
+	#{$ampersand}align-center {
+		align-items: center;
+	}
+	#{$ampersand}align-end {
+		align-items: flex-end;
+	}
+
 	#{$ampersand}spacer {
 		flex-grow: 1;
 		flex-shrink: 0;

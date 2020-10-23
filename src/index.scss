@@ -92,7 +92,7 @@ $z-index-range: -1, auto, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50;
 	@include stagger-width;
 	@include font-style;
 	@include font-weight;
-	@include font-size-from-range($range, rem);
+	@include font-size-from-range($font-size-range, rem);
 	@include generate-from-map((line-height), "leading", $line-height-map, passthrough);
 	@if not & {
 		@include color-from-map((color), "text", $color-map);
