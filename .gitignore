@@ -1,11 +1,10 @@
 # macOS
 .DS_Store
 
-# Node
-/node_modules
-
-# VS Code
-/.vscode
+# # Production
+# /build
 
 # Yarn
+/.env
 /*.log*
+/node_modules
