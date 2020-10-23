@@ -1,19 +1,6 @@
 @mixin _position-impl($properties, $shorthand, $range) {
 	$ampersand: get-dynamic-ampersand();
 
-	@if $shorthand == "t" or $shorthand == "r" or $shorthand == "b" or $shorthand == "l" {
-		// #{$ampersand}-#{$shorthand}-full {
-		// 	@each $property in $properties {
-		// 		#{$property}: -100%;
-		// 	}
-		// }
-		#{$ampersand}-#{$shorthand}-1\/2 {
-			@each $property in $properties {
-				#{$property}: -50%;
-			}
-		}
-	}
-
 	@each $value in $range {
 		$negative: if(safe-compare-negative($value), "-", "");
 		#{$ampersand}#{$negative}#{$shorthand}-#{safe-abs($value)} {
@@ -23,18 +10,19 @@
 		}
 	}
 
-	@if $shorthand == "t" or $shorthand == "r" or $shorthand == "b" or $shorthand == "l" {
-		#{$ampersand}#{$shorthand}-1\/2 {
-			@each $property in $properties {
-				#{$property}: 50%;
-			}
-		}
-		// #{$ampersand}#{$shorthand}-full {
-		// 	@each $property in $properties {
-		// 		#{$property}: 100%;
-		// 	}
-		// }
-	}
+	// EXPERIMENTAL
+	// @if $shorthand == "t" or $shorthand == "r" or $shorthand == "b" or $shorthand == "l" {
+	// 	#{$ampersand}#{$shorthand}-1\/2 {
+	// 		@each $property in $properties {
+	// 			#{$property}: 50%;
+	// 		}
+	// 	}
+	// 	#{$ampersand}#{$shorthand}-full {
+	// 		@each $property in $properties {
+	// 			#{$property}: 100%;
+	// 		}
+	// 	}
+	// }
 }
 
 @mixin position-from-range($range) {
@@ -55,4 +43,37 @@
 	@include _position-impl((top, right), "tr", $range);
 	@include _position-impl((bottom, left), "bl", $range);
 	@include _position-impl((bottom, right), "br", $range);
+
+	#{$ampersand}tooltip {
+		&-tl {
+			top: 0;
+			left: 0;
+			transform: translateX(0) translateY(-100%);
+		}
+		&-t {
+			top: 0;
+			left: 50%;
+			transform: translateX(-50%) translateY(-100%);
+		}
+		&-tr {
+			top: 0;
+			right: 0;
+			transform: translateX(0) translateY(-100%);
+		}
+		&-br {
+			bottom: 0;
+			right: 0;
+			transform: translateX(0) translateY(100%);
+		}
+		&-b {
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%) translateY(100%);
+		}
+		&-bl {
+			bottom: 0;
+			left: 0;
+			transform: translateX(0) translateY(100%);
+		}
+	}
 }
