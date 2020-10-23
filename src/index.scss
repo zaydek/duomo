@@ -94,6 +94,30 @@ $z-index-range: -1, auto, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50;
 	@include font-weight;
 	@include font-size-from-range($font-size-range, rem);
 	@include generate-from-map((line-height), "leading", $line-height-map, passthrough);
+
+	@if not & {
+		$ampersand: get-dynamic-ampersand();
+
+		#{$ampersand}no-underline {
+			text-decoration: none;
+		}
+		#{$ampersand}underline {
+			text-decoration: underline;
+		}
+		#{$ampersand}hover\:no-underline:hover {
+			text-decoration: none;
+		}
+		#{$ampersand}focus\:no-underline:focus {
+			text-decoration: none;
+		}
+		#{$ampersand}hover\:underline:hover {
+			text-decoration: underline;
+		}
+		#{$ampersand}focus\:underline:focus {
+			text-decoration: underline;
+		}
+	}
+
 	@if not & {
 		@include color-from-map((color), "text", $color-map);
 		@include color-from-map((background-color), "bg", $color-map);

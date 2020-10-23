@@ -3808,6 +3808,30 @@ html {
 	line-height: 2;
 }
 
+.no-underline {
+	text-decoration: none;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+.hover\:no-underline:hover {
+	text-decoration: none;
+}
+
+.focus\:no-underline:focus {
+	text-decoration: none;
+}
+
+.hover\:underline:hover {
+	text-decoration: underline;
+}
+
+.focus\:underline:focus {
+	text-decoration: underline;
+}
+
 .text-current {
 	color: currentColor;
 }
