@@ -1,30 +1,31 @@
-// TODO: Use <script data-dark-mode-shortcut="d" data-debug-shortcut="ctrl+d">?
 window.sorcery = {
 	__version: "0.3.x",
 
-	init() {
-		document.body.classList.add("macos-retina")
+	init({ ssr } = { ssr: false }) {
+		const ssrWrapper = !ssr ? fn => fn() : fn => setTimeout(fn, 0)
 
-		const media = "matchMedia" in window && window.matchMedia("(prefers-color-scheme: dark)")
-		if (media) {
-			if (media.matches) {
-				document.body.setAttribute("data-theme", "dark")
+		ssrWrapper(() => {
+			document.body.classList.add("macos-retina")
+
+			const media = "matchMedia" in window && window.matchMedia("(prefers-color-scheme: dark)")
+			if (media) {
+				if (media.matches) {
+					document.body.setAttribute("data-theme", "dark")
+				}
+				media.addEventListener("change", e => {
+					sorcery.toggleDarkMode()
+				})
 			}
-			media.addEventListener("change", e => {
-				sorcery.toggleDarkMode()
+
+			document.addEventListener("keydown", e => {
+				if (!e.ctrlKey && e.key === "d") {
+					sorcery.toggleDarkMode()
+				}
+				if (e.ctrlKey && e.key === "d") {
+					sorcery.toggleDebugMode()
+				}
 			})
-			// TODO
-		}
-
-		document.addEventListener("keydown", e => {
-			if (!e.ctrlKey && e.key === "d") {
-				sorcery.toggleDarkMode()
-			}
-			if (e.ctrlKey && e.key === "d") {
-				sorcery.toggleDebugMode()
-			}
 		})
-		// TODO
 	},
 	toggleDebugMode() {
 		const modeEnabled = document.body.hasAttribute("data-debug")
@@ -42,8 +43,8 @@ window.sorcery = {
 			document.body.removeAttribute("data-theme")
 		}
 	},
-}
+};
 
 ;(() => {
-	window.sorcery.init()
+	window.sorcery.init({ ssr: true })
 })()
