@@ -1,0 +1,7 @@
+@mixin display {
+	$ampersand: get-dynamic-ampersand();
+
+	#{$ampersand}hidden {
+		display: none;
+	}
+}

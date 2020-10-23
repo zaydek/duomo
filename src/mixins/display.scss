@@ -1,9 +1,0 @@
-@mixin display {
-	$ampersand: get-dynamic-ampersand();
-
-	@each $key, $value in (hidden: none, block: block, inline-block: inline-block, inline: inline) {
-		#{$ampersand}#{$key} {
-			display: $value;
-		}
-	}
-}

@@ -1,20 +1,21 @@
-@import "_tailwind-base-2_0_0-alpha";
+@import "./_tailwind-base-2_0_0-alpha";
 
-@import "./mixins/antialiasing";
-@import "./mixins/border-radius-from-range";
-@import "./mixins/box-shadow-from-named-map";
-@import "./mixins/color-from-map";
-@import "./mixins/display";
-@import "./mixins/flex";
-@import "./mixins/font";
-@import "./mixins/margin-and-padding";
-@import "./mixins/overflow";
-@import "./mixins/pointer-events";
-@import "./mixins/position-from-range";
-@import "./mixins/spacing-from-range";
-@import "./mixins/stagger-width";
-@import "./mixins/width-and-height";
-@import "./mixins/z-index-from-range";
+@import "./mixins/_border-radius";
+@import "./mixins/_box-shadow";
+@import "./mixins/_colors";
+@import "./mixins/_display";
+@import "./mixins/_font-smoothing";
+@import "./mixins/_font";
+@import "./mixins/_height";
+@import "./mixins/_margin";
+@import "./mixins/_overflow";
+@import "./mixins/_padding";
+@import "./mixins/_pointer-events";
+@import "./mixins/_position";
+@import "./mixins/_stacks";
+@import "./mixins/_stagger-width";
+@import "./mixins/_width";
+@import "./mixins/_z-index";
 
 @import "./utils/conv-functions";
 @import "./utils/generate-from-map";
@@ -22,8 +23,8 @@
 @import "./utils/get-dynamic-ampersand";
 @import "./utils/safe-functions";
 
-@import "./ranges";
-@import "./tailwind-tokens";
+@import "./_design-tokens";
+@import "./_ranges";
 
 $separator: "\\:";
 
@@ -55,44 +56,43 @@ $line-height-map: (
 $z-index-range: -1, auto, 0, 10, 20, 30, 40, 50;
 
 @mixin custom-props {
-	// TOOD: Remove purgecss comments?
-	//
-	/* purgecss end start */
 	html {
 		@include generate-custom-props-from-map($font-family-map);
 		@include generate-custom-props-from-map($color-map);
 		@include generate-custom-props-from-map($box-shadow-named-map);
 		@include generate-custom-props-from-map($timing-function-map);
 	}
+}
 
+@mixin debugger {
 	[data-debug],
 	[data-debug] * {
 		outline: 2px solid var(--debug-qualified-color, hsla(200, 100%, 50%, 0.25));
 		outline-offset: -1px;
 	}
-	/* purgecss end ignore */
 }
 
 @mixin props {
 	@if not & {
+		/* purgecss start ignore */
 		@include antialiasing;
 		@include custom-props;
+		@include debugger;
+		/* purgecss end ignore */
 	}
-	@include spacing-from-range(join(auto, $range), rem);
+	@include display;
+	@include stacks-from-range($range, rem);
 	@include margin-from-range(join(join($-range, auto), $range), rem);
 	@include padding-from-range($range, rem);
 	@include position-from-range((auto, 0));
-	@include display;
-	@include flex;
 	@include width-from-range(join(auto, $range), rem);
-	@include stagger-width;
 	@include max-width-from-map($breakpoint-map, px);
 	@include height-from-range(join(auto, $range), rem);
-	@include min-height-from-range(join(auto, 0), rem /* TODO: Change to px? */);
+	@include min-height-from-range(join(auto, 0), px);
+	@include stagger-width;
 	@include font-style;
 	@include font-weight;
 	@include font-size-from-range($range, rem);
-	// TODO
 	@include generate-from-map((line-height), "leading", $line-height-map, passthrough);
 	@if not & {
 		@include color-from-map((color), "text", $color-map);

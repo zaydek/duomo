@@ -16,32 +16,6 @@
 	}
 }
 
-// // TODO: Expose `h:` as a variable?
-// @mixin generate-from-map-hover($properties, $shorthand, $map, $conv-fn) {
-// 	$ampersand: get-dynamic-ampersand();
-//
-// 	@each $key, $value in $map {
-// 		#{$ampersand}hover\:#{$shorthand}-#{$key}:hover {
-// 			@each $property in $properties {
-// 				#{$property}: call(get-function($conv-fn), $value);
-// 			}
-// 		}
-// 	}
-// }
-//
-// // TODO: Expose `f:` as a variablge?
-// @mixin generate-from-map-focus($properties, $shorthand, $map, $conv-fn) {
-// 	$ampersand: get-dynamic-ampersand();
-//
-// 	@each $key, $value in $map {
-// 		#{$ampersand}focus\:#{$shorthand}-#{$key}:focus {
-// 			@each $property in $properties {
-// 				#{$property}: call(get-function($conv-fn), $value);
-// 			}
-// 		}
-// 	}
-// }
-
 @mixin generate-from-named-map($properties, $named-map, $conv-fn) {
 	$ampersand: get-dynamic-ampersand();
 

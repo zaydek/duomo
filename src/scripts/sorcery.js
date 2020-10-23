@@ -1,5 +1,7 @@
 // TODO: Use <script data-dark-mode-shortcut="d" data-debug-shortcut="ctrl+d">?
 window.sorcery = {
+	__version: "0.3.x",
+
 	init() {
 		document.body.classList.add("macos-retina")
 

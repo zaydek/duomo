@@ -1,0 +1,45 @@
+@mixin stacks-from-range($range, $conv-fn) {
+	$ampersand: get-dynamic-ampersand();
+
+	#{$ampersand}hstack {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: stretch;
+	}
+	#{$ampersand}hstack > * + * {
+		margin-top: 0;
+		margin-left: var(--spacing, 0);
+	}
+	#{$ampersand}hstack > [class="spacer"]:empty,
+	#{$ampersand}hstack > [class="spacer"]:empty + * {
+		margin-left: 0;
+	}
+
+	#{$ampersand}vstack {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: stretch;
+	}
+	#{$ampersand}vstack > * + * {
+		margin-left: 0;
+		margin-top: var(--spacing, 0);
+	}
+	#{$ampersand}vstack > [class="spacer"]:empty,
+	#{$ampersand}vstack > [class="spacer"]:empty + * {
+		margin-top: 0;
+	}
+
+	#{$ampersand}spacer {
+		flex-grow: 1;
+		flex-shrink: 0;
+		flex-basis: var(--spacing, 0);
+	}
+
+	@each $value in $range {
+		#{$ampersand}sp-#{$value} {
+			--spacing: #{call(get-function($conv-fn), $value)};
+		}
+	}
+}
