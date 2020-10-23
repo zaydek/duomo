@@ -1,9 +1,18 @@
+@mixin _padding-impl($properties, $shorthand, $range, $conv-fn) {
+	.#{$shorthand}-sp {
+		@each $property in $properties {
+			#{$property}: var(--spacing, 0);
+		}
+	}
+	@include generate-from-range($properties, $shorthand, $range, $conv-fn);
+}
+
 @mixin padding-from-range($range, $conv-fn) {
-	@include generate-from-range((padding), "p", $range, $conv-fn);
-	@include generate-from-range((padding-left, padding-right), "px", $range, $conv-fn);
-	@include generate-from-range((padding-left), "pl", $range, $conv-fn);
-	@include generate-from-range((padding-right), "pr", $range, $conv-fn);
-	@include generate-from-range((padding-top, padding-bottom), "py", $range, $conv-fn);
-	@include generate-from-range((padding-top), "pt", $range, $conv-fn);
-	@include generate-from-range((padding-bottom), "pb", $range, $conv-fn);
+	@include _padding-impl((padding), "p", $range, $conv-fn);
+	@include _padding-impl((padding-left, padding-right), "px", $range, $conv-fn);
+	@include _padding-impl((padding-left), "pl", $range, $conv-fn);
+	@include _padding-impl((padding-right), "pr", $range, $conv-fn);
+	@include _padding-impl((padding-top, padding-bottom), "py", $range, $conv-fn);
+	@include _padding-impl((padding-top), "pt", $range, $conv-fn);
+	@include _padding-impl((padding-bottom), "pb", $range, $conv-fn);
 }
