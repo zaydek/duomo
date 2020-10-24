@@ -52,7 +52,7 @@
 	// 	--spacing: calc(var(--spacing, 0) / 2);
 	// }
 	@each $value in $range {
-		#{$ampersand}sp-#{$value} > * {
+		#{$ampersand}s-#{$value} > * {
 			--spacing: #{call(get-function($conv-fn), $value)};
 		}
 	}
@@ -63,17 +63,18 @@
 	// 	}
 	// }
 
-	#{$ampersand}no-shrink {
+	// EXPERIMENTAL
+	#{$ampersand}flex-shrink-0 {
 		flex-shrink: 0;
 	}
-	#{$ampersand}shrink {
-		flex-shrink: 1;
-	}
+	// #{$ampersand}responsive {
+	// 	flex-shrink: 1;
+	// }
 
-	#{$ampersand}no-wrap {
-		flex-wrap: nowrap;
-	}
-	#{$ampersand}wrap {
-		flex-wrap: wrap;
-	}
+	// #{$ampersand}no-wrap {
+	// 	flex-wrap: nowrap;
+	// }
+	// #{$ampersand}wrap {
+	// 	flex-wrap: wrap;
+	// }
 }

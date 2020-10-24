@@ -4,6 +4,7 @@
 @import "./mixins/_box-shadow";
 @import "./mixins/_colors";
 @import "./mixins/_font-smoothing";
+@import "./mixins/_font";
 @import "./mixins/_height";
 @import "./mixins/_margin";
 @import "./mixins/_overflow";
@@ -12,7 +13,6 @@
 @import "./mixins/_position";
 @import "./mixins/_stacks";
 @import "./mixins/_stagger-width";
-@import "./mixins/_text";
 @import "./mixins/_width";
 @import "./mixins/_z-index";
 
@@ -73,14 +73,6 @@ $z-index-range: -1, auto, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50;
 
 // TODO: Extract `line-height`.
 @mixin props {
-	@if not & {
-		/* purgecss start ignore */
-		@include antialiasing;
-		@include custom-props;
-		@include debugger;
-		@include stagger-width;
-		/* purgecss end ignore */
-	}
 	@include stacks-from-range($range, rem);
 	@include margin-from-range(join(join($-range, auto), $range), rem);
 	@include padding-from-range($range, rem);
@@ -95,10 +87,8 @@ $z-index-range: -1, auto, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50;
 	@include font-size-from-range($font-size-range, rem);
 	@include generate-from-map((line-height), "leading", $line-height-map, passthrough);
 	@include line-decoration;
-	@if not & {
-		@include color-from-map((color), "text", $color-map);
-		@include color-from-map((background-color), "bg", $color-map);
-	}
+	@include color-from-map((color), "text", $color-map);
+	@include color-from-map((background-color), "bg", $color-map);
 	@include border-radius-from-range($short-range, rem);
 	@include box-shadow-from-named-map($box-shadow-named-map);
 	@include overflow;
@@ -107,6 +97,13 @@ $z-index-range: -1, auto, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50;
 }
 
 @at-root {
+	/* purgecss start ignore */
+	@include antialiasing;
+	@include custom-props;
+	@include debugger;
+	// @include stagger-width;
+	/* purgecss end ignore */
+
 	@include props;
 	@each $key, $value in $breakpoint-map {
 		@media (min-width: px($value)) {

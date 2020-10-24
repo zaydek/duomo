@@ -1,22 +1,22 @@
 @mixin _margin-impl($properties, $shorthand, $range, $conv-fn) {
 	$ampersand: get-dynamic-ampersand();
 
-	#{$ampersand}-#{$shorthand}-sp\/2 {
+	#{$ampersand}-#{$shorthand}-s\/2 {
 		@each $property in $properties {
 			#{$property}: calc(-1 * var(--spacing, 0) / 2);
 		}
 	}
-	#{$ampersand}-#{$shorthand}-sp {
+	#{$ampersand}-#{$shorthand}-s {
 		@each $property in $properties {
 			#{$property}: calc(-1 * var(--spacing, 0));
 		}
 	}
-	#{$ampersand}#{$shorthand}-sp\/2 {
+	#{$ampersand}#{$shorthand}-s\/2 {
 		@each $property in $properties {
 			#{$property}: calc(var(--spacing, 0) / 2);
 		}
 	}
-	#{$ampersand}#{$shorthand}-sp {
+	#{$ampersand}#{$shorthand}-s {
 		@each $property in $properties {
 			#{$property}: var(--spacing, 0);
 		}
