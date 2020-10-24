@@ -3474,20 +3474,8 @@ html {
 	width: 50%;
 }
 
-.text-left {
-	text-align: left;
-}
-
 .text-center {
 	text-align: center;
-}
-
-.text-right {
-	text-align: right;
-}
-
-.no-italic {
-	font-style: normal;
 }
 
 .italic {
@@ -3716,18 +3704,6 @@ html {
 
 .leading-2 {
 	line-height: 2;
-}
-
-.no-underline {
-	text-decoration: none;
-}
-
-.hover\:no-underline:hover {
-	text-decoration: none;
-}
-
-.focus\:no-underline:focus {
-	text-decoration: none;
 }
 
 .underline {
@@ -8825,17 +8801,8 @@ html {
 	[data-stagger] > *:last-child {
 		width: 50%;
 	}
-	.xs\:text-left {
-		text-align: left;
-	}
 	.xs\:text-center {
 		text-align: center;
-	}
-	.xs\:text-right {
-		text-align: right;
-	}
-	.xs\:no-italic {
-		font-style: normal;
 	}
 	.xs\:italic {
 		font-style: italic;
@@ -9007,15 +8974,6 @@ html {
 	}
 	.xs\:leading-2 {
 		line-height: 2;
-	}
-	.xs\:no-underline {
-		text-decoration: none;
-	}
-	.xs\:hover\:no-underline:hover {
-		text-decoration: none;
-	}
-	.xs\:focus\:no-underline:focus {
-		text-decoration: none;
 	}
 	.xs\:underline {
 		text-decoration: underline;
@@ -11861,17 +11819,8 @@ html {
 	[data-stagger] > *:last-child {
 		width: 50%;
 	}
-	.sm\:text-left {
-		text-align: left;
-	}
 	.sm\:text-center {
 		text-align: center;
-	}
-	.sm\:text-right {
-		text-align: right;
-	}
-	.sm\:no-italic {
-		font-style: normal;
 	}
 	.sm\:italic {
 		font-style: italic;
@@ -12043,15 +11992,6 @@ html {
 	}
 	.sm\:leading-2 {
 		line-height: 2;
-	}
-	.sm\:no-underline {
-		text-decoration: none;
-	}
-	.sm\:hover\:no-underline:hover {
-		text-decoration: none;
-	}
-	.sm\:focus\:no-underline:focus {
-		text-decoration: none;
 	}
 	.sm\:underline {
 		text-decoration: underline;
@@ -14897,17 +14837,8 @@ html {
 	[data-stagger] > *:last-child {
 		width: 50%;
 	}
-	.md\:text-left {
-		text-align: left;
-	}
 	.md\:text-center {
 		text-align: center;
-	}
-	.md\:text-right {
-		text-align: right;
-	}
-	.md\:no-italic {
-		font-style: normal;
 	}
 	.md\:italic {
 		font-style: italic;
@@ -15079,15 +15010,6 @@ html {
 	}
 	.md\:leading-2 {
 		line-height: 2;
-	}
-	.md\:no-underline {
-		text-decoration: none;
-	}
-	.md\:hover\:no-underline:hover {
-		text-decoration: none;
-	}
-	.md\:focus\:no-underline:focus {
-		text-decoration: none;
 	}
 	.md\:underline {
 		text-decoration: underline;
@@ -17933,17 +17855,8 @@ html {
 	[data-stagger] > *:last-child {
 		width: 50%;
 	}
-	.lg\:text-left {
-		text-align: left;
-	}
 	.lg\:text-center {
 		text-align: center;
-	}
-	.lg\:text-right {
-		text-align: right;
-	}
-	.lg\:no-italic {
-		font-style: normal;
 	}
 	.lg\:italic {
 		font-style: italic;
@@ -18115,15 +18028,6 @@ html {
 	}
 	.lg\:leading-2 {
 		line-height: 2;
-	}
-	.lg\:no-underline {
-		text-decoration: none;
-	}
-	.lg\:hover\:no-underline:hover {
-		text-decoration: none;
-	}
-	.lg\:focus\:no-underline:focus {
-		text-decoration: none;
 	}
 	.lg\:underline {
 		text-decoration: underline;
@@ -20969,17 +20873,8 @@ html {
 	[data-stagger] > *:last-child {
 		width: 50%;
 	}
-	.xl\:text-left {
-		text-align: left;
-	}
 	.xl\:text-center {
 		text-align: center;
-	}
-	.xl\:text-right {
-		text-align: right;
-	}
-	.xl\:no-italic {
-		font-style: normal;
 	}
 	.xl\:italic {
 		font-style: italic;
@@ -21151,15 +21046,6 @@ html {
 	}
 	.xl\:leading-2 {
 		line-height: 2;
-	}
-	.xl\:no-underline {
-		text-decoration: none;
-	}
-	.xl\:hover\:no-underline:hover {
-		text-decoration: none;
-	}
-	.xl\:focus\:no-underline:focus {
-		text-decoration: none;
 	}
 	.xl\:underline {
 		text-decoration: underline;

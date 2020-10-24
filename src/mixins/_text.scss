@@ -1,23 +1,22 @@
 @mixin text-align {
 	$ampersand: get-dynamic-ampersand();
 
-	#{$ampersand}text-left {
-		text-align: left;
-	}
+	// // EXPERIMENTAL
+	// #{$ampersand}no-text-center {
+	// 	text-align: start;
+	// }
 	#{$ampersand}text-center {
 		text-align: center;
-	}
-	#{$ampersand}text-right {
-		text-align: right;
 	}
 }
 
 @mixin font-style {
 	$ampersand: get-dynamic-ampersand();
 
-	#{$ampersand}no-italic {
-		font-style: normal;
-	}
+	// // EXPERIMENTAL
+	// #{$ampersand}no-italic {
+	// 	font-style: initial;
+	// }
 	#{$ampersand}italic {
 		font-style: italic;
 	}
@@ -44,15 +43,15 @@
 @mixin line-decoration {
 	$ampersand: get-dynamic-ampersand();
 
-	#{$ampersand}no-underline {
-		text-decoration: none;
-	}
-	#{$ampersand}hover\:no-underline:hover {
-		text-decoration: none;
-	}
-	#{$ampersand}focus\:no-underline:focus {
-		text-decoration: none;
-	}
+	// #{$ampersand}no-underline {
+	// 	text-decoration: none;
+	// }
+	// #{$ampersand}hover\:no-underline:hover {
+	// 	text-decoration: none;
+	// }
+	// #{$ampersand}focus\:no-underline:focus {
+	// 	text-decoration: none;
+	// }
 	#{$ampersand}underline {
 		text-decoration: underline;
 	}
