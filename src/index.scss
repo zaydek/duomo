@@ -3,7 +3,6 @@
 @import "./mixins/_border-radius";
 @import "./mixins/_box-shadow";
 @import "./mixins/_colors";
-@import "./mixins/_display";
 @import "./mixins/_font-smoothing";
 @import "./mixins/_height";
 @import "./mixins/_margin";
@@ -81,9 +80,8 @@ $z-index-range: -1, auto, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50;
 		@include debugger;
 		/* purgecss end ignore */
 	}
-	@include display;
 	@include stacks-from-range($range, rem);
-	@include margin-from-range(join(join($-range, auto), $range), rem);
+	@include margin-from-range(join(join($-short-range, auto), $range), rem);
 	@include padding-from-range($range, rem);
 	@include position-from-range((auto, 0));
 	@include width-from-range(join(auto, $range), rem);
@@ -101,7 +99,7 @@ $z-index-range: -1, auto, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50;
 		@include color-from-map((color), "text", $color-map);
 		@include color-from-map((background-color), "bg", $color-map);
 	}
-	@include border-radius-from-range($shorter-range, rem);
+	@include border-radius-from-range($short-range, rem);
 	@include box-shadow-from-named-map($box-shadow-named-map);
 	@include overflow;
 	@include z-index-from-range($z-index-range);
