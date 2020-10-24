@@ -78,17 +78,17 @@ $z-index-range: -1, auto, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50;
 		@include antialiasing;
 		@include custom-props;
 		@include debugger;
+		@include stagger-width;
 		/* purgecss end ignore */
 	}
 	@include stacks-from-range($range, rem);
-	@include margin-from-range(join(join($-short-range, auto), $range), rem);
+	@include margin-from-range(join(join($-range, auto), $range), rem);
 	@include padding-from-range($range, rem);
 	@include position-from-range((auto, 0));
 	@include width-from-range(join(auto, $range), rem);
 	@include max-width-from-map($breakpoint-map, px);
 	@include height-from-range(join(auto, $range), rem);
 	@include min-height-from-range(join(auto, 0), px);
-	@include stagger-width;
 	@include text-align;
 	@include font-style;
 	@include font-weight;
