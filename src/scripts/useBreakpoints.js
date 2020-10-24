@@ -16,16 +16,17 @@ export default function useBreakpoints(breakpoints = defaultBreakpoints) {
 	const [xl, setXL] = React.useState(true)
 
 	React.useLayoutEffect(() => {
-		const handler = e => {
+		const handleResize = e => {
 			setXS(window.innerWidth >= breakpoints.xs)
 			setSM(window.innerWidth >= breakpoints.sm)
 			setMD(window.innerWidth >= breakpoints.md)
 			setLG(window.innerWidth >= breakpoints.lg)
 			setXL(window.innerWidth >= breakpoints.xl)
 		}
-		window.addEventListener("resize", handler)
+		handleResize()
+		window.addEventListener("resize", handleResize)
 		return () => {
-			window.removeEventListener("resize", handler)
+			window.removeEventListener("resize", handleResize)
 		}
 	}, [breakpoints])
 
