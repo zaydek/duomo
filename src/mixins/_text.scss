@@ -1,0 +1,65 @@
+@mixin text-align {
+	$ampersand: get-dynamic-ampersand();
+
+	#{$ampersand}text-left {
+		text-align: left;
+	}
+	#{$ampersand}text-center {
+		text-align: center;
+	}
+	#{$ampersand}text-right {
+		text-align: right;
+	}
+}
+
+@mixin font-style {
+	$ampersand: get-dynamic-ampersand();
+
+	#{$ampersand}no-italic {
+		font-style: normal;
+	}
+	#{$ampersand}italic {
+		font-style: italic;
+	}
+}
+
+@mixin font-weight {
+	$ampersand: get-dynamic-ampersand();
+
+	@each $weight in 100, 200, 300, 400, 500, 600, 700, 800, 900 {
+		#{$ampersand}font-#{$weight} {
+			font-weight: $weight;
+		}
+	}
+}
+
+@mixin font-size-from-range($range, $conv-fn) {
+	@include generate-from-range((font-size), "text", $range, $conv-fn);
+}
+
+// @mixin line-height-from-range($range, $conv-fn) {
+// 	@include generate-from-range((line-height), "leading", $range, $conv-fn);
+// }
+
+@mixin line-decoration {
+	$ampersand: get-dynamic-ampersand();
+
+	#{$ampersand}no-underline {
+		text-decoration: none;
+	}
+	#{$ampersand}hover\:no-underline:hover {
+		text-decoration: none;
+	}
+	#{$ampersand}focus\:no-underline:focus {
+		text-decoration: none;
+	}
+	#{$ampersand}underline {
+		text-decoration: underline;
+	}
+	#{$ampersand}hover\:underline:hover {
+		text-decoration: underline;
+	}
+	#{$ampersand}focus\:underline:focus {
+		text-decoration: underline;
+	}
+}

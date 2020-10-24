@@ -1,9 +1,9 @@
 @mixin _padding-impl($properties, $shorthand, $range, $conv-fn) {
-	.#{$shorthand}-sp {
-		@each $property in $properties {
-			#{$property}: var(--spacing, 0);
-		}
-	}
+	// .#{$shorthand}-sp {
+	// 	@each $property in $properties {
+	// 		#{$property}: var(--spacing, 0);
+	// 	}
+	// }
 	@include generate-from-range($properties, $shorthand, $range, $conv-fn);
 }
 

@@ -5,7 +5,6 @@
 @import "./mixins/_colors";
 @import "./mixins/_display";
 @import "./mixins/_font-smoothing";
-@import "./mixins/_font";
 @import "./mixins/_height";
 @import "./mixins/_margin";
 @import "./mixins/_overflow";
@@ -14,6 +13,7 @@
 @import "./mixins/_position";
 @import "./mixins/_stacks";
 @import "./mixins/_stagger-width";
+@import "./mixins/_text";
 @import "./mixins/_width";
 @import "./mixins/_z-index";
 
@@ -72,6 +72,7 @@ $z-index-range: -1, auto, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50;
 	}
 }
 
+// TODO: Extract `line-height`.
 @mixin props {
 	@if not & {
 		/* purgecss start ignore */
@@ -90,34 +91,12 @@ $z-index-range: -1, auto, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50;
 	@include height-from-range(join(auto, $range), rem);
 	@include min-height-from-range(join(auto, 0), px);
 	@include stagger-width;
+	@include text-align;
 	@include font-style;
 	@include font-weight;
 	@include font-size-from-range($font-size-range, rem);
 	@include generate-from-map((line-height), "leading", $line-height-map, passthrough);
-
-	@if not & {
-		$ampersand: get-dynamic-ampersand();
-
-		#{$ampersand}no-underline {
-			text-decoration: none;
-		}
-		#{$ampersand}underline {
-			text-decoration: underline;
-		}
-		#{$ampersand}hover\:no-underline:hover {
-			text-decoration: none;
-		}
-		#{$ampersand}focus\:no-underline:focus {
-			text-decoration: none;
-		}
-		#{$ampersand}hover\:underline:hover {
-			text-decoration: underline;
-		}
-		#{$ampersand}focus\:underline:focus {
-			text-decoration: underline;
-		}
-	}
-
+	@include line-decoration;
 	@if not & {
 		@include color-from-map((color), "text", $color-map);
 		@include color-from-map((background-color), "bg", $color-map);

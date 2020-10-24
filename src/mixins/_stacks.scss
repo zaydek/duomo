@@ -51,7 +51,7 @@
 	}
 
 	@each $value in $range {
-		#{$ampersand}sp-#{$value} {
+		#{$ampersand}sp-#{$value} > * {
 			--spacing: #{call(get-function($conv-fn), $value)};
 		}
 	}
