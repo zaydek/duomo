@@ -5,14 +5,13 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
-		align-items: stretch;
 	}
 	#{$ampersand}hstack > * + * {
 		margin-top: 0;
 		margin-left: var(--spacing, 0);
 	}
-	#{$ampersand}hstack > [class="spacer"]:empty,
-	#{$ampersand}hstack > [class="spacer"]:empty + * {
+	#{$ampersand}hstack > [class*="spacer"]:empty,
+	#{$ampersand}hstack > [class*="spacer"]:empty + * {
 		margin-left: 0;
 	}
 
@@ -20,14 +19,13 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		align-items: stretch;
 	}
 	#{$ampersand}vstack > * + * {
 		margin-left: 0;
 		margin-top: var(--spacing, 0);
 	}
-	#{$ampersand}vstack > [class="spacer"]:empty,
-	#{$ampersand}vstack > [class="spacer"]:empty + * {
+	#{$ampersand}vstack > [class*="spacer"]:empty,
+	#{$ampersand}vstack > [class*="spacer"]:empty + * {
 		margin-top: 0;
 	}
 
@@ -50,15 +48,32 @@
 		flex-basis: var(--spacing, 0);
 	}
 
+	// #{$ampersand}sp\/2 > * {
+	// 	--spacing: calc(var(--spacing, 0) / 2);
+	// }
 	@each $value in $range {
 		#{$ampersand}sp-#{$value} > * {
 			--spacing: #{call(get-function($conv-fn), $value)};
 		}
 	}
 
-	@for $x from 0 through 12 {
-		#{$ampersand}order-#{$x} {
-			order: $x;
-		}
+	// @for $x from 0 through 12 {
+	// 	#{$ampersand}order-#{$x} {
+	// 		order: $x;
+	// 	}
+	// }
+
+	#{$ampersand}no-shrink {
+		flex-shrink: 0;
+	}
+	#{$ampersand}shrink {
+		flex-shrink: 1;
+	}
+
+	#{$ampersand}no-wrap {
+		flex-wrap: nowrap;
+	}
+	#{$ampersand}wrap {
+		flex-wrap: wrap;
 	}
 }

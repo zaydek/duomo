@@ -1,9 +1,35 @@
+@mixin _margin-impl($properties, $shorthand, $range, $conv-fn) {
+	$ampersand: get-dynamic-ampersand();
+
+	#{$ampersand}-#{$shorthand}-sp\/2 {
+		@each $property in $properties {
+			#{$property}: calc(-1 * var(--spacing, 0) / 2);
+		}
+	}
+	#{$ampersand}-#{$shorthand}-sp {
+		@each $property in $properties {
+			#{$property}: calc(-1 * var(--spacing, 0));
+		}
+	}
+	#{$ampersand}#{$shorthand}-sp\/2 {
+		@each $property in $properties {
+			#{$property}: calc(var(--spacing, 0) / 2);
+		}
+	}
+	#{$ampersand}#{$shorthand}-sp {
+		@each $property in $properties {
+			#{$property}: var(--spacing, 0);
+		}
+	}
+	@include generate-from-range($properties, $shorthand, $range, $conv-fn);
+}
+
 @mixin margin-from-range($range, $conv-fn) {
-	@include generate-from-range((margin), "m", $range, $conv-fn);
-	@include generate-from-range((margin-left, margin-right), "mx", $range, $conv-fn);
-	@include generate-from-range((margin-left), "ml", $range, $conv-fn);
-	@include generate-from-range((margin-right), "mr", $range, $conv-fn);
-	@include generate-from-range((margin-top, margin-bottom), "my", $range, $conv-fn);
-	@include generate-from-range((margin-top), "mt", $range, $conv-fn);
-	@include generate-from-range((margin-bottom), "mb", $range, $conv-fn);
+	@include _margin-impl((margin), "m", $range, $conv-fn);
+	@include _margin-impl((margin-left, margin-right), "mx", $range, $conv-fn);
+	@include _margin-impl((margin-left), "ml", $range, $conv-fn);
+	@include _margin-impl((margin-right), "mr", $range, $conv-fn);
+	@include _margin-impl((margin-top, margin-bottom), "my", $range, $conv-fn);
+	@include _margin-impl((margin-top), "mt", $range, $conv-fn);
+	@include _margin-impl((margin-bottom), "mb", $range, $conv-fn);
 }

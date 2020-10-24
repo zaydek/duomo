@@ -4,4 +4,22 @@
 	#{$ampersand}hidden {
 		display: none;
 	}
+	#{$ampersand}block {
+		display: block;
+	}
+	#{$ampersand}inline-block {
+		display: inline-block;
+	}
+	#{$ampersand}flex {
+		display: flex;
+	}
+	#{$ampersand}inline-flex {
+		display: inline-flex;
+	}
+	#{$ampersand}grid {
+		display: grid;
+	}
+	#{$ampersand}inline-grid {
+		display: inline-grid;
+	}
 }

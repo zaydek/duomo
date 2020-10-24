@@ -1,9 +1,16 @@
 @mixin _padding-impl($properties, $shorthand, $range, $conv-fn) {
-	// .#{$shorthand}-sp {
-	// 	@each $property in $properties {
-	// 		#{$property}: var(--spacing, 0);
-	// 	}
-	// }
+	$ampersand: get-dynamic-ampersand();
+
+	#{$ampersand}#{$shorthand}-sp\/2 {
+		@each $property in $properties {
+			#{$property}: calc(var(--spacing, 0) / 2);
+		}
+	}
+	#{$ampersand}#{$shorthand}-sp {
+		@each $property in $properties {
+			#{$property}: var(--spacing, 0);
+		}
+	}
 	@include generate-from-range($properties, $shorthand, $range, $conv-fn);
 }
 
