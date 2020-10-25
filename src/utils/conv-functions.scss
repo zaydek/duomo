@@ -1,4 +1,6 @@
-// Converts 16 -> 1rem.
+// Ex:
+//
+// 16 -> 1rem
 @function rem($value) {
 	@if (type-of($value) != "number" or $value == 0) {
 		@return $value;
@@ -6,7 +8,9 @@
 	@return $value / 16 + rem;
 }
 
-// Converts 16 -> 1em.
+// Ex:
+//
+// 16 -> 1em
 @function em($value) {
 	@if (type-of($value) != "number" or $value == 0) {
 		@return $value;
@@ -14,7 +18,9 @@
 	@return $value / 16 + rem;
 }
 
-// Converts 16 -> 16px.
+// Ex:
+//
+// 16 -> 16px
 @function px($value) {
 	@if (type-of($value) != "number" or $value == 0) {
 		@return $value;
@@ -22,7 +28,9 @@
 	@return $value + px;
 }
 
-// Passes through; 16 -> 16.
+// Ex:
+//
+// 16 -> 16
 @function passthrough($value) {
 	@return $value;
 }

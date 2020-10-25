@@ -10,7 +10,7 @@
 	@each $key, $value in $map {
 		#{$ampersand}#{$shorthand}-#{$key} {
 			@each $property in $properties {
-				#{$property}: call(get-function($conv-fn), $value);
+				#{$property}: #{call(get-function($conv-fn), $value)};
 			}
 		}
 	}
@@ -22,7 +22,7 @@
 	@each $key, $value in $named-map {
 		#{$ampersand}#{$key} {
 			@each $property in $properties {
-				#{$property}: call(get-function($conv-fn), $value);
+				#{$property}: #{call(get-function($conv-fn), $value)};
 			}
 		}
 	}

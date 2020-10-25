@@ -1,5 +1,3 @@
-@import "./_tailwind-base-2_0_0-alpha";
-
 @import "./mixins/_border-radius";
 @import "./mixins/_box-shadow";
 @import "./mixins/_colors";
@@ -14,6 +12,7 @@
 @import "./mixins/_position";
 @import "./mixins/_stacks";
 @import "./mixins/_stagger-width";
+@import "./mixins/_tailwind-base_2-0-0-alpha-dot-2";
 @import "./mixins/_width";
 @import "./mixins/_z-index";
 
@@ -53,8 +52,6 @@ $line-height-map: (
 	"2":      2,
 );
 
-$z-index-range: -1, auto, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50;
-
 @mixin custom-props {
 	html {
 		@include generate-custom-props-from-map($font-family-map);
@@ -69,11 +66,11 @@ $z-index-range: -1, auto, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50;
 	@include stacks-from-range($range, rem);
 	@include margin-from-range(join(join($-range, auto), $range), rem);
 	@include padding-from-range($range, rem);
-	@include position-from-range((auto, 0));
-	@include width-from-range(join(auto, $range), rem);
+	@include position-from-range((0));
+	@include width-from-range($range, rem);
 	@include max-width-from-map($breakpoint-map, px);
-	@include height-from-range(join(auto, $range), rem);
-	@include min-height-from-range(join(auto, 0), px);
+	@include height-from-range($range, rem);
+	// @include min-height-from-range(join(auto, 0), px);
 	@include text-align;
 	@include font-style;
 	@include font-weight;
@@ -89,11 +86,13 @@ $z-index-range: -1, auto, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50;
 	@include pointer-events;
 }
 
-// @include stagger-width;
 @at-root {
+	@include tailwind-base_2-0-0-alpha-dot-2;
+
 	/* purgecss start ignore */
 	@include antialiasing;
 	@include custom-props;
+	@include stagger-width;
 	@include debugger;
 	/* purgecss end ignore */
 

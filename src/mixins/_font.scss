@@ -25,10 +25,9 @@
 @mixin font-weight {
 	$ampersand: get-dynamic-ampersand();
 
-	// 100, 200
-	@each $weight in 300, 400, 500, 600, 700, 800, 900 {
+	@each $weight in 100, 200, 300, 400, 500, 600, 700, 800, 900 {
 		#{$ampersand}font-#{$weight} {
-			font-weight: $weight;
+			font-weight: #{$weight};
 		}
 	}
 }

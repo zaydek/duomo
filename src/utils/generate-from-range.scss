@@ -5,7 +5,7 @@
 		$negative: if(safe-compare-negative($value), "-", "");
 		#{$ampersand}#{$negative}#{$shorthand}-#{safe-abs($value)} {
 			@each $property in $properties {
-				#{$property}: call(get-function($conv-fn), $value);
+				#{$property}: #{call(get-function($conv-fn), $value)};
 			}
 		}
 	}

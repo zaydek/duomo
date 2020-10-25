@@ -1,26 +1,38 @@
 @mixin _margin-impl($properties, $shorthand, $range, $conv-fn) {
 	$ampersand: get-dynamic-ampersand();
 
-	#{$ampersand}-#{$shorthand}-s\/2 {
-		@each $property in $properties {
-			#{$property}: calc(-1 * var(--spacing, 0) / 2);
-		}
-	}
 	#{$ampersand}-#{$shorthand}-s {
 		@each $property in $properties {
-			#{$property}: calc(-1 * var(--spacing, 0));
+			#{$property}: calc(-1 * var(--parent-var-spacing, 0));
+		}
+	}
+	#{$ampersand}-#{$shorthand}-s\/2 {
+		@each $property in $properties {
+			#{$property}: calc(-1 * var(--parent-var-spacing, 0) / 2);
+		}
+	}
+	#{$ampersand}-#{$shorthand}-s\/4 {
+		@each $property in $properties {
+			#{$property}: calc(-1 * var(--parent-var-spacing, 0) / 4);
+		}
+	}
+
+	#{$ampersand}#{$shorthand}-s {
+		@each $property in $properties {
+			#{$property}: var(--parent-var-spacing, 0);
 		}
 	}
 	#{$ampersand}#{$shorthand}-s\/2 {
 		@each $property in $properties {
-			#{$property}: calc(var(--spacing, 0) / 2);
+			#{$property}: calc(var(--parent-var-spacing, 0) / 2);
 		}
 	}
-	#{$ampersand}#{$shorthand}-s {
+	#{$ampersand}#{$shorthand}-s\/4 {
 		@each $property in $properties {
-			#{$property}: var(--spacing, 0);
+			#{$property}: calc(var(--parent-var-spacing, 0) / 4);
 		}
 	}
+
 	@include generate-from-range($properties, $shorthand, $range, $conv-fn);
 }
 
