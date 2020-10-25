@@ -678,8 +678,8 @@ html {
 	background-color: rgba(0, 128, 255, 0.125);
 }
 
-[data-debug].spacer:empty,
-[data-debug] .spacer:empty {
+[data-debug][class="spacer"]:empty,
+[data-debug] [class="spacer"]:empty {
 	background-color: rgba(0, 255, 255, 0.125);
 }
 

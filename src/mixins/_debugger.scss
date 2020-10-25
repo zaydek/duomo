@@ -8,8 +8,8 @@
 	[data-debug] .spacer {
 		background-color: hsla(210, 100%, 50%, 0.125);
 	}
-	[data-debug].spacer:empty,
-	[data-debug] .spacer:empty {
+	[data-debug][class="spacer"]:empty,
+	[data-debug] [class="spacer"]:empty {
 		background-color: hsla(180, 100%, 50%, 0.125);
 	}
 }
