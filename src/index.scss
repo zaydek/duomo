@@ -3,6 +3,7 @@
 @import "./mixins/_border-radius";
 @import "./mixins/_box-shadow";
 @import "./mixins/_colors";
+@import "./mixins/_debugger";
 @import "./mixins/_font-smoothing";
 @import "./mixins/_font";
 @import "./mixins/_height";
@@ -63,14 +64,6 @@ $z-index-range: -1, auto, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50;
 	}
 }
 
-@mixin debugger {
-	[data-debug],
-	[data-debug] * {
-		outline: 2px solid var(--debug-qualified-color, hsla(200, 100%, 50%, 0.25));
-		outline-offset: -1px;
-	}
-}
-
 // TODO: Extract `line-height`.
 @mixin props {
 	@include stacks-from-range($range, rem);
@@ -96,12 +89,12 @@ $z-index-range: -1, auto, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50;
 	@include pointer-events;
 }
 
+// @include stagger-width;
 @at-root {
 	/* purgecss start ignore */
 	@include antialiasing;
 	@include custom-props;
 	@include debugger;
-	// @include stagger-width;
 	/* purgecss end ignore */
 
 	@include props;

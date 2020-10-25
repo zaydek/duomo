@@ -48,7 +48,7 @@
 		flex-basis: var(--spacing, 0);
 	}
 
-	// #{$ampersand}sp\/2 > * {
+	// #{$ampersand}s\/2 > * {
 	// 	--spacing: calc(var(--spacing, 0) / 2);
 	// }
 	@each $value in $range {
