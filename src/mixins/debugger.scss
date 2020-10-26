@@ -1,7 +1,7 @@
 @mixin debugger {
 	[data-debug],
 	[data-debug] * {
-		outline: 2px solid hsla(210, 100%, 50%, 0.25);
+		outline: 2px solid hsla(210, 100%, 50%, 0.15);
 		outline-offset: -1px;
 	}
 	[data-debug].spacer,

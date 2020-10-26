@@ -661,7 +661,7 @@ video {
 
 [data-debug],
 [data-debug] * {
-	outline: 2px solid rgba(0, 128, 255, 0.25);
+	outline: 2px solid rgba(0, 128, 255, 0.15);
 	outline-offset: -1px;
 }
 
