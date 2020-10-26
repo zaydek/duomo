@@ -1,10 +1,6 @@
 @mixin text-align {
 	$ampersand: get-dynamic-ampersand();
 
-	// // EXPERIMENTAL
-	// #{$ampersand}no-text-center {
-	// 	text-align: start;
-	// }
 	#{$ampersand}text-center {
 		text-align: center;
 	}
@@ -13,10 +9,6 @@
 @mixin font-style {
 	$ampersand: get-dynamic-ampersand();
 
-	// // EXPERIMENTAL
-	// #{$ampersand}no-italic {
-	// 	font-style: initial;
-	// }
 	#{$ampersand}italic {
 		font-style: italic;
 	}
@@ -36,6 +28,7 @@
 	@include generate-from-range((font-size), "text", $range, $conv-fn);
 }
 
+// // TODO
 // @mixin line-height-from-range($range, $conv-fn) {
 // 	@include generate-from-range((line-height), "leading", $range, $conv-fn);
 // }
@@ -43,15 +36,6 @@
 @mixin line-decoration {
 	$ampersand: get-dynamic-ampersand();
 
-	// #{$ampersand}no-underline {
-	// 	text-decoration: none;
-	// }
-	// #{$ampersand}hover\:no-underline:hover {
-	// 	text-decoration: none;
-	// }
-	// #{$ampersand}focus\:no-underline:focus {
-	// 	text-decoration: none;
-	// }
 	#{$ampersand}underline {
 		text-decoration: underline;
 	}

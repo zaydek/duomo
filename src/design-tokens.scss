@@ -306,8 +306,6 @@ $color-map: (
 	pink-900: $pink-900,
 );
 
-// https://github.com/tailwindlabs/tailwindcss/pull/1711
-//
 // prettier-ignore
 $sans:
 	ui-sans-serif,
@@ -350,7 +348,6 @@ $font-family-map: (
 	mono: $mono,
 );
 
-$box-shadow-none: none;
 $box-shadow-xs: 0 0 0 1px rgba(0, 0, 0, 0.05);
 $box-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 $box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -358,11 +355,8 @@ $box-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 
 $box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 $box-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 $box-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-// $box-shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
-// $box-shadow-outline: 0 0 0 3px rgba(66, 153, 225, 0.5);
 
 $box-shadow-named-map: (
-	no-shadow: $box-shadow-none,
 	shadow-xs: $box-shadow-xs,
 	shadow-sm: $box-shadow-sm,
 	shadow: $box-shadow,
@@ -370,8 +364,6 @@ $box-shadow-named-map: (
 	shadow-lg: $box-shadow-lg,
 	shadow-xl: $box-shadow-xl,
 	shadow-2xl: $box-shadow-2xl,
-	// shadow-inner: $box-shadow-inner,
-	// shadow-outline: $box-shadow-outline,,,,,,,,
 );
 
 $linear: linear;

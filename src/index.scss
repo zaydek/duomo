@@ -1,20 +1,21 @@
-@import "./mixins/_border-radius";
-@import "./mixins/_box-shadow";
-@import "./mixins/_colors";
-@import "./mixins/_debugger";
-@import "./mixins/_font-smoothing";
-@import "./mixins/_font";
-@import "./mixins/_height";
-@import "./mixins/_margin";
-@import "./mixins/_overflow";
-@import "./mixins/_padding";
-@import "./mixins/_pointer-events";
-@import "./mixins/_position";
-@import "./mixins/_stacks";
-@import "./mixins/_stagger-width";
-@import "./mixins/_tailwind-base_2-0-0-alpha-dot-2";
-@import "./mixins/_width";
-@import "./mixins/_z-index";
+@import "./mixins/border-radius";
+@import "./mixins/box-shadow";
+@import "./mixins/color";
+@import "./mixins/custom-props";
+@import "./mixins/debugger";
+@import "./mixins/font";
+@import "./mixins/height";
+@import "./mixins/macos-retina";
+@import "./mixins/margin";
+@import "./mixins/overflow";
+@import "./mixins/padding";
+@import "./mixins/pointer-events";
+@import "./mixins/position";
+@import "./mixins/stacks";
+@import "./mixins/stagger-width";
+@import "./mixins/tailwind-base_2-0-0-alpha";
+@import "./mixins/width";
+@import "./mixins/z-index";
 
 @import "./utils/conv-functions";
 @import "./utils/generate-from-map";
@@ -22,43 +23,19 @@
 @import "./utils/get-dynamic-ampersand";
 @import "./utils/safe-functions";
 
-@import "./_design-tokens";
-@import "./_ranges";
+@import "./design-tokens";
+@import "./vars";
 
 $separator: "\\:";
 
-// prettier-ignore
-$line-height-map: (
-	"1":      1,
-	"1\\.05": 1.05,
-	"1\\.1":  1.1,
-	"1\\.15": 1.15,
-	"1\\.2":  1.2,
-	"1\\.25": 1.25,
-	"1\\.3":  1.3,
-	"1\\.35": 1.35,
-	"1\\.4":  1.4,
-	"1\\.45": 1.45,
-	"1\\.5":  1.5,
-	"1\\.55": 1.55,
-	"1\\.6":  1.6,
-	"1\\.65": 1.65,
-	"1\\.7":  1.7,
-	"1\\.75": 1.75,
-	"1\\.8":  1.8,
-	"1\\.85": 1.85,
-	"1\\.9":  1.9,
-	"1\\.95": 1.95,
-	"2":      2,
-);
-
-@mixin custom-props {
-	html {
-		@include generate-custom-props-from-map($font-family-map);
-		@include generate-custom-props-from-map($color-map);
-		@include generate-custom-props-from-map($box-shadow-named-map);
-		@include generate-custom-props-from-map($timing-function-map);
-	}
+@mixin preflight {
+	/* purgecss start ignore */
+	@include tailwind-base;
+	@include macos-retina;
+	@include custom-props;
+	@include stagger-width;
+	@include debugger;
+	/* purgecss end ignore */
 }
 
 // TODO: Extract `line-height`.
@@ -70,15 +47,16 @@ $line-height-map: (
 	@include width-from-range($range, rem);
 	@include max-width-from-map($breakpoint-map, px);
 	@include height-from-range($range, rem);
-	// @include min-height-from-range(join(auto, 0), px);
 	@include text-align;
 	@include font-style;
 	@include font-weight;
 	@include font-size-from-range($font-size-range, rem);
 	@include generate-from-map((line-height), "leading", $line-height-map, passthrough);
 	@include line-decoration;
-	@include color-from-map((color), "text", $color-map);
-	@include color-from-map((background-color), "bg", $color-map);
+	@if not & {
+		@include color-from-map((color), "text", $color-map);
+		@include color-from-map((background-color), "bg", $color-map);
+	}
 	@include border-radius-from-range($short-range, rem);
 	@include box-shadow-from-named-map($box-shadow-named-map);
 	@include overflow;
@@ -87,15 +65,7 @@ $line-height-map: (
 }
 
 @at-root {
-	@include tailwind-base_2-0-0-alpha-dot-2;
-
-	/* purgecss start ignore */
-	@include antialiasing;
-	@include custom-props;
-	@include stagger-width;
-	@include debugger;
-	/* purgecss end ignore */
-
+	@include preflight;
 	@include props;
 	@each $key, $value in $breakpoint-map {
 		@media (min-width: px($value)) {
