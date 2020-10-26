@@ -47,11 +47,15 @@
 	}
 
 	@each $value in $range {
-		#{$ampersand}s-#{$value} {
-			--parent-var-spacing: #{call(get-function($conv-fn), $value)};
-		}
+		// #{$ampersand}s-#{$value} {
+		// 	--parent-var-spacing: #{call(get-function($conv-fn), $value)};
+		// }
+		// #{$ampersand}s-#{$value} > * {
+		// 	--spacing: var(--parent-var-spacing, 0);
+		// }
 		#{$ampersand}s-#{$value} > * {
-			--spacing: var(--parent-var-spacing, 0);
+			--parent-var-spacing: #{call(get-function($conv-fn), $value)};
+			--spacing: var(--parent-var-spacing);
 		}
 	}
 

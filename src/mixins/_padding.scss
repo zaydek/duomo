@@ -3,17 +3,17 @@
 
 	#{$ampersand}#{$shorthand}-s {
 		@each $property in $properties {
-			#{$property}: var(--parent-var-spacing, 0);
+			#{$property}: var(--spacing, 0);
 		}
 	}
-	#{$ampersand}#{$shorthand}-s\/2 {
+	#{$ampersand}#{$shorthand}-s-1\/2 {
 		@each $property in $properties {
-			#{$property}: calc(var(--parent-var-spacing, 0) / 2);
+			#{$property}: calc(var(--spacing, 0) / 2);
 		}
 	}
-	#{$ampersand}#{$shorthand}-s\/4 {
+	#{$ampersand}#{$shorthand}-s-1\/4 {
 		@each $property in $properties {
-			#{$property}: calc(var(--parent-var-spacing, 0) / 4);
+			#{$property}: calc(var(--spacing, 0) / 4);
 		}
 	}
 
