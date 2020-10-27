@@ -68,7 +68,7 @@ $separator: "\\:";
 	@include preflight;
 	@include props;
 	@each $key, $value in $breakpoint-map {
-		@media (min-width: px($value)) {
+		@media (min-width: $value) {
 			.#{$key} {
 				@at-root {
 					@include props;

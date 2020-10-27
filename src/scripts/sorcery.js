@@ -33,9 +33,9 @@ window.sorcery = {
 
 			if (script.getAttribute("data-node-env") !== "production") {
 				document.addEventListener("keydown", e => {
-					if (!e.ctrlKey && e.key === "d") {
+					if (!e.ctrlKey && e.key.toLowerCase() === "d") {
 						sorcery.toggleDarkMode()
-					} else if (e.ctrlKey && e.key === "d") {
+					} else if (e.ctrlKey && e.key.toLowerCase() === "d") {
 						sorcery.toggleDebugMode()
 					}
 				})
