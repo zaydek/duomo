@@ -1,30 +1,87 @@
-// prettier-ignore
+@function human-readable($value) {
+	@if $value == 100% {
+		@return "full";
+	} @else if $value == 100vw or $value == 100vh {
+		@return "screen";
+	} @else if $value == $xs {
+		@return "xs";
+	} @else if $value == $sm {
+		@return "sm";
+	} @else if $value == $md {
+		@return "md";
+	} @else if $value == $lg {
+		@return "lg";
+	} @else if $value == $xl {
+		@return "xl";
+	}
+	@return $value;
+}
+
 @mixin width-from-range($range, $conv-fn) {
 	$ampersand: get-dynamic-ampersand();
 
-	@include generate-from-range((width), "w", $range, $conv-fn);
-	#{$ampersand}w-full { width: 100%; }
-	#{$ampersand}w-screen { width: 100vw; }
+	@each $value in $range {
+		#{$ampersand}w-#{human-readable($value)} {
+			width: #{call(get-function($conv-fn), $value)};
+			[class*="hstack"] > & {
+				flex-shrink: 0;
+			}
+		}
+	}
+
+	@if not & {
+		[class*="hstack"] > [style^="width"],
+		[class*="hstack"] > [style*=";width"],
+		[class*="hstack"] > [style*="; width"] {
+			flex-shrink: 0;
+		}
+	}
+
+	@each $key, $value in ("full": 100%, "screen": 100vw) {
+		#{$ampersand}w-#{$key} {
+			width: #{$value};
+		}
+	}
 }
 
 @mixin max-width-from-map($map, $conv-fn) {
 	@include generate-from-map((max-width), "max-w", $map, $conv-fn);
 }
 
-// prettier-ignore
 @mixin height-from-range($range, $conv-fn) {
 	$ampersand: get-dynamic-ampersand();
 
-	@include generate-from-range((height), "h", $range, $conv-fn);
-	#{$ampersand}h-full { height: 100%; }
-	#{$ampersand}h-screen { height: 100vh; }
+	@each $value in $range {
+		#{$ampersand}h-#{$value} {
+			height: #{call(get-function($conv-fn), $value)};
+			[class*="vstack"] > & {
+				flex-shrink: 0;
+			}
+		}
+	}
+
+	@if not & {
+		[class*="vstack"] > [style^="height"],
+		[class*="vstack"] > [style*=";height"],
+		[class*="vstack"] > [style*="; height"] {
+			flex-shrink: 0;
+		}
+	}
+
+	@each $key, $value in ("full": 100%, "screen": 100vh) {
+		#{$ampersand}h-#{$key} {
+			height: #{$value};
+		}
+	}
 }
 
-// prettier-ignore
 @mixin min-height-from-range($range, $conv-fn) {
 	$ampersand: get-dynamic-ampersand();
 
 	@include generate-from-range((min-height), "min-h", $range, $conv-fn);
-	#{$ampersand}min-h-full { min-height: 100%; }
-	#{$ampersand}min-h-screen { min-height: 100vh; }
+	@each $key, $value in ("full": 100%, "screen": 100vw) {
+		#{$ampersand}min-h-#{$key} {
+			min-height: #{$value};
+		}
+	}
 }

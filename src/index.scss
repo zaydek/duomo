@@ -3,6 +3,7 @@
 @import "./mixins/color";
 @import "./mixins/custom-props";
 @import "./mixins/debugger";
+@import "./mixins/display";
 @import "./mixins/font";
 @import "./mixins/macos-retina";
 @import "./mixins/margin";
@@ -10,8 +11,8 @@
 @import "./mixins/padding";
 @import "./mixins/pointer-events";
 @import "./mixins/position";
-@import "./mixins/stacks";
-@import "./mixins/stagger-width";
+@import "./mixins/stack";
+@import "./mixins/stagger";
 @import "./mixins/tailwind-base_2-0-0-alpha";
 @import "./mixins/width-and-height";
 @import "./mixins/z-index";
@@ -32,18 +33,20 @@ $separator: "\\:";
 	@include tailwind-base;
 	@include macos-retina;
 	@include custom-props;
-	@include stagger-width;
+	@include stagger;
 	@include debugger;
 	/* purgecss end ignore */
 }
 
 // TODO: Extract `line-height`.
 @mixin props {
+	@include display;
 	@include stacks-from-range($range, rem);
 	@include margin-from-range(join(join($-range, auto), $range), rem);
 	@include padding-from-range($range, rem);
 	@include position-from-range((0));
 	@include width-from-range($range, rem);
+	@include width-from-range(($xs, $sm, $md, $lg, $xl), px);
 	@include max-width-from-map($breakpoint-map, px);
 	@include height-from-range($range, rem);
 	@include text-align;

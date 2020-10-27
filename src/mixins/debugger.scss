@@ -1,4 +1,5 @@
 @mixin debugger {
+	// @if not & {
 	[data-debug],
 	[data-debug] * {
 		outline: 2px solid hsla(210, 100%, 50%, 0.15);
@@ -12,4 +13,5 @@
 	[data-debug] [class="spacer"]:empty {
 		background-color: hsla(180, 100%, 50%, 0.05);
 	}
+	// }
 }

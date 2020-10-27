@@ -29,21 +29,18 @@
 		margin-top: 0;
 	}
 
-	#{$ampersand}align-stretch {
-		align-items: stretch;
-	}
-	#{$ampersand}align-start {
-		align-items: flex-start;
-	}
-	#{$ampersand}align-center {
-		align-items: center;
-	}
-	#{$ampersand}align-end {
-		align-items: flex-end;
+	@each $key, $value in ("stretch": stretch, "start": flex-start, "center": center, "end": flex-end) {
+		#{$ampersand}align-#{$key} {
+			align-items: #{$value};
+		}
 	}
 
 	#{$ampersand}spacer {
 		flex: 1 0 var(--spacing, 0);
+	}
+	#{$ampersand}spacer:first-child,
+	#{$ampersand}spacer:last-child {
+		flex: 1 0 0;
 	}
 
 	@each $value in $range {

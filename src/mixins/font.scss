@@ -1,5 +1,6 @@
 @mixin text-align {
 	$ampersand: get-dynamic-ampersand();
+
 	@each $value in (start, center, end) {
 		#{$ampersand}text-#{$value} {
 			text-align: #{$value};
@@ -9,6 +10,7 @@
 
 @mixin font-style {
 	$ampersand: get-dynamic-ampersand();
+
 	#{$ampersand}italic {
 		font-style: italic;
 	}
@@ -16,6 +18,7 @@
 
 @mixin font-weight {
 	$ampersand: get-dynamic-ampersand();
+
 	@each $value in 100, 200, 300, 400, 500, 600, 700, 800, 900 {
 		#{$ampersand}font-#{$value} {
 			font-weight: #{$value};
@@ -33,12 +36,15 @@
 	@include generate-from-map((line-height), "leading", $map, $conv-fn);
 }
 
-// prettier-ignore
 @mixin line-decoration {
 	$ampersand: get-dynamic-ampersand();
+
 	#{$ampersand}underline {
 		text-decoration: underline;
-		&:hover { text-decoration: underline; }
-		&:focus { text-decoration: underline; }
+		@each $value in (hover, focus) {
+			&:#{$value} {
+				text-decoration: underline;
+			}
+		}
 	}
 }

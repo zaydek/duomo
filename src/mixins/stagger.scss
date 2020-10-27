@@ -1,4 +1,5 @@
-@mixin stagger-width {
+@mixin stagger {
+	// @if not & {
 	[data-stagger="1"],
 	[data-stagger] > *:nth-child(4n + 1) {
 		width: calc(16 / 16 * 100%);
@@ -18,4 +19,5 @@
 	[data-stagger] > *:last-child {
 		width: 50%;
 	}
+	// }
 }
