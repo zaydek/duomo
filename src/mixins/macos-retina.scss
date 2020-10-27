@@ -1,10 +1,5 @@
 @mixin macos-retina {
 	$ampersand: get-dynamic-ampersand();
-
-	// #{$ampersand}no-macos-retina {
-	// 	-webkit-font-smoothing: auto;
-	// 	-moz-osx-font-smoothing: auto;
-	// }
 	#{$ampersand}macos-retina {
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;

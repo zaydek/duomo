@@ -1,8 +1,8 @@
-$xs: 40 * 16px; // @media (min-width:  640px)
-$sm: 48 * 16px; // @media (min-width:  768px)
-$md: 56 * 16px; // @media (min-width:  896px)
-$lg: 64 * 16px; // @media (min-width: 1024px)
-$xl: 80 * 16px; // @media (min-width: 1280px)
+$xs: 40 * 16; // @media (min-width:  640px)
+$sm: 48 * 16; // @media (min-width:  768px)
+$md: 56 * 16; // @media (min-width:  896px)
+$lg: 64 * 16; // @media (min-width: 1024px)
+$xl: 80 * 16; // @media (min-width: 1280px)
 
 $breakpoint-map: (
 	"xs": $xs,

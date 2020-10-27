@@ -4,7 +4,6 @@
 @import "./mixins/custom-props";
 @import "./mixins/debugger";
 @import "./mixins/font";
-@import "./mixins/height";
 @import "./mixins/macos-retina";
 @import "./mixins/margin";
 @import "./mixins/overflow";
@@ -14,7 +13,7 @@
 @import "./mixins/stacks";
 @import "./mixins/stagger-width";
 @import "./mixins/tailwind-base_2-0-0-alpha";
-@import "./mixins/width";
+@import "./mixins/width-and-height";
 @import "./mixins/z-index";
 
 @import "./utils/conv-functions";
@@ -51,7 +50,7 @@ $separator: "\\:";
 	@include font-style;
 	@include font-weight;
 	@include font-size-from-range($font-size-range, rem);
-	@include generate-from-map((line-height), "leading", $line-height-map, passthrough);
+	@include line-height-from-map($line-height-map, passthrough);
 	@include line-decoration;
 	@if not & {
 		@include color-from-map((color), "text", $color-map);
@@ -68,7 +67,7 @@ $separator: "\\:";
 	@include preflight;
 	@include props;
 	@each $key, $value in $breakpoint-map {
-		@media (min-width: $value) {
+		@media (min-width: px($value)) {
 			.#{$key} {
 				@at-root {
 					@include props;

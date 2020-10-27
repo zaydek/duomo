@@ -1,10 +1,6 @@
+// prettier-ignore
 @mixin pointer-events {
 	$ampersand: get-dynamic-ampersand();
-
-	#{$ampersand}pointer-events-none {
-		pointer-events: none;
-	}
-	#{$ampersand}pointer-events-auto {
-		pointer-events: auto;
-	}
+	#{$ampersand}no-pointer-events { pointer-events: none; }
+	#{$ampersand}pointer-events { pointer-events: auto; }
 }

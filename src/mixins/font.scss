@@ -1,14 +1,14 @@
 @mixin text-align {
 	$ampersand: get-dynamic-ampersand();
-
-	#{$ampersand}text-center {
-		text-align: center;
+	@each $value in (start, center, end) {
+		#{$ampersand}text-#{$value} {
+			text-align: #{$value};
+		}
 	}
 }
 
 @mixin font-style {
 	$ampersand: get-dynamic-ampersand();
-
 	#{$ampersand}italic {
 		font-style: italic;
 	}
@@ -16,10 +16,9 @@
 
 @mixin font-weight {
 	$ampersand: get-dynamic-ampersand();
-
-	@each $weight in 100, 200, 300, 400, 500, 600, 700, 800, 900 {
-		#{$ampersand}font-#{$weight} {
-			font-weight: #{$weight};
+	@each $value in 100, 200, 300, 400, 500, 600, 700, 800, 900 {
+		#{$ampersand}font-#{$value} {
+			font-weight: #{$value};
 		}
 	}
 }
@@ -28,21 +27,18 @@
 	@include generate-from-range((font-size), "text", $range, $conv-fn);
 }
 
-// // TODO
-// @mixin line-height-from-range($range, $conv-fn) {
-// 	@include generate-from-range((line-height), "leading", $range, $conv-fn);
-// }
+// TODO (1): Add `tracking`.
+// TODO (2): Change to line-height-from-range.
+@mixin line-height-from-map($map, $conv-fn) {
+	@include generate-from-map((line-height), "leading", $map, $conv-fn);
+}
 
+// prettier-ignore
 @mixin line-decoration {
 	$ampersand: get-dynamic-ampersand();
-
 	#{$ampersand}underline {
 		text-decoration: underline;
-	}
-	#{$ampersand}hover\:underline:hover {
-		text-decoration: underline;
-	}
-	#{$ampersand}focus\:underline:focus {
-		text-decoration: underline;
+		&:hover { text-decoration: underline; }
+		&:focus { text-decoration: underline; }
 	}
 }

@@ -3719,8 +3719,16 @@ video {
 	height: 100vh;
 }
 
+.text-start {
+	text-align: start;
+}
+
 .text-center {
 	text-align: center;
+}
+
+.text-end {
+	text-align: end;
 }
 
 .italic {
@@ -3955,11 +3963,11 @@ video {
 	text-decoration: underline;
 }
 
-.hover\:underline:hover {
+.underline:hover {
 	text-decoration: underline;
 }
 
-.focus\:underline:focus {
+.underline:focus {
 	text-decoration: underline;
 }
 
@@ -6626,11 +6634,11 @@ video {
 	z-index: 50;
 }
 
-.pointer-events-none {
+.no-pointer-events {
 	pointer-events: none;
 }
 
-.pointer-events-auto {
+.pointer-events {
 	pointer-events: auto;
 }
 
@@ -8972,8 +8980,14 @@ video {
 	.xs\:h-screen {
 		height: 100vh;
 	}
+	.xs\:text-start {
+		text-align: start;
+	}
 	.xs\:text-center {
 		text-align: center;
+	}
+	.xs\:text-end {
+		text-align: end;
 	}
 	.xs\:italic {
 		font-style: italic;
@@ -9149,10 +9163,10 @@ video {
 	.xs\:underline {
 		text-decoration: underline;
 	}
-	.xs\:hover\:underline:hover {
+	.xs\:underline:hover {
 		text-decoration: underline;
 	}
-	.xs\:focus\:underline:focus {
+	.xs\:underline:focus {
 		text-decoration: underline;
 	}
 	.xs\:rounded-0 {
@@ -9803,10 +9817,10 @@ video {
 	.xs\:z-50 {
 		z-index: 50;
 	}
-	.xs\:pointer-events-none {
+	.xs\:no-pointer-events {
 		pointer-events: none;
 	}
-	.xs\:pointer-events-auto {
+	.xs\:pointer-events {
 		pointer-events: auto;
 	}
 }
@@ -12149,8 +12163,14 @@ video {
 	.sm\:h-screen {
 		height: 100vh;
 	}
+	.sm\:text-start {
+		text-align: start;
+	}
 	.sm\:text-center {
 		text-align: center;
+	}
+	.sm\:text-end {
+		text-align: end;
 	}
 	.sm\:italic {
 		font-style: italic;
@@ -12326,10 +12346,10 @@ video {
 	.sm\:underline {
 		text-decoration: underline;
 	}
-	.sm\:hover\:underline:hover {
+	.sm\:underline:hover {
 		text-decoration: underline;
 	}
-	.sm\:focus\:underline:focus {
+	.sm\:underline:focus {
 		text-decoration: underline;
 	}
 	.sm\:rounded-0 {
@@ -12980,10 +13000,10 @@ video {
 	.sm\:z-50 {
 		z-index: 50;
 	}
-	.sm\:pointer-events-none {
+	.sm\:no-pointer-events {
 		pointer-events: none;
 	}
-	.sm\:pointer-events-auto {
+	.sm\:pointer-events {
 		pointer-events: auto;
 	}
 }
@@ -15326,8 +15346,14 @@ video {
 	.md\:h-screen {
 		height: 100vh;
 	}
+	.md\:text-start {
+		text-align: start;
+	}
 	.md\:text-center {
 		text-align: center;
+	}
+	.md\:text-end {
+		text-align: end;
 	}
 	.md\:italic {
 		font-style: italic;
@@ -15503,10 +15529,10 @@ video {
 	.md\:underline {
 		text-decoration: underline;
 	}
-	.md\:hover\:underline:hover {
+	.md\:underline:hover {
 		text-decoration: underline;
 	}
-	.md\:focus\:underline:focus {
+	.md\:underline:focus {
 		text-decoration: underline;
 	}
 	.md\:rounded-0 {
@@ -16157,10 +16183,10 @@ video {
 	.md\:z-50 {
 		z-index: 50;
 	}
-	.md\:pointer-events-none {
+	.md\:no-pointer-events {
 		pointer-events: none;
 	}
-	.md\:pointer-events-auto {
+	.md\:pointer-events {
 		pointer-events: auto;
 	}
 }
@@ -18503,8 +18529,14 @@ video {
 	.lg\:h-screen {
 		height: 100vh;
 	}
+	.lg\:text-start {
+		text-align: start;
+	}
 	.lg\:text-center {
 		text-align: center;
+	}
+	.lg\:text-end {
+		text-align: end;
 	}
 	.lg\:italic {
 		font-style: italic;
@@ -18680,10 +18712,10 @@ video {
 	.lg\:underline {
 		text-decoration: underline;
 	}
-	.lg\:hover\:underline:hover {
+	.lg\:underline:hover {
 		text-decoration: underline;
 	}
-	.lg\:focus\:underline:focus {
+	.lg\:underline:focus {
 		text-decoration: underline;
 	}
 	.lg\:rounded-0 {
@@ -19334,10 +19366,10 @@ video {
 	.lg\:z-50 {
 		z-index: 50;
 	}
-	.lg\:pointer-events-none {
+	.lg\:no-pointer-events {
 		pointer-events: none;
 	}
-	.lg\:pointer-events-auto {
+	.lg\:pointer-events {
 		pointer-events: auto;
 	}
 }
@@ -21680,8 +21712,14 @@ video {
 	.xl\:h-screen {
 		height: 100vh;
 	}
+	.xl\:text-start {
+		text-align: start;
+	}
 	.xl\:text-center {
 		text-align: center;
+	}
+	.xl\:text-end {
+		text-align: end;
 	}
 	.xl\:italic {
 		font-style: italic;
@@ -21857,10 +21895,10 @@ video {
 	.xl\:underline {
 		text-decoration: underline;
 	}
-	.xl\:hover\:underline:hover {
+	.xl\:underline:hover {
 		text-decoration: underline;
 	}
-	.xl\:focus\:underline:focus {
+	.xl\:underline:focus {
 		text-decoration: underline;
 	}
 	.xl\:rounded-0 {
@@ -22511,10 +22549,10 @@ video {
 	.xl\:z-50 {
 		z-index: 50;
 	}
-	.xl\:pointer-events-none {
+	.xl\:no-pointer-events {
 		pointer-events: none;
 	}
-	.xl\:pointer-events-auto {
+	.xl\:pointer-events {
 		pointer-events: auto;
 	}
 }

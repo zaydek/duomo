@@ -9,20 +9,6 @@
 			}
 		}
 	}
-
-	// EXPERIMENTAL
-	// @if $shorthand == "t" or $shorthand == "r" or $shorthand == "b" or $shorthand == "l" {
-	// 	#{$ampersand}#{$shorthand}-1\/2 {
-	// 		@each $property in $properties {
-	// 			#{$property}: 50%;
-	// 		}
-	// 	}
-	// 	#{$ampersand}#{$shorthand}-full {
-	// 		@each $property in $properties {
-	// 			#{$property}: 100%;
-	// 		}
-	// 	}
-	// }
 }
 
 @mixin position-from-range($range) {
