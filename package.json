@@ -2,9 +2,10 @@
 	"name": "sorcery",
 	"license": "MIT",
 	"scripts": {
-		"build-readable": "node-sass src/index.scss --output-style expanded --indent-type tab --indent-width 1 > build/index.css",
-		"build-minified": "node-sass src/index.scss --output-style compressed --indent-type tab --indent-width 1 > build/index.min.css",
-		"build": "yarn build-readable && yarn build-minified"
+		"build-readable": "node-sass --indent-type tab --indent-width 1 src/index.scss > build/index.css",
+		"build-minified": "node-sass --output-style compressed src/index.scss > build/index.min.css",
+		"clean-readable": "prettier -w build/index.css",
+		"build": "yarn build-readable && yarn clean-readable && yarn build-minified"
 	},
 	"devDependencies": {
 		"node-sass": "^4.14.1",
