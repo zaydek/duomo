@@ -57,10 +57,10 @@
 		--spacing: calc(var(--parent-var-spacing, 0) / 4);
 	}
 
-	// // TODO: Add -1?
-	// @for $x from 0 through 12 {
-	// 	#{$ampersand}order-#{$x} {
-	// 		order: #{$x};
-	// 	}
-	// }
+	@for $value from -1 through 12 {
+		$negative: if(safe-compare-negative($value), "-", "");
+		#{$ampersand}#{$negative}order-#{safe-abs($value)} {
+			order: #{$value};
+		}
+	}
 }

@@ -1,6 +1,7 @@
 {
+	"name": "sorcery",
+	"license": "MIT",
 	"scripts": {
-		"build-readable-cli": "node-sass src/index.scss --output-style expanded --indent-type tab --indent-width 1",
 		"build-readable": "node-sass src/index.scss --output-style expanded --indent-type tab --indent-width 1 > build/index.css",
 		"build-minified": "node-sass src/index.scss --output-style compressed --indent-type tab --indent-width 1 > build/index.min.css",
 		"build": "yarn build-readable && yarn build-minified"
