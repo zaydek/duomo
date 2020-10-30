@@ -1,16 +1,131 @@
-<div align="center">
-  <h1>
-    <br>
-    <br>
-    Sorcery SCSS 🔮
-    <br>
-    <br>
-    <br>
-    <br>
-  </h1>
-</div>
+# @zaydek/sorcery
 
-<br>
+`@zaydek/sorcery` is a stack-based CSS framework. Contributions are welcome as issues and or pull requests.
+
+To get started, simply run this command:
+
+```bash
+yarn add @zaydek/sorcery
+# or npm i @zaydek/sorcery
+```
+
+**Usage: (HTML + CDN)**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Hello, world!</title>
+		<link rel="stylesheet" href="http://unpkg.com/@zaydek/sorcery" />
+	</head>
+	<body>
+		<div class="hstack">
+			<div class="hstack s-16">
+				<div class="w-32 h-32 bg-gray-100 rounded-full"></div>
+				<div class="w-32 h-32 bg-gray-100 rounded-full"></div>
+			</div>
+			<div class="spacer"></div>
+			<div class="hstack s-16">
+				<div class="w-32 h-32 bg-gray-100 rounded-full"></div>
+				<div class="w-32 h-32 bg-gray-100 rounded-full"></div>
+			</div>
+		</div>
+	</body>
+</html>
+```
+
+**Usage: (React + NPM)**
+
+```tsx
+import "@zaydek/sorcery"
+
+function Component() {
+	return (
+		<div class="hstack">
+			<div class="hstack s-16">
+				<div class="w-32 h-32 bg-gray-100 rounded-full" />
+				<div class="w-32 h-32 bg-gray-100 rounded-full" />
+			</div>
+			<div class="spacer" />
+			<div class="hstack s-16">
+				<div class="w-32 h-32 bg-gray-100 rounded-full" />
+				<div class="w-32 h-32 bg-gray-100 rounded-full" />
+			</div>
+		</div>
+	)
+}
+```
+
+## Table of Contents
+
+- [Stack-based layouts](#stack-based-layouts)
+- [Utility-first classes](#utility-first-classes)
+- [Emphasis on zero-configuration](#zero-configuration)
+- [Introspection via CSS variables (custom properties)](#introspection)
+
+## [Stack-Based Layouts](#stack-based-layouts)
+
+<sub>Stacks are inspired by [Apple Swift UI](TODO) and [Jon Q’s talks about implementing stacks in CSS](TODO).</sub>
+
+What does stack-based mean? Instead of thinking in terms of Flexbox, think in terms of stacks. 💡 A stack simply describes a horizontal or vertical axis, and stacks compose a layout. It’s turtles all the way down, but for stacks. 🐢<sub>🐢</sub>
+
+Why stacks? Stacks are a more natural way of thinking about layout. The trouble with Flexbox is that you need to remember `display`, `flex-direction`, `justify-content`, `align-items`, and `flex`, and remember how these properties change in the context of `flex-direction: row` and `flex-direction: column`. Stacks are a much more simple but powerful primitive for describing layout _that is based on Flexbox_.
+
+At the core of Sorcery CSS are three classes: `hstack`, `vstack`, and `spacer`:
+
+```scss
+.hstack {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+.hstack > * + * {
+	margin-top: 0;
+	margin-left: var(--spacing, 0);
+}
+
+.vstack {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.vstack > * + * {
+	margin-left: 0;
+	margin-top: var(--spacing, 0);
+}
+
+.spacer {
+	flex: 1 0 var(--spacing, 0);
+}
+```
+
+**Stacks are easy to reason about because they manage Flexbox for you.**
+
+These are the most useful characteristics to understand:
+
+- `hstack` implements a horizontal stack.
+- `vstack` implements a vertical stack.
+- `spacer` implements a `hstack` or `vstack` spacer.
+
+## [Utility-First Classes](#utility-first-classes)
+
+TODO
+
+## [Zero-Configuration](#zero-configuration)
+
+TODO
+
+## [Introspection](#introspection)
+
+TODO
+
+## License
+
+Licensed as [MIT](./LICENSE).
+
+<!--
 
 Sorcery SCSS is a utility-first framework for rapid development. Sorcery SCSS is most similar to Tailwind CSS but differentiates itself in these key ways:
 
@@ -33,572 +148,4 @@ The problem with almost every CSS library and framework is they attempt to _solv
 
 The key to understanding Sorcery SCSS is to understand that it **does not attempt** to map every CSS property to an arbitrary class. What Sorcery SCSS does is makes it easier to reason about responsive skeletons, and encourages you to lean into CSS or SCSS when you’re ready to retrofit your skeleton-app with content.
 
-## Table of contents (API)
-
-<!-- TODO: [`m-gap`](#m-gap) -->
-<!-- TODO: [`overflow`](#overflow) -->
-
-- [Implementation details](#implementation-details)
-- [`margin`](#margin)
-- [`padding`](#padding)
-- [`position`](#position)
-- [`display`](#display)
-- [`width` and `height`](#width-and-height)
-- [`max-width`](#max-width)
-- [`background-color` and dark mode `background-color`](#background-color-and-dark-mode-background-color)
-- [`border-radius`](#border-radius)
-- [`box-shadow`](#box-shadow)
-- [`z-index`](#z-index)
-- [`pointer-events`](#pointer-events)
-
-### Implementation details
-
-Sorcery SCSS specifically solves for the following properties:
-
-<!-- prettier-ignore -->
-```scss
-.m {
-	margin: ...
-}
-.p {
-	padding: ...
-}
-.static,
-.relative,
-.absolute,
-.fixed,
-.sticky {
-	position: ...
-}
-.block,
-.inline-block,
-.inline,
-.flex-row,
-.inline-flex-row,
-.flex-col.
-.inline-flex-col {
-	display: ...
-}
-.w {
-	width: ...
-}
-.max-w {
-	max-width: ...
-}
-.h {
-	height: ...
-}
-.bg {
-	background-color: ...
-}
-.rounded {
-	border-radius: ...
-}
-.shadow {
-	box-shadow: ...
-}
-.z {
-	z-index: ...
-}
-.overflow {
-	overflow: ...
-}
-.pointer-events {
-	pointer-events: ...
-}
-```
-
-More properties may be added over time, but the goal of Sorcery SCSS is to carve out a limited API that solves for responsive skeleton prototyping. Many properties are intentionally omitted for this reason. Furthermore, you are encouraged to use Sorcery SCSS _and_ CSS or SCSS together.
-
-All properties are implemented using utility classes, and most classes use conjunction classes to further specify which properties to tack on. For example: `.mx-16` is a standalone utility class, but `.x-center` is used in conjunction with `.flex-row` or `.flex-col` to center nested elements.
-
-Breakpoints are defined as the following and are not currently customizable (yet):
-
-<!-- prettier-ignore -->
-```scss
-$xs: 40 * 16; // ->  640px
-$sm: 48 * 16; // ->  768px
-$md: 56 * 16; // ->  896px
-$lg: 64 * 16; // -> 1024px
-$xl: 80 * 16; // -> 1280px
-```
-
-The standard scale is used for numeric utilities and the extended standard scale is used for layout utilities `width` and `height`:
-
-<!-- prettier-ignore -->
-```scss
-$range:
-	  0,   1,   2,   3,   4,   5,   6,   7, //  +1
-	  8,  10,  12,  14,  16,  18,  20,  22, //  +2
-	 24,  28,  32,  36,  40,  44,  48,  52, //  +4
-	 64,  72,  80,  88,  96, 104, 112, 120, //  +8
-	128, 144, 160, 176, 192, 208, 224, 240, // +16
-	256;
-
-$extended-range:
-	  0,   1,   2,   3,   4,   5,   6,   7, //  +1
-	  8,  10,  12,  14,  16,  18,  20,  22, //  +2
-	 24,  28,  32,  36,  40,  44,  48,  52, //  +4
-	 64,  72,  80,  88,  96, 104, 112, 120, //  +8
-	128, 144, 160, 176, 192, 208, 224, 240, // +16
-	256, 288, 320, 352, 384, 416, 448, 480, // +32
-	512;
-```
-
-Note that the standard and extended scales always convert to `rem` units behind-the-scenes. This means you can think in terms of `px` units and receive the benefits of `rem` units.
-
-If you’re unfamiliar with the benefits of `rem` units, they are essentially they are more user-friendly in terms accessibility. Sorcery SCSS almost always defers to `rem` units for this reason.
-
-### `margin`
-
-✅ Uses the standard range scale, `auto` and `-256-256`.<br>
-✅ Resolves to `rem`.<br>
-✅ Media queries are supported for this property.<br>
-
-```scss
-.m-0 {
-	margin: 0;
-}
-.mx-0 {
-	margin-left: 0;
-	margin-right: 0;
-}
-.ml-0 {
-	margin-left: 0;
-}
-.mr-0 {
-	margin-right: 0;
-}
-.my-0 {
-	margin-top: 0;
-	margin-bottom: 0;
-}
-.mt-0 {
-	margin-top: 0;
-}
-.mb-0 {
-	margin-bottom: 0;
-}
-```
-
-### `padding`
-
-✅ Uses the standard range scale, `0-256`.<br>
-✅ Resolves to `rem`.<br>
-✅ Media queries are supported for this property.<br>
-
-```scss
-.p-0 {
-	padding: 0;
-}
-.px-0 {
-	padding-left: 0;
-	padding-right: 0;
-}
-.pl-0 {
-	padding-left: 0;
-}
-.pr-0 {
-	padding-right: 0;
-}
-.py-0 {
-	padding-top: 0;
-	padding-bottom: 0;
-}
-.pt-0 {
-	padding-top: 0;
-}
-.pb-0 {
-	padding-bottom: 0;
-}
-```
-
-### `position`
-
-✅ Uses a limited scale, `auto` and `0`.<br>
-✅ Media queries are supported for this property.<br>
-
-Note that `static`, `relative`, `absolute`, `fixed`, and `sticky` are supported.
-
-```scss
-.absolute {
-	position: absolute;
-}
-.absolute.x-0 {
-	left: 0;
-	right: 0;
-}
-.absolute.l-0 {
-	left: 0;
-}
-.absolute.r-0 {
-	right: 0;
-}
-.absolute.y-0 {
-	top: 0;
-	bottom: 0;
-}
-.absolute.t-0 {
-	top: 0;
-}
-.absolute.b-0 {
-	bottom: 0;
-}
-.absolute.tl-0 {
-	top: 0;
-	left: 0;
-}
-.absolute.tr-0 {
-	top: 0;
-	right: 0;
-}
-.absolute.bl-0 {
-	bottom: 0;
-	left: 0;
-}
-.absolute.br-0 {
-	bottom: 0;
-	right: 0;
-}
-```
-
-### `display`
-
-✅ Media queries are supported for this property.<br>
-
-```scss
-.block {
-	display: block;
-}
-.inline-block {
-	display: inline-block;
-}
-.inline {
-	display: inline;
-}
-.flex-row {
-	display: flex;
-	flex-direction: row;
-}
-.flex-col {
-	display: flex;
-	flex-direction: column;
-}
-.inline-flex-row {
-	display: inline-flex;
-	flex-direction: row;
-}
-.inline-flex-col {
-	display: inline-flex;
-	flex-direction: column;
-}
-```
-
-`flex-*` and `inline-flex-*` utilities also support more natural APIs for `justify-content` and `align-items`:
-
-```scss
-.flex-row.x-start,
-.inline-flex-row.x-start {
-	justify-content: flex-start;
-}
-.flex-row.x-center,
-.inline-flex-row.x-center {
-	justify-content: center;
-}
-.flex-row.x-end,
-.inline-flex-row.x-end {
-	justify-content: flex-end;
-}
-.flex-row.y-start,
-.inline-flex-row.y-start {
-	align-items: flex-start;
-}
-.flex-row.y-center,
-.inline-flex-row.y-center {
-	align-items: center;
-}
-.flex-row.y-end,
-.inline-flex-row.y-end {
-	align-items: flex-end;
-}
-
-/* ... */
-
-.flex-col.x-start,
-.inline-flex-col.x-start {
-	align-items: flex-start;
-}
-.flex-col.x-center,
-.inline-flex-col.x-center {
-	align-items: center;
-}
-.flex-col.x-end,
-.inline-flex-col.x-end {
-	align-items: flex-end;
-}
-.flex-col.y-start,
-.inline-flex-col.y-start {
-	justify-content: flex-start;
-}
-.flex-col.y-center,
-.inline-flex-col.y-center {
-	justify-content: center;
-}
-.flex-col.y-end,
-.inline-flex-col.y-end {
-	justify-content: flex-end;
-}
-```
-
-This means you can think in terms of `x` and `y` axes without worrying about the nature of `flex-direction: row;` and `flex-direction: column;`.
-
-`no-wrap`, `wrap`, and `wrap-reverse` are also supported.
-
-### `width` and `height`
-
-✅ Uses the standard extended scale, `auto` and `0-512`.<br>
-✅ Resolves to `rem`.<br>
-✅ Adds `w-full w-screen` and `h-full h-screen` for `100%` and `100vw` or `100vh` respectively.<br>
-✅ Media queries are supported for this property.<br>
-
-### `max-width`
-
-✅ Uses the breakpoint scale, `xs sm md lg xl`.<br>
-✅ Resolves to `px`.<br>
-✅ Media queries are supported for this property.<br>
-
-### `background-color` and dark mode `background-color`
-
-✅ Uses Tailwind CSS’s uniform color palette (since [v1.7](https://github.com/tailwindlabs/tailwindcss/releases/tag/v1.7.0#new-color-palette))<br>
-✅ Dark mode variants are supported for this property.<br>
-❌ Media queries are not supported for this property.<br>
-
-With the exception of `currentColor transparent white black`, `background-color`s use shades `50 100 200 300 400 500 600 700 800 900` where 50 is the lightest and 900 is the darkest.
-
-<!-- prettier-ignore -->
-```scss
-.bg-currentColor {
-	background-color: ...
-}
-.bg-transparent {
-	background-color: ...
-}
-.bg-white {
-	background-color: ...
-}
-.bg-black {
-	background-color: ...
-}
-.bg-gray {
-	background-color: ...
-}
-.bg-cool-gray {
-	background-color: ...
-}
-.bg-red {
-	background-color: ...
-}
-.bg-orange {
-	background-color: ...
-}
-.bg-yellow {
-	background-color: ...
-}
-.bg-green {
-	background-color: ...
-}
-.bg-teal {
-	background-color: ...
-}
-.bg-blue {
-	background-color: ...
-}
-.bg-indigo {
-	background-color: ...
-}
-.bg-purple {
-	background-color: ...
-}
-.bg-pink {
-	background-color: ...
-}
-.bg-gray {
-	background-color: ...
-}
-.bg-cool-gray {
-	background-color: ...
-}
-.bg-red {
-	background-color: ...
-}
-.bg-orange {
-	background-color: ...
-}
-.bg-yellow {
-	background-color: ...
-}
-.bg-green {
-	background-color: ...
-}
-.bg-teal {
-	background-color: ...
-}
-.bg-blue {
-	background-color: ...
-}
-.bg-indigo {
-	background-color: ...
-}
-.bg-purple {
-	background-color: ...
-}
-.bg-pink {
-	background-color: ...
-}
-```
-
-Dark mode `background-color`s are also supported:
-
-<!-- prettier-ignore -->
-```scss
-[data-theme="dark"] .bg-currentColor {
-	background-color: ...
-}
-[data-theme="dark"] .bg-transparent {
-	background-color: ...
-}
-[data-theme="dark"] .bg-white {
-	background-color: ...
-}
-[data-theme="dark"] .bg-black {
-	background-color: ...
-}
-[data-theme="dark"] .bg-gray {
-	background-color: ...
-}
-[data-theme="dark"] .bg-cool-gray {
-	background-color: ...
-}
-[data-theme="dark"] .bg-red {
-	background-color: ...
-}
-[data-theme="dark"] .bg-orange {
-	background-color: ...
-}
-[data-theme="dark"] .bg-yellow {
-	background-color: ...
-}
-[data-theme="dark"] .bg-green {
-	background-color: ...
-}
-[data-theme="dark"] .bg-teal {
-	background-color: ...
-}
-[data-theme="dark"] .bg-blue {
-	background-color: ...
-}
-[data-theme="dark"] .bg-indigo {
-	background-color: ...
-}
-[data-theme="dark"] .bg-purple {
-	background-color: ...
-}
-[data-theme="dark"] .bg-pink {
-	background-color: ...
-}
-[data-theme="dark"] .bg-gray {
-	background-color: ...
-}
-[data-theme="dark"] .bg-cool-gray {
-	background-color: ...
-}
-[data-theme="dark"] .bg-red {
-	background-color: ...
-}
-[data-theme="dark"] .bg-orange {
-	background-color: ...
-}
-[data-theme="dark"] .bg-yellow {
-	background-color: ...
-}
-[data-theme="dark"] .bg-green {
-	background-color: ...
-}
-[data-theme="dark"] .bg-teal {
-	background-color: ...
-}
-[data-theme="dark"] .bg-blue {
-	background-color: ...
-}
-[data-theme="dark"] .bg-indigo {
-	background-color: ...
-}
-[data-theme="dark"] .bg-purple {
-	background-color: ...
-}
-[data-theme="dark"] .bg-pink {
-	background-color: ...
-}
-```
-
-Furthermore, `background-color`s are specifically implemented using the following pattern. This enables `[data-theme="dark"]` to activate dark mode `background-color`s without the need for arbitrarily nested elements.
-
-<!-- prettier-ignore -->
-```scss
-[data-theme="dark"].bg-indigo,
-[data-theme="dark"] .bg-indigo {
-	background-color: ...
-}
-```
-
-### `border-radius`
-
-✅ Uses a limited scale, `0-32`.<br>
-✅ Resolves to `rem`.<br>
-✅ Media queries are supported for this property.<br>
-
-### `box-shadow`
-
-<!-- ✅ Uses a limited scale, `-50-50`.<br> -->
-
-✅ Resolves to `px`.<br>
-✅ Media queries are supported for this property.<br>
-
-TODO
-
-### `z-index`
-
-✅ Uses a limited scale, `-50-50`.<br>
-✅ Media queries are supported for this property.<br>
-
-### `pointer-events`
-
-❌ Media queries are not supported for this property.<br>
-
-```scsss
-.no-pointer-events {
-	pointer-events: none;
-}
-.pointer-events {
-	pointer-events: auto;
-}
-```
-
----
-
-## Contributing
-
-Contribution is welcome. To get started, check out the issues page — library maintainers will often hastily create issues to document an idea and context. If you need help understanding how the library works or need some deeper orientation, don’t hesitate to DM [@username_ZAYDEK on Twitter](https://twitter.com/username_ZAYDEK). If there’s enough demand, we can create a Discord server to better support the community.
-
-## Inspiration
-
-Sorcery SCSS is inspired by the following libraries:
-
-- [Bulma CSS](https://bulma.io)
-- [Fortune CSS](https://github.com/atav1k/fortune)
-- [normalize.css](https://necolas.github.io/normalize.css)
-- [Tailwind CSS](https://tailwindcss.com)
-
-## License
-
-Sorcery SCSS is MIT open source.
+-->

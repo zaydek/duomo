@@ -1,11 +1,16 @@
 {
-	"name": "sorcery",
+	"name": "@zaydek/sorcery",
+	"version": "0.3.5",
+	"main": "dist/index.css",
 	"license": "MIT",
+	"files": [
+		"dist/"
+	],
 	"scripts": {
-		"build-readable": "node-sass --indent-type tab --indent-width 1 src/index.scss > build/index.css",
-		"build-minified": "node-sass --output-style compressed src/index.scss > build/index.min.css",
-		"clean-readable": "prettier -w build/index.css",
-		"build": "yarn build-readable && yarn clean-readable && yarn build-minified"
+		"build-readable": "node-sass --indent-type tab --indent-width 1 src/index.scss > dist/index.css",
+		"build-minified": "node-sass --output-style compressed src/index.scss > dist/index.min.css",
+		"build": "yarn build-readable && yarn build-minified",
+		"publish-dist-dry-run": "yarn build && npm publish --dry-run"
 	},
 	"devDependencies": {
 		"node-sass": "^4.14.1",

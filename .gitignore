@@ -1,10 +1,10 @@
 # macOS
 .DS_Store
 
-# # Production
-# /build
-
-# Yarn
+# Node / Yarn
 /.env
 /*.log*
 /node_modules
+
+# # NPM
+# /dist
