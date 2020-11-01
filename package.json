@@ -7,13 +7,12 @@
 		"dist/"
 	],
 	"scripts": {
-		"build-readable": "node-sass --indent-type tab --indent-width 1 src/sass/index.scss > dist/index.css",
+		"build-readable": "yarn -s node-sass --indent-type tab --indent-width 1 src/sass/index.scss > dist/index.css && yarn prettier -w dist/index.css",
 		"build-minified": "node-sass --output-style compressed src/sass/index.scss > dist/index.min.css",
-		"clean-readable": "prettier -w dist/index.css",
 		"test": "jest",
 		"test-watch": "jest --watch",
-		"build": "yarn test && rm -rf dist && yarn tsc && yarn build-readable && yarn clean-readable && yarn build-minified",
-		"publish-dist-dry-run": "yarn build && npm publish --dry-run"
+		"build": "yarn test && rm -rf dist && yarn tsc && yarn build-readable && yarn build-minified",
+		"publish-dry-run": "yarn build && npm publish --dry-run"
 	},
 	"devDependencies": {
 		"@types/jest": "^26.0.15",
