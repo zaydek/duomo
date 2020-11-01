@@ -36,25 +36,23 @@
 	}
 
 	#{$ampersand}spacer {
-		flex: 1 0 var(--spacing, 0);
+		flex-grow: 1;
+		flex-shrink: 0;
+		flex-basis: var(--spacing, 0);
 	}
 	#{$ampersand}spacer:first-child,
 	#{$ampersand}spacer:last-child {
-		flex: 1 0 0;
+		flex-basis: 0;
 	}
 
 	@each $value in $range {
 		#{$ampersand}s-#{$value} > * {
-			--parent-var-spacing: #{call(get-function($conv-fn), $value)};
-			--spacing: var(--parent-var-spacing);
+			--spacing: #{call(get-function($conv-fn), $value)};
 		}
-	}
-
-	#{$ampersand}s-1\/2 > * {
-		--spacing: calc(var(--parent-var-spacing, 0) / 2);
-	}
-	#{$ampersand}s-1\/4 > * {
-		--spacing: calc(var(--parent-var-spacing, 0) / 4);
+		// NOTE: Reset `--spacing`. Do not use `stack { --spacing: 0; }` because of order precedence.
+		#{$ampersand}s-#{$value} > * > * {
+			--spacing: 0;
+		}
 	}
 
 	@for $value from -1 through 12 {
