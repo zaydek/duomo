@@ -11,7 +11,17 @@ const Sorcery: ISorcery = {
 			if (media.matches) {
 				document.body.setAttribute("data-theme", "dark")
 			}
-			media.addEventListener("change", () => {
+			// NOTE: Prefer `media.addListener`.
+			//
+			// The addListener() method of the MediaQueryList interface adds a listener to the MediaQueryListener that will
+			// run a custom callback function in response to the media query status changing.
+			//
+			// This is basically an alias of EventTarget.addEventListener(), for backwards compatibility purposes.
+			// Older browsers should use addListener instead of addEventListener since MediaQueryList only inherits from
+			// EventTarget in newer browsers.
+			//
+			// https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/addListener
+			media.addListener(() => {
 				Sorcery.toggleDarkMode()
 			})
 		}
