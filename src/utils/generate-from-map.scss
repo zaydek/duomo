@@ -16,6 +16,31 @@
 	}
 }
 
+@mixin generate-from-map-hover($properties, $shorthand, $map, $conv-fn) {
+	$ampersand: get-dynamic-ampersand();
+
+	@each $key, $value in $map {
+		#{$ampersand}hover#{$separator}#{$shorthand}-#{$key}:hover {
+			@each $property in $properties {
+				#{$property}: #{call(get-function($conv-fn), $value)};
+			}
+		}
+	}
+}
+
+@mixin generate-from-map-dark($properties, $shorthand, $map, $conv-fn) {
+	$ampersand: get-dynamic-ampersand();
+
+	@each $key, $value in $map {
+		[data-theme="dark"]#{$ampersand}dark#{$separator}#{$shorthand}-#{$key},
+		[data-theme="dark"] #{$ampersand}dark#{$separator}#{$shorthand}-#{$key} {
+			@each $property in $properties {
+				#{$property}: #{call(get-function($conv-fn), $value)};
+			}
+		}
+	}
+}
+
 @mixin generate-from-named-map($properties, $named-map, $conv-fn) {
 	$ampersand: get-dynamic-ampersand();
 

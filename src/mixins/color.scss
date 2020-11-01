@@ -1,13 +1,6 @@
+// TODO: Add support for `group`?
 @mixin color-from-map($properties, $shorthand, $map) {
-	$ampersand: get-dynamic-ampersand();
-
 	@include generate-from-map($properties, $shorthand, $map, passthrough);
-
-	@each $key, $value in $map {
-		[data-theme="dark"] #{$ampersand}dark#{$separator}#{$shorthand}-#{$key} {
-			@each $property in $properties {
-				#{$property}: #{call(get-function(passthrough), $value)};
-			}
-		}
-	}
+	@include generate-from-map-hover($properties, $shorthand, $map, passthrough);
+	@include generate-from-map-dark($properties, $shorthand, $map, passthrough);
 }

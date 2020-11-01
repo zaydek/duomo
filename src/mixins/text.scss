@@ -36,15 +36,16 @@
 	@include generate-from-map((line-height), "leading", $map, $conv-fn);
 }
 
+// TODO: Add support for `group`?
 @mixin line-decoration {
 	$ampersand: get-dynamic-ampersand();
 
 	#{$ampersand}underline {
 		text-decoration: underline;
-		@each $value in (hover, focus) {
-			&:#{$value} {
-				text-decoration: underline;
-			}
+	}
+	@if not & {
+		#{$ampersand}hover#{$separator}underline:hover {
+			text-decoration: underline;
 		}
 	}
 }

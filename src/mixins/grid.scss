@@ -1,0 +1,35 @@
+@mixin grid-from-range($range) {
+	$ampersand: get-dynamic-ampersand();
+
+	#{$ampersand}grid {
+		display: grid;
+	}
+
+	@for $x from 0 through 12 {
+		#{$ampersand}grid-rows-#{$x} {
+			grid-template-rows: repeat(#{$x}, minmax(0, 1fr));
+		}
+	}
+
+	@for $x from 0 through 12 {
+		#{$ampersand}grid-cols-#{$x} {
+			grid-template-columns: repeat(#{$x}, minmax(0, 1fr));
+		}
+	}
+
+	@each $value in $range {
+		#{$ampersand}gap-#{$value} {
+			gap: #{rem($value)};
+		}
+	}
+	@each $value in $range {
+		#{$ampersand}gap-x-#{$value} {
+			column-gap: #{rem($value)};
+		}
+	}
+	@each $value in $range {
+		#{$ampersand}gap-y-#{$value} {
+			row-gap: #{rem($value)};
+		}
+	}
+}

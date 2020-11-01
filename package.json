@@ -9,7 +9,8 @@
 	"scripts": {
 		"build-readable": "node-sass --indent-type tab --indent-width 1 src/index.scss > dist/index.css",
 		"build-minified": "node-sass --output-style compressed src/index.scss > dist/index.min.css",
-		"build": "yarn build-readable && yarn build-minified",
+		"clean-readable": "prettier -w dist/index.css",
+		"build": "yarn build-readable && yarn clean-readable && yarn build-minified",
 		"publish-dist-dry-run": "yarn build && npm publish --dry-run"
 	},
 	"devDependencies": {

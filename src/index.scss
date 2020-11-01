@@ -4,7 +4,7 @@
 @import "./mixins/custom-props";
 @import "./mixins/debugger";
 @import "./mixins/display";
-@import "./mixins/font";
+@import "./mixins/grid";
 @import "./mixins/macos-retina";
 @import "./mixins/margin";
 @import "./mixins/overflow";
@@ -14,6 +14,7 @@
 @import "./mixins/stack";
 @import "./mixins/stagger";
 @import "./mixins/tailwind-base_2-0-0-alpha";
+@import "./mixins/text";
 @import "./mixins/width-and-height";
 @import "./mixins/z-index";
 
@@ -38,10 +39,10 @@ $separator: "\\:";
 	/* purgecss end ignore */
 }
 
-// TODO: Extract `line-height`.
 @mixin props {
 	@include display;
 	@include stacks-from-range($range, rem);
+	@include grid-from-range($range);
 	@include margin-from-range(join(join($-range, auto), $range), rem);
 	@include padding-from-range($range, rem);
 	@include position-from-range((0));
@@ -68,6 +69,8 @@ $separator: "\\:";
 
 @at-root {
 	@include preflight;
+
+	/*! @zaydek/sorcery | MIT License | https://github.com/zaydek/sorcery */
 	@include props;
 	@each $key, $value in $breakpoint-map {
 		@media (min-width: px($value)) {
