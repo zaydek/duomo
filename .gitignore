@@ -6,5 +6,5 @@
 /*.log*
 /node_modules
 
-# # NPM
-# /dist
+# NPM
+/dist
