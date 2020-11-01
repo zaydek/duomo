@@ -1,6 +1,6 @@
 # @zaydek/sorcery
 
-`@zaydek/sorcery` is a stack-based CSS framework. Contributions are welcome as issues and or pull requests.
+Sorcery CSS is a stack-based CSS framework. Contributions are welcome as issues and or pull requests.
 
 To get started, simply run this command:
 
@@ -69,7 +69,7 @@ function Component() {
 
 <sub>Stacks are inspired by [Apple Swift UI](TODO) and [Jon Q’s talks about implementing stacks in CSS](TODO).</sub>
 
-What do stack-based layouts mean? Instead of thinking in terms of Flexbox, think in terms of stacks. A stack simply describes a horizontal or vertical axis, and stacks compose a layout. It’s turtles all the way down, but for stacks. 🐢<sub>🐢</sub>
+What are stack-based layouts? Instead of thinking in terms of Flexbox, think in terms of stacks. A stack simply describes a horizontal or vertical axis, and stacks compose a layout. It’s turtles all the way down, for stacks. 🐢<sub>🐢</sub>
 
 Why stacks? Stacks are a more natural way of thinking about layout. The trouble with Flexbox is that you need to remember `display`, `flex-direction`, `justify-content`, `align-items`, and `flex`, and remember how these properties change in the context of `flex-direction: row` and `flex-direction: column`. Stacks are a much more simple but powerful primitive for describing layout _that is based on Flexbox_.
 
@@ -103,7 +103,7 @@ At the core of Sorcery CSS are three classes: `hstack`, `vstack`, and `spacer`:
 
 - `hstack` implements a horizontal stack.
 - `vstack` implements a vertical stack.
-- `spacer` implements a `hstack` or `vstack` spacer.
+- `spacer` implements an `hstack` or `vstack` spacer.
 
 Stacks are easy to reason about because they manage Flexbox for you. 💡
 
