@@ -38,11 +38,11 @@
 		}
 	}
 
-	@each $key, $value in ("full": 100%, "screen": 100vw) {
-		#{$amp}w-#{$key} {
-			width: #{$value};
-		}
-	}
+	// @each $key, $value in ("full": 100%, "screen": 100vw) {
+	// 	#{$amp}w-#{$key} {
+	// 		width: #{$value};
+	// 	}
+	// }
 }
 
 @mixin max-width-from-map($map, $conv-fn) {

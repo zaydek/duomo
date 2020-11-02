@@ -48,6 +48,15 @@ $separator: "\\:";
 	@include position-from-range((0));
 	@include width-from-range($range, rem);
 	@include width-from-range(($xs, $sm, $md, $lg, $xl), px);
+
+	// TODO
+	$amp: get-dynamic-ampersand();
+	@each $key, $value in ("full": 100%, "screen": 100vw) {
+		#{$amp}w-#{$key} {
+			width: #{$value};
+		}
+	}
+
 	@include max-width-from-map($breakpoint-map, px);
 	@include height-from-range($range, rem);
 	@include text-align;
