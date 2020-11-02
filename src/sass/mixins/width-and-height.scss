@@ -1,9 +1,5 @@
 @function human-readable($value) {
-	@if $value == 100% {
-		@return "full";
-	} @else if $value == 100vw or $value == 100vh {
-		@return "screen";
-	} @else if $value == $xs {
+	@if $value == $xs {
 		@return "xs";
 	} @else if $value == $sm {
 		@return "sm";
@@ -13,6 +9,10 @@
 		@return "lg";
 	} @else if $value == $xl {
 		@return "xl";
+	} @else if $value == 100% {
+		@return "full";
+	} @else if $value == 100vw or $value == 100vh {
+		@return "screen";
 	}
 	@return $value;
 }
@@ -20,17 +20,16 @@
 @mixin width-from-range($range, $conv-fn) {
 	$amp: get-dynamic-ampersand();
 
-	// FIXME
+	// NOTE: Use `w-*` and `h-*` for `flex-shrink: 0` (explicit).
+	// NOTE: Use `max-w-*` for `flex-shrink: 1` (implicit).
 	@each $value in $range {
 		#{$amp}w-#{human-readable($value)} {
+			flex-shrink: 0;
 			width: #{call(get-function($conv-fn), $value)};
-			[class*="hstack"] > & {
-				flex-shrink: 0;
-			}
 		}
 	}
 
-	// FIXME
+	// NOTE: Covers `style="..."` where `w-*` does not exist.
 	@if not & {
 		[class*="hstack"] > [style^="width"],
 		[class*="hstack"] > [style*=";width"],
@@ -53,17 +52,16 @@
 @mixin height-from-range($range, $conv-fn) {
 	$amp: get-dynamic-ampersand();
 
-	// FIXME
+	// NOTE: Use `w-*` and `h-*` for `flex-shrink: 0` (explicit).
+	// NOTE: Use `max-w-*` for `flex-shrink: 1` (implicit).
 	@each $value in $range {
 		#{$amp}h-#{$value} {
+			flex-shrink: 0;
 			height: #{call(get-function($conv-fn), $value)};
-			[class*="vstack"] > & {
-				flex-shrink: 0;
-			}
 		}
 	}
 
-	// FIXME
+	// NOTE: Covers `style="..."` where `h-*` does not exist.
 	@if not & {
 		[class*="vstack"] > [style^="height"],
 		[class*="vstack"] > [style*=";height"],

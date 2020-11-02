@@ -1,15 +1,15 @@
 @mixin debugger {
 	[data-debug],
 	[data-debug] * {
-		outline: 2px solid hsla(210, 100%, 50%, 0.15);
+		outline: 2px solid hsla(210, 100%, 50%, 0.2);
 		outline-offset: -1px;
 	}
 	[data-debug].spacer,
 	[data-debug] .spacer {
-		background-color: hsla(210, 100%, 50%, 0.05);
+		background-color: hsla(210, 100%, 50%, 0.1);
 	}
-	[data-debug][class="spacer"]:empty,
-	[data-debug] [class="spacer"]:empty {
-		background-color: hsla(180, 100%, 50%, 0.05);
+	[data-debug].spacer:empty,
+	[data-debug] .spacer:empty {
+		background-color: hsla(180, 100%, 50%, 0.1);
 	}
 }
