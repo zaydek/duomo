@@ -1,6 +1,6 @@
 # @zaydek/sorcery
 
-Sorcery CSS is a stack-based CSS framework. Contributions are welcome as issues and or pull requests.
+Sorcery SCSS is a stack-based CSS framework. Contributions are welcome as issues and or pull requests.
 
 To get started, simply run this command:
 
@@ -73,7 +73,35 @@ What are stack-based layouts? Instead of thinking in terms of Flexbox, think in 
 
 Why stacks? Stacks are a more natural way of thinking about layout. The trouble with Flexbox is that you need to remember `display`, `flex-direction`, `justify-content`, `align-items`, and `flex`, and remember how these properties change in the context of `flex-direction: row` and `flex-direction: column`. Stacks are a much more simple but powerful primitive for describing layout _that is based on Flexbox_.
 
-This is a microcosm of how Sorcery CSS works:
+This is a microcosm of how Sorcery works:
+
+```scss
+.hstack {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+.hstack > * + * {
+	margin-top: 0;
+	margin-left: var(--space, 0);
+}
+
+.vstack {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.vstack > * + * {
+	margin-left: 0;
+	margin-top: var(--space, 0);
+}
+
+.spacer {
+	flex: 1 0 var(--space, 0);
+}
+```
+
+And this is a macrocosm of how Sorcery works:
 
 ```scss
 $separator: "\\:";
@@ -205,13 +233,13 @@ $separator: "\\:";
 }
 ```
 
-This is how Sorcery CSS works. Sorcery includes a CSS reset, debugger, and many utility classes that follow the same naming conventions as Tailwind CSS. Stacks however are the core of _how_ and _why_ Sorcery CSS works.
+This is how Sorcery works. Sorcery includes a CSS reset, debugger, and many utility classes that follow the same naming conventions as Tailwind CSS. Stacks however are the core of _how_ and _why_ Sorcery works.
 
 - `hstack`s implements a horizontal stack. Think `flex-direction: row`.
 - `vstack`s implements a vertical stack. Think `flex-direction: column`.
 - `spacer`s implements direction-agnostic spacers. Think `flex: 1`.
 
-Stacks in Sorcery CSS are easy to reason about because they manage Flexbox for you. 💡 Furthermore, Sorcery stacks cover edge cases such as every stack resets `--space` and `spacer`s shrink to `--space` (unless they are the start or end element). **This enables you to think declaratively without worrying about implementation details or corner cases.**
+Stacks in Sorcery are easy to reason about because they manage Flexbox for you. 💡 Furthermore, Sorcery stacks cover edge cases such as every stack resets `--space` and `spacer`s shrink to `--space` (unless they are the start or end element). **This enables you to think declaratively without worrying about implementation details or corner cases.**
 
 ## [Utility-First Classes](#utility-first-classes)
 
