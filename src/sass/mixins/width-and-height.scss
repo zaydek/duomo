@@ -24,8 +24,10 @@
 	// NOTE: Use `max-w-*` for `flex-shrink: 1` (implicit).
 	@each $value in $range {
 		#{$amp}w-#{human-readable($value)} {
-			flex-shrink: 0;
 			width: #{call(get-function($conv-fn), $value)};
+			[class*="hstack"] > & {
+				flex-shrink: 0;
+			}
 		}
 	}
 
@@ -56,8 +58,10 @@
 	// NOTE: Use `max-w-*` for `flex-shrink: 1` (implicit).
 	@each $value in $range {
 		#{$amp}h-#{$value} {
-			flex-shrink: 0;
 			height: #{call(get-function($conv-fn), $value)};
+			[class*="vstack"] > & {
+				flex-shrink: 0;
+			}
 		}
 	}
 
