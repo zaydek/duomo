@@ -1,6 +1,6 @@
 {
 	"name": "@zaydek/sorcery",
-	"version": "0.4.2",
+	"version": "0.4.3",
 	"main": "dist/index.css",
 	"license": "MIT",
 	"files": [
