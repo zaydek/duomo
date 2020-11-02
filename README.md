@@ -73,39 +73,145 @@ What are stack-based layouts? Instead of thinking in terms of Flexbox, think in 
 
 Why stacks? Stacks are a more natural way of thinking about layout. The trouble with Flexbox is that you need to remember `display`, `flex-direction`, `justify-content`, `align-items`, and `flex`, and remember how these properties change in the context of `flex-direction: row` and `flex-direction: column`. Stacks are a much more simple but powerful primitive for describing layout _that is based on Flexbox_.
 
-At the core of Sorcery CSS are three classes: `hstack`, `vstack`, and `spacer`:
+This is a microcosm of how Sorcery CSS works:
 
 ```scss
-.hstack {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-}
-.hstack > * + * {
-	margin-top: 0;
-	margin-left: var(--space, 0);
+$separator: "\\:";
+
+@function px($value) {
+	@return $value + px;
 }
 
-.vstack {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
-.vstack > * + * {
-	margin-left: 0;
-	margin-top: var(--space, 0);
+@function rem($value) {
+	@return $value / 16 + rem;
 }
 
-.spacer {
-	flex: 1 0 var(--space, 0);
+@function get-dynamic-ampersand() {
+	@if not & {
+		@return ".";
+	}
+	@return & + $separator;
+}
+
+@mixin stacks {
+	$amp: get-dynamic-ampersand();
+
+	#{$amp}hstack {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: stretch;
+	}
+	// NOTE: The root stack context resets `--space`.
+	@if not & {
+		.hstack > * {
+			--space: 0;
+		}
+	}
+	#{$amp}hstack > * + * {
+		margin-top: 0;
+		margin-left: var(--space, 0);
+	}
+	// NOTE: Omit `spacer`s and sibling elements from `var(--space)`.
+	#{$amp}hstack > .spacer:empty,
+	#{$amp}hstack > .spacer:empty + * {
+		margin-left: 0;
+	}
+
+	#{$amp}vstack {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: stretch;
+	}
+	// NOTE: The root stack context resets `--space`.
+	@if not & {
+		.vstack > * {
+			--space: 0;
+		}
+	}
+	#{$amp}vstack > * + * {
+		margin-left: 0;
+		margin-top: var(--space, 0);
+	}
+	// NOTE: Omit `spacer`s and sibling elements from `var(--space)`.
+	#{$amp}vstack > .spacer:empty,
+	#{$amp}vstack > .spacer:empty + * {
+		margin-top: 0;
+	}
+
+	#{$amp}align-start {
+		align-items: flex-start;
+	}
+	#{$amp}align-center {
+		align-items: center;
+	}
+	#{$amp}align-end {
+		align-items: flex-end;
+	}
+
+	@if not & {
+		.spacer {
+			flex-grow: 1;
+			flex-shrink: 0;
+			flex-basis: var(--space, 0);
+		}
+		// NOTE: Edge `spacer`s are collapsible to `0`.
+		.spacer:first-child,
+		.spacer:last-child {
+			flex-basis: 0;
+		}
+	}
+
+	@each $value in (4, 8, 12, 16, 20, 24, 28, 32) {
+		#{$amp}space-#{$value} > * {
+			--space: #{rem($value)};
+		}
+	}
+}
+
+@mixin reset {
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
+	body {
+		margin: 0;
+	}
+}
+
+@mixin debugger {
+	* {
+		outline: 2px solid hsla(215, 100%, 50%, 0.2);
+		outline-offset: -1px;
+	}
+}
+
+@at-root {
+	@include reset;
+	@include debugger;
+	@include stacks;
+	@each $key, $value in ("sm": 640, "md": 768, "lg": 1024, "xl": 1280) {
+		@media (min-width: #{px($value)}) {
+			.#{$key} {
+				@at-root {
+					@include stacks;
+				}
+			}
+		}
+	}
 }
 ```
 
-- `hstack` implements a horizontal stack.
-- `vstack` implements a vertical stack.
-- `spacer` implements an `hstack` or `vstack` spacer.
+This is how Sorcery CSS works. Sorcery includes a CSS reset, debugger, and many utility classes that follow the same naming conventions as Tailwind CSS. Stacks however are the core of _how_ and _why_ Sorcery CSS works.
 
-Stacks are easy to reason about because they manage Flexbox for you. 💡
+- `hstack`s implements a horizontal stack. Think `flex-direction: row`.
+- `vstack`s implements a vertical stack. Think `flex-direction: column`.
+- `spacer`s implements direction-agnostic spacers. Think `flex: 1`.
+
+Stacks in Sorcery CSS are easy to reason about because they manage Flexbox for you. 💡 Furthermore, Sorcery stacks cover edge cases such as every stack resets `--space` and `spacer`s shrink to `--space` (unless they are the start or end element). **This enables you to think declaratively without worrying about implementation details or corner cases.**
 
 ## [Utility-First Classes](#utility-first-classes)
 
