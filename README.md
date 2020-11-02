@@ -17,12 +17,12 @@ import "@zaydek/sorcery"
 function Component() {
 	return (
 		<div className="hstack">
-			<div className="hstack s-16">
+			<div className="hstack space-16">
 				<div className="w-32 h-32 bg-gray-100 rounded-full" />
 				<div className="w-32 h-32 bg-gray-100 rounded-full" />
 			</div>
 			<div className="spacer" />
-			<div className="hstack s-16">
+			<div className="hstack space-16">
 				<div className="w-32 h-32 bg-gray-100 rounded-full" />
 				<div className="w-32 h-32 bg-gray-100 rounded-full" />
 			</div>
@@ -44,12 +44,12 @@ function Component() {
 	</head>
 	<body>
 		<div class="hstack">
-			<div class="hstack s-16">
+			<div class="hstack space-16">
 				<div class="w-32 h-32 bg-gray-100 rounded-full"></div>
 				<div class="w-32 h-32 bg-gray-100 rounded-full"></div>
 			</div>
 			<div class="spacer"></div>
-			<div class="hstack s-16">
+			<div class="hstack space-16">
 				<div class="w-32 h-32 bg-gray-100 rounded-full"></div>
 				<div class="w-32 h-32 bg-gray-100 rounded-full"></div>
 			</div>
@@ -67,7 +67,7 @@ function Component() {
 
 ## [Stack-Based Layouts](#stack-based-layouts)
 
-<sub>Stacks are inspired by [Apple Swift UI](TODO) and [Jon Q’s talks about implementing stacks in CSS](TODO).</sub>
+<sub>Stacks are inspired by [Swift UI](https://developer.apple.com/videos/play/wwdc2020/10031) and [Jon Q’s talk about implementing Swift UI stacks in CSS](https://youtube.com/watch?v=fvOlTDJpNcM).</sub>
 
 What are stack-based layouts? Instead of thinking in terms of Flexbox, think in terms of stacks. A stack simply describes a horizontal or vertical axis, and stacks compose a layout. It’s turtles all the way down, for stacks. 🐢<sub>🐢</sub>
 
