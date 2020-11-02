@@ -1,9 +1,9 @@
 @mixin generate-from-range($properties, $shorthand, $range, $conv-fn) {
-	$ampersand: get-dynamic-ampersand();
+	$amp: get-dynamic-ampersand();
 
 	@each $value in $range {
 		$negative: if(safe-compare-negative($value), "-", "");
-		#{$ampersand}#{$negative}#{$shorthand}-#{safe-abs($value)} {
+		#{$amp}#{$negative}#{$shorthand}-#{safe-abs($value)} {
 			@each $property in $properties {
 				#{$property}: #{call(get-function($conv-fn), $value)};
 			}

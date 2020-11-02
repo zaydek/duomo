@@ -1,8 +1,8 @@
 @mixin display {
-	$ampersand: get-dynamic-ampersand();
+	$amp: get-dynamic-ampersand();
 
 	@each $key, $value in ("hidden": none, "block": "block") {
-		#{$ampersand}#{$key} {
+		#{$amp}#{$key} {
 			display: #{$value};
 		}
 	}

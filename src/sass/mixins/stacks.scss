@@ -1,65 +1,86 @@
 @mixin stacks-from-range($range, $conv-fn) {
-	$ampersand: get-dynamic-ampersand();
+	$amp: get-dynamic-ampersand();
 
-	#{$ampersand}hstack {
+	#{$amp}hstack {
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
 	}
-	#{$ampersand}hstack > * + * {
-		--spacing: 0;
-		margin-top: 0;
-		margin-left: var(--spacing, 0);
+	// NOTE: The root stack context resets `--space`.
+	@if not & {
+		.hstack > * {
+			--space: 0;
+		}
 	}
-	#{$ampersand}hstack > .spacer:empty,
-	#{$ampersand}hstack > .spacer:empty + * {
+	#{$amp}hstack > * + * {
+		margin-top: 0;
+		margin-left: var(--space, 0);
+	}
+	// NOTE: Omit `spacer`s and sibling elements from `var(--space)`.
+	#{$amp}hstack > .spacer:empty,
+	#{$amp}hstack > .spacer:empty + * {
 		margin-left: 0;
 	}
 
-	#{$ampersand}vstack {
+	#{$amp}vstack {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 	}
-	#{$ampersand}vstack > * + * {
-		--spacing: 0;
-		margin-left: 0;
-		margin-top: var(--spacing, 0);
+	// NOTE: The root stack context resets `--space`.
+	@if not & {
+		.vstack > * {
+			--space: 0;
+		}
 	}
-	#{$ampersand}vstack > .spacer:empty,
-	#{$ampersand}vstack > .spacer:empty + * {
+	#{$amp}vstack > * + * {
+		margin-left: 0;
+		margin-top: var(--space, 0);
+	}
+	// NOTE: Omit `spacer`s and sibling elements from `var(--space)`.
+	#{$amp}vstack > .spacer:empty,
+	#{$amp}vstack > .spacer:empty + * {
 		margin-top: 0;
 	}
 
-	@each $key, $value in ("stretch": stretch, "start": flex-start, "center": center, "end": flex-end) {
-		#{$ampersand}align-#{$key} {
-			align-items: #{$value};
-		}
+	#{$amp}align-start {
+		align-items: flex-start;
 	}
+	#{$amp}align-center {
+		align-items: center;
+	}
+	#{$amp}align-end {
+		align-items: flex-end;
+	}
+	#{$amp}align-baseline {
+		align-items: baseline;
+	}
+	// #{$amp}-stretch {
+	// 	align-items: stretch;
+	// }
 
-	#{$ampersand}spacer {
-		flex-grow: 1;
-		flex-shrink: 0;
-		flex-basis: var(--spacing, 0);
-	}
-	#{$ampersand}spacer:first-child,
-	#{$ampersand}spacer:last-child {
-		flex-basis: 0;
+	@if not & {
+		.spacer {
+			flex-grow: 1;
+			flex-shrink: 0;
+			flex-basis: var(--space, 0);
+		}
+		// NOTE: Edge `spacer`s are collapsible to `0`.
+		.spacer:first-child,
+		.spacer:last-child {
+			flex-basis: 0;
+		}
 	}
 
 	@each $value in $range {
-		#{$ampersand}s-#{$value} > * {
-			--spacing: #{call(get-function($conv-fn), $value)};
+		#{$amp}space-#{$value} > * {
+			--space: #{call(get-function($conv-fn), $value)};
 		}
-		// // NOTE: Reset `--spacing`. Do not use `stack { --spacing: 0; }` because of order precedence.
-		// #{$ampersand}s-#{$value} > * > * {
-		// 	--spacing: 0;
-		// }
 	}
 
 	@for $value from -1 through 12 {
 		$negative: if(safe-compare-negative($value), "-", "");
-		#{$ampersand}#{$negative}order-#{safe-abs($value)} {
+		#{$amp}#{$negative}order-#{safe-abs($value)} {
 			order: #{$value};
 		}
 	}

@@ -5,10 +5,10 @@
 }
 
 @mixin generate-from-map($properties, $shorthand, $map, $conv-fn) {
-	$ampersand: get-dynamic-ampersand();
+	$amp: get-dynamic-ampersand();
 
 	@each $key, $value in $map {
-		#{$ampersand}#{$shorthand}-#{$key} {
+		#{$amp}#{$shorthand}-#{$key} {
 			@each $property in $properties {
 				#{$property}: #{call(get-function($conv-fn), $value)};
 			}
@@ -17,10 +17,10 @@
 }
 
 @mixin generate-from-map-hover($properties, $shorthand, $map, $conv-fn) {
-	$ampersand: get-dynamic-ampersand();
+	$amp: get-dynamic-ampersand();
 
 	@each $key, $value in $map {
-		#{$ampersand}hover#{$separator}#{$shorthand}-#{$key}:hover {
+		#{$amp}hover#{$separator}#{$shorthand}-#{$key}:hover {
 			@each $property in $properties {
 				#{$property}: #{call(get-function($conv-fn), $value)};
 			}
@@ -29,11 +29,11 @@
 }
 
 @mixin generate-from-map-dark($properties, $shorthand, $map, $conv-fn) {
-	$ampersand: get-dynamic-ampersand();
+	$amp: get-dynamic-ampersand();
 
 	@each $key, $value in $map {
-		[data-theme="dark"]#{$ampersand}dark#{$separator}#{$shorthand}-#{$key},
-		[data-theme="dark"] #{$ampersand}dark#{$separator}#{$shorthand}-#{$key} {
+		[data-theme="dark"]#{$amp}dark#{$separator}#{$shorthand}-#{$key},
+		[data-theme="dark"] #{$amp}dark#{$separator}#{$shorthand}-#{$key} {
 			@each $property in $properties {
 				#{$property}: #{call(get-function($conv-fn), $value)};
 			}
@@ -42,10 +42,10 @@
 }
 
 @mixin generate-from-named-map($properties, $named-map, $conv-fn) {
-	$ampersand: get-dynamic-ampersand();
+	$amp: get-dynamic-ampersand();
 
 	@each $key, $value in $named-map {
-		#{$ampersand}#{$key} {
+		#{$amp}#{$key} {
 			@each $property in $properties {
 				#{$property}: #{call(get-function($conv-fn), $value)};
 			}

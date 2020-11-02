@@ -18,10 +18,11 @@
 }
 
 @mixin width-from-range($range, $conv-fn) {
-	$ampersand: get-dynamic-ampersand();
+	$amp: get-dynamic-ampersand();
 
+	// FIXME
 	@each $value in $range {
-		#{$ampersand}w-#{human-readable($value)} {
+		#{$amp}w-#{human-readable($value)} {
 			width: #{call(get-function($conv-fn), $value)};
 			[class*="hstack"] > & {
 				flex-shrink: 0;
@@ -29,6 +30,7 @@
 		}
 	}
 
+	// FIXME
 	@if not & {
 		[class*="hstack"] > [style^="width"],
 		[class*="hstack"] > [style*=";width"],
@@ -38,7 +40,7 @@
 	}
 
 	@each $key, $value in ("full": 100%, "screen": 100vw) {
-		#{$ampersand}w-#{$key} {
+		#{$amp}w-#{$key} {
 			width: #{$value};
 		}
 	}
@@ -49,10 +51,11 @@
 }
 
 @mixin height-from-range($range, $conv-fn) {
-	$ampersand: get-dynamic-ampersand();
+	$amp: get-dynamic-ampersand();
 
+	// FIXME
 	@each $value in $range {
-		#{$ampersand}h-#{$value} {
+		#{$amp}h-#{$value} {
 			height: #{call(get-function($conv-fn), $value)};
 			[class*="vstack"] > & {
 				flex-shrink: 0;
@@ -60,6 +63,7 @@
 		}
 	}
 
+	// FIXME
 	@if not & {
 		[class*="vstack"] > [style^="height"],
 		[class*="vstack"] > [style*=";height"],
@@ -69,18 +73,18 @@
 	}
 
 	@each $key, $value in ("full": 100%, "screen": 100vh) {
-		#{$ampersand}h-#{$key} {
+		#{$amp}h-#{$key} {
 			height: #{$value};
 		}
 	}
 }
 
 @mixin min-height-from-range($range, $conv-fn) {
-	$ampersand: get-dynamic-ampersand();
+	$amp: get-dynamic-ampersand();
 
 	@include generate-from-range((min-height), "min-h", $range, $conv-fn);
 	@each $key, $value in ("full": 100%, "screen": 100vw) {
-		#{$ampersand}min-h-#{$key} {
+		#{$amp}min-h-#{$key} {
 			min-height: #{$value};
 		}
 	}

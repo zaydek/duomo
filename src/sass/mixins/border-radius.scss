@@ -1,8 +1,8 @@
 @mixin _border-radius-impl($properties, $shorthand, $range, $conv-fn) {
-	$ampersand: get-dynamic-ampersand();
+	$amp: get-dynamic-ampersand();
 
 	@include generate-from-range($properties, $shorthand, $range, $conv-fn);
-	#{$ampersand}#{$shorthand}-full {
+	#{$amp}#{$shorthand}-full {
 		@each $property in $properties {
 			#{$property}: 9999px;
 		}

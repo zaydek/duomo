@@ -1,21 +1,34 @@
 @mixin _position-impl($properties, $shorthand, $range) {
-	$ampersand: get-dynamic-ampersand();
+	$amp: get-dynamic-ampersand();
 
 	@each $value in $range {
 		$negative: if(safe-compare-negative($value), "-", "");
-		#{$ampersand}#{$negative}#{$shorthand}-#{safe-abs($value)} {
+		#{$amp}#{$negative}#{$shorthand}-#{safe-abs($value)} {
 			@each $property in $properties {
 				#{$property}: #{call(get-function(passthrough), $value)};
+			}
+		}
+	}
+
+	@if ($shorthand == "l" or $shorthand == "r") or ($shorthand == "t" or $shorthand == "b") {
+		// #{$amp}#{$shorthand}-1\/2 {
+		// 	@each $property in $properties {
+		// 		#{$property}: 50%;
+		// 	}
+		// }
+		#{$amp}#{$shorthand}-full {
+			@each $property in $properties {
+				#{$property}: 100%;
 			}
 		}
 	}
 }
 
 @mixin position-from-range($range) {
-	$ampersand: get-dynamic-ampersand();
+	$amp: get-dynamic-ampersand();
 
 	@each $position in static, relative, absolute, fixed, sticky {
-		#{$ampersand}#{$position} {
+		#{$amp}#{$position} {
 			position: #{$position};
 		}
 	}
@@ -30,7 +43,7 @@
 	@include _position-impl((bottom, left), "bl", $range);
 	@include _position-impl((bottom, right), "br", $range);
 
-	#{$ampersand}tooltip {
+	#{$amp}tooltip {
 		&-tl {
 			top: 0;
 			left: 0;

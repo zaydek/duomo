@@ -1,8 +1,8 @@
 @mixin overflow {
-	$ampersand: get-dynamic-ampersand();
+	$amp: get-dynamic-ampersand();
 
 	@each $value in (scroll, hidden) {
-		#{$ampersand}overflow-#{$value} {
+		#{$amp}overflow-#{$value} {
 			@if $value == scroll {
 				-webkit-overflow-scrolling: touch;
 			}
@@ -11,7 +11,7 @@
 	}
 
 	@each $value in (hidden, scroll) {
-		#{$ampersand}overflow-x-#{$value} {
+		#{$amp}overflow-x-#{$value} {
 			@if $value == scroll {
 				-webkit-overflow-scrolling: touch;
 			}
@@ -20,7 +20,7 @@
 	}
 
 	@each $value in (hidden, scroll) {
-		#{$ampersand}overflow-y-#{$value} {
+		#{$amp}overflow-y-#{$value} {
 			@if $value == scroll {
 				-webkit-overflow-scrolling: touch;
 			}

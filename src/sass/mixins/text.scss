@@ -1,26 +1,26 @@
 @mixin text-align {
-	$ampersand: get-dynamic-ampersand();
+	$amp: get-dynamic-ampersand();
 
 	@each $value in (start, center, end) {
-		#{$ampersand}text-#{$value} {
+		#{$amp}text-#{$value} {
 			text-align: #{$value};
 		}
 	}
 }
 
 @mixin font-style {
-	$ampersand: get-dynamic-ampersand();
+	$amp: get-dynamic-ampersand();
 
-	#{$ampersand}italic {
+	#{$amp}italic {
 		font-style: italic;
 	}
 }
 
 @mixin font-weight {
-	$ampersand: get-dynamic-ampersand();
+	$amp: get-dynamic-ampersand();
 
 	@each $value in 100, 200, 300, 400, 500, 600, 700, 800, 900 {
-		#{$ampersand}font-#{$value} {
+		#{$amp}font-#{$value} {
 			font-weight: #{$value};
 		}
 	}
@@ -38,13 +38,13 @@
 
 // TODO: Add support for `group`?
 @mixin line-decoration {
-	$ampersand: get-dynamic-ampersand();
+	$amp: get-dynamic-ampersand();
 
-	#{$ampersand}underline {
+	#{$amp}underline {
 		text-decoration: underline;
 	}
 	@if not & {
-		#{$ampersand}hover#{$separator}underline:hover {
+		#{$amp}hover#{$separator}underline:hover {
 			text-decoration: underline;
 		}
 	}

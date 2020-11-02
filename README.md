@@ -83,7 +83,7 @@ At the core of Sorcery CSS are three classes: `hstack`, `vstack`, and `spacer`:
 }
 .hstack > * + * {
 	margin-top: 0;
-	margin-left: var(--spacing, 0);
+	margin-left: var(--space, 0);
 }
 
 .vstack {
@@ -93,11 +93,11 @@ At the core of Sorcery CSS are three classes: `hstack`, `vstack`, and `spacer`:
 }
 .vstack > * + * {
 	margin-left: 0;
-	margin-top: var(--spacing, 0);
+	margin-top: var(--space, 0);
 }
 
 .spacer {
-	flex: 1 0 var(--spacing, 0);
+	flex: 1 0 var(--space, 0);
 }
 ```
 
