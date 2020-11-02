@@ -101,6 +101,8 @@ This is a microcosm of how Sorcery works:
 }
 ```
 
+<!--
+
 And this is a macrocosm of how Sorcery works:
 
 ```scss
@@ -234,6 +236,8 @@ $separator: "\\:";
 ```
 
 This is how Sorcery works. Sorcery includes a CSS reset, debugger, and many utility classes that follow the same naming conventions as Tailwind CSS. Stacks however are the core of _how_ and _why_ Sorcery works.
+
+-->
 
 - `hstack`s implements a horizontal stack. Think `flex-direction: row`.
 - `vstack`s implements a vertical stack. Think `flex-direction: column`.
