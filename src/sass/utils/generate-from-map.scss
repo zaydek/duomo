@@ -1,6 +1,7 @@
+// NOTE: See https://github.com/sass/sass/issues/1687 for `"" = $key`.
 @mixin generate-custom-props-from-map($map) {
 	@each $key, $value in $map {
-		--#{$key}: #{$value};
+		--#{"" + $key}: #{$value};
 	}
 }
 
@@ -8,7 +9,7 @@
 	$amp: get-dynamic-ampersand();
 
 	@each $key, $value in $map {
-		#{$amp}#{$shorthand}-#{$key} {
+		#{$amp}#{$shorthand}-#{"" + $key} {
 			@each $property in $properties {
 				#{$property}: #{call(get-function($conv-fn), $value)};
 			}
@@ -20,7 +21,7 @@
 	$amp: get-dynamic-ampersand();
 
 	@each $key, $value in $map {
-		#{$amp}hover#{$separator}#{$shorthand}-#{$key}:hover {
+		#{$amp}hover#{$separator}#{$shorthand}-#{"" + $key}:hover {
 			@each $property in $properties {
 				#{$property}: #{call(get-function($conv-fn), $value)};
 			}
@@ -32,8 +33,8 @@
 	$amp: get-dynamic-ampersand();
 
 	@each $key, $value in $map {
-		[data-theme="dark"]#{$amp}dark#{$separator}#{$shorthand}-#{$key},
-		[data-theme="dark"] #{$amp}dark#{$separator}#{$shorthand}-#{$key} {
+		[data-theme="dark"]#{$amp}dark#{$separator}#{$shorthand}-#{"" + $key},
+		[data-theme="dark"] #{$amp}dark#{$separator}#{$shorthand}-#{"" + $key} {
 			@each $property in $properties {
 				#{$property}: #{call(get-function($conv-fn), $value)};
 			}
