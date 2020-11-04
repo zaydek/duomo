@@ -1,10 +1,14 @@
 interface ISorcery {
+	__deferers: (() => void)[]
 	init(): void
-	toggleDebugMode(): boolean
-	toggleDarkMode(): boolean
+	defer(): void
+	toggleDebugMode(): void
+	toggleDarkMode(): void
 }
 
 const Sorcery: ISorcery = {
+	__deferers: [],
+
 	init() {
 		const media = "matchMedia" in window && window.matchMedia("(prefers-color-scheme: dark)")
 		if (media) {
@@ -21,36 +25,42 @@ const Sorcery: ISorcery = {
 			// EventTarget in newer browsers.
 			//
 			// https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/addListener
-			media.addListener(() => {
+			const handleMedia = () => {
 				Sorcery.toggleDarkMode()
-			})
+			}
+			media.addListener(handleMedia)
+			Sorcery.__deferers.push(() => media.removeListener(handleMedia))
 		}
-
-		document.addEventListener("keydown", e => {
+		const handleKeyDown = (e: KeyboardEvent) => {
 			if (!e.ctrlKey && e.key.toLowerCase() === "d") {
 				Sorcery.toggleDarkMode()
 			} else if (e.ctrlKey && e.key.toLowerCase() === "d") {
 				Sorcery.toggleDebugMode()
 			}
-		})
+		}
+		document.addEventListener("keydown", handleKeyDown)
+		Sorcery.__deferers.push(() => document.removeEventListener("keydown", handleKeyDown))
+	},
+	defer() {
+		for (let x = 0; x < Sorcery.__deferers.length; x++) {
+			Sorcery.__deferers[x]()
+		}
 	},
 	toggleDebugMode() {
-		const mode = document.body.hasAttribute("data-debug")
-		if (!mode) {
+		const hasAttribute = document.body.hasAttribute("data-debug")
+		if (!hasAttribute) {
 			document.body.setAttribute("data-debug", "true")
 		} else {
 			document.body.removeAttribute("data-debug")
 		}
-		return !mode
 	},
 	toggleDarkMode() {
-		const mode = document.body.hasAttribute("data-theme")
-		if (!mode) {
+		const hasAttribute = document.body.hasAttribute("data-theme")
+		if (!hasAttribute) {
 			document.body.setAttribute("data-theme", "dark")
 		} else {
 			document.body.removeAttribute("data-theme")
 		}
-		return !mode
 	},
 }
 
