@@ -1,6 +1,6 @@
 # @zaydek/sorcery
 
-Sorcery SCSS is a stack-based CSS framework. Contributions are welcome as issues and or pull requests.
+Sorcery is a stack-based CSS framework. Contributions are welcome as issues and or pull requests.
 
 To get started, simply run this command:
 
@@ -263,7 +263,7 @@ Licensed as [MIT](./LICENSE).
 
 <!--
 
-Sorcery SCSS is a utility-first framework for rapid development. Sorcery SCSS is most similar to Tailwind CSS but differentiates itself in these key ways:
+Sorcery is a utility-first framework for rapid development. Sorcery is most similar to Tailwind CSS but differentiates itself in these key ways:
 
 - Emphasis on zero-configuration
 - SCSS-based, designed to be extended
@@ -272,16 +272,16 @@ Sorcery SCSS is a utility-first framework for rapid development. Sorcery SCSS is
 - Multiple CDN links for prototyping, add breakpoints as needed
 - Classes map to utilities but can encompass higher-order patterns like `m-gap`
 
-Furthermore, Sorcery SCSS is simpler than Tailwind CSS for the following reasons:
+Furthermore, Sorcery is simpler than Tailwind CSS for the following reasons:
 
 - The API surface area is dramatically smaller
 - More consistent class
 - Numerical values are specified using `px` equivalents, not Tailwind units
 - There are intentionally no `hover:`, `focus:`, etc. pseudo classes
-- You are encouraged to use Sorcery SCSS and CSS or SCSS, not exclusively Tailwind CSS or Sorcery SCSS
+- You are encouraged to use Sorcery and CSS or SCSS, not exclusively Tailwind CSS or Sorcery
 
-The problem with almost every CSS library and framework is they attempt to _solve_ frontend. Frontend is not a solvable problem. Frontend is the amalgamation of _many_ tools coming together to create user experiences for people. How Sorcery SCSS fits into this equation is by making it dead-easy to prototype responsive skeletons.
+The problem with almost every CSS library and framework is they attempt to _solve_ frontend. Frontend is not a solvable problem. Frontend is the amalgamation of _many_ tools coming together to create user experiences for people. How Sorcery fits into this equation is by making it dead-easy to prototype responsive skeletons.
 
-The key to understanding Sorcery SCSS is to understand that it **does not attempt** to map every CSS property to an arbitrary class. What Sorcery SCSS does is makes it easier to reason about responsive skeletons, and encourages you to lean into CSS or SCSS when you’re ready to retrofit your skeleton-app with content.
+The key to understanding Sorcery is to understand that it **does not attempt** to map every CSS property to an arbitrary class. What Sorcery does is makes it easier to reason about responsive skeletons, and encourages you to lean into CSS or SCSS when you’re ready to retrofit your skeleton-app with content.
 
 -->
