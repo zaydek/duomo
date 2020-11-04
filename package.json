@@ -7,10 +7,9 @@
 		"dist/"
 	],
 	"scripts": {
-		"build-readable": "yarn -s sass src/sass/index.scss > dist/index.css",
-		"build-minified": "yarn -s sass -s compressed src/sass/index.scss > dist/index.min.css",
+		"build-readable": "sass src/sass/index.scss dist/index.css",
+		"build-minified": "sass -s compressed src/sass/index.scss dist/index.min.css",
 		"test": "jest",
-		"test-watch": "jest --watch",
 		"build": "yarn test && rm -rf dist && yarn tsc && yarn build-readable && yarn build-minified",
 		"publish-dry-run": "yarn build && npm publish --dry-run"
 	},

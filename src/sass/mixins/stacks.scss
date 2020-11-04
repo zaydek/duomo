@@ -43,21 +43,21 @@
 		margin-top: 0;
 	}
 
-	#{$amp}align-start {
+	#{$amp}stack-stretch {
+		align-items: stretch;
+	}
+	#{$amp}stack-start {
 		align-items: flex-start;
 	}
-	#{$amp}align-center {
+	#{$amp}stack-center {
 		align-items: center;
 	}
-	#{$amp}align-end {
+	#{$amp}stack-end {
 		align-items: flex-end;
 	}
-	#{$amp}align-baseline {
+	#{$amp}stack-baseline {
 		align-items: baseline;
 	}
-	// #{$amp}-stretch {
-	// 	align-items: stretch;
-	// }
 
 	@if not & {
 		.spacer {
