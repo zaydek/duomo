@@ -1,11 +1,12 @@
 @use "vars/maps/index" as maps;
 @use "vars/ranges/index" as ranges;
 
+@use "mixins/new_colors" as colors;
+
 @use "utils/generators";
 
 @import "mixins/border-radius";
 @import "mixins/box-shadow";
-@import "mixins/colors";
 @import "mixins/debugger";
 @import "mixins/display";
 @import "mixins/grid";
@@ -74,12 +75,11 @@ $separator: "\\:";
 	// @include leading-from-map(ranges.$leading, passthrough);
 	@include line-decoration;
 
-	// // FIXME
-	// @if not & {
-	// 	@include color(maps.$colors, ranges.$alpha);
-	// 	@include background-color(maps.$colors, ranges.$alpha);
-	// 	@include border-color(maps.$colors, ranges.$alpha);
-	// }
+	@if not & {
+		@include colors.color(maps.$color, ranges.$alpha);
+		@include colors.background-color(maps.$color, ranges.$alpha);
+		@include colors.border-color(maps.$color, ranges.$alpha);
+	}
 
 	@include border-radius-from-range(ranges.$border-radius, rem);
 	@include box-shadow-from-named-map(maps.$shadow); // Do we need `named-map`?
