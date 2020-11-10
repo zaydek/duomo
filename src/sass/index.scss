@@ -1,27 +1,23 @@
-@use "vars/maps/index" as maps;
-@use "vars/ranges/index" as ranges;
+@use "vars/maps";
+@use "vars/ranges";
 
-@use "mixins/new_colors" as colors;
+@use "core/colors";
 
-@use "utils2/generators";
+@use "meta";
 
-@import "mixins/border-radius";
-@import "mixins/box-shadow";
-@import "mixins/debugger";
-@import "mixins/display";
-@import "mixins/grid";
-@import "mixins/macos-retina";
-@import "mixins/margin";
-@import "mixins/overflow";
-@import "mixins/padding";
-@import "mixins/pointer-events";
-@import "mixins/position";
-@import "mixins/stacks";
-@import "mixins/stagger";
-@import "mixins/tailwind-base";
-@import "mixins/text";
-@import "mixins/width-and-height";
-@import "mixins/z-index";
+@import "core/border-radius";
+@import "core/box-shadow";
+@import "core/display";
+@import "core/grid";
+@import "core/margin";
+@import "core/overflow";
+@import "core/padding";
+@import "core/pointer-events";
+@import "core/position";
+@import "core/stacks";
+@import "core/text";
+@import "core/width-and-height";
+@import "core/z-index";
 
 @import "utils/conv-functions";
 @import "utils/generate-from-map";
@@ -33,17 +29,16 @@ $separator: "\\:";
 
 @mixin preflight {
 	/* purgecss start ignore */
-	html {
-		@include generators.custom-props-from-map(maps.$font-stack);
-		@include generators.custom-props-from-map(maps.$shadow);
-		@include generators.custom-props-from-map(maps.$timing-function);
-	}
-
-	// TODO: `tailwind-base` can extend custom props.
-	@include tailwind-base;
-	@include macos-retina;
-	@include stagger;
-	@include debugger;
+	@include meta.tailwind-base;
+	// prettier-ignore
+	@include meta.custom-props-from-maps(
+		maps.$font-stack,
+		maps.$shadow,
+		maps.$timing-function,
+	);
+	@include meta.macos-retina;
+	@include meta.stagger;
+	@include meta.debugger;
 	/* purgecss end ignore */
 }
 

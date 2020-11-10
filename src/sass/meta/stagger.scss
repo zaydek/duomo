@@ -1,0 +1,17 @@
+@mixin stagger {
+	.stagger > *:nth-child(4n + 1) {
+		width: calc(16 / 16 * 100%);
+	}
+	.stagger > *:nth-child(4n + 2) {
+		width: calc(12 / 16 * 100%);
+	}
+	.stagger > *:nth-child(4n + 3) {
+		width: calc(14 / 16 * 100%);
+	}
+	.stagger > *:nth-child(4n + 4) {
+		width: calc(10 / 16 * 100%);
+	}
+	.stagger > *:last-child {
+		width: 50%;
+	}
+}

@@ -1,6 +1,0 @@
-// NOTE: See https://github.com/sass/sass/issues/1687 for `"" = $key`.
-@mixin custom-props-from-map($map) {
-	@each $k, $v in $map {
-		--#{"" + $k}: #{$v};
-	}
-}

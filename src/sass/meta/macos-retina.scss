@@ -1,3 +1,13 @@
+$separator: "\\:";
+
+// TODO
+@function get-dynamic-ampersand() {
+	@if not & {
+		@return ".";
+	}
+	@return & + $separator;
+}
+
 @mixin macos-retina {
 	$amp: get-dynamic-ampersand();
 

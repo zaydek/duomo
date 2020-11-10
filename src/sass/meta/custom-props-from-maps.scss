@@ -1,0 +1,10 @@
+@mixin custom-props-from-maps($maps...) {
+	html {
+		@each $m in $maps {
+			@each $k, $v in $m {
+				// NOTE: See https://github.com/sass/sass/issues/1687 for `"" = $key`.
+				--#{"" + $k}: #{$v};
+			}
+		}
+	}
+}
