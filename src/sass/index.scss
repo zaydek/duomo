@@ -6,6 +6,8 @@
 @use "meta";
 @use "core";
 
+@use "sass:list";
+
 // @import "core/border-radius";
 // @import "core/box-shadow";
 @import "core/display";
@@ -44,11 +46,15 @@ $separator: "\\:";
 }
 
 @mixin props {
-	// // @include core.display;
+	// @include core.display;
 	// @include stacks-from-range(ranges.$standard, rem);
 	// // @include grid-from-range(vars.$range); // FIXME
-	// @include margin-from-range(join(join(ranges.$negative, auto), ranges.$standard), rem);
-	// @include padding-from-range(ranges.$standard, rem);
+	// @debug list.join(list.join(ranges.$negative, auto), ranges.$standard);
+	@include core.margin-from-range(
+		$range: list.join(list.join(ranges.$negative, auto), ranges.$standard),
+		$resolver: rem
+	);
+	// @include core.padding-from-range($range: ranges.$standard, $resolver: rem);
 	// @include position-from-range((0)); // No range
 	// @include width-from-range(ranges.$standard, rem);
 
@@ -71,18 +77,18 @@ $separator: "\\:";
 	// // @include leading-from-map(ranges.$leading, passthrough);
 	// @include line-decoration;
 
-	@if not & {
-		@include colors.color($map: maps.$color, $alpha-range: ranges.$alpha);
-		@include colors.background-color($map: maps.$color, $alpha-range: ranges.$alpha);
-	}
-	@include core.border-radius-from-range($range: ranges.$border-radius, $resolver: rem);
-	@if not & {
-		@include core.border-color($map: maps.$color, $alpha-range: ranges.$alpha);
-	}
-	@include core.shadows-from-map($map: maps.$shadow);
-	@include core.overflow;
-	@include core.z-index-from-range($range: ranges.$z-index);
-	@include core.pointer-events;
+	// @if not & {
+	// 	@include colors.color($map: maps.$color, $alpha-range: ranges.$alpha);
+	// 	@include colors.background-color($map: maps.$color, $alpha-range: ranges.$alpha);
+	// }
+	// @include core.border-radius-from-range($range: ranges.$border-radius, $resolver: rem);
+	// @if not & {
+	// 	@include core.border-color($map: maps.$color, $alpha-range: ranges.$alpha);
+	// }
+	// @include core.shadows-from-map($map: maps.$shadow);
+	// @include core.overflow;
+	// @include core.z-index-from-range($range: ranges.$z-index);
+	// @include core.pointer-events;
 }
 
 @at-root {

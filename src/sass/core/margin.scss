@@ -1,9 +1,47 @@
-@mixin margin-from-range($range, $conv-fn) {
-	@include generate-from-range((margin), "m", $range, $conv-fn);
-	@include generate-from-range((margin-left, margin-right), "mx", $range, $conv-fn);
-	@include generate-from-range((margin-left), "ml", $range, $conv-fn);
-	@include generate-from-range((margin-right), "mr", $range, $conv-fn);
-	@include generate-from-range((margin-top, margin-bottom), "my", $range, $conv-fn);
-	@include generate-from-range((margin-top), "mt", $range, $conv-fn);
-	@include generate-from-range((margin-bottom), "mb", $range, $conv-fn);
+@use "../utils2";
+
+// prettier-ignore
+@mixin margin-from-range($range, $resolver) {
+	@include utils2.generate-from-range(
+		"m",
+		(margin),
+		$range,
+		$resolver,
+	);
+	@include utils2.generate-from-range(
+		"mx",
+		(margin-left, margin-right),
+		$range,
+		$resolver,
+	);
+	@include utils2.generate-from-range(
+		"ml",
+		(margin-left),
+		$range,
+		$resolver,
+	);
+	@include utils2.generate-from-range(
+		"mr",
+		(margin-right),
+		$range,
+		$resolver,
+	);
+	@include utils2.generate-from-range(
+		"my",
+		(margin-top, margin-bottom),
+		$range,
+		$resolver,
+	);
+	@include utils2.generate-from-range(
+		"mt",
+		(margin-top),
+		$range,
+		$resolver,
+	);
+	@include utils2.generate-from-range(
+		"mb",
+		(margin-bottom),
+		$range,
+		$resolver,
+	);
 }

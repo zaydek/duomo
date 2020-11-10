@@ -1,9 +1,47 @@
-@mixin padding-from-range($range, $conv-fn) {
-	@include generate-from-range((padding), "p", $range, $conv-fn);
-	@include generate-from-range((padding-left, padding-right), "px", $range, $conv-fn);
-	@include generate-from-range((padding-left), "pl", $range, $conv-fn);
-	@include generate-from-range((padding-right), "pr", $range, $conv-fn);
-	@include generate-from-range((padding-top, padding-bottom), "py", $range, $conv-fn);
-	@include generate-from-range((padding-top), "pt", $range, $conv-fn);
-	@include generate-from-range((padding-bottom), "pb", $range, $conv-fn);
+@use "../utils2";
+
+// prettier-ignore
+@mixin padding-from-range($range, $resolver) {
+	@include utils2.generate-from-range(
+		"p",
+		(padding),
+		$range,
+		$resolver,
+	);
+	@include utils2.generate-from-range(
+		"px",
+		(padding-left, padding-right),
+		$range,
+		$resolver,
+	);
+	@include utils2.generate-from-range(
+		"pl",
+		(padding-left),
+		$range,
+		$resolver,
+	);
+	@include utils2.generate-from-range(
+		"pr",
+		(padding-right),
+		$range,
+		$resolver,
+	);
+	@include utils2.generate-from-range(
+		"py",
+		(padding-top, padding-bottom),
+		$range,
+		$resolver,
+	);
+	@include utils2.generate-from-range(
+		"pt",
+		(padding-top),
+		$range,
+		$resolver,
+	);
+	@include utils2.generate-from-range(
+		"pb",
+		(padding-bottom),
+		$range,
+		$resolver,
+	);
 }
