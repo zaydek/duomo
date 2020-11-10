@@ -71,21 +71,21 @@ $separator: "\\:";
 	// @include leading-from-map(ranges.$leading, passthrough);
 	@include line-decoration;
 
-	@if not & {
-		@include colors.color(maps.$color, ranges.$alpha);
-		@include colors.background-color(maps.$color, ranges.$alpha);
-		@include colors.border-color(maps.$color, ranges.$alpha);
-	}
-
-	@include border-radius-from-range(ranges.$border-radius, rem);
+	// @if not & {
+	// 	@include colors.color(maps.$color, ranges.$alpha);
+	// 	@include colors.background-color(maps.$color, ranges.$alpha);
+	// 	@include colors.border-color(maps.$color, ranges.$alpha);
+	// }
+	// @include border-radius-from-range(ranges.$border-radius, rem);
 	// @include box-shadow-from-named-map(maps.$shadow); // Do we need `named-map`?
-	@include overflow;
-	@include z-index-from-range(ranges.$z-index);
-	@include pointer-events;
+	// @include overflow;
+	// @include z-index-from-range(ranges.$z-index);
+	// @include pointer-events;
 }
 
 @at-root {
-	@include core.shadows-from-map(maps.$shadow);
+	@include core.display;
+	// @include core.shadows-from-map(maps.$shadow);
 	// @include core.overflow;
 	// @include core.z-index-from-range(ranges.$z-index);
 	// @include core.pointer-events;

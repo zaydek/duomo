@@ -1,9 +1,11 @@
-@mixin display {
-	$amp: get-dynamic-ampersand();
+@use "../utils2";
 
-	@each $key, $value in ("hidden": none, "block": "block") {
-		#{$amp}#{$key} {
-			display: #{$value};
+@mixin display {
+	$amp: utils2.get-ampersand();
+
+	@each $k, $v in ("hidden": none, "block": "block") {
+		#{$amp}#{$k} {
+			display: #{$v};
 		}
 	}
 }

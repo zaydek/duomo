@@ -3,10 +3,10 @@
 
 @use "../utils2";
 
-@function __new-rgba-map($color-map, $alpha-channel) {
+@function __new-rgba-map($map, $alpha-channel) {
 	$merged: ();
 
-	@each $k, $v in $color-map {
+	@each $k, $v in $map {
 		$to-merge: ();
 		@if $v == transparent or $v == currentColor {
 			$to-merge: (#{$k}: #{$v});
@@ -19,14 +19,14 @@
 	@return $merged;
 }
 
-@mixin __generate-colors($property, $shorthand, $color-map, $alpha-range) {
+@mixin __generate-colors($shorthand, $prop, $map, $alpha-range) {
 	$amp: utils2.get-ampersand();
 
-	@each $k, $v in __new-rgba-map($color-map, var(--#{$shorthand}-opacity)) {
+	@each $k, $v in __new-rgba-map($map, var(--#{$shorthand}-opacity)) {
 		#{$amp}#{$shorthand}-#{$k} {
 			--#{$shorthand}-opacity: 1;
-			#{$property}: #{rgb(map.get($color-map, $k)...)};
-			#{$property}: #{$v};
+			#{$prop}: #{rgb(map.get($map, $k)...)};
+			#{$prop}: #{$v};
 		}
 	}
 	@each $v in $alpha-range {
@@ -36,15 +36,15 @@
 	}
 }
 
-@mixin color($color-map, $alpha-range) {
-	@include __generate-colors(color, "text", $color-map, $alpha-range);
+@mixin color($map, $alpha-range) {
+	@include __generate-colors("text", color, $map, $alpha-range);
 }
 
-@mixin background-color($color-map, $alpha-range) {
-	@include __generate-colors(background-color, "bg", $color-map, $alpha-range);
+@mixin background-color($map, $alpha-range) {
+	@include __generate-colors("bg", background-color, $map, $alpha-range);
 }
 
-// TODO: Possibly move to border submodule.
-@mixin border-color($color-map, $alpha-range) {
-	@include __generate-colors(border-color, "border", $color-map, $alpha-range);
+// TODO: Possibly move to `border` submodule.
+@mixin border-color($map, $alpha-range) {
+	@include __generate-colors("border", border-color, $map, $alpha-range);
 }
