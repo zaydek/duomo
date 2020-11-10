@@ -1,23 +1,9 @@
-@use "vars/maps";
-@use "vars/ranges";
-
-@use "meta";
-@use "core";
-
 @use "sass:list";
 
-// @import "core/grid";
-// @import "core/position";
-// @import "core/text";
-// @import "core/width-and-height";
-
-@import "utils/conv-functions";
-@import "utils/generate-from-map";
-@import "utils/generate-from-range";
-@import "utils/get-dynamic-ampersand";
-@import "utils/safe-functions";
-
-$separator: "\\:";
+@use "core";
+@use "meta";
+@use "vars/maps";
+@use "vars/ranges";
 
 @mixin preflight {
 	/* purgecss start ignore */
@@ -43,14 +29,13 @@ $separator: "\\:";
 	// 	$resolver: rem
 	// );
 	// @include core.padding-from-range($range: ranges.$standard, $resolver: rem);
-	@include core.position-from-range(
-		// prettier-ignore
-		$range: (0),
-		$resolver: rem
-	);
+	// @include core.position-from-range(
+	// 	// prettier-ignore
+	// 	$range: (0),
+	// 	$resolver: rem
+	// );
 
 	// @include width-from-range(ranges.$standard, rem);
-
 	// TODO: We need a function to interpolate a breakpoint map.
 	// @include width-from-range(($xs, $sm, $md, $lg, $xl), px);
 	// // TODO
@@ -60,15 +45,15 @@ $separator: "\\:";
 	// 		width: #{$value};
 	// 	}
 	// }
-
 	// @include max-width-from-map(maps.$breakpoint, px);
 	// @include height-from-range(ranges.$standard, rem);
-	// @include text-align;
-	// @include font-style;
-	// @include font-weight;
-	// @include font-size-from-range(ranges.$font-size, rem);
-	// // @include leading-from-map(ranges.$leading, passthrough);
-	// @include line-decoration;
+
+	// @include core.text-align;
+	// @include core.font-style;
+	// @include core.font-weight;
+	// @include core.font-size-from-range(ranges.$font-size, rem);
+	// @include core.leading-from-map(ranges.$leading, passthrough);
+	// @include core.line-decoration;
 
 	// @if not & {
 	// 	@include core.color($map: maps.$color, $alpha-range: ranges.$alpha);
