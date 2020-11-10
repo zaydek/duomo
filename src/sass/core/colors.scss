@@ -1,15 +1,7 @@
 @use "sass:list";
 @use "sass:map";
 
-$separator: "\\:";
-
-// TODO
-@function get-dynamic-ampersand() {
-	@if not & {
-		@return ".";
-	}
-	@return & + $separator;
-}
+@use "../utils2";
 
 @function __new-rgba-map($color-map, $alpha-channel) {
 	$merged: ();
@@ -27,8 +19,8 @@ $separator: "\\:";
 	@return $merged;
 }
 
-@mixin __generate-colors($shorthand, $property, $color-map, $alpha-range) {
-	$amp: get-dynamic-ampersand();
+@mixin __generate-colors($property, $shorthand, $color-map, $alpha-range) {
+	$amp: utils2.get-ampersand();
 
 	@each $k, $v in __new-rgba-map($color-map, var(--#{$shorthand}-opacity)) {
 		#{$amp}#{$shorthand}-#{$k} {
@@ -45,14 +37,14 @@ $separator: "\\:";
 }
 
 @mixin color($color-map, $alpha-range) {
-	@include __generate-colors("text", color, $color-map, $alpha-range);
+	@include __generate-colors(color, "text", $color-map, $alpha-range);
 }
 
 @mixin background-color($color-map, $alpha-range) {
-	@include __generate-colors("bg", background-color, $color-map, $alpha-range);
+	@include __generate-colors(background-color, "bg", $color-map, $alpha-range);
 }
 
 // TODO: Possibly move to border submodule.
 @mixin border-color($color-map, $alpha-range) {
-	@include __generate-colors("border", border-color, $color-map, $alpha-range);
+	@include __generate-colors(border-color, "border", $color-map, $alpha-range);
 }

@@ -1,17 +1,17 @@
 @mixin stagger {
-	.stagger-by > *:nth-child(4n + 1),
+	.staggered > *:nth-child(4n + 1),
 	.stagger-1 {
 		width: 50%;
 	}
-	.stagger-by > *:nth-child(4n + 2),
+	.staggered > *:nth-child(4n + 2),
 	.stagger-2 {
 		width: 75%;
 	}
-	.stagger-by > *:nth-child(4n + 3),
+	.staggered > *:nth-child(4n + 3),
 	.stagger-3 {
 		width: #{75 + 25% / 2};
 	}
-	.stagger-by > *:nth-child(4n + 4),
+	.staggered > *:nth-child(4n + 4),
 	.stagger-4 {
 		width: #{75 - 25% / 2};
 	}

@@ -1,13 +1,9 @@
-@use "../utils/get-ampersand" as utils;
-
 @mixin macos-retina {
-	$amp: utils.get-ampersand();
-
-	#{$amp}no-macos-retina {
+	.no-macos-retina {
 		-webkit-font-smoothing: auto;
 		-moz-osx-font-smoothing: auto;
 	}
-	#{$amp}macos-retina {
+	.macos-retina {
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 	}

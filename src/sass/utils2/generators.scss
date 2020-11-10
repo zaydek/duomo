@@ -1,0 +1,38 @@
+@use "get-ampersand" as *;
+
+@mixin generate-from-range($properties, $shorthand, $range, $conv-fn) {
+	$amp: get-ampersand();
+
+	@each $value in $range {
+		$negative: if(safe-compare-negative($value), "-", "");
+		#{$amp}#{$negative}#{$shorthand}-#{safe-abs($value)} {
+			@each $property in $properties {
+				#{$property}: #{call(get-function($conv-fn), $value)};
+			}
+		}
+	}
+}
+
+@mixin generate-from-map($properties, $shorthand, $map, $conv-fn) {
+	$amp: get-ampersand();
+
+	@each $key, $value in $map {
+		#{$amp}#{$shorthand}-#{"" + $key} {
+			@each $property in $properties {
+				#{$property}: #{call(get-function($conv-fn), $value)};
+			}
+		}
+	}
+}
+
+@mixin generate-from-named-map($properties, $named-map, $conv-fn) {
+	$amp: get-ampersand();
+
+	@each $key, $value in $named-map {
+		#{$amp}#{$key} {
+			@each $property in $properties {
+				#{$property}: #{call(get-function($conv-fn), $value)};
+			}
+		}
+	}
+}

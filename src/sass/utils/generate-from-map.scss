@@ -10,32 +10,32 @@
 	}
 }
 
-// DEPRECATE
-@mixin generate-from-map-hover($properties, $shorthand, $map, $conv-fn) {
-	$amp: get-dynamic-ampersand();
-
-	@each $key, $value in $map {
-		#{$amp}hover#{$separator}#{$shorthand}-#{"" + $key}:hover {
-			@each $property in $properties {
-				#{$property}: #{call(get-function($conv-fn), $value)};
-			}
-		}
-	}
-}
-
-// DEPRECATE
-@mixin generate-from-map-dark($properties, $shorthand, $map, $conv-fn) {
-	$amp: get-dynamic-ampersand();
-
-	@each $key, $value in $map {
-		[data-theme="dark"]#{$amp}dark#{$separator}#{$shorthand}-#{"" + $key},
-		[data-theme="dark"] #{$amp}dark#{$separator}#{$shorthand}-#{"" + $key} {
-			@each $property in $properties {
-				#{$property}: #{call(get-function($conv-fn), $value)};
-			}
-		}
-	}
-}
+// // DEPRECATE
+// @mixin generate-from-map-hover($properties, $shorthand, $map, $conv-fn) {
+// 	$amp: get-dynamic-ampersand();
+//
+// 	@each $key, $value in $map {
+// 		#{$amp}hover#{$separator}#{$shorthand}-#{"" + $key}:hover {
+// 			@each $property in $properties {
+// 				#{$property}: #{call(get-function($conv-fn), $value)};
+// 			}
+// 		}
+// 	}
+// }
+//
+// // DEPRECATE
+// @mixin generate-from-map-dark($properties, $shorthand, $map, $conv-fn) {
+// 	$amp: get-dynamic-ampersand();
+//
+// 	@each $key, $value in $map {
+// 		[data-theme="dark"]#{$amp}dark#{$separator}#{$shorthand}-#{"" + $key},
+// 		[data-theme="dark"] #{$amp}dark#{$separator}#{$shorthand}-#{"" + $key} {
+// 			@each $property in $properties {
+// 				#{$property}: #{call(get-function($conv-fn), $value)};
+// 			}
+// 		}
+// 	}
+// }
 
 @mixin generate-from-named-map($properties, $named-map, $conv-fn) {
 	$amp: get-dynamic-ampersand();
