@@ -22,6 +22,8 @@
 }
 
 @mixin props {
+	// @include core.padding-from-range($range: ranges.$standard, $resolver: rem);
+
 	@if false {
 		@include core.display;
 		@include core.stack-from-range($range: ranges.$standard, $resolver: rem);

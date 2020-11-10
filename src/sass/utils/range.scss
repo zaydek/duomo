@@ -1,0 +1,28 @@
+@use "sass:list";
+
+@function range($start, $end, $step: 1) {
+	$range: ();
+	@while $start <= $end {
+		$range: list.append($range, $start, comma);
+		$start: $start + $step;
+	}
+	@return $range;
+}
+
+@function range-count($start, $step, $count) {
+	$range: ();
+	@while $count >= 0 {
+		$range: list.append($range, $start, comma);
+		$start: $start + $step;
+		$count: $count - 1;
+	}
+	@return $range;
+}
+
+@function sum-range($ranges...) {
+	$sum-range: ();
+	@each $range in $ranges {
+		$sum-range: list.join($sum-range, $range);
+	}
+	@return $sum-range;
+}

@@ -1,17 +1,18 @@
 @mixin stagger {
-	.staggered > *:nth-child(4n + 1),
+	// NOTE: `:not(:empty)` is not tested.
+	.staggered > *:nth-child(4n + 1):not(:empty),
 	.stagger-1 {
 		width: 50%;
 	}
-	.staggered > *:nth-child(4n + 2),
+	.staggered > *:nth-child(4n + 2):not(:empty),
 	.stagger-2 {
 		width: 75%;
 	}
-	.staggered > *:nth-child(4n + 3),
+	.staggered > *:nth-child(4n + 3):not(:empty),
 	.stagger-3 {
 		width: #{75 + 25% / 2};
 	}
-	.staggered > *:nth-child(4n + 4),
+	.staggered > *:nth-child(4n + 4):not(:empty),
 	.stagger-4 {
 		width: #{75 - 25% / 2};
 	}
