@@ -32,22 +32,9 @@ $separator: "\\:";
 
 @mixin preflight {
 	/* purgecss start ignore */
-	//
-	// prettier-ignore
 	html {
-		/*
-		 * Fonts
-		 */
 		@include generators.custom-props-from-map(maps.$font-stack);
-
-		/*
-		 * Shadows
-		 */
 		@include generators.custom-props-from-map(maps.$shadow);
-
-		/*
-		 * Timing functions
-		 */
 		@include generators.custom-props-from-map(maps.$timing-function);
 	}
 
