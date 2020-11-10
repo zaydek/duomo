@@ -79,7 +79,7 @@ $separator: "\\:";
 @at-root {
 	@include preflight;
 
-	/*! @zaydek/sorcery | MIT License | https://github.com/zaydek/sorcery */
+	/*! @zaydek/duomo | MIT License | https://github.com/zaydek/duomo */
 	@include props;
 	@each $key, $value in $breakpoint-map {
 		@media (min-width: px($value)) {

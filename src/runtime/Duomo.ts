@@ -1,4 +1,4 @@
-interface ISorcery {
+interface IDuomo {
 	__deferers: (() => void)[]
 	init(): void
 	defer(): void
@@ -6,7 +6,7 @@ interface ISorcery {
 	toggleDarkMode(): void
 }
 
-const Sorcery: ISorcery = {
+const Duomo: IDuomo = {
 	__deferers: [],
 
 	init() {
@@ -26,24 +26,24 @@ const Sorcery: ISorcery = {
 			//
 			// https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/addListener
 			const handleMedia = () => {
-				Sorcery.toggleDarkMode()
+				Duomo.toggleDarkMode()
 			}
 			media.addListener(handleMedia)
-			Sorcery.__deferers.push(() => media.removeListener(handleMedia))
+			Duomo.__deferers.push(() => media.removeListener(handleMedia))
 		}
 		const handleKeyDown = (e: KeyboardEvent) => {
 			if (!e.ctrlKey && e.key.toLowerCase() === "d") {
-				Sorcery.toggleDarkMode()
+				Duomo.toggleDarkMode()
 			} else if (e.ctrlKey && e.key.toLowerCase() === "d") {
-				Sorcery.toggleDebugMode()
+				Duomo.toggleDebugMode()
 			}
 		}
 		document.addEventListener("keydown", handleKeyDown)
-		Sorcery.__deferers.push(() => document.removeEventListener("keydown", handleKeyDown))
+		Duomo.__deferers.push(() => document.removeEventListener("keydown", handleKeyDown))
 	},
 	defer() {
-		for (let x = 0; x < Sorcery.__deferers.length; x++) {
-			Sorcery.__deferers[x]()
+		for (let x = 0; x < Duomo.__deferers.length; x++) {
+			Duomo.__deferers[x]()
 		}
 	},
 	toggleDebugMode() {
@@ -64,4 +64,4 @@ const Sorcery: ISorcery = {
 	},
 }
 
-export default Sorcery
+export default Duomo
