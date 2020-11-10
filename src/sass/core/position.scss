@@ -1,13 +1,13 @@
-@use "../utils2";
+@use "../utils";
 
 @mixin __impl($shorthand, $props, $range, $resolver) {
-	$amp: utils2.get-ampersand();
+	$amp: utils.get-ampersand();
 
 	@each $v in $range {
-		$minus: utils2.safe-minus($v);
-		#{$amp}#{$minus}#{$shorthand}-#{utils2.safe-abs($v)} {
+		$minus: utils.safe-minus($v);
+		#{$amp}#{$minus}#{$shorthand}-#{utils.safe-abs($v)} {
 			@each $prop in $props {
-				#{$prop}: #{utils2.resolve($v, $resolver)};
+				#{$prop}: #{utils.resolve($v, $resolver)};
 			}
 		}
 	}
@@ -21,44 +21,9 @@
 	}
 }
 
-@mixin tooltip {
-	$amp: utils2.get-ampersand();
-
-	#{$amp}tooltip-tl {
-		top: 0;
-		left: 0;
-		transform: translateX(0) translateY(-100%);
-	}
-	#{$amp}tooltip-t {
-		top: 0;
-		left: 50%;
-		transform: translateX(-50%) translateY(-100%);
-	}
-	#{$amp}tooltip-tr {
-		top: 0;
-		right: 0;
-		transform: translateX(0) translateY(-100%);
-	}
-	#{$amp}tooltip-bl {
-		bottom: 0;
-		left: 0;
-		transform: translateX(0) translateY(100%);
-	}
-	#{$amp}tooltip-b {
-		bottom: 0;
-		left: 50%;
-		transform: translateX(-50%) translateY(100%);
-	}
-	#{$amp}tooltip-br {
-		bottom: 0;
-		right: 0;
-		transform: translateX(0) translateY(100%);
-	}
-}
-
 // prettier-ignore
 @mixin position-from-range($range, $resolver) {
-	$amp: utils2.get-ampersand();
+	$amp: utils.get-ampersand();
 
 	@each $position in static, relative, absolute, fixed, sticky {
 		#{$amp}#{$position} {
@@ -126,6 +91,4 @@
 		$range,
 		$resolver,
 	);
-
-	@include tooltip;
 }

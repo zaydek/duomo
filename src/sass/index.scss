@@ -2,6 +2,7 @@
 
 @use "core";
 @use "meta";
+@use "utils";
 @use "vars/maps";
 @use "vars/ranges";
 
@@ -34,6 +35,7 @@
 	// 	$range: (0),
 	// 	$resolver: rem
 	// );
+	@include core.tooltip;
 
 	// @include width-from-range(ranges.$standard, rem);
 	// TODO: We need a function to interpolate a breakpoint map.
@@ -76,7 +78,7 @@
 
 	@include props;
 	@each $key, $value in maps.$breakpoint {
-		@media (min-width: #{px($value)}) {
+		@media (min-width: #{utils.px($value)}) {
 			.#{$key} {
 				@at-root {
 					@include props;

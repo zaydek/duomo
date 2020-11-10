@@ -1,7 +1,7 @@
-@use "../utils2";
+@use "../utils";
 
 @mixin pointer-events {
-	$amp: utils2.get-ampersand();
+	$amp: utils.get-ampersand();
 
 	#{$amp}no-pointer-events {
 		pointer-events: none;

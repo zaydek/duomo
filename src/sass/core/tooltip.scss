@@ -1,0 +1,67 @@
+@use "../utils";
+
+// #{$amp}tooltip-tl {
+// 	top: 0;
+// 	left: 0;
+// 	transform: translateX(0) translateY(-100%);
+// }
+// #{$amp}tooltip-t {
+// 	top: 0;
+// 	left: 50%;
+// 	transform: translateX(-50%) translateY(-100%);
+// }
+// #{$amp}tooltip-tr {
+// 	top: 0;
+// 	right: 0;
+// 	transform: translateX(0) translateY(-100%);
+// }
+// #{$amp}tooltip-bl {
+// 	bottom: 0;
+// 	left: 0;
+// 	transform: translateX(0) translateY(100%);
+// }
+// #{$amp}tooltip-b {
+// 	bottom: 0;
+// 	left: 50%;
+// 	transform: translateX(-50%) translateY(100%);
+// }
+// #{$amp}tooltip-br {
+// 	bottom: 0;
+// 	right: 0;
+// 	transform: translateX(0) translateY(100%);
+// }
+
+@mixin tooltip {
+	$amp: utils.get-ampersand();
+
+	#{$amp}tooltip-tl {
+		top: 0;
+		left: 0;
+		transform: translateY(-100%);
+	}
+	#{$amp}tooltip-t {
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%) translateY(-100%);
+	}
+	#{$amp}tooltip-tr {
+		top: 0;
+		right: 0;
+		transform: translateY(-100%);
+	}
+	#{$amp}tooltip-bl {
+		bottom: 0;
+		left: 0;
+		transform: translateY(100%);
+	}
+	#{$amp}tooltip-b {
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%) translateY(100%);
+	}
+	#{$amp}tooltip-br {
+		bottom: 0;
+		right: 0;
+		transform: translateY(100%);
+	}
+}

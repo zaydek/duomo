@@ -1,9 +1,9 @@
-@use "../utils2";
+@use "../utils";
 
 $__opts: (hidden, scroll);
 
 @mixin overflow {
-	$amp: utils2.get-ampersand();
+	$amp: utils.get-ampersand();
 
 	@each $v in $__opts {
 		#{$amp}overflow-#{$v} {

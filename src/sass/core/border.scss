@@ -1,26 +1,26 @@
-@use "../utils2";
+@use "../utils";
 
 // prettier-ignore
 @mixin border-width-from-range($range, $resolver) {
-	@include utils2.generate-from-range(
+	@include utils.generate-from-range(
 		"t",
 		(border-top-width),
 		$range,
 		$resolver,
 	);
-	@include utils2.generate-from-range(
+	@include utils.generate-from-range(
 		"r",
 		(border-right-width),
 		$range,
 		$resolver,
 	);
-	@include utils2.generate-from-range(
+	@include utils.generate-from-range(
 		"b",
 		(border-bottom-width),
 		$range,
 		$resolver,
 	);
-	@include utils2.generate-from-range(
+	@include utils.generate-from-range(
 		"l",
 		(border-left-width),
 		$range,
@@ -29,13 +29,13 @@
 }
 
 @mixin border-color($map, $alpha-range) {
-	@include utils2.generate-colors("bg", background-color, $map, $alpha-range);
+	@include utils.generate-colors("bg", background-color, $map, $alpha-range);
 }
 
 @mixin __border-radius-from-range-impl($shorthand, $props, $range, $resolver) {
-	$amp: utils2.get-ampersand();
+	$amp: utils.get-ampersand();
 
-	@include utils2.generate-from-range($shorthand, $props, $range, $resolver);
+	@include utils.generate-from-range($shorthand, $props, $range, $resolver);
 	#{$amp}#{$shorthand}-full {
 		@each $property in $props {
 			#{$property}: 9999px;

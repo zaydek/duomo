@@ -1,9 +1,9 @@
-@use "../utils2";
+@use "../utils";
 
 @mixin display {
-	$amp: utils2.get-ampersand();
+	$amp: utils.get-ampersand();
 
-	@each $k, $v in ("hidden": none, "block": "block") {
+	@each $k, $v in (hidden: none, block: block) {
 		#{$amp}#{$k} {
 			display: #{$v};
 		}
