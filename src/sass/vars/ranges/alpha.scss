@@ -1,5 +1,7 @@
-@use "sass:list";
-
 @use "../../utils";
 
-$alpha: (utils.range(0, 0.25, 0.05), utils.range(0.75, 1, 0.05)) !default;
+// prettier-ignore
+$alpha: utils.sum-range(
+	utils.range(0, 0.25, 0.05),
+	utils.range(0.75, 1, 0.05),
+) !default;

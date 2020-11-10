@@ -1,0 +1,8 @@
+@use "meta";
+
+@at-root {
+	/*! @zaydek/duomo | MIT License | https://github.com/zaydek/duomo */
+	/* purgecss start ignore */
+	@include meta.tailwind-base;
+	/* purgecss end ignore */
+}

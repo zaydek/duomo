@@ -7,11 +7,11 @@
 		"dist/"
 	],
 	"scripts": {
-		"build-readable": "sass src/sass/index.scss dist/index.css",
-		"build-minified": "sass -s compressed src/sass/index.scss dist/index.min.css",
-		"test": "jest",
-		"build": "yarn test && rm -rf dist && yarn tsc && yarn build-readable && yarn build-minified",
-		"publish-dry-run": "yarn build && npm publish --dry-run"
+		"watch-duomo": "watch --interval 0.1 'yarn -s sass --no-charset src/sass/index.scss dist/index.css' src",
+		"build-duomo": "sass --no-charset src/sass/index.scss dist/index.css",
+		"build-reset": "sass --no-charset src/sass/reset.scss dist/reset.css",
+		"build": "rm -rf dist && yarn build-duomo && yarn build-reset",
+		"publish-dist-dry-run": "yarn build && npm publish --dry-run"
 	},
 	"devDependencies": {
 		"@types/jest": "^26.0.15",
