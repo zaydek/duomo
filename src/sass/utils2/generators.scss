@@ -8,33 +8,21 @@
 	@each $v in $range {
 		$minus: safe-neg($v);
 		#{$amp}#{$minus}#{$shorthand}-#{safe-abs($v)} {
-			@each $property in $props {
-				#{$property}: #{resolve($v, $resolver)};
+			@each $prop in $props {
+				#{$prop}: #{resolve($v, $resolver)};
 			}
 		}
 	}
 }
 
-// @mixin generate-from-map($props, $shorthand, $map, $conv-fn) {
-// 	$amp: get-ampersand();
-//
-// 	@each $k, $v in $map {
-// 		#{$amp}#{$shorthand}-#{"" + $k} {
-// 			@each $property in $props {
-// 				#{$property}: #{call(get-function($conv-fn), $v)};
-// 			}
-// 		}
-// 	}
-// }
-//
-// @mixin generate-from-named-map($props, $named-map, $conv-fn) {
-// 	$amp: get-ampersand();
-//
-// 	@each $k, $v in $named-map {
-// 		#{$amp}#{$k} {
-// 			@each $property in $props {
-// 				#{$property}: #{call(get-function($conv-fn), $v)};
-// 			}
-// 		}
-// 	}
-// }
+@mixin generate-from-map($shorthand, $props, $map, $resolver) {
+	$amp: get-ampersand();
+
+	@each $k, $v in $map {
+		#{$amp}#{$shorthand}-#{"" + $k} {
+			@each $prop in $props {
+				#{$prop}: #{resolve($v, $resolver)};
+			}
+		}
+	}
+}

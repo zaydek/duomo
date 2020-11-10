@@ -7,7 +7,7 @@
 @use "core";
 
 @import "core/border-radius";
-@import "core/box-shadow";
+// @import "core/box-shadow";
 @import "core/display";
 @import "core/grid";
 @import "core/margin";
@@ -78,14 +78,15 @@ $separator: "\\:";
 	}
 
 	@include border-radius-from-range(ranges.$border-radius, rem);
-	@include box-shadow-from-named-map(maps.$shadow); // Do we need `named-map`?
+	// @include box-shadow-from-named-map(maps.$shadow); // Do we need `named-map`?
 	@include overflow;
 	@include z-index-from-range(ranges.$z-index);
 	@include pointer-events;
 }
 
 @at-root {
-	@include core.overflow;
+	@include core.shadows-from-map(maps.$shadow);
+	// @include core.overflow;
 	// @include core.z-index-from-range(ranges.$z-index);
 	// @include core.pointer-events;
 
