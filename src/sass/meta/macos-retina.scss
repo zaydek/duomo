@@ -1,15 +1,7 @@
-$separator: "\\:";
-
-// TODO
-@function get-dynamic-ampersand() {
-	@if not & {
-		@return ".";
-	}
-	@return & + $separator;
-}
+@use "../utils/get-ampersand" as utils;
 
 @mixin macos-retina {
-	$amp: get-dynamic-ampersand();
+	$amp: utils.get-ampersand();
 
 	#{$amp}no-macos-retina {
 		-webkit-font-smoothing: auto;

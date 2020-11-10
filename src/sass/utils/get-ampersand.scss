@@ -1,0 +1,9 @@
+// TODO: Move `$separator` to user configuration?
+$separator: "\\:";
+
+@function get-ampersand() {
+	@if not & {
+		@return ".";
+	}
+	@return & + $separator;
+}
