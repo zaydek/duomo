@@ -1,6 +1,0 @@
-// TODO: Add support for `group`?
-@mixin color-from-map($properties, $shorthand, $map) {
-	@include generate-from-map($properties, $shorthand, $map, passthrough);
-	@include generate-from-map-hover($properties, $shorthand, $map, passthrough);
-	@include generate-from-map-dark($properties, $shorthand, $map, passthrough);
-}

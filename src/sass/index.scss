@@ -1,7 +1,9 @@
+@use "./vars/maps/index" as maps;
+@use "./vars/ranges/index" as ranges;
+
 @import "./mixins/border-radius";
 @import "./mixins/box-shadow";
-@import "./mixins/color";
-@import "./mixins/custom-props";
+@import "./mixins/colors";
 @import "./mixins/debugger";
 @import "./mixins/display";
 @import "./mixins/grid";
@@ -24,10 +26,17 @@
 @import "./utils/get-dynamic-ampersand";
 @import "./utils/safe-functions";
 
-@import "./design-tokens";
-@import "./variables";
-
 $separator: "\\:";
+
+// TODO: Change to variadic function signature.
+@mixin custom-props {
+	html {
+		@include generate-custom-props-from-map(maps.$font-stack);
+		// @include generate-custom-props-from-map($color); // FIXME
+		@include generate-custom-props-from-map(maps.$shadow);
+		@include generate-custom-props-from-map(maps.$timing-function);
+	}
+}
 
 @mixin preflight {
 	/* purgecss start ignore */
@@ -41,38 +50,43 @@ $separator: "\\:";
 
 @mixin props {
 	@include display;
-	@include stacks-from-range($range, rem);
-	@include grid-from-range($range);
-	@include margin-from-range(join(join($-range, auto), $range), rem);
-	@include padding-from-range($range, rem);
-	@include position-from-range((0));
-	@include width-from-range($range, rem);
-	@include width-from-range(($xs, $sm, $md, $lg, $xl), px);
+	@include stacks-from-range(ranges.$standard, rem);
+	// @include grid-from-range(vars.$range); // FIXME
+	@include margin-from-range(join(join(ranges.$negative, auto), ranges.$standard), rem);
+	@include padding-from-range(ranges.$standard, rem);
+	@include position-from-range((0)); // No range
+	@include width-from-range(ranges.$standard, rem);
 
-	// TODO
-	$amp: get-dynamic-ampersand();
-	@each $key, $value in ("full": 100%, "screen": 100vw) {
-		#{$amp}w-#{$key} {
-			width: #{$value};
-		}
-	}
+	// TODO: We need a function to interpolate a breakpoint map.
+	// @include width-from-range(($xs, $sm, $md, $lg, $xl), px);
+	// // TODO
+	// $amp: get-dynamic-ampersand();
+	// @each $key, $value in ("full": 100%, "screen": 100vw) {
+	// 	#{$amp}w-#{$key} {
+	// 		width: #{$value};
+	// 	}
+	// }
 
-	@include max-width-from-map($breakpoint-map, px);
-	@include height-from-range($range, rem);
+	@include max-width-from-map(maps.$breakpoint, px);
+	@include height-from-range(ranges.$standard, rem);
 	@include text-align;
 	@include font-style;
 	@include font-weight;
-	@include font-size-from-range($font-size-range, rem);
-	@include line-height-from-map($line-height-map, passthrough);
+	@include font-size-from-range(ranges.$font-size, rem);
+	// @include leading-from-map(ranges.$leading, passthrough);
 	@include line-decoration;
-	@if not & {
-		@include color-from-map((color), "text", $color-map);
-		@include color-from-map((background-color), "bg", $color-map);
-	}
-	@include border-radius-from-range($short-range, rem);
-	@include box-shadow-from-named-map($box-shadow-named-map);
+
+	// // FIXME
+	// @if not & {
+	// 	@include color(maps.$colors, ranges.$alpha);
+	// 	@include background-color(maps.$colors, ranges.$alpha);
+	// 	@include border-color(maps.$colors, ranges.$alpha);
+	// }
+
+	@include border-radius-from-range(ranges.$border-radius, rem);
+	@include box-shadow-from-named-map(maps.$shadow); // Do we need `named-map`?
 	@include overflow;
-	@include z-index-from-range($z-index-range);
+	@include z-index-from-range(ranges.$z-index);
 	@include pointer-events;
 }
 
@@ -81,8 +95,8 @@ $separator: "\\:";
 
 	/*! @zaydek/duomo | MIT License | https://github.com/zaydek/duomo */
 	@include props;
-	@each $key, $value in $breakpoint-map {
-		@media (min-width: px($value)) {
+	@each $key, $value in maps.$breakpoint {
+		@media (min-width: #{px($value)}) {
 			.#{$key} {
 				@at-root {
 					@include props;

@@ -1,8 +1,0 @@
-@mixin custom-props {
-	:root {
-		@include generate-custom-props-from-map($font-family-map);
-		@include generate-custom-props-from-map($color-map);
-		@include generate-custom-props-from-map($box-shadow-named-map);
-		@include generate-custom-props-from-map($timing-function-map);
-	}
-}

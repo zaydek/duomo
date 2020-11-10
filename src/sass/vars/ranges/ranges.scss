@@ -1,0 +1,48 @@
+// TODO: Replace with a range generation function.
+//
+// prettier-ignore
+$negative: (
+	 -1,                         // Adds -1
+	 -2,   -4,   -6,   -8,  -10, //
+	-11,  -12,  -13,  -14,  -15, // Adds -11, -13, -15
+  -16,  -17,  -18,  -19,  -20, // Adds -17, -19
+	-24,  -28,  -32,  -36,  -40,
+	-48,  -56,  -64,  -72,  -80,
+	-96, -112, -128, -144, -160,
+) !default;
+
+// TODO: Replace with a range generation function.
+//
+// prettier-ignore
+$standard: (
+	 0,   1,                // Adds 1
+	 2,   4,   6,   8,  10, //
+	11,  12,  13,  14,  15, // Adds 11, 13, 15
+  16,  17,  18,  19,  20, // Adds 17, 19
+	24,  28,  32,  36,  40,
+	48,  56,  64,  72,  80,
+	96, 112, 128, 144, 160,
+) !default;
+
+// TODO: Replace with a range generation function.
+//
+// prettier-ignore
+$font-size: (
+                      10,
+	11,  12,  13,  14,  15, // Adds 11, 13, 15
+  16,  17,  18,  19,  20, // Adds 17, 19
+	24,  28,  32,  36,  40,
+	48,  56,  64,
+) !default;
+
+// TODO: Replace with a range generation function.
+//
+// prettier-ignore
+$border-radius: (
+	 0,
+	 2,   4,   6,   8,  10,
+	12,  14,  16,  18,  20,
+	24,  28,  32,
+) !default;
+
+// TODO: Add `$border-width-range`.
