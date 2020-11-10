@@ -1,0 +1,37 @@
+@use "sass:list";
+@use "sass:map";
+
+@use "get-ampersand" as *;
+
+@function __new-rgba-map($map, $alpha-channel) {
+	$merged: ();
+
+	@each $k, $v in $map {
+		$to-merge: ();
+		@if $v == transparent or $v == currentColor {
+			$to-merge: (#{$k}: #{$v});
+		} @else {
+			$to-merge: (#{$k}: rgba(list.nth($v, 1), list.nth($v, 2), list.nth($v, 3), #{$alpha-channel}));
+		}
+		$merged: map.merge($merged, $to-merge);
+	}
+
+	@return $merged;
+}
+
+@mixin generate-colors($shorthand, $prop, $map, $alpha-range) {
+	$amp: get-ampersand();
+
+	@each $k, $v in __new-rgba-map($map, var(--#{$shorthand}-opacity)) {
+		#{$amp}#{$shorthand}-#{$k} {
+			--#{$shorthand}-opacity: 1;
+			#{$prop}: #{rgb(map.get($map, $k)...)};
+			#{$prop}: #{$v};
+		}
+	}
+	@each $v in $alpha-range {
+		#{$amp}#{$shorthand}-opacity-#{$v * 100} {
+			--#{$shorthand}-opacity: #{$v};
+		}
+	}
+}

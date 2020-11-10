@@ -84,7 +84,9 @@ $separator: "\\:";
 }
 
 @at-root {
-	@include core.border-radius-from-range(ranges.$border-radius, rem);
+	// @include core.border-radius-from-range(ranges.$border-radius, rem);
+	@include core.border-color(maps.$color, ranges.$alpha);
+
 	// @include core.display;
 	// @include core.shadows-from-map(maps.$shadow);
 	// @include core.overflow;
