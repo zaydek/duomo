@@ -1,10 +1,3 @@
-// NOTE: See https://github.com/sass/sass/issues/1687 for `"" = $key`.
-@mixin generate-custom-props-from-map($map) {
-	@each $key, $value in $map {
-		--#{"" + $key}: #{$value};
-	}
-}
-
 @mixin generate-from-map($properties, $shorthand, $map, $conv-fn) {
 	$amp: get-dynamic-ampersand();
 
@@ -17,6 +10,7 @@
 	}
 }
 
+// DEPRECATE
 @mixin generate-from-map-hover($properties, $shorthand, $map, $conv-fn) {
 	$amp: get-dynamic-ampersand();
 
@@ -29,6 +23,7 @@
 	}
 }
 
+// DEPRECATE
 @mixin generate-from-map-dark($properties, $shorthand, $map, $conv-fn) {
 	$amp: get-dynamic-ampersand();
 

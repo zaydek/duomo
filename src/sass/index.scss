@@ -1,6 +1,8 @@
 @use "vars/maps/index" as maps;
 @use "vars/ranges/index" as ranges;
 
+@use "utils/generators";
+
 @import "mixins/border-radius";
 @import "mixins/box-shadow";
 @import "mixins/colors";
@@ -28,21 +30,30 @@
 
 $separator: "\\:";
 
-// TODO: Change to variadic function signature.
-@mixin custom-props {
-	html {
-		@include generate-custom-props-from-map(maps.$font-stack);
-		// @include generate-custom-props-from-map($color); // FIXME
-		@include generate-custom-props-from-map(maps.$shadow);
-		@include generate-custom-props-from-map(maps.$timing-function);
-	}
-}
-
 @mixin preflight {
 	/* purgecss start ignore */
+	//
+	// prettier-ignore
+	html {
+		/*
+		 * Fonts
+		 */
+		@include generators.custom-props-from-map(maps.$font-stack);
+
+		/*
+		 * Shadows
+		 */
+		@include generators.custom-props-from-map(maps.$shadow);
+
+		/*
+		 * Timing functions
+		 */
+		@include generators.custom-props-from-map(maps.$timing-function);
+	}
+
+	// TODO: `tailwind-base` can extend custom props.
 	@include tailwind-base;
 	@include macos-retina;
-	@include custom-props;
 	@include stagger;
 	@include debugger;
 	/* purgecss end ignore */
@@ -91,9 +102,8 @@ $separator: "\\:";
 }
 
 @at-root {
-	@include preflight;
-
 	/*! @zaydek/duomo | MIT License | https://github.com/zaydek/duomo */
+	@include preflight;
 	@include props;
 	@each $key, $value in maps.$breakpoint {
 		@media (min-width: #{px($value)}) {
