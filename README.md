@@ -1,18 +1,18 @@
-# @zaydek/sorcery
+# @zaydek/duomo
 
-Sorcery is a stack-based CSS framework. Contributions are welcome as issues and or pull requests.
+Duomo is a stack-based CSS framework. Contributions are welcome as issues and or pull requests.
 
 To get started, simply run this command:
 
 ```bash
-yarn add @zaydek/sorcery
-# or npm i @zaydek/sorcery
+yarn add @zaydek/duomo
+# or npm i @zaydek/duomo
 ```
 
 **Usage:**
 
 ```tsx
-import "@zaydek/sorcery"
+import "@zaydek/duomo"
 
 function Component() {
 	return (
@@ -40,7 +40,7 @@ function Component() {
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Hello, world!</title>
-		<link rel="stylesheet" href="https://unpkg.com/@zaydek/sorcery/dist/index.min.css" />
+		<link rel="stylesheet" href="https://unpkg.com/@zaydek/duomo/dist/index.min.css" />
 	</head>
 	<body>
 		<div class="hstack">
@@ -73,7 +73,7 @@ What are stack-based layouts? Instead of thinking in terms of Flexbox, think in 
 
 Why stacks? Stacks are a more natural way of thinking about layout. The trouble with Flexbox is that you need to remember `display`, `flex-direction`, `justify-content`, `align-items`, and `flex`, and remember how these properties change in the context of `flex-direction: row` and `flex-direction: column`. Stacks are a much more simple but powerful primitive for describing layout _that is based on Flexbox_.
 
-This is a microcosm of how Sorcery works:
+This is a microcosm of how Duomo works:
 
 ```scss
 .hstack {
@@ -103,7 +103,7 @@ This is a microcosm of how Sorcery works:
 
 <!--
 
-And this is a macrocosm of how Sorcery works:
+And this is a macrocosm of how Duomo works:
 
 ```scss
 $separator: "\\:";
@@ -235,7 +235,7 @@ $separator: "\\:";
 }
 ```
 
-This is how Sorcery works. Sorcery includes a CSS reset, debugger, and many utility classes that follow the same naming conventions as Tailwind CSS. Stacks however are the core of _how_ and _why_ Sorcery works.
+This is how Duomo works. Duomo includes a CSS reset, debugger, and many utility classes that follow the same naming conventions as Tailwind CSS. Stacks however are the core of _how_ and _why_ Duomo works.
 
 -->
 
@@ -243,7 +243,7 @@ This is how Sorcery works. Sorcery includes a CSS reset, debugger, and many util
 - `vstack`s implements a vertical stack. Think `flex-direction: column`.
 - `spacer`s implements direction-agnostic spacers. Think `flex: 1`.
 
-Stacks in Sorcery are easy to reason about because they manage Flexbox for you. 💡 Furthermore, Sorcery stacks cover edge cases such as every stack resets `--space` and `spacer`s shrink to `--space` (unless they are the start or end element). **This enables you to think declaratively without worrying about implementation details or corner cases.**
+Stacks in Duomo are easy to reason about because they manage Flexbox for you. 💡 Furthermore, Duomo stacks cover edge cases such as every stack resets `--space` and `spacer`s shrink to `--space` (unless they are the start or end element). **This enables you to think declaratively without worrying about implementation details or corner cases.**
 
 ## [Utility-First Classes](#utility-first-classes)
 
@@ -263,7 +263,7 @@ Licensed as [MIT](./LICENSE).
 
 <!--
 
-Sorcery is a utility-first framework for rapid development. Sorcery is most similar to Tailwind CSS but differentiates itself in these key ways:
+Duomo is a utility-first framework for rapid development. Duomo is most similar to Tailwind CSS but differentiates itself in these key ways:
 
 - Emphasis on zero-configuration
 - SCSS-based, designed to be extended
@@ -272,16 +272,16 @@ Sorcery is a utility-first framework for rapid development. Sorcery is most simi
 - Multiple CDN links for prototyping, add breakpoints as needed
 - Classes map to utilities but can encompass higher-order patterns like `m-gap`
 
-Furthermore, Sorcery is simpler than Tailwind CSS for the following reasons:
+Furthermore, Duomo is simpler than Tailwind CSS for the following reasons:
 
 - The API surface area is dramatically smaller
 - More consistent class
 - Numerical values are specified using `px` equivalents, not Tailwind units
 - There are intentionally no `hover:`, `focus:`, etc. pseudo classes
-- You are encouraged to use Sorcery and CSS or SCSS, not exclusively Tailwind CSS or Sorcery
+- You are encouraged to use Duomo and CSS or SCSS, not exclusively Tailwind CSS or Duomo
 
-The problem with almost every CSS library and framework is they attempt to _solve_ frontend. Frontend is not a solvable problem. Frontend is the amalgamation of _many_ tools coming together to create user experiences for people. How Sorcery fits into this equation is by making it dead-easy to prototype responsive skeletons.
+The problem with almost every CSS library and framework is they attempt to _solve_ frontend. Frontend is not a solvable problem. Frontend is the amalgamation of _many_ tools coming together to create user experiences for people. How Duomo fits into this equation is by making it dead-easy to prototype responsive skeletons.
 
-The key to understanding Sorcery is to understand that it **does not attempt** to map every CSS property to an arbitrary class. What Sorcery does is makes it easier to reason about responsive skeletons, and encourages you to lean into CSS or SCSS when you’re ready to retrofit your skeleton-app with content.
+The key to understanding Duomo is to understand that it **does not attempt** to map every CSS property to an arbitrary class. What Duomo does is makes it easier to reason about responsive skeletons, and encourages you to lean into CSS or SCSS when you’re ready to retrofit your skeleton-app with content.
 
 -->
