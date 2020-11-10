@@ -6,7 +6,7 @@
 @use "meta";
 @use "core";
 
-@import "core/border-radius";
+// @import "core/border-radius";
 // @import "core/box-shadow";
 @import "core/display";
 @import "core/grid";
@@ -84,7 +84,8 @@ $separator: "\\:";
 }
 
 @at-root {
-	@include core.display;
+	@include core.border-radius-from-range(ranges.$border-radius, rem);
+	// @include core.display;
 	// @include core.shadows-from-map(maps.$shadow);
 	// @include core.overflow;
 	// @include core.z-index-from-range(ranges.$z-index);
