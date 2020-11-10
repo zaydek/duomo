@@ -11,11 +11,6 @@
 	}
 
 	@if ($shorthand == "l" or $shorthand == "r") or ($shorthand == "t" or $shorthand == "b") {
-		// #{$amp}#{$shorthand}-1\/2 {
-		// 	@each $property in $properties {
-		// 		#{$property}: 50%;
-		// 	}
-		// }
 		#{$amp}#{$shorthand}-full {
 			@each $property in $properties {
 				#{$property}: 100%;
@@ -32,47 +27,50 @@
 			position: #{$position};
 		}
 	}
+
+	// Shorthands:
 	@include _position-impl((left, right), "x", $range);
 	@include _position-impl((left), "l", $range);
 	@include _position-impl((right), "r", $range);
 	@include _position-impl((top, bottom), "y", $range);
 	@include _position-impl((top), "t", $range);
 	@include _position-impl((bottom), "b", $range);
+
+	// Compound shorthands:
 	@include _position-impl((top, left), "tl", $range);
 	@include _position-impl((top, right), "tr", $range);
 	@include _position-impl((bottom, left), "bl", $range);
 	@include _position-impl((bottom, right), "br", $range);
 
-	#{$amp}tooltip {
-		&-tl {
-			top: 0;
-			left: 0;
-			transform: translateX(0) translateY(-100%);
-		}
-		&-t {
-			top: 0;
-			left: 50%;
-			transform: translateX(-50%) translateY(-100%);
-		}
-		&-tr {
-			top: 0;
-			right: 0;
-			transform: translateX(0) translateY(-100%);
-		}
-		&-br {
-			bottom: 0;
-			right: 0;
-			transform: translateX(0) translateY(100%);
-		}
-		&-b {
-			bottom: 0;
-			left: 50%;
-			transform: translateX(-50%) translateY(100%);
-		}
-		&-bl {
-			bottom: 0;
-			left: 0;
-			transform: translateX(0) translateY(100%);
-		}
+	// Compound shorthands for `tooltip`:
+	#{$amp}tooltip-tl {
+		top: 0;
+		left: 0;
+		transform: translateX(0) translateY(-100%);
+	}
+	#{$amp}tooltip-t {
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%) translateY(-100%);
+	}
+	#{$amp}tooltip-tr {
+		top: 0;
+		right: 0;
+		transform: translateX(0) translateY(-100%);
+	}
+	#{$amp}tooltip-bl {
+		bottom: 0;
+		left: 0;
+		transform: translateX(0) translateY(100%);
+	}
+	#{$amp}tooltip-b {
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%) translateY(100%);
+	}
+	#{$amp}tooltip-br {
+		bottom: 0;
+		right: 0;
+		transform: translateX(0) translateY(100%);
 	}
 }
