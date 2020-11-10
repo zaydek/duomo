@@ -1,7 +1,11 @@
+@use "sass:map";
+
+// TODO: Add `!default`?
+
 // https://github.com/tailwindlabs/tailwindcss/pull/2623
 //
 // prettier-ignore
-$color: (
+$extended-color: (
 	// transparent: transparent, // TODO
 	// current: currentColor, // TODO
 	// black: (0, 0, 0), // TODO
@@ -226,4 +230,95 @@ $color: (
 	yellow-700: (161, 98, 7),
 	yellow-800: (133, 77, 14),
 	yellow-900: (113, 63, 18),
-) !default;
+);
+
+$color: (
+	// transparent: 'transparent',
+	// current: 'currentColor',
+	// black: '#000',
+	// white: '#fff',
+	// transparent: transparent, // TODO
+	// current: currentColor, // TODO
+	// black: (0, 0, 0), // TODO
+	// white: (255, 255, 255), // TODO
+	gray-50: map.get($extended-color, "gray-50"),
+	gray-100: map.get($extended-color, "gray-100"),
+	gray-200: map.get($extended-color, "gray-200"),
+	gray-300: map.get($extended-color, "gray-300"),
+	gray-400: map.get($extended-color, "gray-400"),
+	gray-500: map.get($extended-color, "gray-500"),
+	gray-600: map.get($extended-color, "gray-600"),
+	gray-700: map.get($extended-color, "gray-700"),
+	gray-800: map.get($extended-color, "gray-800"),
+	gray-900: map.get($extended-color, "gray-900"),
+	red-50: map.get($extended-color, "red-50"),
+	red-100: map.get($extended-color, "red-100"),
+	red-200: map.get($extended-color, "red-200"),
+	red-300: map.get($extended-color, "red-300"),
+	red-400: map.get($extended-color, "red-400"),
+	red-500: map.get($extended-color, "red-500"),
+	red-600: map.get($extended-color, "red-600"),
+	red-700: map.get($extended-color, "red-700"),
+	red-800: map.get($extended-color, "red-800"),
+	red-900: map.get($extended-color, "red-900"),
+	yellow-50: map.get($extended-color, "yellow-50"),
+	yellow-100: map.get($extended-color, "yellow-100"),
+	yellow-200: map.get($extended-color, "yellow-200"),
+	yellow-300: map.get($extended-color, "yellow-300"),
+	yellow-400: map.get($extended-color, "yellow-400"),
+	yellow-500: map.get($extended-color, "yellow-500"),
+	yellow-600: map.get($extended-color, "yellow-600"),
+	yellow-700: map.get($extended-color, "yellow-700"),
+	yellow-800: map.get($extended-color, "yellow-800"),
+	yellow-900: map.get($extended-color, "yellow-900"),
+	green-50: map.get($extended-color, "green-50"),
+	green-100: map.get($extended-color, "green-100"),
+	green-200: map.get($extended-color, "green-200"),
+	green-300: map.get($extended-color, "green-300"),
+	green-400: map.get($extended-color, "green-400"),
+	green-500: map.get($extended-color, "green-500"),
+	green-600: map.get($extended-color, "green-600"),
+	green-700: map.get($extended-color, "green-700"),
+	green-800: map.get($extended-color, "green-800"),
+	green-900: map.get($extended-color, "green-900"),
+	blue-50: map.get($extended-color, "blue-50"),
+	blue-100: map.get($extended-color, "blue-100"),
+	blue-200: map.get($extended-color, "blue-200"),
+	blue-300: map.get($extended-color, "blue-300"),
+	blue-400: map.get($extended-color, "blue-400"),
+	blue-500: map.get($extended-color, "blue-500"),
+	blue-600: map.get($extended-color, "blue-600"),
+	blue-700: map.get($extended-color, "blue-700"),
+	blue-800: map.get($extended-color, "blue-800"),
+	blue-900: map.get($extended-color, "blue-900"),
+	indigo-50: map.get($extended-color, "indigo-50"),
+	indigo-100: map.get($extended-color, "indigo-100"),
+	indigo-200: map.get($extended-color, "indigo-200"),
+	indigo-300: map.get($extended-color, "indigo-300"),
+	indigo-400: map.get($extended-color, "indigo-400"),
+	indigo-500: map.get($extended-color, "indigo-500"),
+	indigo-600: map.get($extended-color, "indigo-600"),
+	indigo-700: map.get($extended-color, "indigo-700"),
+	indigo-800: map.get($extended-color, "indigo-800"),
+	indigo-900: map.get($extended-color, "indigo-900"),
+	purple-50: map.get($extended-color, "purple-50"),
+	purple-100: map.get($extended-color, "purple-100"),
+	purple-200: map.get($extended-color, "purple-200"),
+	purple-300: map.get($extended-color, "purple-300"),
+	purple-400: map.get($extended-color, "purple-400"),
+	purple-500: map.get($extended-color, "purple-500"),
+	purple-600: map.get($extended-color, "purple-600"),
+	purple-700: map.get($extended-color, "purple-700"),
+	purple-800: map.get($extended-color, "purple-800"),
+	purple-900: map.get($extended-color, "purple-900"),
+	pink-50: map.get($extended-color, "pink-50"),
+	pink-100: map.get($extended-color, "pink-100"),
+	pink-200: map.get($extended-color, "pink-200"),
+	pink-300: map.get($extended-color, "pink-300"),
+	pink-400: map.get($extended-color, "pink-400"),
+	pink-500: map.get($extended-color, "pink-500"),
+	pink-600: map.get($extended-color, "pink-600"),
+	pink-700: map.get($extended-color, "pink-700"),
+	pink-800: map.get($extended-color, "pink-800"),
+	pink-900: map.get($extended-color, "pink-900")
+);

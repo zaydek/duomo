@@ -27,72 +27,18 @@ $separator: "\\:";
 	@return $merged;
 }
 
-// // (Poor man’s implementation)
-// @each $k, $v in __new-rgba-map($color-map, var(--#{$shorthand}-opacity)) {
-// 	#{$amp}#{$shorthand}-#{$k} {
-// 		--#{$shorthand}-opacity: 1;
-// 		#{$property}: #{rgb(map.get($color-map, $k)...)};
-// 		#{$property}: #{$v};
-// 	}
-// 	#{$amp}hover#{$separator}#{$shorthand}-#{$k}:hover {
-// 		--#{$shorthand}-opacity: 1;
-// 		#{$property}: #{rgb(map.get($color-map, $k)...)};
-// 		#{$property}: #{$v};
-// 	}
-// 	#{$amp}focus#{$separator}#{$shorthand}-#{$k}:focus {
-// 		--#{$shorthand}-opacity: 1;
-// 		#{$property}: #{rgb(map.get($color-map, $k)...)};
-// 		#{$property}: #{$v};
-// 	}
-// 	.group:hover #{$amp}group-hover#{$separator}#{$shorthand}-#{$k} {
-// 		--#{$shorthand}-opacity: 1;
-// 		#{$property}: #{rgb(map.get($color-map, $k)...)};
-// 		#{$property}: #{$v};
-// 	}
-// 	.group:focus #{$amp}group-focus#{$separator}#{$shorthand}-#{$k} {
-// 		--#{$shorthand}-opacity: 1;
-// 		#{$property}: #{rgb(map.get($color-map, $k)...)};
-// 		#{$property}: #{$v};
-// 	}
-// }
-// @each $v in $alpha-range {
-// 	#{$amp}#{$shorthand}-opacity-#{$v * 100} {
-// 		--#{$shorthand}-opacity: #{$v};
-// 	}
-// 	#{$amp}hover#{$separator}#{$shorthand}-opacity-#{$v * 100}:hover {
-// 		--#{$shorthand}-opacity: #{$v};
-// 	}
-// 	#{$amp}focus#{$separator}#{$shorthand}-opacity-#{$v * 100}:focus {
-// 		--#{$shorthand}-opacity: #{$v};
-// 	}
-// 	.group:hover #{$amp}group-hover#{$separator}#{$shorthand}-opacity-#{$v * 100} {
-// 		--#{$shorthand}-opacity: #{$v};
-// 	}
-// 	.group:focus #{$amp}group-focus#{$separator}#{$shorthand}-opacity-#{$v * 100} {
-// 		--#{$shorthand}-opacity: #{$v};
-// 	}
-// }
-
 @mixin __generate-colors($shorthand, $property, $color-map, $alpha-range) {
 	$amp: get-dynamic-ampersand();
 
 	@each $k, $v in __new-rgba-map($color-map, var(--#{$shorthand}-opacity)) {
-		#{$amp}#{$shorthand}-#{$k},
-		#{$amp}hover#{$separator}#{$shorthand}-#{$k}:hover,
-		#{$amp}focus#{$separator}#{$shorthand}-#{$k}:focus,
-		.group:hover #{$amp}group-hover#{$separator}#{$shorthand}-#{$k},
-		.group:focus #{$amp}group-focus#{$separator}#{$shorthand}-#{$k} {
+		#{$amp}#{$shorthand}-#{$k} {
 			--#{$shorthand}-opacity: 1;
 			#{$property}: #{rgb(map.get($color-map, $k)...)};
 			#{$property}: #{$v};
 		}
 	}
 	@each $v in $alpha-range {
-		#{$amp}#{$shorthand}-opacity-#{$v * 100},
-		#{$amp}hover#{$separator}#{$shorthand}-opacity-#{$v * 100}:hover,
-		#{$amp}focus#{$separator}#{$shorthand}-opacity-#{$v * 100}:focus,
-		.group:hover #{$amp}group-hover#{$separator}#{$shorthand}-opacity-#{$v * 100},
-		.group:focus #{$amp}group-focus#{$separator}#{$shorthand}-opacity-#{$v * 100} {
+		#{$amp}#{$shorthand}-opacity-#{$v * 100} {
 			--#{$shorthand}-opacity: #{$v};
 		}
 	}
