@@ -1,47 +1,58 @@
-@mixin stacks-from-range($range, $conv-fn) {
-	$amp: get-dynamic-ampersand();
+@use "../utils2";
 
-	#{$amp}hstack {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-	}
+@mixin __hstack($range, $reoslver) {
+	$amp: utils2.get-ampersand();
+
 	// NOTE: The root stack context resets `--space`.
 	@if not & {
 		.hstack > * {
 			--space: 0;
 		}
 	}
+	#{$amp}hstack {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
 	#{$amp}hstack > * + * {
 		margin-top: 0;
-		margin-left: var(--space, 0);
+		margin-left: var(--space);
 	}
-	// NOTE: Omit `spacer`s and sibling elements from `var(--space)`.
 	#{$amp}hstack > .spacer:empty,
 	#{$amp}hstack > .spacer:empty + * {
 		margin-left: 0;
 	}
+}
 
-	#{$amp}vstack {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}
+@mixin __vstack($range, $reoslver) {
+	$amp: utils2.get-ampersand();
+
 	// NOTE: The root stack context resets `--space`.
 	@if not & {
 		.vstack > * {
 			--space: 0;
 		}
 	}
+	#{$amp}vstack {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
 	#{$amp}vstack > * + * {
 		margin-left: 0;
-		margin-top: var(--space, 0);
+		margin-top: var(--space);
 	}
-	// NOTE: Omit `spacer`s and sibling elements from `var(--space)`.
 	#{$amp}vstack > .spacer:empty,
 	#{$amp}vstack > .spacer:empty + * {
 		margin-top: 0;
 	}
+}
+
+@mixin stacks-from-range($range, $resolver) {
+	$amp: utils2.get-ampersand();
+
+	@include __hstack($range, $resolver);
+	@include __vstack($range, $resolver);
 
 	#{$amp}stack-stretch {
 		align-items: stretch;
@@ -61,27 +72,24 @@
 
 	@if not & {
 		.spacer {
-			flex-grow: 1;
-			flex-shrink: 0;
-			flex-basis: var(--space, 0);
+			flex: 1 0 var(--space);
 		}
-		// NOTE: Edge `spacer`s are collapsible to `0`.
 		.spacer:first-child,
 		.spacer:last-child {
-			flex-basis: 0;
+			flex: 1 0 0;
 		}
 	}
 
-	@each $value in $range {
-		#{$amp}space-#{$value} > * {
-			--space: #{call(get-function($conv-fn), $value)};
+	@each $v in $range {
+		#{$amp}space-#{$v} > * {
+			--space: #{utils2.resolve($v, $resolver)};
 		}
 	}
 
-	@for $value from -1 through 12 {
-		$negative: if(safe-compare-negative($value), "-", "");
-		#{$amp}#{$negative}order-#{safe-abs($value)} {
-			order: #{$value};
+	@for $v from -1 through 12 {
+		$minus: utils2.safe-neg($v);
+		#{$amp}#{$minus}order-#{utils2.safe-abs($v)} {
+			order: #{$v};
 		}
 	}
 }
