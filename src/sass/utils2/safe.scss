@@ -1,4 +1,4 @@
-@function safe-neg($v) {
+@function safe-minus($v) {
 	@if (type-of($v) != "number") {
 		@return $v;
 	}

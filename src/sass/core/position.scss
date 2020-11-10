@@ -1,48 +1,29 @@
-@mixin _position-impl($properties, $shorthand, $range) {
-	$amp: get-dynamic-ampersand();
+@use "../utils2";
 
-	@each $value in $range {
-		$negative: if(safe-compare-negative($value), "-", "");
-		#{$amp}#{$negative}#{$shorthand}-#{safe-abs($value)} {
-			@each $property in $properties {
-				#{$property}: #{call(get-function(passthrough), $value)};
+@mixin __impl($shorthand, $props, $range, $resolver) {
+	$amp: utils2.get-ampersand();
+
+	@each $v in $range {
+		$minus: utils2.safe-minus($v);
+		#{$amp}#{$minus}#{$shorthand}-#{utils2.safe-abs($v)} {
+			@each $prop in $props {
+				#{$prop}: #{utils2.resolve($v, $resolver)};
 			}
 		}
 	}
 
 	@if ($shorthand == "l" or $shorthand == "r") or ($shorthand == "t" or $shorthand == "b") {
 		#{$amp}#{$shorthand}-full {
-			@each $property in $properties {
-				#{$property}: 100%;
+			@each $prop in $props {
+				#{$prop}: 100%;
 			}
 		}
 	}
 }
 
-@mixin position-from-range($range) {
-	$amp: get-dynamic-ampersand();
+@mixin tooltip {
+	$amp: utils2.get-ampersand();
 
-	@each $position in static, relative, absolute, fixed, sticky {
-		#{$amp}#{$position} {
-			position: #{$position};
-		}
-	}
-
-	// Shorthands:
-	@include _position-impl((left, right), "x", $range);
-	@include _position-impl((left), "l", $range);
-	@include _position-impl((right), "r", $range);
-	@include _position-impl((top, bottom), "y", $range);
-	@include _position-impl((top), "t", $range);
-	@include _position-impl((bottom), "b", $range);
-
-	// Compound shorthands:
-	@include _position-impl((top, left), "tl", $range);
-	@include _position-impl((top, right), "tr", $range);
-	@include _position-impl((bottom, left), "bl", $range);
-	@include _position-impl((bottom, right), "br", $range);
-
-	// Compound shorthands for `tooltip`:
 	#{$amp}tooltip-tl {
 		top: 0;
 		left: 0;
@@ -73,4 +54,78 @@
 		right: 0;
 		transform: translateX(0) translateY(100%);
 	}
+}
+
+// prettier-ignore
+@mixin position-from-range($range, $resolver) {
+	$amp: utils2.get-ampersand();
+
+	@each $position in static, relative, absolute, fixed, sticky {
+		#{$amp}#{$position} {
+			position: #{$position};
+		}
+	}
+
+	@include __impl(
+		"x",
+		(left, right),
+		$range,
+		$resolver,
+	);
+	@include __impl(
+		"l",
+		(left),
+		$range,
+		$resolver,
+	);
+	@include __impl(
+		"r",
+		(right),
+		$range,
+		$resolver,
+	);
+	@include __impl(
+		"y",
+		(top, bottom),
+		$range,
+		$resolver,
+	);
+	@include __impl(
+		"t",
+		(top),
+		$range,
+		$resolver,
+	);
+	@include __impl(
+		"b",
+		(bottom),
+		$range,
+		$resolver,
+	);
+	@include __impl(
+		"tl",
+		(top, left),
+		$range,
+		$resolver,
+	);
+	@include __impl(
+		"tr",
+		(top, right),
+		$range,
+		$resolver,
+	);
+	@include __impl(
+		"bl",
+		(bottom, left),
+		$range,
+		$resolver,
+	);
+	@include __impl(
+		"br",
+		(bottom, right),
+		$range,
+		$resolver,
+	);
+
+	@include tooltip;
 }

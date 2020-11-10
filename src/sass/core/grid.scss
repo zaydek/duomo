@@ -1,14 +1,10 @@
-@mixin grid-from-range($range) {
-	$amp: get-dynamic-ampersand();
+@use "../utils2";
+
+@mixin grid-from-range($range, $resolver) {
+	$amp: utils2.get-ampersand();
 
 	#{$amp}grid {
 		display: grid;
-	}
-
-	@for $x from 0 through 12 {
-		#{$amp}grid-rows-#{$x} {
-			grid-template-rows: repeat(#{$x}, minmax(0, 1fr));
-		}
 	}
 
 	@for $x from 0 through 12 {
@@ -16,20 +12,25 @@
 			grid-template-columns: repeat(#{$x}, minmax(0, 1fr));
 		}
 	}
+	@for $x from 0 through 12 {
+		#{$amp}grid-rows-#{$x} {
+			grid-template-rows: repeat(#{$x}, minmax(0, 1fr));
+		}
+	}
 
-	@each $value in $range {
-		#{$amp}gap-#{$value} {
-			gap: #{rem($value)};
+	@each $v in $range {
+		#{$amp}gap-#{$v} {
+			gap: #{utils2.resolve($v, $resolver)};
 		}
 	}
-	@each $value in $range {
-		#{$amp}gap-x-#{$value} {
-			column-gap: #{rem($value)};
+	@each $v in $range {
+		#{$amp}gap-x-#{$v} {
+			column-gap: #{utils2.resolve($v, $resolver)};
 		}
 	}
-	@each $value in $range {
-		#{$amp}gap-y-#{$value} {
-			row-gap: #{rem($value)};
+	@each $v in $range {
+		#{$amp}gap-y-#{$v} {
+			row-gap: #{utils2.resolve($v, $resolver)};
 		}
 	}
 }

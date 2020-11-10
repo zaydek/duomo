@@ -6,7 +6,7 @@
 	$amp: get-ampersand();
 
 	@each $v in $range {
-		$minus: safe-neg($v);
+		$minus: safe-minus($v);
 		#{$amp}#{$minus}#{$shorthand}-#{safe-abs($v)} {
 			@each $prop in $props {
 				#{$prop}: #{resolve($v, $resolver)};

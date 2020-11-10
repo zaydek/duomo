@@ -3,7 +3,6 @@
 @mixin __hstack($range, $reoslver) {
 	$amp: utils2.get-ampersand();
 
-	// NOTE: The root stack context resets `--space`.
 	@if not & {
 		.hstack > * {
 			--space: 0;
@@ -27,7 +26,6 @@
 @mixin __vstack($range, $reoslver) {
 	$amp: utils2.get-ampersand();
 
-	// NOTE: The root stack context resets `--space`.
 	@if not & {
 		.vstack > * {
 			--space: 0;
@@ -48,7 +46,7 @@
 	}
 }
 
-@mixin stacks-from-range($range, $resolver) {
+@mixin stack-from-range($range, $resolver) {
 	$amp: utils2.get-ampersand();
 
 	@include __hstack($range, $resolver);
@@ -87,7 +85,7 @@
 	}
 
 	@for $v from -1 through 12 {
-		$minus: utils2.safe-neg($v);
+		$minus: utils2.safe-minus($v);
 		#{$amp}#{$minus}order-#{utils2.safe-abs($v)} {
 			order: #{$v};
 		}
