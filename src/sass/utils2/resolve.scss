@@ -1,0 +1,43 @@
+@use "sass:math";
+
+// Ex:
+//
+// 16 -> 1rem
+@function rem($v) {
+	@if type-of($v) != "number" or $v == 0 {
+		@return $v;
+	}
+	@return math.floor($v) / 16 + rem;
+}
+
+// Ex:
+//
+// 16 -> 1em
+@function em($v) {
+	@if type-of($v) != "number" or $v == 0 {
+		@return $v;
+	}
+	@return math.floor($v) / 16 + em;
+}
+
+// Ex:
+//
+// 16 -> 16px
+@function px($v) {
+	@if type-of($v) != "number" or $v == 0 {
+		@return $v;
+	}
+	@return math.floor($v) + px;
+}
+
+// TODO: Throw an error when `$v != none`.
+@function resolve($v, $resolver) {
+	@if $resolver == rem {
+		@return rem($v);
+	} @else if $resolver == em {
+		@return em($v);
+	} @else if $resolver == px {
+		@return px($v);
+	}
+	@return $v;
+}

@@ -1,6 +1,12 @@
-// prettier-ignore
+@use "../utils2";
+
 @mixin pointer-events {
-	$amp: get-dynamic-ampersand();
-	#{$amp}no-pointer-events { pointer-events: none; }
-	#{$amp}pointer-events { pointer-events: auto; }
+	$amp: utils2.get-ampersand();
+
+	#{$amp}no-pointer-events {
+		pointer-events: none;
+	}
+	#{$amp}pointer-events {
+		pointer-events: auto;
+	}
 }

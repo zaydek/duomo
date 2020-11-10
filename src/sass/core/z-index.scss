@@ -1,3 +1,5 @@
+@use "../utils2";
+
 @mixin z-index-from-range($range) {
-	@include generate-from-range((z-index), "z", $range, passthrough);
+	@include utils2.generate-from-range("z", (z-index), $range, none);
 }

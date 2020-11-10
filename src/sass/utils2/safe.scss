@@ -1,0 +1,13 @@
+@function safe-neg($v) {
+	@if (type-of($v) != "number") {
+		@return $v;
+	}
+	@return if($v < 0, "-", "");
+}
+
+@function safe-abs($v) {
+	@if (type-of($v) != "number") {
+		@return $v;
+	}
+	@return abs($v);
+}

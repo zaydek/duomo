@@ -1,38 +1,40 @@
 @use "get-ampersand" as *;
+@use "resolve" as *;
+@use "safe" as *;
 
-@mixin generate-from-range($properties, $shorthand, $range, $conv-fn) {
+@mixin generate-from-range($shorthand, $props, $range, $resolver) {
 	$amp: get-ampersand();
 
-	@each $value in $range {
-		$negative: if(safe-compare-negative($value), "-", "");
-		#{$amp}#{$negative}#{$shorthand}-#{safe-abs($value)} {
-			@each $property in $properties {
-				#{$property}: #{call(get-function($conv-fn), $value)};
+	@each $v in $range {
+		$minus: safe-neg($v);
+		#{$amp}#{$minus}#{$shorthand}-#{safe-abs($v)} {
+			@each $property in $props {
+				#{$property}: #{resolve($v, $resolver)};
 			}
 		}
 	}
 }
 
-@mixin generate-from-map($properties, $shorthand, $map, $conv-fn) {
-	$amp: get-ampersand();
-
-	@each $key, $value in $map {
-		#{$amp}#{$shorthand}-#{"" + $key} {
-			@each $property in $properties {
-				#{$property}: #{call(get-function($conv-fn), $value)};
-			}
-		}
-	}
-}
-
-@mixin generate-from-named-map($properties, $named-map, $conv-fn) {
-	$amp: get-ampersand();
-
-	@each $key, $value in $named-map {
-		#{$amp}#{$key} {
-			@each $property in $properties {
-				#{$property}: #{call(get-function($conv-fn), $value)};
-			}
-		}
-	}
-}
+// @mixin generate-from-map($props, $shorthand, $map, $conv-fn) {
+// 	$amp: get-ampersand();
+//
+// 	@each $k, $v in $map {
+// 		#{$amp}#{$shorthand}-#{"" + $k} {
+// 			@each $property in $props {
+// 				#{$property}: #{call(get-function($conv-fn), $v)};
+// 			}
+// 		}
+// 	}
+// }
+//
+// @mixin generate-from-named-map($props, $named-map, $conv-fn) {
+// 	$amp: get-ampersand();
+//
+// 	@each $k, $v in $named-map {
+// 		#{$amp}#{$k} {
+// 			@each $property in $props {
+// 				#{$property}: #{call(get-function($conv-fn), $v)};
+// 			}
+// 		}
+// 	}
+// }

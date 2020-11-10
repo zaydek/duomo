@@ -4,6 +4,7 @@
 @use "core/colors";
 
 @use "meta";
+@use "core";
 
 @import "core/border-radius";
 @import "core/box-shadow";
@@ -84,16 +85,20 @@ $separator: "\\:";
 }
 
 @at-root {
-	/*! @zaydek/duomo | MIT License | https://github.com/zaydek/duomo */
-	@include preflight;
-	@include props;
-	@each $key, $value in maps.$breakpoint {
-		@media (min-width: #{px($value)}) {
-			.#{$key} {
-				@at-root {
-					@include props;
-				}
-			}
-		}
-	}
+	@include core.overflow;
+	// @include core.z-index-from-range(ranges.$z-index);
+	// @include core.pointer-events;
+
+	// /*! @zaydek/duomo | MIT License | https://github.com/zaydek/duomo */
+	// @include preflight;
+	// @include props;
+	// @each $key, $value in maps.$breakpoint {
+	// 	@media (min-width: #{px($value)}) {
+	// 		.#{$key} {
+	// 			@at-root {
+	// 				@include props;
+	// 			}
+	// 		}
+	// 	}
+	// }
 }
