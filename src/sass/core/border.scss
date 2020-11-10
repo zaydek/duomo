@@ -1,5 +1,37 @@
 @use "../utils2";
 
+// prettier-ignore
+@mixin border-width-from-range($range, $resolver) {
+	@include utils2.generate-from-range(
+		"t",
+		(border-top-width),
+		$range,
+		$resolver,
+	);
+	@include utils2.generate-from-range(
+		"r",
+		(border-right-width),
+		$range,
+		$resolver,
+	);
+	@include utils2.generate-from-range(
+		"b",
+		(border-bottom-width),
+		$range,
+		$resolver,
+	);
+	@include utils2.generate-from-range(
+		"l",
+		(border-left-width),
+		$range,
+		$resolver,
+	);
+}
+
+@mixin border-color($map, $alpha-range) {
+	@include utils2.generate-colors("bg", background-color, $map, $alpha-range);
+}
+
 @mixin __border-radius-from-range-impl($shorthand, $props, $range, $resolver) {
 	$amp: utils2.get-ampersand();
 
@@ -67,11 +99,4 @@
 		$range,
 		$resolver,
 	);
-}
-
-// TODO: Add `border-width`.
-
-// TODO: Possibly move to `border` submodule.
-@mixin border-color($map, $alpha-range) {
-	@include utils2.generate-colors("bg", background-color, $map, $alpha-range);
 }

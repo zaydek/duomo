@@ -38,11 +38,17 @@ $font-size: (
 // TODO: Replace with a range generation function.
 //
 // prettier-ignore
+$border-width: (
+	 0,   1,
+	 2,   4,   6,   8,
+) !default;
+
+// TODO: Replace with a range generation function.
+//
+// prettier-ignore
 $border-radius: (
 	 0,
 	 2,   4,   6,   8,  10,
 	12,  14,  16,  18,  20,
 	24,  28,  32,
 ) !default;
-
-// TODO: Add `$border-width-range`.
