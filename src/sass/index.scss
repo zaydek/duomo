@@ -44,13 +44,13 @@ $separator: "\\:";
 }
 
 @mixin props {
-	@include display;
-	@include stacks-from-range(ranges.$standard, rem);
-	// @include grid-from-range(vars.$range); // FIXME
-	@include margin-from-range(join(join(ranges.$negative, auto), ranges.$standard), rem);
-	@include padding-from-range(ranges.$standard, rem);
-	@include position-from-range((0)); // No range
-	@include width-from-range(ranges.$standard, rem);
+	// // @include core.display;
+	// @include stacks-from-range(ranges.$standard, rem);
+	// // @include grid-from-range(vars.$range); // FIXME
+	// @include margin-from-range(join(join(ranges.$negative, auto), ranges.$standard), rem);
+	// @include padding-from-range(ranges.$standard, rem);
+	// @include position-from-range((0)); // No range
+	// @include width-from-range(ranges.$standard, rem);
 
 	// TODO: We need a function to interpolate a breakpoint map.
 	// @include width-from-range(($xs, $sm, $md, $lg, $xl), px);
@@ -62,47 +62,41 @@ $separator: "\\:";
 	// 	}
 	// }
 
-	@include max-width-from-map(maps.$breakpoint, px);
-	@include height-from-range(ranges.$standard, rem);
-	@include text-align;
-	@include font-style;
-	@include font-weight;
-	@include font-size-from-range(ranges.$font-size, rem);
-	// @include leading-from-map(ranges.$leading, passthrough);
-	@include line-decoration;
+	// @include max-width-from-map(maps.$breakpoint, px);
+	// @include height-from-range(ranges.$standard, rem);
+	// @include text-align;
+	// @include font-style;
+	// @include font-weight;
+	// @include font-size-from-range(ranges.$font-size, rem);
+	// // @include leading-from-map(ranges.$leading, passthrough);
+	// @include line-decoration;
 
-	// @if not & {
-	// 	@include colors.color(maps.$color, ranges.$alpha);
-	// 	@include colors.background-color(maps.$color, ranges.$alpha);
-	// 	@include colors.border-color(maps.$color, ranges.$alpha);
-	// }
-	// @include border-radius-from-range(ranges.$border-radius, rem);
-	// @include box-shadow-from-named-map(maps.$shadow); // Do we need `named-map`?
-	// @include overflow;
-	// @include z-index-from-range(ranges.$z-index);
-	// @include pointer-events;
+	@if not & {
+		@include colors.color($map: maps.$color, $alpha-range: ranges.$alpha);
+		@include colors.background-color($map: maps.$color, $alpha-range: ranges.$alpha);
+	}
+	@include core.border-radius-from-range($range: ranges.$border-radius, $resolver: rem);
+	@if not & {
+		@include core.border-color($map: maps.$color, $alpha-range: ranges.$alpha);
+	}
+	@include core.shadows-from-map($map: maps.$shadow);
+	@include core.overflow;
+	@include core.z-index-from-range($range: ranges.$z-index);
+	@include core.pointer-events;
 }
 
 @at-root {
-	// @include core.border-radius-from-range(ranges.$border-radius, rem);
-	@include core.border-color(maps.$color, ranges.$alpha);
-
-	// @include core.display;
-	// @include core.shadows-from-map(maps.$shadow);
-	// @include core.overflow;
-	// @include core.z-index-from-range(ranges.$z-index);
-	// @include core.pointer-events;
-
-	// /*! @zaydek/duomo | MIT License | https://github.com/zaydek/duomo */
+	/*! @zaydek/duomo | MIT License | https://github.com/zaydek/duomo */
 	// @include preflight;
-	// @include props;
-	// @each $key, $value in maps.$breakpoint {
-	// 	@media (min-width: #{px($value)}) {
-	// 		.#{$key} {
-	// 			@at-root {
-	// 				@include props;
-	// 			}
-	// 		}
-	// 	}
-	// }
+
+	@include props;
+	@each $key, $value in maps.$breakpoint {
+		@media (min-width: #{px($value)}) {
+			.#{$key} {
+				@at-root {
+					@include props;
+				}
+			}
+		}
+	}
 }
