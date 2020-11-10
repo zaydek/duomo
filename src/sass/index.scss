@@ -59,8 +59,6 @@
 	// @include core.leading-from-map(ranges.$leading, passthrough);
 	// @include core.line-decoration;
 
-	@include core.relative-font-weight;
-
 	@if false {
 		@if not & {
 			@include core.color($map: maps.$color, $alpha-range: ranges.$alpha);
