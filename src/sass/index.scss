@@ -17,22 +17,21 @@
 	/* purgecss end ignore */
 }
 
-// TODO: Debug something.
-// TODO: Move `container` to `width` submodule.
-// @include core.container-from-breakpoint-map($breakpoint-map: user.$breakpoint-map);
-
 $__no-range: (0);
 
 @mixin props {
-	@include core.display;
-	@include core.stack-from-range($range: user.$standard-range, $resolver: rem);
-	@include core.grid-from-range($range: user.$standard-range, $resolver: rem);
-	@include core.margin-from-range($range: list.join(user.$negative-range, user.$standard-range), $resolver: rem);
-	@include core.padding-from-range($range: user.$standard-range, $resolver: rem);
-	@include core.position-from-range($range: $__no-range, $resolver: rem);
-	@include core.tooltip;
+	// @include core.display;
+	// @include core.stack-from-range($range: user.$standard-range, $resolver: rem);
+	// @include core.grid-from-range($range: user.$standard-range, $resolver: rem);
+	// @include core.margin-from-range($range: list.join(user.$negative-range, user.$standard-range), $resolver: rem);
+	// @include core.padding-from-range($range: user.$standard-range, $resolver: rem);
+	// @include core.position-from-range($range: $__no-range, $resolver: rem);
+	// @include core.tooltip;
 
-	// @include width-from-range(ranges.$standard, rem);
+	@include core.width-from-range(user.$standard-range, rem);
+	@include core.max-width-from-breakpoint-map($breakpoint-map: user.$breakpoint-map);
+	@include core.container-from-breakpoint-map($breakpoint-map: user.$breakpoint-map);
+
 	// TODO: We need a function to interpolate a breakpoint map.
 	// @include width-from-range(($xs, $sm, $md, $lg, $xl), px);
 	// // TODO
@@ -45,29 +44,29 @@ $__no-range: (0);
 	// @include max-width-from-map(maps.$breakpoint, px);
 	// @include height-from-range(ranges.$standard, rem);
 
-	// NOTE: Only `core.font-size-from-range` generates responsive variants.
-	@if not & {
-		@include core.whitespace;
-		@include core.text-align;
-		// @include core.font-style;
-		@include core.font-weight;
-	}
-	@include core.font-size-from-range($range: user.$font-size-range, $resolver: rem);
-	@if not & {
-		@include core.line-height-from-range($range: user.$line-height-range, $resolver: none);
-		@include core.line-decoration;
-	}
-	@if not & {
-		@include core.color-from-map($map: user.$color-map, $alpha-range: user.$alpha-range);
-		@include core.background-color-from-map($map: user.$color-map, $alpha-range: user.$alpha-range);
-		@include core.border-width-from-range($range: user.$border-width-range, $resolver: rem);
-		@include core.border-color-from-map($map: user.$color-map, $alpha-range: user.$alpha-range);
-	}
-	@include core.border-radius-from-range($range: user.$border-radius-range, $resolver: rem);
-	@include core.box-shadow-from-map($map: user.$box-shadow-map);
-	@include core.overflow;
-	@include core.z-index-from-range($range: user.$z-index-range);
-	@include core.pointer-events;
+	// // NOTE: Only `core.font-size-from-range` generates responsive variants.
+	// @if not & {
+	// 	@include core.whitespace;
+	// 	@include core.text-align;
+	// 	// @include core.font-style;
+	// 	@include core.font-weight;
+	// }
+	// @include core.font-size-from-range($range: user.$font-size-range, $resolver: rem);
+	// @if not & {
+	// 	@include core.line-height-from-range($range: user.$line-height-range, $resolver: none);
+	// 	@include core.line-decoration;
+	// }
+	// @if not & {
+	// 	@include core.color-from-map($map: user.$color-map, $alpha-range: user.$alpha-range);
+	// 	@include core.background-color-from-map($map: user.$color-map, $alpha-range: user.$alpha-range);
+	// 	@include core.border-width-from-range($range: user.$border-width-range, $resolver: rem);
+	// 	@include core.border-color-from-map($map: user.$color-map, $alpha-range: user.$alpha-range);
+	// }
+	// @include core.border-radius-from-range($range: user.$border-radius-range, $resolver: rem);
+	// @include core.box-shadow-from-map($map: user.$box-shadow-map);
+	// @include core.overflow;
+	// @include core.z-index-from-range($range: user.$z-index-range);
+	// @include core.pointer-events;
 }
 
 @at-root {
