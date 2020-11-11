@@ -32,68 +32,62 @@
 	@include utils.generate-colors("border", border-color, $map, $alpha-range);
 }
 
-@mixin __border-radius-impl($shorthand, $props, $range, $resolver) {
-	$amp: utils.get-ampersand();
-
-	@include utils.generate-from-range($shorthand, $props, $range, $resolver);
-	#{$amp}#{$shorthand}-full {
-		@each $property in $props {
-			#{$property}: 9999px;
-		}
-	}
-}
-
 // prettier-ignore
 @mixin border-radius-from-range($range, $resolver) {
-	@include __border-radius-impl(
+	$amp: utils.get-ampersand();
+
+	@include utils.generate-from-range(
 		"rounded",
 		(border-radius),
 		$range,
 		$resolver,
 	);
-	@include __border-radius-impl(
+	#{$amp}rounded-full {
+		border-radius: 9999px;
+	}
+	@include utils.generate-from-range(
 		"rounded-tl",
 		(border-top-left-radius),
 		$range,
 		$resolver,
 	);
-	@include __border-radius-impl(
+	@include utils.generate-from-range(
 		"rounded-t",
 		(border-top-left-radius, border-top-right-radius),
 		$range,
 		$resolver,
 	);
-	@include __border-radius-impl(
+	@include utils.generate-from-range(
 		"rounded-tr",
 		(border-top-right-radius),
 		$range,
 		$resolver,
 	);
-	@include __border-radius-impl(
+	@include utils.generate-from-range(
 		"rounded-l",
 		(border-top-left-radius, border-bottom-left-radius),
 		$range,
 		$resolver,
 	);
-	@include __border-radius-impl(
+	@include utils.generate-from-range(
 		"rounded-r",
 		(border-top-right-radius, border-bottom-right-radius),
 		$range,
 		$resolver,
 	);
-	@include __border-radius-impl(
+	@include utils.generate-from-range(
 		"rounded-bl",
 		(border-bottom-left-radius),
 		$range,
 		$resolver,
 	);
-	@include __border-radius-impl(
+	@include utils.generate-from-range(
 		"rounded-b",
 		(border-bottom-left-radius, border-bottom-right-radius),
 		$range,
 		$resolver,
 	);
-	@include __border-radius-impl(
+	@include utils.generate-from-range(
 		"rounded-br",
 		(border-bottom-right-radius),
 		$range,
