@@ -4,7 +4,7 @@
 @use "../../utils";
 
 // prettier-ignore
-$negative: utils.sum-range(
+$negative-range: utils.sum-range(
 	utils.range-count(  -1,  -1, 3),
 	utils.range-count(  -6,  -2, 4),
 	utils.range-count( -12,  -2, 4),
@@ -15,7 +15,7 @@ $negative: utils.sum-range(
 ) !default;
 
 // prettier-ignore
-$standard: utils.sum-range(
+$standard-range: utils.sum-range(
 	utils.range-count(  0,  1, 4),
 	utils.range-count(  6,  2, 4),
 	utils.range-count( 12,  2, 4),
@@ -28,7 +28,7 @@ $standard: utils.sum-range(
 // 0 -> 64
 //
 // prettier-ignore
-$font-size: utils.sum-range(
+$font-size-range: utils.sum-range(
 	utils.range-count(  0,  1, 4),
 	utils.range-count(  6,  2, 2), // utils.range-count(  6,  2, 4),
 	utils.range-count( 11,  1, 9), // utils.range-count( 12,  2, 4),
@@ -39,7 +39,7 @@ $font-size: utils.sum-range(
 // 0 -> 8
 //
 // prettier-ignore
-$border-width: utils.sum-range(
+$border-width-range: utils.sum-range(
 	utils.range-count(  0,  1, 4),
 	utils.range-count(  6,  2, 1),
 ) !default;
@@ -47,7 +47,7 @@ $border-width: utils.sum-range(
 // 0 -> 32
 //
 // prettier-ignore
-$border-radius: utils.sum-range(
+$border-radius-range: utils.sum-range(
 	utils.range-count(  0,  1, 4),
 	utils.range-count(  6,  2, 4),
 	utils.range-count( 12,  2, 4),

@@ -1,0 +1,18 @@
+@use "../utils";
+
+$separator: "\\:";
+
+@mixin container-from-breakpoint-map($breakpoint-map) {
+	@if not & {
+		.container {
+			width: 100%;
+		}
+		@each $k, $v in $breakpoint-map {
+			@media (min-width: #{utils.px($v)}) {
+				.#{$k}#{$separator}container {
+					max-width: #{utils.px($v)};
+				}
+			}
+		}
+	}
+}

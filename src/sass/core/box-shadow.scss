@@ -1,5 +1,5 @@
 @use "../utils";
 
-@mixin shadows-from-map($map) {
+@mixin box-shadow-from-map($map) {
 	@include utils.generate-from-map("shadow", (box-shadow), $map, none);
 }

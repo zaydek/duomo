@@ -1,5 +1,5 @@
 @use "../utils";
 
-@mixin background-color($map, $alpha-range) {
+@mixin background-color-from-map($map, $alpha-range) {
 	@include utils.generate-colors("bg", background-color, $map, $alpha-range);
 }

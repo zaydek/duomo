@@ -3,17 +3,19 @@
 @use "core";
 @use "meta";
 @use "utils";
-@use "vars/maps";
-@use "vars/ranges";
+@use "vars";
+
+// @use "vars/maps";
+// @use "vars/ranges";
 
 @mixin preflight {
 	/* purgecss start ignore */
 	@include meta.tailwind-base;
 	// prettier-ignore
 	@include meta.custom-props-from-maps(
-		maps.$font-stack,
-		maps.$shadow,
-		maps.$timing-function,
+		vars.$font-family-map,
+		vars.$box-shadow-map,
+		vars.$timing-function-map,
 	);
 	@include meta.macos-retina;
 	@include meta.stagger;
@@ -21,16 +23,28 @@
 	/* purgecss end ignore */
 }
 
+// @function range-from-map($map) {
+// 	$range: ();
+// 	@each $k, $v in $map {
+// 		$range: list.append($range, $v);
+// 	}
+// 	@return $range;
+// }
+
+// TODO: Debug something.
+
 @mixin props {
+	@include core.container-from-breakpoint-map($breakpoint-map: vars.$breakpoint-map);
+
 	// @if false {
 	@include core.display;
-	@include core.stack-from-range($range: ranges.$standard, $resolver: rem);
-	@include core.grid-from-range($range: ranges.$standard, $resolver: rem);
+	@include core.stack-from-range($range: vars.$standard-range, $resolver: rem);
+	@include core.grid-from-range($range: vars.$standard-range, $resolver: rem);
 	@include core.margin-from-range(
-		$range: list.join(list.join(ranges.$negative, auto), ranges.$standard),
+		$range: list.join(list.join(vars.$negative-range, auto), vars.$standard-range),
 		$resolver: rem
 	);
-	@include core.padding-from-range($range: ranges.$standard, $resolver: rem);
+	@include core.padding-from-range($range: vars.$standard-range, $resolver: rem);
 	@include core.position-from-range(
 		// prettier-ignore
 		$range: (0),
@@ -61,17 +75,17 @@
 
 	// @if false {
 	@if not & {
-		@include core.color($map: maps.$color, $alpha-range: ranges.$alpha);
-		@include core.background-color($map: maps.$color, $alpha-range: ranges.$alpha);
+		@include core.color-from-map($map: vars.$color-map, $alpha-range: vars.$alpha-range);
+		@include core.background-color-from-map($map: vars.$color-map, $alpha-range: vars.$alpha-range);
 	}
-	@include core.border-width-from-range($range: ranges.$border-width, $resolver: rem);
+	@include core.border-width-from-range($range: vars.$border-width-range, $resolver: rem);
 	@if not & {
-		@include core.border-color($map: maps.$color, $alpha-range: ranges.$alpha);
+		@include core.border-color-from-map($map: vars.$color-map, $alpha-range: vars.$alpha-range);
 	}
-	@include core.border-radius-from-range($range: ranges.$border-radius, $resolver: rem);
-	@include core.shadows-from-map($map: maps.$shadow);
+	@include core.border-radius-from-range($range: vars.$border-radius-range, $resolver: rem);
+	@include core.box-shadow-from-map($map: vars.$box-shadow-map);
 	@include core.overflow;
-	@include core.z-index-from-range($range: ranges.$z-index);
+	@include core.z-index-from-range($range: vars.$z-index-range);
 	@include core.pointer-events;
 	// }
 }
@@ -81,7 +95,7 @@
 	// @include preflight;
 
 	@include props;
-	@each $key, $value in maps.$breakpoint {
+	@each $key, $value in vars.$breakpoint-map {
 		@media (min-width: #{utils.px($value)}) {
 			.#{$key} {
 				@at-root {

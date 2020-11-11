@@ -28,7 +28,7 @@
 	);
 }
 
-@mixin border-color($map, $alpha-range) {
+@mixin border-color-from-map($map, $alpha-range) {
 	@include utils.generate-colors("bg", background-color, $map, $alpha-range);
 }
 
