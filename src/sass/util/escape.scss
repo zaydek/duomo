@@ -1,0 +1,14 @@
+@use "sass:string";
+
+@function escape($str) {
+	$escaped: "";
+	@for $x from 1 through string.length($str) {
+		$ch: string.slice($str, $x, $x);
+		@if $ch == "." {
+			$escaped: $escaped + "\\"+ $ch;
+		} @else {
+			$escaped: $escaped + $ch;
+		}
+	}
+	@return $escaped;
+}

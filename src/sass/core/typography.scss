@@ -46,22 +46,25 @@
 	);
 }
 
-@debug string.quote("0.5");
-
-// TODO (1): Add `tracking`.
-// TODO (2): Change to line-height-from-range.
-@mixin line-height-from-map($map, $conv-fn) {
-	// @include util.generate-from-map("leading", (line-height), $map, $conv-fn);
+@mixin line-height-from-range($range, $resolver) {
+	// prettier-ignore
+	@include util.generate-from-range(
+		"leading",
+		(line-height),
+		$range,
+		$resolver,
+	);
 }
 
-// TODO: Add support for `group`?
 @mixin line-decoration {
 	@if not & {
 		.underline,
 		.touch#{user.$separator}underline:hover,
 		.touch#{user.$separator}underline:focus,
+		// .touched#{user.$separator}underline:active,
 		.group .touch#{user.$separator}underline:hover,
 		.group .touch#{user.$separator}underline:focus {
+			// .group .touched#{user.$separator}underline:active {
 			text-decoration: underline;
 		}
 	}

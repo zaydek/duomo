@@ -1,5 +1,4 @@
-// prettier-ignore
-$font-stack-map: (
+$font-family-map: (
 	sans: (
 		ui-sans-serif,
 		system-ui,
@@ -14,7 +13,7 @@ $font-stack-map: (
 		"Apple Color Emoji",
 		"Segoe UI Emoji",
 		"Segoe UI Symbol",
-		"Noto Color Emoji"
+		"Noto Color Emoji",
 	),
 	serif: (
 		ui-serif,
@@ -22,7 +21,7 @@ $font-stack-map: (
 		Cambria,
 		"Times New Roman",
 		Times,
-		serif
+		serif,
 	),
 	mono: (
 		ui-monospace,
@@ -31,6 +30,6 @@ $font-stack-map: (
 		Consolas,
 		"Liberation Mono",
 		"Courier New",
-		monospace
+		monospace,
 	),
 ) !default;

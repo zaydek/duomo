@@ -1,3 +1,5 @@
+// TODO: Use `Math.floor`.
+
 // Ex:
 //
 // rem(16) -> 1rem
