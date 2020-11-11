@@ -2,6 +2,7 @@
 
 $separator: "\\:";
 
+// TODO: Needs to be tested in the context of a stack. (Do we need `w-full`?)
 @mixin container-from-breakpoint-map($breakpoint-map) {
 	@if not & {
 		.container {

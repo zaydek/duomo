@@ -41,7 +41,8 @@
 	@include core.stack-from-range($range: vars.$standard-range, $resolver: rem);
 	@include core.grid-from-range($range: vars.$standard-range, $resolver: rem);
 	@include core.margin-from-range(
-		$range: list.join(list.join(vars.$negative-range, auto), vars.$standard-range),
+		// $range: list.join(list.join(vars.$negative-range, auto), vars.$standard-range),
+		$range: list.join(vars.$negative-range, vars.$standard-range),
 		$resolver: rem
 	);
 	@include core.padding-from-range($range: vars.$standard-range, $resolver: rem);

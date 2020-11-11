@@ -1,27 +1,42 @@
-@mixin text-align {
-	$amp: get-dynamic-ampersand();
+@use "../utils";
 
-	@each $value in (start, center, end) {
-		#{$amp}text-#{$value} {
-			text-align: #{$value};
+@mixin whitespace {
+	@if not & {
+		// Text does not wrap.
+		.whitespace-pre {
+			white-space: pre;
+		}
+		// Text wraps.
+		.whitespace-pre-wrap {
+			white-space: pre-wrap;
 		}
 	}
 }
 
-@mixin font-style {
-	$amp: get-dynamic-ampersand();
-
-	#{$amp}italic {
-		font-style: italic;
+@mixin text-align {
+	@if not & {
+		@each $v in (start, center, end) {
+			.text-#{$v} {
+				text-align: #{$v};
+			}
+		}
 	}
 }
 
-@mixin font-weight {
-	$amp: get-dynamic-ampersand();
+// @mixin font-style {
+// 	@if not & {
+// 		.italic {
+// 			font-style: italic;
+// 		}
+// 	}
+// }
 
-	@each $value in 100, 200, 300, 400, 500, 600, 700, 800, 900 {
-		#{$amp}font-#{$value} {
-			font-weight: #{$value};
+@mixin font-weight {
+	@if not & {
+		@each $v in utils.range(100, 900, 100) {
+			.font-#{$v} {
+				font-weight: #{$v};
+			}
 		}
 	}
 }

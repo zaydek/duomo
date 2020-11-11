@@ -1,6 +1,6 @@
 @function safe-minus($v) {
 	@if (type-of($v) != "number") {
-		@return $v;
+		@return "";
 	}
 	@return if($v < 0, "-", "");
 }
