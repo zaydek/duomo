@@ -1,7 +1,7 @@
-@use "../utils";
+@use "../util";
 
 @mixin grid-from-range($range, $resolver) {
-	$amp: utils.get-ampersand();
+	$amp: util.get-ampersand();
 
 	#{$amp}grid {
 		display: grid;
@@ -20,17 +20,17 @@
 
 	@each $v in $range {
 		#{$amp}gap-#{$v} {
-			gap: #{utils.resolve($v, $resolver)};
+			gap: #{util.resolve($v, $resolver)};
 		}
 	}
 	@each $v in $range {
 		#{$amp}gap-x-#{$v} {
-			column-gap: #{utils.resolve($v, $resolver)};
+			column-gap: #{util.resolve($v, $resolver)};
 		}
 	}
 	@each $v in $range {
 		#{$amp}gap-y-#{$v} {
-			row-gap: #{utils.resolve($v, $resolver)};
+			row-gap: #{util.resolve($v, $resolver)};
 		}
 	}
 }

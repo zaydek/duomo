@@ -1,4 +1,4 @@
-@use "../utils";
+@use "../util";
 
 // #{$amp}tooltip-tl {
 // 	top: 0;
@@ -31,8 +31,9 @@
 // 	transform: translateX(0) translateY(100%);
 // }
 
+// TODO: Change to transform API?
 @mixin tooltip {
-	$amp: utils.get-ampersand();
+	$amp: util.get-ampersand();
 
 	#{$amp}tooltip-tl {
 		top: 0;

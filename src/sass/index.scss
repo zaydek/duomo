@@ -2,20 +2,17 @@
 
 @use "core";
 @use "meta";
-@use "utils";
-@use "vars";
-
-// @use "vars/maps";
-// @use "vars/ranges";
+@use "user";
+@use "util";
 
 @mixin preflight {
 	/* purgecss start ignore */
 	@include meta.tailwind-base;
 	// prettier-ignore
 	@include meta.custom-props-from-maps(
-		vars.$font-family-map,
-		vars.$box-shadow-map,
-		vars.$timing-function-map,
+		user.$font-family-map,
+		user.$box-shadow-map,
+		user.$timing-function-map,
 	);
 	@include meta.macos-retina;
 	@include meta.stagger;
@@ -34,18 +31,19 @@
 // TODO: Debug something.
 
 @mixin props {
-	@include core.container-from-breakpoint-map($breakpoint-map: vars.$breakpoint-map);
+	// TODO: Move `container` to `width` submodule.
+	// @include core.container-from-breakpoint-map($breakpoint-map: user.$breakpoint-map);
 
 	// @if false {
 	@include core.display;
-	@include core.stack-from-range($range: vars.$standard-range, $resolver: rem);
-	@include core.grid-from-range($range: vars.$standard-range, $resolver: rem);
+	@include core.stack-from-range($range: user.$standard-range, $resolver: rem);
+	@include core.grid-from-range($range: user.$standard-range, $resolver: rem);
 	@include core.margin-from-range(
-		// $range: list.join(list.join(vars.$negative-range, auto), vars.$standard-range),
-		$range: list.join(vars.$negative-range, vars.$standard-range),
+		// $range: list.join(list.join(user.$negative-range, auto), user.$standard-range),
+		$range: list.join(user.$negative-range, user.$standard-range),
 		$resolver: rem
 	);
-	@include core.padding-from-range($range: vars.$standard-range, $resolver: rem);
+	@include core.padding-from-range($range: user.$standard-range, $resolver: rem);
 	@include core.position-from-range(
 		// prettier-ignore
 		$range: (0),
@@ -76,17 +74,17 @@
 
 	// @if false {
 	@if not & {
-		@include core.color-from-map($map: vars.$color-map, $alpha-range: vars.$alpha-range);
-		@include core.background-color-from-map($map: vars.$color-map, $alpha-range: vars.$alpha-range);
+		@include core.color-from-map($map: user.$color-map, $alpha-range: user.$alpha-range);
+		@include core.background-color-from-map($map: user.$color-map, $alpha-range: user.$alpha-range);
 	}
-	@include core.border-width-from-range($range: vars.$border-width-range, $resolver: rem);
+	@include core.border-width-from-range($range: user.$border-width-range, $resolver: rem);
 	@if not & {
-		@include core.border-color-from-map($map: vars.$color-map, $alpha-range: vars.$alpha-range);
+		@include core.border-color-from-map($map: user.$color-map, $alpha-range: user.$alpha-range);
 	}
-	@include core.border-radius-from-range($range: vars.$border-radius-range, $resolver: rem);
-	@include core.box-shadow-from-map($map: vars.$box-shadow-map);
+	@include core.border-radius-from-range($range: user.$border-radius-range, $resolver: rem);
+	@include core.box-shadow-from-map($map: user.$box-shadow-map);
 	@include core.overflow;
-	@include core.z-index-from-range($range: vars.$z-index-range);
+	@include core.z-index-from-range($range: user.$z-index-range);
 	@include core.pointer-events;
 	// }
 }
@@ -96,8 +94,8 @@
 	// @include preflight;
 
 	@include props;
-	@each $key, $value in vars.$breakpoint-map {
-		@media (min-width: #{utils.px($value)}) {
+	@each $key, $value in user.$breakpoint-map {
+		@media (min-width: #{util.px($value)}) {
 			.#{$key} {
 				@at-root {
 					@include props;

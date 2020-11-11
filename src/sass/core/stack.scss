@@ -1,7 +1,7 @@
-@use "../utils";
+@use "../util";
 
 @mixin __hstack($range, $reoslver) {
-	$amp: utils.get-ampersand();
+	$amp: util.get-ampersand();
 
 	@if not & {
 		.hstack > * {
@@ -24,7 +24,7 @@
 }
 
 @mixin __vstack($range, $reoslver) {
-	$amp: utils.get-ampersand();
+	$amp: util.get-ampersand();
 
 	@if not & {
 		.vstack > * {
@@ -47,7 +47,7 @@
 }
 
 @mixin stack-from-range($range, $resolver) {
-	$amp: utils.get-ampersand();
+	$amp: util.get-ampersand();
 
 	@include __hstack($range, $resolver);
 	@include __vstack($range, $resolver);
@@ -80,13 +80,13 @@
 
 	@each $v in $range {
 		#{$amp}space-#{$v} > * {
-			--space: #{utils.resolve($v, $resolver)};
+			--space: #{util.resolve($v, $resolver)};
 		}
 	}
 
 	@for $v from -1 through 12 {
-		$minus: utils.safe-minus($v);
-		#{$amp}#{$minus}order-#{utils.safe-abs($v)} {
+		$minus: util.safe-minus($v);
+		#{$amp}#{$minus}order-#{util.safe-abs($v)} {
 			order: #{$v};
 		}
 	}

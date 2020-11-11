@@ -1,7 +1,0 @@
-@use "../../utils";
-
-// prettier-ignore
-$alpha-range: utils.sum-range(
-	utils.range(0, 0.25, 0.05),
-	utils.range(0.75, 1, 0.05),
-) !default;

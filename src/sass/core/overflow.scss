@@ -1,9 +1,9 @@
-@use "../utils";
+@use "../util";
 
 $__opts: (hidden, scroll);
 
 @mixin overflow {
-	$amp: utils.get-ampersand();
+	$amp: util.get-ampersand();
 
 	@each $v in $__opts {
 		#{$amp}overflow-#{$v} {
@@ -13,7 +13,6 @@ $__opts: (hidden, scroll);
 			overflow: #{$v};
 		}
 	}
-
 	@each $v in $__opts {
 		#{$amp}overflow-x-#{$v} {
 			@if $v == scroll {
@@ -22,7 +21,6 @@ $__opts: (hidden, scroll);
 			overflow-x: #{$v};
 		}
 	}
-
 	@each $v in $__opts {
 		#{$amp}overflow-y-#{$v} {
 			@if $v == scroll {

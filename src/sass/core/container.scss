@@ -1,8 +1,6 @@
-@use "../utils";
+@use "../user";
+@use "../util";
 
-$separator: "\\:";
-
-// TODO: Needs to be tested in the context of a stack. (Do we need `w-full`?)
 @mixin container-from-breakpoint-map($breakpoint-map) {
 	@if not & {
 		.container {
@@ -10,7 +8,7 @@ $separator: "\\:";
 		}
 		@each $k, $v in $breakpoint-map {
 			@media (min-width: #{utils.px($v)}) {
-				.#{$k}#{$separator}container {
+				.#{$k}#{user.$separator}container {
 					max-width: #{utils.px($v)};
 				}
 			}

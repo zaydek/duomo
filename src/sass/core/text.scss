@@ -41,25 +41,29 @@
 	}
 }
 
-@mixin font-size-from-range($range, $conv-fn) {
-	@include generate-from-range((font-size), "text", $range, $conv-fn);
+@mixin font-size-from-range($range, $resolver) {
+	// prettier-ignore
+	@include utils.generate-from-range(
+		"text",
+		(font-size),
+		$range,
+		$resolver,
+	);
 }
 
 // TODO (1): Add `tracking`.
 // TODO (2): Change to line-height-from-range.
 @mixin line-height-from-map($map, $conv-fn) {
-	@include generate-from-map((line-height), "leading", $map, $conv-fn);
+	// @include utils.generate-from-map("leading", (line-height), $map, $conv-fn);
 }
 
 // TODO: Add support for `group`?
 @mixin line-decoration {
-	$amp: get-dynamic-ampersand();
+	$separator: "\\:"; // TODO
 
-	#{$amp}underline {
-		text-decoration: underline;
-	}
 	@if not & {
-		#{$amp}hover#{$separator}underline:hover {
+		.underline,
+		.touch#{$separator}underline:hover {
 			text-decoration: underline;
 		}
 	}

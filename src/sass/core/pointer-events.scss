@@ -1,11 +1,13 @@
-@use "../utils";
+@use "../util";
 
 @mixin pointer-events {
-	$amp: utils.get-ampersand();
+	$amp: util.get-ampersand();
 
+	// TODO: Rename to `no-touch`?
 	#{$amp}no-pointer-events {
 		pointer-events: none;
 	}
+	// TODO: Rename to `touch`?
 	#{$amp}pointer-events {
 		pointer-events: auto;
 	}

@@ -1,44 +1,44 @@
-@use "../utils";
+@use "../util";
 
 // prettier-ignore
 @mixin margin-from-range($range, $resolver) {
-	@include utils.generate-from-range(
+	@include util.generate-from-range(
 		"m",
 		(margin),
 		$range,
 		$resolver,
 	);
-	@include utils.generate-from-range(
+	@include util.generate-from-range(
 		"mx",
 		(margin-left, margin-right),
 		$range,
 		$resolver,
 	);
-	@include utils.generate-from-range(
+	@include util.generate-from-range(
 		"ml",
 		(margin-left),
 		$range,
 		$resolver,
 	);
-	@include utils.generate-from-range(
+	@include util.generate-from-range(
 		"mr",
 		(margin-right),
 		$range,
 		$resolver,
 	);
-	@include utils.generate-from-range(
+	@include util.generate-from-range(
 		"my",
 		(margin-top, margin-bottom),
 		$range,
 		$resolver,
 	);
-	@include utils.generate-from-range(
+	@include util.generate-from-range(
 		"mt",
 		(margin-top),
 		$range,
 		$resolver,
 	);
-	@include utils.generate-from-range(
+	@include util.generate-from-range(
 		"mb",
 		(margin-bottom),
 		$range,

@@ -1,5 +1,5 @@
-@use "../utils";
+@use "../util";
 
 @mixin z-index-from-range($range) {
-	@include utils.generate-from-range("z", (z-index), $range, none);
+	@include util.generate-from-range("z", (z-index), $range, none);
 }
