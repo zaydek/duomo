@@ -1,6 +1,8 @@
 @use "../user";
 @use "../util";
 
+@use "sass:string";
+
 @mixin whitespace {
 	@if not & {
 		// Text does not wrap.
@@ -15,13 +17,6 @@
 }
 
 @mixin text-align {
-	// @if not & {
-	// 	@each $v in (start, center, end) {
-	// 		.text-#{$v} {
-	// 			text-align: #{$v};
-	// 		}
-	// 	}
-	// }
 	@if not & {
 		.text-center {
 			text-align: center;
@@ -29,13 +24,7 @@
 	}
 }
 
-// @mixin font-style {
-// 	@if not & {
-// 		.italic {
-// 			font-style: italic;
-// 		}
-// 	}
-// }
+// TODO: Add `font-style`.
 
 @mixin font-weight {
 	@if not & {
@@ -57,6 +46,8 @@
 	);
 }
 
+@debug string.quote("0.5");
+
 // TODO (1): Add `tracking`.
 // TODO (2): Change to line-height-from-range.
 @mixin line-height-from-map($map, $conv-fn) {
@@ -68,7 +59,9 @@
 	@if not & {
 		.underline,
 		.touch#{user.$separator}underline:hover,
-		.touch#{user.$separator}underline:focus {
+		.touch#{user.$separator}underline:focus,
+		.group .touch#{user.$separator}underline:hover,
+		.group .touch#{user.$separator}underline:focus {
 			text-decoration: underline;
 		}
 	}

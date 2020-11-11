@@ -3,12 +3,10 @@
 @mixin pointer-events {
 	$amp: util.get-ampersand();
 
-	// TODO: Rename to `no-touch`?
-	#{$amp}no-pointer-events {
+	#{$amp}pointer-events-none {
 		pointer-events: none;
 	}
-	// TODO: Rename to `touch`?
-	#{$amp}pointer-events {
+	#{$amp}pointer-events-auto {
 		pointer-events: auto;
 	}
 }
