@@ -1,33 +1,32 @@
-// TODO: Use `Math.floor`.
-
 // Ex:
 //
 // rem(16) -> 1rem
 export function rem(n: number): number | string {
-	const rounded = Math.round(n)
-	if (!rounded) {
+	const floored = Math.floor(n)
+	if (!floored) {
 		return 0
 	}
-	return rounded / 16 + "rem"
+	return floored / 16 + "rem"
 }
 
 // Ex:
 //
-// rem(16) -> 1em
+// em(16) -> 1em
 export function em(n: number): number | string {
-	if (!n) {
+	const floored = Math.floor(n)
+	if (!floored) {
 		return 0
 	}
-	return n / 16 + "em"
+	return floored / 16 + "em"
 }
 
 // Ex:
 //
-// rem(16) -> 16px
+// px(16) -> 16px
 export function px(n: number): number | string {
-	const rounded = Math.round(n)
-	if (!rounded) {
+	const floored = Math.floor(n)
+	if (!floored) {
 		return 0
 	}
-	return rounded + "px"
+	return floored + "px"
 }
