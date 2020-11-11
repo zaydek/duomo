@@ -31,18 +31,8 @@ $__no-range: (0);
 	@include core.width-from-range(user.$standard-range, rem);
 	@include core.max-width-from-breakpoint-map($breakpoint-map: user.$breakpoint-map);
 	@include core.container-from-breakpoint-map($breakpoint-map: user.$breakpoint-map);
-
-	// TODO: We need a function to interpolate a breakpoint map.
-	// @include width-from-range(($xs, $sm, $md, $lg, $xl), px);
-	// // TODO
-	// $amp: get-dynamic-ampersand();
-	// @each $key, $value in ("full": 100%, "screen": 100vw) {
-	// 	#{$amp}w-#{$key} {
-	// 		width: #{$value};
-	// 	}
-	// }
-	// @include max-width-from-map(maps.$breakpoint, px);
-	// @include height-from-range(ranges.$standard, rem);
+	@include core.height-from-range(user.$standard-range, rem);
+	// @include core.min-height-from-range($__no-range, rem);
 
 	// // NOTE: Only `core.font-size-from-range` generates responsive variants.
 	// @if not & {

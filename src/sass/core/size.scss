@@ -4,28 +4,14 @@
 @mixin width-from-range($range, $resolver) {
 	$amp: util.get-ampersand();
 
-	// FIXME
-	// // NOTE: Use `w-*` and `h-*` for `flex-shrink: 0` (explicit).
-	// // NOTE: Use `max-w-*` for `flex-shrink: 1` (implicit).
-	// @each $value in $range {
-	// 	#{$amp}w-#{human-readable($value)} {
-	// 		width: #{call(get-function($conv-fn), $value)};
-	// 		[class*="hstack"] > & {
-	// 			flex-shrink: 0;
-	// 		}
-	// 	}
-	// }
-
 	@each $v in $range {
 		#{$amp}w-#{$v} {
 			width: #{util.resolve($v, $resolver)};
-		}
-		[class*="hstack"] > #{$amp}w-#{$v} {
-			flex-shrink: 0;
+			[class*="hstack"] > & {
+				flex-shrink: 0;
+			}
 		}
 	}
-
-	// Guard edge-case (inline-styles):
 	@if not & {
 		[class*="hstack"] > [style^="width"],
 		[class*="hstack"] > [style*=";width"],
@@ -67,71 +53,32 @@
 	}
 }
 
-// @mixin width-from-range($range, $conv-fn) {
-// 	$amp: get-dynamic-ampersand();
-//
-// 	// FIXME
-// 	// // NOTE: Use `w-*` and `h-*` for `flex-shrink: 0` (explicit).
-// 	// // NOTE: Use `max-w-*` for `flex-shrink: 1` (implicit).
-// 	// @each $value in $range {
-// 	// 	#{$amp}w-#{human-readable($value)} {
-// 	// 		width: #{call(get-function($conv-fn), $value)};
-// 	// 		[class*="hstack"] > & {
-// 	// 			flex-shrink: 0;
-// 	// 		}
-// 	// 	}
-// 	// }
-//
-// 	// NOTE: Covers `style="..."` where `w-*` does not exist.
-// 	@if not & {
-// 		[class*="hstack"] > [style^="width"],
-// 		[class*="hstack"] > [style*=";width"],
-// 		[class*="hstack"] > [style*="; width"] {
-// 			flex-shrink: 0;
-// 		}
-// 	}
-//
-// 	// @each $key, $value in ("full": 100%, "screen": 100vw) {
-// 	// 	#{$amp}w-#{$key} {
-// 	// 		width: #{$value};
-// 	// 	}
-// 	// }
-// }
-//
-// @mixin max-width-from-map($map, $conv-fn) {
-// 	@include generate-from-map((max-width), "max-w", $map, $conv-fn);
-// }
-//
-// @mixin height-from-range($range, $conv-fn) {
-// 	$amp: get-dynamic-ampersand();
-//
-// 	// NOTE: Use `w-*` and `h-*` for `flex-shrink: 0` (explicit).
-// 	// NOTE: Use `max-w-*` for `flex-shrink: 1` (implicit).
-// 	@each $value in $range {
-// 		#{$amp}h-#{$value} {
-// 			height: #{call(get-function($conv-fn), $value)};
-// 			[class*="vstack"] > & {
-// 				flex-shrink: 0;
-// 			}
-// 		}
-// 	}
-//
-// 	// NOTE: Covers `style="..."` where `h-*` does not exist.
-// 	@if not & {
-// 		[class*="vstack"] > [style^="height"],
-// 		[class*="vstack"] > [style*=";height"],
-// 		[class*="vstack"] > [style*="; height"] {
-// 			flex-shrink: 0;
-// 		}
-// 	}
-//
-// 	@each $key, $value in ("full": 100%, "screen": 100vh) {
-// 		#{$amp}h-#{$key} {
-// 			height: #{$value};
-// 		}
-// 	}
-// }
-//
+@mixin height-from-range($range, $resolver) {
+	$amp: util.get-ampersand();
+
+	@each $v in $range {
+		#{$amp}h-#{$v} {
+			height: #{util.resolve($v, $resolver)};
+			[class*="vstack"] > & {
+				flex-shrink: 0;
+			}
+		}
+	}
+	@if not & {
+		[class*="vstack"] > [style^="height"],
+		[class*="vstack"] > [style*=";height"],
+		[class*="vstack"] > [style*="; height"] {
+			flex-shrink: 0;
+		}
+	}
+
+	@each $k, $v in (full: 100%, screen: 100vw) {
+		#{$amp}h-#{$k} {
+			height: #{$v};
+		}
+	}
+}
+
 // @mixin min-height-from-range($range, $conv-fn) {
 // 	$amp: get-dynamic-ampersand();
 //
