@@ -46,16 +46,18 @@
 	);
 }
 
-@mixin line-height-from-range($range, $resolver) {
+@mixin line-height-from-range($range) {
 	// prettier-ignore
 	@include util.generate-from-range(
 		"leading",
 		(line-height),
 		$range,
-		$resolver,
+		none,
 	);
 }
 
+// TODO:
+//
 // .touched#{user.$separator}underline:active,
 // .group .touched#{user.$separator}underline:active {
 
