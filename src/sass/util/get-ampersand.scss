@@ -1,4 +1,3 @@
-// TODO: Move `$separator` to user configuration?
 $separator: "\\:";
 
 @function get-ampersand() {
@@ -7,3 +6,12 @@ $separator: "\\:";
 	}
 	@return & + $separator;
 }
+
+// @use "../user";
+//
+// @function get-ampersand() {
+// 	@if not & {
+// 		@return ".";
+// 	}
+// 	@return & + user.$separator;
+// }

@@ -1,59 +1,57 @@
 @use "sass:list";
 @use "sass:math";
 
-@use "../../util";
+//   0,   2,   4,   6,   8, //  +2
+//  10,  12,  14,  16,  18, //  +2
+//  20,  24,  28,  32,  36, //  +4
+//  40,  48,  56,  64,  72, //  +8
+//  80,  96, 112, 128, 144, // +16
+// 160, 192, 224, 256, 288, // +32
+// 320,                     // +64
 
 // -1 -> -320
 //
 // prettier-ignore
-$negative-range: util.sum-range(
-	util.range-count(  -1,  -1, 3),
-	util.range-count(  -6,  -2, 2), // util.range-count(  6,  2, 4),
-	util.range-count( -11,  -1, 9), // util.range-count( 12,  2, 4),
-	util.range-count( -24,  -4, 4),
-	util.range-count( -48,  -8, 4),
-	util.range-count( -96, -16, 4),
-	util.range-count(-192, -32, 4),
+$negative-range: (
+	        -1,   -2,   -4,   -6,   -8, // Removes 0, adds -1
+	 -10,  -11,  -12,  -13,  -14,  -15,  -16,  -17,  -18,  -19, // Adds -11, -13, -15, -17, -19
+	 -20,  -24,  -28,  -32,  -36,
+	 -40,  -48,  -56,  -64,  -72,
+	 -80,  -96, -112, -128, -144,
+	-160, -192, -224, -256, -288,
+	-320,
 ) !default;
 
 // 0 -> 320
 //
 // prettier-ignore
-$standard-range: util.sum-range(
-	util.range-count(  0,  1, 4),
-	util.range-count(  6,  2, 2), // util.range-count(  6,  2, 4),
-	util.range-count( 11,  1, 9), // util.range-count( 12,  2, 4),
-	util.range-count( 24,  4, 4),
-	util.range-count( 48,  8, 4),
-	util.range-count( 96, 16, 4),
-	util.range-count(192, 32, 4),
+$standard-range: (
+	  0,   1,   2,   4,   6,   8, // Adds 1
+	 10,  11,  12,  13,  14,  15,  16,  17,  18,  19, // Adds 11, 13, 15, 17, 19
+	 20,  24,  28,  32,  36,
+	 40,  48,  56,  64,  72,
+	 80,  96, 112, 128, 144,
+	160, 192, 224, 256, 288,
+	320,
 ) !default;
 
 // 0 -> 64
 //
 // prettier-ignore
-$font-size-range: util.sum-range(
-	util.range-count(  0,  1, 4),
-	util.range-count(  6,  2, 2), // util.range-count(  6,  2, 4),
-	util.range-count( 11,  1, 9), // util.range-count( 12,  2, 4),
-	util.range-count( 24,  4, 4),
-	util.range-count( 48,  8, 2),
+$font-size-range: (
+	 10,  11,  12,  13,  14,  15,  16,  17,  18,  19, // Adds 11, 13, 15, 17, 19
+	 20,  24,  28,  32,  36,
+	 40,  48,  56,  64,
 ) !default;
 
 // 0 -> 8
-//
-// prettier-ignore
-$border-width-range: util.sum-range(
-	util.range-count(  0,  1, 4),
-	util.range-count(  6,  2, 1),
-) !default;
+$border-width-range: (0, 1, 2, 4, 6, 8) !default;
 
 // 0 -> 32
 //
 // prettier-ignore
-$border-radius-range: util.sum-range(
-	util.range-count(  0,  1, 4),
-	util.range-count(  6,  2, 4),
-	util.range-count( 12,  2, 4),
-	util.range-count( 24,  4, 2),
+$border-radius-range: (
+	  0,   2,   4,   6,   8,
+	 10,  12,  14,  16,  18,
+	 20,  24,  28,  32,
 ) !default;

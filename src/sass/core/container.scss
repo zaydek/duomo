@@ -7,9 +7,9 @@
 			width: 100%;
 		}
 		@each $k, $v in $breakpoint-map {
-			@media (min-width: #{utils.px($v)}) {
+			@media (min-width: #{util.px($v)}) {
 				.#{$k}#{user.$separator}container {
-					max-width: #{utils.px($v)};
+					max-width: #{util.px($v)};
 				}
 			}
 		}

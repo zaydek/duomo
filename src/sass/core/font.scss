@@ -1,4 +1,5 @@
-@use "../utils";
+@use "../user";
+@use "../util";
 
 @mixin whitespace {
 	@if not & {
@@ -14,11 +15,16 @@
 }
 
 @mixin text-align {
+	// @if not & {
+	// 	@each $v in (start, center, end) {
+	// 		.text-#{$v} {
+	// 			text-align: #{$v};
+	// 		}
+	// 	}
+	// }
 	@if not & {
-		@each $v in (start, center, end) {
-			.text-#{$v} {
-				text-align: #{$v};
-			}
+		.text-center {
+			text-align: center;
 		}
 	}
 }
@@ -33,7 +39,7 @@
 
 @mixin font-weight {
 	@if not & {
-		@each $v in utils.range(100, 900, 100) {
+		@each $v in util.range(100, 900, 100) {
 			.font-#{$v} {
 				font-weight: #{$v};
 			}
@@ -43,7 +49,7 @@
 
 @mixin font-size-from-range($range, $resolver) {
 	// prettier-ignore
-	@include utils.generate-from-range(
+	@include util.generate-from-range(
 		"text",
 		(font-size),
 		$range,
@@ -54,16 +60,15 @@
 // TODO (1): Add `tracking`.
 // TODO (2): Change to line-height-from-range.
 @mixin line-height-from-map($map, $conv-fn) {
-	// @include utils.generate-from-map("leading", (line-height), $map, $conv-fn);
+	// @include util.generate-from-map("leading", (line-height), $map, $conv-fn);
 }
 
 // TODO: Add support for `group`?
 @mixin line-decoration {
-	$separator: "\\:"; // TODO
-
 	@if not & {
 		.underline,
-		.touch#{$separator}underline:hover {
+		.touch#{user.$separator}underline:hover,
+		.touch#{user.$separator}underline:focus {
 			text-decoration: underline;
 		}
 	}

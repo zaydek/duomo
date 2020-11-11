@@ -1,4 +1,4 @@
-import { em, px, rem } from "./utils"
+import { em, px, rem } from "./util"
 
 test("rem", () => {
 	expect(rem(0)).toBe(0)
