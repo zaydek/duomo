@@ -4,34 +4,34 @@
 @use "sass:string";
 
 @mixin whitespace {
-	@if not & {
-		// Text does not wrap.
-		.whitespace-pre {
-			white-space: pre;
-		}
-		// Text wraps.
-		.whitespace-pre-wrap {
-			white-space: pre-wrap;
-		}
+	$amp: util.get-ampersand();
+
+	// Text does not wrap.
+	#{$amp}whitespace-pre {
+		white-space: pre;
+	}
+	// Text wraps.
+	#{$amp}whitespace-pre-wrap {
+		white-space: pre-wrap;
 	}
 }
 
 @mixin text-align {
-	@if not & {
-		.text-center {
-			text-align: center;
-		}
+	$amp: util.get-ampersand();
+
+	#{$amp}text-center {
+		text-align: center;
 	}
 }
 
 // TODO: Add `font-style`.
 
 @mixin font-weight {
-	@if not & {
-		@each $v in util.range(100, 900, 100) {
-			.font-#{$v} {
-				font-weight: #{$v};
-			}
+	$amp: util.get-ampersand();
+
+	@each $v in util.range(100, 900, 100) {
+		#{$amp}font-#{$v} {
+			font-weight: #{$v};
 		}
 	}
 }
@@ -56,16 +56,17 @@
 	);
 }
 
+// .touched#{user.$separator}underline:active,
+// .group .touched#{user.$separator}underline:active {
+
 @mixin line-decoration {
-	@if not & {
-		.underline,
-		.touch#{user.$separator}underline:hover,
-		.touch#{user.$separator}underline:focus,
-		// .touched#{user.$separator}underline:active,
-		.group .touch#{user.$separator}underline:hover,
-		.group .touch#{user.$separator}underline:focus {
-			// .group .touched#{user.$separator}underline:active {
-			text-decoration: underline;
-		}
+	$amp: util.get-ampersand();
+
+	#{$amp}underline,
+	#{$amp}touch#{user.$separator}underline:hover,
+	#{$amp}touch#{user.$separator}underline:focus,
+	.group #{$amp}touch#{user.$separator}underline:hover,
+	.group #{$amp}touch#{user.$separator}underline:focus {
+		text-decoration: underline;
 	}
 }
