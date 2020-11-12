@@ -15,37 +15,37 @@
 
 	@at-root {
 		body {
-			@each $k1, $v1 in $theme-map {
-				$got: #{map.get($v1, "light")};
+			@each $k, $v in $theme-map {
+				$got: #{map.get($v, "light")};
 				@if $got {
-					#{$k1}: #{$got};
+					#{$k}: #{$got};
 				}
 			}
 			@content;
 		}
 		@each $theme in $themes {
 			body[data-theme="#{"" + $theme}"] {
-				@each $k1, $v1 in $theme-map {
-					$got: #{map.get($v1, $theme)};
+				@each $k, $v in $theme-map {
+					$got: #{map.get($v, $theme)};
 					@if $got {
-						#{$k1}: #{$got};
+						#{$k}: #{$got};
 					}
 				}
 			}
 		}
-		@each $k1, $v1 in $theme-map {
-			.#{string.slice($k1, string.length("--") + 1)} {
-				#{map.get($v1, "property")}: var(#{$k1});
+		@each $k, $v in $theme-map {
+			.#{string.slice($k, string.length("--") + 1)} {
+				#{map.get($v, "property")}: var(#{$k});
 				@if meta.content-exists() {
 					transition: var(--transition);
 				}
 			}
 			// TODO: Add `user.$separator`.
-			.hover\:#{string.slice($k1, string.length("--") + 1)}:hover,
-			.focus\:#{string.slice($k1, string.length("--") + 1)}:focus,
-			.group:hover .group-hover\:#{string.slice($k1, string.length("--") + 1)},
-			.group:focus .group-focus\:#{string.slice($k1, string.length("--") + 1)} {
-				#{map.get($v1, "property")}: var(#{$k1});
+			.hover\:#{string.slice($k, string.length("--") + 1)}:hover,
+			.focus\:#{string.slice($k, string.length("--") + 1)}:focus,
+			.group:hover .group-hover\:#{string.slice($k, string.length("--") + 1)},
+			.group:focus .group-focus\:#{string.slice($k, string.length("--") + 1)} {
+				#{map.get($v, "property")}: var(#{$k});
 			}
 		}
 	}

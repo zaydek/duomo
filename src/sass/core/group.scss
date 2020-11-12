@@ -1,0 +1,7 @@
+@mixin group {
+	@if not & {
+		.group {
+			/*!*/
+		}
+	}
+}

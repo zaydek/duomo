@@ -5,6 +5,9 @@
 @use "user";
 @use "util";
 
+@forward "theme";
+@forward "user";
+
 @mixin preflight {
 	/* purgecss start ignore */
 	@include meta.tailwind-base;
@@ -18,6 +21,7 @@
 $__no-range: (0);
 
 @mixin props {
+	@include core.group;
 	@include core.display;
 	@include core.stack-from-range($range: user.$standard-range, $resolver: rem);
 	@include core.grid-from-range($range: user.$standard-range, $resolver: rem);
