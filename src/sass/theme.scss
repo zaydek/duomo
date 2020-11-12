@@ -3,7 +3,7 @@
 @use "sass:meta";
 @use "sass:string";
 
-@mixin theme($theme-map) {
+@mixin theme($theme-map, $transition-duration: null, $transition-timing-function: null) {
 	$themes: ();
 	@each $k1, $v1 in $theme-map {
 		@each $k2, $v2 in $v1 {
@@ -15,37 +15,52 @@
 
 	@at-root {
 		body {
-			@each $k, $v in $theme-map {
-				$got: #{map.get($v, "light")};
+			@each $k1, $v1 in $theme-map {
+				$got: map.get($v1, "light");
 				@if $got {
-					#{$k}: #{$got};
+					#{$k1}: #{$got};
 				}
 			}
-			@content;
+			// prettier-ignore
+			@if $transition-duration and $transition-timing-function {
+				--theme-transition: background-color #{$transition-duration} #{$transition-timing-function}, border-color #{$transition-duration} #{$transition-timing-function}, box-shadow #{$transition-duration} #{$transition-timing-function}, color #{$transition-duration} #{$transition-timing-function}, fill #{$transition-duration} #{$transition-timing-function}, opacity #{$transition-duration} #{$transition-timing-function}, stroke #{$transition-duration} #{$transition-timing-function}, transform #{$transition-duration} #{$transition-timing-function};
+			}
 		}
 		@each $theme in $themes {
 			body[data-theme="#{"" + $theme}"] {
-				@each $k, $v in $theme-map {
-					$got: #{map.get($v, $theme)};
+				@each $k1, $v1 in $theme-map {
+					$got: map.get($v1, $theme);
 					@if $got {
-						#{$k}: #{$got};
+						#{$k1}: #{$got};
 					}
 				}
 			}
 		}
-		@each $k, $v in $theme-map {
-			.#{string.slice($k, string.length("--") + 1)} {
-				#{map.get($v, "property")}: var(#{$k});
-				@if meta.content-exists() {
-					transition: var(--transition);
+
+		@each $k1, $v1 in $theme-map {
+			.#{string.slice($k1, string.length("--") + 1)} {
+				#{map.get($v1, "property")}: var(#{$k1});
+				@if $transition-duration and $transition-timing-function {
+					transition: var(--theme-transition);
 				}
 			}
-			// TODO: Add `user.$separator`.
-			.hover\:#{string.slice($k, string.length("--") + 1)}:hover,
-			.focus\:#{string.slice($k, string.length("--") + 1)}:focus,
-			.group:hover .group-hover\:#{string.slice($k, string.length("--") + 1)},
-			.group:focus .group-focus\:#{string.slice($k, string.length("--") + 1)} {
-				#{map.get($v, "property")}: var(#{$k});
+		}
+
+		// (:hover, :focus, .group)
+		@each $k1, $v1 in $theme-map {
+			.touch\:#{string.slice($k1, string.length("--") + 1)}:hover,
+			.touch\:#{string.slice($k1, string.length("--") + 1)}:focus,
+			.group:hover .group-touch\:#{string.slice($k1, string.length("--") + 1)},
+			.group:focus .group-touch\:#{string.slice($k1, string.length("--") + 1)} {
+				#{map.get($v1, "property")}: var(#{$k1});
+			}
+		}
+
+		// (:active, .group)
+		@each $k1, $v1 in $theme-map {
+			.press\:#{string.slice($k1, string.length("--") + 1)}:active,
+			.group:active .group-press\:#{string.slice($k1, string.length("--") + 1)} {
+				#{map.get($v1, "property")}: var(#{$k1});
 			}
 		}
 	}

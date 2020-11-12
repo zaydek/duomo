@@ -58,11 +58,21 @@
 	$amp: util.get-ampersand();
 
 	@each $v in (line-through, underline) {
-		#{$amp}#{$v},
-		#{$amp}hover#{user.$separator}#{$v}:hover,
-		#{$amp}focus#{user.$separator}#{$v}:focus,
-		.group #{$amp}hover#{user.$separator}#{$v}:hover,
-		.group #{$amp}focus#{user.$separator}#{$v}:focus {
+		#{$amp}#{$v} {
+			text-decoration: #{$v};
+		}
+	}
+	@each $v in (line-through, underline) {
+		#{$amp}touch#{user.$separator}#{$v}:hover,
+		#{$amp}touch#{user.$separator}#{$v}:focus,
+		.group:hover #{$amp}group-touch#{user.$separator}#{$v},
+		.group:focus #{$amp}group-touch#{user.$separator}#{$v} {
+			text-decoration: #{$v};
+		}
+	}
+	@each $v in (line-through, underline) {
+		#{$amp}press#{user.$separator}#{$v}:active,
+		.group:active #{$amp}group-press#{user.$separator}#{$v} {
 			text-decoration: #{$v};
 		}
 	}
