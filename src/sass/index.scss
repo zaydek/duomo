@@ -25,10 +25,10 @@ $__no-range: (0);
 	@include core.padding-from-range($range: user.$standard-range, $resolver: rem);
 	@include core.position-from-range($range: $__no-range, $resolver: rem);
 	@include core.tooltip;
-	@include core.width-from-range(user.$standard-range, rem);
+	@include core.width-from-range($range: user.$standard-range, $resolver: rem);
 	@include core.max-width-from-breakpoint-map($breakpoint-map: user.$breakpoint-map);
 	@include core.container-from-breakpoint-map($breakpoint-map: user.$breakpoint-map);
-	@include core.height-from-range(user.$standard-range, rem);
+	@include core.height-from-range($range: user.$standard-range, $resolver: rem);
 	@include core.min-height;
 	// NOTE: Only `core.font-size-from-range` generates responsive variants.
 	@if not & {
