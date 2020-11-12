@@ -1,0 +1,47 @@
+@use "theme" as *;
+@use "user/maps/colors-2";
+
+$theme-map: (
+	--bg-body: (
+		property: background-color,
+		light: colors-2.$white,
+		orange: colors-2.$white,
+		dark: colors-2.$blue-gray-900,
+	),
+	--bg-more-important: (
+		property: background-color,
+		light: colors-2.$red-400,
+		orange: colors-2.$orange-400,
+		dark: colors-2.$blue-600,
+	),
+	--bg-important: (
+		property: background-color,
+		light: colors-2.$red-300,
+		orange: colors-2.$orange-300,
+		dark: colors-2.$blue-700,
+	),
+	--bg-less-important: (
+		property: background-color,
+		light: colors-2.$blue-gray-300,
+		orange: colors-2.$blue-gray-300,
+		dark: colors-2.$blue-gray-700,
+	),
+);
+
+html {
+	@include theme($theme-map) {
+		--transition: 300ms background-color cubic-bezier(0, 0, 0.2, 1);
+	}
+}
+
+// body:not([data-theme-mount="true"]) .transition {
+// 	transition-property: color, fill /* <svg> */, background-color, border-color, box-shadow;
+// 	transition-duration: var(--transition-duration);
+// 	transition-timing-function: var(--transition-timing-function);
+// }
+// body:not([data-theme-mount="true"]) .duration-75 {
+// 	--transition-duration: 75ms;
+// }
+// body:not([data-theme-mount="true"]) .ease-out {
+// 	--transition-timing-function: ease-out;
+// }

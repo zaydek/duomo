@@ -1,0 +1,52 @@
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
+@use "sass:string";
+
+@mixin theme($theme-map) {
+	$themes: ();
+	@each $k1, $v1 in $theme-map {
+		@each $k2, $v2 in $v1 {
+			@if $k2 != "property" and $k2 != "light" and not list.index($themes, $k2) {
+				$themes: list.append($themes, $k2);
+			}
+		}
+	}
+
+	@at-root {
+		body {
+			@each $k1, $v1 in $theme-map {
+				$got: #{map.get($v1, "light")};
+				@if $got {
+					#{$k1}: #{$got};
+				}
+			}
+			@content;
+		}
+		@each $theme in $themes {
+			body[data-theme="#{"" + $theme}"] {
+				@each $k1, $v1 in $theme-map {
+					$got: #{map.get($v1, $theme)};
+					@if $got {
+						#{$k1}: #{$got};
+					}
+				}
+			}
+		}
+		@each $k1, $v1 in $theme-map {
+			.#{string.slice($k1, string.length("--") + 1)} {
+				#{map.get($v1, "property")}: var(#{$k1});
+				@if meta.content-exists() {
+					transition: var(--transition);
+				}
+			}
+			// TODO: Add `user.$separator`.
+			.hover\:#{string.slice($k1, string.length("--") + 1)}:hover,
+			.focus\:#{string.slice($k1, string.length("--") + 1)}:focus,
+			.group:hover .group-hover\:#{string.slice($k1, string.length("--") + 1)},
+			.group:focus .group-focus\:#{string.slice($k1, string.length("--") + 1)} {
+				#{map.get($v1, "property")}: var(#{$k1});
+			}
+		}
+	}
+}

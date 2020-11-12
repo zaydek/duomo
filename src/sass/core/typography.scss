@@ -24,8 +24,6 @@
 	}
 }
 
-// TODO: Add `font-style`.
-
 @mixin font-weight {
 	$amp: util.get-ampersand();
 
@@ -56,19 +54,16 @@
 	);
 }
 
-// TODO:
-//
-// .touched#{user.$separator}underline:active,
-// .group .touched#{user.$separator}underline:active {
-
-@mixin line-decoration {
+@mixin text-decoration {
 	$amp: util.get-ampersand();
 
-	#{$amp}underline,
-	#{$amp}touch#{user.$separator}underline:hover,
-	#{$amp}touch#{user.$separator}underline:focus,
-	.group #{$amp}touch#{user.$separator}underline:hover,
-	.group #{$amp}touch#{user.$separator}underline:focus {
-		text-decoration: underline;
+	@each $v in (line-through, underline) {
+		#{$amp}#{$v},
+		#{$amp}hover#{user.$separator}#{$v}:hover,
+		#{$amp}focus#{user.$separator}#{$v}:focus,
+		.group #{$amp}hover#{user.$separator}#{$v}:hover,
+		.group #{$amp}focus#{user.$separator}#{$v}:focus {
+			text-decoration: #{$v};
+		}
 	}
 }

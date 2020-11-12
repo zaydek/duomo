@@ -39,7 +39,7 @@ $__no-range: (0);
 	@include core.font-size-from-range($range: user.$font-size-range, $resolver: rem);
 	@if not & {
 		@include core.line-height-from-range($range: user.$line-height-range);
-		@include core.line-decoration;
+		@include core.text-decoration;
 	}
 	@if not & {
 		@include core.color-from-map($map: user.$color-map, $alpha-range: user.$alpha-range);
