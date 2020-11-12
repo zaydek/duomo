@@ -9,6 +9,7 @@ interface IDuomo {
 const Duomo: IDuomo = {
 	__deferers: [],
 
+	// TODO: Can `init` return a defer closure? Then deprecate the `defer` method.
 	init() {
 		const media = "matchMedia" in window && window.matchMedia("(prefers-color-scheme: dark)")
 		if (media) {
