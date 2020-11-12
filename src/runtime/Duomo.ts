@@ -1,3 +1,5 @@
+const THEME_PREFERENCE_KEY = "duomo-theme-preference"
+
 interface IDuomo {
 	__deferers: (() => void)[]
 	init(): void
@@ -6,11 +8,45 @@ interface IDuomo {
 	toggleDarkMode(): void
 }
 
+// TODO: Can we refactor Duomo to be a React component?
+//
+// <Duomo dev? prod?>
+//   {/* ... */}
+// </Duomo>
+//
+// The problem with this is SSR. This will be run on the server in NextJS.
+// We want to trigger mode as-fast-as-possible when the client loads the app.
+//
+// Currently we use <script src="/scripts/layoutDarkMode.js" />
+//
+// function themePreferenceDark() {
+//   const ok = (
+//     "themePreference" in localStorage &&
+//     localStorage.themePreference === "dark"
+//   )
+//   return ok
+// }
+// function prefersColorShemeDark() {
+//   const ok = (
+//     window.matchMedia &&
+//     window.matchMedia("(prefers-color-scheme: dark)").matches
+//   )
+//   return ok
+// }
+// ;(() => {
+//   if (themePreferenceDark() || prefersColorShemeDark()) {
+//     const html = document.documentElement
+//     html.classList.add("dark")
+//   }
+// })()
+//
 const Duomo: IDuomo = {
 	__deferers: [],
 
 	// TODO: Can `init` return a defer closure? Then deprecate the `defer` method.
+	// TODO: It would be nice if we can init from "development" or "production" for example.
 	init() {
+		// TODO: Read `THEME_PREFERENCE_KEY` from localStorage.
 		const media = "matchMedia" in window && window.matchMedia("(prefers-color-scheme: dark)")
 		if (media) {
 			if (media.matches) {
@@ -56,14 +92,17 @@ const Duomo: IDuomo = {
 		}
 	},
 	// TODO: Return a `clearTimeout` closure.
+	// TODO: Implement toggleMode(mode: string = "dark") { ... }
 	toggleDarkMode() {
 		document.body.setAttribute("data-theme-mount", "true")
 		setTimeout(() => {
 			const hasAttribute = document.body.hasAttribute("data-theme")
 			if (!hasAttribute) {
 				document.body.setAttribute("data-theme", "dark")
+				localStorage.setAttribute(THEME_PREFERENCE_KEY, "dark")
 			} else {
 				document.body.removeAttribute("data-theme")
+				localStorage.setAttribute(THEME_PREFERENCE_KEY, "light")
 			}
 			setTimeout(() => {
 				document.body.removeAttribute("data-theme-mount")
