@@ -54,13 +54,20 @@ const Duomo: IDuomo = {
 			document.body.removeAttribute("data-debug")
 		}
 	},
+	// TODO: Return a `clearTimeout` closure.
 	toggleDarkMode() {
-		const hasAttribute = document.body.hasAttribute("data-theme")
-		if (!hasAttribute) {
-			document.body.setAttribute("data-theme", "dark")
-		} else {
-			document.body.removeAttribute("data-theme")
-		}
+		document.body.setAttribute("data-theme-mount", "true")
+		setTimeout(() => {
+			const hasAttribute = document.body.hasAttribute("data-theme")
+			if (!hasAttribute) {
+				document.body.setAttribute("data-theme", "dark")
+			} else {
+				document.body.removeAttribute("data-theme")
+			}
+			setTimeout(() => {
+				document.body.removeAttribute("data-theme-mount")
+			}, 300)
+		}, 50)
 	},
 }
 
