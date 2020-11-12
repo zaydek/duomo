@@ -62,6 +62,7 @@
 			text-decoration: #{$v};
 		}
 	}
+	// `touch`:
 	@each $v in (line-through, underline) {
 		#{$amp}touch#{user.$separator}#{$v}:hover,
 		#{$amp}touch#{user.$separator}#{$v}:focus,
@@ -70,6 +71,7 @@
 			text-decoration: #{$v};
 		}
 	}
+	// `press`:
 	@each $v in (line-through, underline) {
 		#{$amp}press#{user.$separator}#{$v}:active,
 		.group:active #{$amp}group-press#{user.$separator}#{$v} {

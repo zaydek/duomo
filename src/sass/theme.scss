@@ -1,7 +1,6 @@
 @use "sass:list";
 @use "sass:map";
 @use "sass:meta";
-@use "sass:string";
 
 @mixin theme($theme-map, $transition-duration: null, $transition-timing-function: null) {
 	$themes: ();
@@ -45,8 +44,7 @@
 				}
 			}
 		}
-
-		// (:hover, :focus, .group)
+		// `touch`:
 		@each $k1, $v1 in $theme-map {
 			.touch\:#{string.slice($k1, string.length("--") + 1)}:hover,
 			.touch\:#{string.slice($k1, string.length("--") + 1)}:focus,
@@ -55,8 +53,7 @@
 				#{map.get($v1, "property")}: var(#{$k1});
 			}
 		}
-
-		// (:active, .group)
+		// `press`:
 		@each $k1, $v1 in $theme-map {
 			.press\:#{string.slice($k1, string.length("--") + 1)}:active,
 			.group:active .group-press\:#{string.slice($k1, string.length("--") + 1)} {
