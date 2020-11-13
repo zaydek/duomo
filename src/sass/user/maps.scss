@@ -1,0 +1,90 @@
+$xs: 40 * 16; // ->  640
+$sm: 48 * 16; // ->  768
+$md: 56 * 16; // ->  896
+$lg: 64 * 16; // -> 1024
+$xl: 80 * 16; // -> 1280
+
+$breakpoint-map: (
+	"xs": $xs,
+	"sm": $sm,
+	"md": $md,
+	"lg": $lg,
+	"xl": $xl,
+) !default;
+
+// prettier-ignore
+$sans-serif: (
+	ui-sans-serif,
+	system-ui,
+	-apple-system,
+	BlinkMacSystemFont,
+	"Segoe UI",
+	Roboto,
+	"Helvetica Neue",
+	Arial,
+	"Noto Sans",
+	sans-serif,
+	"Apple Color Emoji",
+	"Segoe UI Emoji",
+	"Segoe UI Symbol",
+	"Noto Color Emoji",
+);
+
+// prettier-ignore
+$serif: (
+	ui-serif,
+	Georgia,
+	Cambria,
+	"Times New Roman",
+	Times,
+	serif,
+);
+
+// prettier-ignore
+$monospace: (
+	ui-monospace,
+	Menlo,
+	Monaco,
+	Consolas,
+	"Liberation Mono",
+	"Courier New",
+	monospace,
+);
+
+$font-family-map: (
+	sans-serif: $sans-serif,
+	serif: $serif,
+	monospace: $monospace,
+) !default;
+
+// TODO
+$box-shadow-xs: (0 0 0 1px rgba(0, 0, 0, 0.05));
+$box-shadow-sm: (0 1px 2px 0 rgba(0, 0, 0, 0.05));
+$box-shadow-base: (0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06));
+$box-shadow-md: (0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06));
+$box-shadow-lg: (0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05));
+$box-shadow-xl: (0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04));
+$box-shadow-2xl: (0 25px 50px -12px rgba(0, 0, 0, 0.25));
+
+// TODO
+$box-shadow-map: (
+	xs: $box-shadow-xs,
+	sm: $box-shadow-sm,
+	base: $box-shadow-base,
+	md: $box-shadow-md,
+	lg: $box-shadow-lg,
+	xl: $box-shadow-xl,
+	2xl: $box-shadow-2xl,
+) !default;
+
+$linear: linear;
+$ease-in: cubic-bezier(0.4, 0, 1, 1);
+$ease-out: cubic-bezier(0, 0, 0.2, 1);
+$ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+$timing-function-map: (
+	linear: $linear,
+	ease-in: $ease-in,
+	ease-out: $ease-out,
+	ease-in-out: $ease-in-out,
+) !default;

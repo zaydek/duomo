@@ -1,9 +1,9 @@
+@use "sass:string";
+
 @use "../user";
 @use "../util";
 
-@use "sass:string";
-
-@mixin whitespace {
+@mixin __whitespace {
 	$amp: util.get-ampersand();
 
 	// Text does not wrap.
@@ -16,7 +16,7 @@
 	}
 }
 
-@mixin text-align {
+@mixin __text-align {
 	$amp: util.get-ampersand();
 
 	#{$amp}text-center {
@@ -24,7 +24,7 @@
 	}
 }
 
-@mixin font-weight {
+@mixin __font-weight {
 	$amp: util.get-ampersand();
 
 	@each $v in util.range(100, 900, 100) {
@@ -34,7 +34,7 @@
 	}
 }
 
-@mixin font-size-from-range($range, $resolver) {
+@mixin __font-size-from-range($range, $resolver) {
 	// prettier-ignore
 	@include util.generate-from-range(
 		"text",
@@ -44,7 +44,7 @@
 	);
 }
 
-@mixin line-height-from-range($range) {
+@mixin __line-height-from-range($range) {
 	// prettier-ignore
 	@include util.generate-from-range(
 		"leading",
@@ -54,7 +54,7 @@
 	);
 }
 
-@mixin text-decoration {
+@mixin __text-decoration {
 	$amp: util.get-ampersand();
 
 	@each $v in (line-through, underline) {
@@ -78,4 +78,13 @@
 			text-decoration: #{$v};
 		}
 	}
+}
+
+@mixin typography($font-size-range, $font-size-resolver, $line-height-range) {
+	@include __whitespace;
+	@include __text-align;
+	@include __font-weight;
+	@include __font-size-from-range($font-size-range, $font-size-resolver);
+	@include __line-height-from-range($line-height-range);
+	@include __text-decoration;
 }

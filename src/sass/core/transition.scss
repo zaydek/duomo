@@ -15,7 +15,7 @@ $theme-aware-selector: "body:not([data-theme-mount=true])";
 	}
 }
 
-// NOTE. Do not use `util.generate-from-range` repeated `$amp`.
+// NOTE. Do not use `util.generate-from-range` because `$amp` is repeated.
 @mixin transition-duration-from-range($range) {
 	$amp: util.get-ampersand();
 
@@ -29,7 +29,7 @@ $theme-aware-selector: "body:not([data-theme-mount=true])";
 	}
 }
 
-// NOTE. Do not use `util.generate-from-range` repeated `$amp`.
+// NOTE. Do not use `util.generate-from-range` because `$amp` is repeated.
 @mixin transition-timing-function-from-map($map) {
 	$amp: util.get-ampersand();
 
