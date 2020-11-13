@@ -66,14 +66,22 @@ $__no-range: (0);
 }
 
 @at-root {
+	@include core.transition($default-duration: 300ms, $default-timing-function: user.$ease-out);
+	@include core.transition-duration-from-range($range: util.range(0, 1000, 100));
+	@include core.transition-timing-function-from-map($map: user.$timing-function-map);
+
 	/*! @zaydek/duomo | MIT License | https://github.com/zaydek/duomo */
-	@include preflight;
-	@include props;
+	// @include preflight;
+	// @include props;
 	@each $key, $value in user.$breakpoint-map {
 		@media (min-width: #{util.px($value)}) {
 			.#{$key} {
 				@at-root {
-					@include props;
+					// @include props;
+
+					@include core.transition($default-duration: 300ms, $default-timing-function: user.$ease-out);
+					@include core.transition-duration-from-range($range: util.range(0, 1000, 100));
+					@include core.transition-timing-function-from-map($map: user.$timing-function-map);
 				}
 			}
 		}

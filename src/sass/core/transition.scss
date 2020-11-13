@@ -1,0 +1,46 @@
+@use "../util";
+
+$theme-aware-selector: "body:not([data-theme-mount=true])";
+
+@mixin transition($default-duration, $default-timing-function) {
+	$amp: util.get-ampersand();
+
+	#{$theme-aware-selector} {
+		#{$amp}transition {
+			--transition-duration: #{$default-duration};
+			--transition-timing-function: #{$default-timing-function};
+			transition: var(--transition-duration) var(--transition-timing-function);
+			transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+		}
+	}
+}
+
+// NOTE. Do not use `util.generate-from-range` repeated `$amp`.
+@mixin transition-duration-from-range($range) {
+	$amp: util.get-ampersand();
+
+	#{$theme-aware-selector} {
+		@each $v in $range {
+			// TODO: `escape` should convert non-strings to strings.
+			#{$amp}duration-#{util.escape("" + $v)} {
+				--transition-duration: #{$v};
+			}
+		}
+	}
+}
+
+// NOTE. Do not use `util.generate-from-range` repeated `$amp`.
+@mixin transition-timing-function-from-map($map) {
+	$amp: util.get-ampersand();
+
+	#{$theme-aware-selector} {
+		@each $k, $v in $map {
+			@if $k == "linear" {
+				$k: "ease-" + $k;
+			}
+			#{$amp}#{$k} {
+				--transition-timing-function: #{$v};
+			}
+		}
+	}
+}
