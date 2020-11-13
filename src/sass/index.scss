@@ -12,19 +12,13 @@
 	/* purgecss start ignore */
 	@include meta.tailwind-base;
 	@include meta.vendored-font-smoothing;
-	// @include meta.custom-props-from-maps(user.$font-family-map, user.$box-shadow-map, user.$timing-function-map);
-
 	// prettier-ignore
 	@include meta.custom-props-from-maps(
-		(shorthand: "font",   map: user.$font-family-map),
+		(shorthand: "font", map: user.$font-family-map),
+		(map: user.$color-map),
 		(shorthand: "shadow", map: user.$box-shadow-map),
 		(shorthand: "timing", map: user.$timing-function-map),
 	);
-
-	// @include meta.custom-props-from-maps($shorthand: "font", $map: user.$font-family-map);
-	// @include meta.custom-props-from-maps($shorthand: "shadow", $map: user.$box-shadow-map);
-	// @include meta.custom-props-from-maps($shorthand: "timing", $map: user.$timing-function-map);
-
 	@include meta.stagger;
 	@include meta.debugger;
 	/* purgecss end ignore */
@@ -46,7 +40,6 @@ $__no-range: (0);
 	@include core.container-from-breakpoint-map($breakpoint-map: user.$breakpoint-map);
 	@include core.height-from-range($range: user.$standard-range, $resolver: rem);
 	@include core.min-height;
-	// NOTE: Only `core.font-size-from-range` generates responsive variants.
 	@if not & {
 		@include core.whitespace;
 		@include core.text-align;
@@ -58,10 +51,12 @@ $__no-range: (0);
 		@include core.text-decoration;
 	}
 	@if not & {
-		@include core.color-from-map($map: user.$color-map, $alpha-range: user.$alpha-range);
-		@include core.background-color-from-map($map: user.$color-map, $alpha-range: user.$alpha-range);
-		@include core.border-width-from-range($range: user.$border-width-range, $resolver: rem);
-		@include core.border-color-from-map($map: user.$color-map, $alpha-range: user.$alpha-range);
+		@include core.color-from-map($map: user.$color-map, $opacity-range: user.$opacity-range);
+		@include core.background-color-from-map($map: user.$color-map, $opacity-range: user.$opacity-range);
+	}
+	@include core.border-width-from-range($range: user.$border-width-range, $resolver: rem);
+	@if not & {
+		@include core.border-color-from-map($map: user.$color-map, $opacity-range: user.$opacity-range);
 	}
 	@include core.border-radius-from-range($range: user.$border-radius-range, $resolver: rem);
 	@include core.box-shadow-from-map($map: user.$box-shadow-map);

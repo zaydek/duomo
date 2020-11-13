@@ -28,8 +28,8 @@
 	);
 }
 
-@mixin border-color-from-map($map, $alpha-range) {
-	@include util.generate-colors("border", border-color, $map, $alpha-range);
+@mixin border-color-from-map($map, $opacity-range) {
+	@include util.generate-color-from-map("border", border-color, $map, $opacity-range);
 }
 
 // prettier-ignore

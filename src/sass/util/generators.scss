@@ -20,7 +20,7 @@
 	$amp: get-ampersand();
 
 	@each $k, $v in $map {
-		#{$amp}#{$shorthand}-#{"" + $k} {
+		#{$amp}#{$shorthand}-#{escape("" + $k)} {
 			@each $prop in $props {
 				#{$prop}: #{resolve($v, $resolver)};
 			}
