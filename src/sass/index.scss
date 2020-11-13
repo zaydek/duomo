@@ -12,7 +12,19 @@
 	/* purgecss start ignore */
 	@include meta.tailwind-base;
 	@include meta.vendored-font-smoothing;
-	@include meta.custom-props-from-maps(user.$font-family-map, user.$box-shadow-map, user.$timing-function-map);
+	// @include meta.custom-props-from-maps(user.$font-family-map, user.$box-shadow-map, user.$timing-function-map);
+
+	// prettier-ignore
+	@include meta.custom-props-from-maps(
+		(shorthand: "font",   map: user.$font-family-map),
+		(shorthand: "shadow", map: user.$box-shadow-map),
+		(shorthand: "timing", map: user.$timing-function-map),
+	);
+
+	// @include meta.custom-props-from-maps($shorthand: "font", $map: user.$font-family-map);
+	// @include meta.custom-props-from-maps($shorthand: "shadow", $map: user.$box-shadow-map);
+	// @include meta.custom-props-from-maps($shorthand: "timing", $map: user.$timing-function-map);
+
 	@include meta.stagger;
 	@include meta.debugger;
 	/* purgecss end ignore */
