@@ -1,17 +1,17 @@
-$separator: "\\:";
-
-@function get-ampersand() {
-	@if not & {
-		@return ".";
-	}
-	@return & + $separator;
-}
-
-// @use "../user";
+// $separator: "\\:";
 //
 // @function get-ampersand() {
 // 	@if not & {
 // 		@return ".";
 // 	}
-// 	@return & + user.$separator;
+// 	@return & + $separator;
 // }
+
+@use "../user";
+
+@function get-ampersand() {
+	@if not & {
+		@return ".";
+	}
+	@return & + user.$separator;
+}
