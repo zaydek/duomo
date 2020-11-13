@@ -1,12 +1,3 @@
-// $separator: "\\:";
-//
-// @function get-ampersand() {
-// 	@if not & {
-// 		@return ".";
-// 	}
-// 	@return & + $separator;
-// }
-
 @use "../user";
 
 @function get-ampersand() {
