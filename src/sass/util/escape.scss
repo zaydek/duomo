@@ -1,6 +1,7 @@
 @use "sass:string";
 
-@function escape($str) {
+@function escape($any) {
+	$str: "" + $any;
 	$escaped: "";
 	@for $x from 1 through string.length($str) {
 		$ch: string.slice($str, $x, $x);

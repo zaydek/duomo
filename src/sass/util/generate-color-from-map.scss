@@ -9,7 +9,7 @@
 	$amp: get-ampersand();
 
 	@each $k, $v in $map {
-		#{$amp}#{$shorthand}-#{escape("" + $k)} {
+		#{$amp}#{$shorthand}-#{escape($k)} {
 			@if $k == transparent or $k == currentColor {
 				color: #{$v};
 			} @else {
@@ -22,7 +22,7 @@
 		}
 	}
 	@each $v in $opacity-range {
-		#{$amp}#{$shorthand}-opacity-#{escape("" + $v * 100)} {
+		#{$amp}#{$shorthand}-opacity-#{escape($v * 100)} {
 			--#{$shorthand}-opacity: #{$v};
 		}
 	}

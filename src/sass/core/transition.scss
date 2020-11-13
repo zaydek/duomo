@@ -21,8 +21,7 @@ $theme-aware-selector: "body:not([data-theme-mount=true])";
 
 	#{$theme-aware-selector} {
 		@each $v in $range {
-			// TODO: `escape` should convert non-strings to strings.
-			#{$amp}duration-#{util.escape("" + $v)} {
+			#{$amp}duration-#{util.escape($v)} {
 				--transition-duration: #{$v};
 			}
 		}

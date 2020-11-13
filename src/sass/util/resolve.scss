@@ -42,7 +42,6 @@
 	@return $floored + px;
 }
 
-// TODO: Throw an error when `$v != none`.
 @function resolve($v, $resolver) {
 	@if $resolver != rem and $resolver != em and $resolver != px and $resolver != none {
 		@error "resolve: cannot resolve a non-rem, em, px, or none resolver type";

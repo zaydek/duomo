@@ -8,7 +8,7 @@
 
 	@each $v in $range {
 		$minus: safe-minus($v);
-		#{$amp}#{$minus}#{$shorthand}-#{escape("" + safe-abs($v))} {
+		#{$amp}#{$minus}#{$shorthand}-#{escape(safe-abs($v))} {
 			@each $prop in $props {
 				#{$prop}: #{resolve($v, $resolver)};
 			}
@@ -20,7 +20,7 @@
 	$amp: get-ampersand();
 
 	@each $k, $v in $map {
-		#{$amp}#{$shorthand}-#{escape("" + $k)} {
+		#{$amp}#{$shorthand}-#{escape($k)} {
 			@each $prop in $props {
 				#{$prop}: #{resolve($v, $resolver)};
 			}
