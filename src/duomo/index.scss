@@ -10,7 +10,7 @@
 
 @mixin preflight {
 	/* purgecss start ignore */
-	@include meta.tailwind-base;
+	@include meta.base;
 	@include meta.macos-retina;
 	// prettier-ignore
 	@include meta.custom-props-from-maps(
