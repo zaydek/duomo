@@ -5,9 +5,6 @@
 @use "user";
 @use "util";
 
-@forward "theme";
-@forward "user";
-
 @mixin preflight {
 	/* purgecss start ignore */
 	@include meta.base;
