@@ -1,5 +1,0 @@
-@use "../util";
-
-@mixin color-from-map($map, $opacity-range) {
-	@include util.generate-color-from-map("text", color, $map, $opacity-range);
-}
