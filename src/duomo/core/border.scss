@@ -28,8 +28,15 @@
 	);
 }
 
+// TODO: Rename to `generate-opaque-colors-from-map`.
 @mixin border-color-from-map($map, $opacity-range) {
-	@include util.generate-colors-from-map("border", border-color, $map, $opacity-range);
+	// prettier-ignore
+	@include util.generate-colors-from-map(
+		"border",
+		border-color,
+		$map,
+		$opacity-range,
+	);
 }
 
 // prettier-ignore
