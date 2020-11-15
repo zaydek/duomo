@@ -46,19 +46,19 @@
 				}
 			}
 		}
-		// `touch`:
+		// `on`:
 		@each $k1, $v1 in $theme-map {
-			.touch#{user.$separator}#{string.slice($k1, string.length("--") + 1)}:hover,
-			.touch#{user.$separator}#{string.slice($k1, string.length("--") + 1)}:focus,
-			.group:hover .group-touch#{user.$separator}#{string.slice($k1, string.length("--") + 1)},
-			.group:focus .group-touch#{user.$separator}#{string.slice($k1, string.length("--") + 1)} {
+			.on#{user.$separator}#{string.slice($k1, string.length("--") + 1)}:hover,
+			.on#{user.$separator}#{string.slice($k1, string.length("--") + 1)}:focus,
+			.group:hover .group-on#{user.$separator}#{string.slice($k1, string.length("--") + 1)},
+			.group:focus .group-on#{user.$separator}#{string.slice($k1, string.length("--") + 1)} {
 				#{map.get($v1, "property")}: var(#{$k1});
 			}
 		}
-		// `press`:
+		// `down`:
 		@each $k1, $v1 in $theme-map {
-			.press#{user.$separator}#{string.slice($k1, string.length("--") + 1)}:active,
-			.group:active .group-press#{user.$separator}#{string.slice($k1, string.length("--") + 1)} {
+			.down#{user.$separator}#{string.slice($k1, string.length("--") + 1)}:active,
+			.group:active .group-down#{user.$separator}#{string.slice($k1, string.length("--") + 1)} {
 				#{map.get($v1, "property")}: var(#{$k1});
 			}
 		}

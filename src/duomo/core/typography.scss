@@ -62,19 +62,19 @@
 			text-decoration: #{$v};
 		}
 	}
-	// `touch`:
+	// `on`:
 	@each $v in (line-through, underline) {
-		#{$amp}touch#{user.$separator}#{$v}:hover,
-		#{$amp}touch#{user.$separator}#{$v}:focus,
-		.group:hover #{$amp}group-touch#{user.$separator}#{$v},
-		.group:focus #{$amp}group-touch#{user.$separator}#{$v} {
+		#{$amp}on#{user.$separator}#{$v}:hover,
+		#{$amp}on#{user.$separator}#{$v}:focus,
+		.group:hover #{$amp}group-on#{user.$separator}#{$v},
+		.group:focus #{$amp}group-on#{user.$separator}#{$v} {
 			text-decoration: #{$v};
 		}
 	}
-	// `press`:
+	// `down`:
 	@each $v in (line-through, underline) {
-		#{$amp}press#{user.$separator}#{$v}:active,
-		.group:active #{$amp}group-press#{user.$separator}#{$v} {
+		#{$amp}down#{user.$separator}#{$v}:active,
+		.group:active #{$amp}group-down#{user.$separator}#{$v} {
 			text-decoration: #{$v};
 		}
 	}

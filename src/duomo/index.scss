@@ -13,8 +13,8 @@
 	@include meta.custom-props-from-maps(
 		(map: user.$font-family-map),
 		(map: user.$color-map),
-		(shorthand: "box-shadow", map: user.$box-shadow-map),
-		(shorthand: "timing-function", map: user.$timing-function-map),
+		(shorthand: "shadow", map: user.$box-shadow-map),
+		(map: user.$timing-function-map),
 	);
 	@include meta.stagger;
 	@include meta.debugger;
