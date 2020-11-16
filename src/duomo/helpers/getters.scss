@@ -37,6 +37,8 @@
 	);
 }
 
+// TODO: Rename to `timing`?
+//
 // prettier-ignore
 @function timing-function($key) {
 	@return __getter(
