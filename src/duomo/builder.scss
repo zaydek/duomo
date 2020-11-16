@@ -59,12 +59,14 @@ $__no-range: (0);
 @at-root {
 	/*! @zaydek/duomo | MIT License | https://github.com/zaydek/duomo */
 	@include preflight;
-	@include props;
-	@each $key, $value in configuration.$breakpoint-map {
-		@media (min-width: #{helpers.px($value)}) {
-			.#{$key} {
-				@at-root {
-					@include props;
+	@if not configuration.$headless {
+		@include props;
+		@each $key, $value in configuration.$breakpoint-map {
+			@media (min-width: #{helpers.px($value)}) {
+				.#{$key} {
+					@at-root {
+						@include props;
+					}
 				}
 			}
 		}

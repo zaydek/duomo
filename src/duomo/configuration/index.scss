@@ -2,4 +2,16 @@
 @forward "maps";
 @forward "ranges";
 
-$separator: "\\:";
+// Ex:
+//
+// $headless: true;  // Does not build Duomo CSS
+// $headless: false; // Builds Duomo CSS
+//
+$headless: false !default;
+
+// Ex:
+//
+// $separator: ":"; // -> class="px-16 sm:px-24"
+// $separator: "."; // -> class="px-16 sm.px-24"
+//
+$separator: ":" !default;
