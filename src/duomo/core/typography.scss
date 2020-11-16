@@ -47,7 +47,7 @@
 @mixin letter-spacing($range, $resolver) {
 	$amp: helpers.get-ampersand();
 
-	// NOTE: Does not use a generator..
+	// NOTE: Do not use a generator because `$range` describes `%` not `px`.
 	@each $v in $range {
 		$sign: helpers.safe-negative-sign($v);
 		#{$amp}#{$sign}tracking-#{helpers.escape(helpers.safe-abs($v * 100))} {
