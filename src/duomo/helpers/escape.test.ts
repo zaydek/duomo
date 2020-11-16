@@ -44,7 +44,7 @@ test("escape: does not escape numbers", () => {
 `.trim())
 })
 
-test("escape: does escape $separator", () => {
+test("escape: does escape `$separator`", () => {
 	const result = sassify(`
 @use "src/duomo/helpers/escape" as *;
 
@@ -61,7 +61,7 @@ $separator: ":";
 `.trim())
 })
 
-test("escape-breakpoint", () => {
+test("escape-breakpoint: handles `xl` and `2xl`", () => {
 	const result = sassify(`
 @use "src/duomo/helpers/escape" as *;
 
