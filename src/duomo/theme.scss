@@ -38,9 +38,11 @@
 			}
 		}
 
-		// TOOD: Clean up if possible.
+		$var-name: null;
 		@each $k1, $v1 in $theme-map {
-			.#{string.slice($k1, string.length("--") + 1)} {
+			$var-name: string.slice($k1, string.length("--") + 1);
+
+			.#{$var-name} {
 				#{map.get($v1, "property")}: var(#{$k1});
 				@if $transition-duration and $transition-timing-function {
 					transition: var(--theme-transition);
@@ -49,18 +51,17 @@
 		}
 		// `on`:
 		@each $k1, $v1 in $theme-map {
-			.on#{helpers.escape(configuration.$separator)}#{string.slice($k1, string.length("--") + 1)}:hover,
-			.on#{helpers.escape(configuration.$separator)}#{string.slice($k1, string.length("--") + 1)}:focus,
-			.group:hover .group-on#{helpers.escape(configuration.$separator)}#{string.slice($k1, string.length("--") + 1)},
-			.group:focus .group-on#{helpers.escape(configuration.$separator)}#{string.slice($k1, string.length("--") + 1)} {
+			.on#{helpers.escape(configuration.$separator)}#{$var-name}:hover,
+			.on#{helpers.escape(configuration.$separator)}#{$var-name}:focus,
+			.group:hover .group-on#{helpers.escape(configuration.$separator)}#{$var-name},
+			.group:focus .group-on#{helpers.escape(configuration.$separator)}#{$var-name} {
 				#{map.get($v1, "property")}: var(#{$k1});
 			}
 		}
 		// `down`:
 		@each $k1, $v1 in $theme-map {
-			.down#{helpers.escape(configuration.$separator)}#{string.slice($k1, string.length("--") + 1)}:active,
-			.group:active
-				.group-down#{helpers.escape(configuration.$separator)}#{string.slice($k1, string.length("--") + 1)} {
+			.down#{helpers.escape(configuration.$separator)}#{$var-name}:active,
+			.group:active .group-down#{helpers.escape(configuration.$separator)}#{$var-name} {
 				#{map.get($v1, "property")}: var(#{$k1});
 			}
 		}
