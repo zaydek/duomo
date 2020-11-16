@@ -1,6 +1,7 @@
 @use "../helpers";
 
-$theme-aware-selector: "body:not([data-theme-mount=true])";
+// TODO: Is `$theme-aware-selector` exported?
+$theme-aware-selector: "body:not([data-theme-effect=true])";
 
 @mixin transition($default-duration, $default-timing-function) {
 	$amp: helpers.get-ampersand();
@@ -34,6 +35,7 @@ $theme-aware-selector: "body:not([data-theme-mount=true])";
 
 	#{$theme-aware-selector} {
 		@each $k, $v in $map {
+			// NOTE: Uses `ease-linear` for Tailwind CSS compatibility.
 			@if $k == "linear" {
 				$k: "ease-" + $k;
 			}

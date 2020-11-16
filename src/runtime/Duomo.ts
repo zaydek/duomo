@@ -94,7 +94,7 @@ const Duomo: IDuomo = {
 	// TODO: Return a `clearTimeout` closure.
 	// TODO: Implement toggleMode(mode: string = "dark") { ... }
 	toggleDarkMode() {
-		document.body.setAttribute("data-theme-mount", "true")
+		document.body.setAttribute("data-theme-effect", "true")
 		setTimeout(() => {
 			const hasAttribute = document.body.hasAttribute("data-theme")
 			if (!hasAttribute) {
@@ -105,7 +105,7 @@ const Duomo: IDuomo = {
 				localStorage.setAttribute(THEME_PREFERENCE_KEY, "light")
 			}
 			setTimeout(() => {
-				document.body.removeAttribute("data-theme-mount")
+				document.body.removeAttribute("data-theme-effect")
 			}, 300)
 		}, 50)
 	},

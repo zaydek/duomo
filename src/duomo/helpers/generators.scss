@@ -49,6 +49,7 @@
 			}
 		}
 	}
+
 	@each $v in $opacity-range {
 		#{$amp}#{$shorthand}-opacity-#{escape($v * 100)} {
 			--#{$shorthand}-opacity: #{$v};
