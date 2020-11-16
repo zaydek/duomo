@@ -41,13 +41,13 @@ test("escape: escapes `$separator`", () => {
 
 $separator: ":";
 .sm#{escape($separator)}px-24 {
-	/* ... */
+	/**/
 }
 `)
 	// prettier-ignore
 	expect(result).toBe(`
 .sm\\:px-24 {
-	/* ... */
+	/**/
 }
 `.trim())
 })
@@ -57,20 +57,20 @@ test("escape-breakpoint: does not escape `xl` but escapes `2xl`", () => {
 @use "src/duomo/helpers/escape" as *;
 
 .#{escape-breakpoint("xl")} {
-	/* ... */
+	/**/
 }
 .#{escape-breakpoint("2xl")} {
-	/* ... */
+	/**/
 }
 `)
 	// prettier-ignore
 	expect(result).toBe(`
 .xl {
-	/* ... */
+	/**/
 }
 
 .\\2 xl {
-	/* ... */
+	/**/
 }
 `.trim())
 })

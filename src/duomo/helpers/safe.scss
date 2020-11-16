@@ -1,6 +1,6 @@
 @use "sass:math";
 
-@function safe-minus($v) {
+@function safe-negative-sign($v) {
 	@if (type-of($v) != "number") {
 		@return "";
 	}
