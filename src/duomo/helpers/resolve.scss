@@ -1,8 +1,5 @@
 @use "sass:math";
 
-// Ex:
-//
-// 16 -> 1rem
 @function rem($v) {
 	@if type-of($v) != "number" {
 		@return $v;
@@ -14,9 +11,6 @@
 	@return $floored / 16 + rem;
 }
 
-// Ex:
-//
-// 16 -> 1em
 @function em($v) {
 	@if type-of($v) != "number" {
 		@return $v;
@@ -28,9 +22,6 @@
 	@return $floored / 16 + em;
 }
 
-// Ex:
-//
-// 16 -> 16px
 @function px($v) {
 	@if type-of($v) != "number" {
 		@return $v;
@@ -43,7 +34,7 @@
 }
 
 @function resolve($v, $resolver) {
-	@if $resolver != rem and $resolver != em and $resolver != px and $resolver != none {
+	@if $resolver != none and $resolver != rem and $resolver != em and $resolver != px {
 		@error "resolve: cannot resolve a non-rem, em, px, or none resolver type";
 	}
 	@if $resolver == rem {

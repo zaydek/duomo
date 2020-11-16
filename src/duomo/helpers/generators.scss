@@ -11,8 +11,8 @@
 	$amp: get-ampersand();
 
 	@each $v in $range {
-		$minus: safe-negative-sign($v);
-		#{$amp}#{$minus}#{$shorthand}-#{escape(safe-abs($v))} {
+		$sign: safe-negative-sign($v);
+		#{$amp}#{$sign}#{$shorthand}-#{escape(safe-abs($v))} {
 			@each $prop in $props {
 				#{$prop}: #{resolve($v, $resolver)};
 			}

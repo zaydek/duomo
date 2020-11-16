@@ -85,8 +85,8 @@
 	}
 
 	@for $v from -1 through 12 {
-		$minus: helpers.safe-negative-sign($v);
-		#{$amp}#{$minus}order-#{helpers.safe-abs($v)} {
+		$sign: helpers.safe-negative-sign($v);
+		#{$amp}#{$sign}order-#{helpers.safe-abs($v)} {
 			order: #{$v};
 		}
 	}

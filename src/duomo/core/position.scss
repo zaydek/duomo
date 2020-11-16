@@ -4,8 +4,8 @@
 	$amp: helpers.get-ampersand();
 
 	@each $v in $range {
-		$minus: helpers.safe-negative-sign($v);
-		#{$amp}#{$minus}#{$shorthand}-#{helpers.safe-abs($v)} {
+		$sign: helpers.safe-negative-sign($v);
+		#{$amp}#{$sign}#{$shorthand}-#{helpers.safe-abs($v)} {
 			@each $prop in $props {
 				#{$prop}: #{helpers.resolve($v, $resolver)};
 			}
