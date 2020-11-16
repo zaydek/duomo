@@ -1,5 +1,11 @@
-@use "../util";
+@use "../helpers";
 
 @mixin box-shadow-from-map($map) {
-	@include util.generate-from-map("shadow", (box-shadow), $map, none);
+	// prettier-ignore
+	@include helpers.generate-from-map(
+		"shadow",
+		(box-shadow),
+		$map,
+		none,
+	);
 }

@@ -1,44 +1,44 @@
-@use "../util";
+@use "../helpers";
 
 // prettier-ignore
 @mixin padding-from-range($range, $resolver) {
-	@include util.generate-from-range(
+	@include helpers.generate-from-range(
 		"p",
 		(padding),
 		$range,
 		$resolver,
 	);
-	@include util.generate-from-range(
+	@include helpers.generate-from-range(
 		"px",
 		(padding-left, padding-right),
 		$range,
 		$resolver,
 	);
-	@include util.generate-from-range(
+	@include helpers.generate-from-range(
 		"pl",
 		(padding-left),
 		$range,
 		$resolver,
 	);
-	@include util.generate-from-range(
+	@include helpers.generate-from-range(
 		"pr",
 		(padding-right),
 		$range,
 		$resolver,
 	);
-	@include util.generate-from-range(
+	@include helpers.generate-from-range(
 		"py",
 		(padding-top, padding-bottom),
 		$range,
 		$resolver,
 	);
-	@include util.generate-from-range(
+	@include helpers.generate-from-range(
 		"pt",
 		(padding-top),
 		$range,
 		$resolver,
 	);
-	@include util.generate-from-range(
+	@include helpers.generate-from-range(
 		"pb",
 		(padding-bottom),
 		$range,

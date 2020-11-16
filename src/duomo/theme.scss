@@ -2,7 +2,7 @@
 @use "sass:map";
 @use "sass:meta";
 
-@use "user";
+@use "configuration";
 
 @mixin theme($theme-map, $transition-duration: null, $transition-timing-function: null) {
 	$themes: ();
@@ -48,17 +48,17 @@
 		}
 		// `on`:
 		@each $k1, $v1 in $theme-map {
-			.on#{user.$separator}#{string.slice($k1, string.length("--") + 1)}:hover,
-			.on#{user.$separator}#{string.slice($k1, string.length("--") + 1)}:focus,
-			.group:hover .group-on#{user.$separator}#{string.slice($k1, string.length("--") + 1)},
-			.group:focus .group-on#{user.$separator}#{string.slice($k1, string.length("--") + 1)} {
+			.on#{configuration.$separator}#{string.slice($k1, string.length("--") + 1)}:hover,
+			.on#{configuration.$separator}#{string.slice($k1, string.length("--") + 1)}:focus,
+			.group:hover .group-on#{configuration.$separator}#{string.slice($k1, string.length("--") + 1)},
+			.group:focus .group-on#{configuration.$separator}#{string.slice($k1, string.length("--") + 1)} {
 				#{map.get($v1, "property")}: var(#{$k1});
 			}
 		}
 		// `down`:
 		@each $k1, $v1 in $theme-map {
-			.down#{user.$separator}#{string.slice($k1, string.length("--") + 1)}:active,
-			.group:active .group-down#{user.$separator}#{string.slice($k1, string.length("--") + 1)} {
+			.down#{configuration.$separator}#{string.slice($k1, string.length("--") + 1)}:active,
+			.group:active .group-down#{configuration.$separator}#{string.slice($k1, string.length("--") + 1)} {
 				#{map.get($v1, "property")}: var(#{$k1});
 			}
 		}

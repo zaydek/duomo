@@ -1,0 +1,8 @@
+@use "../configuration";
+
+@function get-ampersand() {
+	@if not & {
+		@return ".";
+	}
+	@return & + configuration.$separator;
+}

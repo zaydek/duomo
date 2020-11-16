@@ -1,5 +1,6 @@
 @use "sass:string";
 
+// TODO: Upgrade.
 @function escape($any) {
 	$str: "" + $any;
 	$escaped: "";

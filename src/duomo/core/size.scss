@@ -1,5 +1,5 @@
-@use "../user";
-@use "../util";
+@use "../configuration";
+@use "../helpers";
 
 $__opts: (
 	full: 100%,
@@ -7,11 +7,11 @@ $__opts: (
 );
 
 @mixin width-from-range($range, $resolver) {
-	$amp: util.get-ampersand();
+	$amp: helpers.get-ampersand();
 
 	@each $v in $range {
 		#{$amp}w-#{$v} {
-			width: #{util.resolve($v, $resolver)};
+			width: #{helpers.resolve($v, $resolver)};
 			[class*="hstack"] > & {
 				flex-shrink: 0;
 			}
@@ -26,7 +26,7 @@ $__opts: (
 	}
 
 	// prettier-ignore
-	@include util.generate-from-map(
+	@include helpers.generate-from-map(
 		"w",
 		(width),
 		$__opts,
@@ -36,7 +36,7 @@ $__opts: (
 
 @mixin max-width-from-breakpoint-map($breakpoint-map) {
 	// prettier-ignore
-	@include util.generate-from-map(
+	@include helpers.generate-from-map(
 		"max-w",
 		(max-width),
 		$breakpoint-map,
@@ -50,9 +50,9 @@ $__opts: (
 			width: 100%;
 		}
 		@each $k, $v in $breakpoint-map {
-			@media (min-width: #{util.px($v)}) {
-				.#{$k}#{user.$separator}container {
-					max-width: #{util.px($v)};
+			@media (min-width: #{helpers.px($v)}) {
+				.#{$k}#{configuration.$separator}container {
+					max-width: #{helpers.px($v)};
 				}
 			}
 		}
@@ -60,11 +60,11 @@ $__opts: (
 }
 
 @mixin height-from-range($range, $resolver) {
-	$amp: util.get-ampersand();
+	$amp: helpers.get-ampersand();
 
 	@each $v in $range {
 		#{$amp}h-#{$v} {
-			height: #{util.resolve($v, $resolver)};
+			height: #{helpers.resolve($v, $resolver)};
 			[class*="vstack"] > & {
 				flex-shrink: 0;
 			}
@@ -79,7 +79,7 @@ $__opts: (
 	}
 
 	// prettier-ignore
-	@include util.generate-from-map(
+	@include helpers.generate-from-map(
 		"h",
 		(height),
 		$__opts,
@@ -89,7 +89,7 @@ $__opts: (
 
 @mixin min-height {
 	// // prettier-ignore
-	// @include util.generate-from-range(
+	// @include helpers.generate-from-range(
 	// 	"min-h",
 	// 	(min-height),
 	// 	$range,
@@ -97,7 +97,7 @@ $__opts: (
 	// );
 
 	// prettier-ignore
-	@include util.generate-from-map(
+	@include helpers.generate-from-map(
 		"min-h",
 		(min-height),
 		$__opts,

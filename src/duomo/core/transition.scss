@@ -1,9 +1,9 @@
-@use "../util";
+@use "../helpers";
 
 $theme-aware-selector: "body:not([data-theme-mount=true])";
 
 @mixin transition($default-duration, $default-timing-function) {
-	$amp: util.get-ampersand();
+	$amp: helpers.get-ampersand();
 
 	#{$theme-aware-selector} {
 		#{$amp}transition {
@@ -15,22 +15,22 @@ $theme-aware-selector: "body:not([data-theme-mount=true])";
 	}
 }
 
-// NOTE. Do not use `util.generate-from-range` because `$amp` is repeated.
+// NOTE. Do not use `helpers.generate-from-range` because `$amp` is repeated.
 @mixin transition-duration-from-range($range) {
-	$amp: util.get-ampersand();
+	$amp: helpers.get-ampersand();
 
 	#{$theme-aware-selector} {
 		@each $v in $range {
-			#{$amp}duration-#{util.escape($v)} {
+			#{$amp}duration-#{helpers.escape($v)} {
 				--transition-duration: #{$v};
 			}
 		}
 	}
 }
 
-// NOTE. Do not use `util.generate-from-range` because `$amp` is repeated.
+// NOTE. Do not use `helpers.generate-from-range` because `$amp` is repeated.
 @mixin transition-timing-function-from-map($map) {
-	$amp: util.get-ampersand();
+	$amp: helpers.get-ampersand();
 
 	#{$theme-aware-selector} {
 		@each $k, $v in $map {

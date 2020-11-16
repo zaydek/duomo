@@ -1,5 +1,5 @@
-// @forward "configuration"; // TODO
-// @forward "helpers"; // TODO
+@forward "configuration";
+@forward "helpers";
 @forward "theme";
 
 @use "builder"; // Do not `@forward`

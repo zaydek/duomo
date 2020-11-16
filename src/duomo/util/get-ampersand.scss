@@ -1,8 +1,0 @@
-@use "../user";
-
-@function get-ampersand() {
-	@if not & {
-		@return ".";
-	}
-	@return & + user.$separator;
-}

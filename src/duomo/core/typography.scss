@@ -1,10 +1,10 @@
 @use "sass:string";
 
-@use "../user";
-@use "../util";
+@use "../configuration";
+@use "../helpers";
 
 @mixin __whitespace {
-	$amp: util.get-ampersand();
+	$amp: helpers.get-ampersand();
 
 	// Text does not wrap.
 	#{$amp}whitespace-pre {
@@ -17,7 +17,7 @@
 }
 
 @mixin __text-align {
-	$amp: util.get-ampersand();
+	$amp: helpers.get-ampersand();
 
 	#{$amp}text-center {
 		text-align: center;
@@ -25,9 +25,9 @@
 }
 
 @mixin __font-weight {
-	$amp: util.get-ampersand();
+	$amp: helpers.get-ampersand();
 
-	@each $v in util.range(100, 900, 100) {
+	@each $v in helpers.range(100, 900, 100) {
 		#{$amp}font-#{$v} {
 			font-weight: #{$v};
 		}
@@ -36,7 +36,7 @@
 
 @mixin __font-size-from-range($range, $resolver) {
 	// prettier-ignore
-	@include util.generate-from-range(
+	@include helpers.generate-from-range(
 		"text",
 		(font-size),
 		$range,
@@ -46,7 +46,7 @@
 
 @mixin __line-height-from-range($range) {
 	// prettier-ignore
-	@include util.generate-from-range(
+	@include helpers.generate-from-range(
 		"leading",
 		(line-height),
 		$range,
@@ -55,7 +55,7 @@
 }
 
 @mixin __text-decoration {
-	$amp: util.get-ampersand();
+	$amp: helpers.get-ampersand();
 
 	@each $v in (line-through, underline) {
 		#{$amp}#{$v} {
@@ -64,17 +64,17 @@
 	}
 	// `on`:
 	@each $v in (line-through, underline) {
-		#{$amp}on#{user.$separator}#{$v}:hover,
-		#{$amp}on#{user.$separator}#{$v}:focus,
-		.group:hover #{$amp}group-on#{user.$separator}#{$v},
-		.group:focus #{$amp}group-on#{user.$separator}#{$v} {
+		#{$amp}on#{configuration.$separator}#{$v}:hover,
+		#{$amp}on#{configuration.$separator}#{$v}:focus,
+		.group:hover #{$amp}group-on#{configuration.$separator}#{$v},
+		.group:focus #{$amp}group-on#{configuration.$separator}#{$v} {
 			text-decoration: #{$v};
 		}
 	}
 	// `down`:
 	@each $v in (line-through, underline) {
-		#{$amp}down#{user.$separator}#{$v}:active,
-		.group:active #{$amp}group-down#{user.$separator}#{$v} {
+		#{$amp}down#{configuration.$separator}#{$v}:active,
+		.group:active #{$amp}group-down#{configuration.$separator}#{$v} {
 			text-decoration: #{$v};
 		}
 	}

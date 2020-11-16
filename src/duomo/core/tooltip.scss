@@ -1,4 +1,4 @@
-@use "../util";
+@use "../helpers";
 
 // #{$amp}tooltip-tl {
 // 	top: 0;
@@ -33,7 +33,7 @@
 
 // TODO: Change to transform API?
 @mixin tooltip {
-	$amp: util.get-ampersand();
+	$amp: helpers.get-ampersand();
 
 	#{$amp}tooltip-tl {
 		top: 0;

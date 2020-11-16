@@ -1,13 +1,13 @@
-@use "../util";
+@use "../helpers";
 
 @mixin __impl($shorthand, $props, $range, $resolver) {
-	$amp: util.get-ampersand();
+	$amp: helpers.get-ampersand();
 
 	@each $v in $range {
-		$minus: util.safe-minus($v);
-		#{$amp}#{$minus}#{$shorthand}-#{util.safe-abs($v)} {
+		$minus: helpers.safe-minus($v);
+		#{$amp}#{$minus}#{$shorthand}-#{helpers.safe-abs($v)} {
 			@each $prop in $props {
-				#{$prop}: #{util.resolve($v, $resolver)};
+				#{$prop}: #{helpers.resolve($v, $resolver)};
 			}
 		}
 	}
@@ -23,7 +23,7 @@
 
 // prettier-ignore
 @mixin position-from-range($range, $resolver) {
-	$amp: util.get-ampersand();
+	$amp: helpers.get-ampersand();
 
 	@each $position in static, relative, absolute, fixed, sticky {
 		#{$amp}#{$position} {

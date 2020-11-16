@@ -1,26 +1,26 @@
-@use "../util";
+@use "../helpers";
 
 // prettier-ignore
 @mixin border-width-from-range($range, $resolver) {
-	@include util.generate-from-range(
+	@include helpers.generate-from-range(
 		"border-t",
 		(border-top-width),
 		$range,
 		$resolver,
 	);
-	@include util.generate-from-range(
+	@include helpers.generate-from-range(
 		"border-r",
 		(border-right-width),
 		$range,
 		$resolver,
 	);
-	@include util.generate-from-range(
+	@include helpers.generate-from-range(
 		"border-b",
 		(border-bottom-width),
 		$range,
 		$resolver,
 	);
-	@include util.generate-from-range(
+	@include helpers.generate-from-range(
 		"border-l",
 		(border-left-width),
 		$range,
@@ -31,7 +31,7 @@
 // TODO: Rename to `generate-opaque-colors-from-map`.
 @mixin border-color-from-map($map, $opacity-range) {
 	// prettier-ignore
-	@include util.generate-colors-from-map(
+	@include helpers.generate-colors-from-map(
 		"border",
 		border-color,
 		$map,
@@ -41,9 +41,9 @@
 
 // prettier-ignore
 @mixin border-radius-from-range($range, $resolver) {
-	$amp: util.get-ampersand();
+	$amp: helpers.get-ampersand();
 
-	@include util.generate-from-range(
+	@include helpers.generate-from-range(
 		"rounded",
 		(border-radius),
 		$range,
@@ -52,49 +52,49 @@
 	#{$amp}rounded-full {
 		border-radius: 9999px;
 	}
-	@include util.generate-from-range(
+	@include helpers.generate-from-range(
 		"rounded-tl",
 		(border-top-left-radius),
 		$range,
 		$resolver,
 	);
-	@include util.generate-from-range(
+	@include helpers.generate-from-range(
 		"rounded-t",
 		(border-top-left-radius, border-top-right-radius),
 		$range,
 		$resolver,
 	);
-	@include util.generate-from-range(
+	@include helpers.generate-from-range(
 		"rounded-tr",
 		(border-top-right-radius),
 		$range,
 		$resolver,
 	);
-	@include util.generate-from-range(
+	@include helpers.generate-from-range(
 		"rounded-l",
 		(border-top-left-radius, border-bottom-left-radius),
 		$range,
 		$resolver,
 	);
-	@include util.generate-from-range(
+	@include helpers.generate-from-range(
 		"rounded-r",
 		(border-top-right-radius, border-bottom-right-radius),
 		$range,
 		$resolver,
 	);
-	@include util.generate-from-range(
+	@include helpers.generate-from-range(
 		"rounded-bl",
 		(border-bottom-left-radius),
 		$range,
 		$resolver,
 	);
-	@include util.generate-from-range(
+	@include helpers.generate-from-range(
 		"rounded-b",
 		(border-bottom-left-radius, border-bottom-right-radius),
 		$range,
 		$resolver,
 	);
-	@include util.generate-from-range(
+	@include helpers.generate-from-range(
 		"rounded-br",
 		(border-bottom-right-radius),
 		$range,

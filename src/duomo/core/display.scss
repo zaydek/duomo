@@ -1,7 +1,7 @@
-@use "../util";
+@use "../helpers";
 
 @mixin display {
-	$amp: util.get-ampersand();
+	$amp: helpers.get-ampersand();
 
 	@each $k, $v in (hidden: none, block: block) {
 		#{$amp}#{$k} {

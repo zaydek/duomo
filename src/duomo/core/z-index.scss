@@ -1,5 +1,11 @@
-@use "../util";
+@use "../helpers";
 
 @mixin z-index-from-range($range) {
-	@include util.generate-from-range("z", (z-index), $range, none);
+	// prettier-ignore
+	@include helpers.generate-from-range(
+		"z",
+		(z-index),
+		$range,
+		none,
+	);
 }
