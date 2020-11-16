@@ -1,0 +1,47 @@
+@use "sass:map";
+
+@use "../configuration";
+
+@function __getter($name, $map, $key) {
+	$got: map.get($map, $key);
+	@if not $got {
+		@error $name + ": no " + $name + " exists for key " + $key;
+	}
+	@return $got;
+}
+
+// prettier-ignore
+@function font($key) {
+	@return __getter(
+		"font",
+		configuration.$font-map,
+		$key,
+	);
+}
+
+// prettier-ignore
+@function color($key) {
+	@return __getter(
+		"color",
+		configuration.$color-map,
+		$key,
+	);
+}
+
+// prettier-ignore
+@function shadow($key) {
+	@return __getter(
+		"shadow",
+		configuration.$shadow-map,
+		$key,
+	);
+}
+
+// prettier-ignore
+@function breakpoint($key) {
+	@return __getter(
+		"breakpoint",
+		configuration.$breakpoint-map,
+		$key,
+	);
+}
