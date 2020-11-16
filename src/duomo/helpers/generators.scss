@@ -38,6 +38,7 @@
 	@each $k, $v in $map {
 		#{$amp}#{$shorthand}-#{escape($k)} {
 			@if $k == transparent or $k == currentColor {
+				--#{$shorthand}-opacity: 1;
 				color: #{$v};
 			} @else {
 				--#{$shorthand}-opacity: 1;
