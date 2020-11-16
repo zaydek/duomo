@@ -1,7 +1,7 @@
-@forward "escape"; // TODO
-@forward "generators"; // TODO
-@forward "get-ampersand"; // TODO
-@forward "getters"; // TODO
-@forward "range"; // TODO
-@forward "resolve"; // TODO
-@forward "safe"; // TODO
+@forward "escape";
+@forward "generators";
+@forward "get-ampersand";
+@forward "getters";
+@forward "range";
+@forward "resolve";
+@forward "safe"; // TODO: Do we want to forward `safe-abs`, etc.?

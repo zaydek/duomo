@@ -1,87 +1,77 @@
-const THEME_PREFERENCE_KEY = "duomo-theme-preference"
+const THEME_PREFERENCE_KEY = "duomo-theme-preference" as const
+
+export enum Mode {
+	development = "development",
+	production = "production",
+}
 
 interface IDuomo {
-	__deferers: (() => void)[]
-	init(): void
-	defer(): void
+	init(mode: Mode): () => void
 	toggleDebugMode(): void
 	toggleDarkMode(): void
 }
 
-// TODO: Can we refactor Duomo to be a React component?
-//
-// <Duomo dev? prod?>
-//   {/* ... */}
-// </Duomo>
-//
-// The problem with this is SSR. This will be run on the server in NextJS.
-// We want to trigger mode as-fast-as-possible when the client loads the app.
-//
-// Currently we use <script src="/scripts/layoutDarkMode.js" />
-//
-// function themePreferenceDark() {
-//   const ok = (
-//     "themePreference" in localStorage &&
-//     localStorage.themePreference === "dark"
-//   )
-//   return ok
-// }
-// function prefersColorShemeDark() {
-//   const ok = (
-//     window.matchMedia &&
-//     window.matchMedia("(prefers-color-scheme: dark)").matches
-//   )
-//   return ok
-// }
-// ;(() => {
-//   if (themePreferenceDark() || prefersColorShemeDark()) {
-//     const html = document.documentElement
-//     html.classList.add("dark")
-//   }
-// })()
-//
-const Duomo: IDuomo = {
-	__deferers: [],
+function localStorageThemePreference() {
+	return "themePreference" in localStorage && localStorage[THEME_PREFERENCE_KEY] === "dark"
+}
+function operatingSystemThemePreference() {
+	return "matchMedia" in window && window.matchMedia("(prefers-color-scheme: dark)").matches
+}
 
-	// TODO: Can `init` return a defer closure? Then deprecate the `defer` method.
-	// TODO: It would be nice if we can init from "development" or "production" for example.
-	init() {
-		// TODO: Read `THEME_PREFERENCE_KEY` from localStorage.
-		const media = "matchMedia" in window && window.matchMedia("(prefers-color-scheme: dark)")
-		if (media) {
-			if (media.matches) {
-				document.body.setAttribute("data-theme", "dark")
-			}
-			// NOTE: Prefer `media.addListener`.
+function recoverDarkMode() {
+	if (!localStorageThemePreference() && !operatingSystemThemePreference()) {
+		// No-op
+		return
+	}
+	document.body.classList.add("dark")
+}
+
+const Duomo: IDuomo = {
+	init(mode: Mode) {
+		const deferers: Array<() => void> = []
+
+		recoverDarkMode()
+		if ("matchMedia" in window) {
+			// NOTE: Prefer `media.addListener` (vs. `media.addEventListener`).
 			//
-			// The addListener() method of the MediaQueryList interface adds a listener to the MediaQueryListener that will
-			// run a custom callback function in response to the media query status changing.
-			//
-			// This is basically an alias of EventTarget.addEventListener(), for backwards compatibility purposes.
-			// Older browsers should use addListener instead of addEventListener since MediaQueryList only inherits from
-			// EventTarget in newer browsers.
+			// > The addListener() method of the MediaQueryList interface adds a listener to the MediaQueryListener that will
+			// > run a custom callback function in response to the media query status changing.
+			// >
+			// > This is basically an alias of EventTarget.addEventListener(), for backwards compatibility purposes.
+			// > Older browsers should use addListener instead of addEventListener since MediaQueryList only inherits from
+			// > EventTarget in newer browsers.
 			//
 			// https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/addListener
+			//
+			const media = window.matchMedia("(prefers-color-scheme: dark)")
 			const handleMedia = () => {
 				Duomo.toggleDarkMode()
 			}
 			media.addListener(handleMedia)
-			Duomo.__deferers.push(() => media.removeListener(handleMedia))
+			deferers.push(() => media.removeListener(handleMedia))
 		}
-		const handleKeyDown = (e: KeyboardEvent) => {
-			if (!e.ctrlKey && e.key.toLowerCase() === "d") {
-				Duomo.toggleDarkMode()
-			} else if (e.ctrlKey && e.key.toLowerCase() === "d") {
-				Duomo.toggleDebugMode()
+
+		if (mode === "development") {
+			// Handler for dark mode:
+			const handleKeyDownDarkMode = (e: KeyboardEvent) => {
+				if (e.ctrlKey && (e.key.toLowerCase() === "d" || e.keyCode === 68)) {
+					Duomo.toggleDarkMode()
+				}
 			}
+			document.addEventListener("keydown", handleKeyDownDarkMode)
+			deferers.push(() => document.removeEventListener("keydown", handleKeyDownDarkMode))
+
+			// Handler for debug mode:
+			const handleKeyDownDebugMode = (e: KeyboardEvent) => {
+				if (e.ctrlKey && (e.key.toLowerCase() === "d" || e.keyCode === 68)) {
+					Duomo.toggleDebugMode()
+				}
+			}
+			document.addEventListener("keydown", handleKeyDownDebugMode)
+			deferers.push(() => document.removeEventListener("keydown", handleKeyDownDebugMode))
 		}
-		document.addEventListener("keydown", handleKeyDown)
-		Duomo.__deferers.push(() => document.removeEventListener("keydown", handleKeyDown))
-	},
-	defer() {
-		for (let x = 0; x < Duomo.__deferers.length; x++) {
-			Duomo.__deferers[x]()
-		}
+
+		return () => deferers.reverse().forEach(defer => defer())
 	},
 	toggleDebugMode() {
 		const hasAttribute = document.body.hasAttribute("data-debug")
