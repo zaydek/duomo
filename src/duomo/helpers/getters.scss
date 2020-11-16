@@ -38,6 +38,15 @@
 }
 
 // prettier-ignore
+@function timing-function($key) {
+	@return __getter(
+		"timing-function",
+		configuration.$timing-function-map,
+		$key,
+	);
+}
+
+// prettier-ignore
 @function breakpoint($key) {
 	@return __getter(
 		"breakpoint",
