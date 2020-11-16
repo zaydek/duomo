@@ -21,19 +21,17 @@
 	/* purgecss end ignore */
 }
 
-$__no-range: (0);
+$__zero-range: (0);
+$__full-range: list.join(configuration.$negative-range, configuration.$standard-range);
 
 @mixin props {
 	@include core.group;
 	@include core.display;
 	@include core.stack-from-range($range: configuration.$standard-range, $resolver: rem);
 	@include core.grid-from-range($range: configuration.$standard-range, $resolver: rem);
-	@include core.margin-from-range(
-		$range: list.join(configuration.$negative-range, configuration.$standard-range),
-		$resolver: rem
-	);
+	@include core.margin-from-range($range: $__full-range, $resolver: rem);
 	@include core.padding-from-range($range: configuration.$standard-range, $resolver: rem);
-	@include core.position-from-range($range: $__no-range, $resolver: rem);
+	@include core.position-from-range($range: $__zero-range, $resolver: rem);
 	@include core.tooltip;
 	@include core.width-from-range($range: configuration.$standard-range, $resolver: rem);
 	@include core.max-width-from-breakpoint-map($breakpoint-map: configuration.$breakpoint-map);
