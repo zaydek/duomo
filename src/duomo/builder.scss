@@ -13,7 +13,7 @@
 	@include preflight.custom-props-from-maps(
 		(map: configuration.$font-family-map),
 		(map: configuration.$color-map),
-		(shorthand: "shadow", map: configuration.$box-shadow-map),
+		(shorthand: "shadow", map: configuration.$shadow-map),
 		(map: configuration.$timing-function-map),
 	);
 	@include preflight.stagger;
@@ -47,7 +47,7 @@ $__no-range: (0);
 	@include core.border-width-from-range($range: configuration.$border-width-range, $resolver: rem);
 	@include core.border-color-from-map($map: configuration.$color-map, $opacity-range: configuration.$opacity-range);
 	@include core.border-radius-from-range($range: configuration.$border-radius-range, $resolver: rem);
-	@include core.box-shadow-from-map($map: configuration.$box-shadow-map);
+	@include core.box-shadow-from-map($map: configuration.$shadow-map);
 	@include core.overflow;
 	@include core.z-index-from-range($range: configuration.$z-index-range);
 	@include core.pointer-events;
