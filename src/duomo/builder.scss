@@ -63,7 +63,7 @@ $__no-range: (0);
 		@include props;
 		@each $key, $value in configuration.$breakpoint-map {
 			@media (min-width: #{helpers.px($value)}) {
-				.#{helpers.escape($key)} {
+				.#{helpers.escape-breakpoint($key)} {
 					@at-root {
 						@include props;
 					}

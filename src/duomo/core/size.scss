@@ -51,7 +51,7 @@ $__opts: (
 		}
 		@each $k, $v in $breakpoint-map {
 			@media (min-width: #{helpers.px($v)}) {
-				.#{helpers.escape($k)}#{helpers.escape(configuration.$separator)}container {
+				.#{helpers.escape-breakpoint($k)}#{helpers.escape(configuration.$separator)}container {
 					max-width: #{helpers.px($v)};
 				}
 			}

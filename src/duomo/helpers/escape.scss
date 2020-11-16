@@ -41,13 +41,28 @@ $__escape-chars: (
 	"\~",
 );
 
+// Escapes ASCII punctuation characters.
 @function escape($any) {
 	$str: "" + $any;
 	$escaped: "";
 	@for $x from 1 through string.length($str) {
 		$ch: string.slice($str, $x, $x);
-		// @if ($x == 1 and list.index($__digits, $ch)) or list.index($__escape-chars, $ch) {
 		@if list.index($__escape-chars, $ch) {
+			$escaped: $escaped + "\\"+ $ch;
+		} @else {
+			$escaped: $escaped + $ch;
+		}
+	}
+	@return $escaped;
+}
+
+// Escapes breakpoint keys and ASCII punctuation characters.
+@function escape-breakpoint($any) {
+	$str: "" + $any;
+	$escaped: "";
+	@for $x from 1 through string.length($str) {
+		$ch: string.slice($str, $x, $x);
+		@if ($x == 1 and list.index($__digits, $ch)) or list.index($__escape-chars, $ch) {
 			$escaped: $escaped + "\\"+ $ch;
 		} @else {
 			$escaped: $escaped + $ch;
