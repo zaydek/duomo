@@ -1,3 +1,5 @@
+@use "duomo";
+
 // @use "duomo" as * with (
 // 	$separator: ".",
 // 	$xl: 1344,
@@ -11,23 +13,23 @@
 // 	),
 // 	$opacity-range: (0.5)
 // );
+
+// Exports:
 //
-// // Exports:
-// //
-// // $headless
-// // $separator
-// //
-// // font() and $fonts ($sans-serif, $serif, ...)
-// // color() and $colors ($blue-100, $blue-200, ...)
-// // shadow() and $shadows ($shadow-xs, $shadow-md, ...)
-// // breakpoint() and $breakpoints ($sm, $md, ...)
-// // opacity-range
-// //
-// // escape()
-// // get-ampersand()
-// //
-// // theme()
+// $headless
+// $separator
 //
+// font() and $fonts ($sans-serif, $serif, ...)
+// color() and $colors ($blue-100, $blue-200, ...)
+// shadow() and $shadows ($shadow-xs, $shadow-md, ...)
+// breakpoint() and $breakpoints ($sm, $md, ...)
+// opacity-range
+//
+// escape()
+// get-ampersand()
+//
+// theme()
+
 // @at-root {
 // 	@include theme;
 // }

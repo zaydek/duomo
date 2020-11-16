@@ -1,0 +1,69 @@
+@use "sass:list";
+
+@use "core";
+@use "meta";
+@use "user";
+@use "util";
+
+@mixin preflight {
+	/* purgecss start ignore */
+	@include meta.base;
+	@include meta.macos-retina;
+	// prettier-ignore
+	@include meta.custom-props-from-maps(
+		(map: user.$font-family-map),
+		(map: user.$color-map),
+		(shorthand: "shadow", map: user.$box-shadow-map),
+		(map: user.$timing-function-map),
+	);
+	@include meta.stagger;
+	@include meta.debugger;
+	/* purgecss end ignore */
+}
+
+$__no-range: (0);
+
+@mixin props {
+	@include core.group;
+	@include core.display;
+	@include core.stack-from-range($range: user.$standard-range, $resolver: rem);
+	@include core.grid-from-range($range: user.$standard-range, $resolver: rem);
+	@include core.margin-from-range($range: list.join(user.$negative-range, user.$standard-range), $resolver: rem);
+	@include core.padding-from-range($range: user.$standard-range, $resolver: rem);
+	@include core.position-from-range($range: $__no-range, $resolver: rem);
+	@include core.tooltip;
+	@include core.width-from-range($range: user.$standard-range, $resolver: rem);
+	@include core.max-width-from-breakpoint-map($breakpoint-map: user.$breakpoint-map);
+	@include core.container-from-breakpoint-map($breakpoint-map: user.$breakpoint-map);
+	@include core.height-from-range($range: user.$standard-range, $resolver: rem);
+	@include core.min-height;
+	// prettier-ignore
+	@include core.typography($font-size-range: user.$font-size-range, $font-size-resolver: rem, $line-height-range: user.$line-height-range);
+	@include core.color-from-map($map: user.$color-map, $opacity-range: user.$opacity-range);
+	@include core.background-color-from-map($map: user.$color-map, $opacity-range: user.$opacity-range);
+	@include core.border-width-from-range($range: user.$border-width-range, $resolver: rem);
+	@include core.border-color-from-map($map: user.$color-map, $opacity-range: user.$opacity-range);
+	@include core.border-radius-from-range($range: user.$border-radius-range, $resolver: rem);
+	@include core.box-shadow-from-map($map: user.$box-shadow-map);
+	@include core.overflow;
+	@include core.z-index-from-range($range: user.$z-index-range);
+	@include core.pointer-events;
+	@include core.transition($default-duration: 300ms, $default-timing-function: user.$ease-out);
+	@include core.transition-duration-from-range($range: util.range(0, 1000, 100));
+	@include core.transition-timing-function-from-map($map: user.$timing-function-map);
+}
+
+@at-root {
+	/*! @zaydek/duomo | MIT License | https://github.com/zaydek/duomo */
+	@include preflight;
+	@include props;
+	@each $key, $value in user.$breakpoint-map {
+		@media (min-width: #{util.px($value)}) {
+			.#{$key} {
+				@at-root {
+					@include props;
+				}
+			}
+		}
+	}
+}
