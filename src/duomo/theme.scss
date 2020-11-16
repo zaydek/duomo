@@ -1,8 +1,10 @@
 @use "sass:list";
 @use "sass:map";
 @use "sass:meta";
+@use "sass:string";
 
 @use "configuration";
+@use "helpers";
 
 @mixin theme($theme-map, $transition-duration: null, $transition-timing-function: null) {
 	$themes: ();
@@ -49,6 +51,7 @@
 				}
 			}
 		}
+
 		// `on`:
 		@each $k1, $v1 in $theme-map {
 			.on#{helpers.escape(configuration.$separator)}#{$var-name}:hover,
@@ -58,6 +61,7 @@
 				#{map.get($v1, "property")}: var(#{$k1});
 			}
 		}
+
 		// `down`:
 		@each $k1, $v1 in $theme-map {
 			.down#{helpers.escape(configuration.$separator)}#{$var-name}:active,

@@ -62,6 +62,7 @@
 			text-decoration: #{$v};
 		}
 	}
+
 	// `on`:
 	@each $v in (line-through, underline) {
 		#{$amp}on#{helpers.escape(configuration.$separator)}#{$v}:hover,
@@ -71,6 +72,7 @@
 			text-decoration: #{$v};
 		}
 	}
+
 	// `down`:
 	@each $v in (line-through, underline) {
 		#{$amp}down#{helpers.escape(configuration.$separator)}#{$v}:active,
