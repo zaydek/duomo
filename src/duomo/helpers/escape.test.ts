@@ -12,7 +12,7 @@ function sassify(data: string) {
 	return result.css.toString()
 }
 
-test("does not escape numbers", () => {
+test("escape: does not escape numbers", () => {
 	const result = sassify(`
 @use "sass:math";
 
@@ -44,7 +44,7 @@ test("does not escape numbers", () => {
 `.trim())
 })
 
-test("does escape $separator", () => {
+test("escape: does escape $separator", () => {
 	const result = sassify(`
 @use "src/duomo/helpers/escape" as *;
 
@@ -56,6 +56,29 @@ $separator: ":";
 	// prettier-ignore
 	expect(result).toBe(`
 .sm\\:px-24 {
+	/* ... */
+}
+`.trim())
+})
+
+test("escape-breakpoint", () => {
+	const result = sassify(`
+@use "src/duomo/helpers/escape" as *;
+
+.#{escape-breakpoint("xl")} {
+	/* ... */
+}
+.#{escape-breakpoint("2xl")} {
+	/* ... */
+}
+`)
+	// prettier-ignore
+	expect(result).toBe(`
+.xl {
+	/* ... */
+}
+
+.\\2 xl {
 	/* ... */
 }
 `.trim())
