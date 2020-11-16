@@ -57,8 +57,6 @@ $__no-range: (0);
 }
 
 @at-root {
-	@include core.transition-duration-from-range($range: helpers.range(0, 1000, 100));
-
 	@if not configuration.$headless {
 		/*! @zaydek/duomo | MIT License | https://github.com/zaydek/duomo */
 		@include preflight;

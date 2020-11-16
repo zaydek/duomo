@@ -63,7 +63,7 @@
 		}
 	}
 
-	// `on`:
+	// `on` pseudo selector:
 	@each $v in (line-through, underline) {
 		#{$amp}on#{helpers.escape(configuration.$separator)}#{$v}:hover,
 		#{$amp}on#{helpers.escape(configuration.$separator)}#{$v}:focus,
@@ -73,7 +73,7 @@
 		}
 	}
 
-	// `down`:
+	// `down` pseudo selector:
 	@each $v in (line-through, underline) {
 		#{$amp}down#{helpers.escape(configuration.$separator)}#{$v}:active,
 		.group:active #{$amp}group-down#{helpers.escape(configuration.$separator)}#{$v} {

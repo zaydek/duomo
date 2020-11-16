@@ -6,7 +6,7 @@
 // custom-props-from-maps((map: ...) ...)
 //
 @mixin custom-props-from-maps($maps...) {
-	html {
+	body {
 		@each $map in $maps {
 			@each $k, $v in map.get($map, "map") {
 				$shorthand: map.get($map, "shorthand");

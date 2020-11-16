@@ -3,7 +3,23 @@
  */
 declare function sass(data: string): string
 
-test("theme: without transition", () => {
+test("theme: `theme-aware-selector` works", () => {
+	const result = sass(`
+@use "src/duomo/theme" as *;
+
+#{$theme-aware-selector} {
+	/**/
+}
+`)
+	// prettier-ignore
+	expect(result).toBe(`
+body:not([data-theme-effect=true]) {
+	/**/
+}
+`.trim())
+})
+
+test("theme: works without a transition", () => {
 	const result = sass(`
 @use "src/duomo/configuration";
 @use "src/duomo/theme" as *;
@@ -46,7 +62,7 @@ body[data-theme=dark] {
 `.trim())
 })
 
-test("theme: with transition", () => {
+test("theme: works with a transition", () => {
 	const result = sass(`
 @use "src/duomo/configuration";
 @use "src/duomo/theme" as *;
