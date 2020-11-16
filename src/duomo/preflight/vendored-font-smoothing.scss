@@ -1,5 +1,5 @@
-@mixin macos-retina {
-	html {
+@mixin vendored-font-smoothing {
+	body {
 		-webkit-font-smoothing: auto;
 		-moz-osx-font-smoothing: auto;
 	}

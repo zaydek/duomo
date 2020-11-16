@@ -1,4 +1,5 @@
 @use "duomo" as * with (
+	$headless: true,
 	$separator: ".",
 	$xl: 1344,
 	$breakpoint-map: (
@@ -11,6 +12,10 @@
 	),
 	$opacity-range: (0.5)
 );
+
+#{$theme-aware-selector} a {
+	top: 0;
+}
 
 // $negative-range
 // $standard-range

@@ -8,7 +8,7 @@
 @mixin preflight {
 	/* purgecss start ignore */
 	@include preflight.base;
-	@include preflight.macos-retina;
+	@include preflight.vendored-font-smoothing;
 	// prettier-ignore
 	@include preflight.custom-props-from-maps(
 		(map: configuration.$font-family-map),
@@ -57,9 +57,11 @@ $__no-range: (0);
 }
 
 @at-root {
-	/*! @zaydek/duomo | MIT License | https://github.com/zaydek/duomo */
-	@include preflight;
+	@include core.transition-duration-from-range($range: helpers.range(0, 1000, 100));
+
 	@if not configuration.$headless {
+		/*! @zaydek/duomo | MIT License | https://github.com/zaydek/duomo */
+		@include preflight;
 		@include props;
 		@each $key, $value in configuration.$breakpoint-map {
 			@media (min-width: #{helpers.px($value)}) {

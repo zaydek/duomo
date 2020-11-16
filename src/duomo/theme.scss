@@ -6,6 +6,8 @@
 @use "configuration";
 @use "helpers";
 
+$theme-aware-selector: "body:not([data-theme-effect=true])";
+
 @mixin theme($theme-map, $duration: null, $timing-function: null) {
 	$themes: ();
 	@each $k1, $v1 in $theme-map {
