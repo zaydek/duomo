@@ -3,7 +3,7 @@
 @use "../configuration";
 @use "../helpers";
 
-@mixin __whitespace {
+@mixin whitespace {
 	$amp: helpers.get-ampersand();
 
 	// Text does not wrap.
@@ -16,7 +16,7 @@
 	}
 }
 
-@mixin __text-align {
+@mixin text-align {
 	$amp: helpers.get-ampersand();
 
 	#{$amp}text-center {
@@ -24,7 +24,7 @@
 	}
 }
 
-@mixin __font-weight {
+@mixin font-weight {
 	$amp: helpers.get-ampersand();
 
 	@each $v in helpers.range(100, 900, 100) {
@@ -34,7 +34,7 @@
 	}
 }
 
-@mixin __font-size-from-range($range, $resolver) {
+@mixin font-size-from-range($range, $resolver) {
 	// prettier-ignore
 	@include helpers.generate-from-range(
 		"text",
@@ -44,7 +44,19 @@
 	);
 }
 
-@mixin __line-height-from-range($range) {
+@mixin letter-spacing($range, $resolver) {
+	$amp: helpers.get-ampersand();
+
+	// NOTE: Does not use a generator..
+	@each $v in $range {
+		$sign: helpers.safe-negative-sign($v);
+		#{$amp}#{$sign}tracking-#{helpers.escape(helpers.safe-abs($v * 100))} {
+			letter-spacing: #{if($v == 0, 0, $v + em)};
+		}
+	}
+}
+
+@mixin line-height-from-range($range) {
 	// prettier-ignore
 	@include helpers.generate-from-range(
 		"leading",
@@ -54,7 +66,7 @@
 	);
 }
 
-@mixin __text-decoration {
+@mixin text-decoration {
 	$amp: helpers.get-ampersand();
 
 	@each $v in (line-through, underline) {
@@ -82,11 +94,12 @@
 	}
 }
 
-@mixin typography($font-size-range, $font-size-resolver, $line-height-range) {
-	@include __whitespace;
-	@include __text-align;
-	@include __font-weight;
-	@include __font-size-from-range($font-size-range, $font-size-resolver);
-	@include __line-height-from-range($line-height-range);
-	@include __text-decoration;
-}
+// @mixin typography($font-size-range, $font-size-resolver, $line-height-range) {
+// 	@include whitespace;
+// 	@include text-align;
+// 	@include font-weight;
+// 	@include font-size-from-range($font-size-range, $font-size-resolver);
+// 	@include letter-spacing-from-range($font-size-range, $font-size-resolver);
+// 	@include line-height-from-range($line-height-range);
+// 	@include text-decoration;
+// }

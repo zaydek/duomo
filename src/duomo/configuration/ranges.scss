@@ -36,6 +36,16 @@ $font-size-range: (
 ) !default;
 
 // prettier-ignore
+$letter-spacing-range: (
+	-0.05,
+	-0.025,
+	 0,
+	 0.025,
+	 0.05,
+	 0.1,
+);
+
+// prettier-ignore
 $line-height-range: (
 	1,
 	1.05,

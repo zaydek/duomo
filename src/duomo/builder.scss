@@ -40,8 +40,13 @@ $__no-range: (0);
 	@include core.container-from-breakpoint-map($breakpoint-map: configuration.$breakpoint-map);
 	@include core.height-from-range($range: configuration.$standard-range, $resolver: rem);
 	@include core.min-height;
-	// prettier-ignore
-	@include core.typography($font-size-range: configuration.$font-size-range, $font-size-resolver: rem, $line-height-range: configuration.$line-height-range);
+	@include core.whitespace;
+	@include core.text-align;
+	@include core.font-weight;
+	@include core.font-size-from-range($range: configuration.$font-size-range, $resolver: rem);
+	@include core.letter-spacing($range: configuration.$letter-spacing-range, $resolver: em);
+	@include core.line-height-from-range($range: configuration.$line-height-range);
+	@include core.text-decoration;
 	@include core.color-from-map($map: configuration.$color-map, $opacity-range: configuration.$opacity-range);
 	@include core.background-color-from-map($map: configuration.$color-map, $opacity-range: configuration.$opacity-range);
 	@include core.border-width-from-range($range: configuration.$border-width-range, $resolver: rem);
