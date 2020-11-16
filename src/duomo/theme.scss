@@ -6,7 +6,7 @@
 @use "configuration";
 @use "helpers";
 
-@mixin theme($theme-map, $transition-duration: null, $transition-timing-function: null) {
+@mixin theme($theme-map, $duration: null, $timing-function: null) {
 	$themes: ();
 	@each $k1, $v1 in $theme-map {
 		@each $k2, $v2 in $v1 {
@@ -25,8 +25,8 @@
 				}
 			}
 			// prettier-ignore
-			@if $transition-duration and $transition-timing-function {
-				--theme-transition: background-color #{$transition-duration} #{$transition-timing-function}, border-color #{$transition-duration} #{$transition-timing-function}, box-shadow #{$transition-duration} #{$transition-timing-function}, color #{$transition-duration} #{$transition-timing-function}, fill #{$transition-duration} #{$transition-timing-function}, opacity #{$transition-duration} #{$transition-timing-function}, stroke #{$transition-duration} #{$transition-timing-function}, transform #{$transition-duration} #{$transition-timing-function};
+			@if $duration and $timing-function {
+				--theme-transition: background-color #{$duration} #{$timing-function}, border-color #{$duration} #{$timing-function}, box-shadow #{$duration} #{$timing-function}, color #{$duration} #{$timing-function}, fill #{$duration} #{$timing-function}, opacity #{$duration} #{$timing-function}, stroke #{$duration} #{$timing-function}, transform #{$duration} #{$timing-function};
 			}
 		}
 		@each $theme in $themes {
@@ -46,7 +46,7 @@
 
 			.#{$var-name} {
 				#{map.get($v1, "property")}: var(#{$k1});
-				@if $transition-duration and $transition-timing-function {
+				@if $duration and $timing-function {
 					transition: var(--theme-transition);
 				}
 			}
