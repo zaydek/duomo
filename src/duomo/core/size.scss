@@ -51,7 +51,7 @@ $__opts: (
 		}
 		@each $k, $v in $breakpoint-map {
 			@media (min-width: #{helpers.px($v)}) {
-				.#{$k}#{helpers.escape(configuration.$separator)}container {
+				.#{helpers.escape($k)}#{helpers.escape(configuration.$separator)}container {
 					max-width: #{helpers.px($v)};
 				}
 			}
@@ -88,14 +88,6 @@ $__opts: (
 }
 
 @mixin min-height {
-	// // prettier-ignore
-	// @include helpers.generate-from-range(
-	// 	"min-h",
-	// 	(min-height),
-	// 	$range,
-	// 	$resolver,
-	// );
-
 	// prettier-ignore
 	@include helpers.generate-from-map(
 		"min-h",

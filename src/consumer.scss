@@ -1,18 +1,16 @@
-@use "duomo";
-
-// @use "duomo" as * with (
-// 	$separator: ".",
-// 	$xl: 1344,
-// 	$breakpoint-map: (
-// 		xs: 512,
-// 		sm: 640,
-// 		md: 768,
-// 		lg: 1024,
-// 		xl: 1280,
-// 		"2xl": 1280 + 64,
-// 	),
-// 	$opacity-range: (0.5)
-// );
+@use "duomo" as * with (
+	$separator: ".",
+	$xl: 1344,
+	$breakpoint-map: (
+		xs: 512,
+		sm: 640,
+		md: 768,
+		lg: 1024,
+		xl: 1280,
+		"2xl": 1280 + 64,
+	),
+	$opacity-range: (0.5)
+);
 
 // Exports:
 //
