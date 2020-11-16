@@ -1,5 +1,5 @@
 @use "duomo" as * with (
-	// $headless: true,
+	$headless: true,
 	$separator: ".",
 	$xl: 1344,
 	$breakpoint-map: (
@@ -12,6 +12,10 @@
 	),
 	$opacity-range: (0.5)
 );
+
+.font-sans {
+	font-family: font-family(sans-serif);
+}
 
 // Exports:
 //

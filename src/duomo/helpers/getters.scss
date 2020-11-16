@@ -11,10 +11,10 @@
 }
 
 // prettier-ignore
-@function font($key) {
+@function font-family($key) {
 	@return __getter(
 		"font",
-		configuration.$font-map,
+		configuration.$font-family-map,
 		$key,
 	);
 }
@@ -23,13 +23,13 @@
 @function color($key) {
 	@return __getter(
 		"color",
-		configuration.$color-map,
+		configuration.$extended-color-map,
 		$key,
 	);
 }
 
 // prettier-ignore
-@function shadow($key) {
+@function box-shadow($key) {
 	@return __getter(
 		"shadow",
 		configuration.$shadow-map,
