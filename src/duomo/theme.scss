@@ -38,6 +38,7 @@
 			}
 		}
 
+		// TOOD: Clean up if possible.
 		@each $k1, $v1 in $theme-map {
 			.#{string.slice($k1, string.length("--") + 1)} {
 				#{map.get($v1, "property")}: var(#{$k1});
@@ -48,17 +49,18 @@
 		}
 		// `on`:
 		@each $k1, $v1 in $theme-map {
-			.on#{configuration.$separator}#{string.slice($k1, string.length("--") + 1)}:hover,
-			.on#{configuration.$separator}#{string.slice($k1, string.length("--") + 1)}:focus,
-			.group:hover .group-on#{configuration.$separator}#{string.slice($k1, string.length("--") + 1)},
-			.group:focus .group-on#{configuration.$separator}#{string.slice($k1, string.length("--") + 1)} {
+			.on#{helpers.escape(configuration.$separator)}#{string.slice($k1, string.length("--") + 1)}:hover,
+			.on#{helpers.escape(configuration.$separator)}#{string.slice($k1, string.length("--") + 1)}:focus,
+			.group:hover .group-on#{helpers.escape(configuration.$separator)}#{string.slice($k1, string.length("--") + 1)},
+			.group:focus .group-on#{helpers.escape(configuration.$separator)}#{string.slice($k1, string.length("--") + 1)} {
 				#{map.get($v1, "property")}: var(#{$k1});
 			}
 		}
 		// `down`:
 		@each $k1, $v1 in $theme-map {
-			.down#{configuration.$separator}#{string.slice($k1, string.length("--") + 1)}:active,
-			.group:active .group-down#{configuration.$separator}#{string.slice($k1, string.length("--") + 1)} {
+			.down#{helpers.escape(configuration.$separator)}#{string.slice($k1, string.length("--") + 1)}:active,
+			.group:active
+				.group-down#{helpers.escape(configuration.$separator)}#{string.slice($k1, string.length("--") + 1)} {
 				#{map.get($v1, "property")}: var(#{$k1});
 			}
 		}

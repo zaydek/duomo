@@ -64,17 +64,17 @@
 	}
 	// `on`:
 	@each $v in (line-through, underline) {
-		#{$amp}on#{configuration.$separator}#{$v}:hover,
-		#{$amp}on#{configuration.$separator}#{$v}:focus,
-		.group:hover #{$amp}group-on#{configuration.$separator}#{$v},
-		.group:focus #{$amp}group-on#{configuration.$separator}#{$v} {
+		#{$amp}on#{helpers.escape(configuration.$separator)}#{$v}:hover,
+		#{$amp}on#{helpers.escape(configuration.$separator)}#{$v}:focus,
+		.group:hover #{$amp}group-on#{helpers.escape(configuration.$separator)}#{$v},
+		.group:focus #{$amp}group-on#{helpers.escape(configuration.$separator)}#{$v} {
 			text-decoration: #{$v};
 		}
 	}
 	// `down`:
 	@each $v in (line-through, underline) {
-		#{$amp}down#{configuration.$separator}#{$v}:active,
-		.group:active #{$amp}group-down#{configuration.$separator}#{$v} {
+		#{$amp}down#{helpers.escape(configuration.$separator)}#{$v}:active,
+		.group:active #{$amp}group-down#{helpers.escape(configuration.$separator)}#{$v} {
 			text-decoration: #{$v};
 		}
 	}
