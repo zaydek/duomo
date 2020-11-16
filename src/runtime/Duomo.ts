@@ -1,9 +1,7 @@
 const THEME_PREFERENCE_KEY = "duomo-theme-preference" as const
 
-export enum Mode {
-	development = "development",
-	production = "production",
-}
+// type Mode = "development" | "production" | "test"
+type Mode = typeof process.env.NODE_ENV
 
 interface IDuomo {
 	init(mode: Mode): () => void
@@ -11,26 +9,34 @@ interface IDuomo {
 	toggleDarkMode(): void
 }
 
-function localStorageThemePreference() {
-	return "themePreference" in localStorage && localStorage[THEME_PREFERENCE_KEY] === "dark"
+function localStoragePrefersDarkMode() {
+	// prettier-ignore
+	const ok = (
+		THEME_PREFERENCE_KEY in window.localStorage &&
+		window.localStorage[THEME_PREFERENCE_KEY] === "dark"
+	)
+	return ok
 }
-function operatingSystemThemePreference() {
-	return "matchMedia" in window && window.matchMedia("(prefers-color-scheme: dark)").matches
-}
-
-function recoverDarkMode() {
-	if (!localStorageThemePreference() && !operatingSystemThemePreference()) {
-		// No-op
-		return
-	}
-	document.body.classList.add("dark")
+function OSPrefersDarkMode() {
+	// prettier-ignore
+	const ok = (
+		"matchMedia" in window &&
+		window.matchMedia("(prefers-color-scheme: dark)").matches
+	)
+	return ok
 }
 
 const Duomo: IDuomo = {
 	init(mode: Mode) {
 		const deferers: Array<() => void> = []
 
-		recoverDarkMode()
+		console.log("[Duomo] init=true")
+
+		// NOTE: localStorage takes precedence.
+		if (localStoragePrefersDarkMode() || !OSPrefersDarkMode()) {
+			document.body.classList.add("dark")
+		}
+
 		if ("matchMedia" in window) {
 			// NOTE: Prefer `media.addListener` (vs. `media.addEventListener`).
 			//
@@ -51,10 +57,10 @@ const Duomo: IDuomo = {
 			deferers.push(() => media.removeListener(handleMedia))
 		}
 
-		if (mode === "development") {
+		if (mode !== "production") {
 			// Handler for dark mode:
 			const handleKeyDownDarkMode = (e: KeyboardEvent) => {
-				if (e.ctrlKey && (e.key.toLowerCase() === "d" || e.keyCode === 68)) {
+				if (!e.ctrlKey && (e.key.toLowerCase() === "d" || e.keyCode === 68)) {
 					Duomo.toggleDarkMode()
 				}
 			}
@@ -71,33 +77,40 @@ const Duomo: IDuomo = {
 			deferers.push(() => document.removeEventListener("keydown", handleKeyDownDebugMode))
 		}
 
-		return () => deferers.reverse().forEach(defer => defer())
+		return () => {
+			console.log("[Duomo] init=false")
+			deferers.reverse().forEach(defer => defer())
+		}
 	},
 	toggleDebugMode() {
 		const hasAttribute = document.body.hasAttribute("data-debug")
 		if (!hasAttribute) {
+			console.log("[Duomo] debugMode=on")
 			document.body.setAttribute("data-debug", "true")
 		} else {
+			console.log("[Duomo] debugMode=off")
 			document.body.removeAttribute("data-debug")
 		}
 	},
-	// TODO: Return a `clearTimeout` closure.
-	// TODO: Implement toggleMode(mode: string = "dark") { ... }
+	// TODO: `toggleDarkMode` is not currently cancelable. Should it be?
+	// TODO: Implement `toggleMode(mode: string = "dark")`.
 	toggleDarkMode() {
 		document.body.setAttribute("data-theme-effect", "true")
 		setTimeout(() => {
 			const hasAttribute = document.body.hasAttribute("data-theme")
 			if (!hasAttribute) {
+				console.log("[Duomo] darkMode=on")
 				document.body.setAttribute("data-theme", "dark")
-				localStorage.setAttribute(THEME_PREFERENCE_KEY, "dark")
+				window.localStorage.setItem(THEME_PREFERENCE_KEY, "dark")
 			} else {
+				console.log("[Duomo] darkMode=off")
 				document.body.removeAttribute("data-theme")
-				localStorage.setAttribute(THEME_PREFERENCE_KEY, "light")
+				window.localStorage.setItem(THEME_PREFERENCE_KEY, "light")
 			}
 			setTimeout(() => {
 				document.body.removeAttribute("data-theme-effect")
 			}, 300)
-		}, 50)
+		}, 25)
 	},
 }
 
