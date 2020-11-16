@@ -1,8 +1,8 @@
 // Ex:
 //
 // rem(16) -> 1rem
-export function rem(n: number): number | string {
-	const floored = Math.floor(n)
+export function rem(px: number): number | string {
+	const floored = Math.floor(px)
 	if (!floored) {
 		return 0
 	}
@@ -12,8 +12,8 @@ export function rem(n: number): number | string {
 // Ex:
 //
 // em(16) -> 1em
-export function em(n: number): number | string {
-	const floored = Math.floor(n)
+export function em(px: number): number | string {
+	const floored = Math.floor(px)
 	if (!floored) {
 		return 0
 	}
@@ -23,8 +23,8 @@ export function em(n: number): number | string {
 // Ex:
 //
 // px(16) -> 16px
-export function px(n: number): number | string {
-	const floored = Math.floor(n)
+export function px(px: number): number | string {
+	const floored = Math.floor(px)
 	if (!floored) {
 		return 0
 	}

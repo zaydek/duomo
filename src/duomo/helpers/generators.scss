@@ -32,7 +32,7 @@
 	}
 }
 
-@mixin generate-colors-from-map($shorthand, $prop, $map, $opacity-range) {
+@mixin generate-opaque-colors-from-map($shorthand, $prop, $map, $opacity-range) {
 	$amp: get-ampersand();
 
 	@each $k, $v in $map {

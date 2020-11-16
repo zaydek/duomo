@@ -31,7 +31,7 @@
 // TODO: Rename to `generate-opaque-colors-from-map`.
 @mixin border-color-from-map($map, $opacity-range) {
 	// prettier-ignore
-	@include helpers.generate-colors-from-map(
+	@include helpers.generate-opaque-colors-from-map(
 		"border",
 		border-color,
 		$map,
