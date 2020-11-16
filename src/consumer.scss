@@ -1,5 +1,5 @@
 @use "duomo" as * with (
-	$headless: true,
+	// $headless: true,
 	$separator: ".",
 	$xl: 1344,
 	$breakpoint-map: (
@@ -8,15 +8,15 @@
 		md: 768,
 		lg: 1024,
 		xl: 1280,
-		"2xl": 1280 + 64,
+		// "2xl": 1280 + 64,
 	),
 	$opacity-range: (0.5)
 );
 
-#{$theme-aware-selector} a {
-	top: 0;
-}
-
+// Exports:
+//
+// $headless
+// $separator
 // $negative-range
 // $standard-range
 // $font-size-range
@@ -25,11 +25,6 @@
 // $border-width-range
 // $border-radius-range
 // $z-index-range
-
-// Exports:
-//
-// $headless
-// $separator
 //
 // font() and $fonts ($sans-serif, $serif, ...)
 // color() and $colors ($blue-100, $blue-200, ...)
