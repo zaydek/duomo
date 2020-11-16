@@ -1,19 +1,10 @@
 /**
  * @jest-environment node
  */
-import sass from "sass"
-
-function sassify(data: string) {
-	const result = sass.renderSync({
-		indentType: "tab",
-		indentWidth: 1,
-		data,
-	})
-	return result.css.toString()
-}
+declare function sass(data: string): string
 
 test("escape: does not escape numbers", () => {
-	const result = sassify(`
+	const result = sass(`
 @use "sass:math";
 
 @use "src/duomo/helpers/escape" as *;
@@ -45,7 +36,7 @@ test("escape: does not escape numbers", () => {
 })
 
 test("escape: does escape `$separator`", () => {
-	const result = sassify(`
+	const result = sass(`
 @use "src/duomo/helpers/escape" as *;
 
 $separator: ":";
@@ -62,7 +53,7 @@ $separator: ":";
 })
 
 test("escape-breakpoint: handles `xl` and `2xl`", () => {
-	const result = sassify(`
+	const result = sass(`
 @use "src/duomo/helpers/escape" as *;
 
 .#{escape-breakpoint("xl")} {
