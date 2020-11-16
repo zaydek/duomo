@@ -1,8 +1,7 @@
-@use "meta";
+@use "preflight";
 
 @at-root {
-	/*! @zaydek/duomo | MIT License | https://github.com/zaydek/duomo */
 	/* purgecss start ignore */
-	@include meta.base;
+	@include preflight.base;
 	/* purgecss end ignore */
 }
