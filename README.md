@@ -58,6 +58,29 @@ function Component() {
 </html>
 ```
 
+## Rationale and Demos
+
+If you’re asking yourself **‘Why did you build this from scratch and how is this different from Tailwind CSS?’**, check out these demos for a primer. Note that these are impromptu demos.
+
+<table>
+  <tr>
+    <td>
+			<a href="https://youtube.com/watch?v=4PMPkLHD7Os" target="_blank">
+				<img src="https://raw.githubusercontent.com/zaydek/duomo/main/.github/youtube-cover.png">
+				<p><strong>Demo 1: Introducing Stacks</strong></p>
+			</a>
+    </td>
+    <td>
+			<a href="https://youtube.com/watch?v=vV-A3ywo6v8" target="_blank">
+				<img src="https://raw.githubusercontent.com/zaydek/duomo/main/.github/youtube-cover.png">
+				<p><strong>Demo 2: Introducing Theming</strong></p>
+			</a>
+    </td>
+  </tr>
+</table>
+
+<!--
+
 ## Table of Contents
 
 - [Stack-based layouts](#stack-based-layouts)
@@ -100,6 +123,8 @@ This is a microcosm of how Duomo works:
 	flex: 1 0 var(--space, 0);
 }
 ```
+
+-->
 
 <!--
 
@@ -239,6 +264,8 @@ This is how Duomo works. Duomo includes a CSS reset, debugger, and many utility 
 
 -->
 
+<!--
+
 - `hstack`s implements a horizontal stack. Think `flex-direction: row`.
 - `vstack`s implements a vertical stack. Think `flex-direction: column`.
 - `spacer`s implements direction-agnostic spacers. Think `flex: 1`.
@@ -256,6 +283,8 @@ TODO
 ## [Introspection](#introspection)
 
 TODO
+
+-->
 
 ## License
 
