@@ -10,13 +10,6 @@
 	@include preflight.reset;
 	@include preflight.debugger;
 	@include preflight.stagger;
-	// prettier-ignore
-	@include preflight.custom-props-from-maps(
-		(map: configuration.$font-family-map),
-		(map: configuration.$color-map),
-		(shorthand: "shadow", map: configuration.$shadow-map),
-		(map: configuration.$timing-function-map),
-	);
 	/* purgecss end ignore */
 }
 
