@@ -4,7 +4,9 @@
 	"main": "dist/index.css",
 	"license": "MIT",
 	"files": [
-		"dist/"
+		"dist/",
+		"src/duomo/**/*.{css,scss}",
+		"duomo.scss"
 	],
 	"scripts": {
 		"watch-consumer": "watch --interval 0.1 'yarn -s sass --load-path=node_modules/modern-normalize --no-charset src/consumer.scss dist/index.css' src",

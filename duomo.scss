@@ -1,0 +1,3 @@
+// For NPM consumers `@use "duomo"`.
+// Consumer must use `--load-path node_modules/@zaydek/duomo`.
+@forward "src/duomo";
