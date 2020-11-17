@@ -1,3 +1,3 @@
 module.exports = {
-	setupFiles: ["<rootDir>/src/setupFile.ts"],
+	setupFiles: ["<rootDir>/jest.setupFile.ts"],
 }
