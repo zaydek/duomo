@@ -1,14 +1,23 @@
 @use "sass:list";
+@use "sass:meta";
 
 @use "configuration";
 @use "core";
 @use "helpers";
 @use "preflight";
 
+@mixin reset {
+	@include meta.load-css("modern-normalize");
+	@include preflight.tailwind-base;
+	@include preflight.vendored-font-smoothing;
+}
+
 @mixin preflight {
 	/* purgecss start ignore */
-	@include preflight.base;
-	@include preflight.vendored-font-smoothing;
+	@include reset;
+	// prettier-ignore
+	@include preflight.debugger;
+	@include preflight.stagger;
 	// prettier-ignore
 	@include preflight.custom-props-from-maps(
 		(map: configuration.$font-family-map),
@@ -16,8 +25,6 @@
 		(shorthand: "shadow", map: configuration.$shadow-map),
 		(map: configuration.$timing-function-map),
 	);
-	@include preflight.stagger;
-	@include preflight.debugger;
 	/* purgecss end ignore */
 }
 
@@ -63,15 +70,15 @@ $__full-range: list.join(configuration.$negative-range, configuration.$standard-
 	@if not configuration.$headless {
 		/*! @zaydek/duomo | MIT License | https://github.com/zaydek/duomo */
 		@include preflight;
-		@include props;
-		@each $key, $value in configuration.$breakpoint-map {
-			@media (min-width: #{helpers.px($value)}) {
-				.#{helpers.escape-breakpoint($key)} {
-					@at-root {
-						@include props;
-					}
-				}
-			}
-		}
+		// @include props;
+		// @each $key, $value in configuration.$breakpoint-map {
+		// 	@media (min-width: #{helpers.px($value)}) {
+		// 		.#{helpers.escape-breakpoint($key)} {
+		// 			@at-root {
+		// 				@include props;
+		// 			}
+		// 		}
+		// 	}
+		// }
 	}
 }
