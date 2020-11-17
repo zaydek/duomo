@@ -1,13 +1,7 @@
 @use "preflight";
 
-@mixin reset {
-	@include meta.load-css("modern-normalize");
-	@include preflight.tailwind-base;
-	@include preflight.vendored-font-smoothing;
-}
-
 @at-root {
 	/* purgecss start ignore */
-	@include reset;
+	@include preflight.reset;
 	/* purgecss end ignore */
 }
