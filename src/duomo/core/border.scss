@@ -3,6 +3,12 @@
 // prettier-ignore
 @mixin border-width-from-range($range, $resolver) {
 	@include helpers.generate-from-range(
+		"border",
+		(border-width),
+		$range,
+		$resolver,
+	);
+	@include helpers.generate-from-range(
 		"border-t",
 		(border-top-width),
 		$range,
