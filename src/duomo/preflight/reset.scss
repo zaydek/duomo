@@ -1,10 +1,12 @@
 @use "sass:meta";
 
+@use "modern-normalize" as *;
 @use "tailwind-base" as *;
 @use "vendored-font-smoothing" as *;
 
 @mixin reset {
-	@include meta.load-css("modern-normalize");
+	// @include meta.load-css("modern-normalize");
+	@include modern-normalize;
 	@include tailwind-base;
 	@include vendored-font-smoothing;
 }
