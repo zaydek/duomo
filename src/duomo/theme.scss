@@ -54,7 +54,7 @@ $theme-aware-selector: "body:not([data-theme-effect=true])";
 			}
 		}
 
-		// `on` pseudo selector:
+		// `on`:
 		@each $k1, $v1 in $theme-map {
 			.on#{helpers.escape(configuration.$separator)}#{$var-name}:hover,
 			.on#{helpers.escape(configuration.$separator)}#{$var-name}:focus,
@@ -63,8 +63,7 @@ $theme-aware-selector: "body:not([data-theme-effect=true])";
 				#{map.get($v1, "property")}: var(#{$k1});
 			}
 		}
-
-		// `down` pseudo selector:
+		// `down`:
 		@each $k1, $v1 in $theme-map {
 			.down#{helpers.escape(configuration.$separator)}#{$var-name}:active,
 			.group:active .group-down#{helpers.escape(configuration.$separator)}#{$var-name} {
