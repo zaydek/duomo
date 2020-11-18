@@ -25,11 +25,12 @@
 		"baseUrl": "./",                      // Added
 		"esModuleInterop": true,
 		"skipLibCheck": true,
-		"forceConsistentCasingInFileNames": true
+		"forceConsistentCasingInFileNames": true,
 	},
 	"include": [
 		"src/**/*.ts",
 		"src/**/*.tsx",
+		"jest.setupFile.ts", // TODO: Remove??
 	],
 	"exclude": [
 		"src/**/*.test.*",
