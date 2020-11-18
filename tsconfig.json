@@ -29,11 +29,10 @@
 	},
 	"include": [
 		"src/**/*.ts",
-		"src/**/*.tsx",
-		"jest.setupFile.ts", // TODO: Remove??
+		"src/**/*.tsx", "src/jest.setupFile.ts", "index.ts",
 	],
 	"exclude": [
 		"src/**/*.test.*",
-		"src/**/setupFile.ts",
+		"src/**/jest.setupFile.ts",
 	],
 }
