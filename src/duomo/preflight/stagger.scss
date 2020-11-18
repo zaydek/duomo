@@ -1,3 +1,4 @@
+// TODO: Add `:not(.spacer)`?
 @mixin stagger {
 	[data-stagger] > [class]:nth-child(4n + 1),
 	[data-stagger-1] {
