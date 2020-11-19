@@ -1,5 +1,6 @@
 @forward "configuration";
 @forward "helpers";
+@forward "reset";
 @forward "theme";
 
 @use "builder"; // Do not `@forward`
