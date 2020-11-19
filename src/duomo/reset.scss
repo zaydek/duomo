@@ -5,7 +5,3 @@
 	@include preflight.reset;
 	/* purgecss end ignore */
 }
-
-@at-root {
-	@include reset;
-}

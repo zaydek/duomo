@@ -12,7 +12,7 @@
 		"watch-consumer": "watch --interval 0.1 'yarn -s sass --no-charset src/consumer.scss dist/index.css' src",
 		"watch-duomo": "watch --interval 0.1 'yarn -s sass --no-charset src/duomo/index.scss dist/index.css' src",
 		"build-duomo": "sass --no-charset src/duomo/index.scss dist/index.css",
-		"build-reset": "sass --no-charset src/duomo/reset.scss dist/reset.css",
+		"build-reset": "sass --no-charset src/duomo/standalone-reset.scss dist/reset.css",
 		"test": "jest",
 		"build": "rm -rf dist && yarn test && yarn tsc && yarn build-duomo && yarn build-reset",
 		"publish-dist-dry-run": "yarn build && npm publish --dry-run"
