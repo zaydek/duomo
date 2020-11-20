@@ -43,6 +43,7 @@ $__full-range: list.join($negative-range, $standard-range);
 	@include border-color-from-map($map: $color-map, $opacity-range: $opacity-range);
 	@include border-radius-from-range($range: $border-radius-range, $resolver: rem);
 	@include box-shadow-from-map($map: $shadow-map);
+	@include opacity-from-range($opacity-range: $opacity-range);
 	@include overflow;
 	@include z-index-from-range($range: $z-index-range);
 	@include pointer-events;
