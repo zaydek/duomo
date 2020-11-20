@@ -69,6 +69,10 @@
 		$range,
 		$resolver,
 	);
+	#{$amp}rounded-t-full {
+		border-top-left-radius: 9999px;
+		border-top-right-radius: 9999px;
+	}
 	@include helpers.generate-from-range(
 		"rounded-tr",
 		(border-top-right-radius),
@@ -81,12 +85,20 @@
 		$range,
 		$resolver,
 	);
+	#{$amp}rounded-l-full {
+		border-top-left-radius: 9999px;
+		border-bottom-left-radius: 9999px;
+	}
 	@include helpers.generate-from-range(
 		"rounded-r",
 		(border-top-right-radius, border-bottom-right-radius),
 		$range,
 		$resolver,
 	);
+	#{$amp}rounded-r-full {
+		border-top-right-radius: 9999px;
+		border-bottom-right-radius: 9999px;
+	}
 	@include helpers.generate-from-range(
 		"rounded-bl",
 		(border-bottom-left-radius),
@@ -99,6 +111,10 @@
 		$range,
 		$resolver,
 	);
+	#{$amp}rounded-b-full {
+		border-bottom-left-radius: 9999px;
+		border-bottom-right-radius: 9999px;
+	}
 	@include helpers.generate-from-range(
 		"rounded-br",
 		(border-bottom-right-radius),
