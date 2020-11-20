@@ -1,64 +1,64 @@
 @use "sass:list";
 
-@use "configuration";
-@use "core";
-@use "helpers";
-@use "preflight";
+@use "configuration" as *;
+@use "core" as *;
+@use "helpers" as *;
+@use "preflight" as *;
 
 @mixin preflight {
 	/* purgecss start ignore */
-	@include preflight.reset;
-	@include preflight.debugger;
-	@include preflight.stagger;
+	@include reset;
+	@include debugger;
+	@include stagger;
 	/* purgecss end ignore */
 }
 
 $__zero-range: (0);
-$__full-range: list.join(configuration.$negative-range, configuration.$standard-range);
+$__full-range: list.join($negative-range, $standard-range);
 
 @mixin props {
-	@include core.group;
-	@include core.display;
-	@include core.stack-from-range($range: configuration.$standard-range, $resolver: rem);
-	@include core.grid-from-range($range: configuration.$standard-range, $resolver: rem);
-	@include core.margin-from-range($range: $__full-range, $resolver: rem);
-	@include core.padding-from-range($range: configuration.$standard-range, $resolver: rem);
-	@include core.position-from-range($range: $__zero-range, $resolver: rem);
-	@include core.tooltip;
-	@include core.width-from-range($range: configuration.$standard-range, $resolver: rem);
-	@include core.max-width-from-breakpoint-map($breakpoint-map: configuration.$breakpoint-map);
-	@include core.container-from-breakpoint-map($breakpoint-map: configuration.$breakpoint-map);
-	@include core.height-from-range($range: configuration.$standard-range, $resolver: rem);
-	@include core.min-height;
-	@include core.whitespace;
-	@include core.text-align;
-	@include core.font-weight;
-	@include core.font-size-from-range($range: configuration.$font-size-range, $resolver: rem);
-	@include core.letter-spacing($range: configuration.$letter-spacing-range, $resolver: em);
-	@include core.line-height-from-range($range: configuration.$line-height-range);
-	@include core.text-decoration;
-	@include core.color-from-map($map: configuration.$color-map, $opacity-range: configuration.$opacity-range);
-	@include core.background-color-from-map($map: configuration.$color-map, $opacity-range: configuration.$opacity-range);
-	@include core.border-width-from-range($range: configuration.$border-width-range, $resolver: rem);
-	@include core.border-color-from-map($map: configuration.$color-map, $opacity-range: configuration.$opacity-range);
-	@include core.border-radius-from-range($range: configuration.$border-radius-range, $resolver: rem);
-	@include core.box-shadow-from-map($map: configuration.$shadow-map);
-	@include core.overflow;
-	@include core.z-index-from-range($range: configuration.$z-index-range);
-	@include core.pointer-events;
-	@include core.transition($default-duration: 300ms, $default-timing-function: configuration.$ease-out);
-	@include core.transition-duration-from-range($range: helpers.range(0, 1000, 100));
-	@include core.transition-timing-function-from-map($map: configuration.$timing-function-map);
+	@include group;
+	@include display;
+	@include stack-from-range($range: $standard-range, $resolver: rem);
+	@include grid-from-range($range: $standard-range, $resolver: rem);
+	@include margin-from-range($range: $__full-range, $resolver: rem);
+	@include padding-from-range($range: $standard-range, $resolver: rem);
+	@include position-from-range($range: $__zero-range, $resolver: rem);
+	@include tooltip;
+	@include width-from-range($range: $standard-range, $resolver: rem);
+	@include max-width-from-breakpoint-map($breakpoint-map: $breakpoint-map);
+	@include container-from-breakpoint-map($breakpoint-map: $breakpoint-map);
+	@include height-from-range($range: $standard-range, $resolver: rem);
+	@include min-height;
+	@include whitespace;
+	@include text-align;
+	@include font-weight;
+	@include font-size-from-range($range: $font-size-range, $resolver: rem);
+	@include letter-spacing($range: $letter-spacing-range, $resolver: em);
+	@include line-height-from-range($range: $line-height-range);
+	@include text-decoration;
+	@include color-from-map($map: $color-map, $opacity-range: $opacity-range);
+	@include background-color-from-map($map: $color-map, $opacity-range: $opacity-range);
+	@include border-width-from-range($range: $border-width-range, $resolver: rem);
+	@include border-color-from-map($map: $color-map, $opacity-range: $opacity-range);
+	@include border-radius-from-range($range: $border-radius-range, $resolver: rem);
+	@include box-shadow-from-map($map: $shadow-map);
+	@include overflow;
+	@include z-index-from-range($range: $z-index-range);
+	@include pointer-events;
+	@include transition($default-duration: 300ms, $default-timing-function: $ease-out);
+	@include transition-duration-from-range($range: range(0, 1000, 100));
+	@include transition-timing-function-from-map($map: $timing-function-map);
 }
 
 @at-root {
-	@if not configuration.$headless {
+	@if not $headless {
 		/*! @zaydek/duomo | MIT License | https://github.com/zaydek/duomo */
 		@include preflight;
 		@include props;
-		@each $key, $value in configuration.$breakpoint-map {
-			@media (min-width: #{helpers.px($value)}) {
-				.#{helpers.escape-breakpoint($key)} {
+		@each $k, $v in $breakpoint-map {
+			@media (min-width: px($v)) {
+				.#{escape-breakpoint($k)} {
 					@at-root {
 						@include props;
 					}
