@@ -1,0 +1,35 @@
+@use "../../helpers" as *;
+
+// prettier-ignore
+@mixin __impl($range, $resolver) {
+	@include generate-from-range(
+		"border",
+		(border-width),
+		$range,
+		$resolver,
+	);
+	@include generate-from-range(
+		"border-t",
+		(border-top-width),
+		$range,
+		$resolver,
+	);
+	@include generate-from-range(
+		"border-r",
+		(border-right-width),
+		$range,
+		$resolver,
+	);
+	@include generate-from-range(
+		"border-b",
+		(border-bottom-width),
+		$range,
+		$resolver,
+	);
+	@include generate-from-range(
+		"border-l",
+		(border-left-width),
+		$range,
+		$resolver,
+	);
+}

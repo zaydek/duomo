@@ -1,0 +1,76 @@
+@use "../../helpers" as *;
+
+@mixin __impl($shorthand, $props, $range, $resolver) {
+	$amp: get-ampersand();
+
+	// prettier-ignore
+	@include generate-from-range(
+		$shorthand,
+		$props,
+		$range,
+		$resolver,
+	);
+	#{$amp}#{$shorthand}-full {
+		@each $prop in $props {
+			#{$prop}: 9999px;
+		}
+	}
+}
+
+// prettier-ignore
+@mixin border-radius-from-range($range, $resolver) {
+	@include __impl(
+		"rounded",
+		(border-radius),
+		$range,
+		$resolver,
+	);
+	@include __impl(
+		"rounded-tl",
+		(border-top-left-radius),
+		$range,
+		$resolver,
+	);
+	@include __impl(
+		"rounded-t",
+		(border-top-left-radius, border-top-right-radius),
+		$range,
+		$resolver,
+	);
+	@include __impl(
+		"rounded-tr",
+		(border-top-right-radius),
+		$range,
+		$resolver,
+	);
+	@include __impl(
+		"rounded-l",
+		(border-top-left-radius, border-bottom-left-radius),
+		$range,
+		$resolver,
+	);
+	@include __impl(
+		"rounded-r",
+		(border-top-right-radius, border-bottom-right-radius),
+		$range,
+		$resolver,
+	);
+	@include __impl(
+		"rounded-bl",
+		(border-bottom-left-radius),
+		$range,
+		$resolver,
+	);
+	@include __impl(
+		"rounded-b",
+		(border-bottom-left-radius, border-bottom-right-radius),
+		$range,
+		$resolver,
+	);
+	@include __impl(
+		"rounded-br",
+		(border-bottom-right-radius),
+		$range,
+		$resolver,
+	);
+}
