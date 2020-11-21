@@ -4,13 +4,10 @@
 //
 // Ex:
 //
-// generate-range(0, 10, 1)
+// __range_impl(0, 10, 1)
 // -> (0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
 //
-@function generate-range($lower, $upper, $step: 1) {
-	@if $step == 0 {
-		@error "generate-range: `$step` must not be `0`";
-	}
+@function __range_impl($lower, $upper, $step: 1) {
 	$range: ();
 	@while ($upper < $lower and $lower > $upper) or ($upper > $lower and $lower < $upper) {
 		$range: list.append($range, $lower, comma);
@@ -23,17 +20,17 @@
 //
 // Ex:
 //
-// generate-meta-range((0, 10, 1), (10, 20, 2))
+// meta-range((0, 10, 1), (10, 20, 2))
 // -> ( 0,  1,  2,  3,  4,  5,  6,  7,  8,  9,
 //     10, 12, 14, 16, 18)
 //
-@function generate-meta-range($descs...) {
+@function meta-range($descs...) {
 	$meta-range: ();
 	@each $desc in $descs {
 		@if type-of($desc) == "number" {
 			$meta-range: list.join($meta-range, $desc);
 		} @else if type-of($desc) == "list" {
-			$meta-range: list.join($meta-range, generate-range(list.nth($desc, 1), list.nth($desc, 2), list.nth($desc, 3)));
+			$meta-range: list.join($meta-range, __range-impl(list.nth($desc, 1), list.nth($desc, 2), list.nth($desc, 3)));
 		}
 	}
 	@return $meta-range;

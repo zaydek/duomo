@@ -3,13 +3,13 @@
  */
 declare function sass(data: string): string
 
-test("generate-meta-range: negative-case", () => {
+test("meta-range: negative-case", () => {
 	const result = sass(`
 @use "sass:math";
 
-@use "src/duomo/configuration/generate-meta-range" as *;
+@use "src/duomo/configuration/meta-range" as *;
 
-$range: generate-meta-range(
+$range: meta-range(
 	(0, -10, -1),
 	-10,
 );
@@ -68,11 +68,11 @@ $range: generate-meta-range(
 `.trim())
 })
 
-test("generate-meta-range: positive-case", () => {
+test("meta-range: positive-case", () => {
 	const result = sass(`
-@use "src/duomo/configuration/generate-meta-range" as *;
+@use "src/duomo/configuration/meta-range" as *;
 
-$range: generate-meta-range(
+$range: meta-range(
 	(0, 10, 1),
 	10,
 );

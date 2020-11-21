@@ -17,18 +17,23 @@ $__zero-range: (0);
 $__full-range: list.join($negative-range, $standard-range);
 
 @mixin props {
+	// CHECKED
 	// @include group;
 	// @include display;
+
 	// @include stack-from-range($range: $standard-range, $resolver: rem);
 	// @include grid-from-range($range: $standard-range, $resolver: rem);
+
+	// CHECKED
 	// @include margin-from-range($range: $__full-range, $resolver: rem);
 	// @include padding-from-range($range: $standard-range, $resolver: rem);
 	// @include position-from-range($range: $__zero-range, $resolver: rem);
 	// @include tooltip;
-	@include width-from-range($range: $standard-range, $resolver: rem);
-	@include max-width-from-breakpoint-map($breakpoint-map: $breakpoint-map);
-	@include height-from-range($range: $standard-range, $resolver: rem);
-	@include min-height;
+	// @include width-from-range($range: $standard-range, $resolver: rem);
+	// @include max-width-from-breakpoint-map($breakpoint-map: $breakpoint-map);
+	// @include height-from-range($range: $standard-range, $resolver: rem);
+	// @include min-height;
+
 	// @include whitespace;
 	// @include text-align;
 	// @include font-weight;
@@ -44,7 +49,9 @@ $__full-range: list.join($negative-range, $standard-range);
 	// @include box-shadow-from-map($map: $shadow-map);
 	// @include opacity-from-range($opacity-range: $opacity-range);
 	// @include overflow;
-	// @include z-index-from-range($range: $z-index-range);
+
+	@include z-index-from-range($range: $z-index-range);
+
 	// @include pointer-events;
 	// @include transition($default-duration: 300ms, $default-timing-function: $ease-out);
 	// @include transition-duration-from-range($range: range(0, 1000, 100));
