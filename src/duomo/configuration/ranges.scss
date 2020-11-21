@@ -1,38 +1,37 @@
-//   0,   2,   4,   6,   8, //  +2
-//  10,  12,  14,  16,  18, //  +2
-//  20,  24,  28,  32,  36, //  +4
-//  40,  48,  56,  64,  72, //  +8
-//  80,  96, 112, 128, 144, // +16
-// 160, 192, 224, 256, 288, // +32
-// 320,                     // +64
+@use "generate-meta-range" as *;
 
 // prettier-ignore
-$negative-range: (
-	        -1,   -2,   -4,   -6,   -8, // Removes 0, adds -1
-	 -10,  -11,  -12,  -13,  -14,  -15,  -16,  -17,  -18,  -19, // Adds -11, -13, -15, -17, -19
-	 -20,  -24,  -28,  -32,  -36,
-	 -40,  -48,  -56,  -64,  -72,
-	 -80,  -96, -112, -128, -144,
-	-160, -192, -224, -256, -288,
+$negative-range: generate-meta-range(
+	(  -1,  -10,  -1),
+	( -10,  -20,  -2),
+	( -20,  -40,  -4),
+	( -40,  -80,  -8),
+	( -80, -160, -16),
+	(-160, -320, -32),
+
 	-320,
 ) !default;
 
 // prettier-ignore
-$standard-range: (
-	  0,   1,   2,   4,   6,   8, // Adds 1
-	 10,  11,  12,  13,  14,  15,  16,  17,  18,  19, // Adds 11, 13, 15, 17, 19
-	 20,  24,  28,  32,  36,
-	 40,  48,  56,  64,  72,
-	 80,  96, 112, 128, 144,
-	160, 192, 224, 256, 288,
+$standard-range: generate-meta-range(
+	(  0,   10,  1),
+	( 10,   20,  2),
+	( 20,   40,  4),
+	( 40,   64,  8),
+	( 80,  160, 16),
+	(160,  320, 32),
+
 	320,
 ) !default;
 
 // prettier-ignore
-$font-size-range: (
-	 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, // Adds 11, 13, 15, 17, 19
-	 20, 24, 28, 32, 36,
-	 40, 48, 56, 64,
+$font-size-range: generate-meta-range(
+	( 0, 10, 1),
+	(10, 20, 2),
+	(20, 40, 4),
+	(40, 64, 8),
+
+	64,
 ) !default;
 
 // prettier-ignore
@@ -46,47 +45,17 @@ $letter-spacing-range: (
 	 0.025,
 	 0.05,
 	 0.1,
-);
-
-// prettier-ignore
-$line-height-range: (
-	1,
-	1.05,
-	1.1,
-	1.15,
-	1.2,
-	1.25,
-	1.3,
-	1.35,
-	1.4,
-	1.45,
-	1.5,
-	1.55,
-	1.6,
-	1.65,
-	1.7,
-	1.75,
-	1.8,
-	1.85,
-	1.9,
-	1.95,
-	2,
 ) !default;
 
 // prettier-ignore
-$opacity-range: (
-	0,
-	0.05,
-	0.1,
-	0.15,
-	0.2,
-	0.25,
-	1 - 0.25,
-	1 - 0.2,
-	1 - 0.15,
-	1 - 0.1,
-	1 - 0.05,
-	1 - 0,
+$line-height-range: generate-range(1, 2, 0.5) !default;
+
+// prettier-ignore
+$opacity-range: generate-meta-range(
+	(0, 0.25, 0.05),
+	(0.75, 1, 0.05),
+
+	1,
 ) !default;
 
 // prettier-ignore
@@ -100,19 +69,13 @@ $border-width-range: (
 ) !default;
 
 // prettier-ignore
-$border-radius-range: (
-	  0,  2,  4,  6,  8,
-	 10, 12, 14, 16, 18,
-	 20, 24, 28, 32,
+$border-radius-range: generate-meta-range(
+	( 0, 10, 1),
+	(10, 20, 2),
+	(20, 32, 4),
+
+	32,
 ) !default;
 
 // prettier-ignore
-$z-index-range: (
-	-10,
-	  0,
-	 10,
-	 20,
-	 30,
-	 40,
-	 50,
-) !default;
+$z-index-range: generate-range(-10, 50, 10) !default;
