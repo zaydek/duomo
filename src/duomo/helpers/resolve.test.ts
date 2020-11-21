@@ -8,16 +8,16 @@ test("integration", () => {
 @use "src/duomo/helpers/resolve" as *;
 
 .m-4 {
-	margin: #{resolve(4, none)};
+	margin: resolve(4, none);
 }
 .m-4-rem {
-	margin: #{resolve(4, rem)};
+	margin: resolve(4, rem);
 }
 .m-4-em {
-	margin: #{resolve(4, em)};
+	margin: resolve(4, em);
 }
 .m-4-px {
-	margin: #{resolve(4, px)};
+	margin: resolve(4, px);
 }
 `)
 	// prettier-ignore

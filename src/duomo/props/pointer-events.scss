@@ -1,7 +1,7 @@
-@use "../helpers";
+@use "../helpers" as *;
 
 @mixin pointer-events {
-	$amp: helpers.get-ampersand();
+	$amp: get-ampersand();
 
 	#{$amp}pointer-events-none {
 		pointer-events: none;

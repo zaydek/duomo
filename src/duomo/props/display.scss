@@ -3,9 +3,10 @@
 @mixin display {
 	$amp: get-ampersand();
 
-	@each $k, $v in (block: block, hidden: none) {
-		#{$amp}#{$k} {
-			display: $v;
-		}
+	#{$amp}block {
+		display: block;
+	}
+	#{$amp}hidden {
+		display: hidden;
 	}
 }

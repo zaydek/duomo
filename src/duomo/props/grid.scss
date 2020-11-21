@@ -1,7 +1,7 @@
-@use "../helpers";
+@use "../helpers" as *;
 
 @mixin grid-from-range($range, $resolver) {
-	$amp: helpers.get-ampersand();
+	$amp: get-ampersand();
 
 	#{$amp}grid {
 		display: grid;
@@ -9,28 +9,28 @@
 
 	@for $x from 0 through 12 {
 		#{$amp}grid-cols-#{$x} {
-			grid-template-columns: repeat(#{$x}, minmax(0, 1fr));
+			grid-template-columns: repeat($x, minmax(0, 1fr));
 		}
 	}
 	@for $x from 0 through 12 {
 		#{$amp}grid-rows-#{$x} {
-			grid-template-rows: repeat(#{$x}, minmax(0, 1fr));
+			grid-template-rows: repeat($x, minmax(0, 1fr));
 		}
 	}
 
 	@each $v in $range {
 		#{$amp}gap-#{$v} {
-			gap: #{helpers.resolve($v, $resolver)};
+			gap: resolve($v, $resolver);
 		}
 	}
 	@each $v in $range {
 		#{$amp}gap-x-#{$v} {
-			column-gap: #{helpers.resolve($v, $resolver)};
+			column-gap: resolve($v, $resolver);
 		}
 	}
 	@each $v in $range {
 		#{$amp}gap-y-#{$v} {
-			row-gap: #{helpers.resolve($v, $resolver)};
+			row-gap: resolve($v, $resolver);
 		}
 	}
 }

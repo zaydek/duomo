@@ -1,7 +1,7 @@
-@use "../helpers";
+@use "../helpers" as *;
 
 @mixin __hstack($range, $reoslver) {
-	$amp: helpers.get-ampersand();
+	$amp: get-ampersand();
 
 	@if not & {
 		.hstack > * {
@@ -24,7 +24,7 @@
 }
 
 @mixin __vstack($range, $reoslver) {
-	$amp: helpers.get-ampersand();
+	$amp: get-ampersand();
 
 	@if not & {
 		.vstack > * {
@@ -47,7 +47,7 @@
 }
 
 @mixin stack-from-range($range, $resolver) {
-	$amp: helpers.get-ampersand();
+	$amp: get-ampersand();
 
 	@include __hstack($range, $resolver);
 	@include __vstack($range, $resolver);
@@ -80,14 +80,14 @@
 
 	@each $v in $range {
 		#{$amp}space-#{$v} > * {
-			--space: #{helpers.resolve($v, $resolver)};
+			--space: #{resolve($v, $resolver)};
 		}
 	}
 
 	@for $v from -1 through 12 {
-		$sign: helpers.safe-negative-sign($v);
-		#{$amp}#{$sign}order-#{helpers.safe-abs($v)} {
-			order: #{$v};
+		$sign: safe-negative-sign($v);
+		#{$amp}#{$sign}order-#{safe-abs($v)} {
+			order: $v;
 		}
 	}
 }

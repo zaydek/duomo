@@ -1,11 +1,11 @@
-@use "../configuration";
-@use "../helpers";
+@use "../configuration" as *;
+@use "../helpers" as *;
 
 @mixin opacity-from-range($opacity-range: $opacity-range) {
-	$amp: helpers.get-ampersand();
+	$amp: get-ampersand();
 
 	@each $v in $opacity-range {
-		#{$amp}opacity-#{helpers.escape($v * 100)} {
+		#{$amp}opacity-#{escape($v * 100)} {
 			opacity: #{$v};
 		}
 	}
@@ -13,17 +13,17 @@
 	@if not & {
 		// `on`:
 		@each $v in $opacity-range {
-			#{$amp}on#{helpers.escape(configuration.$separator)}opacity-#{helpers.escape($v * 100)}:hover,
-			#{$amp}on#{helpers.escape(configuration.$separator)}opacity-#{helpers.escape($v * 100)}:focus,
-			.group:hover #{$amp}group-on#{helpers.escape(configuration.$separator)}opacity-#{helpers.escape($v * 100)},
-			.group:focus #{$amp}group-on#{helpers.escape(configuration.$separator)}opacity-#{helpers.escape($v * 100)} {
+			#{$amp}on#{escape($separator)}opacity-#{escape($v * 100)}:hover,
+			#{$amp}on#{escape($separator)}opacity-#{escape($v * 100)}:focus,
+			.group:hover #{$amp}group-on#{escape($separator)}opacity-#{escape($v * 100)},
+			.group:focus #{$amp}group-on#{escape($separator)}opacity-#{escape($v * 100)} {
 				opacity: #{$v};
 			}
 		}
 		// `down`:
 		@each $v in $opacity-range {
-			#{$amp}down#{helpers.escape(configuration.$separator)}opacity-#{helpers.escape($v * 100)}:active,
-			.group:active #{$amp}group-down#{helpers.escape(configuration.$separator)}opacity-#{helpers.escape($v * 100)} {
+			#{$amp}down#{escape($separator)}opacity-#{escape($v * 100)}:active,
+			.group:active #{$amp}group-down#{escape($separator)}opacity-#{escape($v * 100)} {
 				opacity: #{$v};
 			}
 		}

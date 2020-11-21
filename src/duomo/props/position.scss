@@ -1,10 +1,10 @@
-@use "../helpers";
+@use "../helpers" as *;
 
 @mixin __impl($shorthand, $props, $range, $resolver) {
-	$amp: helpers.get-ampersand();
+	$amp: get-ampersand();
 
 	// prettier-ignore
-	@include helpers.generate-from-range(
+	@include generate-from-range(
 		$shorthand,
 		$props,
 		$range,
@@ -22,11 +22,11 @@
 
 // prettier-ignore
 @mixin position-from-range($range, $resolver) {
-	$amp: helpers.get-ampersand();
+	$amp: get-ampersand();
 
-	@each $position in static, relative, absolute, fixed, sticky {
-		#{$amp}#{$position} {
-			position: #{$position};
+	@each $v in static, relative, absolute, fixed, sticky {
+		#{$amp}#{$v} {
+			position: $v;
 		}
 	}
 

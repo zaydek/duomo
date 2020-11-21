@@ -1,8 +1,8 @@
-@use "../helpers";
+@use "../helpers" as *;
 
 @mixin background-color-from-map($map, $opacity-range) {
 	// prettier-ignore
-	@include helpers.generate-opaque-colors-from-map(
+	@include generate-opaque-colors-from-map(
 		"bg",
 		background-color,
 		$map,

@@ -1,10 +1,10 @@
 @use "sass:string";
 
-@use "../configuration";
-@use "../helpers";
+@use "../configuration" as *;
+@use "../helpers" as *;
 
 @mixin whitespace {
-	$amp: helpers.get-ampersand();
+	$amp: get-ampersand();
 
 	// Text does not wrap.
 	#{$amp}whitespace-pre {
@@ -17,7 +17,7 @@
 }
 
 @mixin text-align {
-	$amp: helpers.get-ampersand();
+	$amp: get-ampersand();
 
 	#{$amp}text-center {
 		text-align: center;
@@ -25,7 +25,7 @@
 }
 
 @mixin font-weight {
-	$amp: helpers.get-ampersand();
+	$amp: get-ampersand();
 
 	@each $v in (100, 200, 300, 400, 500, 600, 700, 800, 900) {
 		#{$amp}font-#{$v} {
@@ -36,7 +36,7 @@
 
 @mixin font-size-from-range($range, $resolver) {
 	// prettier-ignore
-	@include helpers.generate-from-range(
+	@include generate-from-range(
 		"text",
 		(font-size),
 		$range,
@@ -45,12 +45,12 @@
 }
 
 @mixin letter-spacing($range, $resolver) {
-	$amp: helpers.get-ampersand();
+	$amp: get-ampersand();
 
 	// NOTE: Do not use a generator because `$range` describes `%` not `px`.
 	@each $v in $range {
-		$sign: helpers.safe-negative-sign($v);
-		#{$amp}#{$sign}tracking-#{helpers.escape(helpers.safe-abs($v * 100))} {
+		$sign: safe-negative-sign($v);
+		#{$amp}#{$sign}tracking-#{escape(safe-abs($v * 100))} {
 			letter-spacing: #{if($v == 0, 0, $v + em)};
 		}
 	}
@@ -58,7 +58,7 @@
 
 @mixin line-height-from-range($range) {
 	// prettier-ignore
-	@include helpers.generate-from-range(
+	@include generate-from-range(
 		"leading",
 		(line-height),
 		$range,
@@ -67,7 +67,7 @@
 }
 
 @mixin text-decoration {
-	$amp: helpers.get-ampersand();
+	$amp: get-ampersand();
 
 	@each $v in (line-through, underline) {
 		#{$amp}#{$v} {
@@ -78,17 +78,17 @@
 	@if not & {
 		// `on`:
 		@each $v in (line-through, underline) {
-			#{$amp}on#{helpers.escape(configuration.$separator)}#{$v}:hover,
-			#{$amp}on#{helpers.escape(configuration.$separator)}#{$v}:focus,
-			.group:hover #{$amp}group-on#{helpers.escape(configuration.$separator)}#{$v},
-			.group:focus #{$amp}group-on#{helpers.escape(configuration.$separator)}#{$v} {
+			#{$amp}on#{escape($separator)}#{$v}:hover,
+			#{$amp}on#{escape($separator)}#{$v}:focus,
+			.group:hover #{$amp}group-on#{escape($separator)}#{$v},
+			.group:focus #{$amp}group-on#{escape($separator)}#{$v} {
 				text-decoration: #{$v};
 			}
 		}
 		// `down`:
 		@each $v in (line-through, underline) {
-			#{$amp}down#{helpers.escape(configuration.$separator)}#{$v}:active,
-			.group:active #{$amp}group-down#{helpers.escape(configuration.$separator)}#{$v} {
+			#{$amp}down#{escape($separator)}#{$v}:active,
+			.group:active #{$amp}group-down#{escape($separator)}#{$v} {
 				text-decoration: #{$v};
 			}
 		}
