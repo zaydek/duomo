@@ -27,7 +27,7 @@
 @mixin font-weight {
 	$amp: helpers.get-ampersand();
 
-	@each $v in helpers.range(100, 900, 100) {
+	@each $v in (100, 200, 300, 400, 500, 600, 700, 800, 900) {
 		#{$amp}font-#{$v} {
 			font-weight: #{$v};
 		}

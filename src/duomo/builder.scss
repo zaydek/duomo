@@ -47,7 +47,8 @@ $__full-range: list.join($negative-range, $standard-range);
 	@include z-index-from-range($range: $z-index-range);
 	@include pointer-events;
 	@include transition($default-duration: 300ms, $default-timing-function: $ease-out);
-	@include transition-duration-from-range($range: range(0, 1000, 100));
+	// prettier-ignore
+	@include transition-duration-from-range($range: (0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000));
 	@include transition-timing-function-from-map($map: $timing-map);
 }
 
