@@ -9,10 +9,10 @@
 		"duomo.scss"
 	],
 	"scripts": {
-		"watch-consumer": "sass --watch --no-charset src/consumer.scss dist/index.css",
-		"watch": "sass --watch --no-charset src/duomo/index.scss dist/index.css",
+		"watch-consumer": "sass --watch --no-charset --no-source-map src/consumer.scss dist/index.css",
+		"watch": "sass --watch --no-charset --no-source-map src/duomo/index.scss dist/index.css",
 		"test": "jest",
-		"build": "rm -rf dist && yarn test && yarn tsc && yarn sass --no-charset src/duomo/index.scss dist/index.css && yarn sass --no-charset src/duomo/standalone-reset.scss dist/reset.css",
+		"build": "rm -rf dist && yarn test && yarn tsc && yarn sass --no-charset --no-source-map src/duomo/index.scss dist/index.css && yarn sass --no-charset --no-source-map src/duomo/standalone-reset.scss dist/reset.css",
 		"publish-dist-dry-run": "yarn build && npm publish --dry-run"
 	},
 	"devDependencies": {
