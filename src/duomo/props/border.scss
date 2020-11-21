@@ -1,32 +1,32 @@
-@use "../helpers";
+@use "../helpers" as *;
 
 // prettier-ignore
 @mixin border-width-from-range($range, $resolver) {
-	@include helpers.generate-from-range(
+	@include generate-from-range(
 		"border",
 		(border-width),
 		$range,
 		$resolver,
 	);
-	@include helpers.generate-from-range(
+	@include generate-from-range(
 		"border-t",
 		(border-top-width),
 		$range,
 		$resolver,
 	);
-	@include helpers.generate-from-range(
+	@include generate-from-range(
 		"border-r",
 		(border-right-width),
 		$range,
 		$resolver,
 	);
-	@include helpers.generate-from-range(
+	@include generate-from-range(
 		"border-b",
 		(border-bottom-width),
 		$range,
 		$resolver,
 	);
-	@include helpers.generate-from-range(
+	@include generate-from-range(
 		"border-l",
 		(border-left-width),
 		$range,
@@ -36,7 +36,7 @@
 
 @mixin border-color-from-map($map, $opacity-range) {
 	// prettier-ignore
-	@include helpers.generate-opaque-colors-from-map(
+	@include generate-opaque-colors-from-map(
 		"border",
 		border-color,
 		$map,
@@ -44,78 +44,74 @@
 	);
 }
 
+@mixin __border-radius-impl($shorthand, $props, $range, $resolver) {
+	$amp: get-ampersand();
+
+	// prettier-ignore
+	@include generate-from-range(
+		$shorthand,
+		$props,
+		$range,
+		$resolver,
+	);
+	#{$amp}#{$shorthand}-full {
+		@each $prop in $props {
+			#{$prop}: 9999px;
+		}
+	}
+}
+
 // prettier-ignore
 @mixin border-radius-from-range($range, $resolver) {
-	$amp: helpers.get-ampersand();
-
-	@include helpers.generate-from-range(
+	@include __border-radius-impl(
 		"rounded",
 		(border-radius),
 		$range,
 		$resolver,
 	);
-	#{$amp}rounded-full {
-		border-radius: 9999px;
-	}
-	@include helpers.generate-from-range(
+	@include __border-radius-impl(
 		"rounded-tl",
 		(border-top-left-radius),
 		$range,
 		$resolver,
 	);
-	@include helpers.generate-from-range(
+	@include __border-radius-impl(
 		"rounded-t",
 		(border-top-left-radius, border-top-right-radius),
 		$range,
 		$resolver,
 	);
-	#{$amp}rounded-t-full {
-		border-top-left-radius: 9999px;
-		border-top-right-radius: 9999px;
-	}
-	@include helpers.generate-from-range(
+	@include __border-radius-impl(
 		"rounded-tr",
 		(border-top-right-radius),
 		$range,
 		$resolver,
 	);
-	@include helpers.generate-from-range(
+	@include __border-radius-impl(
 		"rounded-l",
 		(border-top-left-radius, border-bottom-left-radius),
 		$range,
 		$resolver,
 	);
-	#{$amp}rounded-l-full {
-		border-top-left-radius: 9999px;
-		border-bottom-left-radius: 9999px;
-	}
-	@include helpers.generate-from-range(
+	@include __border-radius-impl(
 		"rounded-r",
 		(border-top-right-radius, border-bottom-right-radius),
 		$range,
 		$resolver,
 	);
-	#{$amp}rounded-r-full {
-		border-top-right-radius: 9999px;
-		border-bottom-right-radius: 9999px;
-	}
-	@include helpers.generate-from-range(
+	@include __border-radius-impl(
 		"rounded-bl",
 		(border-bottom-left-radius),
 		$range,
 		$resolver,
 	);
-	@include helpers.generate-from-range(
+	@include __border-radius-impl(
 		"rounded-b",
 		(border-bottom-left-radius, border-bottom-right-radius),
 		$range,
 		$resolver,
 	);
-	#{$amp}rounded-b-full {
-		border-bottom-left-radius: 9999px;
-		border-bottom-right-radius: 9999px;
-	}
-	@include helpers.generate-from-range(
+	@include __border-radius-impl(
 		"rounded-br",
 		(border-bottom-right-radius),
 		$range,

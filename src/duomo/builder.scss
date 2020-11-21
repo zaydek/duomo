@@ -1,9 +1,9 @@
 @use "sass:list";
 
 @use "configuration" as *;
-@use "core" as *;
 @use "helpers" as *;
 @use "preflight" as *;
+@use "props" as *;
 
 @mixin preflight {
 	/* purgecss start ignore */
@@ -16,15 +16,15 @@
 $__zero-range: (0);
 $__full-range: list.join($negative-range, $standard-range);
 
-@mixin props {
-	// CHECKED
+@mixin duomo {
+	// OK
 	// @include group;
 	// @include display;
 
 	// @include stack-from-range($range: $standard-range, $resolver: rem);
 	// @include grid-from-range($range: $standard-range, $resolver: rem);
 
-	// CHECKED
+	// OK
 	// @include margin-from-range($range: $__full-range, $resolver: rem);
 	// @include padding-from-range($range: $standard-range, $resolver: rem);
 	// @include position-from-range($range: $__zero-range, $resolver: rem);
@@ -45,13 +45,18 @@ $__full-range: list.join($negative-range, $standard-range);
 	// @include background-color-from-map($map: $color-map, $opacity-range: $opacity-range);
 	// @include border-width-from-range($range: $border-width-range, $resolver: rem);
 	// @include border-color-from-map($map: $color-map, $opacity-range: $opacity-range);
-	// @include border-radius-from-range($range: $border-radius-range, $resolver: rem);
+
+	@include border-radius-from-range($range: $border-radius-range, $resolver: rem);
+
 	// @include box-shadow-from-map($map: $shadow-map);
+
+	// TODO
 	// @include opacity-from-range($opacity-range: $opacity-range);
+
 	// @include overflow;
+	// @include z-index-from-range($range: $z-index-range);
 
-	@include z-index-from-range($range: $z-index-range);
-
+	// CHECK
 	// @include pointer-events;
 	// @include transition($default-duration: 300ms, $default-timing-function: $ease-out);
 	// @include transition-duration-from-range($range: range(0, 1000, 100));
@@ -62,12 +67,12 @@ $__full-range: list.join($negative-range, $standard-range);
 	@if not $headless {
 		// /*! @zaydek/duomo | MIT License | https://github.com/zaydek/duomo */
 		// @include preflight;
-		@include props;
+		@include duomo;
 		// @each $k, $v in $breakpoint-map {
 		// 	@media (min-width: px($v)) {
 		// 		.#{escape-media-key($k)} {
 		// 			@at-root {
-		// 				@include props;
+		// 				@include duomo;
 		// 			}
 		// 		}
 		// 	}
