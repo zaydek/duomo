@@ -49,9 +49,9 @@ $letter-spacing-range: (
 
 // prettier-ignore
 $line-height-range: meta-range(
-	(1, 2, 0.5),
+	(1, 2, 0.05),
 
-	1,
+	2,
 ) !default;
 
 // prettier-ignore
