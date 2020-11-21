@@ -1,11 +1,11 @@
-@use "../helpers";
+@use "../helpers" as *;
 
 @mixin display {
-	$amp: helpers.get-ampersand();
+	$amp: get-ampersand();
 
-	@each $k, $v in (hidden: none, block: block) {
+	@each $k, $v in (block: block, hidden: none) {
 		#{$amp}#{$k} {
-			display: #{$v};
+			display: $v;
 		}
 	}
 }
