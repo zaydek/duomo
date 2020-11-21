@@ -59,7 +59,7 @@ $__full-range: list.join($negative-range, $standard-range);
 		@include props;
 		@each $k, $v in $breakpoint-map {
 			@media (min-width: px($v)) {
-				.#{escape-breakpoint($k)} {
+				.#{escape-media-key($k)} {
 					@at-root {
 						@include props;
 					}

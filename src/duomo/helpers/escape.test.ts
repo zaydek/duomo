@@ -52,14 +52,14 @@ $separator: ":";
 `.trim())
 })
 
-test("escape-breakpoint: does not escape `xl` but escapes `2xl`", () => {
+test("escape-media-key: does not escape `xl` but escapes `2xl`", () => {
 	const result = sass(`
 @use "src/duomo/helpers/escape" as *;
 
-.#{escape-breakpoint("xl")} {
+.#{escape-media-key("xl")} {
 	/**/
 }
-.#{escape-breakpoint("2xl")} {
+.#{escape-media-key("2xl")} {
 	/**/
 }
 `)

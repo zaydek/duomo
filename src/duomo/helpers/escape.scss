@@ -41,7 +41,6 @@ $__escape-chars: (
 	"\~",
 );
 
-// Escapes ASCII punctuation characters.
 @function escape($any) {
 	$str: "" + $any;
 	$escaped: "";
@@ -56,8 +55,7 @@ $__escape-chars: (
 	@return $escaped;
 }
 
-// Escapes breakpoint keys and ASCII punctuation characters.
-@function escape-breakpoint($any) {
+@function escape-media-key($any) {
 	$str: "" + $any;
 	$escaped: "";
 	@for $x from 1 through string.length($str) {
