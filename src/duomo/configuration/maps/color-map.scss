@@ -1,6 +1,6 @@
 // https://github.com/tailwindlabs/tailwindcss/pull/2623
 $transparent: transparent !default;
-$currentColor: currentColor !default;
+$current: currentColor !default;
 $black: #000 !default;
 $white: #fff !default;
 $rose-50: #fff1f2 !default;
@@ -226,7 +226,7 @@ $blue-gray-900: #0f172a !default;
 
 $extended-color-map: (
 	transparent: $transparent,
-	current: $currentColor,
+	current: $current,
 	black: $black,
 	white: $white,
 	rose-50: $rose-50,
@@ -453,7 +453,7 @@ $extended-color-map: (
 
 $color-map: (
 	transparent: $transparent,
-	current: $currentColor,
+	current: $current,
 	black: $black,
 	white: $white,
 	gray-50: $cool-gray-50,

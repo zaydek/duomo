@@ -9,7 +9,7 @@ test("integration", () => {
 
 $color-map: (
 	transparent: transparent,
-	currentColor: currentColor,
+	current: currentColor,
 	red: #f00,
 	green: #0f0,
 	blue: #00f,
@@ -31,7 +31,7 @@ $color-map: (
 	color: transparent;
 }
 
-.text-currentColor {
+.text-current {
 	--text-opacity: 1;
 	color: currentColor;
 }

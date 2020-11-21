@@ -38,9 +38,9 @@
 	@each $k, $v in $map {
 		#{$amp}#{$shorthand}-#{escape($k)} {
 			// NOTE: Keys must be unquoted (for test).
-			@if $k == transparent or $k == current or $k == currentColor {
+			@if $k == transparent or $k == current {
 				--#{$shorthand}-opacity: 1;
-				color: #{$v};
+				color: $v;
 			} @else {
 				--#{$shorthand}-opacity: 1;
 				#{$prop}: $v;

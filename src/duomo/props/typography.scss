@@ -1,16 +1,12 @@
-@use "sass:string";
-
 @use "../configuration" as *;
 @use "../helpers" as *;
 
 @mixin whitespace {
 	$amp: get-ampersand();
 
-	// Text does not wrap.
 	#{$amp}whitespace-pre {
 		white-space: pre;
 	}
-	// Text wraps.
 	#{$amp}whitespace-pre-wrap {
 		white-space: pre-wrap;
 	}
@@ -29,7 +25,7 @@
 
 	@each $v in (100, 200, 300, 400, 500, 600, 700, 800, 900) {
 		#{$amp}font-#{$v} {
-			font-weight: #{$v};
+			font-weight: $v;
 		}
 	}
 }
@@ -51,7 +47,7 @@
 	@each $v in $range {
 		$sign: safe-negative-sign($v);
 		#{$amp}#{$sign}tracking-#{escape(safe-abs($v * 100))} {
-			letter-spacing: #{if($v == 0, 0, $v + em)};
+			letter-spacing: if($v == 0, 0, $v + em);
 		}
 	}
 }
@@ -71,7 +67,7 @@
 
 	@each $v in (line-through, underline) {
 		#{$amp}#{$v} {
-			text-decoration: #{$v};
+			text-decoration: $v;
 		}
 	}
 
@@ -82,14 +78,14 @@
 			#{$amp}on#{escape($separator)}#{$v}:focus,
 			.group:hover #{$amp}group-on#{escape($separator)}#{$v},
 			.group:focus #{$amp}group-on#{escape($separator)}#{$v} {
-				text-decoration: #{$v};
+				text-decoration: $v;
 			}
 		}
 		// `down`:
 		@each $v in (line-through, underline) {
 			#{$amp}down#{escape($separator)}#{$v}:active,
 			.group:active #{$amp}group-down#{escape($separator)}#{$v} {
-				text-decoration: #{$v};
+				text-decoration: $v;
 			}
 		}
 	}

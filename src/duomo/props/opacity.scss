@@ -6,7 +6,7 @@
 
 	@each $v in $opacity-range {
 		#{$amp}opacity-#{escape($v * 100)} {
-			opacity: #{$v};
+			opacity: $v;
 		}
 	}
 
@@ -17,14 +17,14 @@
 			#{$amp}on#{escape($separator)}opacity-#{escape($v * 100)}:focus,
 			.group:hover #{$amp}group-on#{escape($separator)}opacity-#{escape($v * 100)},
 			.group:focus #{$amp}group-on#{escape($separator)}opacity-#{escape($v * 100)} {
-				opacity: #{$v};
+				opacity: $v;
 			}
 		}
 		// `down`:
 		@each $v in $opacity-range {
 			#{$amp}down#{escape($separator)}opacity-#{escape($v * 100)}:active,
 			.group:active #{$amp}group-down#{escape($separator)}opacity-#{escape($v * 100)} {
-				opacity: #{$v};
+				opacity: $v;
 			}
 		}
 	}
