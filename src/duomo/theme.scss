@@ -3,8 +3,8 @@
 @use "sass:meta";
 @use "sass:string";
 
-@use "configuration";
-@use "helpers";
+@use "configuration" as *;
+@use "helpers" as *;
 
 $theme-aware-selector: "body:not([data-theme-effect=true])";
 
@@ -56,17 +56,17 @@ $theme-aware-selector: "body:not([data-theme-effect=true])";
 
 		// `on`:
 		@each $k1, $v1 in $theme-map {
-			.on#{helpers.escape(configuration.$separator)}#{$var-name}:hover,
-			.on#{helpers.escape(configuration.$separator)}#{$var-name}:focus,
-			.group:hover .group-on#{helpers.escape(configuration.$separator)}#{$var-name},
-			.group:focus .group-on#{helpers.escape(configuration.$separator)}#{$var-name} {
+			.on#{escape($separator)}#{$var-name}:hover,
+			.on#{escape($separator)}#{$var-name}:focus,
+			.group:hover .group-on#{escape($separator)}#{$var-name},
+			.group:focus .group-on#{escape($separator)}#{$var-name} {
 				#{map.get($v1, "property")}: var(#{$k1});
 			}
 		}
 		// `down`:
 		@each $k1, $v1 in $theme-map {
-			.down#{helpers.escape(configuration.$separator)}#{$var-name}:active,
-			.group:active .group-down#{helpers.escape(configuration.$separator)}#{$var-name} {
+			.down#{escape($separator)}#{$var-name}:active,
+			.group:active .group-down#{escape($separator)}#{$var-name} {
 				#{map.get($v1, "property")}: var(#{$k1});
 			}
 		}
