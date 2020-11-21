@@ -1,5 +1,5 @@
 // prettier-ignore
-$sans-serif: (
+$sans: (
 	ui-sans-serif,
 	system-ui,
 	-apple-system,
@@ -27,7 +27,7 @@ $serif: (
 ) !default;
 
 // prettier-ignore
-$monospace: (
+$mono: (
 	ui-monospace,
 	Menlo,
 	Monaco,
@@ -38,8 +38,8 @@ $monospace: (
 ) !default;
 
 // prettier-ignore
-$font-family-map: (
-	sans-serif: $sans-serif,
+$font-map: (
+	sans: $sans,
 	serif: $serif,
-	monospace: $monospace,
+	mono: $mono,
 ) !default;

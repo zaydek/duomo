@@ -1,8 +1,8 @@
 @use "sass:map";
 
-@use "../configuration";
+@use "../configuration" as *;
 
-@function __getter($name, $map, $key) {
+@function __impl($name, $map, $key) {
 	$got: map.get($map, $key);
 	@if not $got {
 		@error $name + ": no " + $name + " exists for key " + $key;
@@ -11,46 +11,48 @@
 }
 
 // prettier-ignore
-@function font-family($key) {
-	@return __getter(
+@function font($key) {
+	@return __impl(
 		"font",
-		configuration.$font-family-map,
+		$font-map,
 		$key,
 	);
 }
 
+// TODO: Add support for `$extended-color-map`.
+//
 // prettier-ignore
 @function color($key) {
-	@return __getter(
+	@return __impl(
 		"color",
-		configuration.$extended-color-map,
+		$color-map,
 		$key,
 	);
 }
 
 // prettier-ignore
-@function box-shadow($key) {
-	@return __getter(
+@function shadow($key) {
+	@return __impl(
 		"shadow",
-		configuration.$shadow-map,
+		$shadow-map,
 		$key,
 	);
 }
 
 // prettier-ignore
-@function timing-function($key) {
-	@return __getter(
-		"timing-function",
-		configuration.$timing-function-map,
+@function timing($key) {
+	@return __impl(
+		"timing",
+		$timing-map,
 		$key,
 	);
 }
 
 // prettier-ignore
 @function breakpoint($key) {
-	@return __getter(
+	@return __impl(
 		"breakpoint",
-		configuration.$breakpoint-map,
+		$breakpoint-map,
 		$key,
 	);
 }
