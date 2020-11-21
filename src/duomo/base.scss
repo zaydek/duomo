@@ -1,6 +1,6 @@
 @use "preflight" as *;
 
-@mixin standalone-reset {
+@mixin base {
 	/* purgecss start ignore */
 	@include reset;
 	/* purgecss end ignore */
