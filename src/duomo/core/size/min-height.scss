@@ -1,0 +1,12 @@
+@use "../../helpers" as *;
+
+@mixin min-height {
+	$amp: get-ampersand();
+
+	#{$amp}min-h-full {
+		height: 100%;
+	}
+	#{$amp}min-h-screen {
+		height: 100vw;
+	}
+}

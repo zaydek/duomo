@@ -1,0 +1,32 @@
+@use "../../configuration" as *;
+@use "../../helpers" as *;
+
+@mixin width-from-range($range, $resolver) {
+	$amp: get-ampersand();
+
+	@each $v in $range {
+		#{$amp}w-#{$v} {
+			width: resolve($v, $resolver);
+		}
+	}
+
+	@if not & {
+		[class*="hstack"] {
+			// prettier-ignore
+			& > [class^="w-"], & > [class*=" w-"], & > [class*="#{$separator}w-"] {
+				flex-shrink: 0;
+			}
+			// prettier-ignore
+			& > [style^="width"], & > [style*=";width"], & > [style*="; width"] {
+				flex-shrink: 0;
+			}
+		}
+	}
+
+	#{$amp}w-full {
+		width: 100%;
+	}
+	#{$amp}w-screen {
+		width: 100vw;
+	}
+}
