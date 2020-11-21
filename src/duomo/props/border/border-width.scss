@@ -1,7 +1,7 @@
 @use "../../helpers" as *;
 
 // prettier-ignore
-@mixin __impl($range, $resolver) {
+@mixin border-width-from-range($range, $resolver) {
 	@include generate-from-range(
 		"border",
 		(border-width),

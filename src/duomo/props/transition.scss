@@ -1,45 +1,39 @@
-@use "../helpers";
-@use "../theme";
+@use "../helpers" as *;
+@use "../theme" as *;
 
 @mixin transition($default-duration, $default-timing-function) {
-	$amp: helpers.get-ampersand();
+	$amp: get-ampersand();
 
-	#{theme.$theme-aware-selector} {
-		#{$amp}transition {
-			--transition-duration: #{$default-duration};
-			--transition-timing-function: #{$default-timing-function};
-			transition: var(--transition-duration) var(--transition-timing-function);
-			transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
-		}
+	#{$theme-aware-selector} #{$amp}transition {
+		--transition-duration: #{$default-duration};
+		--transition-timing-function: #{$default-timing-function};
+		transition: var(--transition-duration) var(--transition-timing-function);
+		transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
 	}
 }
 
-// NOTE. Do not use `helpers.generate-from-range` because `$amp` is repeated.
 @mixin transition-duration-from-range($range) {
-	$amp: helpers.get-ampersand();
+	$amp: get-ampersand();
 
-	#{theme.$theme-aware-selector} {
-		@each $v in $range {
-			#{$amp}duration-#{helpers.escape($v)} {
-				--transition-duration: #{$v};
-			}
+	// NOTE: Do not use a generator because of `$theme-aware-selector`.
+	@each $v in $range {
+		#{$theme-aware-selector} #{$amp}duration-#{escape($v)} {
+			--transition-duration: #{$v};
 		}
 	}
 }
 
-// NOTE. Do not use `helpers.generate-from-range` because `$amp` is repeated.
 @mixin transition-timing-function-from-map($map) {
-	$amp: helpers.get-ampersand();
+	$amp: get-ampersand();
 
-	#{theme.$theme-aware-selector} {
-		@each $k, $v in $map {
-			// NOTE: Uses `ease-linear` for Tailwind CSS compatibility.
-			@if $k == "linear" {
-				$k: "ease-" + $k;
-			}
-			#{$amp}#{$k} {
-				--transition-timing-function: #{$v};
-			}
+	// NOTE: Do not use a generator because of `$theme-aware-selector`.
+	@each $k, $v in $map {
+		// COMPAT
+		@if $k == "linear" {
+			$k: "ease-" + $k;
+		}
+		#{$theme-aware-selector} #{$amp}#{$k} {
+			--transition-timing-function: #{$v};
 		}
 	}
 }

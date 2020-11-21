@@ -22,6 +22,8 @@ $__full-range: list.join($negative-range, $standard-range);
 	// @include display;
 
 	// @include stack-from-range($range: $standard-range, $resolver: rem);
+
+	// OK
 	// @include grid-from-range($range: $standard-range, $resolver: rem);
 
 	// OK
@@ -43,10 +45,11 @@ $__full-range: list.join($negative-range, $standard-range);
 	// @include text-decoration;
 	// @include color-from-map($map: $color-map, $opacity-range: $opacity-range);
 	// @include background-color-from-map($map: $color-map, $opacity-range: $opacity-range);
+
+	// OK
 	// @include border-width-from-range($range: $border-width-range, $resolver: rem);
 	// @include border-color-from-map($map: $color-map, $opacity-range: $opacity-range);
-
-	@include border-radius-from-range($range: $border-radius-range, $resolver: rem);
+	// @include border-radius-from-range($range: $border-radius-range, $resolver: rem);
 
 	// @include box-shadow-from-map($map: $shadow-map);
 
@@ -58,9 +61,9 @@ $__full-range: list.join($negative-range, $standard-range);
 
 	// CHECK
 	// @include pointer-events;
-	// @include transition($default-duration: 300ms, $default-timing-function: $ease-out);
+	@include transition($default-duration: 300ms, $default-timing-function: $ease-out);
 	// @include transition-duration-from-range($range: range(0, 1000, 100));
-	// @include transition-timing-function-from-map($map: $timing-function-map);
+	// @include transition-timing-function-from-map($map: $timing-map);
 }
 
 @at-root {
