@@ -21,7 +21,7 @@ $__full-range: list.join($negative-range, $standard-range);
 	// @include display;
 	// @include stack-from-range($range: $standard-range, $resolver: rem);
 	// @include grid-from-range($range: $standard-range, $resolver: rem);
-	@include margin-from-range($range: $__full-range, $resolver: rem);
+	// @include margin-from-range($range: $__full-range, $resolver: rem);
 	// @include padding-from-range($range: $standard-range, $resolver: rem);
 	// @include position-from-range($range: $__zero-range, $resolver: rem);
 	// @include tooltip;
