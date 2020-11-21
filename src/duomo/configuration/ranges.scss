@@ -1,16 +1,16 @@
+@use "sass:list";
+
 @use "meta-range" as *;
 
-// prettier-ignore
-$negative-range: meta-range(
-	(  -1,  -10,  -1),
-	( -10,  -20,  -2),
-	( -20,  -40,  -4),
-	( -40,  -80,  -8),
-	( -80, -160, -16),
-	(-160, -320, -32),
-
-	-320,
-) !default;
+@function __negative($range) {
+	$negative-range: ();
+	@each $v in $range {
+		@if $v > 0 {
+			$negative-range: list.join($negative-range, -1 * $v);
+		}
+	}
+	@return $negative-range;
+}
 
 // prettier-ignore
 $standard-range: meta-range(
@@ -23,6 +23,8 @@ $standard-range: meta-range(
 
 	320,
 ) !default;
+
+$negative-range: __negative($standard-range);
 
 // prettier-ignore
 $font-size-range: meta-range(
