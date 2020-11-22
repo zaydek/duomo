@@ -37,7 +37,6 @@
 
 	@each $k, $v in $map {
 		#{$amp}#{$shorthand}-#{escape($k)} {
-			// NOTE: Keys must be unquoted (for test).
 			@if $k == transparent or $k == current {
 				--#{$shorthand}-opacity: 1;
 				color: $v;
@@ -53,6 +52,7 @@
 
 	@each $v in $opacity-range {
 		#{$amp}#{$shorthand}-opacity-#{escape($v * 100)} {
+			// NOTE: Use `#{...}` syntax because of CSS custom props.
 			--#{$shorthand}-opacity: #{$v};
 		}
 	}

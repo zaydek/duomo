@@ -5,6 +5,7 @@
 	$amp: get-ampersand();
 
 	#{$theme-aware-selector} #{$amp}transition {
+		// NOTE: Use `#{...}` syntax because of CSS custom props.
 		--transition-duration: #{$default-duration};
 		--transition-timing-function: #{$default-timing-function};
 		transition: var(--transition-duration) var(--transition-timing-function);
@@ -15,9 +16,9 @@
 @mixin transition-duration-from-range($range) {
 	$amp: get-ampersand();
 
-	// NOTE: Do not use a generator because of `$theme-aware-selector`.
 	@each $v in $range {
 		#{$theme-aware-selector} #{$amp}duration-#{escape($v)} {
+			// NOTE: Use `#{...}` syntax because of CSS custom props.
 			--transition-duration: #{$v};
 		}
 	}
@@ -26,13 +27,12 @@
 @mixin transition-timing-function-from-map($map) {
 	$amp: get-ampersand();
 
-	// NOTE: Do not use a generator because of `$theme-aware-selector`.
 	@each $k, $v in $map {
-		// COMPAT
 		@if $k == "linear" {
 			$k: "ease-" + $k;
 		}
 		#{$theme-aware-selector} #{$amp}#{$k} {
+			// NOTE: Use `#{...}` syntax because of CSS custom props.
 			--transition-timing-function: #{$v};
 		}
 	}

@@ -80,6 +80,7 @@
 
 	@each $v in $range {
 		#{$amp}space-#{$v} > * {
+			// NOTE: Use `#{...}` syntax because of CSS custom props.
 			--space: #{resolve($v, $resolver)};
 		}
 	}

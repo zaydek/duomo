@@ -23,10 +23,12 @@ $theme-aware-selector: "body:not([data-theme-effect=true])";
 			@each $k1, $v1 in $theme-map {
 				$got: map.get($v1, "light");
 				@if $got {
-					#{$k1}: #{$got};
+					#{$k1}: $got;
 				}
 			}
 			@if $duration and $timing-function {
+				// NOTE: Use `#{...}` syntax because of CSS custom props.
+				//
 				// prettier-ignore
 				--theme-transition:
 					background-color #{$duration} #{$timing-function},
@@ -44,7 +46,7 @@ $theme-aware-selector: "body:not([data-theme-effect=true])";
 				@each $k1, $v1 in $theme-map {
 					$got: map.get($v1, $theme);
 					@if $got {
-						#{$k1}: #{$got};
+						#{$k1}: $got;
 					}
 				}
 			}
@@ -68,14 +70,14 @@ $theme-aware-selector: "body:not([data-theme-effect=true])";
 			.on#{escape($separator)}#{$var-name}:focus,
 			.group:hover .group-on#{escape($separator)}#{$var-name},
 			.group:focus .group-on#{escape($separator)}#{$var-name} {
-				#{map.get($v1, "property")}: var(#{$k1});
+				#{map.get($v1, "property")}: var($k1);
 			}
 		}
 		// `down`:
 		@each $k1, $v1 in $theme-map {
 			.down#{escape($separator)}#{$var-name}:active,
 			.group:active .group-down#{escape($separator)}#{$var-name} {
-				#{map.get($v1, "property")}: var(#{$k1});
+				#{map.get($v1, "property")}: var($k1);
 			}
 		}
 	}
