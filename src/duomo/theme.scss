@@ -26,9 +26,17 @@ $theme-aware-selector: "body:not([data-theme-effect=true])";
 					#{$k1}: #{$got};
 				}
 			}
-			// prettier-ignore
 			@if $duration and $timing-function {
-				--theme-transition: background-color #{$duration} #{$timing-function}, border-color #{$duration} #{$timing-function}, box-shadow #{$duration} #{$timing-function}, color #{$duration} #{$timing-function}, fill #{$duration} #{$timing-function}, opacity #{$duration} #{$timing-function}, stroke #{$duration} #{$timing-function}, transform #{$duration} #{$timing-function};
+				// prettier-ignore
+				--theme-transition:
+					background-color $duration $timing-function,
+					border-color $duration $timing-function,
+					box-shadow $duration $timing-function,
+					color $duration $timing-function,
+					fill $duration $timing-function,
+					opacity $duration $timing-function,
+					stroke $duration $timing-function,
+					transform $duration $timing-function;
 			}
 		}
 		@each $theme in $themes {
