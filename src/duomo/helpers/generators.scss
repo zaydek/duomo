@@ -14,7 +14,7 @@
 		$sign: safe-negative-sign($v);
 		#{$amp}#{$sign}#{$shorthand}-#{escape(safe-abs($v))} {
 			@each $prop in $props {
-				#{$prop}: #{resolve($v, $resolver)};
+				#{$prop}: resolve($v, $resolver);
 			}
 		}
 	}
@@ -26,7 +26,7 @@
 	@each $k, $v in $map {
 		#{$amp}#{$shorthand}-#{escape($k)} {
 			@each $prop in $props {
-				#{$prop}: #{resolve($v, $resolver)};
+				#{$prop}: resolve($v, $resolver);
 			}
 		}
 	}

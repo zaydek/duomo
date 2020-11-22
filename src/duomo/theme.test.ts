@@ -85,7 +85,15 @@ body {
 	expect(result).toBe(`
 body {
 	--bg-body: #fff;
-	--theme-transition: background-color 300ms linear, border-color 300ms linear, box-shadow 300ms linear, color 300ms linear, fill 300ms linear, opacity 300ms linear, stroke 300ms linear, transform 300ms linear;
+	--theme-transition:
+		background-color 300ms linear,
+		border-color 300ms linear,
+		box-shadow 300ms linear,
+		color 300ms linear,
+		fill 300ms linear,
+		opacity 300ms linear,
+		stroke 300ms linear,
+		transform 300ms linear;
 }
 
 body[data-theme=dark] {
