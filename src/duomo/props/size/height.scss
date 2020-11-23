@@ -7,21 +7,32 @@
 	@each $v in $range {
 		#{$amp}h-#{$v} {
 			height: resolve($v, $resolver);
+			[class*="vstack"] > & {
+				flex-shrink: 0;
+			}
 		}
 	}
 
 	@if not & {
-		[class*="vstack"] {
-			// prettier-ignore
-			& > [class^="h-"], & > [class*=" h-"], & > [class*="#{$separator}h-"] {
-				flex-shrink: 0;
-			}
-			// prettier-ignore
-			& > [style^="height"], & > [style*=";height"], & > [style*="; height"] {
-				flex-shrink: 0;
-			}
+		[class*="vstack"] > [style^="height"],
+		[class*="vstack"] > [style*=";height"],
+		[class*="vstack"] > [style*="; height"] {
+			flex-shrink: 0;
 		}
 	}
+
+	// @if not & {
+	// 	[class*="vstack"] {
+	// 		// prettier-ignore
+	// 		& > [class^="h-"], & > [class*=" h-"], & > [class*="#{$separator}h-"] {
+	// 			flex-shrink: 0;
+	// 		}
+	// 		// prettier-ignore
+	// 		& > [style^="height"], & > [style*=";height"], & > [style*="; height"] {
+	// 			flex-shrink: 0;
+	// 		}
+	// 	}
+	// }
 
 	#{$amp}h-full {
 		height: 100%;
