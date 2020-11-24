@@ -1,6 +1,6 @@
 @use "preflight" as *;
 
-@mixin base {
+@at-root {
 	/* purgecss start ignore */
 	@include reset;
 	/* purgecss end ignore */
