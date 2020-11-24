@@ -3,10 +3,10 @@
 @mixin display {
 	$amp: get-ampersand();
 
+	#{$amp}hidden {
+		display: none;
+	}
 	#{$amp}block {
 		display: block;
-	}
-	#{$amp}hidden {
-		display: hidden;
 	}
 }
