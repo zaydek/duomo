@@ -58,6 +58,385 @@ function Component() {
 </html>
 ```
 
+## Table of Contents:
+
+- [HStack](#hstack)
+- [VStack](#vstack)
+- [Spacer](#spacer)
+- [Spacing](#spacing)
+- [ZStack](#zstack)
+
+## HStack
+
+HStacks `<div class="hstack">` stack children elements _horizontally_. Like `VStack`s, they can be modified with `align-{alignment}` and `space-{range}`. By default, children are automatically centered horizontally and vertically. To opt-out of horizontal centering, use a nested `<div class="spacer">`. To opt-out of vertical centering, use `align-stretch`, `align-start`, or `align-end`.
+
+**Spacer examples:**
+
+```html
+<!--
+	. . .
+	. x .
+	. . .
+-->
+<div class="hstack">
+	<div class="x"></div>
+</div>
+
+<!--
+	. . .
+	x . .
+	. . .
+-->
+<div class="hstack">
+	<div class="spacer"></div>
+	<div class="x"></div>
+</div>
+
+<!--
+	. . .
+	. . x
+	. . .
+-->
+<div class="hstack">
+	<div class="x"></div>
+	<div class="spacer"></div>
+</div>
+```
+
+**Alignment examples:**
+
+```html
+<!--
+	. x .
+	. x .
+	. x .
+-->
+<div class="hstack align-stretch">
+	<div class="x"></div>
+</div>
+
+<!--
+	. x .
+	. . .
+	. . .
+-->
+<div class="hstack align-start">
+	<div class="x"></div>
+</div>
+
+<!--
+	. . .
+	. . .
+	. x .
+-->
+<div class="hstack align-end">
+	<div class="x"></div>
+</div>
+```
+
+**Responsive examples:**
+
+Adapts to a vertical stack at the medium breakpoint.
+
+```html
+<div class="hstack md:vstack">
+	<!-- ... -->
+</div>
+```
+
+Stack is revealed at the medium breakpoint.\*
+
+_\*Not yet implemented._
+
+```html
+<div class="hidden md:vstack">
+	<!-- ... -->
+</div>
+```
+
+Stack is hidden at the medium breakpoint.\*
+
+_\*Not yet implemented._
+
+```html
+<div class="hstack md:hidden">
+	<!-- ... -->
+</div>
+```
+
+## VStack
+
+VStacks `<div class="vstack">` stack children elements _vertically_. Like `HStack`s, they can be modified with `align-{alignment}` and `space-{range}`. By default, children are automatically centered horizontally and vertically. To opt-out of horizontal centering, use a nested `<div class="spacer">`. To opt-out of horizontal centering, use `align-stretch`, `align-start`, or `align-end`.
+
+**Spacer examples:**
+
+```html
+<!--
+	. . .
+	. x .
+	. . .
+-->
+<div class="vstack">
+	<div class="x"></div>
+</div>
+
+<!--
+	. . .
+	. . .
+	. x .
+-->
+<div class="vstack">
+	<div class="spacer"></div>
+	<div class="x"></div>
+</div>
+
+<!--
+	. x .
+	. . .
+	. . .
+-->
+<div class="vstack">
+	<div class="x"></div>
+	<div class="spacer"></div>
+</div>
+```
+
+**Alignment examples:**
+
+```html
+<!--
+	. . .
+	x x x
+	. . .
+-->
+<div class="vstack align-stretch">
+	<div class="x"></div>
+</div>
+
+<!--
+	. . .
+	x . .
+	. . .
+-->
+<div class="vstack align-start">
+	<div class="x"></div>
+</div>
+
+<!--
+	. . .
+	. . x
+	. . .
+-->
+<div class="vstack align-end">
+	<div class="x"></div>
+</div>
+```
+
+**Responsive examples:**
+
+Adapts to a horizontal stack at the medium breakpoint.
+
+```html
+<div class="vstack md:hstack">
+	<!-- ... -->
+</div>
+```
+
+Stack is revealed at the medium breakpoint.\*
+
+_\*Not yet implemented._
+
+```html
+<div class="hidden md:vstack">
+	<!-- ... -->
+</div>
+```
+
+Stack is hidden at the medium breakpoint.\*
+
+_\*Not yet implemented._
+
+```html
+<div class="vstack md:hidden">
+	<!-- ... -->
+</div>
+```
+
+## Spacer
+
+Spacers `<div class="spacer">` create negative space between children elements. They can be used to simulate `justify-content: flex-start`, `justify-content: flex-end`, and `justify-content: space-evenly` declaratively.
+
+Spacers, unlike HStacks and VStacks, implement no modifiers.
+
+**Examples:**
+
+Simualtes `justify-content: flex-start`.
+
+```html
+<!--
+	. . .
+	. x x
+	. . .
+-->
+<div class="hstack">
+	<div class="spacer"></div>
+	<div class="x"></div>
+	<div class="x"></div>
+</div>
+```
+
+Simualtes `justify-content: flex-end`.
+
+```html
+<!--
+	. . .
+	. . x
+	. . .
+-->
+<div class="hstack">
+	<div class="x"></div>
+	<div class="x"></div>
+	<div class="spacer"></div>
+</div>
+```
+
+Simualtes `justify-content: space-evenly`.
+
+```html
+<!--
+	. . . . .
+	. x . x .
+	. . . . .
+-->
+<div class="hstack">
+	<div class="spacer"></div>
+	<div class="x"></div>
+	<div class="spacer"></div>
+	<div class="x"></div>
+	<div class="spacer"></div>
+</div>
+```
+
+## Spacing
+
+The spacing modifier `<div class="[h|v]stack space-{px}>` creates consistent spacing between HStack and VStack children elements. Spacing can be any negative\* or positive range value.
+
+Note that spacing spaces children elements _horizontally_ or _vertically_ depending on the parent HStack or VStack context. **You don’t need to specifiy x-axis or y-axis-specific spacing**.
+
+_\*Not yet implemented._
+
+**Examples:**
+
+```html
+<div class="hstack space-8">
+	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+	<!-- 8px gap -->
+	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+	<!-- 8px gap -->
+	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+	<!-- 8px gap -->
+	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+</div>
+```
+
+```html
+<div class="vstack space-16">
+	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+	<!-- 16px gap -->
+	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+	<!-- 16px gap -->
+	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+	<!-- 16px gap -->
+	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+</div>
+```
+
+**Responsive examples:**
+
+```html
+<div class="hstack space-8 md:space-16">
+	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+	<!-- 8px gap, 16px gap at the medium breakpoint -->
+	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+	<!-- 8px gap, 16px gap at the medium breakpoint -->
+	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+	<!-- 8px gap, 16px gap at the medium breakpoint -->
+	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+</div>
+```
+
+## ZStack
+
+ZStacks `<div class="zstack">` stack children elements on the z-axis _and_ center children elements across the x- and y- axes. ZStacks make layering elements on top of one another easy. ZStacks are intended to be used _with_ HStacks and or VStacks; they simply layer and center children elements.
+
+ZStacks, unlike HStacks and VStacks, implement no modifiers.
+
+Note that ZStacks use `position: relative`, so children element that use `position: absolute` are bound to the parent ZStack bounding box.
+
+**Examples:**
+
+TODO
+
+<!--
+
+Layers a red, green, and blue element on top of each other. The blue element is visible. The red and green elements are obscured.
+
+```html
+<div class="zstack">
+	<div class="hstack w-32 h-32 bg-red-400 rounded-full"></div>
+	<div class="hstack w-32 h-32 bg-green-400 rounded-full"></div>
+	<div class="hstack w-32 h-32 bg-blue-400 rounded-full"></div>
+</div>
+```
+
+-->
+
+<!--
+
+## Ranges
+
+Ranges describe all possible numerical values. Some properties support negative ranges (`margin`) and some properties use a sub-range (`border`, etc.).
+
+**Standard range:**
+
+```
+		0-10, increments by  1:   0,   1,   2,   3,   4,   5,   6,   7,   8,   9,
+	10-20, increments by  2:  10,  12,  14,  16,  18
+	20-40, increments by  4:  20,  24,  28,  32,  36,
+	40-80, increments by  8:  40,  48,  56,  64,  72,
+	80-160, increments by 16:  80,  96, 112, 128, 144,
+160-320, increments by 32: 160, 192, 224, 256, 288, 320,
+```
+
+
+
+
+margin:
+
+m-{-range|range} margin-all
+mt-              margin-top
+mr-              margin-right
+mb-              margin-bottom
+ml-              margin-left
+mx-              margin-x-axis
+my-              margin-y-axis
+
+padding:
+
+p-{range}        padding-all
+pt-              padding-top
+pr-              padding-right
+pb-              padding-bottom
+pl-              padding-left
+px-              padding-x-axis
+py-              padding-y-axis
+
+```
+
+-->
+
+<!--
+
 ## Rationale and Demos
 
 If you’re asking yourself **‘Why did you build this from scratch and how is this different from Tailwind CSS?’**, check out these demos for a primer. Note that these are impromptu demos.
@@ -78,6 +457,8 @@ If you’re asking yourself **‘Why did you build this from scratch and how is 
     </td>
   </tr>
 </table>
+
+-->
 
 <!--
 
