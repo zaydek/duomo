@@ -4,9 +4,9 @@
 	$amp: get-ampersand();
 
 	#{$amp}min-h-full {
-		height: 100%;
+		min-height: 100%;
 	}
 	#{$amp}min-h-screen {
-		height: 100vh;
+		min-height: 100vh;
 	}
 }
