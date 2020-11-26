@@ -9,29 +9,9 @@ yarn add @zaydek/duomo
 # or npm i @zaydek/duomo
 ```
 
-**Usage:**
-
-```tsx
-import "@zaydek/duomo"
-
-function Component() {
-	return (
-		<div className="hstack">
-			<div className="hstack space-16">
-				<div className="w-32 h-32 bg-gray-300 rounded-full" />
-				<div className="w-32 h-32 bg-gray-300 rounded-full" />
-			</div>
-			<div className="spacer" />
-			<div className="hstack space-16">
-				<div className="w-32 h-32 bg-gray-300 rounded-full" />
-				<div className="w-32 h-32 bg-gray-300 rounded-full" />
-			</div>
-		</div>
-	)
-}
-```
-
 **Usage: (CDN)**
+
+CodePen to get you started: https://codepen.io/zaydek/pen/ExgxjYy?editors=1000.
 
 ```html
 <!DOCTYPE html>
@@ -56,6 +36,28 @@ function Component() {
 		</div>
 	</body>
 </html>
+```
+
+**Usage (React):**
+
+```tsx
+import "@zaydek/duomo"
+
+function Component() {
+	return (
+		<div className="hstack">
+			<div className="hstack space-16">
+				<div className="w-32 h-32 bg-gray-300 rounded-full" />
+				<div className="w-32 h-32 bg-gray-300 rounded-full" />
+			</div>
+			<div className="spacer" />
+			<div className="hstack space-16">
+				<div className="w-32 h-32 bg-gray-300 rounded-full" />
+				<div className="w-32 h-32 bg-gray-300 rounded-full" />
+			</div>
+		</div>
+	)
+}
 ```
 
 ## Table of Contents:
