@@ -47,37 +47,39 @@
 }
 
 @mixin stacks() {
-	// #{$amp}align-stretch {
-	// 	align-items: stretch;
-	// }
-	// #{$amp}align-start {
-	// 	align-items: flex-start;
-	// }
-	// #{$amp}align-center {
-	// 	align-items: center;
-	// }
-	// #{$amp}align-end {
-	// 	align-items: flex-end;
-	// }
-	// #{$amp}align-baseline {
-	// 	align-items: baseline;
-	// }
+	$amp: get-ampersand();
 
-	// #{$amp}align-self-stretch {
-	// 	align-self: stretch;
-	// }
-	// #{$amp}align-self-start {
-	// 	align-self: flex-start;
-	// }
-	// #{$amp}align-self-center {
-	// 	align-self: center;
-	// }
-	// #{$amp}align-self-end {
-	// 	align-self: flex-end;
-	// }
-	// #{$amp}align-self-baseline {
-	// 	align-self: baseline;
-	// }
+	#{$amp}align-stretch {
+		align-items: stretch;
+	}
+	#{$amp}align-start {
+		align-items: flex-start;
+	}
+	#{$amp}align-center {
+		align-items: center;
+	}
+	#{$amp}align-end {
+		align-items: flex-end;
+	}
+	#{$amp}align-baseline {
+		align-items: baseline;
+	}
+
+	#{$amp}align-self-stretch {
+		align-self: stretch;
+	}
+	#{$amp}align-self-start {
+		align-self: flex-start;
+	}
+	#{$amp}align-self-center {
+		align-self: center;
+	}
+	#{$amp}align-self-end {
+		align-self: flex-end;
+	}
+	#{$amp}align-self-baseline {
+		align-self: baseline;
+	}
 
 	@if not & {
 		.spacer {
@@ -99,59 +101,3 @@
 		$resolver,
 	);
 }
-
-// @mixin stack-from-range($range, $resolver) {
-// 	$amp: get-ampersand();
-//
-// 	@include __hstack($range, $resolver);
-// 	@include __vstack($range, $resolver);
-//
-// 	// #{$amp}align-stretch {
-// 	// 	align-items: stretch;
-// 	// }
-// 	// #{$amp}align-start {
-// 	// 	align-items: flex-start;
-// 	// }
-// 	// #{$amp}align-center {
-// 	// 	align-items: center;
-// 	// }
-// 	// #{$amp}align-end {
-// 	// 	align-items: flex-end;
-// 	// }
-// 	// #{$amp}align-baseline {
-// 	// 	align-items: baseline;
-// 	// }
-//
-// 	// #{$amp}align-self-stretch {
-// 	// 	align-self: stretch;
-// 	// }
-// 	// #{$amp}align-self-start {
-// 	// 	align-self: flex-start;
-// 	// }
-// 	// #{$amp}align-self-center {
-// 	// 	align-self: center;
-// 	// }
-// 	// #{$amp}align-self-end {
-// 	// 	align-self: flex-end;
-// 	// }
-// 	// #{$amp}align-self-baseline {
-// 	// 	align-self: baseline;
-// 	// }
-//
-// 	@if not & {
-// 		.spacer {
-// 			flex: 1 0 var(--space);
-// 		}
-// 		.spacer:first-child,
-// 		.spacer:last-child {
-// 			flex: 1 0 0;
-// 		}
-// 	}
-//
-// 	@each $v in $range {
-// 		#{$amp}space-#{$v} > * {
-// 			// NOTE: Use `#{...}` syntax because of CSS custom props.
-// 			--space: #{resolve($v, $resolver)};
-// 		}
-// 	}
-// }
