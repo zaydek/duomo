@@ -20,7 +20,6 @@ $standard-range: meta-range(
 	( 40,   80,  8),
 	( 80,  160, 16),
 	(160,  320, 32),
-
 	320,
 ) !default;
 
@@ -32,7 +31,6 @@ $font-size-range: meta-range(
 	(10, 20, 2),
 	(20, 40, 4),
 	(40, 64, 8),
-
 	64,
 ) !default;
 
@@ -52,15 +50,12 @@ $letter-spacing-range: (
 // prettier-ignore
 $line-height-range: meta-range(
 	(1, 2, 0.05),
-
 	2,
 ) !default;
 
 // prettier-ignore
 $opacity-range: meta-range(
-	(0, 0.25, 0.05),
-	(0.75, 1, 0.05),
-
+	(0, 1, 0.05),
 	1,
 ) !default;
 
@@ -79,13 +74,11 @@ $border-radius-range: meta-range(
 	( 0, 10, 1),
 	(10, 20, 2),
 	(20, 32, 4),
-
 	32,
 ) !default;
 
 // prettier-ignore
 $z-index-range: meta-range(
 	(-10, 50, 10),
-
 	50,
  ) !default;
