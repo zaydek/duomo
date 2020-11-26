@@ -18,13 +18,13 @@ function Component() {
 	return (
 		<div className="hstack">
 			<div className="hstack space-16">
-				<div className="w-32 h-32 bg-gray-100 rounded-full" />
-				<div className="w-32 h-32 bg-gray-100 rounded-full" />
+				<div className="w-32 h-32 bg-gray-300 rounded-full" />
+				<div className="w-32 h-32 bg-gray-300 rounded-full" />
 			</div>
 			<div className="spacer" />
 			<div className="hstack space-16">
-				<div className="w-32 h-32 bg-gray-100 rounded-full" />
-				<div className="w-32 h-32 bg-gray-100 rounded-full" />
+				<div className="w-32 h-32 bg-gray-300 rounded-full" />
+				<div className="w-32 h-32 bg-gray-300 rounded-full" />
 			</div>
 		</div>
 	)
@@ -37,21 +37,21 @@ function Component() {
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Hello, world!</title>
-		<link rel="stylesheet" href="https://unpkg.com/@zaydek/duomo/dist/index.min.css" />
+		<link rel="stylesheet" href="https://unpkg.com/@zaydek/duomo">
 	</head>
 	<body>
 		<div class="hstack">
 			<div class="hstack space-16">
-				<div class="w-32 h-32 bg-gray-100 rounded-full"></div>
-				<div class="w-32 h-32 bg-gray-100 rounded-full"></div>
+				<div class="w-32 h-32 bg-gray-300 rounded-full"></div>
+				<div class="w-32 h-32 bg-gray-300 rounded-full"></div>
 			</div>
 			<div class="spacer"></div>
 			<div class="hstack space-16">
-				<div class="w-32 h-32 bg-gray-100 rounded-full"></div>
-				<div class="w-32 h-32 bg-gray-100 rounded-full"></div>
+				<div class="w-32 h-32 bg-gray-300 rounded-full"></div>
+				<div class="w-32 h-32 bg-gray-300 rounded-full"></div>
 			</div>
 		</div>
 	</body>
