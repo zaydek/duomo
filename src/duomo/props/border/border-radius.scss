@@ -20,55 +20,55 @@
 // prettier-ignore
 @mixin border-radius-from-range($range, $resolver) {
 	@include __impl(
-		"rounded",
+		"radius",
 		(border-radius),
 		$range,
 		$resolver,
 	);
 	@include __impl(
-		"rounded-tl",
+		"radius-tl",
 		(border-top-left-radius),
 		$range,
 		$resolver,
 	);
 	@include __impl(
-		"rounded-t",
+		"radius-t",
 		(border-top-left-radius, border-top-right-radius),
 		$range,
 		$resolver,
 	);
 	@include __impl(
-		"rounded-tr",
+		"radius-tr",
 		(border-top-right-radius),
 		$range,
 		$resolver,
 	);
 	@include __impl(
-		"rounded-l",
+		"radius-l",
 		(border-top-left-radius, border-bottom-left-radius),
 		$range,
 		$resolver,
 	);
 	@include __impl(
-		"rounded-r",
+		"radius-r",
 		(border-top-right-radius, border-bottom-right-radius),
 		$range,
 		$resolver,
 	);
 	@include __impl(
-		"rounded-bl",
+		"radius-bl",
 		(border-bottom-left-radius),
 		$range,
 		$resolver,
 	);
 	@include __impl(
-		"rounded-b",
+		"radius-b",
 		(border-bottom-left-radius, border-bottom-right-radius),
 		$range,
 		$resolver,
 	);
 	@include __impl(
-		"rounded-br",
+		"radius-br",
 		(border-bottom-right-radius),
 		$range,
 		$resolver,

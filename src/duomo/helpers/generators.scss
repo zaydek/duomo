@@ -39,7 +39,7 @@
 		#{$amp}#{$shorthand}-#{escape($k)} {
 			@if $k == transparent or $k == current {
 				--#{$shorthand}-opacity: 1;
-				color: $v;
+				#{$prop}: $v;
 			} @else {
 				--#{$shorthand}-opacity: 1;
 				#{$prop}: $v;
