@@ -3,7 +3,7 @@
 @mixin min-height {
 	$amp: get-ampersand();
 
-	#{$amp}min-h-full {
+	#{$amp}min-h-max {
 		min-height: 100%;
 	}
 	#{$amp}min-h-screen {

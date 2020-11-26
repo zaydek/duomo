@@ -10,7 +10,7 @@
 		$range,
 		$resolver,
 	);
-	#{$amp}#{$shorthand}-full {
+	#{$amp}#{$shorthand}-max {
 		@each $prop in $props {
 			#{$prop}: 9999px;
 		}
