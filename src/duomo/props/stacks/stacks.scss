@@ -1,4 +1,4 @@
-@use "../helpers" as *;
+@use "../../helpers" as *;
 
 @mixin __hstack($range, $reoslver) {
 	$amp: get-ampersand();
