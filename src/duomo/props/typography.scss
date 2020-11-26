@@ -45,7 +45,7 @@
 
 	// NOTE: Do not use a generator because `$range` describes `%` not `px`.
 	@each $v in $range {
-		$sign: safe-negative-sign($v);
+		$sign: safe-get-sign($v);
 		#{$amp}#{$sign}tracking-#{escape(safe-abs($v * 100))} {
 			letter-spacing: if($v == 0, 0, $v + em);
 		}
