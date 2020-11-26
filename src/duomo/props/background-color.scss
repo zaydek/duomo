@@ -3,7 +3,7 @@
 @mixin background-color-from-map($map, $opacity-range) {
 	// prettier-ignore
 	@include generate-opaque-colors-from-map(
-		"bg",
+		"bg", // TODO: Support `exempt` pattern.
 		background-color,
 		$map,
 		$opacity-range,

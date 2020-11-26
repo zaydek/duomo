@@ -19,7 +19,8 @@ $__full-range: list.join($negative-range, $standard-range);
 @mixin duomo {
 	@include group;
 	@include display;
-	@include stack-from-range($range: $standard-range, $resolver: rem);
+	@include stacks;
+	@include stack-space-from-range($range: $__full-range, $resolver: rem);
 	@include zstack-placement;
 	@include grid-from-range($range: $standard-range, $resolver: rem);
 	@include margin-from-range($range: $__full-range, $resolver: rem);

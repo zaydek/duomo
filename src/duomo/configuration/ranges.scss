@@ -21,6 +21,7 @@ $standard-range: meta-range(
 	( 80,  160, 16),
 	(160,  320, 32),
 	320,
+	384,
 ) !default;
 
 $negative-range: __negative($standard-range);
@@ -73,8 +74,8 @@ $border-width-range: (
 $border-radius-range: meta-range(
 	( 0, 10, 1),
 	(10, 20, 2),
-	(20, 32, 4),
-	32,
+	20,
+	24,
 ) !default;
 
 // prettier-ignore
