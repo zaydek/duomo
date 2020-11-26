@@ -4,19 +4,19 @@
 @mixin whitespace {
 	$amp: get-ampersand();
 
-	#{$amp}whitespace-pre {
+	#{$amp}pre {
 		white-space: pre;
 	}
-	#{$amp}whitespace-pre-wrap {
+	#{$amp}pre-wrap {
 		white-space: pre-wrap;
 	}
 }
 
-@mixin text-align {
+@mixin font-style {
 	$amp: get-ampersand();
 
-	#{$amp}text-center {
-		text-align: center;
+	#{$amp}em {
+		font-style: italic;
 	}
 }
 
@@ -24,9 +24,23 @@
 	$amp: get-ampersand();
 
 	@each $v in (100, 200, 300, 400, 500, 600, 700, 800, 900) {
-		#{$amp}font-#{$v} {
+		#{$amp}strong-#{$v} {
 			font-weight: $v;
 		}
+	}
+}
+
+@mixin text-align {
+	$amp: get-ampersand();
+
+	#{$amp}text-left {
+		text-align: left;
+	}
+	#{$amp}text-center {
+		text-align: center;
+	}
+	#{$amp}text-right {
+		text-align: end;
 	}
 }
 
@@ -46,7 +60,8 @@
 	// NOTE: Do not use a generator because `$range` describes `%` not `px`.
 	@each $v in $range {
 		$sign: safe-get-sign($v);
-		#{$amp}#{$sign}tracking-#{escape(safe-abs($v * 100))} {
+		// TODO: Percent should be automatic.
+		#{$amp}#{$sign}text-x-#{escape(safe-abs($v * 100))} {
 			letter-spacing: if($v == 0, 0, $v + em);
 		}
 	}
@@ -55,7 +70,7 @@
 @mixin line-height-from-range($range) {
 	// prettier-ignore
 	@include generate-from-range(
-		"leading",
+		"text-y",
 		(line-height),
 		$range,
 		none,
@@ -69,24 +84,17 @@
 		#{$amp}#{$v} {
 			text-decoration: $v;
 		}
-	}
-
-	@if not & {
-		// `on`:
-		@each $v in (line-through, underline) {
-			#{$amp}on#{escape($separator)}#{$v}:hover,
-			#{$amp}on#{escape($separator)}#{$v}:focus,
-			.group:hover #{$amp}group-on#{escape($separator)}#{$v},
-			.group:focus #{$amp}group-on#{escape($separator)}#{$v} {
-				text-decoration: $v;
-			}
+		.hover#{escape($separator)}#{$v}:hover {
+			text-decoration: $v;
 		}
-		// `down`:
-		@each $v in (line-through, underline) {
-			#{$amp}down#{escape($separator)}#{$v}:active,
-			.group:active #{$amp}group-down#{escape($separator)}#{$v} {
-				text-decoration: $v;
-			}
+		.focus#{escape($separator)}#{$v}:focus {
+			text-decoration: $v;
+		}
+		.group:hover .group-hover#{escape($separator)}#{$v} {
+			text-decoration: $v;
+		}
+		.group:focus .group-focus#{escape($separator)}#{$v} {
+			text-decoration: $v;
 		}
 	}
 }
