@@ -84,11 +84,4 @@
 			--space: #{resolve($v, $resolver)};
 		}
 	}
-
-	@for $v from -1 through 12 {
-		$sign: safe-negative-sign($v);
-		#{$amp}#{$sign}order-#{safe-abs($v)} {
-			order: $v;
-		}
-	}
 }
