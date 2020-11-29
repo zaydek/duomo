@@ -1,0 +1,25 @@
+@mixin stagger {
+	[data-stagger-1],
+	[data-stagger]:nth-child(4n + 1) {
+		width: var(--stagger-1, 50%);
+	}
+
+	[data-stagger-2],
+	[data-stagger]:nth-child(4n + 2) {
+		width: var(--stagger-2, 75%);
+	}
+
+	[data-stagger-3],
+	[data-stagger]:nth-child(4n + 3) {
+		width: var(--stagger-3, 87.5%);
+	}
+
+	[data-stagger-4],
+	[data-stagger]:nth-child(4n + 4) {
+		width: var(--stagger-4, 62.5%);
+	}
+
+	[data-stagger]:last-child {
+		width: var(--stagger-last, 50%);
+	}
+}
