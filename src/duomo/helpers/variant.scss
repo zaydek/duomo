@@ -3,7 +3,7 @@
 
 @use "getters" as *;
 
-@function no-op($selector) {
+@function none($selector) {
 	@return ".#{$selector}";
 }
 @function hover($selector) {
@@ -23,7 +23,7 @@
 }
 
 @mixin variants($variants) {
-	@content (no-op);
+	@content (none);
 	@each $variant in $variants {
 		// prettier-ignore
 		@if $variant == hover or $variant == focus or
@@ -45,6 +45,9 @@
 }
 
 @function variant($selector, $variant-fn) {
+	@if not meta.function-exists($variant-fn) {
+		@error "variant: no such variant function; $variant-fn=#{$variant-fn}";
+	}
 	// NOTE: Use `meta.get-function` because of warning:
 	//
 	// Deprecation Warning: Passing a string to call() is deprecated and will be illegal

@@ -4,6 +4,7 @@
 @mixin grid($variants...) {
 	@include variants($variants) using ($v) {
 		#{variant(grid, $v)} {
+			--duomo-display: grid;
 			display: grid;
 		}
 

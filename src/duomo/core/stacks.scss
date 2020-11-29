@@ -1,0 +1,18 @@
+@use "../helpers" as *;
+
+@mixin stacks($variants...) {
+	@include variants($variants) using ($v) {
+		#{variant(hstack, $v)} {
+			--duomo-display: flex;
+			// TODO
+		}
+		#{variant(vstack, $v)} {
+			--duomo-display: flex;
+			// TODO
+		}
+		#{variant(zstack, $v)} {
+			--duomo-display: grid;
+			// TODO
+		}
+	}
+}
