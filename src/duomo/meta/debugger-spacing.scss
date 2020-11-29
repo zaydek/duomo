@@ -1,0 +1,76 @@
+@mixin -empty-block {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: block;
+	content: "";
+}
+
+@mixin -debug-stripes($color) {
+	@if $color == "purple" {
+		// --stripe-color: hsla(240, 100%, 100%, 0.5);
+		--stripe-background-color: hsla(240, 100%, 50%, 0.125);
+	} @else if $color == "blue" {
+		// --stripe-color: hsla(210, 100%, 100%, 0.5);
+		--stripe-background-color: hsla(210, 100%, 50%, 0.125);
+	}
+	background-image: linear-gradient(
+		45deg,
+		var(--stripe-color) 12.5%,
+		transparent 12.5%,
+		transparent 50%,
+		var(--stripe-color) 50%,
+		var(--stripe-color) 62.5%,
+		transparent 62.5%,
+		transparent 100%
+	);
+	background-size: 5.66px 5.66px;
+	background-color: var(--stripe-background-color);
+	// border-radius: 9999px;
+}
+
+@mixin debugger-spacing {
+	/*
+	 * vstack
+	 */
+	[data-debug-space] .vstack > *:not(.spacer) + *:not(.spacer) {
+		position: relative;
+		&::after {
+			@include -empty-block;
+			transform: translateY(-100%);
+			height: var(--space);
+			@include -debug-stripes($color: "blue");
+		}
+	}
+
+	[data-debug-space] .vstack > .spacer:empty {
+		position: relative;
+		&::before {
+			@include -empty-block;
+			@include -debug-stripes($color: "blue");
+		}
+	}
+
+	/*
+	 * hstack
+	 */
+	[data-debug-space] .hstack > *:not(.spacer) + *:not(.spacer) {
+		position: relative;
+		&::after {
+			@include -empty-block;
+			transform: translateX(-100%);
+			width: var(--space);
+			@include -debug-stripes($color: "purple");
+		}
+	}
+
+	[data-debug-space] .hstack > .spacer:empty {
+		position: relative;
+		&::before {
+			@include -empty-block;
+			@include -debug-stripes($color: "purple");
+		}
+	}
+}

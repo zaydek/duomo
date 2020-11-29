@@ -33,6 +33,7 @@
 // desc(100%)  -> max
 // desc(100vw) -> screen
 //
+// TODO: Escape numbers?
 @function desc($any, $as-percent: false) {
 	// prettier-ignore
 	$got: map.get((
