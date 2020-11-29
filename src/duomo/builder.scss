@@ -39,7 +39,7 @@
 @at-root {
 	// TODO: Support `$headless-root` / CSS variables.
 	@if not configuration.$headless {
-		/*! @zaydek/duomo | MIT License | https://github.com/zaydek/duomo */
+		/*! duomo | MIT License | https://github.com/zaydek/duomo */
 
 		// Preflight:
 		@include modern-normalize;
