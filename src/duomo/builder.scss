@@ -1,7 +1,7 @@
 @use "configuration";
 
+@use "preflight/base" as *;
 @use "preflight/modern-normalize" as *;
-@use "preflight/tailwind-base" as *;
 @use "preflight/vendored-font-smoothing" as *;
 
 @use "core/aspect-ratio" as *;
@@ -43,7 +43,7 @@
 
 		// Preflight:
 		@include modern-normalize;
-		@include tailwind-base;
+		@include base;
 		@include vendored-font-smoothing;
 
 		// Duomo CSS:
