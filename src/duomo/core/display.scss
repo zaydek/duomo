@@ -3,6 +3,14 @@
 @mixin display($variants...) {
 	@include variants($variants) using ($v) {
 		#{variant(display-none, $v)} {
+			// NOTE:
+			//
+			// ... {
+			//   --duomo-display: none;
+			//   display: var(--duomo-display);
+			// }
+			//
+			// Does not work because `display-auto` does not reset `--duomo-display`.
 			display: none;
 		}
 		#{variant(display-auto, $v)} {

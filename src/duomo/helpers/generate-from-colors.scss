@@ -4,13 +4,6 @@
 
 @use "variant" as *;
 
-// "rgba(
-// 	#{color.red($mv)},
-// 	#{color.green($mv)},
-// 	#{color.blue($mv)},
-// 	#{var(--#{$shorthand}-opacity)}
-// )"
-
 // prettier-ignore
 @mixin generate-from-colors($info-map) {
 	$v:             map.get($info-map, variant);
@@ -22,15 +15,15 @@
 	@each $mk, $mv in $map {
 		#{variant(#{$shorthand}-#{$mk}, $v)} {
 			@if $mk == transparent or $mk == current {
+				// NOTE: Use `#{...}` syntax because of custom props.
 				--#{$shorthand}-opacity: 1;
-				#{$property}: $mv;
+				--#{$shorthand}-color: #{$mv};
+				#{$property}: var(--#{$shorthand}-color);
 			} @else {
+				// NOTE: Use `#{...}` syntax because of custom props.
 				--#{$shorthand}-opacity: 1;
-				#{$property}: $mv;
-				// TODO: Do we need `string.unquote`?
-				#{$property}: string.unquote(
-					"rgba(#{color.red($mv)}, #{color.green($mv)}, #{color.blue($mv)}, #{var(--#{$shorthand}-opacity)})"
-				);
+				--#{$shorthand}-color: rgba(#{color.red($mv)}, #{color.green($mv)}, #{color.blue($mv)}, #{var(--#{$shorthand}-opacity)});
+				#{$property}: var(--#{$shorthand}-color);
 			}
 		}
 	}
