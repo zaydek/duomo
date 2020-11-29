@@ -1,13 +1,21 @@
-// ========================
-// == Top-level settings ==
-// ========================
-
-// TODO: Change configuration mechanism.
-
-// Describes whether to generate Duomo.
+// Describes whether to generate Duomo CSS.
+//
+// Ex:
+//
+// $headless: true  // Does not build Duomo CSS
+// $headless: false // Builds Duomo CSS
+//
 $headless: false !default;
 
 // Describes whether to generate Duomo `:root` variables.
+//
+// Ex:
+//
+// :root {
+//   ...
+//   ...
+// }
+//
 $headless-root: false !default;
 
 // Describes whether to generate debugger utilities.
@@ -16,12 +24,14 @@ $debugger: true !default;
 // Describes whether to generate stagger utilities.
 $stagger: true !default;
 
-// Delimiter for pseudos and breakpoints.
+// Describes the delimiter used for breakpoints, etc.
+//
+// Ex:
+//
+// $delimiter: ":" // -> class="px-16 sm:px-24"
+// $delimiter: "." // -> class="px-16 sm.px-24"
+//
 $delimiter: ":" !default;
-
-// ============
-// == Ranges ==
-// ============
 
 // prettier-ignore
 $nrange: (
@@ -102,16 +112,12 @@ $range: (
 	320,
 ) !default;
 
-// =================
-// == Breakpoints ==
-// =================
-
 // prettier-ignore
 $breakpoint-map: (
-	// xs:   512, // 32 * 16
+	xs:   512, // 32 * 16 // TODO: Disable?
 	sm:   640, // 32 * 20
 	md:   768, // 32 * 24
 	lg:  1024, // 32 * 32
 	xl:  1280, // 32 * 40
-	// 2xl: 1536, // 32 * 48
+	2xl: 1536, // 32 * 48 // TODO: Disable?
 ) !default;
