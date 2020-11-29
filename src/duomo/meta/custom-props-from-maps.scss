@@ -2,10 +2,12 @@
 
 // Ex:
 //
-// custom-props-from-maps((shorthand: "...", map: ...) ...)
+// custom-props-from-maps((shorthand: ..., map: ...) ...)
 // custom-props-from-maps((map: ...) ...)
 //
 @mixin custom-props-from-maps($maps...) {
+	// TODO: Extract `$map`, etc.
+
 	:root {
 		@each $map in $maps {
 			@each $mk, $mv in map.get($map, "map") {

@@ -27,7 +27,7 @@ test("theme: works without a transition", () => {
 body {
 	@include theme((
 		--bg-body: (
-			property: background-color,
+			property: (background-color),
 			light: configuration.$white,
 			dark: configuration.$black,
 		),
@@ -71,7 +71,7 @@ body {
 	@include theme(
 		$theme-map: (
 			--bg-body: (
-				property: background-color,
+				property: (background-color),
 				light: configuration.$white,
 				dark: configuration.$black,
 			),

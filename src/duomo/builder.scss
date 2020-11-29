@@ -36,23 +36,25 @@
 	@if not configuration.$headless {
 		/*! duomo | MIT License | https://github.com/zaydek/duomo */
 
-		// Preflight:
-		/* purgecss start ignore */
-		@include modern-normalize;
-		@include base;
-		@include vendored-font-smoothing;
-		/* purgecss end ignore */
+		// // Preflight:
+		// /* purgecss start ignore */
+		// @include modern-normalize;
+		// @include base;
+		// @include vendored-font-smoothing;
+		// /* purgecss end ignore */
 
-		@if configuration.$debugger {
-			@include debugger;
-		}
-		@if configuration.$stagger {
-			@include stagger;
-		}
+		// @if configuration.$debugger {
+		// 	@include debugger;
+		// }
+		// @if configuration.$stagger {
+		// 	@include stagger;
+		// }
+
+		@include background-color();
 
 		// Duomo CSS:
 		// @include group;
-		@include display(responsive, hover, group-hover, focus, group-focus);
+		// @include display(responsive, hover, group-hover, focus, group-focus);
 		// @include grid(responsive);
 		// @include position(responsive);
 		// @include margin(responsive);

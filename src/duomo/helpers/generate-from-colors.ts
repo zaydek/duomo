@@ -17,7 +17,7 @@ $color-map: (
 
 @at-root {
 	@include generate-opaque-colors-from-map(
-		$shorthand: "text",
+		$shorthand: text,
 		$prop: color,
 		$map: $color-map,
 		$opacity-range: (0, 0.5, 1),

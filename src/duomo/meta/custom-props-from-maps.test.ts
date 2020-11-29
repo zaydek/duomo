@@ -10,7 +10,7 @@ test("integration", () => {
 @at-root {
 	@include custom-props-from-maps(
 		(
-			shorthand: "a",
+			shorthand: a,
 			map: (
 				a: x,
 				b: y,
@@ -18,7 +18,7 @@ test("integration", () => {
 			),
 		),
 		(
-			shorthand: "b",
+			shorthand: b,
 			map: (
 				a: x,
 				b: y,
@@ -26,7 +26,7 @@ test("integration", () => {
 			),
 		),
 		(
-			shorthand: "c",
+			shorthand: c,
 			map: (
 				a: x,
 				b: y,

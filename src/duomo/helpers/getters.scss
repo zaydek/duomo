@@ -61,7 +61,12 @@
 	@return configuration.$range;
 }
 
-@function -getter($getter-name, $map, $key) {
+// Ex: opacity-range() -> (0, 0.05, ...)
+@function opacity-range() {
+	@return configuration.$opacity-range;
+}
+
+@function -semantic-getter($getter-name, $map, $key) {
 	$got: map.get($map, $key);
 	@if not $got {
 		@error "#{$getter-name}: no such key; $key=#{$key}";
@@ -70,22 +75,22 @@
 }
 
 @function font($key) {
-	@return -getter("font", configuration.$font-map, $key);
+	@return -semantic-getter("font", configuration.$font-map, $key);
 }
 @function color($key) {
-	@return -getter("color", configuration.$color-map, $key);
+	@return -semantic-getter("color", configuration.$color-map, $key);
 }
 @function extended-color($key) {
-	@return -getter("extended-color", configuration.$extended-color-map, $key);
+	@return -semantic-getter("extended-color", configuration.$extended-color-map, $key);
 }
 @function shadow($key) {
-	@return -getter("shadow", configuration.$shadow-map, $key);
+	@return -semantic-getter("shadow", configuration.$shadow-map, $key);
 }
 @function timing($key) {
-	@return -getter("timing", configuration.$timing-map, $key);
+	@return -semantic-getter("timing", configuration.$timing-map, $key);
 }
 @function breakpoint($key) {
-	@return -getter("breakpoint", configuration.$breakpoint-map, $key);
+	@return -semantic-getter("breakpoint", configuration.$breakpoint-map, $key);
 }
 
 @function fonts() {

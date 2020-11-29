@@ -23,7 +23,7 @@
 
 // prettier-ignore
 @mixin generate-from-range($info-map) {
-	$variant:   map.get($info-map, variant);
+	$v:         map.get($info-map, variant);
 	$shorthand: map.get($info-map, shorthand);
 	$property:  map.get($info-map, property);
 	$range:     map.get($info-map, range);
@@ -33,7 +33,7 @@
 	$as-percent: percent-heuristic($range);
 
 	@each $rv in $range {
-		#{variant(#{n($rv)}#{$shorthand}-#{desc(abs($rv), $as-percent)}, $variant)} {
+		#{variant(#{n($rv)}#{$shorthand}-#{desc(abs($rv), $as-percent)}, $v)} {
 			@each $prop in $property {
 				#{$prop}: resolve($rv, $resolver);
 			}

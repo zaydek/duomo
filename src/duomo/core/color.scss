@@ -1,12 +1,12 @@
 @use "../helpers" as *;
 
-@mixin background-color($variants...) {
+@mixin color($variants...) {
 	// prettier-ignore
 	@include variants($variants) using ($v) {
 		@include generate-from-colors((
 			variant: $v,
-			shorthand: bg,
-			property: (background-color),
+			shorthand: text,
+			property: (color),
 			map: colors(),
 			opacity-range: opacity-range(),
 		));

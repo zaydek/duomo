@@ -1,20 +1,5 @@
 @use "../helpers" as *;
 
-// // prettier-ignore
-// $-opts: (
-// 	vstack: flex,
-// 	hstack: flex,
-// 	zstack: grid,
-// 	grid: grid,
-// );
-
-// @each $mk, $mv in $-opts {
-// 	#{variant($mk, $v)} {
-// 		// NOTE: Use `#{...}` syntax because of custom props.
-// 		--duomo-display: #{$mv};
-// 	}
-// }
-
 @mixin display($variants...) {
 	@include variants($variants) using ($v) {
 		#{variant(display-none, $v)} {

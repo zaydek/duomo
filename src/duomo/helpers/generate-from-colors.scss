@@ -1,0 +1,44 @@
+@use "sass:color";
+@use "sass:map";
+@use "sass:string";
+
+@use "variant" as *;
+
+// "rgba(
+// 	#{color.red($mv)},
+// 	#{color.green($mv)},
+// 	#{color.blue($mv)},
+// 	#{var(--#{$shorthand}-opacity)}
+// )"
+
+// prettier-ignore
+@mixin generate-from-colors($info-map) {
+	$v:             map.get($info-map, variant);
+	$shorthand:     map.get($info-map, shorthand);
+	$property:      map.get($info-map, property);
+	$map:           map.get($info-map, map);
+	$opacity-range: map.get($info-map, opacity-range);
+
+	@each $mk, $mv in $map {
+		#{variant(#{$shorthand}-#{$mk}, $v)} {
+			@if $mk == transparent or $mk == current {
+				--#{$shorthand}-opacity: 1;
+				#{$property}: $mv;
+			} @else {
+				--#{$shorthand}-opacity: 1;
+				#{$property}: $mv;
+				// TODO: Do we need `string.unquote`?
+				#{$property}: string.unquote(
+					"rgba(#{color.red($mv)}, #{color.green($mv)}, #{color.blue($mv)}, #{var(--#{$shorthand}-opacity)})"
+				);
+			}
+		}
+	}
+
+	@each $mv in $opacity-range {
+		#{variant(#{$shorthand}-opacity-#{$mv * 100}, $v)} {
+			// NOTE: Use `#{...}` syntax because of custom props.
+			--#{$shorthand}-opacity: #{$mv};
+		}
+	}
+}
