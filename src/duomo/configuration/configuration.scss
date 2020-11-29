@@ -7,15 +7,15 @@
 //
 $headless: false !default;
 
-// Describes whether to generate Duomo `:root` variables.
-//
-// Ex:
-//
-// :root {
-//   ...
-// }
-//
-$headless-root: false !default;
+// // Describes whether to generate Duomo `:root` variables.
+// //
+// // Ex:
+// //
+// // :root {
+// //   ...
+// // }
+// //
+// $headless-root: false !default;
 
 // Describes whether to generate debugger utilities.
 $debugger: true !default;

@@ -1,5 +1,5 @@
 // prettier-ignore
-@mixin debugger {
+@mixin debug {
 	[data-debug],
 	[data-debug] * {
 		outline: 2px solid

@@ -4,7 +4,8 @@
 @use "preflight/modern-normalize" as *;
 @use "preflight/vendored-font-smoothing" as *;
 
-@use "meta/debugger" as *;
+@use "meta/debug-space" as *;
+@use "meta/debug" as *;
 @use "meta/stagger" as *;
 
 @use "core/aspect-ratio" as *;
@@ -48,7 +49,8 @@
 // 		/* purgecss end ignore */
 //
 // 		@if configuration.$debugger {
-// 			@include debugger;
+// 			@include debug;
+// 			@include debug-space;
 // 		}
 // 		@if configuration.$stagger {
 // 			@include stagger;
