@@ -6,16 +6,14 @@
 // custom-props-from-maps((map: ...) ...)
 //
 @mixin custom-props-from-maps($maps...) {
-	body {
+	:root {
 		@each $map in $maps {
-			@each $k, $v in map.get($map, "map") {
+			@each $mk, $mv in map.get($map, "map") {
 				$shorthand: map.get($map, "shorthand");
 				@if not $shorthand {
-					// NOTE: Use `#{...}` syntax because of CSS custom props.
-					--#{"" + $k}: #{$v};
+					--#{"" + $mk}: #{$mv};
 				} @else {
-					// NOTE: Use `#{...}` syntax because of CSS custom props.
-					--#{$shorthand + "-" + $k}: #{$v};
+					--#{$shorthand + "-" + $mk}: #{$mv};
 				}
 			}
 		}

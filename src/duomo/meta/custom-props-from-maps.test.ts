@@ -5,7 +5,7 @@ declare function sass(data: string): string
 
 test("integration", () => {
 	const result = sass(`
-@use "src/duomo/preflight/custom-props-from-maps" as *;
+@use "src/duomo/meta/custom-props-from-maps" as *;
 
 @at-root {
 	@include custom-props-from-maps(
@@ -38,7 +38,7 @@ test("integration", () => {
 `)
 	// prettier-ignore
 	expect(result).toBe(`
-body {
+:root {
 	--a-a: x;
 	--a-b: y;
 	--a-c: z;
