@@ -28,6 +28,14 @@
 @use "core/width" as *;
 @use "core/z-index" as *;
 
+// @mixin preflight {
+// 	/* purgecss start ignore */
+// 	@include reset;
+// 	@include debugger;
+// 	@include stagger;
+// 	/* purgecss end ignore */
+// }
+
 @at-root {
 	// TODO: Support `$headless-root` / CSS variables.
 	@if not configuration.$headless {
