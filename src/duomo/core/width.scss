@@ -1,0 +1,21 @@
+@use "../helpers" as *;
+
+@mixin width($variants...) {
+	// prettier-ignore
+	@include variants($variants) using ($v) {
+		@include generate-from-range((
+			variant: $v,
+			shorthand: w,
+			property: (width),
+			range: var-join(
+				auto,
+				range(),
+				// min-content, // TODO
+				// max-content, // TODO
+				100%,
+				100vw,
+			),
+			resolver: rem,
+		));
+	}
+}

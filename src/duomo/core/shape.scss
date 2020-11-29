@@ -1,0 +1,19 @@
+@use "../helpers" as *;
+
+@mixin shape($variants...) {
+	@include variants($variants) using ($v) {
+		@each $rv in range() {
+			#{variant(square-#{$rv}, $v)} {
+				width: resolve($rv, rem);
+				height: resolve($rv, rem);
+			}
+		}
+		@each $rv in range() {
+			#{variant(circle-#{$rv}, $v)} {
+				width: resolve($rv, rem);
+				height: resolve($rv, rem);
+				border-radius: 9999px;
+			}
+		}
+	}
+}

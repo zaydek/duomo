@@ -1,0 +1,70 @@
+@use "../helpers" as *;
+
+@mixin border-radius($variants...) {
+	// prettier-ignore
+	@include variants($variants) using ($v) {
+		@include generate-from-range((
+			variant: $v,
+			shorthand: radius,
+			property: (border-radius),
+			range: var-join(cap(range(), 24), 9999px),
+			resolver: rem,
+		));
+		@include generate-from-range((
+			variant: $v,
+			shorthand: radius-t,
+			property: (border-top-left-radius, border-top-right-radius),
+			range: var-join(cap(range(), 24), 9999px),
+			resolver: rem,
+		));
+		@include generate-from-range((
+			variant: $v,
+			shorthand: radius-r,
+			property: (border-top-right-radius, border-bottom-right-radius),
+			range: var-join(cap(range(), 24), 9999px),
+			resolver: rem,
+		));
+		@include generate-from-range((
+			variant: $v,
+			shorthand: radius-b,
+			property: (border-bottom-left-radius, border-bottom-right-radius),
+			range: var-join(cap(range(), 24), 9999px),
+			resolver: rem,
+		));
+		@include generate-from-range((
+			variant: $v,
+			shorthand: radius-l,
+			property: (border-top-left-radius, border-bottom-left-radius),
+			range: var-join(cap(range(), 24), 9999px),
+			resolver: rem,
+		));
+		@include generate-from-range((
+			variant: $v,
+			shorthand: radius-tr,
+			property: (border-top-right-radius),
+			range: var-join(cap(range(), 24), 9999px),
+			resolver: rem,
+		));
+		@include generate-from-range((
+			variant: $v,
+			shorthand: radius-br,
+			property: (border-bottom-right-radius),
+			range: var-join(cap(range(), 24), 9999px),
+			resolver: rem,
+		));
+		@include generate-from-range((
+			variant: $v,
+			shorthand: radius-bl,
+			property: (border-bottom-left-radius),
+			range: var-join(cap(range(), 24), 9999px),
+			resolver: rem,
+		));
+		@include generate-from-range((
+			variant: $v,
+			shorthand: radius-tl,
+			property: (border-top-left-radius),
+			range: var-join(cap(range(), 24), 9999px),
+			resolver: rem,
+		));
+	}
+}

@@ -1,0 +1,42 @@
+@use "sass:list";
+@use "sass:map";
+
+@use "abs" as *;
+@use "getters" as *;
+@use "resolvers" as *;
+@use "variant" as *;
+
+// Ex:
+//
+// (0, 0.5, 1)  -> true
+// (0, 50, 100) -> false
+//
+@function percent-heuristic($range) {
+	// prettier-ignore
+	$ok: $range and
+		type-of(list.nth($range, 1)) == "number" and
+		list.nth($range, 1) >= 0 and
+		type-of(list.nth($range, -1)) == "number" and
+		list.nth($range, -1) <= 1;
+	@return $ok;
+}
+
+// prettier-ignore
+@mixin generate-from-range($info-map) {
+	$variant:   map.get($info-map, variant);
+	$shorthand: map.get($info-map, shorthand);
+	$property:  map.get($info-map, property);
+	$range:     map.get($info-map, range);
+	$resolver:  map.get($info-map, resolver);
+
+	// Computed:
+	$as-percent: percent-heuristic($range);
+
+	@each $rv in $range {
+		#{variant(#{n($rv)}#{$shorthand}-#{desc(abs($rv), $as-percent)}, $variant)} {
+			@each $prop in $property {
+				#{$prop}: resolve($rv, $resolver);
+			}
+		}
+	}
+}

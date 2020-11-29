@@ -1,0 +1,71 @@
+@use "sass:list";
+
+@use "configuration" as *;
+@use "helpers" as *;
+@use "preflight" as *;
+@use "props" as *;
+
+@mixin preflight {
+	/* purgecss start ignore */
+	@include reset;
+	@include debugger;
+	@include stagger;
+	/* purgecss end ignore */
+}
+
+$__zero-range: (0);
+$__full-range: list.join($negative-range, $standard-range);
+
+@mixin duomo {
+	@include group;
+	@include display;
+	@include stacks;
+	@include stack-space-from-range($range: $__full-range, $resolver: rem);
+	@include zstack-placement;
+	@include grid-from-range($range: $standard-range, $resolver: rem);
+	@include margin-from-range($range: $__full-range, $resolver: rem);
+	@include padding-from-range($range: $standard-range, $resolver: rem);
+	@include position-from-range($range: $__zero-range, $resolver: rem);
+	@include width-from-range($range: $standard-range, $resolver: rem);
+	@include max-width-from-breakpoint-map($breakpoint-map: $breakpoint-map);
+	@include height-from-range($range: $standard-range, $resolver: rem);
+	@include min-height;
+	@include whitespace;
+	@include text-align;
+	@include font-weight;
+	@include font-size-from-range($range: $font-size-range, $resolver: rem);
+	@include letter-spacing($range: $letter-spacing-range, $resolver: em);
+	@include line-height-from-range($range: $line-height-range);
+	@include text-decoration;
+	@include color-from-map($map: $color-map, $opacity-range: $opacity-range);
+	@include background-color-from-map($map: $color-map, $opacity-range: $opacity-range);
+	@include border-width-from-range($range: $border-width-range, $resolver: rem);
+	@include border-color-from-map($map: $color-map, $opacity-range: $opacity-range);
+	@include border-radius-from-range($range: $border-radius-range, $resolver: rem);
+	@include box-shadow-from-map($map: $shadow-map);
+	@include opacity-from-range($opacity-range: $opacity-range);
+	@include overflow;
+	@include z-index-from-range($range: $z-index-range);
+	@include pointer-events;
+	@include transition($default-duration: 300ms, $default-timing-function: $ease-out);
+	// prettier-ignore
+	@include transition-duration-from-range($range: (0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000));
+	@include transition-timing-function-from-map($map: $timing-map);
+}
+
+@at-root {
+	@if not $headless {
+		/*! @zaydek/duomo | MIT License | https://github.com/zaydek/duomo */
+		@include preflight;
+		@include duomo;
+		@each $k, $v in $breakpoint-map {
+			@media (min-width: px($v)) {
+				.#{escape-media-key($k)} {
+					@at-root {
+						@include duomo;
+					}
+				}
+			}
+		}
+	}
+}

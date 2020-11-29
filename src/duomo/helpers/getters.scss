@@ -1,0 +1,99 @@
+@use "sass:map";
+
+@use "../configuration";
+@use "escapers";
+@use "resolvers";
+
+// Ex:
+//
+// n(-1) -> "-"
+// n(0) -> ""
+//
+@function n($rv) {
+	@if resolvers.passthrough($rv) {
+		@return "";
+	}
+	@return if($rv < 0, "-", "");
+}
+
+// Ex: delimiter() -> "\:"
+@function delimiter() {
+	@return escapers.escape(configuration.$delimiter);
+}
+
+// Ex: delimit(sm) -> "sm\:"
+@function delimit($key) {
+	@return $key + delimiter();
+}
+
+// Ex:
+//
+// desc(100%)  -> max
+// desc(100vw) -> screen
+//
+@function desc($any, $as-percent: false) {
+	// prettier-ignore
+	$got: map.get((
+		100%: max,
+		100vw: screen,
+		100vh: screen,
+		9999px: max,
+	), $any);
+	@if $got {
+		@return $got;
+	}
+	@if type-of($any) == "number" and $as-percent {
+		$rv: $any;
+		@return $rv * 100;
+	}
+	@return $any;
+}
+
+// Ex: nrange() -> (-1, -2, -4, -8, ...);
+@function nrange() {
+	@return configuration.$nrange;
+}
+
+// Ex: range() -> (0, 1, 2, 4, 8, ...);
+@function range() {
+	@return configuration.$range;
+}
+
+// Ex: shadows() -> (sm: TODO, md: TODO, ...)
+@function shadows() {
+	$map: ();
+	@each $mk, $mv in configuration.$shadow-map {
+		$map: map.set($map, $mk, $mv);
+	}
+	@return $map;
+}
+
+// Ex:
+//
+// breakpoint(xs) -> 512
+// breakpoint(sm) -> 640
+//
+@function breakpoint($key) {
+	$got: map.get(configuration.$breakpoint-map, $key);
+	@if not $got {
+		@error "breakpoints: no such `$key`; $key=#{$key}";
+	}
+	@return $got;
+}
+
+// Ex:
+//
+// breakpoints()
+// -> (
+// ->   "xs\:": 512,
+// ->   "sm\:": 640,
+// ->   ...
+// -> )
+//
+@function breakpoints() {
+	$map: ();
+	@each $key, $n in configuration.$breakpoint-map {
+		$map: map.set($map, escapers.escape-breakpoint-key($key), $n);
+	}
+	@return $map;
+}

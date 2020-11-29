@@ -1,0 +1,6 @@
+@mixin vendored-font-smoothing {
+	:root {
+		-webkit-font-smoothing: auto;
+		-moz-osx-font-smoothing: auto;
+	}
+}

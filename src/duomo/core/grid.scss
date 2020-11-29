@@ -1,0 +1,37 @@
+@use "../helpers" as *;
+
+// TODO: Add intrinsic grids.
+@mixin grid($variants...) {
+	@include variants($variants) using ($v) {
+		#{variant(grid, $v)} {
+			display: grid;
+		}
+
+		@for $rv from 0 through 12 {
+			#{variant(grid-cols-#{$rv}, $v)} {
+				grid-template-columns: repeat($rv, minmax(0, 1fr));
+			}
+		}
+		@for $rv from 0 through 12 {
+			#{variant(grid-rows-#{$rv}, $v)} {
+				grid-template-rows: repeat($rv, minmax(0, 1fr));
+			}
+		}
+
+		@each $rv in range() {
+			#{variant(gap-#{$rv}, $v)} {
+				gap: resolve($rv, rem);
+			}
+		}
+		@each $rv in range() {
+			#{variant(gap-x-#{$rv}, $v)} {
+				column-gap: resolve($rv, rem);
+			}
+		}
+		@each $rv in range() {
+			#{variant(gap-y-#{$rv}, $v)} {
+				row-gap: resolve($rv, rem);
+			}
+		}
+	}
+}

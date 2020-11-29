@@ -1,0 +1,19 @@
+@use "../helpers" as *;
+
+// NOTE: Does not support `$variants` because of `[style]` selector.
+@mixin aspect-ratio {
+	[style*="--aspect-ratio"] {
+		position: relative;
+		// NOTE: Use parens so `--aspect-ratio: 16 / 9` works.
+		padding-bottom: calc(100% / (var(--aspect-ratio)));
+	}
+	[style*="--aspect-ratio"] > * {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}

@@ -1,0 +1,33 @@
+@use "sass:list";
+@use "sass:string";
+
+// Ex:
+//
+// has-suffix(8, px)   -> false
+// has-suffix(8px, px) -> true
+//
+@function has-suffix($str, $end) {
+	$str: "" + $str;
+	$end: "" + $end;
+	@return string.slice($str, 1 + string.length($str) - string.length($end)) == $end;
+}
+
+// Ex:
+//
+// var-join(1, 2)      -> (1, 2)
+// var-join((1, 2), 3) -> (1, 2, 3)
+//
+@function var-join($lists...) {
+	$var-join: ();
+	@each $list in $lists {
+		@if type-of($list) != "list" {
+			$any: $list;
+			$var-join: list.join($var-join, $any);
+		} @else {
+			@each $any in $list {
+				$var-join: list.join($var-join, $any);
+			}
+		}
+	}
+	@return $var-join;
+}
