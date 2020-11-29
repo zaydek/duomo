@@ -1,5 +1,6 @@
 @use "../helpers" as *;
 
+// Alignment options are an escape hatch for the parent element.
 $-align-opts: (
 	align-stretch: stretch,
 	align-start: flex-start,
@@ -8,6 +9,7 @@ $-align-opts: (
 	align-baseline: baseline,
 );
 
+// Self-alignment options are an escape hatch for children elements.
 $-align-self-opts: (
 	align-self-stretch: stretch,
 	align-self-start: flex-start,
@@ -16,7 +18,7 @@ $-align-self-opts: (
 	align-self-baseline: baseline,
 );
 
-// NOTE: Use `(width|height): min-content` to support `overflow: scroll`.
+// NOTE: Use `(width|height): min-content` for `overflow-(x|y): scroll`.
 //
 // https://codepen.io/zaydek/pen/pobXmpw?editors=1100
 
@@ -32,11 +34,8 @@ $-align-self-opts: (
 			flex-direction: row;
 			justify-content: center;
 			align-items: center;
-
-			// See note.
 			min-width: min-content;
 		}
-		// NOTE: Simulates `gap` (for Flexbox).
 		#{variant("hstack > * + *", $v)} {
 			margin-top: 0;
 			margin-left: var(--space);
@@ -63,11 +62,8 @@ $-align-self-opts: (
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-
-			// See note.
 			min-height: min-content;
 		}
-		// NOTE: Simulates `gap` (for Flexbox).
 		#{variant("vstack > * + *", $v)} {
 			margin-left: 0;
 			margin-top: var(--space);
