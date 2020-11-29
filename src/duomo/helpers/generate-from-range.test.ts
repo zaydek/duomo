@@ -3,6 +3,7 @@
  */
 declare function sass(data: string): string
 
+// TODO: Upgrade to support `variants`?
 test("integration", () => {
 	const result = sass(`
 @use "src/duomo/helpers/generators" as *;

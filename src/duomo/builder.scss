@@ -1,6 +1,7 @@
 @use "configuration";
 
 @use "preflight/base" as *;
+@use "preflight/debugger" as *;
 @use "preflight/modern-normalize" as *;
 @use "preflight/vendored-font-smoothing" as *;
 
@@ -41,10 +42,14 @@
 	@if not configuration.$headless {
 		/*! duomo | MIT License | https://github.com/zaydek/duomo */
 
-		// Preflight:
-		@include modern-normalize;
-		@include base;
-		@include vendored-font-smoothing;
+		// // Preflight:
+		// @include modern-normalize;
+		// @include base;
+		// @include vendored-font-smoothing;
+
+		@if configuration.$debugger {
+			@include debugger;
+		}
 
 		// Duomo CSS:
 		@include group;
