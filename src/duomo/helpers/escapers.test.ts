@@ -7,7 +7,7 @@ test("escape: does not escape numbers", () => {
 	const result = sass(`
 @use "sass:math";
 
-@use "src/duomo/helpers/escape" as *;
+@use "src/duomo/helpers/escapers" as *;
 
 .-z-#{escape(math.abs(-10))} {
 	z-index: -10;
@@ -35,12 +35,12 @@ test("escape: does not escape numbers", () => {
 `.trim())
 })
 
-test("escape: escapes `$separator`", () => {
+test("escape: escapes `$delimiter`", () => {
 	const result = sass(`
-@use "src/duomo/helpers/escape" as *;
+@use "src/duomo/helpers/escapers" as *;
 
-$separator: ":";
-.sm#{escape($separator)}px-24 {
+$delimiter: ":";
+.sm#{escape($delimiter)}px-24 {
 	/**/
 }
 `)
@@ -52,14 +52,14 @@ $separator: ":";
 `.trim())
 })
 
-test("escape-media-key: does not escape `xl` but escapes `2xl`", () => {
+test("escape-breakpoint-key: does not escape `xl` but escapes `2xl`", () => {
 	const result = sass(`
-@use "src/duomo/helpers/escape" as *;
+@use "src/duomo/helpers/escapers" as *;
 
-.#{escape-media-key("xl")} {
+.#{escape-breakpoint-key("xl")} {
 	/**/
 }
-.#{escape-media-key("2xl")} {
+.#{escape-breakpoint-key("2xl")} {
 	/**/
 }
 `)
@@ -69,7 +69,7 @@ test("escape-media-key: does not escape `xl` but escapes `2xl`", () => {
 	/**/
 }
 
-.\\2 xl {
+.\\32 xl {
 	/**/
 }
 `.trim())
