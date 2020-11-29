@@ -52,7 +52,7 @@
 
 	@each $v in $opacity-range {
 		#{$amp}#{$shorthand}-opacity-#{escape($v * 100)} {
-			// NOTE: Use `#{...}` syntax because of CSS custom props.
+			// NOTE: Use `#{...}` syntax because of custom props.
 			--#{$shorthand}-opacity: #{$v};
 		}
 	}

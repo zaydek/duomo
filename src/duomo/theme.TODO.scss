@@ -27,7 +27,7 @@ $theme-aware-selector: "body:not([data-theme-effect=true])";
 				}
 			}
 			@if $duration and $timing-function {
-				// NOTE: Use `#{...}` syntax because of CSS custom props.
+				// NOTE: Use `#{...}` syntax because of custom props.
 				//
 				// prettier-ignore
 				--theme-transition:

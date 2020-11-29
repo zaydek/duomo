@@ -5,7 +5,7 @@
 	$amp: get-ampersand();
 
 	#{$theme-aware-selector} #{$amp}transition {
-		// NOTE: Use `#{...}` syntax because of CSS custom props.
+		// NOTE: Use `#{...}` syntax because of custom props.
 		--transition-duration: #{$default-duration};
 		--transition-timing-function: #{$default-timing-function};
 		transition: var(--transition-duration) var(--transition-timing-function);
@@ -18,7 +18,7 @@
 
 	@each $v in $range {
 		#{$theme-aware-selector} #{$amp}duration-#{escape($v)} {
-			// NOTE: Use `#{...}` syntax because of CSS custom props.
+			// NOTE: Use `#{...}` syntax because of custom props.
 			--transition-duration: #{$v};
 		}
 	}
@@ -32,7 +32,7 @@
 			$k: "ease-" + $k;
 		}
 		#{$theme-aware-selector} #{$amp}#{$k} {
-			// NOTE: Use `#{...}` syntax because of CSS custom props.
+			// NOTE: Use `#{...}` syntax because of custom props.
 			--transition-timing-function: #{$v};
 		}
 	}
