@@ -1,18 +1,118 @@
 @use "../helpers" as *;
 
-@mixin stacks($variants...) {
+$-align-opts: (
+	align-stretch: stretch,
+	align-start: flex-start,
+	align-center: center,
+	align-end: flex-end,
+	align-baseline: baseline,
+);
+
+$-align-self-opts: (
+	align-self-stretch: stretch,
+	align-self-start: flex-start,
+	align-self-center: center,
+	align-self-end: flex-end,
+	align-self-baseline: baseline,
+);
+
+// NOTE: Use `(width|height): min-content` to support `overflow: scroll`.
+//
+// https://codepen.io/zaydek/pen/pobXmpw?editors=1100
+
+@mixin -hstack($variants...) {
+	.hstack > * {
+		--space: 0;
+	}
+
 	@include variants($variants) using ($v) {
 		#{variant(hstack, $v)} {
 			--duomo-display: flex;
-			// TODO
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+
+			// See note.
+			min-width: min-content;
 		}
+		#{variant("hstack > * + *", $v)} {
+			margin-top: 0;
+			margin-left: var(--space);
+		}
+		// NOTE: No-op because empty spacers are collapsible.
+		#{variant("hstack > .spacer:empty", $v)},
+		#{variant("hstack > .spacer:empty + *", $v)} {
+			margin-left: 0;
+		}
+	}
+}
+
+@mixin -vstack($variants...) {
+	.vstack > * {
+		--space: 0;
+	}
+
+	@include variants($variants) using ($v) {
 		#{variant(vstack, $v)} {
 			--duomo-display: flex;
-			// TODO
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+
+			// See note.
+			min-height: min-content;
 		}
-		#{variant(zstack, $v)} {
-			--duomo-display: grid;
-			// TODO
+		#{variant("vstack > * + *", $v)} {
+			margin-left: 0;
+			margin-top: var(--space);
 		}
+		// NOTE: No-op because empty spacers are collapsible.
+		#{variant("vstack > .spacer:empty", $v)},
+		#{variant("vstack > .spacer:empty + *", $v)} {
+			margin-top: 0;
+		}
+	}
+}
+
+@mixin -stack-modifiers($variants...) {
+	@include variants($variants) using ($v) {
+		@each $mk, $mv in $-align-opts {
+			#{variant($mk, $v)} {
+				align-items: $mv;
+			}
+		}
+		@each $mk, $mv in $-align-self-opts {
+			#{variant($mk, $v)} {
+				align-self: $mv;
+			}
+		}
+	}
+}
+
+@mixin stacks($variants...) {
+	@include -hstack($variants...);
+	@include -vstack($variants...);
+
+	.spacer {
+		flex: 1 0 var(--space);
+	}
+	.spacer:first-child,
+	.spacer:last-child {
+		flex: 1 0 0;
+	}
+
+	@include -stack-modifiers($variants...);
+
+	// prettier-ignore
+	@include variants($variants) using ($v) {
+		@include generate-from-range((
+			variant: $v,
+			shorthand: space,
+			property: (--space),
+			range: var-join(nrange(), range()),
+			resolver: rem,
+		));
 	}
 }

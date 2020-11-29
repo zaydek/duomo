@@ -29,11 +29,12 @@
 @use "core/position" as *;
 @use "core/position" as *;
 @use "core/shape" as *;
+@use "core/stacks" as *;
 @use "core/width" as *;
 @use "core/z-index" as *;
 
 @at-root {
-	@include display(responsive, hover, group-hover, focus, group-focus);
+	@include stacks;
 }
 
 // @at-root {

@@ -33,27 +33,6 @@
 
 @mixin debug-space {
 	/*
-	 * vstack
-	 */
-	[data-debug-space] .vstack > *:not(.spacer) + *:not(.spacer) {
-		position: relative;
-		&::after {
-			@include -empty-block;
-			transform: translateY(-100%);
-			height: var(--space);
-			@include -debug-stripes($color: "blue");
-		}
-	}
-
-	[data-debug-space] .vstack > .spacer:empty {
-		position: relative;
-		&::before {
-			@include -empty-block;
-			@include -debug-stripes($color: "blue");
-		}
-	}
-
-	/*
 	 * hstack
 	 */
 	[data-debug-space] .hstack > *:not(.spacer) + *:not(.spacer) {
@@ -67,10 +46,33 @@
 	}
 
 	[data-debug-space] .hstack > .spacer:empty {
+		height: 2px;
 		position: relative;
 		&::before {
 			@include -empty-block;
 			@include -debug-stripes($color: "purple");
+		}
+	}
+
+	/*
+	 * vstack
+	 */
+	[data-debug-space] .vstack > *:not(.spacer) + *:not(.spacer) {
+		position: relative;
+		&::after {
+			@include -empty-block;
+			transform: translateY(-100%);
+			height: var(--space);
+			@include -debug-stripes($color: "blue");
+		}
+	}
+
+	[data-debug-space] .vstack > .spacer:empty {
+		width: 2px;
+		position: relative;
+		&::before {
+			@include -empty-block;
+			@include -debug-stripes($color: "blue");
 		}
 	}
 }
