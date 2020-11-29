@@ -1,7 +1,0 @@
-@use "preflight" as *;
-
-@at-root {
-	/* purgecss start ignore */
-	@include reset;
-	/* purgecss end ignore */
-}

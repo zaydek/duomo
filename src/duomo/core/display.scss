@@ -1,0 +1,13 @@
+@use "../helpers" as *;
+
+// TODO
+@mixin display($variants...) {
+	@include variants($variants) using ($v) {
+		#{variant(invisible, $v)} {
+			display: none;
+		}
+		#{variant(visible, $v)} {
+			display: block;
+		}
+	}
+}

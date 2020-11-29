@@ -1,0 +1,17 @@
+@use "../helpers" as *;
+
+// prettier-ignore
+$-opts: (
+	auto,
+	none,
+);
+
+@mixin pointer-events($variants...) {
+	@include variants($variants) using ($v) {
+		@each $each in $-opts {
+			#{variant(pointer-events-#{$each}, $v)} {
+				pointer-events: $each;
+			}
+		}
+	}
+}

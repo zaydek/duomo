@@ -1,0 +1,12 @@
+@use "../helpers" as *;
+
+// TODO
+@mixin background-color($variants...) {
+	@include variants($variants) using ($v) {
+		@each $rv in (400, 500, 600, 700) {
+			#{variant(red-#{$rv}, $v)} {
+				background-color: var(--red-#{$rv});
+			}
+		}
+	}
+}

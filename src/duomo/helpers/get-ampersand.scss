@@ -1,9 +1,0 @@
-@use "../configuration" as *;
-@use "escape" as *;
-
-@function get-ampersand() {
-	@if not & {
-		@return ".";
-	}
-	@return & + escape($separator);
-}

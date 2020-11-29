@@ -1,0 +1,12 @@
+@use "sass:list";
+
+// Ex: cap((1, 2, 3, 4), 2) -> (1, 2)
+@function cap($range, $cap) {
+	$capped: ();
+	@each $rv in $range {
+		@if $rv <= $cap {
+			$capped: list.join($capped, $rv);
+		}
+	}
+	@return $capped;
+}

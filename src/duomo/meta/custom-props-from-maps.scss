@@ -1,0 +1,21 @@
+@use "sass:map";
+
+// Ex:
+//
+// custom-props-from-maps((shorthand: "...", map: ...) ...)
+// custom-props-from-maps((map: ...) ...)
+//
+@mixin custom-props-from-maps($maps...) {
+	:root {
+		@each $map in $maps {
+			@each $mk, $mv in map.get($map, "map") {
+				$shorthand: map.get($map, "shorthand");
+				@if not $shorthand {
+					--#{"" + $mk}: #{$mv};
+				} @else {
+					--#{$shorthand + "-" + $mk}: #{$mv};
+				}
+			}
+		}
+	}
+}

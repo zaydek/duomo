@@ -1,58 +1,108 @@
 @use "sass:map";
 
-@use "../configuration" as *;
+@use "../configuration";
+@use "escapers";
+@use "resolvers";
 
-@function __impl($name, $map, $key) {
+// Ex:
+//
+// n(-1) -> "-"
+// n(0) -> ""
+//
+@function n($rv) {
+	@if resolvers.passthrough($rv) {
+		@return "";
+	}
+	@return if($rv < 0, "-", "");
+}
+
+// Ex: delimiter() -> "\:"
+@function delimiter() {
+	@return escapers.escape(configuration.$delimiter);
+}
+
+// Ex: delimit(sm) -> "sm\:"
+@function delimit($key) {
+	@return escapers.escape-breakpoint-key($key) + delimiter();
+}
+
+// Ex:
+//
+// desc(auto)  -> auto
+// desc(0)     -> 0
+// desc(100%)  -> max
+// desc(100vw) -> screen
+//
+@function desc($any, $as-percent: false) {
+	// prettier-ignore
+	$got: map.get((
+		100%: max,
+		100vw: screen,
+		100vh: screen,
+		9999px: max,
+	), $any);
+	@if $got {
+		@return $got;
+	}
+	@if type-of($any) == "number" and $as-percent {
+		$rv: $any;
+		@return $rv * 100;
+	}
+	@return $any;
+}
+
+// Ex: nrange() -> (-1, -2, -4, -8, ...)
+@function nrange() {
+	@return configuration.$nrange;
+}
+
+// Ex: range() -> (0, 1, 2, 4, 8, ...)
+@function range() {
+	@return configuration.$range;
+}
+
+@function -getter($getter-name, $map, $key) {
 	$got: map.get($map, $key);
 	@if not $got {
-		@error $name + ": no " + $name + " exists for key " + $key;
+		@error "#{$getter-name}: no such key; $key=#{$key}";
 	}
 	@return $got;
 }
 
-// prettier-ignore
 @function font($key) {
-	@return __impl(
-		"font",
-		$font-map,
-		$key,
-	);
+	@return -getter("font", configuration.$font-map, $key);
 }
-
-// TODO: Add support for `$extended-color-map`.
-//
-// prettier-ignore
 @function color($key) {
-	@return __impl(
-		"color",
-		$color-map,
-		$key,
-	);
+	@return -getter("color", configuration.$color-map, $key);
 }
-
-// prettier-ignore
+@function extended-color($key) {
+	@return -getter("extended-color", configuration.$extended-color-map, $key);
+}
 @function shadow($key) {
-	@return __impl(
-		"shadow",
-		$shadow-map,
-		$key,
-	);
+	@return -getter("shadow", configuration.$shadow-map, $key);
 }
-
-// prettier-ignore
 @function timing($key) {
-	@return __impl(
-		"timing",
-		$timing-map,
-		$key,
-	);
+	@return -getter("timing", configuration.$timing-map, $key);
+}
+@function breakpoint($key) {
+	@return -getter("breakpoint", configuration.$breakpoint-map, $key);
 }
 
-// prettier-ignore
-@function breakpoint($key) {
-	@return __impl(
-		"breakpoint",
-		$breakpoint-map,
-		$key,
-	);
+@function fonts() {
+	@return configuration.$font-map;
+}
+@function colors() {
+	@return configuration.$color-map;
+}
+@function extended-colors() {
+	@return configuration.$extended-color-map;
+}
+@function shadows() {
+	@return configuration.$shadow-map;
+}
+@function timings() {
+	@return configuration.$timing-map;
+}
+@function breakpoints() {
+	@return configuration.$breakpoint-map;
 }

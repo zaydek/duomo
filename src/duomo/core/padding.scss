@@ -1,0 +1,56 @@
+@use "../helpers" as *;
+
+@mixin padding($variants...) {
+	// prettier-ignore
+	@include variants($variants) using ($v) {
+		@include generate-from-range((
+			variant: $v,
+			shorthand: p,
+			property: (padding),
+			range: range(),
+			resolver: rem,
+		));
+		@include generate-from-range((
+			variant: $v,
+			shorthand: px,
+			property: (padding-left, padding-right),
+			range: range(),
+			resolver: rem,
+		));
+		@include generate-from-range((
+			variant: $v,
+			shorthand: py,
+			property: (padding-top, padding-bottom),
+			range: range(),
+			resolver: rem,
+		));
+		@include generate-from-range((
+			variant: $v,
+			shorthand: pt,
+			property: (padding-top),
+			range: range(),
+			resolver: rem,
+		));
+		@include generate-from-range((
+			variant: $v,
+			shorthand: pr,
+			property: (padding-right),
+			range: range(),
+			resolver: rem,
+		));
+		@include generate-from-range((
+			variant: $v,
+			shorthand: pb,
+			property: (padding-bottom),
+			range: range(),
+			resolver: rem,
+		));
+		@include generate-from-range((
+			variant: $v,
+			shorthand: pl,
+			property: (padding-left),
+			range: range(),
+			resolver: rem,
+		));
+	}
+}

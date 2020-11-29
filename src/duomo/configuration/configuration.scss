@@ -1,0 +1,197 @@
+// Describes whether to generate Duomo CSS.
+//
+// Ex:
+//
+// $headless: true  // Does not build Duomo CSS
+// $headless: false // Builds Duomo CSS
+//
+$headless: false !default;
+
+// Describes whether to generate Duomo `:root` variables.
+//
+// Ex:
+//
+// :root {
+//   ...
+// }
+//
+$headless-root: false !default;
+
+// Describes whether to generate debugger utilities.
+$debugger: true !default;
+
+// Describes whether to generate stagger utilities.
+$stagger: true !default;
+
+// Describes the delimiter used for breakpoints, etc.
+//
+// Ex:
+//
+// $delimiter: ":" -> class="px-16 sm:px-24"
+// $delimiter: "." -> class="px-16 sm.px-24"
+//
+$delimiter: ":" !default;
+
+// prettier-ignore
+$nrange: (
+	  -1,
+	  -2,
+	  -3,
+	  -4,
+	  // -5,
+	  -6,
+	  // -7,
+	  -8,
+	  // -9,
+	 -10,
+	 -12,
+	 -14,
+	 -16,
+	 -18,
+	 -20,
+	 -24,
+	 -28,
+	 -32,
+	 -36,
+	 -40,
+	 -48,
+	 -56,
+	 -64,
+	 -72,
+	 -80,
+	 -96,
+	-112,
+	-128,
+	-144,
+	-160,
+	-192,
+	-224,
+	-256,
+	-288,
+	-320,
+) !default;
+
+// prettier-ignore
+$range: (
+	  0,
+	  1,
+	  2,
+	  3,
+	  4,
+	  // 5,
+	  6,
+	  // 7,
+	  8,
+	  // 9,
+	 10,
+	 12,
+	 14,
+	 16,
+	 18,
+	 20,
+	 24,
+	 28,
+	 32,
+	 36,
+	 40,
+	 48,
+	 56,
+	 64,
+	 72,
+	 80,
+	 96,
+	112,
+	128,
+	144,
+	160,
+	192,
+	224,
+	256,
+	288,
+	320,
+) !default;
+
+$font-map: (
+	sans: (
+		ui-sans-serif,
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		"Segoe UI",
+		Roboto,
+		"Helvetica Neue",
+		Arial,
+		"Noto Sans",
+		sans-serif,
+		"Apple Color Emoji",
+		"Segoe UI Emoji",
+		"Segoe UI Symbol",
+		"Noto Color Emoji",
+	),
+	serif: (
+		ui-serif,
+		Georgia,
+		Cambria,
+		"Times New Roman",
+		Times,
+		serif,
+	),
+	mono: (
+		ui-monospace,
+		Menlo,
+		Monaco,
+		Consolas,
+		"Liberation Mono",
+		"Courier New",
+		monospace,
+	),
+) !default;
+
+// NOTE:
+//
+// - `shadow-sm` -> `shadow-xs`
+// - `shadow`    -> `shadow-sm`
+//
+$shadow-map: (
+	inner: (
+		inset 0 2px 4px 0 rgba(0, 0, 0, 0.06),
+	),
+	xs: (
+		0 1px 2px 0 rgba(0, 0, 0, 0.05),
+	),
+	sm: (
+		0 1px 3px 0 rgba(0, 0, 0, 0.1),
+		0 1px 2px 0 rgba(0, 0, 0, 0.06),
+	),
+	md: (
+		0 4px 6px -1px rgba(0, 0, 0, 0.1),
+		0 2px 4px -1px rgba(0, 0, 0, 0.06),
+	),
+	lg: (
+		0 10px 15px -3px rgba(0, 0, 0, 0.1),
+		0 4px 6px -2px rgba(0, 0, 0, 0.05),
+	),
+	xl: (
+		0 20px 25px -5px rgba(0, 0, 0, 0.1),
+		0 10px 10px -5px rgba(0, 0, 0, 0.04),
+	),
+	2xl: (
+		0 25px 50px -12px rgba(0, 0, 0, 0.25),
+	),
+) !default;
+
+$timing-map: (
+	linear: linear,
+	ease-in: cubic-bezier(0.4, 0, 1, 1),
+	ease-out: cubic-bezier(0, 0, 0.2, 1),
+	ease-in-out: cubic-bezier(0.4, 0, 0.2, 1),
+) !default;
+
+$breakpoint-map: (
+	xs: 512,
+	sm: 640,
+	md: 768,
+	lg: 1024,
+	xl: 1280,
+	2xl: 1536,
+) !default;

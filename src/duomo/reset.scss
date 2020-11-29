@@ -1,0 +1,13 @@
+@use "preflight/base" as *;
+@use "preflight/modern-normalize" as *;
+@use "preflight/vendored-font-smoothing" as *;
+
+@at-root {
+	/*! duomo | MIT License | https://github.com/zaydek/duomo */
+
+	/* purgecss start ignore */
+	@include modern-normalize;
+	@include base;
+	@include vendored-font-smoothing;
+	/* purgecss end ignore */
+}

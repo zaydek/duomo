@@ -1,0 +1,14 @@
+@use "../helpers" as *;
+
+@mixin z-index($variants...) {
+	// prettier-ignore
+	@include variants($variants) using ($v) {
+		@include generate-from-range((
+			variant: $v,
+			shorthand: z,
+			property: (z-index),
+			range: (-10, 0, 10, 20, 30, 40, 50),
+			resolver: none,
+		));
+	}
+}

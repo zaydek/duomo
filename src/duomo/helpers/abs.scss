@@ -1,0 +1,14 @@
+@use "sass:math";
+
+// Ex:
+//
+// abs("Hello, world!") -> "Hello, world!"
+// abs(-42)             -> 42
+// abs(42)              -> 42
+//
+@function abs($any) {
+	@if type-of($any) == "number" {
+		@return math.abs($any);
+	}
+	@return $any;
+}

@@ -1,0 +1,49 @@
+@use "sass:list";
+@use "sass:meta";
+
+@use "getters" as *;
+
+@function no-op($selector) {
+	@return ".#{$selector}";
+}
+@function hover($selector) {
+	@return ".hover\\:#{$selector}:hover";
+}
+@function focus($selector) {
+	@return ".focus\\:#{$selector}:focus";
+}
+@function group-hover($selector) {
+	@return ".group-hover:hover .group-hover\\:#{$selector}";
+}
+@function group-focus($selector) {
+	@return ".group-focus:focus .group-focus\\:#{$selector}";
+}
+@function responsive($selector) {
+	@return "#{&}#{$selector}";
+}
+
+@mixin variants($variants) {
+	@content (no-op);
+	@each $variant in $variants {
+		// prettier-ignore
+		@if $variant == hover or $variant == focus or
+		$variant == group-hover or $variant == group-focus {
+			@content ($variant);
+		}
+	}
+	@if list.index($variants, responsive) {
+		@each $key, $n in breakpoints() {
+			@media (min-width: #{$n + px}) {
+				.#{delimit($key)} {
+					@at-root {
+						@content (responsive);
+					}
+				}
+			}
+		}
+	}
+}
+
+@function variant($selector, $variant-fn) {
+	@return meta.call($variant-fn, $selector);
+}

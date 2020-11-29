@@ -1,0 +1,11 @@
+@use "../helpers" as *;
+
+@mixin box-shadow($variants...) {
+	@include variants($variants) using ($v) {
+		@each $mk, $mv in shadows() {
+			#{variant(shadow-#{$mk}, $v)} {
+				box-shadow: var(--shadow-#{$mk});
+			}
+		}
+	}
+}

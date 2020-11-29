@@ -1,0 +1,78 @@
+@use "sass:math";
+
+@use "utils";
+
+@function rem($any) {
+	@if type-of($any) != "number" {
+		@return $any;
+	}
+	$floored: math.floor($any);
+	@if $floored == 0 {
+		@return 0;
+	}
+	@return $floored / 16 + rem;
+}
+
+@function em($any) {
+	@if type-of($any) != "number" {
+		@return $any;
+	}
+	$floored: math.floor($any);
+	@if $floored == 0 {
+		@return 0;
+	}
+	@return $floored / 16 + em;
+}
+
+@function px($any) {
+	@if type-of($any) != "number" {
+		@return $any;
+	}
+	$floored: math.floor($any);
+	@if $floored == 0 {
+		@return 0;
+	}
+	@return $floored + px;
+}
+
+// @function passthrough($any) {
+// 	// prettier-ignore
+// 	$ret:
+// 		$any == auto or
+// 		$any == min-content or
+// 		$any == max-content or
+// 		utils.has-suffix($any, "%") or
+// 		utils.has-suffix($any, "vw") or
+// 		utils.has-suffix($any, "vh") or
+// 		$any == 9999px;
+// 	@return $ret;
+// }
+
+@function passthrough($any) {
+	// prettier-ignore
+	$ok:
+		type-of($any) != "number" or
+		utils.has-suffix($any, "%") or
+		utils.has-suffix($any, "vw") or
+		utils.has-suffix($any, "vh") or
+		$any == 9999px;
+	@return $ok;
+}
+
+@function resolve($any, $resolver) {
+	@if passthrough($any) {
+		@return $any;
+	}
+
+	@if $resolver != none and $resolver != rem and $resolver != em and $resolver != px {
+		@error "resolve: `$resolver` must be `rem`, `em`, `px`, or `none`; $resolver=#{$resolver}";
+	}
+	@if $resolver == rem {
+		@return rem($any);
+	} @else if $resolver == em {
+		@return em($any);
+	} @else if $resolver == px {
+		@return px($any);
+	}
+	@return $any;
+}
