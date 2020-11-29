@@ -19,27 +19,22 @@
 	@return ".group-focus:focus .group-focus\\:#{$selector}";
 }
 @function responsive($selector) {
-	@return "#{&}\\:#{$selector}";
+	@return "#{&}#{$selector}";
 }
 
 @mixin variants($variants) {
 	@content (no-op);
-	@if list.index($variants, hover) {
-		@content (hover);
-	}
-	@if list.index($variants, focus) {
-		@content (focus);
-	}
-	@if list.index($variants, group-hover) {
-		@content (group-hover);
-	}
-	@if list.index($variants, group-focus) {
-		@content (group-focus);
+	@each $variant in $variants {
+		// prettier-ignore
+		@if $variant == hover or $variant == focus or
+		$variant == group-hover or $variant == group-focus {
+			@content ($variant);
+		}
 	}
 	@if list.index($variants, responsive) {
-		@each $mk, $mv in breakpoints() {
-			@media (min-width: #{$mv + px}) {
-				.#{$mk} {
+		@each $key, $n in breakpoints() {
+			@media (min-width: #{$n + px}) {
+				.#{delimit($key)} {
 					@at-root {
 						@content (responsive);
 					}

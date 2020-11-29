@@ -23,7 +23,7 @@
 
 // Ex: delimit(sm) -> "sm\:"
 @function delimit($key) {
-	@return $key + delimiter();
+	@return escapers.escape-breakpoint-key($key) + delimiter();
 }
 
 // Ex:
@@ -103,25 +103,6 @@
 @function timings() {
 	@return configuration.$timing-map;
 }
-
-// @function breakpoints() {
-// 	@return configuration.$breakpoint-map;
-// }
-
-// Ex:
-//
-// breakpoints()
-// -> (
-// ->   "xs\:": 512,
-// ->   "sm\:": 640,
-// ->   ...
-// -> )
-//
-// TODO
 @function breakpoints() {
-	$map: ();
-	@each $key, $n in configuration.$breakpoint-map {
-		$map: map.set($map, escapers.escape-breakpoint-key($key), $n);
-	}
-	@return $map;
+	@return configuration.$breakpoint-map;
 }
