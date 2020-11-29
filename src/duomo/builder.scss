@@ -30,7 +30,9 @@
 
 @at-root {
 	// TODO: Support `$headless-root` / CSS variables.
-	@if configuration.$headless == false {
+	@if not configuration.$headless {
+		/*! @zaydek/duomo | MIT License | https://github.com/zaydek/duomo */
+
 		// Preflight:
 		@include modern-normalize;
 		@include tailwind-base;
