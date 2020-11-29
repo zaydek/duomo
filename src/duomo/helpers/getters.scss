@@ -28,6 +28,8 @@
 
 // Ex:
 //
+// desc(auto)  -> auto
+// desc(0)     -> 0
 // desc(100%)  -> max
 // desc(100vw) -> screen
 //
@@ -49,37 +51,62 @@
 	@return $any;
 }
 
-// Ex: nrange() -> (-1, -2, -4, -8, ...);
+// Ex: nrange() -> (-1, -2, -4, -8, ...)
 @function nrange() {
 	@return configuration.$nrange;
 }
 
-// Ex: range() -> (0, 1, 2, 4, 8, ...);
+// Ex: range() -> (0, 1, 2, 4, 8, ...)
 @function range() {
 	@return configuration.$range;
 }
 
-// Ex: shadows() -> (sm: TODO, md: TODO, ...)
-@function shadows() {
-	$map: ();
-	@each $mk, $mv in configuration.$shadow-map {
-		$map: map.set($map, $mk, $mv);
-	}
-	@return $map;
-}
-
-// Ex:
-//
-// breakpoint(xs) -> 512
-// breakpoint(sm) -> 640
-//
-@function breakpoint($key) {
-	$got: map.get(configuration.$breakpoint-map, $key);
+@function -getter($getter-name, $map, $key) {
+	$got: map.get($map, $key);
 	@if not $got {
-		@error "breakpoints: no such `$key`; $key=#{$key}";
+		@error "#{$getter-name}: no such key; $key=#{$key}";
 	}
 	@return $got;
 }
+
+@function font($key) {
+	@return -getter("font", configuration.$font-map, $key);
+}
+@function color($key) {
+	@return -getter("color", configuration.$color-map, $key);
+}
+@function extended-color($key) {
+	@return -getter("extended-color", configuration.$extended-color-map, $key);
+}
+@function shadow($key) {
+	@return -getter("shadow", configuration.$shadow-map, $key);
+}
+@function timing($key) {
+	@return -getter("timing", configuration.$timing-map, $key);
+}
+@function breakpoint($key) {
+	@return -getter("breakpoint", configuration.$breakpoint-map, $key);
+}
+
+@function fonts() {
+	@return configuration.$font-map;
+}
+@function colors() {
+	@return configuration.$color-map;
+}
+@function extended-colors() {
+	@return configuration.$extended-color-map;
+}
+@function shadows() {
+	@return configuration.$shadow-map;
+}
+@function timings() {
+	@return configuration.$timing-map;
+}
+
+// @function breakpoints() {
+// 	@return configuration.$breakpoint-map;
+// }
 
 // Ex:
 //
@@ -90,6 +117,7 @@
 // ->   ...
 // -> )
 //
+// TODO
 @function breakpoints() {
 	$map: ();
 	@each $key, $n in configuration.$breakpoint-map {

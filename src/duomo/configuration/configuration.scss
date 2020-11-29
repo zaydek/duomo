@@ -27,8 +27,8 @@ $stagger: true !default;
 //
 // Ex:
 //
-// $delimiter: ":" // -> class="px-16 sm:px-24"
-// $delimiter: "." // -> class="px-16 sm.px-24"
+// $delimiter: ":" -> class="px-16 sm:px-24"
+// $delimiter: "." -> class="px-16 sm.px-24"
 //
 $delimiter: ":" !default;
 
