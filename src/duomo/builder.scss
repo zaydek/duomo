@@ -34,7 +34,7 @@
 @use "core/z-index" as *;
 
 @at-root {
-	@include stacks;
+	@include stacks(responsive);
 }
 
 // @at-root {

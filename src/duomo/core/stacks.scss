@@ -36,14 +36,17 @@ $-align-self-opts: (
 			// See note.
 			min-width: min-content;
 		}
+		// NOTE: Simulates `gap` (for Flexbox).
 		#{variant("hstack > * + *", $v)} {
 			margin-top: 0;
 			margin-left: var(--space);
 		}
-		// NOTE: No-op because empty spacers are collapsible.
-		#{variant("hstack > .spacer:empty", $v)},
-		#{variant("hstack > .spacer:empty + *", $v)} {
+		// NOTE: Empty spacers are collapsible.
+		#{variant("hstack > .spacer:empty", $v)} {
 			margin-left: 0;
+			& + * {
+				margin-left: 0;
+			}
 		}
 	}
 }
@@ -64,14 +67,17 @@ $-align-self-opts: (
 			// See note.
 			min-height: min-content;
 		}
+		// NOTE: Simulates `gap` (for Flexbox).
 		#{variant("vstack > * + *", $v)} {
 			margin-left: 0;
 			margin-top: var(--space);
 		}
-		// NOTE: No-op because empty spacers are collapsible.
-		#{variant("vstack > .spacer:empty", $v)},
-		#{variant("vstack > .spacer:empty + *", $v)} {
+		// NOTE: Empty spacers are collapsible.
+		#{variant("vstack > .spacer:empty", $v)} {
 			margin-top: 0;
+			& + * {
+				margin-top: 0;
+			}
 		}
 	}
 }
@@ -98,7 +104,9 @@ $-align-self-opts: (
 	.spacer {
 		flex: 1 0 var(--space);
 	}
-	.spacer:first-child,
+	.spacer:first-child {
+		flex: 1 0 0;
+	}
 	.spacer:last-child {
 		flex: 1 0 0;
 	}
