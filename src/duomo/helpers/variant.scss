@@ -45,5 +45,10 @@
 }
 
 @function variant($selector, $variant-fn) {
-	@return meta.call($variant-fn, $selector);
+	// NOTE: Use `meta.get-function` because of warning:
+	//
+	// Deprecation Warning: Passing a string to call() is deprecated and will be illegal
+	// in Dart Sass 2.0.0. Use call(get-function(responsive)) instead.
+	//
+	@return meta.call(meta.get-function($variant-fn), $selector);
 }
