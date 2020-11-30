@@ -1,6 +1,6 @@
 @use "../helpers" as *;
 
-@mixin display($variants...) {
+@mixin hide-show($variants...) {
 	@include variants($variants...) using ($v) {
 		#{variant(hide, $v)} {
 			// NOTE:

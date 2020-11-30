@@ -19,10 +19,10 @@
 @use "core/box-shadow" as *;
 @use "core/color" as *;
 @use "core/container" as *;
-@use "core/display" as *;
 @use "core/grid" as *;
 @use "core/group" as *;
 @use "core/height" as *;
+@use "core/hide-show" as *;
 @use "core/margin" as *;
 @use "core/max-width" as *;
 @use "core/max-width" as *;
@@ -42,7 +42,6 @@
 // prettier-ignore
 $variants: (
 	group: (),
-	display: (responsive, hover, group-hover, focus, group-focus),
 	stacks: (responsive),
 	grid: (responsive),
 	position: (responsive),
@@ -64,6 +63,7 @@ $variants: (
 	overflow: (responsive),
 	z-index: (responsive, hover, group-hover, focus, group-focus),
 	pointer-events: (responsive),
+	hide-show: (responsive, hover, group-hover, focus, group-focus),
 );
 
 // Ex: take((1, 2, 3), 3) -> (1, 2)
@@ -85,9 +85,9 @@ $variants: (
 // prettier-ignore
 @mixin call-mixin($mixin, $variants...) {
 	@if $mixin == "group" { @include group($variants...); }
-	@if $mixin == "display" { @include display($variants...); }
 	@if $mixin == "stacks" { @include stacks($variants...); }
 	@if $mixin == "grid" { @include grid($variants...); }
+	@if $mixin == "hide-show" { @include hide-show($variants...); }
 	@if $mixin == "position" { @include position($variants...); }
 	@if $mixin == "margin" { @include margin($variants...); }
 	@if $mixin == "padding" { @include padding($variants...); }
