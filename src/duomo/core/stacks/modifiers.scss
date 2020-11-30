@@ -31,7 +31,7 @@ $-align-self-opts: (
 		}
 
 		@each $rv in var-join(nrange(), range()) {
-			#{variant("space-#{$rv} > *", $v)} {
+			#{variant("#{n($rv)}space-#{abs($rv)} > *", $v)} {
 				// NOTE: Use `#{...}` syntax because of custom props.
 				--space: #{resolve($rv, rem)};
 			}
