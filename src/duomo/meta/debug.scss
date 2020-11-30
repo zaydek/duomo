@@ -21,6 +21,8 @@
 
 	[data-debug].spacer:empty,
 	[data-debug] .spacer:empty {
+		min-width: 2px;
+		min-height: 2px;
 		background-color:
 			var(
 				--debug-empty-spacer-bg-color,
