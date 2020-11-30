@@ -44,6 +44,7 @@ $variants: (
 	group: (),
 	stacks: (responsive),
 	grid: (responsive),
+	hide-show: (responsive, hover, group-hover, focus, group-focus),
 	position: (responsive),
 	margin: (responsive),
 	padding: (responsive),
@@ -63,7 +64,6 @@ $variants: (
 	overflow: (responsive),
 	z-index: (responsive, hover, group-hover, focus, group-focus),
 	pointer-events: (responsive),
-	hide-show: (responsive, hover, group-hover, focus, group-focus),
 );
 
 // Ex: take((1, 2, 3), 3) -> (1, 2)
