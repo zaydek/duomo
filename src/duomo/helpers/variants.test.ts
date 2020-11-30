@@ -19,7 +19,6 @@ test("integration", () => {
 	@include background-color(none, responsive, hover, focus, group-hover, group-focus);
 }
 `)
-	console.log(result)
 	// prettier-ignore
 	expect(result).toBe(`
 .bg-indigo-500 {
