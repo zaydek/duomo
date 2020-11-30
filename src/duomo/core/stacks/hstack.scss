@@ -1,11 +1,6 @@
 @use "../../helpers" as *;
 
 @mixin hstack($variants...) {
-	// NOTE: Takes precedence.
-	.hstack > * {
-		--space: 0;
-	}
-
 	@include variants($variants) using ($v) {
 		#{variant("hstack", $v)} {
 			--duomo-display: flex; // 0.7.0
@@ -14,6 +9,11 @@
 			justify-content: center;
 			align-items: center;
 			min-width: min-content; // 0.7.0
+		}
+		@if $v == none {
+			.hstack > * {
+				--space: 0;
+			}
 		}
 		#{variant("hstack > * + *", $v)} {
 			margin-top: 0;
