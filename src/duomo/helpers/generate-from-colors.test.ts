@@ -29,32 +29,27 @@ $color-map: (
 	expect(result).toBe(`
 .bg-transparent {
 	--bg-opacity: 1;
-	--bg-color: transparent;
-	background-color: var(--bg-color);
+	background-color: transparent;
 }
 
 .bg-current {
 	--bg-opacity: 1;
-	--bg-color: currentColor;
-	background-color: var(--bg-color);
+	background-color: currentColor;
 }
 
 .bg-red {
 	--bg-opacity: 1;
-	--bg-color: rgba(255, 0, 0, var(--bg-opacity));
-	background-color: var(--bg-color);
+	background-color: rgba(255, 0, 0, var(--bg-opacity));
 }
 
 .bg-green {
 	--bg-opacity: 1;
-	--bg-color: rgba(0, 255, 0, var(--bg-opacity));
-	background-color: var(--bg-color);
+	background-color: rgba(0, 255, 0, var(--bg-opacity));
 }
 
 .bg-blue {
 	--bg-opacity: 1;
-	--bg-color: rgba(0, 0, 255, var(--bg-opacity));
-	background-color: var(--bg-color);
+	background-color: rgba(0, 0, 255, var(--bg-opacity));
 }
 
 .bg-opacity-0 {

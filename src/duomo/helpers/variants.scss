@@ -16,7 +16,7 @@
 	@return ".group:hover.group-hover\\:#{$selector}, .group:hover .group-hover\\:#{$selector}";
 }
 @function group-focus($selector) {
-	@return ".group:hover.group-hover\\:#{$selector}, .group:focus .group-focus\\:#{$selector}";
+	@return ".group:focus.group-focus\\:#{$selector}, .group:focus .group-focus\\:#{$selector}";
 }
 @function responsive($selector) {
 	@return "#{&}#{$selector}";
