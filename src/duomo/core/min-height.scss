@@ -5,8 +5,8 @@
 	@include variants($variants) using ($v) {
 		@include generate-from-range((
 			variant: $v,
-			shorthand: h,
-			property: (height),
+			shorthand: min-h,
+			property: (min-height),
 			range: var-join(
 				auto, // TODO: Do we need `auto`?
 				100%,
