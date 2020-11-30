@@ -19,9 +19,11 @@
 			margin-top: 0;
 			margin-left: var(--space);
 		}
+		// NOTE: Separate classes to simplify generated output.
 		#{variant("hstack > .spacer:empty", $v)} {
 			margin-left: 0;
 		}
+		// NOTE: Separate classes to simplify generated output.
 		#{variant("hstack > .spacer:empty + *", $v)} {
 			margin-left: 0;
 		}

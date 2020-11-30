@@ -5,7 +5,7 @@
 		#{variant("vstack", $v)} {
 			--duomo-display: flex; // 0.7.0
 			display: flex;
-			flex-direction: row;
+			flex-direction: column;
 			justify-content: center;
 			align-items: center;
 			min-height: min-content; // 0.7.0
@@ -19,9 +19,11 @@
 			margin-left: 0;
 			margin-top: var(--space);
 		}
+		// NOTE: Separate classes to simplify generated output.
 		#{variant("vstack > .spacer:empty", $v)} {
 			margin-top: 0;
 		}
+		// NOTE: Separate classes to simplify generated output.
 		#{variant("vstack > .spacer:empty + *", $v)} {
 			margin-top: 0;
 		}
