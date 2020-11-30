@@ -37,7 +37,7 @@
 @function desc($any, $as-percent: false) {
 	// prettier-ignore
 	$got: map.get((
-		100%: max,
+		100%: full,
 		100vw: screen,
 		100vh: screen,
 		9999px: max,
