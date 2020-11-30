@@ -1,0 +1,31 @@
+@use "../../helpers" as *;
+
+@mixin vstack($variants...) {
+	@include variants($variants) using ($v) {
+		#{variant(vstack, $v)} {
+			--duomo-display: flex;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			min-height: min-content;
+		}
+
+		@if $v == none {
+			.vstack > * {
+				--space: 0;
+			}
+		}
+
+		#{variant("vstack > * + *", $v)} {
+			margin-left: 0;
+			margin-top: var(--space);
+		}
+		#{variant("vstack > .spacer:empty", $v)} {
+			margin-top: 0;
+			& + * {
+				margin-top: 0;
+			}
+		}
+	}
+}

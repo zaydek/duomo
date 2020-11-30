@@ -1,0 +1,24 @@
+@mixin zstack {
+	// NOTE: `justify-content` and `align-content` does not work.
+	// Therefore use `place-items`.
+	//
+	// https://twitter.com/bdc/status/1245399999300558853
+	.zstack {
+		--duomo-display: grid;
+		display: grid;
+		place-items: center;
+
+		// NOTE: Use `relative` for `absolute`-based placement.
+		position: relative;
+
+		// NOTE: Explicitly constrain the bounding box.
+		// If I remember correctly, this is for `w-max h-max` but
+		// Safari breaks on `h-max`.
+		width: min-content;
+		height: min-content;
+	}
+	// https://codepen.io/everdimension/pen/BaNpeWe
+	.zstack > * {
+		grid-area: 1 / 1 / 1 / 1;
+	}
+}

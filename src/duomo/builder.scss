@@ -13,6 +13,7 @@
 @use "core/border-radius" as *;
 @use "core/border-width" as *;
 @use "core/box-shadow" as *;
+@use "core/color" as *;
 @use "core/container" as *;
 @use "core/display" as *;
 @use "core/grid" as *;
@@ -33,52 +34,52 @@
 @use "core/width" as *;
 @use "core/z-index" as *;
 
-@at-root {
-	@include stacks(responsive);
-}
-
 // @at-root {
-// 	// TODO: Add support for `$headless-root` and `custom-props-*`.
-// 	@if not configuration.$headless {
-// 		/*! duomo | MIT License | https://github.com/zaydek/duomo */
-//
-// 		// Preflight:
-// 		/* purgecss start ignore */
-// 		@include modern-normalize;
-// 		@include base;
-// 		@include vendored-font-smoothing;
-// 		/* purgecss end ignore */
-//
-// 		@if configuration.$debugger {
-// 			@include debug;
-// 			@include debug-space;
-// 		}
-// 		@if configuration.$stagger {
-// 			@include stagger;
-// 		}
-//
-// 		// Duomo CSS:
-// 		@include group;
-// 		@include display(responsive, hover, group-hover, focus, group-focus);
-// 		@include grid(responsive);
-// 		@include position(responsive);
-// 		@include margin(responsive);
-// 		@include padding(responsive);
-// 		@include width(responsive);
-// 		@include max-width(responsive);
-// 		@include container;
-// 		@include height(responsive);
-// 		@include min-height(responsive);
-// 		@include shape(responsive);
-// 		@include aspect-ratio(/* TODO */);
-// 		@include background-color(responsive, hover, group-hover, focus, group-focus);
-// 		// @include color(responsive, hover, group-hover, focus, group-focus);
-// 		@include border-width(responsive);
-// 		@include border-radius(responsive);
-// 		@include box-shadow(responsive, hover, group-hover, focus, group-focus);
-// 		@include opacity(responsive, hover, group-hover, focus, group-focus);
-// 		@include overflow(responsive);
-// 		@include z-index(responsive, hover, group-hover, focus, group-focus);
-// 		@include pointer-events(responsive);
-// 	}
+// 	@include stacks(responsive);
 // }
+
+@at-root {
+	// TODO: Add support for `$headless-root` and `custom-props-*`.
+	@if not configuration.$headless {
+		/*! duomo | MIT License | https://github.com/zaydek/duomo */
+
+		// Preflight:
+		/* purgecss start ignore */
+		@include modern-normalize;
+		@include base;
+		@include vendored-font-smoothing;
+		/* purgecss end ignore */
+
+		@if configuration.$debugger {
+			@include debug;
+			@include debug-space;
+		}
+		@if configuration.$stagger {
+			@include stagger;
+		}
+
+		// Duomo CSS:
+		@include group;
+		@include display(responsive, hover, group-hover, focus, group-focus);
+		@include grid(responsive);
+		@include position(responsive);
+		@include margin(responsive);
+		@include padding(responsive);
+		@include width(responsive);
+		@include max-width(responsive);
+		@include container;
+		@include height(responsive);
+		@include min-height(responsive);
+		@include shape(responsive);
+		@include aspect-ratio(/* TODO */);
+		@include background-color(responsive, hover, group-hover, focus, group-focus);
+		@include color(responsive, hover, group-hover, focus, group-focus);
+		@include border-width(responsive);
+		@include border-radius(responsive);
+		@include box-shadow(responsive, hover, group-hover, focus, group-focus);
+		@include opacity(responsive, hover, group-hover, focus, group-focus);
+		@include overflow(responsive);
+		@include z-index(responsive, hover, group-hover, focus, group-focus);
+		@include pointer-events(responsive);
+	}
+}

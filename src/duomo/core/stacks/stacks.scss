@@ -1,0 +1,34 @@
+@use "../../helpers" as *;
+
+@import "hstack";
+@import "modifiers";
+@import "vstack";
+@import "zstack";
+
+@mixin stacks($variants...) {
+	@include hstack($variants...);
+	@include vstack($variants...);
+
+	.spacer {
+		flex: 1 0 var(--space);
+	}
+	.spacer:first-child {
+		flex: 1 0 0;
+	}
+	.spacer:last-child {
+		flex: 1 0 0;
+	}
+
+	@include modifiers($variants...);
+
+	// prettier-ignore
+	@include variants($variants) using ($v) {
+		@include generate-from-range((
+			variant: $v,
+			shorthand: space,
+			property: (--space),
+			range: var-join(nrange(), range()),
+			resolver: rem,
+		));
+	}
+}
