@@ -19,8 +19,10 @@
 			margin-left: 0;
 			margin-top: var(--space);
 		}
-		#{variant("hstack > .spacer:empty", $v)},
-		#{variant("hstack > .spacer:empty + *", $v)} {
+		#{variant("vstack > .spacer:empty", $v)} {
+			margin-top: 0;
+		}
+		#{variant("vstack > .spacer:empty + *", $v)} {
 			margin-top: 0;
 		}
 	}
