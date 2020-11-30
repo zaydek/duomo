@@ -2,7 +2,7 @@
 
 @mixin height($variants...) {
 	// prettier-ignore
-	@include variants($variants) using ($v) {
+	@include variants($variants...) using ($v) {
 		@include generate-from-range((
 			variant: $v,
 			shorthand: h,

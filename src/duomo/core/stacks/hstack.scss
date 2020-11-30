@@ -1,7 +1,7 @@
 @use "../../helpers" as *;
 
 @mixin hstack($variants...) {
-	@include variants($variants) using ($v) {
+	@include variants($variants...) using ($v) {
 		#{variant("hstack", $v)} {
 			--duomo-display: flex; // 0.7.0
 			display: flex;

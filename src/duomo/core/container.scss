@@ -1,7 +1,7 @@
 @use "../helpers" as *;
 
 @mixin container($variants...) {
-	@include variants($variants) using ($v) {
+	@include variants($variants...) using ($v) {
 		#{variant(container, $v)} {
 			width: 100%;
 		}

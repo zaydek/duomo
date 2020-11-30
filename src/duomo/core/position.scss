@@ -11,7 +11,7 @@ $-opts: (
 
 @mixin position($variants...) {
 	// prettier-ignore
-	@include variants($variants) using ($v) {
+	@include variants($variants...) using ($v) {
 		@each $each in $-opts {
 			#{variant(#{$each}, $v)} {
 				position: $each;

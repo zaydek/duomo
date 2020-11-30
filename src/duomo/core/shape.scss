@@ -1,7 +1,7 @@
 @use "../helpers" as *;
 
 @mixin shape($variants...) {
-	@include variants($variants) using ($v) {
+	@include variants($variants...) using ($v) {
 		@each $rv in range() {
 			#{variant(square-#{$rv}, $v)} {
 				width: resolve($rv, rem);

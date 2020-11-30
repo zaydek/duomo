@@ -8,7 +8,7 @@ test("integration", () => {
 @use "src/duomo/helpers/variant" as *;
 
 @mixin background-color($variants...) {
-	@include variants($variants) using ($v) {
+	@include variants($variants...) using ($v) {
 		#{variant(indigo-500, $v)} {
 			background-color: var(--indigo-500);
 		}

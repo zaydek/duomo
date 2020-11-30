@@ -2,7 +2,7 @@
 
 @mixin border-color($variants...) {
 	// prettier-ignore
-	@include variants($variants) using ($v) {
+	@include variants($variants...) using ($v) {
 		@include generate-from-colors((
 			variant: $v,
 			shorthand: border,

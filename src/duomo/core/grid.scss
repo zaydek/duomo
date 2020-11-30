@@ -2,7 +2,7 @@
 
 // TODO: Add intrinsic grids.
 @mixin grid($variants...) {
-	@include variants($variants) using ($v) {
+	@include variants($variants...) using ($v) {
 		#{variant(grid, $v)} {
 			--duomo-display: grid;
 			display: grid;

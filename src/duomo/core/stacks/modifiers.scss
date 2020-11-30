@@ -17,7 +17,7 @@ $-align-self-opts: (
 );
 
 @mixin modifiers($variants...) {
-	@include variants($variants) using ($v) {
+	@include variants($variants...) using ($v) {
 		@each $mk, $mv in $-align-self-opts {
 			#{variant($mk, $v)} {
 				align-self: $mv;
