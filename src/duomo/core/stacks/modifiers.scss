@@ -18,14 +18,21 @@ $-align-self-opts: (
 
 @mixin modifiers($variants...) {
 	@include variants($variants) using ($v) {
+		@each $mk, $mv in $-align-self-opts {
+			#{variant($mk, $v)} {
+				align-self: $mv;
+			}
+		}
+
 		@each $mk, $mv in $-align-opts {
 			#{variant($mk, $v)} {
 				align-items: $mv;
 			}
 		}
-		@each $mk, $mv in $-align-self-opts {
-			#{variant($mk, $v)} {
-				align-self: $mv;
+
+		@each $rv in var-join(nrange(), range()) {
+			#{variant("space-#{$rv} > *", $v)} {
+				--space: resolve($rv, rem);
 			}
 		}
 	}

@@ -19,11 +19,9 @@
 			margin-left: 0;
 			margin-top: var(--space);
 		}
-		#{variant("vstack > .spacer:empty", $v)} {
+		#{variant("hstack > .spacer:empty", $v)},
+		#{variant("hstack > .spacer:empty + *", $v)} {
 			margin-top: 0;
-			& + * {
-				margin-top: 0;
-			}
 		}
 	}
 }
