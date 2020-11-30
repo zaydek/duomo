@@ -40,7 +40,7 @@
 		100%: full,
 		100vw: screen,
 		100vh: screen,
-		9999px: max,
+		9999px: full,
 	), $any);
 	@if $got {
 		@return $got;
