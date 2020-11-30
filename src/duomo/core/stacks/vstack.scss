@@ -1,22 +1,20 @@
 @use "../../helpers" as *;
 
 @mixin vstack($variants...) {
+	// NOTE: Takes precedence.
+	.vstack > * {
+		--space: 0;
+	}
+
 	@include variants($variants) using ($v) {
-		#{variant(vstack, $v)} {
-			--duomo-display: flex;
+		#{variant("vstack", $v)} {
+			--duomo-display: flex; // 0.7.0
 			display: flex;
-			flex-direction: column;
+			flex-direction: row;
 			justify-content: center;
 			align-items: center;
-			min-height: min-content;
+			min-height: min-content; // 0.7.0
 		}
-
-		@if $v == none {
-			.vstack > * {
-				--space: 0;
-			}
-		}
-
 		#{variant("vstack > * + *", $v)} {
 			margin-left: 0;
 			margin-top: var(--space);
