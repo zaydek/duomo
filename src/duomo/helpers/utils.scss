@@ -1,4 +1,5 @@
 @use "sass:list";
+@use "sass:meta";
 @use "sass:string";
 
 // Ex:
@@ -20,7 +21,7 @@
 @function var-join($lists...) {
 	$var-join: ();
 	@each $list in $lists {
-		@if type-of($list) != "list" {
+		@if meta.type-of($list) != "list" {
 			$any: $list;
 			$var-join: list.join($var-join, $any);
 		} @else {

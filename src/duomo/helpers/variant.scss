@@ -22,21 +22,17 @@
 	@return "#{&}#{$selector}";
 }
 
-@mixin variants($variants) {
-	@content (none);
-	@each $variant in $variants {
-		// prettier-ignore
-		@if $variant == hover or $variant == focus or
-		$variant == group-hover or $variant == group-focus {
-			@content ($variant);
-		}
-	}
-	@if list.index($variants, responsive) {
-		@each $key, $n in breakpoints() {
-			@media (min-width: #{$n + px}) {
-				.#{delimit($key)} {
-					@at-root {
-						@content (responsive);
+@mixin variants($variants...) {
+	@each $each in $variants {
+		@if $each != responsive {
+			@content ($each);
+		} @else {
+			@each $key, $n in breakpoints() {
+				@media (min-width: #{$n + px}) {
+					.#{delimit($key)} {
+						@at-root {
+							@content (responsive);
+						}
 					}
 				}
 			}

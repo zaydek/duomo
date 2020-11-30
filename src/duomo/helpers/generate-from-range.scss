@@ -1,5 +1,6 @@
 @use "sass:list";
 @use "sass:map";
+@use "sass:meta";
 
 @use "abs" as *;
 @use "getters" as *;
@@ -14,9 +15,9 @@
 @function percent-heuristic($range) {
 	// prettier-ignore
 	$ok: $range and
-		type-of(list.nth($range, 1)) == "number" and
+		meta.type-of(list.nth($range, 1)) == "number" and
 		list.nth($range, 1) >= 0 and
-		type-of(list.nth($range, -1)) == "number" and
+		meta.type-of(list.nth($range, -1)) == "number" and
 		list.nth($range, -1) <= 1;
 	@return $ok;
 }

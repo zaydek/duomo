@@ -1,9 +1,10 @@
 @use "sass:math";
+@use "sass:meta";
 
 @use "utils";
 
 @function rem($any) {
-	@if type-of($any) != "number" {
+	@if meta.type-of($any) != "number" {
 		@return $any;
 	}
 	$floored: math.floor($any);
@@ -14,7 +15,7 @@
 }
 
 @function em($any) {
-	@if type-of($any) != "number" {
+	@if meta.type-of($any) != "number" {
 		@return $any;
 	}
 	$floored: math.floor($any);
@@ -25,7 +26,7 @@
 }
 
 @function px($any) {
-	@if type-of($any) != "number" {
+	@if meta.type-of($any) != "number" {
 		@return $any;
 	}
 	$floored: math.floor($any);
@@ -51,7 +52,7 @@
 @function passthrough($any) {
 	// prettier-ignore
 	$ok:
-		type-of($any) != "number" or
+		meta.type-of($any) != "number" or
 		utils.has-suffix($any, "%") or
 		utils.has-suffix($any, "vw") or
 		utils.has-suffix($any, "vh") or

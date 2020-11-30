@@ -1,3 +1,5 @@
+@use "sass:meta";
+
 @use "configuration";
 
 @use "preflight/base" as *;
@@ -35,53 +37,88 @@
 @use "core/width" as *;
 @use "core/z-index" as *;
 
-// @at-root {
-// 	@include stacks(responsive);
-// }
+// prettier-ignore
+$variants: (
+	// group: (),
+	// display: (responsive, hover, group-hover, focus, group-focus),
+	// stacks: (responsive),
+	// grid: (responsive),
+	// position: (responsive),
+	// margin: (responsive),
+	// padding: (responsive),
+	width: (none, responsive),
+	// max-width: (responsive),
+	// container: (),
+	// height: (responsive),
+	// min-height: (responsive),
+	// shape: (responsive),
+	// aspect-ratio: (/* TODO */),
+	// background-color: (responsive, hover, group-hover, focus, group-focus),
+	// color: (responsive, hover, group-hover, focus, group-focus),
+	// border-width: (responsive),
+	// border-radius: (responsive),
+	// box-shadow: (responsive, hover, group-hover, focus, group-focus),
+	// opacity: (responsive, hover, group-hover, focus, group-focus),
+	// overflow: (responsive),
+	// z-index: (responsive, hover, group-hover, focus, group-focus),
+	// pointer-events: (responsive),
+);
+
+// NOTE: Dart Sass does not appear to support dynamic mixin invocation.
+// Therefore mixins are statically invoked using conditions.
+//
+// https://github.com/sass/sass/issues/626
+//
+// prettier-ignore
+@mixin call-mixin($mixin, $variants...) {
+	@if $mixin == "group" { @include group($variants...); }
+	@if $mixin == "display" { @include display($variants...); }
+	@if $mixin == "stacks" { @include stacks($variants...); }
+	@if $mixin == "grid" { @include grid($variants...); }
+	@if $mixin == "position" { @include position($variants...); }
+	@if $mixin == "margin" { @include margin($variants...); }
+	@if $mixin == "padding" { @include padding($variants...); }
+	@if $mixin == "width" { @include width($variants...); }
+	@if $mixin == "max-width" { @include max-width($variants...); }
+	@if $mixin == "container" { @include container($variants...); }
+	@if $mixin == "height" { @include height($variants...); }
+	@if $mixin == "min-height" { @include min-height($variants...); }
+	@if $mixin == "shape" { @include shape($variants...); }
+	@if $mixin == "aspect-ratio" { @include aspect-ratio($variants...); }
+	@if $mixin == "background-color" { @include background-color($variants...); }
+	@if $mixin == "color" { @include color($variants...); }
+	@if $mixin == "border-width" { @include border-width($variants...); }
+	@if $mixin == "border-radius" { @include border-radius($variants...); }
+	@if $mixin == "box-shadow" { @include box-shadow($variants...); }
+	@if $mixin == "opacity" { @include opacity($variants...); }
+	@if $mixin == "overflow" { @include overflow($variants...); }
+	@if $mixin == "z-index" { @include z-index($variants...); }
+	@if $mixin == "pointer-events" { @include pointer-events($variants...); }
+}
 
 @at-root {
 	// TODO: Add support for `$headless-root` and `custom-props-*`.
 	@if not configuration.$headless {
 		/*! duomo | MIT License | https://github.com/zaydek/duomo */
 
-		// Preflight:
-		/* purgecss start ignore */
-		@include modern-normalize;
-		@include base;
-		@include vendored-font-smoothing;
-		/* purgecss end ignore */
+		// // Preflight:
+		// /* purgecss start ignore */
+		// @include modern-normalize;
+		// @include base;
+		// @include vendored-font-smoothing;
+		// /* purgecss end ignore */
 
-		@if configuration.$debugger {
-			@include debug;
-			@include debug-space;
-		}
-		@if configuration.$stagger {
-			@include stagger;
-		}
+		// @if configuration.$debugger {
+		// 	@include debug;
+		// 	@include debug-space;
+		// }
+		// @if configuration.$stagger {
+		// 	@include stagger;
+		// }
 
-		// Duomo CSS:
-		@include group;
-		@include display(responsive, hover, group-hover, focus, group-focus);
-		@include stacks(responsive);
-		@include grid(responsive);
-		@include position(responsive);
-		@include margin(responsive);
-		@include padding(responsive);
-		@include width(responsive);
-		@include max-width(responsive);
-		@include container;
-		@include height(responsive);
-		@include min-height(responsive);
-		@include shape(responsive);
-		@include aspect-ratio(/* TODO */);
-		@include background-color(responsive, hover, group-hover, focus, group-focus);
-		@include color(responsive, hover, group-hover, focus, group-focus);
-		@include border-width(responsive);
-		@include border-radius(responsive);
-		@include box-shadow(responsive, hover, group-hover, focus, group-focus);
-		@include opacity(responsive, hover, group-hover, focus, group-focus);
-		@include overflow(responsive);
-		@include z-index(responsive, hover, group-hover, focus, group-focus);
-		@include pointer-events(responsive);
+		@each $mk, $mv in $variants {
+			@include call-mixin($mk, $mv...);
+			// @include call-mixin($mk, responsive);
+		}
 	}
 }
