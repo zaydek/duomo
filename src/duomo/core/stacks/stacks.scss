@@ -20,17 +20,5 @@
 	}
 
 	@include modifiers($variants...);
-
-	// prettier-ignore
-	@include variants($variants...) using ($v) {
-		@include generate-from-range((
-			variant: $v,
-			shorthand: space,
-			property: (--space),
-			range: var-join(nrange(), range()),
-			resolver: rem,
-		));
-	}
-
 	@include zstack;
 }
