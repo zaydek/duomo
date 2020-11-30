@@ -22,17 +22,24 @@
 	@return "#{&}#{$selector}";
 }
 
+// Ex:
+//
+// @include variants($variants...) using ($v) {
+//   ...
+// }
+//
 @mixin variants($variants...) {
 	@each $each in $variants {
 		@if $each != responsive {
 			@content ($each);
-		} @else {
-			@each $key, $n in breakpoints() {
-				@media (min-width: #{$n + px}) {
-					.#{delimit($key)} {
-						@at-root {
-							@content (responsive);
-						}
+		}
+	}
+	@if list.index($variants, responsive) {
+		@each $key, $n in breakpoints() {
+			@media (min-width: #{$n + px}) {
+				.#{delimit($key)} {
+					@at-root {
+						@content (responsive);
 					}
 				}
 			}
@@ -40,6 +47,12 @@
 	}
 }
 
+// Ex:
+//
+// {variant(bg-indigo-500, $v)} {
+//   ...
+// }
+//
 @function variant($selector, $variant-fn) {
 	@if not meta.function-exists($variant-fn) {
 		@error "variant: no such variant function; $variant-fn=#{$variant-fn}";

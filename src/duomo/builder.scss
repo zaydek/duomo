@@ -1,6 +1,7 @@
 @use "sass:meta";
 
 @use "configuration";
+@use "helpers" as *;
 
 @use "preflight/base" as *;
 @use "preflight/modern-normalize" as *;
@@ -46,7 +47,7 @@ $variants: (
 	// position: (responsive),
 	// margin: (responsive),
 	// padding: (responsive),
-	width: (none, responsive),
+	width: (responsive),
 	// max-width: (responsive),
 	// container: (),
 	// height: (responsive),
@@ -117,7 +118,7 @@ $variants: (
 		// }
 
 		@each $mk, $mv in $variants {
-			@include call-mixin($mk, $mv...);
+			@include call-mixin($mk, var-join(none, $mv)...);
 			// @include call-mixin($mk, responsive);
 		}
 	}
