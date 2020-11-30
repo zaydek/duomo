@@ -2,7 +2,7 @@
 @use "sass:map";
 @use "sass:string";
 
-@use "variant" as *;
+@use "variants" as *;
 
 // prettier-ignore
 @mixin generate-from-colors($info-map) {
@@ -17,13 +17,15 @@
 			@if $mk == transparent or $mk == current {
 				// NOTE: Use `#{...}` syntax because of custom props.
 				--#{$shorthand}-opacity: 1;
-				--#{$shorthand}-color: #{$mv};
-				#{$property}: var(--#{$shorthand}-color);
+				// --#{$shorthand}-color: #{$mv};
+				// #{$property}: var(--#{$shorthand}-color);
+				#{$property}: #{$mv};
 			} @else {
 				// NOTE: Use `#{...}` syntax because of custom props.
 				--#{$shorthand}-opacity: 1;
-				--#{$shorthand}-color: rgba(#{color.red($mv)}, #{color.green($mv)}, #{color.blue($mv)}, #{var(--#{$shorthand}-opacity)});
-				#{$property}: var(--#{$shorthand}-color);
+				// --#{$shorthand}-color: rgba(#{color.red($mv)}, #{color.green($mv)}, #{color.blue($mv)}, #{var(--#{$shorthand}-opacity)});
+				// #{$property}: var(--#{$shorthand}-color);
+				#{$property}: rgba(#{color.red($mv)}, #{color.green($mv)}, #{color.blue($mv)}, #{var(--#{$shorthand}-opacity)});
 			}
 		}
 	}

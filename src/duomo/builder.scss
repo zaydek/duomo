@@ -1,3 +1,4 @@
+@use "sass:list";
 @use "sass:meta";
 
 @use "configuration";
@@ -40,30 +41,41 @@
 
 // prettier-ignore
 $variants: (
-	// group: (),
-	// display: (responsive, hover, group-hover, focus, group-focus),
-	// stacks: (responsive),
-	// grid: (responsive),
-	// position: (responsive),
-	// margin: (responsive),
-	// padding: (responsive),
+	group: (),
+	display: (responsive, hover, group-hover, focus, group-focus),
+	stacks: (responsive),
+	grid: (responsive),
+	position: (responsive),
+	margin: (responsive),
+	padding: (responsive),
 	width: (responsive),
-	// max-width: (responsive),
-	// container: (),
-	// height: (responsive),
-	// min-height: (responsive),
-	// shape: (responsive),
-	// aspect-ratio: (/* TODO */),
-	// background-color: (responsive, hover, group-hover, focus, group-focus),
-	// color: (responsive, hover, group-hover, focus, group-focus),
-	// border-width: (responsive),
-	// border-radius: (responsive),
-	// box-shadow: (responsive, hover, group-hover, focus, group-focus),
-	// opacity: (responsive, hover, group-hover, focus, group-focus),
-	// overflow: (responsive),
-	// z-index: (responsive, hover, group-hover, focus, group-focus),
-	// pointer-events: (responsive),
+	max-width: (responsive),
+	container: (),
+	height: (responsive),
+	min-height: (responsive),
+	shape: (responsive),
+	aspect-ratio: (/* TODO */),
+	background-color: (responsive, hover, group-hover, focus, group-focus),
+	color: (responsive, hover, group-hover, focus, group-focus),
+	border-width: (responsive),
+	border-radius: (responsive),
+	box-shadow: (responsive, hover, group-hover, focus, group-focus),
+	opacity: (responsive, hover, group-hover, focus, group-focus),
+	overflow: (responsive),
+	z-index: (responsive, hover, group-hover, focus, group-focus),
+	pointer-events: (responsive),
 );
+
+// Ex: take((1, 2, 3), 3) -> (1, 2)
+@function take($list, $item) {
+	$ret: ();
+	@each $each in $list {
+		@if $each != $item {
+			$ret: list.append($ret, $each);
+		}
+	}
+	@return $ret;
+}
 
 // NOTE: Dart Sass does not appear to support dynamic mixin invocation.
 // Therefore mixins are statically invoked using conditions.
@@ -102,24 +114,28 @@ $variants: (
 	@if not configuration.$headless {
 		/*! duomo | MIT License | https://github.com/zaydek/duomo */
 
-		// // Preflight:
-		// /* purgecss start ignore */
-		// @include modern-normalize;
-		// @include base;
-		// @include vendored-font-smoothing;
-		// /* purgecss end ignore */
+		// Preflight:
+		/* purgecss start ignore */
+		@include modern-normalize;
+		@include base;
+		@include vendored-font-smoothing;
+		/* purgecss end ignore */
 
-		// @if configuration.$debugger {
-		// 	@include debug;
-		// 	@include debug-space;
-		// }
-		// @if configuration.$stagger {
-		// 	@include stagger;
-		// }
+		@if configuration.$debugger {
+			@include debug;
+			@include debug-space;
+		}
+		@if configuration.$stagger {
+			@include stagger;
+		}
 
 		@each $mk, $mv in $variants {
-			@include call-mixin($mk, var-join(none, $mv)...);
-			// @include call-mixin($mk, responsive);
+			@include call-mixin($mk, var-join(none, take($mv, responsive))...);
+		}
+		@each $mk, $mv in $variants {
+			@if list.index($mv, responsive) {
+				@include call-mixin($mk, responsive);
+			}
 		}
 	}
 }

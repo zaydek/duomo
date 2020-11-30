@@ -32,9 +32,7 @@
 }
 
 @mixin debug-space {
-	/*
-	 * hstack
-	 */
+	// hstack
 	[data-debug-space] .hstack > *:not(.spacer) + *:not(.spacer) {
 		position: relative;
 		&::after {
@@ -54,9 +52,7 @@
 		}
 	}
 
-	/*
-	 * vstack
-	 */
+	// vstack
 	[data-debug-space] .vstack > *:not(.spacer) + *:not(.spacer) {
 		position: relative;
 		&::after {
