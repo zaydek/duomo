@@ -1,6 +1,8 @@
 @use "sass:list";
 
 // Ex: take((0, 1, 2, 4), 4) -> (0, 1, 2)
+//
+// TODO: Add support for maps.
 @function take($list, $item) {
 	// @if not list.index($list, $item) {
 	// 	@error "take: no such item `$item` in list `$list`; $item=#{$item}";
