@@ -3,7 +3,7 @@
 
 @use "getters" as *;
 
-@function none($selector) {
+@function root($selector) {
 	@return ".#{$selector}";
 }
 @function hover($selector) {
@@ -47,7 +47,7 @@
 //
 @mixin variants($variants...) {
 	@each $each in $variants {
-		@if $each != none and $each != responsive {
+		@if $each != root and $each != responsive {
 			/* variant=#{$each} */
 		}
 		@if $each != responsive {

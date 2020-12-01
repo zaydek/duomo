@@ -16,7 +16,7 @@ test("integration", () => {
 }
 
 @at-root {
-	@include background-color(none, responsive, hover, focus, group-hover, group-focus);
+	@include background-color(root, responsive, hover, focus, group-hover, group-focus);
 }
 `)
 	// prettier-ignore
