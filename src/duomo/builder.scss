@@ -41,7 +41,6 @@ $variants: (
 );
 
 @at-root {
-	// TODO: Integrate `custom-props-*`.
 	@if not configuration.$headless {
 		/*! duomo | MIT License | https://github.com/zaydek/duomo */
 
@@ -60,22 +59,25 @@ $variants: (
 			@include stagger;
 		}
 
+		// TODO: Integrate `custom-props-*` here.
+
+		// TODO: Extract?
 		@each $mk, $mv in $variants {
-			@if $mv != layout {
+			@if $mk != layout {
 				@include call-mixin($mk, var-join(none, take($mv, responsive))...);
 			}
 		}
 		@each $mk, $mv in $variants {
-			@if $mv != layout {
+			@if $mk != layout {
 				@if list.index($mv, responsive) {
 					@include call-mixin($mk, responsive);
 				}
 			}
 		}
 		// `layout` must be at the end:
-		@if list.index($variants, layout) {
+		@if map.get($variants, layout) {
 			// TODO: `responsive` should be last.
-			@include layout(var-join(none, map.get($variants, layout))...);
+			@include call-mixin(layout, var-join(none, map.get($variants, layout))...);
 		}
 	}
 }

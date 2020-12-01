@@ -47,12 +47,16 @@
 //
 @mixin variants($variants...) {
 	@each $each in $variants {
+		@if $each != none and $each != responsive {
+			/* variant=#{$each} */
+		}
 		@if $each != responsive {
 			@content ($each);
 		}
 	}
 	@if list.index($variants, responsive) {
 		@each $key, $n in breakpoints() {
+			/* variant=responsive */
 			@media (min-width: $n + px) {
 				.#{delimit($key)} {
 					@at-root {
