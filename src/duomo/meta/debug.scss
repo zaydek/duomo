@@ -1,32 +1,52 @@
+// // prettier-ignore
+// @mixin debug {
+// 	[data-debug],
+// 	[data-debug] * {
+// 		outline: 2px solid
+// 			var(
+// 				--debug-outline-color,
+// 				hsla(210, 100%, 50%, 0.2)
+// 			);
+// 		outline-offset: -1px;
+// 	}
+//
+// 	[data-debug].spacer,
+// 	[data-debug] .spacer {
+// 		background-color:
+// 			var(
+// 				--debug-spacer-bg-color,
+// 				hsla(210, 100%, 50%, 0.1)
+// 			);
+// 	}
+//
+// 	[data-debug].spacer:empty,
+// 	[data-debug] .spacer:empty {
+// 		min-width: 2px;
+// 		min-height: 2px;
+// 		background-color:
+// 			var(
+// 				--debug-empty-spacer-bg-color,
+// 				hsla(180, 100%, 50%, 0.1)
+// 			);
+// 	}
+// }
+
 // prettier-ignore
 @mixin debug {
 	[data-debug],
 	[data-debug] * {
-		outline: 2px solid
-			var(
-				--debug-outline-color,
-				hsla(210, 100%, 50%, 0.2)
-			);
-		outline-offset: -1px;
+		outline: 1px solid hsla(210, 100%, 50%, 0.25);
 	}
 
 	[data-debug].spacer,
 	[data-debug] .spacer {
-		background-color:
-			var(
-				--debug-spacer-bg-color,
-				hsla(210, 100%, 50%, 0.1)
-			);
+		background-color: hsla(210, 100%, 50%, 0.1);
 	}
 
 	[data-debug].spacer:empty,
 	[data-debug] .spacer:empty {
 		min-width: 2px;
 		min-height: 2px;
-		background-color:
-			var(
-				--debug-empty-spacer-bg-color,
-				hsla(180, 100%, 50%, 0.1)
-			);
+		background-color: hsla(180, 100%, 50%, 0.1);
 	}
 }
