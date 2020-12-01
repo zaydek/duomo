@@ -7,11 +7,12 @@
 		--duomo-display: grid;
 		display: grid;
 		place-items: center;
-		// // NOTE: Explicitly constrain the bounding box.
-		// // If I remember correctly, this is for `w-max h-max` but
-		// // Safari breaks on `h-max`.
-		// width: min-content;
-		// height: min-content;
+		// NOTE: Explicitly constrain the bounding box.
+		// If I remember correctly, this is for `w-full h-full` but
+		// Safari breaks on `h-full`. Also, this is more consistent with
+		// the `hstack` and `vstack` implementations.
+		width: min-content;
+		height: min-content;
 	}
 	.zstack > * {
 		grid-area: 1 / 1 / 1 / 1;

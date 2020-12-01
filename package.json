@@ -1,6 +1,6 @@
 {
 	"name": "@zaydek/duomo",
-	"version": "0.7.0-rc.22",
+	"version": "0.7.0-rc.23",
 	"main": "dist/index.css",
 	"license": "MIT",
 	"files": [
@@ -12,7 +12,10 @@
 		"watch-consumer": "sass --watch --no-charset --no-source-map src/consumer.scss dist/index.css",
 		"watch": "sass --watch --no-charset --no-source-map src/duomo/index.scss dist/index.css",
 		"test": "jest",
-		"build": "rm -rf dist && yarn test && yarn tsc && yarn --silent sass --no-charset --no-source-map src/duomo/index.scss dist/index.css && yarn sass --no-charset --no-source-map src/duomo/reset.scss dist/reset.css",
+		"build-duomo": "sass --no-charset --no-source-map src/duomo/index.scss dist/index.css",
+		"build-reset": "sass --no-charset --no-source-map src/duomo/reset.scss dist/reset.css",
+		"build-stack": "sass --no-charset --no-source-map src/duomo/stack.scss dist/stack.css",
+		"build": "rm -rf dist && yarn test && yarn tsc && yarn build-duomo && yarn build-reset && yarn build-stack",
 		"publish-dist-dry-run": "yarn build && npm publish --dry-run"
 	},
 	"devDependencies": {

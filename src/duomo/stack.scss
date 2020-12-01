@@ -1,5 +1,5 @@
 @use "core/stacks" as *;
 
 @at-root {
-	@include stacks;
+	@include stacks(root, responsive);
 }
