@@ -16,7 +16,6 @@
 // prettier-ignore
 $variants: (
 	group: (),
-	layout: (responsive, hover, group-hover, focus, group-focus, touch, group-touch),
 	stacks: (responsive),
 	grid: (responsive),
 	position: (responsive),
@@ -38,6 +37,7 @@ $variants: (
 	overflow: (responsive),
 	z-index: (responsive, hover, group-hover, focus, group-focus, touch, group-touch),
 	pointer-events: (responsive),
+	directives: (responsive, hover, group-hover, focus, group-focus, touch, group-touch),
 );
 
 @at-root {

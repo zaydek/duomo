@@ -1,0 +1,23 @@
+@use "../helpers" as *;
+
+@mixin directives($variants...) {
+	@include variants($variants...) using ($v) {
+		#{variant(escape("-"), $v)},
+		#{variant(hide, $v)} {
+			display: none;
+		}
+
+		#{variant(escape("+"), $v)},
+		#{variant(show, $v)} {
+			display: var(--duomo-display, block);
+			& > * {
+				--duomo-display: initial;
+			}
+		}
+
+		#{variant(escape("?"), $v)},
+		#{variant(help, $v)} {
+			outline: 4px solid var(--red-500);
+		}
+	}
+}

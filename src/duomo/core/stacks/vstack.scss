@@ -3,7 +3,7 @@
 @mixin vstack($variants...) {
 	@include variants($variants...) using ($v) {
 		#{variant("vstack", $v)} {
-			--duomo-layout: flex; // 0.7.0
+			--duomo-display: flex; // 0.7.0
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
@@ -19,11 +19,7 @@
 			margin-left: 0;
 			margin-top: var(--space);
 		}
-		// NOTE: Separate classes to simplify generated output.
-		#{variant("vstack > .spacer:empty", $v)} {
-			margin-top: 0;
-		}
-		// NOTE: Separate classes to simplify generated output.
+		#{variant("vstack > .spacer:empty", $v)},
 		#{variant("vstack > .spacer:empty + *", $v)} {
 			margin-top: 0;
 		}

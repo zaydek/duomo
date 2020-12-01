@@ -3,7 +3,7 @@
 @mixin hstack($variants...) {
 	@include variants($variants...) using ($v) {
 		#{variant("hstack", $v)} {
-			--duomo-layout: flex; // 0.7.0
+			--duomo-display: flex; // 0.7.0
 			display: flex;
 			flex-direction: row;
 			justify-content: center;
@@ -19,11 +19,7 @@
 			margin-top: 0;
 			margin-left: var(--space);
 		}
-		// NOTE: Separate classes to simplify generated output.
-		#{variant("hstack > .spacer:empty", $v)} {
-			margin-left: 0;
-		}
-		// NOTE: Separate classes to simplify generated output.
+		#{variant("hstack > .spacer:empty", $v)},
 		#{variant("hstack > .spacer:empty + *", $v)} {
 			margin-left: 0;
 		}

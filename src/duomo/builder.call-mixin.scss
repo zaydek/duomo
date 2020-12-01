@@ -5,10 +5,10 @@
 @use "core/box-shadow" as *;
 @use "core/color" as *;
 @use "core/container" as *;
+@use "core/directives" as *;
 @use "core/grid" as *;
 @use "core/group" as *;
 @use "core/height" as *;
-@use "core/layout" as *;
 @use "core/margin" as *;
 @use "core/max-width" as *;
 @use "core/min-height" as *;
@@ -37,10 +37,10 @@
 	@if $mixin == "box-shadow" { @include box-shadow($variants...); }
 	@if $mixin == "color" { @include color($variants...); }
 	@if $mixin == "container" { @include container($variants...); }
+	@if $mixin == "directives" { @include directives($variants...); }
 	@if $mixin == "grid" { @include grid($variants...); }
 	@if $mixin == "group" { @include group($variants...); }
 	@if $mixin == "height" { @include height($variants...); }
-	@if $mixin == "layout" { @include layout($variants...); }
 	@if $mixin == "margin" { @include margin($variants...); }
 	@if $mixin == "max-width" { @include max-width($variants...); }
 	@if $mixin == "min-height" { @include min-height($variants...); }

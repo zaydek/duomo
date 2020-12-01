@@ -11,12 +11,10 @@
 
 	.spacer {
 		flex: 1 0 var(--space);
-	}
-	.spacer:first-child {
-		flex: 1 0 0;
-	}
-	.spacer:last-child {
-		flex: 1 0 0;
+		&:first-child,
+		&:last-child {
+			flex: 1 0 0;
+		}
 	}
 
 	@include modifiers($variants...);
