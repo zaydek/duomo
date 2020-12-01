@@ -61,22 +61,22 @@ $variants: (
 
 		// TODO: Integrate `custom-props-*` here.
 
-		// TODO: Extract?
+		// TODO: Add `take` pattern here.
 		@each $mk, $mv in $variants {
-			@if $mk != layout {
+			@if $mk != directives {
 				@include call-mixin($mk, var-join(root, take($mv, responsive))...);
 			}
 		}
 		@each $mk, $mv in $variants {
-			@if $mk != layout {
+			@if $mk != directives {
 				@if list.index($mv, responsive) {
 					@include call-mixin($mk, responsive);
 				}
 			}
 		}
-		// `layout` **must** be at the end:
-		@if map.get($variants, layout) {
-			@include call-mixin(layout, var-join(root, map.get($variants, layout))...);
+		// `directives` **must** be at the end:
+		@if map.get($variants, directives) {
+			@include call-mixin(directives, var-join(root, map.get($variants, directives))...);
 		}
 	}
 }
