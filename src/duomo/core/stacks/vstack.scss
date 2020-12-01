@@ -10,7 +10,7 @@
 			align-items: center;
 			min-height: min-content; // 0.7.0
 		}
-		@if $v == none {
+		@if $v == root {
 			.vstack > * {
 				--space: 0;
 			}

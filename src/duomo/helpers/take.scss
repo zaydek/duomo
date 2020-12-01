@@ -1,17 +1,25 @@
 @use "sass:list";
+@use "sass:map";
+@use "sass:meta";
 
-// Ex: take((0, 1, 2, 4), 4) -> (0, 1, 2)
+// Ex:
 //
-// TODO: Add support for maps.
-@function take($list, $item) {
-	// @if not list.index($list, $item) {
-	// 	@error "take: no such item `$item` in list `$list`; $item=#{$item}";
-	// }
-
+// take((0, 1, 2, 4), 4)             -> (0, 1, 2)
+// take((a: 0, b: 1, c: 2, d: 4), d) -> (a: 0, b: 1, c: 2)
+//
+@function take($collection, $item) {
 	$ret: ();
-	@each $each in $list {
-		@if $each != $item {
-			$ret: list.append($ret, $each);
+	@if meta.type-of($collection) == "list" {
+		@each $each in $collection {
+			@if $each != $item {
+				$ret: list.append($ret, $each);
+			}
+		}
+	} @else if meta.type-of($collection) == "map" {
+		@each $mk, $mv in $collection {
+			@if $mk != $item {
+				$ret: map.set($ret, $mk, $mv);
+			}
 		}
 	}
 	@return $ret;

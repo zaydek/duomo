@@ -12,9 +12,9 @@ $-opts: (
 @mixin position($variants...) {
 	// prettier-ignore
 	@include variants($variants...) using ($v) {
-		@each $each in $-opts {
-			#{variant(#{$each}, $v)} {
-				position: $each;
+		@each $opt in $-opts {
+			#{variant($opt, $v)} {
+				position: $opt;
 			}
 		}
 		@include generate-from-range((

@@ -8,9 +8,9 @@ $-opts: (
 
 @mixin pointer-events($variants...) {
 	@include variants($variants...) using ($v) {
-		@each $each in $-opts {
-			#{variant(pointer-events-#{$each}, $v)} {
-				pointer-events: $each;
+		@each $opt in $-opts {
+			#{variant(pointer-events-#{$opt}, $v)} {
+				pointer-events: $opt;
 			}
 		}
 	}

@@ -3,7 +3,7 @@
  */
 declare function sass(data: string): string
 
-test("take: erroneous case", () => {
+test("take: list, erroneous case", () => {
 	const result = sass(`
 @use "src/duomo/helpers/take" as *;
 
@@ -33,7 +33,7 @@ test("take: erroneous case", () => {
 `.trim())
 })
 
-test("take: non-erroneous case", () => {
+test("take: list, non-erroneous case", () => {
 	const result = sass(`
 @use "src/duomo/helpers/take" as *;
 
@@ -55,6 +55,62 @@ test("take: non-erroneous case", () => {
 
 .w-2 {
 	width: 2px;
+}
+`.trim())
+})
+
+test("take: map, erroneous case", () => {
+	const result = sass(`
+@use "src/duomo/helpers/take" as *;
+
+@each $mk, $mv in take((a: 0, b: 1, c: 2, d: 4), "Hello, world!") {
+	.#{$mk}-#{$mv} {
+		#{$mk}: $mv + px;
+	}
+}
+`)
+	// prettier-ignore
+	expect(result).toBe(`
+.a-0 {
+	a: 0px;
+}
+
+.b-1 {
+	b: 1px;
+}
+
+.c-2 {
+	c: 2px;
+}
+
+.d-4 {
+	d: 4px;
+}
+`.trim())
+})
+
+test("take: map, non-erroneous case", () => {
+	const result = sass(`
+@use "src/duomo/helpers/take" as *;
+
+@each $mk, $mv in take((a: 0, b: 1, c: 2, d: 4), d) {
+	.#{$mk}-#{$mv} {
+		#{$mk}: $mv + px;
+	}
+}
+`)
+	// prettier-ignore
+	expect(result).toBe(`
+.a-0 {
+	a: 0px;
+}
+
+.b-1 {
+	b: 1px;
+}
+
+.c-2 {
+	c: 2px;
 }
 `.trim())
 })

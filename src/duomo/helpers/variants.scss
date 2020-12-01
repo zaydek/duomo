@@ -3,6 +3,7 @@
 
 @use "getters" as *;
 @use "resolvers" as *;
+@use "take" as *;
 
 @function root($selector) {
 	@return ".#{$selector}";
@@ -40,6 +41,18 @@
 	@return "#{&}#{$selector}";
 }
 
+// prettier-ignore
+$-supported-variants: (
+	root,
+	responsive,
+	hover,
+	focus,
+	group-hover,
+	group-focus,
+	touch,
+	group-touch,
+);
+
 // Ex:
 //
 // @include variants($variants...) using ($v) {
@@ -47,12 +60,18 @@
 // }
 //
 @mixin variants($variants...) {
-	@each $each in $variants {
-		@if $each != root and $each != responsive {
-			/* variant=#{$each} */
+	@each $variant in $variants {
+		@if not list.index($-supported-variants, $variant) {
+			@error "variants: bad variant; $variant=#{$variant}";
 		}
-		@if $each != responsive {
-			@content ($each);
+	}
+
+	@each $variant in take($variants, responsive) {
+		@if $variant != root {
+			/* variant=#{$variant} */
+		}
+		@if $variant != responsive {
+			@content ($variant);
 		}
 	}
 	@if list.index($variants, responsive) {
