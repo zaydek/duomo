@@ -17,6 +17,8 @@
 		width: min-content;
 		height: min-content;
 	}
+	// Inspired by @everdimension’s implementation:
+	//
 	// https://codepen.io/everdimension/pen/BaNpeWe
 	.zstack > * {
 		grid-area: 1 / 1 / 1 / 1;

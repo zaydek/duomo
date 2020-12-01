@@ -8,6 +8,8 @@
 		@each $key, $n in breakpoints() {
 			@media (min-width: px($n)) {
 				#{variant(container, $v)} {
+					margin-left: auto; // 0.7.0
+					margin-right: auto; // 0.7.0
 					max-width: px($n);
 				}
 			}

@@ -57,7 +57,7 @@
 	@if list.index($variants, responsive) {
 		/* variant=responsive */
 		@each $key, $n in breakpoints() {
-			@media (min-width: $n + px) {
+			@media (min-width: px($n)) {
 				.#{delimit($key)} {
 					@at-root {
 						@content (responsive);
