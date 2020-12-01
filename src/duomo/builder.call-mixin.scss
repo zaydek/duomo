@@ -1,5 +1,6 @@
 @use "core/aspect-ratio" as *;
 @use "core/background-color" as *;
+@use "core/border-color" as *;
 @use "core/border-radius" as *;
 @use "core/border-width" as *;
 @use "core/box-shadow" as *;
@@ -32,6 +33,7 @@
 	// NOTE: Order **does not** affect output.
 	@if $mixin == "aspect-ratio" { @include aspect-ratio($variants...); }
 	@if $mixin == "background-color" { @include background-color($variants...); }
+	@if $mixin == "border-color" { @include border-color($variants...); }
 	@if $mixin == "border-radius" { @include border-radius($variants...); }
 	@if $mixin == "border-width" { @include border-width($variants...); }
 	@if $mixin == "box-shadow" { @include box-shadow($variants...); }
