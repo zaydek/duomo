@@ -2,6 +2,7 @@
 @use "sass:meta";
 
 @use "getters" as *;
+@use "resolvers" as *;
 
 @function root($selector) {
 	@return ".#{$selector}";
