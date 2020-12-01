@@ -5,6 +5,7 @@
 @use "configuration";
 @use "helpers" as *;
 
+@use "meta/custom-props-from-maps" as *;
 @use "meta/debug-space" as *;
 @use "meta/debug" as *;
 @use "meta/stagger" as *;
@@ -59,7 +60,14 @@ $variants: (
 			@include stagger;
 		}
 
-		// TODO: Integrate `custom-props-*` here.
+		// prettier-ignore
+		@include custom-props-from-maps(
+			(shorthand: font, map: configuration.$font-map),
+			(map: configuration.$color-map),
+			(shorthand: shadow, map: configuration.$shadow-map),
+			(shorthand: timing, map: configuration.$timing-map),
+			(shorthand: breakpoint, map: configuration.$breakpoint-map),
+		);
 
 		// TODO: Add `take` pattern here.
 		@each $mk, $mv in $variants {
