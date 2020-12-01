@@ -1,6 +1,6 @@
 {
 	"name": "@zaydek/duomo",
-	"version": "0.7.0-rc.23",
+	"version": "0.7.0-rc.24",
 	"main": "dist/index.css",
 	"license": "MIT",
 	"files": [
@@ -15,7 +15,8 @@
 		"build-duomo": "sass --no-charset --no-source-map src/duomo/index.scss dist/index.css",
 		"build-reset": "sass --no-charset --no-source-map src/duomo/reset.scss dist/reset.css",
 		"build-stack": "sass --no-charset --no-source-map src/duomo/stack.scss dist/stack.css",
-		"build": "rm -rf dist && yarn test && yarn tsc && yarn build-duomo && yarn build-reset && yarn build-stack",
+		"build-css": "yarn build-duomo && yarn build-reset && yarn build-stack",
+		"build": "rm -rf dist && yarn test && yarn tsc && yarn build-css",
 		"publish-dist-dry-run": "yarn build && npm publish --dry-run"
 	},
 	"devDependencies": {
