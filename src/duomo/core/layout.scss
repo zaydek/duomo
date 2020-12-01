@@ -6,17 +6,17 @@
 			// NOTE:
 			//
 			// ... {
-			//   --duomo-display: none;
-			//   display: var(--duomo-display);
+			//   --duomo-layout: none;
+			//   display: var(--duomo-layout);
 			// }
 			//
-			// Does not work because `display-auto` does not reset `--duomo-display`.
+			// Does not work because `display-auto` does not reset `--duomo-layout`.
 			display: none;
 		}
 		#{variant(layout, $v)} {
-			display: var(--duomo-display, block);
+			display: var(--duomo-layout, block);
 			& > * {
-				--duomo-display: initial;
+				--duomo-layout: initial;
 			}
 		}
 	}

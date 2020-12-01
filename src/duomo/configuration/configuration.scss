@@ -7,16 +7,6 @@
 //
 $headless: false !default;
 
-// // Describes whether to generate Duomo `:root` variables.
-// //
-// // Ex:
-// //
-// // :root {
-// //   ...
-// // }
-// //
-// $headless-root: false !default;
-
 // Describes whether to generate debugger utilities.
 $debugger: true !default;
 
@@ -135,8 +125,8 @@ $font-map: (
 
 // NOTE:
 //
-// - `shadow-sm` -> `shadow-xs`
-// - `shadow`    -> `shadow-sm`
+// - shadow-sm -> shadow-xs
+// - shadow    -> shadow-sm
 //
 $shadow-map: (
 	inner: (

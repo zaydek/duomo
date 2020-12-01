@@ -3,7 +3,7 @@
 @mixin vstack($variants...) {
 	@include variants($variants...) using ($v) {
 		#{variant("vstack", $v)} {
-			--duomo-display: flex; // 0.7.0
+			--duomo-layout: flex; // 0.7.0
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
