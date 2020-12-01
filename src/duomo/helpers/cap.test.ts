@@ -3,7 +3,7 @@
  */
 declare function sass(data: string): string
 
-test("cap: negative-case", () => {
+test("cap: negative case", () => {
 	const result = sass(`
 @use "sass:math";
 
@@ -35,7 +35,7 @@ test("cap: negative-case", () => {
 `.trim())
 })
 
-test("cap: positive-case", () => {
+test("cap: positive case", () => {
 	const result = sass(`
 @use "src/duomo/helpers/cap" as *;
 

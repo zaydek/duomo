@@ -1,0 +1,16 @@
+@use "sass:list";
+
+// Ex: take((0, 1, 2, 4), 4) -> (0, 1, 2)
+@function take($list, $item) {
+	// @if not list.index($list, $item) {
+	// 	@error "take: no such item `$item` in list `$list`; $item=#{$item}";
+	// }
+
+	$ret: ();
+	@each $each in $list {
+		@if $each != $item {
+			$ret: list.append($ret, $each);
+		}
+	}
+	@return $ret;
+}

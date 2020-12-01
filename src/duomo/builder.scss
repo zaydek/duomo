@@ -40,17 +40,6 @@ $variants: (
 	pointer-events: (responsive),
 );
 
-// Ex: take((1, 2, 3), 3) -> (1, 2)
-@function take($list, $item) {
-	$ret: ();
-	@each $each in $list {
-		@if $each != $item {
-			$ret: list.append($ret, $each);
-		}
-	}
-	@return $ret;
-}
-
 @at-root {
 	// TODO: Integrate `custom-props-*`.
 	@if not configuration.$headless {
