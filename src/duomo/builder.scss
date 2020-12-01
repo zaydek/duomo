@@ -40,7 +40,7 @@
 // prettier-ignore
 $variants: (
 	group: (),
-	layout: (responsive, on, group-on),
+	layout: (responsive, hover, group-hover, focus, group-focus, touch, group-touch),
 	stacks: (responsive),
 	grid: (responsive),
 	position: (responsive),
@@ -53,14 +53,14 @@ $variants: (
 	min-height: (responsive),
 	shape: (responsive),
 	aspect-ratio: (/* TODO */),
-	background-color: (responsive, on, group-on),
-	color: (responsive, on, group-on),
+	background-color: (responsive, hover, group-hover, focus, group-focus, touch, group-touch),
+	color: (responsive, hover, group-hover, focus, group-focus, touch, group-touch),
 	border-width: (responsive),
 	border-radius: (responsive),
-	box-shadow: (responsive, on, group-on),
-	opacity: (responsive, on, group-on),
+	box-shadow: (responsive, hover, group-hover, focus, group-focus, touch, group-touch),
+	opacity: (responsive, hover, group-hover, focus, group-focus, touch, group-touch),
 	overflow: (responsive),
-	z-index: (responsive, on, group-on),
+	z-index: (responsive, hover, group-hover, focus, group-focus, touch, group-touch),
 	pointer-events: (responsive),
 );
 

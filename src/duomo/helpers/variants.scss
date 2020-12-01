@@ -3,39 +3,37 @@
 
 @use "getters" as *;
 
-// @function none($selector) {
-// 	@return ".#{$selector}";
-// }
-// @function hover($selector) {
-// 	@return ".hover\\:#{$selector}:hover";
-// }
-// @function focus($selector) {
-// 	@return ".focus\\:#{$selector}:focus";
-// }
-// @function group-hover($selector) {
-// 	@return ".group:hover.group-hover\\:#{$selector}, .group:hover .group-hover\\:#{$selector}";
-// }
-// @function group-focus($selector) {
-// 	@return ".group:focus.group-focus\\:#{$selector}, .group:focus .group-focus\\:#{$selector}";
-// }
-// @function responsive($selector) {
-// 	@return "#{&}#{$selector}";
-// }
-
 @function none($selector) {
 	@return ".#{$selector}";
 }
 
-// prettier-ignore
-@function on($selector) {
-	@return ".on\\:#{$selector}:hover" + ", "
-		".on\\:#{$selector}:focus";
+@function hover($selector) {
+	@return ".hover\\:#{$selector}:hover";
+}
+@function focus($selector) {
+	@return ".focus\\:#{$selector}:focus";
+}
+@function group-hover($selector) {
+	@return ".group:hover.group-hover\\:#{$selector}, .group:hover .group-hover\\:#{$selector}";
+}
+@function group-focus($selector) {
+	@return ".group:focus.group-focus\\:#{$selector}, .group:focus .group-focus\\:#{$selector}";
 }
 
+// EXPERIMENTAL
+//
 // prettier-ignore
-@function group-on($selector) {
-	@return ".group:hover .group-on\\:#{$selector}" + ", "
-		".group:focus .group-on\\:#{$selector}";
+@function touch($selector) {
+	@return ".touch\\:#{$selector}:hover" + ", "
+		".touch\\:#{$selector}:focus";
+}
+
+// EXPERIMENTAL
+//
+// prettier-ignore
+@function group-touch($selector) {
+	@return ".group:hover .group-touch\\:#{$selector}" + ", "
+		".group:focus .group-touch\\:#{$selector}";
 }
 
 @function responsive($selector) {
