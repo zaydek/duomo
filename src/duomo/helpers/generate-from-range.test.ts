@@ -9,7 +9,7 @@ test("integration", () => {
 
 @at-root {
 	@include generate-from-range((
-		variant: none,
+		variant: root,
 		shorthand: square,
 		property: (width, height),
 		range: (0, 2, 4, 8, 16),

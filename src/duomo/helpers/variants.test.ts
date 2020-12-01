@@ -25,22 +25,27 @@ test("integration", () => {
 	background-color: var(--indigo-500);
 }
 
+/* variant=hover */
 .hover\\:bg-indigo-500:hover {
 	background-color: var(--indigo-500);
 }
 
+/* variant=focus */
 .focus\\:bg-indigo-500:focus {
 	background-color: var(--indigo-500);
 }
 
+/* variant=group-hover */
 .group:hover.group-hover\\:bg-indigo-500, .group:hover .group-hover\\:bg-indigo-500 {
 	background-color: var(--indigo-500);
 }
 
+/* variant=group-focus */
 .group:focus.group-focus\\:bg-indigo-500, .group:focus .group-focus\\:bg-indigo-500 {
 	background-color: var(--indigo-500);
 }
 
+/* variant=responsive */
 @media (min-width: 640px) {
 	.sm\\:bg-indigo-500 {
 		background-color: var(--indigo-500);
