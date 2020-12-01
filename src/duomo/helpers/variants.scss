@@ -66,11 +66,15 @@ $-supported-variants: (
 		}
 	}
 
-	@each $variant in take($variants, responsive) {
-		@if $variant != root {
-			/* variant=#{$variant} */
-		}
+	// @each $variant in take($variants, responsive) {
+	// 	/* variant=#{$variant} */
+	// 	@content ($variant);
+	// }
+
+	// FIXME: `take($variants, responsive)` does not work as expected.
+	@each $variant in $variants {
 		@if $variant != responsive {
+			/* variant=#{$variant} */
 			@content ($variant);
 		}
 	}
