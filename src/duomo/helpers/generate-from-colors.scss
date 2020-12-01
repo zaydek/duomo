@@ -14,13 +14,10 @@
 	@each $mk, $mv in $map {
 		#{variant(#{$shorthand}-#{$mk}, $v)} {
 			@if $mk == transparent or $mk == current {
-				// NOTE: Use `#{...}` syntax because of custom props.
-				--#{$shorthand}-opacity: 1;
 				#{$property}: #{$mv};
 			} @else {
-				// NOTE: Use `#{...}` syntax because of custom props.
 				--#{$shorthand}-opacity: 1;
-				#{$property}: rgba(#{color.red($mv)}, #{color.green($mv)}, #{color.blue($mv)}, #{var(--#{$shorthand}-opacity)});
+				#{$property}: hsla(var(--#{$mk}), var(--#{$shorthand}-opacity));
 			}
 		}
 	}

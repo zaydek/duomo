@@ -29,8 +29,8 @@ $variants: (
 	min-height: (responsive),
 	shape: (responsive),
 	aspect-ratio: (/* TODO */),
-	background-color: (responsive, hover, group-hover, focus, group-focus, touch, group-touch),
 	color: (responsive, hover, group-hover, focus, group-focus, touch, group-touch),
+	background-color: (responsive, hover, group-hover, focus, group-focus, touch, group-touch),
 	border-width: (responsive),
 	border-radius: (responsive),
 	box-shadow: (responsive, hover, group-hover, focus, group-focus, touch, group-touch),
@@ -62,8 +62,8 @@ $variants: (
 
 		// prettier-ignore
 		@include custom-props-from-maps(
-			(shorthand: font, map: configuration.$font-map),
-			(map: configuration.$color-map),
+			(shorthand: none, map: configuration.$font-map),
+			(shorthand: none, map: configuration.$color-map),
 			(shorthand: shadow, map: configuration.$shadow-map),
 			(shorthand: timing, map: configuration.$timing-map),
 			(shorthand: breakpoint, map: configuration.$breakpoint-map),

@@ -1,0 +1,24 @@
+@use "sass:color";
+@use "sass:map";
+
+@use "colors";
+
+@function -to-hsl($color-map) {
+	$ret: ();
+	@each $mk, $mv in $color-map {
+		@if $mk == transparent or $mk == current {
+			$ret: map.set($ret, $mk, $mv);
+		} @else {
+			// prettier-ignore
+			$ret: map.set($ret, $mk, (
+				color.hue($mv),
+				color.saturation($mv),
+				color.lightness($mv),
+			));
+		}
+	}
+	@return $ret;
+}
+
+$color-map: -to-hsl(colors.$color-map);
+$extended-color-map: -to-hsl(colors.$extended-color-map);

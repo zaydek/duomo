@@ -28,28 +28,26 @@ $color-map: (
 	// prettier-ignore
 	expect(result).toBe(`
 .bg-transparent {
-	--bg-opacity: 1;
 	background-color: transparent;
 }
 
 .bg-current {
-	--bg-opacity: 1;
 	background-color: currentColor;
 }
 
 .bg-red {
 	--bg-opacity: 1;
-	background-color: rgba(255, 0, 0, var(--bg-opacity));
+	background-color: hsla(var(--red), var(--bg-opacity));
 }
 
 .bg-green {
 	--bg-opacity: 1;
-	background-color: rgba(0, 255, 0, var(--bg-opacity));
+	background-color: hsla(var(--green), var(--bg-opacity));
 }
 
 .bg-blue {
 	--bg-opacity: 1;
-	background-color: rgba(0, 0, 255, var(--bg-opacity));
+	background-color: hsla(var(--blue), var(--bg-opacity));
 }
 
 .bg-opacity-0 {
