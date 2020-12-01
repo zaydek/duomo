@@ -1,8 +1,8 @@
 @use "../helpers" as *;
 
-@mixin show($variants...) {
+@mixin layout($variants...) {
 	@include variants($variants...) using ($v) {
-		#{variant(hide, $v)} {
+		#{variant(hidden, $v)} {
 			// NOTE:
 			//
 			// ... {
@@ -13,7 +13,7 @@
 			// Does not work because `display-auto` does not reset `--duomo-display`.
 			display: none;
 		}
-		#{variant(show, $v)} {
+		#{variant(layout, $v)} {
 			display: var(--duomo-display, block);
 			& > * {
 				--duomo-display: initial;
