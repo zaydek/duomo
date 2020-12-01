@@ -9,6 +9,7 @@
 }
 
 @mixin -debug-stripes($color) {
+	// TODO: Refactor to `hsla` and `custom props`.
 	@if $color == purple {
 		--debug-space-bg-color: hsla(240, 100%, 50%, 0.125);
 	} @else if $color == blue {

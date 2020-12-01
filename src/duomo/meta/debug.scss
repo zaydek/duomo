@@ -35,11 +35,13 @@
 @mixin debug {
 	[data-debug],
 	[data-debug] * {
+		// TODO: Refactor to `hsla` and `custom props`.
 		outline: 1px solid hsla(210, 100%, 50%, 0.25);
 	}
 
 	[data-debug].spacer,
 	[data-debug] .spacer {
+		// TODO: Refactor to `hsla` and `custom props`.
 		background-color: hsla(210, 100%, 50%, 0.1);
 	}
 
@@ -47,6 +49,7 @@
 	[data-debug] .spacer:empty {
 		min-width: 2px;
 		min-height: 2px;
+		// TODO: Refactor to `hsla` and `custom props`.
 		background-color: hsla(180, 100%, 50%, 0.1);
 	}
 }

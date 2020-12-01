@@ -17,7 +17,7 @@
 
 		#{variant(escape("?"), $v)},
 		#{variant(help, $v)} {
-			outline: 4px solid var(--red-500);
+			outline: 4px solid hsla(var(--red-500), 0.75);
 		}
 	}
 }
