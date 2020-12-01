@@ -6,7 +6,6 @@
 @function none($selector) {
 	@return ".#{$selector}";
 }
-
 @function hover($selector) {
 	@return ".hover\\:#{$selector}:hover";
 }
@@ -54,7 +53,7 @@
 	}
 	@if list.index($variants, responsive) {
 		@each $key, $n in breakpoints() {
-			@media (min-width: #{$n + px}) {
+			@media (min-width: $n + px) {
 				.#{delimit($key)} {
 					@at-root {
 						@content (responsive);
