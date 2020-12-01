@@ -1,17 +1,5 @@
 @use "sass:list";
 @use "sass:meta";
-@use "sass:string";
-
-// Ex:
-//
-// has-suffix(8, px)   -> false
-// has-suffix(8px, px) -> true
-//
-@function has-suffix($str, $end) {
-	$str: "" + $str;
-	$end: "" + $end;
-	@return string.slice($str, 1 + string.length($str) - string.length($end)) == $end;
-}
 
 // Ex:
 //

@@ -1,7 +1,7 @@
 @use "sass:math";
 @use "sass:meta";
 
-@use "utils";
+@use "has-suffix" as *;
 
 @function rem($any) {
 	@if meta.type-of($any) != "number" {
@@ -36,26 +36,13 @@
 	@return $floored + px;
 }
 
-// @function passthrough($any) {
-// 	// prettier-ignore
-// 	$ret:
-// 		$any == auto or
-// 		$any == min-content or
-// 		$any == max-content or
-// 		utils.has-suffix($any, "%") or
-// 		utils.has-suffix($any, "vw") or
-// 		utils.has-suffix($any, "vh") or
-// 		$any == 9999px;
-// 	@return $ret;
-// }
-
 @function passthrough($any) {
 	// prettier-ignore
 	$ok:
 		meta.type-of($any) != "number" or
-		utils.has-suffix($any, "%") or
-		utils.has-suffix($any, "vw") or
-		utils.has-suffix($any, "vh") or
+		has-suffix($any, "%") or
+		has-suffix($any, "vw") or
+		has-suffix($any, "vh") or
 		$any == 9999px;
 	@return $ok;
 }

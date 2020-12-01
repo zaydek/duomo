@@ -1,41 +1,17 @@
 @use "sass:list";
 @use "sass:map";
-@use "sass:meta";
 
+@use "builder.call-mixin" as *;
 @use "configuration";
 @use "helpers" as *;
-
-@use "preflight/base" as *;
-@use "preflight/modern-normalize" as *;
-@use "preflight/vendored-font-smoothing" as *;
 
 @use "meta/debug-space" as *;
 @use "meta/debug" as *;
 @use "meta/stagger" as *;
 
-@use "core/aspect-ratio" as *;
-@use "core/background-color" as *;
-@use "core/border-radius" as *;
-@use "core/border-width" as *;
-@use "core/box-shadow" as *;
-@use "core/color" as *;
-@use "core/container" as *;
-@use "core/grid" as *;
-@use "core/group" as *;
-@use "core/height" as *;
-@use "core/layout" as *;
-@use "core/margin" as *;
-@use "core/max-width" as *;
-@use "core/min-height" as *;
-@use "core/opacity" as *;
-@use "core/overflow" as *;
-@use "core/padding" as *;
-@use "core/pointer-events" as *;
-@use "core/position" as *;
-@use "core/shape" as *;
-@use "core/stacks" as *;
-@use "core/width" as *;
-@use "core/z-index" as *;
+@use "preflight/base" as *;
+@use "preflight/modern-normalize" as *;
+@use "preflight/vendored-font-smoothing" as *;
 
 // prettier-ignore
 $variants: (
@@ -73,38 +49,6 @@ $variants: (
 		}
 	}
 	@return $ret;
-}
-
-// NOTE: Dart Sass does not appear to support dynamic mixin invocation.
-// Therefore mixins are statically invoked using conditions.
-//
-// https://github.com/sass/sass/issues/626
-//
-// prettier-ignore
-@mixin call-mixin($mixin, $variants...) {
-	@if $mixin == "group" { @include group($variants...); }
-	@if $mixin == "layout" { @include layout($variants...); }
-	@if $mixin == "stacks" { @include stacks($variants...); }
-	@if $mixin == "grid" { @include grid($variants...); }
-	@if $mixin == "position" { @include position($variants...); }
-	@if $mixin == "margin" { @include margin($variants...); }
-	@if $mixin == "padding" { @include padding($variants...); }
-	@if $mixin == "width" { @include width($variants...); }
-	@if $mixin == "max-width" { @include max-width($variants...); }
-	@if $mixin == "container" { @include container($variants...); }
-	@if $mixin == "height" { @include height($variants...); }
-	@if $mixin == "min-height" { @include min-height($variants...); }
-	@if $mixin == "shape" { @include shape($variants...); }
-	@if $mixin == "aspect-ratio" { @include aspect-ratio($variants...); }
-	@if $mixin == "background-color" { @include background-color($variants...); }
-	@if $mixin == "color" { @include color($variants...); }
-	@if $mixin == "border-width" { @include border-width($variants...); }
-	@if $mixin == "border-radius" { @include border-radius($variants...); }
-	@if $mixin == "box-shadow" { @include box-shadow($variants...); }
-	@if $mixin == "opacity" { @include opacity($variants...); }
-	@if $mixin == "overflow" { @include overflow($variants...); }
-	@if $mixin == "z-index" { @include z-index($variants...); }
-	@if $mixin == "pointer-events" { @include pointer-events($variants...); }
 }
 
 @at-root {
