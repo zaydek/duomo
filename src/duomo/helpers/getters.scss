@@ -96,9 +96,9 @@
 	$_: -getter("timing", configuration.$timing-map, $key);
 	@return var(--#{$key});
 }
+// NOTE: Does not return `var(--#{$key})`.
 @function breakpoint($key) {
-	$_: -getter("breakpoint", configuration.$breakpoint-map, $key);
-	@return var(--#{$key});
+	@return -getter("breakpoint", configuration.$breakpoint-map, $key);
 }
 
 @function fonts() {
