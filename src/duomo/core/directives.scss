@@ -2,32 +2,30 @@
 
 @mixin directives($variants...) {
 	@include variants($variants...) using ($v) {
-		#{variant(escape("-"), $v)},
-		#{variant(hide, $v)} {
+		#{variant(escape("-"), $v)} {
 			display: none;
 		}
 
-		#{variant(escape("+"), $v)},
-		#{variant(show, $v)} {
+		#{variant(escape("+"), $v)} {
 			display: var(--duomo-display, block);
 		}
 
 		@if $v == root {
 			// prettier-ignore
 			@keyframes \?wobble {
-				0% { box-shadow: inset  4px  4px hsl(var(--red-500)),
-					inset -4px -4px hsl(var(--red-500)); }
-				100% {  box-shadow: inset  8px  8px hsl(var(--red-500)),
-					inset -8px -8px hsl(var(--red-500)); }
+				0% {
+					box-shadow: inset 4px 4px hsl(var(--red-500)),
+						inset -4px -4px hsl(var(--red-500));
+				}
+				100% {
+					box-shadow: inset 8px 8px hsl(var(--red-500)),
+						inset -8px -8px hsl(var(--red-500));
+				}
 			}
 		}
 
 		// https://twitter.com/gavinjoyce/status/1333412203232374785
-		// https://play.tailwindcss.com/d3E0Wybzwq
-		// https://github.com/GavinJoyce/tailwindcss-question-mark
-		//
-		#{variant(escape("?"), $v)},
-		#{variant(help, $v)} {
+		#{variant(escape("?"), $v)} {
 			animation: \?wobble /**/ 0.5s var(--ease-in-out) alternate infinite;
 		}
 	}

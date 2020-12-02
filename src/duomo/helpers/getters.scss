@@ -111,7 +111,9 @@
 	}
 	@return var(--#{$key});
 }
-@function breakpoint($key, $raw: false) {
+
+// NOTE: `$raw` defaults to `true`.
+@function breakpoint($key, $raw: true) {
 	$got: -getter("breakpoint", configuration.$breakpoint-map, $key);
 	@if $raw {
 		@return $got;
@@ -154,7 +156,9 @@
 	}
 	@return $ret;
 }
-@function breakpoints($raw: false) {
+
+// NOTE: `$raw` defaults to `true`.
+@function breakpoints($raw: true) {
 	$ret: ();
 	@each $mk, $mv in configuration.$breakpoint-map {
 		$ret: map.set($ret, $mk, breakpoint($mk, $raw));

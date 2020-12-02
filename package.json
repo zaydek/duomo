@@ -13,9 +13,13 @@
 		"watch": "sass --watch --no-charset --no-source-map src/duomo/index.scss dist/index.css",
 		"test": "jest",
 		"build-duomo": "sass --no-charset --no-source-map src/duomo/index.scss dist/index.css",
+		"build-duomo-min": "sass --style=compressed --no-charset --no-source-map src/duomo/index.scss dist/index.min.css",
 		"build-reset": "sass --no-charset --no-source-map src/duomo/reset.scss dist/reset.css",
+		"build-reset-min": "sass --style=compressed --no-charset --no-source-map src/duomo/reset.scss dist/reset.min.css",
 		"build-stack": "sass --no-charset --no-source-map src/duomo/stack.scss dist/stack.css",
+		"build-stack-min": "sass --style=compressed --no-charset --no-source-map src/duomo/stack.scss dist/stack.min.css",
 		"build-css": "yarn build-duomo && yarn build-reset && yarn build-stack",
+		"build-css-min": "yarn build-duomo-min && yarn build-reset-min && yarn build-stack-min",
 		"build": "rm -rf dist && yarn test && yarn tsc && yarn build-css",
 		"publish-dist-dry-run": "yarn build && npm publish --dry-run"
 	},

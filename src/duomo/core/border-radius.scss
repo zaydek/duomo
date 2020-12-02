@@ -5,63 +5,63 @@
 	@include variants($variants...) using ($v) {
 		@include generate-from-range((
 			variant: $v,
-			shorthand: radius,
+			shorthand: rounded,
 			property: (border-radius),
 			range: var-join(cap(range(), 24), 9999px),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: radius-t,
+			shorthand: rounded-t,
 			property: (border-top-left-radius, border-top-right-radius),
 			range: var-join(cap(range(), 24), 9999px),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: radius-r,
+			shorthand: rounded-r,
 			property: (border-top-right-radius, border-bottom-right-radius),
 			range: var-join(cap(range(), 24), 9999px),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: radius-b,
+			shorthand: rounded-b,
 			property: (border-bottom-left-radius, border-bottom-right-radius),
 			range: var-join(cap(range(), 24), 9999px),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: radius-l,
+			shorthand: rounded-l,
 			property: (border-top-left-radius, border-bottom-left-radius),
 			range: var-join(cap(range(), 24), 9999px),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: radius-tr,
+			shorthand: rounded-tr,
 			property: (border-top-right-radius),
 			range: var-join(cap(range(), 24), 9999px),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: radius-br,
+			shorthand: rounded-br,
 			property: (border-bottom-right-radius),
 			range: var-join(cap(range(), 24), 9999px),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: radius-bl,
+			shorthand: rounded-bl,
 			property: (border-bottom-left-radius),
 			range: var-join(cap(range(), 24), 9999px),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: radius-tl,
+			shorthand: rounded-tl,
 			property: (border-top-left-radius),
 			range: var-join(cap(range(), 24), 9999px),
 			resolver: rem,

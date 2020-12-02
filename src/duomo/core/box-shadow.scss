@@ -21,14 +21,12 @@
 		@each $mk, $mv in shadows() {
 			#{variant(shadow-#{$mk}, $v)} {
 				--duomo-shadow-#{$mk}: #{shadow($mk)};
-				--duomo-shadow: var(--duomo-shadow-#{$mk});
-				box-shadow: var(--duomo-shadow);
+				box-shadow: var(--duomo-shadow-#{$mk});
 			}
 		}
 
 		#{variant(shadow, $v)} {
-			--shadow: #{duomo-shadow-keys(shadows())};
-			box-shadow: var(--duomo-shadow);
+			box-shadow: #{duomo-shadow-keys(shadows())};
 		}
 	}
 }
