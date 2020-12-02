@@ -1,12 +1,14 @@
 @use "../../helpers" as *;
 
 @mixin hstack($variants...) {
+	// prettier-ignore
+	.hstack {
+		--duomo-display: flex;
+		& > * { --duomo-display: initial; }
+	}
+
 	@include variants($variants...) using ($v) {
 		#{variant("hstack", $v)} {
-			--duomo-display: flex;
-			& > * {
-				--duomo-display: initial;
-			}
 			display: flex;
 			flex-direction: row;
 			justify-content: center;

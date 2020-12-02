@@ -22,12 +22,16 @@ $variants: (
 	position: (responsive),
 	margin: (responsive),
 	padding: (responsive),
-	width: (responsive),
+
+	// // NOTE: `shape` takes precedence over `width` / `height` so
+	// // `width` and `height` can be overwritten.
+	// shape: (responsive),
+	// width: (responsive),
+
 	max-width: (responsive),
 	container: (),
 	height: (responsive),
 	min-height: (responsive),
-	shape: (responsive),
 	aspect-ratio: (/* TODO */),
 	color: (responsive, touch, group-touch),
 	background-color: (responsive, touch, group-touch),
@@ -40,6 +44,8 @@ $variants: (
 	z-index: (responsive, touch, group-touch),
 	pointer-events: (responsive),
 	transform: (responsive, touch, group-touch),
+
+	// NOTE: `directives` must be last.
 	directives: (responsive, touch, group-touch),
 );
 
@@ -83,7 +89,7 @@ $variants: (
 				}
 			}
 		}
-		// `directives` **must** be at the end:
+		// NOTE: `directives` must be last.
 		@if map.get($variants, directives) {
 			@include call-mixin(directives, var-join(root, map.get($variants, directives))...);
 		}

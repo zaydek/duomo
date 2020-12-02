@@ -2,87 +2,87 @@
 
 $-opts: (
 	tl: (
-		justify-self: flex-start,
-		align-self: flex-start,
+		top: 0,
+		right: null,
+		bottom: null,
+		left: 0,
 	),
 	t: (
-		justify-self: null,
-		align-self: flex-start,
+		top: 0,
+		right: null,
+		bottom: null,
+		left: null,
 	),
 	tr: (
-		justify-self: flex-start,
-		align-self: flex-start,
+		top: 0,
+		right: 0,
+		bottom: null,
+		left: null,
 	),
 	l: (
-		justify-self: flex-start,
-		align-self: null,
+		top: null,
+		right: null,
+		bottom: null,
+		left: 0,
 	),
 	r: (
-		justify-self: flex-end,
-		align-self: null,
+		top: null,
+		right: 0,
+		bottom: null,
+		left: null,
 	),
 	bl: (
-		justify-self: flex-start,
-		align-self: flex-end,
+		top: null,
+		right: null,
+		bottom: 0,
+		left: 0,
 	),
 	b: (
-		justify-self: null,
-		align-self: flex-end,
+		top: null,
+		right: null,
+		bottom: 0,
+		left: null,
 	),
 	br: (
-		justify-self: flex-start,
-		align-self: flex-end,
+		top: null,
+		right: 0,
+		bottom: 0,
+		left: null,
 	),
 );
 
-// prettier-ignore
 @mixin zstack($variants...) {
+	// prettier-ignore
+	.zstack {
+		--duomo-display: grid;
+		& > * { --duomo-display: initial; }
+	}
+
+	.zstack {
+		display: grid;
+		place-items: center;
+		position: relative;
+	}
+
+	// https://codepen.io/everdimension/pen/BaNpeWe
+	//
+	// prettier-ignore
+	.zstack > * {
+		grid-area:
+			1 / // grid-row-start
+			1 / // grid-column-start
+			1 / // grid-row-end
+			1;  // grid-column-end
+	}
+
 	@include variants($variants...) using ($v) {
-		@if $v == root {
-			.zstack {
-				--duomo-display: grid;
-				display: grid;
-				& > * {
-					--duomo-display: initial;
-				}
-				place-items: center;
-			}
-
-			// https://codepen.io/everdimension/pen/BaNpeWe
-			.zstack > * {
-				grid-area:
-					1 / // grid-row-start
-					1 / // grid-column-start
-					1 / // grid-row-end
-					1;  // grid-column-end
-			}
-		}
-
 		@each $mk, $mv in $-opts {
 			#{variant(place-#{$mk}, $v)} {
-				--place-x: 0;
-				--place-y: 0;
+				position: absolute;
 				@each $nk, $nv in $mv {
 					#{$nk}: $nv;
 				}
-				transform:
-					translate(
-						var(--place-x),
-						var(--place-y)
-					);
 			}
 		}
-
-		#{variant(-place-x-50, $v)} { --place-x: -50%; }
-		#{variant(-place-x-100, $v)} { --place-x: -100%; }
-		#{variant(place-x-0, $v)} { --place-x: 0; }
-		#{variant(place-x-50, $v)} { --place-x: 50%; }
-		#{variant(place-x-100, $v)} { --place-x: 100%; }
-
-		#{variant(-place-y-50, $v)} { --place-y: -50%; }
-		#{variant(-place-y-100, $v)} { --place-y: -100%; }
-		#{variant(place-y-0, $v)} { --place-y: 0; }
-		#{variant(place-y-50, $v)} { --place-y: 50%; }
-		#{variant(place-y-100, $v)} { --place-y: 100%; }
 	}
 }
