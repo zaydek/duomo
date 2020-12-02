@@ -1,19 +1,1 @@
 @use "duomo" as *;
-
-// @use "sass:list";
-//
-// $shadows: (
-// 	sm: 0 0 0 2px red,
-// 	md: 0 0 0 4px green,
-// 	lg: 0 0 0 8px blue,
-// );
-//
-// @function keys($map) {
-// 	$ret: ();
-// 	@each $mk, $mv in $map {
-// 		$ret: list.append($ret, var(--shadow-#{$mk}), comma);
-// 	}
-// 	@return $ret;
-// }
-//
-// @debug keys($shadows);

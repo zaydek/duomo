@@ -1,0 +1,42 @@
+@use "../helpers" as *;
+
+@mixin transform($variants...) {
+	// prettier-ignore
+	@include variants($variants...) using ($v) {
+		#{variant(transform, $v)} {
+			--dm-translate-x: 0;
+			--dm-translate-y: 0;
+			--dm-rotate: 0;
+			--dm-skew-x: 0;
+			--dm-skew-y: 0;
+			--dm-scale-x: 1;
+			--dm-scale-y: 1;
+			transform: translate(var(--dm-translate-x), var(--dm-translate-y)) rotate(var(--dm-rotate))
+				skewX(var(--dm-skew-x)) skewY(var(--dm-skew-y)) scaleX(var(--dm-scale-x)) scaleY(var(--dm-scale-y));
+		}
+
+		#{variant(transform-gpu, $v)} {
+			--dm-translate-x: 0;
+			--dm-translate-y: 0;
+			--dm-rotate: 0;
+			--dm-skew-x: 0;
+			--dm-skew-y: 0;
+			--dm-scale-x: 1;
+			--dm-scale-y: 1;
+			transform: translate3d(var(--dm-translate-x), var(--dm-translate-y), 0) rotate(var(--dm-rotate))
+				skewX(var(--dm-skew-x)) skewY(var(--dm-skew-y)) scaleX(var(--dm-scale-x)) scaleY(var(--dm-scale-y));
+		}
+
+		.-x-100 { --dm-translate-x: -100%; }
+		.-x-50 { --dm-translate-x: -50%; }
+		.-x-0 { --dm-translate-x: 0%; }
+		.x-50 { --dm-translate-x: 50%; }
+		.x-100 { --dm-translate-x: 100%; }
+
+		.-y-100 { --dm-translate-y: -100%; }
+		.-y-50 { --dm-translate-y: -50%; }
+		.-y-0 { --dm-translate-y: 0%; }
+		.y-50 { --dm-translate-y: 50%; }
+		.y-100 { --dm-translate-y: 100%; }
+	}
+}
