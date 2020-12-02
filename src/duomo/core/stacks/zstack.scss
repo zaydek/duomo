@@ -4,8 +4,12 @@
 	//
 	// https://twitter.com/bdc/status/1245399999300558853
 	.zstack {
-		--duomo-display: grid;
+		--duomo-display: grid; // 0.7.0
 		display: grid;
+		& > * {
+			--duomo-display: initial;
+		}
+
 		place-items: center;
 		// NOTE: Explicitly constrain the bounding box.
 		// If I remember correctly, this is for `w-full h-full` but

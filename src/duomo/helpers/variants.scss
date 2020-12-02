@@ -98,9 +98,9 @@ $-supported-variants: (
 //   ...
 // }
 //
-@function variant($selector, $variant-fn) {
-	@if not meta.function-exists($variant-fn) {
-		@error "variant: no such variant function; $variant-fn=#{$variant-fn}";
+@function variant($selector, $variant-fn-name) {
+	@if not meta.function-exists($variant-fn-name) {
+		@error "variant: no such variant function name `$variant-fn-name`; $variant-fn-name=#{$variant-fn-name}";
 	}
-	@return meta.call(meta.get-function($variant-fn), $selector);
+	@return meta.call(meta.get-function($variant-fn-name), $selector);
 }

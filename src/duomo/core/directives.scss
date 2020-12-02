@@ -10,13 +10,11 @@
 		#{variant(escape("+"), $v)},
 		#{variant(show, $v)} {
 			display: var(--duomo-display, block);
-			& > * {
-				--duomo-display: initial;
-			}
 		}
 
 		#{variant(escape("?"), $v)},
 		#{variant(help, $v)} {
+			// TODO: Animate `box-shadow`? https://play.tailwindcss.com/d3E0Wybzwq
 			outline: 4px solid hsla(var(--red-500), 0.75);
 		}
 	}

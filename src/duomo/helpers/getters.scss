@@ -71,7 +71,7 @@
 @function -semantic-getter($getter-name, $map, $key) {
 	$got: map.get($map, $key);
 	@if not $got {
-		@error "#{$getter-name}: no such key; $key=#{$key}";
+		@error "#{$getter-name}: no such key `$key`; $key=#{$key}";
 	}
 	@return $got;
 }
@@ -80,10 +80,12 @@
 	@return -semantic-getter("font", configuration.$font-map, $key);
 }
 @function color($key) {
-	@return -semantic-getter("color", configuration.$color-map, $key);
+	$_: -semantic-getter("color", configuration.$color-map, $key);
+	@return hsl(var(--#{$key}));
 }
 @function extended-color($key) {
-	@return -semantic-getter("extended-color", configuration.$extended-color-map, $key);
+	$_: -semantic-getter("extended-color", configuration.$extended-color-map, $key);
+	@return hsl(var(--#{$key}));
 }
 @function shadow($key) {
 	@return -semantic-getter("shadow", configuration.$shadow-map, $key);
