@@ -1,22 +1,34 @@
+@use "sass:list";
+
 @use "../helpers" as *;
 
-// @mixin box-shadow($variants...) {
-// 	@include variants($variants...) using ($v) {
-// 		@each $mk, $mv in shadows() {
-// 			#{variant(shadow-#{$mk}, $v)} {
-// 				--shadow: var(--shadow-#{$mk});
-// 				box-shadow: var(--shadow);
-// 			}
-// 		}
-// 	}
-// }
+@function duomo-shadow-keys($map) {
+	$ret: ();
+	@each $mk, $mv in $map {
+		$ret: list.append($ret, var(--duomo-shadow-#{$mk}), comma);
+	}
+	@return $ret;
+}
 
 @mixin box-shadow($variants...) {
 	@include variants($variants...) using ($v) {
+		#{variant(shadow, $v)} {
+			@each $mk, $mv in shadows() {
+				--duomo-shadow-#{$mk}: 0 0 0 0 transparent;
+			}
+		}
+
 		@each $mk, $mv in shadows() {
 			#{variant(shadow-#{$mk}, $v)} {
-				box-shadow: var(--shadow-#{$mk});
+				--duomo-shadow-#{$mk}: #{shadow($mk)};
+				--duomo-shadow: var(--duomo-shadow-#{$mk});
+				box-shadow: var(--duomo-shadow);
 			}
+		}
+
+		#{variant(shadow, $v)} {
+			--shadow: #{duomo-shadow-keys(shadows())};
+			box-shadow: var(--duomo-shadow);
 		}
 	}
 }

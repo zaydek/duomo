@@ -68,7 +68,7 @@
 	@return configuration.$opacity-range;
 }
 
-@function -getter($getter-name, $map, $key) {
+@function -getter($getter-name, $map, $key, $raw: false) {
 	$got: map.get($map, $key);
 	@if not $got {
 		@error "#{$getter-name}: no such key `$key`; $key=#{$key}";
@@ -76,70 +76,88 @@
 	@return $got;
 }
 
-@function font($key) {
-	$_: -getter("font", configuration.$font-map, $key);
+@function font($key, $raw: false) {
+	$got: -getter("font", configuration.$font-map, $key);
+	@if $raw {
+		@return $got;
+	}
 	@return var(--#{$key});
 }
-@function color($key) {
-	$_: -getter("color", configuration.$color-map, $key);
+@function color($key, $raw: false) {
+	$got: -getter("color", configuration.$color-map, $key);
+	@if $raw {
+		@return $got;
+	}
 	@return hsl(var(--#{$key}));
 }
-@function extended-color($key) {
-	$_: -getter("extended-color", configuration.$extended-color-map, $key);
+@function extended-color($key, $raw: false) {
+	$got: -getter("extended-color", configuration.$extended-color-map, $key);
+	@if $raw {
+		@return $got;
+	}
 	@return hsl(var(--#{$key}));
 }
-@function shadow($key) {
-	$_: -getter("shadow", configuration.$shadow-map, $key);
+@function shadow($key, $raw: false) {
+	$got: -getter("shadow", configuration.$shadow-map, $key);
+	@if $raw {
+		@return $got;
+	}
+	@return var(--shadow-#{$key});
+}
+@function timing($key, $raw: false) {
+	$got: -getter("timing", configuration.$timing-map, $key);
+	@if $raw {
+		@return $got;
+	}
 	@return var(--#{$key});
 }
-@function timing($key) {
-	$_: -getter("timing", configuration.$timing-map, $key);
+@function breakpoint($key, $raw: false) {
+	$got: -getter("breakpoint", configuration.$breakpoint-map, $key);
+	@if $raw {
+		@return $got;
+	}
 	@return var(--#{$key});
-}
-// NOTE: Does not return `var(--#{$key})`.
-@function breakpoint($key) {
-	@return -getter("breakpoint", configuration.$breakpoint-map, $key);
 }
 
-@function fonts() {
+@function fonts($raw: false) {
 	$ret: ();
 	@each $mk, $mv in configuration.$font-map {
-		$ret: map.set($ret, $mk, font($mk));
+		$ret: map.set($ret, $mk, font($mk, $raw));
 	}
 	@return $ret;
 }
-@function colors() {
+@function colors($raw: false) {
 	$ret: ();
 	@each $mk, $mv in configuration.$color-map {
-		$ret: map.set($ret, $mk, color($mk));
+		$ret: map.set($ret, $mk, color($mk, $raw));
 	}
 	@return $ret;
 }
-@function extended-colors() {
+@function extended-colors($raw: false) {
 	$ret: ();
 	@each $mk, $mv in configuration.$extended-color-map {
-		$ret: map.set($ret, $mk, extended-color($mk));
+		$ret: map.set($ret, $mk, extended-color($mk, $raw));
 	}
 	@return $ret;
 }
-@function shadows() {
+@function shadows($raw: false) {
 	$ret: ();
 	@each $mk, $mv in configuration.$shadow-map {
-		$ret: map.set($ret, $mk, shadow($mk));
+		$ret: map.set($ret, $mk, shadow($mk, $raw));
 	}
 	@return $ret;
 }
-@function timings() {
+@function timings($raw: false) {
 	$ret: ();
 	@each $mk, $mv in configuration.$timing-map {
-		$ret: map.set($ret, $mk, timing($mk));
+		$ret: map.set($ret, $mk, timing($mk, $raw));
 	}
 	@return $ret;
 }
-@function breakpoints() {
+@function breakpoints($raw: false) {
 	$ret: ();
 	@each $mk, $mv in configuration.$breakpoint-map {
-		$ret: map.set($ret, $mk, breakpoint($mk));
+		$ret: map.set($ret, $mk, breakpoint($mk, $raw));
 	}
 	@return $ret;
 }
