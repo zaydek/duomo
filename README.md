@@ -401,13 +401,14 @@ The standard range describes legal range values. Some properties support negativ
 **The standard range:**
 
 ```
-   0-10, increments by  1 ->   0,   1,   2,   3,   4,   5,   6,   7,   8,   9,
-  10-20, increments by  2 ->  10,  12,  14,  16,  18
-  20-40, increments by  4 ->  20,  24,  28,  32,  36,
-  40-80, increments by  8 ->  40,  48,  56,  64,  72,
- 80-160, increments by 16 ->  80,  96, 112, 128, 144,
-160-320, increments by 32 -> 160, 192, 224, 256, 288, 320
-```
+   0-10 increments by  1 ->   0   1   2   3   4   5   6   7   8   9
+  10-20 increments by  2 ->  10  12  14  16  18
+  20-40 increments by  4 ->  20  24  28  32  36
+  40-80 increments by  8 ->  40  48  56  64  72
+ 80-160 increments by 16 ->  80  96 112 128 144
+160-320 increments by 32 -> 160 192 224 256 288
+320-640 increments by 64 -> 320 384 448 512 576 640
+```	
 
 <!--
 
