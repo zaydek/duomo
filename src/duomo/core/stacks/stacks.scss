@@ -4,7 +4,7 @@
 @use "vstack" as *;
 @use "zstack" as *;
 
-$-opts: (
+$-align-opts: (
 	align-stretch: stretch,
 	align-start: flex-start,
 	align-center: center,
@@ -12,16 +12,31 @@ $-opts: (
 	align-baseline: baseline,
 );
 
+$-align-self-opts: (
+	align-self-stretch: stretch,
+	align-self-start: flex-start,
+	align-self-center: center,
+	align-self-end: flex-end,
+	align-self-baseline: baseline,
+);
+
 @mixin stacks($variants...) {
 	@include hstack($variants...);
 	@include vstack($variants...);
 
 	@include variants($variants...) using ($v) {
-		@each $mk, $mv in $-opts {
+		@each $mk, $mv in $-align-opts {
 			#{variant($mk, $v)} {
 				align-items: $mv;
 			}
 		}
+
+		@each $mk, $mv in $-align-self-opts {
+			#{variant($mk, $v)} {
+				align-self: $mv;
+			}
+		}
+
 		@each $rv in var-join(nrange(), range()) {
 			#{variant("#{n($rv)}space-#{abs($rv)} > *", $v)} {
 				--space: #{resolve($rv, rem)};
