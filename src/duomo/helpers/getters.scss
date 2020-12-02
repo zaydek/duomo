@@ -68,7 +68,7 @@
 	@return configuration.$opacity-range;
 }
 
-@function -semantic-getter($getter-name, $map, $key) {
+@function -getter($getter-name, $map, $key) {
 	$got: map.get($map, $key);
 	@if not $got {
 		@error "#{$getter-name}: no such key `$key`; $key=#{$key}";
@@ -77,41 +77,69 @@
 }
 
 @function font($key) {
-	@return -semantic-getter("font", configuration.$font-map, $key);
+	$_: -getter("font", configuration.$font-map, $key);
+	@return var(--#{$key});
 }
 @function color($key) {
-	$_: -semantic-getter("color", configuration.$color-map, $key);
+	$_: -getter("color", configuration.$color-map, $key);
 	@return hsl(var(--#{$key}));
 }
 @function extended-color($key) {
-	$_: -semantic-getter("extended-color", configuration.$extended-color-map, $key);
+	$_: -getter("extended-color", configuration.$extended-color-map, $key);
 	@return hsl(var(--#{$key}));
 }
 @function shadow($key) {
-	@return -semantic-getter("shadow", configuration.$shadow-map, $key);
+	$_: -getter("shadow", configuration.$shadow-map, $key);
+	@return var(--#{$key});
 }
 @function timing($key) {
-	@return -semantic-getter("timing", configuration.$timing-map, $key);
+	$_: -getter("timing", configuration.$timing-map, $key);
+	@return var(--#{$key});
 }
 @function breakpoint($key) {
-	@return -semantic-getter("breakpoint", configuration.$breakpoint-map, $key);
+	$_: -getter("breakpoint", configuration.$breakpoint-map, $key);
+	@return var(--#{$key});
 }
 
 @function fonts() {
-	@return configuration.$font-map;
+	$ret: ();
+	@each $mk, $mv in configuration.$font-map {
+		$ret: map.set($ret, $mk, font($mk));
+	}
+	@return $ret;
 }
 @function colors() {
-	@return configuration.$color-map;
+	$ret: ();
+	@each $mk, $mv in configuration.$color-map {
+		$ret: map.set($ret, $mk, color($mk));
+	}
+	@return $ret;
 }
 @function extended-colors() {
-	@return configuration.$extended-color-map;
+	$ret: ();
+	@each $mk, $mv in configuration.$extended-color-map {
+		$ret: map.set($ret, $mk, extended-color($mk));
+	}
+	@return $ret;
 }
 @function shadows() {
-	@return configuration.$shadow-map;
+	$ret: ();
+	@each $mk, $mv in configuration.$shadow-map {
+		$ret: map.set($ret, $mk, shadow($mk));
+	}
+	@return $ret;
 }
 @function timings() {
-	@return configuration.$timing-map;
+	$ret: ();
+	@each $mk, $mv in configuration.$timing-map {
+		$ret: map.set($ret, $mk, timing($mk));
+	}
+	@return $ret;
 }
 @function breakpoints() {
-	@return configuration.$breakpoint-map;
+	$ret: ();
+	@each $mk, $mv in configuration.$breakpoint-map {
+		$ret: map.set($ret, $mk, breakpoint($mk));
+	}
+	@return $ret;
 }
