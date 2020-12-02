@@ -73,16 +73,16 @@ $-opts: (
 			}
 		}
 
-		#{variant(-x-50, $v)} { --place-x: -50%; }
-		#{variant(-x-100, $v)} { --place-x: -100%; }
-		#{variant(x-0, $v)} { --place-x: 0; }
-		#{variant(x-50, $v)} { --place-x: 50%; }
-		#{variant(x-100, $v)} { --place-x: 100%; }
+		#{variant(-place-x-50, $v)} { --place-x: -50%; }
+		#{variant(-place-x-100, $v)} { --place-x: -100%; }
+		#{variant(place-x-0, $v)} { --place-x: 0; }
+		#{variant(place-x-50, $v)} { --place-x: 50%; }
+		#{variant(place-x-100, $v)} { --place-x: 100%; }
 
-		#{variant(-y-50, $v)} { --place-y: -50%; }
-		#{variant(-y-100, $v)} { --place-y: -100%; }
-		#{variant(y-0, $v)} { --place-y: 0; }
-		#{variant(y-50, $v)} { --place-y: 50%; }
-		#{variant(y-100, $v)} { --place-y: 100%; }
+		#{variant(-place-y-50, $v)} { --place-y: -50%; }
+		#{variant(-place-y-100, $v)} { --place-y: -100%; }
+		#{variant(place-y-0, $v)} { --place-y: 0; }
+		#{variant(place-y-50, $v)} { --place-y: 50%; }
+		#{variant(place-y-100, $v)} { --place-y: 100%; }
 	}
 }
