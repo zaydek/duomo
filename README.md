@@ -407,6 +407,7 @@ The standard range describes legal range values. Some properties support negativ
   40-80, increments by  8 ->  40,  48,  56,  64,  72,
  80-160, increments by 16 ->  80,  96, 112, 128, 144,
 160-320, increments by 32 -> 160, 192, 224, 256, 288, 320
+320-640 increments by 64 -> 384, 448, 512, 576, 640
 ```
 
 <!--
