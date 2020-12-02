@@ -1,24 +1,88 @@
-@mixin zstack {
-	// NOTE: `justify-content` and `align-content` does not work.
-	// Therefore use `place-items`.
-	//
-	// https://twitter.com/bdc/status/1245399999300558853
-	.zstack {
-		--duomo-display: grid; // 0.7.0
-		display: grid;
-		& > * {
-			--duomo-display: initial;
+@use "../../helpers" as *;
+
+$-opts: (
+	tl: (
+		justify-self: flex-start,
+		align-self: flex-start,
+	),
+	t: (
+		justify-self: null,
+		align-self: flex-start,
+	),
+	tr: (
+		justify-self: flex-start,
+		align-self: flex-start,
+	),
+	l: (
+		justify-self: flex-start,
+		align-self: null,
+	),
+	r: (
+		justify-self: flex-end,
+		align-self: null,
+	),
+	bl: (
+		justify-self: flex-start,
+		align-self: flex-end,
+	),
+	b: (
+		justify-self: null,
+		align-self: flex-end,
+	),
+	br: (
+		justify-self: flex-start,
+		align-self: flex-end,
+	),
+);
+
+// prettier-ignore
+@mixin zstack($variants...) {
+	@include variants($variants...) using ($v) {
+		@if $v == root {
+			.zstack {
+				--duomo-display: grid;
+				display: grid;
+				& > * {
+					--duomo-display: initial;
+				}
+				place-items: center;
+			}
+
+			// https://codepen.io/everdimension/pen/BaNpeWe
+			.zstack > * {
+				grid-area:
+					1 / // grid-row-start
+					1 / // grid-column-start
+					1 / // grid-row-end
+					1;  // grid-column-end
+			}
 		}
 
-		place-items: center;
-		// NOTE: Explicitly constrain the bounding box.
-		// If I remember correctly, this is for `w-full h-full` but
-		// Safari breaks on `h-full`. Also, this is more consistent with
-		// the `hstack` and `vstack` implementations.
-		width: min-content;
-		height: min-content;
-	}
-	.zstack > * {
-		grid-area: 1 / 1 / 1 / 1;
+		@each $mk, $mv in $-opts {
+			#{variant(place-#{$mk}, $v)} {
+				--place-x: 0;
+				--place-y: 0;
+				@each $nk, $nv in $mv {
+					#{$nk}: $nv;
+				}
+				transform:
+					translate(
+						var(--place-x),
+						var(--place-y)
+					);
+			}
+		}
+
+		#{variant(-x-50, $v)} { --place-x: -50%; }
+		#{variant(-x-100, $v)} { --place-x: -100%; }
+		#{variant(x-0, $v)} { --place-x: 0; }
+		#{variant(x-50, $v)} { --place-x: 50%; }
+		#{variant(x-100, $v)} { --place-x: 100%; }
+
+		#{variant(-y-50, $v)} { --place-y: -50%; }
+		#{variant(-y-100, $v)} { --place-y: -100%; }
+		#{variant(y-0, $v)} { --place-y: 0; }
+		#{variant(y-50, $v)} { --place-y: 50%; }
+		#{variant(y-100, $v)} { --place-y: 100%; }
 	}
 }

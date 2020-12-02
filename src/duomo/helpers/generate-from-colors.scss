@@ -25,7 +25,6 @@
 
 	@each $mv in $opacity-range {
 		#{variant(#{$shorthand}-opacity-#{$mv * 100}, $v)} {
-			// NOTE: Use `#{...}` syntax because of custom props.
 			--#{$shorthand}-opacity: #{$mv};
 		}
 	}

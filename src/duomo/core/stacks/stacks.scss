@@ -1,13 +1,20 @@
 @use "../../helpers" as *;
 
-@import "hstack";
-@import "modifiers";
-@import "vstack";
-@import "zstack";
+@use "hstack" as *;
+@use "vstack" as *;
+@use "zstack" as *;
 
 @mixin stacks($variants...) {
 	@include hstack($variants...);
 	@include vstack($variants...);
+
+	@include variants($variants...) using ($v) {
+		@each $rv in var-join(nrange(), range()) {
+			#{variant("#{n($rv)}space-#{abs($rv)} > *", $v)} {
+				--space: #{resolve($rv, rem)};
+			}
+		}
+	}
 
 	.spacer {
 		flex: 1 0 var(--space);
@@ -17,6 +24,5 @@
 		}
 	}
 
-	@include modifiers($variants...);
-	@include zstack;
+	@include zstack($variants...);
 }

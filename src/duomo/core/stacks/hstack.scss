@@ -3,16 +3,14 @@
 @mixin hstack($variants...) {
 	@include variants($variants...) using ($v) {
 		#{variant("hstack", $v)} {
-			--duomo-display: flex; // 0.7.0
+			--duomo-display: flex;
 			& > * {
 				--duomo-display: initial;
 			}
-
 			display: flex;
 			flex-direction: row;
 			justify-content: center;
 			align-items: center;
-			min-width: min-content; // 0.7.0
 		}
 		@if $v == root {
 			.hstack > * {
