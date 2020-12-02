@@ -12,10 +12,21 @@
 			display: var(--duomo-display, block);
 		}
 
+		// prettier-ignore
+		@keyframes \?wobble {
+			0% { box-shadow: inset  4px  4px hsl(var(--red-500)),
+				inset -4px -4px hsl(var(--red-500)); }
+			100% {  box-shadow: inset  8px  8px hsl(var(--red-500)),
+				inset -8px -8px hsl(var(--red-500)); }
+		}
+
+		// https://twitter.com/gavinjoyce/status/1333412203232374785
+		// https://play.tailwindcss.com/d3E0Wybzwq
+		// https://github.com/GavinJoyce/tailwindcss-question-mark
+		//
 		#{variant(escape("?"), $v)},
 		#{variant(help, $v)} {
-			// TODO: Animate `box-shadow`? https://play.tailwindcss.com/d3E0Wybzwq
-			outline: 4px solid hsla(var(--red-500), 0.75);
+			animation: \?wobble /**/ 0.5s var(--ease-in-out) alternate infinite;
 		}
 	}
 }
