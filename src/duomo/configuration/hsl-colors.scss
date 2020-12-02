@@ -1,9 +1,9 @@
 @use "sass:color";
 @use "sass:map";
+@use "sass:math";
 
-@use "colors" as original;
+@use "colors" as hex;
 
-// TODO: Use `math.abs` on HSL conversions.
 @function -to-hsl($color-map) {
 	$ret: ();
 	@each $mk, $mv in $color-map {
@@ -12,14 +12,14 @@
 		} @else {
 			// prettier-ignore
 			$ret: map.set($ret, $mk, (
-				color.hue($mv),
-				color.saturation($mv),
-				color.lightness($mv),
+				math.round(color.hue($mv)),
+				math.round(color.saturation($mv)),
+				math.round(color.lightness($mv)),
 			));
 		}
 	}
 	@return $ret;
 }
 
-$color-map: -to-hsl(original.$color-map);
-$extended-color-map: -to-hsl(original.$extended-color-map);
+$color-map: -to-hsl(hex.$color-map);
+$extended-color-map: -to-hsl(hex.$extended-color-map);
