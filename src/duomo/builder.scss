@@ -26,8 +26,8 @@ $variants: (
 	// // NOTE: `shape` takes precedence over `width` / `height` so
 	// // `width` and `height` can be overwritten.
 	// shape: (responsive),
-	// width: (responsive),
 
+	width: (responsive),
 	max-width: (responsive),
 	container: (),
 	height: (responsive),
