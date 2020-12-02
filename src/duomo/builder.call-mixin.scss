@@ -22,6 +22,7 @@
 	@if $mixin == "margin" { @include core.margin($variants...); }
 	@if $mixin == "max-width" { @include core.max-width($variants...); }
 	@if $mixin == "min-height" { @include core.min-height($variants...); }
+	@if $mixin == "min-width" { @include core.min-width($variants...); }
 	@if $mixin == "opacity" { @include core.opacity($variants...); }
 	@if $mixin == "overflow" { @include core.overflow($variants...); }
 	@if $mixin == "padding" { @include core.padding($variants...); }

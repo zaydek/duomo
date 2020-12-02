@@ -1,0 +1,11 @@
+@use "../helpers" as *;
+
+@mixin min-width($variants...) {
+	@include variants($variants...) using ($v) {
+		@each $key, $n in breakpoints() {
+			#{variant(min-w-#{$key}, $v)} {
+				min-width: px($n);
+			}
+		}
+	}
+}
