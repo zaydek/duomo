@@ -14,7 +14,7 @@
 	@include variants($variants...) using ($v) {
 		#{variant(shadow, $v)} {
 			@each $mk, $mv in shadows() {
-				--duomo-shadow-#{$mk}: 0 0 0 0 transparent;
+				--duomo-shadow-#{$mk}: 0 0 transparent;
 			}
 		}
 
