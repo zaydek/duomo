@@ -79,7 +79,7 @@ $-supported-variants: (
 		}
 	}
 	@if list.index($variants, responsive) {
-		/* variant=responsive */
+		/* responsive */
 		@each $key, $n in breakpoints() {
 			@media (min-width: px($n)) {
 				.#{delimit($key)} {

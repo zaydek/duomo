@@ -1,4 +1,4 @@
-@use "preflight/base" as *;
+@use "preflight/custom-tailwind-base" as *;
 @use "preflight/modern-normalize" as *;
 @use "preflight/vendored-font-smoothing" as *;
 
@@ -7,7 +7,7 @@
 
 	/* purgecss start ignore */
 	@include modern-normalize;
-	@include base;
+	@include custom-tailwind-base;
 	@include vendored-font-smoothing;
 	/* purgecss end ignore */
 }
