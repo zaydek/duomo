@@ -9,7 +9,7 @@
 	$shorthand:     map.get($info-map, shorthand);
 	$property:      map.get($info-map, property);
 	$map:           map.get($info-map, map);
-	$opacity-range: map.get($info-map, opacity-range);
+	$percent-range: map.get($info-map, percent-range);
 
 	@each $mk, $mv in $map {
 		#{variant(#{$shorthand}-#{$mk}, $v)} {
@@ -22,7 +22,7 @@
 		}
 	}
 
-	@each $mv in $opacity-range {
+	@each $mv in $percent-range {
 		#{variant(#{$shorthand}-opacity-#{$mv * 100}, $v)} {
 			--#{$shorthand}-opacity: #{$mv};
 		}

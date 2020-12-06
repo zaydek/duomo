@@ -7,7 +7,7 @@
 			variant: $v,
 			shorthand: opacity,
 			property: (opacity),
-			range: opacity-range(),
+			range: percent-range(),
 			resolver: none,
 		));
 	}

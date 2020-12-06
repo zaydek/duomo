@@ -159,10 +159,8 @@ $shadow-map: (
 	),
 ) !default;
 
-// TODO: Rename to `$percent-range`.
-//
 // prettier-ignore
-$opacity-range: (
+$percent-range: (
 	0,
 	0.1,
 	0.2,

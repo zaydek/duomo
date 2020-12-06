@@ -64,9 +64,9 @@
 	@return configuration.$range;
 }
 
-// Ex: opacity-range() -> (0, 0.05, ...)
-@function opacity-range() {
-	@return configuration.$opacity-range;
+// Ex: percent-range() -> (0, 0.05, ...)
+@function percent-range() {
+	@return configuration.$percent-range;
 }
 
 @function -getter($getter-name, $map, $key, $raw: false) {

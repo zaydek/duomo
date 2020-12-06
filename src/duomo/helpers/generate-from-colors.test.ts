@@ -21,7 +21,7 @@ $color-map: (
 		shorthand: bg,
 		property: (background-color),
 		map: $color-map,
-		opacity-range: (0, 0.5, 1),
+		percent-range: (0, 0.5, 1),
 	));
 }
 `)
