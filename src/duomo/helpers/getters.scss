@@ -2,8 +2,8 @@
 @use "sass:meta";
 
 @use "../configuration";
-@use "escapers";
-@use "resolvers";
+@use "escapers" as *;
+@use "resolvers" as *;
 
 // Ex:
 //
@@ -11,7 +11,7 @@
 // n(0) -> ""
 //
 @function n($rv) {
-	@if resolvers.passthrough($rv) {
+	@if passthrough($rv) {
 		@return "";
 	}
 	@return if($rv < 0, "-", "");
@@ -19,12 +19,12 @@
 
 // Ex: delimiter() -> "\:"
 @function delimiter() {
-	@return escapers.escape(configuration.$delimiter);
+	@return escape(configuration.$delimiter);
 }
 
 // Ex: delimit(sm) -> "sm\:"
 @function delimit($key) {
-	@return escapers.escape-breakpoint-key($key) + delimiter();
+	@return escape-breakpoint-key($key) + delimiter();
 }
 
 // Ex:
@@ -50,7 +50,8 @@
 		$rv: $any;
 		@return $rv * 100;
 	}
-	@return $any;
+	$rv: $any;
+	@return escape($rv);
 }
 
 // Ex: nrange() -> (-1, -2, -4, -8, ...)

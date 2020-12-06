@@ -7,7 +7,8 @@
 	@if meta.type-of($any) != "number" {
 		@return $any;
 	}
-	$floored: math.floor($any);
+	// $floored: math.floor($any);
+	$floored: $any;
 	@if $floored == 0 {
 		@return 0;
 	}
@@ -18,7 +19,8 @@
 	@if meta.type-of($any) != "number" {
 		@return $any;
 	}
-	$floored: math.floor($any);
+	// $floored: math.floor($any);
+	$floored: $any;
 	@if $floored == 0 {
 		@return 0;
 	}
@@ -29,7 +31,8 @@
 	@if meta.type-of($any) != "number" {
 		@return $any;
 	}
-	$floored: math.floor($any);
+	// $floored: math.floor($any);
+	$floored: $any;
 	@if $floored == 0 {
 		@return 0;
 	}

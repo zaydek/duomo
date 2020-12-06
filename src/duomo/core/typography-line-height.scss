@@ -1,0 +1,14 @@
+@use "../helpers" as *;
+
+@mixin typography-line-height($variants...) {
+	// prettier-ignore
+	@include variants($variants...) using ($v) {
+		@include generate-from-range((
+			variant: $v,
+			shorthand: line,
+			property: (line-height),
+			range: (1, 1.1, 1.2, 1.25, 1.3, 1.4, 1.5, 1.6, 1.7, 1.75, 1.8, 1.9, 2),
+			resolver: none,
+		));
+	}
+}

@@ -1,0 +1,12 @@
+@use "../helpers" as *;
+
+// NOTE: `em($rv)` does not work because of percent-based numbers.
+@mixin typography-letter-spacing($variants...) {
+	@include variants($variants...) using ($v) {
+		@each $rv in (-0.08, -0.04, -0.02, -0.01, 0, 0.01, 0.02, 0.04, 0.08) {
+			#{variant(#{n($rv)}char-#{abs($rv * 100)}, $v)} {
+				letter-spacing: $rv + em;
+			}
+		}
+	}
+}
