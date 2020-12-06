@@ -84,6 +84,13 @@
 	}
 	@return var(--#{$key});
 }
+// @function weight($key, $raw: false) {
+// 	$got: -getter("weight", configuration.$weight-map, $key);
+// 	@if $raw {
+// 		@return $got;
+// 	}
+// 	@return var(--#{$key});
+// }
 @function color($key, $raw: false) {
 	$got: -getter("color", configuration.$color-map, $key);
 	@if $raw {
@@ -129,6 +136,13 @@
 	}
 	@return $ret;
 }
+// @function weights($raw: false) {
+// 	$ret: ();
+// 	@each $mk, $mv in configuration.$weight-map {
+// 		$ret: map.set($ret, $mk, weight($mk, $raw));
+// 	}
+// 	@return $ret;
+// }
 @function colors($raw: false) {
 	$ret: ();
 	@each $mk, $mv in configuration.$color-map {

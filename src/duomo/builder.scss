@@ -41,10 +41,11 @@ $-empty-font-map: (
 		// prettier-ignore
 		@include custom-props-from-maps(
 			(shorthand: none, map: $-empty-font-map),
+			// (shorthand: none, map: weights($raw: true)),
 			(shorthand: none, map: colors($raw: true)),
-			(shorthand: shadow, map: shadows($raw: true)),
-			(shorthand: none, map: timings($raw: true)),
-			(shorthand: none, map: breakpoints($raw: true)),
+			// (shorthand: shadow, map: shadows($raw: true)),
+			// (shorthand: none, map: timings($raw: true)),
+			// (shorthand: none, map: breakpoints($raw: true)),
 		);
 
 		// TODO: Add `take` pattern here.
