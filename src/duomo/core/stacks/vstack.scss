@@ -14,7 +14,7 @@
 			justify-content: center;
 			align-items: center;
 		}
-		@if $v == root {
+		@if $v == core {
 			.vstack > * {
 				--space: 0;
 			}

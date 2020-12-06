@@ -1,16 +1,17 @@
 @use "../helpers" as *;
 
+// TODO: Extract to `hidden` and use `--duomo-hidden` and fix `--dm-`.
 @mixin directives($variants...) {
 	@include variants($variants...) using ($v) {
-		#{variant(escape("-"), $v)} {
+		#{variant(hidden, $v)} {
 			display: none;
 		}
 
-		#{variant(escape("+"), $v)} {
+		#{variant(unhidden, $v)} {
 			display: var(--duomo-display, block);
 		}
 
-		@if $v == root {
+		@if $v == core {
 			// prettier-ignore
 			@keyframes \?wobble {
 				0% { box-shadow: 0 0 0 4px hsl(var(--red-500)); }
