@@ -6,9 +6,9 @@
 @use "helpers" as *;
 
 @use "meta/custom-props-from-maps" as *;
+@use "meta/data-debug-space" as *;
+@use "meta/data-debug" as *;
 @use "meta/data-line" as *;
-@use "meta/debug-space" as *;
-@use "meta/debug" as *;
 
 @use "preflight/custom-tailwind-base" as *;
 @use "preflight/modern-normalize" as *;
@@ -39,8 +39,8 @@
 		/* purgecss end ignore */
 
 		@if configuration.$debugger {
-			@include debug;
-			@include debug-space;
+			@include data-debug;
+			@include data-debug-space;
 		}
 		@if configuration.$stagger {
 			@include data-line;

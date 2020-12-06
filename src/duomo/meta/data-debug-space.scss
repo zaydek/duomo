@@ -29,7 +29,7 @@
 	background-color: var(--debug-space-bg-color);
 }
 
-@mixin -debug-hstack {
+@mixin -data-debug-hstack {
 	[data-debug-space] .hstack > *:not(.spacer) + *:not(.spacer) {
 		position: relative;
 		&::after {
@@ -51,7 +51,7 @@
 	}
 }
 
-@mixin -debug-vstack {
+@mixin -data-debug-vstack {
 	[data-debug-space] .vstack > *:not(.spacer) + *:not(.spacer) {
 		position: relative;
 		&::after {
@@ -73,7 +73,7 @@
 	}
 }
 
-@mixin debug-space {
-	@include -debug-hstack;
-	@include -debug-vstack;
+@mixin data-debug-space {
+	@include -data-debug-hstack;
+	@include -data-debug-vstack;
 }

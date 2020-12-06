@@ -32,7 +32,7 @@
 // }
 
 // prettier-ignore
-@mixin debug {
+@mixin data-debug {
 	[data-debug],
 	[data-debug] * {
 		// TODO: Refactor to `hsla` and `custom props`.
