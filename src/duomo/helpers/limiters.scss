@@ -1,0 +1,47 @@
+@use "sass:list";
+
+// Ex:
+//
+// bar((0, -1, -2, -3, -4), 2) -> (-2, -3, -4)
+// bar((0, 1, 2, 3, 4), 2) -> (2, 3, 4)
+//
+@function bar($range, $limit) {
+	$ret: ();
+	@if $limit < 0 {
+		@each $rv in $range {
+			@if $rv <= $limit {
+				$ret: list.join($ret, $rv);
+			}
+		}
+	} @else {
+		@each $rv in $range {
+			@if $rv >= $limit {
+				$ret: list.join($ret, $rv);
+			}
+		}
+	}
+	@return $ret;
+}
+
+// Ex:
+//
+// cap((0, -1, -2, -3, -4), -2) -> (0, -1, -2)
+// cap((0, 1, 2, 3, 4), 2) -> (0, 1, 2)
+//
+@function cap($range, $limit) {
+	$ret: ();
+	@if $limit < 0 {
+		@each $rv in $range {
+			@if $rv >= $limit {
+				$ret: list.join($ret, $rv);
+			}
+		}
+	} @else {
+		@each $rv in $range {
+			@if $rv <= $limit {
+				$ret: list.join($ret, $rv);
+			}
+		}
+	}
+	@return $ret;
+}
