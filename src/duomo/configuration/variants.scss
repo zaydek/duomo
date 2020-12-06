@@ -25,5 +25,5 @@ $variants: (
 	z-index: (responsive, touch, group-touch),
 	pointer-events: (responsive),
 	transform: (responsive, touch, group-touch),
-	directives: (responsive, touch, group-touch),
+	hidden: (responsive, touch, group-touch),
 ) !default;

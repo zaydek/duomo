@@ -25,7 +25,7 @@
 		z-index: (responsive, hover, touch, focus, group-hover, group-focus, group-touch),
 		pointer-events: (responsive),
 		transform: (responsive, hover, touch, focus, group-hover, group-focus, group-touch),
-		directives: (responsive, hover, touch, focus, group-hover, group-focus, group-touch),
+		hidden: (responsive, hover, touch, focus, group-hover, group-focus, group-touch),
 	),
 	$breakpoint-map: (
 		xs: 512,

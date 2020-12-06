@@ -1,16 +1,18 @@
 @use "core/typography";
 
-@use "core/aspect-ratio" as *;
+@use "core/meta/aspect-ratio" as *;
+@use "core/meta/container" as *;
+@use "core/meta/group" as *;
+@use "core/meta/hidden" as *;
+@use "core/meta/stacks" as *;
+
 @use "core/background-color" as *;
 @use "core/border-color" as *;
 @use "core/border-radius" as *;
 @use "core/border-width" as *;
 @use "core/box-shadow" as *;
 @use "core/color" as *;
-@use "core/container" as *;
-@use "core/directives" as *;
 @use "core/grid" as *;
-@use "core/group" as *;
 @use "core/height" as *;
 @use "core/margin" as *;
 @use "core/max-width" as *;
@@ -21,7 +23,6 @@
 @use "core/padding" as *;
 @use "core/pointer-events" as *;
 @use "core/position" as *;
-@use "core/stacks" as *;
 @use "core/transform" as *;
 @use "core/width" as *;
 @use "core/z-index" as *;
@@ -54,10 +55,10 @@
 	@if $mixin == "box-shadow" { @include box-shadow($variants...); }
 	@if $mixin == "color" { @include color($variants...); }
 	@if $mixin == "container" { @include container($variants...); }
-	@if $mixin == "directives" { @include directives($variants...); }
 	@if $mixin == "grid" { @include grid($variants...); }
 	@if $mixin == "group" { @include group($variants...); }
 	@if $mixin == "height" { @include height($variants...); }
+	@if $mixin == "hidden" { @include hidden($variants...); }
 	@if $mixin == "margin" { @include margin($variants...); }
 	@if $mixin == "max-width" { @include max-width($variants...); }
 	@if $mixin == "min-height" { @include min-height($variants...); }

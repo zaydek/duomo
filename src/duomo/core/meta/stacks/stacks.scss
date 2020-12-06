@@ -1,4 +1,4 @@
-@use "../../helpers" as *;
+@use "../../../helpers" as *;
 
 @use "hstack" as *;
 @use "vstack" as *;
@@ -45,8 +45,8 @@ $-align-self-opts: (
 	}
 
 	// .spacer {
-	// 	--duomo-display: flex;
-	// 	& > * { --duomo-display: initial; }
+	// 	--dm-unhidden: flex;
+	// 	& > * { --dm-unhidden: initial; }
 	// }
 
 	.spacer {

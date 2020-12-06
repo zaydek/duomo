@@ -1,4 +1,4 @@
-@use "../../helpers" as *;
+@use "../../../helpers" as *;
 
 $-opts: (
 	tl: (
@@ -54,8 +54,8 @@ $-opts: (
 @mixin zstack($variants...) {
 	// prettier-ignore
 	.zstack {
-		--duomo-display: grid;
-		& > * { --duomo-display: initial; }
+		--dm-unhidden: grid;
+		& > * { --dm-unhidden: initial; }
 	}
 
 	.zstack {

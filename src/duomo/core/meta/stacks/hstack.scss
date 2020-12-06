@@ -1,10 +1,10 @@
-@use "../../helpers" as *;
+@use "../../../helpers" as *;
 
 @mixin hstack($variants...) {
 	// prettier-ignore
 	.hstack {
-		--duomo-display: flex;
-		& > * { --duomo-display: initial; }
+		--dm-unhidden: flex;
+		& > * { --dm-unhidden: initial; }
 	}
 
 	@include variants($variants...) using ($v) {
