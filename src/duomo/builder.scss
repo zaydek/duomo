@@ -22,11 +22,6 @@ $variants: (
 	position: (responsive),
 	margin: (responsive),
 	padding: (responsive),
-
-	// // NOTE: `shape` takes precedence over `width` / `height` so
-	// // `width` and `height` can be overwritten.
-	// shape: (responsive),
-
 	width: (responsive),
 	min-width: (responsive),
 	max-width: (responsive),
@@ -45,10 +40,8 @@ $variants: (
 	z-index: (responsive, touch, group-touch),
 	pointer-events: (responsive),
 	transform: (responsive, touch, group-touch),
-
-	// NOTE: `directives` must be last.
 	directives: (responsive, touch, group-touch),
-);
+) !default;
 
 @at-root {
 	@if not configuration.$headless {
