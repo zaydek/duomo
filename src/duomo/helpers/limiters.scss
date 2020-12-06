@@ -45,3 +45,10 @@
 	}
 	@return $ret;
 }
+
+@function limiter($range, $bar, $cap) {
+	$ret: $range;
+	$ret: bar($ret, $bar);
+	$ret: cap($ret, $cap);
+	@return $ret;
+}

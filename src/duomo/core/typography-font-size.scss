@@ -7,8 +7,7 @@
 			variant: $v,
 			shorthand: text,
 			property: (font-size),
-			// TODO: `bar` from `10`.
-			range: cap(range(), 64),
+			range: limiter(range(), 10, 64),
 			resolver: rem,
 		));
 	}
