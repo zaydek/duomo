@@ -14,10 +14,14 @@
 @use "preflight/modern-normalize" as *;
 @use "preflight/vendored-font-smoothing" as *;
 
-@use "core/text-justification-and-alignment" as *;
+@use "core/typography-white-space" as *;
+@use "core/typography-text-align" as *;
+@use "core/typography-vertical-align" as *;
 
 @at-root {
-	@include text-justification-and-alignment(core);
+	@include typography-white-space(core);
+	@include typography-text-align(core);
+	@include typography-vertical-align(core);
 }
 
 // @at-root {
