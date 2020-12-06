@@ -7,11 +7,7 @@
 			variant: $v,
 			shorthand: min-h,
 			property: (min-height),
-			range: var-join(
-				auto, // TODO: Do we need `auto`?
-				100%,
-				100vh,
-			),
+			range: var-join(auto, 100%, 100vh),
 			resolver: rem,
 		));
 	}

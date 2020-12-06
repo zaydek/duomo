@@ -17,6 +17,7 @@ function localStoragePrefersDarkMode() {
 	)
 	return ok
 }
+
 function OSPrefersDarkMode() {
 	// prettier-ignore
 	const ok = (
@@ -26,6 +27,7 @@ function OSPrefersDarkMode() {
 	return ok
 }
 
+// TODO: Can use esbuild as a bundler.
 const Duomo: IDuomo = {
 	init(mode: Mode) {
 		const deferers: Array<() => void> = []

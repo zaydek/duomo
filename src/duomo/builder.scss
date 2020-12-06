@@ -15,14 +15,15 @@
 @use "preflight/vendored-font-smoothing" as *;
 
 @mixin custom-props {
-	$empty-font-map: (
+	// TODO: Can we use `null`?
+	$font-placeholder: (
 		sans: '""',
 		serif: '""',
 		mono: '""',
 	);
 	// prettier-ignore
 	@include custom-props-from-maps(
-		(shorthand: none, map: $-empty-font-map),
+		(shorthand: none, map: $font-placeholder),
 		(shorthand: none, map: weights($raw: true)),
 		(shorthand: none, map: colors($raw: true)),
 		(shorthand: shadow, map: shadows($raw: true)),

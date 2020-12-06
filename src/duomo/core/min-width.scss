@@ -2,6 +2,9 @@
 
 @mixin min-width($variants...) {
 	@include variants($variants...) using ($v) {
+		#{variant(min-w-auto, $v)} {
+			min-width: auto;
+		}
 		@each $key, $n in breakpoints() {
 			#{variant(min-w-#{$key}, $v)} {
 				min-width: px($n);
