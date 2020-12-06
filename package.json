@@ -9,7 +9,8 @@
 		"duomo.scss"
 	],
 	"scripts": {
-		"watch": "sass --watch --no-charset --no-source-map src/consumer.scss dist/index.css",
+		"watch-consumer": "sass --watch --no-charset --no-source-map src/consumer.scss dist/index.css",
+		"watch-consumer-full": "sass --watch --no-charset --no-source-map src/consumer-full.scss dist/full.css",
 		"test": "jest",
 		"build-duomo": "sass --no-charset --no-source-map src/consumer.scss dist/index.css",
 		"build-duomo-min": "sass --style=compressed --no-charset --no-source-map src/consumer.scss dist/index.min.css",

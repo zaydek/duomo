@@ -14,35 +14,6 @@
 @use "preflight/modern-normalize" as *;
 @use "preflight/vendored-font-smoothing" as *;
 
-// prettier-ignore
-$variants: (
-	group: (),
-	stacks: (responsive),
-	grid: (responsive),
-	position: (responsive),
-	margin: (responsive),
-	padding: (responsive),
-	width: (responsive),
-	min-width: (responsive),
-	max-width: (responsive),
-	container: (),
-	height: (responsive),
-	min-height: (responsive),
-	aspect-ratio: (/* TODO */),
-	color: (responsive, touch, group-touch),
-	background-color: (responsive, touch, group-touch),
-	border-width: (responsive),
-	border-color: (responsive, touch, group-touch),
-	border-radius: (responsive),
-	box-shadow: (responsive, touch, group-touch),
-	opacity: (responsive, touch, group-touch),
-	overflow: (responsive),
-	z-index: (responsive, touch, group-touch),
-	pointer-events: (responsive),
-	transform: (responsive, touch, group-touch),
-	directives: (responsive, touch, group-touch),
-) !default;
-
 @at-root {
 	@if not configuration.$headless {
 		/*! duomo | MIT License | https://github.com/zaydek/duomo */
@@ -71,12 +42,12 @@ $variants: (
 		);
 
 		// TODO: Add `take` pattern here.
-		@each $mk, $mv in $variants {
+		@each $mk, $mv in configuration.$variants {
 			@if $mk != directives {
 				@include call-mixin($mk, var-join(root, take($mv, responsive))...);
 			}
 		}
-		@each $mk, $mv in $variants {
+		@each $mk, $mv in configuration.$variants {
 			@if $mk != directives {
 				@if list.index($mv, responsive) {
 					@include call-mixin($mk, responsive);
@@ -84,8 +55,8 @@ $variants: (
 			}
 		}
 		// NOTE: `directives` must be last.
-		@if map.get($variants, directives) {
-			@include call-mixin(directives, var-join(root, map.get($variants, directives))...);
+		@if map.get(configuration.$variants, directives) {
+			@include call-mixin(directives, var-join(root, map.get(configuration.$variants, directives))...);
 		}
 	}
 }
