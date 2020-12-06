@@ -118,7 +118,7 @@ opt-out of horizontal centering, use a nested `<div class="spacer">`. To opt-out
 
 <!--
 	. . .
-	x . .
+	. . x
 	. . .
 -->
 <div class="hstack">
@@ -128,7 +128,7 @@ opt-out of horizontal centering, use a nested `<div class="spacer">`. To opt-out
 
 <!--
 	. . .
-	. . x
+	x . .
 	. . .
 -->
 <div class="hstack">
