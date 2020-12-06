@@ -7,7 +7,7 @@ $-opts: (sans, serif, mono);
 		@if $v == core {
 			@each $each in $-opts {
 				.#{$each} {
-					font-family: var(--#{$each});
+					font-family: var(--#{$each}), var(--system-#{$each});
 				}
 			}
 		}

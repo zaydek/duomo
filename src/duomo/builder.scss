@@ -14,6 +14,12 @@
 @use "preflight/modern-normalize" as *;
 @use "preflight/vendored-font-smoothing" as *;
 
+$-empty-font-map: (
+	sans: '""',
+	serif: '""',
+	mono: '""',
+);
+
 @at-root {
 	@if not configuration.$headless {
 		/*! duomo | MIT License | https://github.com/zaydek/duomo */
@@ -34,11 +40,11 @@
 
 		// prettier-ignore
 		@include custom-props-from-maps(
-			(shorthand: none, map: fonts($raw: true)),
+			(shorthand: none, map: $-empty-font-map),
 			(shorthand: none, map: colors($raw: true)),
 			(shorthand: shadow, map: shadows($raw: true)),
 			(shorthand: none, map: timings($raw: true)),
-			(shorthand: breakpoint, map: breakpoints($raw: true)),
+			(shorthand: none, map: breakpoints($raw: true)),
 		);
 
 		// TODO: Add `take` pattern here.
