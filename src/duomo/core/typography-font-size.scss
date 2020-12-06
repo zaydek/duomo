@@ -1,18 +1,14 @@
 @use "../helpers" as *;
 
-@mixin height($variants...) {
+@mixin typography-font-size($variants...) {
 	// prettier-ignore
 	@include variants($variants...) using ($v) {
 		@include generate-from-range((
 			variant: $v,
-			shorthand: h,
-			property: (height),
-			range: var-join(
-				auto,
-				range(),
-				100%,
-				100vh,
-			),
+			shorthand: text,
+			property: (font-size),
+			// TODO: `bar` from `10`.
+			range: cap(range(), 64),
 			resolver: rem,
 		));
 	}
