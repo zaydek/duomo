@@ -40,6 +40,7 @@
 		@include typography.font-size(core);
 		@include typography.letter-spacing(core);
 		@include typography.line-height(core);
+		@include typography.font-style(core);
 		@include typography.font-weight(core);
 	}
 

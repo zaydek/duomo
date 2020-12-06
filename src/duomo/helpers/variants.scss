@@ -5,6 +5,18 @@
 @use "resolvers" as *;
 @use "take" as *;
 
+// prettier-ignore
+$-supported-variants: (
+	core,
+	responsive,
+	hover,
+	focus,
+	group-hover,
+	group-focus,
+	touch,
+	group-touch,
+);
+
 @function core($selector) {
 	@return ".#{$selector}";
 }
@@ -21,16 +33,12 @@
 	@return ".group:focus.group-focus\\:#{$selector}, .group:focus .group-focus\\:#{$selector}";
 }
 
-// EXPERIMENTAL
-//
 // prettier-ignore
 @function touch($selector) {
 	@return ".touch\\:#{$selector}:hover" + ", "
 		".touch\\:#{$selector}:focus";
 }
 
-// EXPERIMENTAL
-//
 // prettier-ignore
 @function group-touch($selector) {
 	@return ".group:hover .group-touch\\:#{$selector}" + ", "
@@ -40,18 +48,6 @@
 @function responsive($selector) {
 	@return "#{&}#{$selector}";
 }
-
-// prettier-ignore
-$-supported-variants: (
-	core,
-	responsive,
-	hover,
-	focus,
-	group-hover,
-	group-focus,
-	touch,
-	group-touch,
-);
 
 // Ex:
 //

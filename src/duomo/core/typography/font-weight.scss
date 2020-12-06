@@ -1,33 +1,24 @@
 @use "../../helpers" as *;
 
+$-opts: (
+	thin: 100,
+	extralight: 200,
+	light: 300,
+	// TODO?
+	bold-none: 400,
+	medium: 500,
+	semibold: 600,
+	bold: 700,
+	extrabold: 800,
+	black: 900,
+);
+
 @mixin font-weight($variants...) {
 	@include variants($variants...) using ($v) {
-		#{variant(thin, $v)} {
-			font-weight: 100;
-		}
-		#{variant(extralight, $v)} {
-			font-weight: 200;
-		}
-		#{variant(light, $v)} {
-			font-weight: 300;
-		}
-		#{variant(normal, $v)} {
-			font-weight: 400;
-		}
-		#{variant(medium, $v)} {
-			font-weight: 500;
-		}
-		#{variant(semibold, $v)} {
-			font-weight: 600;
-		}
-		#{variant(bold, $v)} {
-			font-weight: 700;
-		}
-		#{variant(extrabold, $v)} {
-			font-weight: 800;
-		}
-		#{variant(black, $v)} {
-			font-weight: 900;
+		@each $mk, $mv in $-opts {
+			#{variant($mk, $v)} {
+				font-weight: $mv;
+			}
 		}
 	}
 }

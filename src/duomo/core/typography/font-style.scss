@@ -1,0 +1,17 @@
+@use "../../helpers" as *;
+
+$-opts: (
+	// TODO?
+	italic-none: normal,
+	italic: italic
+);
+
+@mixin font-style($variants...) {
+	@include variants($variants...) using ($v) {
+		@each $mk, $mv in $-opts {
+			#{variant($mk, $v)} {
+				font-style: $mv;
+			}
+		}
+	}
+}
