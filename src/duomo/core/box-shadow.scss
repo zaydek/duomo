@@ -2,10 +2,10 @@
 
 @use "../helpers" as *;
 
-@function duomo-shadow-keys($map) {
+@function dm-shadow-keys($map) {
 	$ret: ();
 	@each $mk, $mv in $map {
-		$ret: list.append($ret, var(--duomo-shadow-#{$mk}), comma);
+		$ret: list.append($ret, var(--dm-shadow-#{$mk}), comma);
 	}
 	@return $ret;
 }
@@ -14,19 +14,17 @@
 	@include variants($variants...) using ($v) {
 		#{variant(shadow, $v)} {
 			@each $mk, $mv in shadows() {
-				--duomo-shadow-#{$mk}: 0 0 transparent;
+				--dm-shadow-#{$mk}: 0 0 transparent;
 			}
+			box-shadow: #{dm-shadow-keys(shadows())};
 		}
-
 		@each $mk, $mv in shadows() {
 			#{variant(shadow-#{$mk}, $v)} {
-				--duomo-shadow-#{$mk}: #{shadow($mk)};
-				box-shadow: var(--duomo-shadow-#{$mk});
+				--dm-shadow-#{$mk}: #{shadow($mk)};
 			}
 		}
-
-		#{variant(shadow, $v)} {
-			box-shadow: #{duomo-shadow-keys(shadows())};
-		}
+		// #{variant(shadow, $v)} {
+		// 	box-shadow: #{dm-shadow-keys(shadows())};
+		// }
 	}
 }
