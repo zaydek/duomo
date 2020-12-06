@@ -79,8 +79,8 @@ $-opts: (
 		@each $mk, $mv in $-opts {
 			#{variant(place-#{$mk}, $v)} {
 				position: absolute;
-				@each $nk, $nv in $mv {
-					#{$nk}: $nv;
+				@each $mk, $mv in $mv {
+					#{$mk}: $mv;
 				}
 				z-index: 10;
 			}

@@ -5,7 +5,7 @@
 // bar((0, -1, -2, -3, -4), 2) -> (-2, -3, -4)
 // bar((0, 1, 2, 3, 4), 2) -> (2, 3, 4)
 //
-@function bar($range, $limit) {
+@function -bar($range, $limit) {
 	$ret: ();
 	@if $limit < 0 {
 		@each $rv in $range {
@@ -28,7 +28,7 @@
 // cap((0, -1, -2, -3, -4), -2) -> (0, -1, -2)
 // cap((0, 1, 2, 3, 4), 2) -> (0, 1, 2)
 //
-@function cap($range, $limit) {
+@function -cap($range, $limit) {
 	$ret: ();
 	@if $limit < 0 {
 		@each $rv in $range {
@@ -48,7 +48,11 @@
 
 @function limiter($range, $bar, $cap) {
 	$ret: $range;
-	$ret: bar($ret, $bar);
-	$ret: cap($ret, $cap);
+	@if $bar {
+		$ret: -bar($ret, $bar);
+	}
+	@if $cap {
+		$ret: -cap($ret, $cap);
+	}
 	@return $ret;
 }
