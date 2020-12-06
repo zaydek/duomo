@@ -14,61 +14,63 @@
 @use "preflight/modern-normalize" as *;
 @use "preflight/vendored-font-smoothing" as *;
 
-@use "core/typography-white-space" as *;
-@use "core/typography-text-align" as *;
-@use "core/typography-vertical-align" as *;
-@use "core/typography-font-size" as *;
+// TODO: Group typography for simplicity for now.
 
-@at-root {
-	@include typography-white-space(core);
-	@include typography-text-align(core);
-	@include typography-vertical-align(core);
-	@include typography-font-size(core);
-}
+// @use "core/typography-white-space" as *;
+// @use "core/typography-text-align" as *;
+// @use "core/typography-vertical-align" as *;
+// @use "core/typography-font-size" as *;
 
 // @at-root {
-// 	@if not configuration.$headless {
-// 		/*! duomo | MIT License | https://github.com/zaydek/duomo */
-//
-// 		/* purgecss start ignore */
-// 		@include modern-normalize;
-// 		@include custom-tailwind-base;
-// 		@include vendored-font-smoothing;
-// 		/* purgecss end ignore */
-//
-// 		@if configuration.$debugger {
-// 			@include debug;
-// 			@include debug-space;
-// 		}
-// 		@if configuration.$stagger {
-// 			@include stagger;
-// 		}
-//
-// 		// prettier-ignore
-// 		@include custom-props-from-maps(
-// 			(shorthand: none, map: fonts($raw: true)),
-// 			(shorthand: none, map: colors($raw: true)),
-// 			(shorthand: shadow, map: shadows($raw: true)),
-// 			(shorthand: none, map: timings($raw: true)),
-// 			(shorthand: breakpoint, map: breakpoints($raw: true)),
-// 		);
-//
-// 		// TODO: Add `take` pattern here.
-// 		@each $mk, $mv in configuration.$variants {
-// 			@if $mk != directives {
-// 				@include call-mixin($mk, var-join(core, take($mv, responsive))...);
-// 			}
-// 		}
-// 		@each $mk, $mv in configuration.$variants {
-// 			@if $mk != directives {
-// 				@if list.index($mv, responsive) {
-// 					@include call-mixin($mk, responsive);
-// 				}
-// 			}
-// 		}
-// 		// NOTE: `directives` must be last.
-// 		@if map.get(configuration.$variants, directives) {
-// 			@include call-mixin(directives, var-join(core, map.get(configuration.$variants, directives))...);
-// 		}
-// 	}
+// 	@include typography-white-space(core);
+// 	@include typography-text-align(core);
+// 	@include typography-vertical-align(core);
+// 	@include typography-font-size(core);
 // }
+
+@at-root {
+	@if not configuration.$headless {
+		/*! duomo | MIT License | https://github.com/zaydek/duomo */
+
+		/* purgecss start ignore */
+		@include modern-normalize;
+		@include custom-tailwind-base;
+		@include vendored-font-smoothing;
+		/* purgecss end ignore */
+
+		@if configuration.$debugger {
+			@include debug;
+			@include debug-space;
+		}
+		@if configuration.$stagger {
+			@include stagger;
+		}
+
+		// prettier-ignore
+		@include custom-props-from-maps(
+			(shorthand: none, map: fonts($raw: true)),
+			(shorthand: none, map: colors($raw: true)),
+			(shorthand: shadow, map: shadows($raw: true)),
+			(shorthand: none, map: timings($raw: true)),
+			(shorthand: breakpoint, map: breakpoints($raw: true)),
+		);
+
+		// TODO: Add `take` pattern here.
+		@each $mk, $mv in configuration.$variants {
+			@if $mk != directives {
+				@include call-mixin($mk, var-join(core, take($mv, responsive))...);
+			}
+		}
+		@each $mk, $mv in configuration.$variants {
+			@if $mk != directives {
+				@if list.index($mv, responsive) {
+					@include call-mixin($mk, responsive);
+				}
+			}
+		}
+		// NOTE: `directives` must be last.
+		@if map.get(configuration.$variants, directives) {
+			@include call-mixin(directives, var-join(core, map.get(configuration.$variants, directives))...);
+		}
+	}
+}

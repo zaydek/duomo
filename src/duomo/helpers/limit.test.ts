@@ -7,9 +7,9 @@ test("bar: negative case", () => {
 	const result = sass(`
 @use "sass:math";
 
-@use "src/duomo/helpers/limiter" as *;
+@use "src/duomo/helpers/limit" as *;
 
-@each $rv in limiter((0, -1, -2, -4), -2, null) {
+@each $rv in limit((0, -1, -2, -4), -2, null) {
 	.-w-#{math.abs($rv)} {
 		width: $rv + px;
 	}
@@ -31,9 +31,9 @@ test("bar: positive case", () => {
 	const result = sass(`
 @use "sass:math";
 
-@use "src/duomo/helpers/limiter" as *;
+@use "src/duomo/helpers/limit" as *;
 
-@each $rv in limiter((0, 1, 2, 4), 2, null) {
+@each $rv in limit((0, 1, 2, 4), 2, null) {
 	.w-#{math.abs($rv)} {
 		width: $rv + px;
 	}
@@ -55,9 +55,9 @@ test("cap: negative case", () => {
 	const result = sass(`
 @use "sass:math";
 
-@use "src/duomo/helpers/limiter" as *;
+@use "src/duomo/helpers/limit" as *;
 
-@each $rv in limiter((0, -1, -2, -4), null, -2) {
+@each $rv in limit((0, -1, -2, -4), null, -2) {
 	.-w-#{math.abs($rv)} {
 		width: $rv + px;
 	}
@@ -81,9 +81,9 @@ test("cap: negative case", () => {
 
 test("cap: positive case", () => {
 	const result = sass(`
-@use "src/duomo/helpers/limiter" as *;
+@use "src/duomo/helpers/limit" as *;
 
-@each $rv in limiter((0, 1, 2, 4), null, 2) {
+@each $rv in limit((0, 1, 2, 4), null, 2) {
 	.w-#{$rv} {
 		width: $rv + px;
 	}

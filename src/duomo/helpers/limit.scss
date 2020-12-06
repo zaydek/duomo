@@ -46,7 +46,7 @@
 	@return $ret;
 }
 
-@function limiter($range, $bar, $cap) {
+@function limit($range, $bar, $cap) {
 	$ret: $range;
 	@if $bar {
 		$ret: -bar($ret, $bar);
