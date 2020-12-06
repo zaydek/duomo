@@ -34,14 +34,15 @@
 // prettier-ignore
 @mixin call-mixin($mixin, $variants...) {
 	@if $mixin == "typography" {
-		@include typography.white-space(core);
-		@include typography.text-align(core);
-		@include typography.vertical-align(core);
-		@include typography.font-size(core);
-		@include typography.letter-spacing(core);
-		@include typography.line-height(core);
-		@include typography.font-style(core);
-		@include typography.font-weight(core);
+		@include typography.white-space($variants...);
+		@include typography.text-align($variants...);
+		@include typography.font-family($variants...);
+		@include typography.vertical-align($variants...);
+		@include typography.font-size($variants...);
+		@include typography.letter-spacing($variants...);
+		@include typography.line-height($variants...);
+		@include typography.font-style($variants...);
+		@include typography.font-weight($variants...);
 	}
 
 	@if $mixin == "aspect-ratio" { @include aspect-ratio($variants...); }

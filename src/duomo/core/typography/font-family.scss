@@ -1,7 +1,15 @@
-@mixin font-family {
-	:root {
-		--system-sans: font(sans);
-		--system-serif: font(serif);
-		--system-mono: font(mono);
+@use "../../helpers" as *;
+
+$-opts: (sans, serif, mono);
+
+@mixin font-family($variants...) {
+	@include variants($variants...) using ($v) {
+		@if $v == core {
+			@each $each in $-opts {
+				.#{$each} {
+					font-family: var(--#{$each});
+				}
+			}
+		}
 	}
 }
