@@ -1,22 +1,8 @@
 @use "../../helpers" as *;
 
-// TODO: Add to introspection?
-$-opts: (
-	thin: 100,
-	extralight: 200,
-	light: 300,
-	// TODO?
-	bold-none: 400,
-	medium: 500,
-	semibold: 600,
-	bold: 700,
-	extrabold: 800,
-	black: 900,
-);
-
 @mixin font-weight($variants...) {
 	@include variants($variants...) using ($v) {
-		@each $mk, $mv in $-opts {
+		@each $mk, $mv in weights() {
 			#{variant($mk, $v)} {
 				font-weight: $mv;
 			}

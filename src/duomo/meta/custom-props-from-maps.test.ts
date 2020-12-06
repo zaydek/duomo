@@ -3,7 +3,6 @@
  */
 declare function sass(data: string): string
 
-// TODO: Add `$shorthand=none` case.
 test("integration", () => {
 	const result = sass(`
 @use "src/duomo/meta/custom-props-from-maps" as *;
