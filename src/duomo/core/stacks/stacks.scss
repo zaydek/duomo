@@ -60,7 +60,7 @@ $-align-self-opts: (
 	@include zstack($variants...);
 }
 
-// // TODO
+// // TODO: Add `x-0` and `y-0` for `sticky`, `fixed`, etc., maybe `a-0`.
 //
 // .hstack:not([class^="w-"]):not([class*=" w-"]):not([class^="h-"]):not([class*=" h-"]),
 // .vstack:not([class^="w-"]):not([class*=" w-"]):not([class^="h-"]):not([class*=" h-"]),

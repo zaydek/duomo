@@ -21,77 +21,77 @@ $-opts: (
 			variant: $v,
 			shorthand: a,
 			property: (top, right, bottom, left),
-			range: var-join(auto, 0),
+			range: (auto, 0),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: x,
 			property: (left, right),
-			range: var-join(auto, 0),
+			range: (auto, 0),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: y,
 			property: (top, bottom),
-			range: var-join(auto, 0),
+			range: (auto, 0),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: t,
 			property: (top),
-			range: var-join(auto, range()),
+			range: (auto, 0),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: r,
 			property: (right),
-			range: var-join(auto, range()),
+			range: (auto, 0),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: b,
 			property: (bottom),
-			range: var-join(auto, range()),
+			range: (auto, 0),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: l,
 			property: (left),
-			range: var-join(auto, range()),
+			range: (auto, 0),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: tr,
 			property: (top, right),
-			range: var-join(auto, 0),
+			range: (auto, 0),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: br,
 			property: (bottom, right),
-			range: var-join(auto, 0),
+			range: (auto, 0),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: bl,
 			property: (bottom, left),
-			range: var-join(auto, 0),
+			range: (auto, 0),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: tl,
 			property: (top, left),
-			range: var-join(auto, 0),
+			range: (auto, 0),
 			resolver: rem,
 		));
 	}

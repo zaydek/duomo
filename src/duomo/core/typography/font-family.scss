@@ -1,0 +1,7 @@
+@mixin font-family {
+	:root {
+		--system-sans: font(sans);
+		--system-serif: font(serif);
+		--system-mono: font(mono);
+	}
+}
