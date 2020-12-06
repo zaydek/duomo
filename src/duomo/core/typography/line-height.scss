@@ -1,5 +1,6 @@
 @use "../../helpers" as *;
 
+// TODO: Use `percent-range`?
 @mixin line-height($variants...) {
 	// prettier-ignore
 	@include variants($variants...) using ($v) {
