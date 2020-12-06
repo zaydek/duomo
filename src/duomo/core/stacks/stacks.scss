@@ -59,3 +59,11 @@ $-align-self-opts: (
 
 	@include zstack($variants...);
 }
+
+// // TODO
+//
+// .hstack:not([class^="w-"]):not([class*=" w-"]):not([class^="h-"]):not([class*=" h-"]),
+// .vstack:not([class^="w-"]):not([class*=" w-"]):not([class^="h-"]):not([class*=" h-"]),
+// .zstack:not([class^="w-"]):not([class*=" w-"]):not([class^="h-"]):not([class*=" h-"]) {
+//     align-self: stretch;
+// }
