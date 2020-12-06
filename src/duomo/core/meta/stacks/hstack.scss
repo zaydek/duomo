@@ -16,12 +16,12 @@
 		}
 		@if $v == core {
 			.hstack > * {
-				--space: 0;
+				--dm-space: 0;
 			}
 		}
 		#{variant("hstack > * + *", $v)} {
 			margin-top: 0;
-			margin-left: var(--space);
+			margin-left: var(--dm-space);
 		}
 		#{variant("hstack > .spacer:empty", $v)},
 		#{variant("hstack > .spacer:empty + *", $v)} {

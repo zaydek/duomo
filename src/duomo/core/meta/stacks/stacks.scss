@@ -39,7 +39,7 @@ $-align-self-opts: (
 
 		@each $rv in var-join(nrange(), range()) {
 			#{variant("#{n($rv)}space-#{abs($rv)} > *", $v)} {
-				--space: #{resolve($rv, rem)};
+				--dm-space: #{resolve($rv, rem)};
 			}
 		}
 	}
@@ -50,7 +50,7 @@ $-align-self-opts: (
 	// }
 
 	.spacer {
-		flex: 1 0 var(--space);
+		flex: 1 0 var(--dm-space);
 		&:first-child,
 		&:last-child {
 			flex: 1 0 0;
