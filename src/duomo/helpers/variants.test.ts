@@ -21,7 +21,6 @@ test("integration", () => {
 `)
 	// prettier-ignore
 	expect(result).toBe(`
-/* core */
 .bg-indigo-500 {
 	background-color: var(--indigo-500);
 }

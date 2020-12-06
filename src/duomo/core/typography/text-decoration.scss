@@ -1,1 +1,16 @@
-// underline strikethrough
+@use "../../helpers" as *;
+
+$-opts: (
+	strikethrough: line-through,
+	underline: underline,
+);
+
+@mixin text-decoration($variants...) {
+	@include variants($variants...) using ($v) {
+		@each $mk, $mv in $-opts {
+			#{variant($mk, $v)} {
+				text-decoration: $mv;
+			}
+		}
+	}
+}

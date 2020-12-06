@@ -70,7 +70,9 @@ $-supported-variants: (
 	// FIXME: `take($variants, responsive)` is broken.
 	@each $variant in $variants {
 		@if $variant != responsive {
-			/* #{$variant} */
+			@if $variant != core {
+				/* #{$variant} */
+			}
 			@content ($variant);
 		}
 	}

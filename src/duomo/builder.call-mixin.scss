@@ -43,6 +43,7 @@
 		@include typography.line-height($variants...);
 		@include typography.font-style($variants...);
 		@include typography.font-weight($variants...);
+		@include typography.text-decoration($variants...);
 	}
 
 	@if $mixin == "aspect-ratio" { @include aspect-ratio($variants...); }

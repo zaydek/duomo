@@ -5,7 +5,7 @@
 	@include variants($variants...) using ($v) {
 		@include generate-from-colors((
 			variant: $v,
-			shorthand: text,
+			shorthand: color,
 			property: (color),
 			map: colors(),
 			opacity-range: opacity-range(),
