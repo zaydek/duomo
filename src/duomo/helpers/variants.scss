@@ -5,7 +5,7 @@
 @use "resolvers" as *;
 @use "take" as *;
 
-@function root($selector) {
+@function core($selector) {
 	@return ".#{$selector}";
 }
 @function hover($selector) {
@@ -43,7 +43,7 @@
 
 // prettier-ignore
 $-supported-variants: (
-	root,
+	core,
 	responsive,
 	hover,
 	focus,

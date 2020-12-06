@@ -14,49 +14,55 @@
 @use "preflight/modern-normalize" as *;
 @use "preflight/vendored-font-smoothing" as *;
 
+@use "core/text-justification-and-alignment" as *;
+
 @at-root {
-	@if not configuration.$headless {
-		/*! duomo | MIT License | https://github.com/zaydek/duomo */
-
-		/* purgecss start ignore */
-		@include modern-normalize;
-		@include custom-tailwind-base;
-		@include vendored-font-smoothing;
-		/* purgecss end ignore */
-
-		@if configuration.$debugger {
-			@include debug;
-			@include debug-space;
-		}
-		@if configuration.$stagger {
-			@include stagger;
-		}
-
-		// prettier-ignore
-		@include custom-props-from-maps(
-			(shorthand: none, map: fonts($raw: true)),
-			(shorthand: none, map: colors($raw: true)),
-			(shorthand: shadow, map: shadows($raw: true)),
-			(shorthand: none, map: timings($raw: true)),
-			(shorthand: breakpoint, map: breakpoints($raw: true)),
-		);
-
-		// TODO: Add `take` pattern here.
-		@each $mk, $mv in configuration.$variants {
-			@if $mk != directives {
-				@include call-mixin($mk, var-join(root, take($mv, responsive))...);
-			}
-		}
-		@each $mk, $mv in configuration.$variants {
-			@if $mk != directives {
-				@if list.index($mv, responsive) {
-					@include call-mixin($mk, responsive);
-				}
-			}
-		}
-		// NOTE: `directives` must be last.
-		@if map.get(configuration.$variants, directives) {
-			@include call-mixin(directives, var-join(root, map.get(configuration.$variants, directives))...);
-		}
-	}
+	@include text-justification-and-alignment(core);
 }
+
+// @at-root {
+// 	@if not configuration.$headless {
+// 		/*! duomo | MIT License | https://github.com/zaydek/duomo */
+//
+// 		/* purgecss start ignore */
+// 		@include modern-normalize;
+// 		@include custom-tailwind-base;
+// 		@include vendored-font-smoothing;
+// 		/* purgecss end ignore */
+//
+// 		@if configuration.$debugger {
+// 			@include debug;
+// 			@include debug-space;
+// 		}
+// 		@if configuration.$stagger {
+// 			@include stagger;
+// 		}
+//
+// 		// prettier-ignore
+// 		@include custom-props-from-maps(
+// 			(shorthand: none, map: fonts($raw: true)),
+// 			(shorthand: none, map: colors($raw: true)),
+// 			(shorthand: shadow, map: shadows($raw: true)),
+// 			(shorthand: none, map: timings($raw: true)),
+// 			(shorthand: breakpoint, map: breakpoints($raw: true)),
+// 		);
+//
+// 		// TODO: Add `take` pattern here.
+// 		@each $mk, $mv in configuration.$variants {
+// 			@if $mk != directives {
+// 				@include call-mixin($mk, var-join(core, take($mv, responsive))...);
+// 			}
+// 		}
+// 		@each $mk, $mv in configuration.$variants {
+// 			@if $mk != directives {
+// 				@if list.index($mv, responsive) {
+// 					@include call-mixin($mk, responsive);
+// 				}
+// 			}
+// 		}
+// 		// NOTE: `directives` must be last.
+// 		@if map.get(configuration.$variants, directives) {
+// 			@include call-mixin(directives, var-join(core, map.get(configuration.$variants, directives))...);
+// 		}
+// 	}
+// }
