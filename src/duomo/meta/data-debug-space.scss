@@ -23,9 +23,9 @@
 		position: relative;
 		&::after {
 			@include -empty-block;
-			transform: translateX(-100%);
 			width: var(--dm-space);
 			background-color: background-color(purple);
+			transform: translateX(-100%);
 		}
 	}
 	[data-debug-space] .hstack > .spacer:empty {
@@ -40,9 +40,9 @@
 		position: relative;
 		&::after {
 			@include -empty-block;
-			transform: translateY(-100%);
 			height: var(--dm-space);
 			background-color: background-color(blue);
+			transform: translateY(-100%);
 		}
 	}
 	[data-debug-space] .vstack > .spacer:empty {

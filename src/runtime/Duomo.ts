@@ -28,6 +28,7 @@ function OSPrefersDarkMode() {
 }
 
 // TODO: Can use esbuild as a bundler.
+// TODO: Add `useDuomoRuntime`.
 const Duomo: IDuomo = {
 	init(mode: Mode) {
 		const deferers: Array<() => void> = []
