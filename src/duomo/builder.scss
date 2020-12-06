@@ -6,9 +6,9 @@
 @use "helpers" as *;
 
 @use "meta/custom-props-from-maps" as *;
+@use "meta/data-line" as *;
 @use "meta/debug-space" as *;
 @use "meta/debug" as *;
-@use "meta/stagger" as *;
 
 @use "preflight/custom-tailwind-base" as *;
 @use "preflight/modern-normalize" as *;
@@ -43,7 +43,7 @@
 			@include debug-space;
 		}
 		@if configuration.$stagger {
-			@include stagger;
+			@include data-line;
 		}
 
 		// prettier-ignore

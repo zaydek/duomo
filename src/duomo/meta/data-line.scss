@@ -1,0 +1,17 @@
+@mixin data-line {
+	[data-line="1"] {
+		width: var(--data-line-1, 50%);
+	}
+	[data-line="2"] {
+		width: var(--data-line-2, 75%);
+	}
+	[data-line="3"] {
+		width: var(--data-line-3, 87.5%);
+	}
+	[data-line="4"] {
+		width: var(--data-line-4, 62.5%);
+	}
+	[data-line]:last-child {
+		width: var(--data-line-last, 50%);
+	}
+}
