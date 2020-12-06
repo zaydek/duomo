@@ -14,11 +14,22 @@
 @use "preflight/modern-normalize" as *;
 @use "preflight/vendored-font-smoothing" as *;
 
-$-empty-font-map: (
-	sans: '""',
-	serif: '""',
-	mono: '""',
-);
+@mixin custom-props {
+	$empty-font-map: (
+		sans: '""',
+		serif: '""',
+		mono: '""',
+	);
+	// prettier-ignore
+	@include custom-props-from-maps(
+		(shorthand: none, map: $-empty-font-map),
+		(shorthand: none, map: weights($raw: true)),
+		(shorthand: none, map: colors($raw: true)),
+		(shorthand: shadow, map: shadows($raw: true)),
+		(shorthand: none, map: timings($raw: true)),
+		(shorthand: none, map: breakpoints($raw: true)),
+	);
+}
 
 @at-root {
 	@if not configuration.$headless {
@@ -30,23 +41,10 @@ $-empty-font-map: (
 		@include vendored-font-smoothing;
 		/* purgecss end ignore */
 
-		@if configuration.$debugger {
-			@include data-debug;
-			@include data-debug-space;
-		}
-		@if configuration.$stagger {
-			@include data-line;
-		}
-
-		// prettier-ignore
-		@include custom-props-from-maps(
-			(shorthand: none, map: $-empty-font-map),
-			(shorthand: none, map: weights($raw: true)),
-			(shorthand: none, map: colors($raw: true)),
-			(shorthand: shadow, map: shadows($raw: true)),
-			(shorthand: none, map: timings($raw: true)),
-			(shorthand: none, map: breakpoints($raw: true)),
-		);
+		@include data-debug;
+		@include data-debug-space;
+		@include data-line;
+		@include custom-props;
 
 		// TODO: Add `take` pattern here.
 		@each $mk, $mv in configuration.$variants {
