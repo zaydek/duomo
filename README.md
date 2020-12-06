@@ -17,10 +17,10 @@ CodePen to get you started: https://codepen.io/zaydek/pen/ExgxjYy?editors=1000.
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Hello, world!</title>
-		<link rel="stylesheet" href="https://unpkg.com/@zaydek/duomo">
+		<link rel="stylesheet" href="https://unpkg.com/@zaydek/duomo" />
 	</head>
 	<body>
 		<div class="hstack">
@@ -62,6 +62,7 @@ function Component() {
 
 ## Table of Contents:
 
+- [Why](#why)
 - [HStack](#hstack)
 - [VStack](#vstack)
 - [Spacer](#spacer)
@@ -69,9 +70,39 @@ function Component() {
 - [ZStack](#zstack)
 - [Range](#range)
 
+## Why
+
+Duomo is a spiritual successor of Tailwind CSS.
+
+Duomo benefits you in the following ways:
+
+- Small and intuitive API
+- Small JavaScript runtime for toggling dark mode, etc.
+- Built in debugging layout utilities
+- Soft landing for iOS / SwiftUI developers
+- Uses HStack and VStack instead of Flexbox for rows and columns
+- Uses ZStack to layer along the z-axis
+- Lightweight CDN footprint (<TODO>kb uncompressed, <TODO>kb with Brotli); no NPM installs required
+- No configuration needed
+- Sass API; easily extend Duomo when you install via NPM
+- Introspection via CSS variables; Duomo tokens can be overridden _without_ Sass
+- Maintenance-friendly HTML / CSS
+
+Reasons you might not want to use Duomo:
+
+- You like Tailwind CSS just fine thank you very much
+- You don’t want to use stacks vs. Flexbox\* (_stacks are based on Flexbox_)
+- You don’t have a need for small CDN footprints
+- Duomo is not 1.0 stable
+
+\*Note that stacks are exported as a standalone dependency; you can experiment with stacks _with_ any CSS library.
+
 ## HStack
 
-HStacks `<div class="hstack">` stack children elements _horizontally_. Like `VStack`s, they can be modified with `align-{alignment}` and `space-{range}`. By default, children are automatically centered horizontally and vertically. To opt-out of horizontal centering, use a nested `<div class="spacer">`. To opt-out of vertical centering, use `align-stretch`, `align-start`, or `align-end`.
+HStacks `<div class="hstack">` stack children elements _horizontally_. Like `VStack`s, they can be modified with
+`align-{alignment}` and `space-{range}`. By default, children are automatically centered horizontally and vertically. To
+opt-out of horizontal centering, use a nested `<div class="spacer">`. To opt-out of vertical centering, use
+`align-stretch`, `align-start`, or `align-end`.
 
 **Spacer examples:**
 
@@ -169,7 +200,10 @@ _\*Not yet implemented._
 
 ## VStack
 
-VStacks `<div class="vstack">` stack children elements _vertically_. Like `HStack`s, they can be modified with `align-{alignment}` and `space-{range}`. By default, children are automatically centered horizontally and vertically. To opt-out of horizontal centering, use a nested `<div class="spacer">`. To opt-out of horizontal centering, use `align-stretch`, `align-start`, or `align-end`.
+VStacks `<div class="vstack">` stack children elements _vertically_. Like `HStack`s, they can be modified with
+`align-{alignment}` and `space-{range}`. By default, children are automatically centered horizontally and vertically. To
+opt-out of horizontal centering, use a nested `<div class="spacer">`. To opt-out of horizontal centering, use
+`align-stretch`, `align-start`, or `align-end`.
 
 **Spacer examples:**
 
@@ -267,7 +301,8 @@ _\*Not yet implemented._
 
 ## Spacer
 
-Spacers `<div class="spacer">` create negative space between children elements. They can be used to simulate `justify-content: flex-start`, `justify-content: flex-end`, and `justify-content: space-evenly` declaratively.
+Spacers `<div class="spacer">` create negative space between children elements. They can be used to simulate
+`justify-content: flex-start`, `justify-content: flex-end`, and `justify-content: space-evenly` declaratively.
 
 Spacers, unlike HStacks and VStacks, implement no modifiers.
 
@@ -322,9 +357,11 @@ Simualtes `justify-content: space-evenly`.
 
 ## Spacing
 
-The spacing modifier `<div class="[h|v]stack space-{px}>` creates consistent spacing between HStack and VStack children elements. Spacing can be any negative\* or positive range value.
+The spacing modifier `<div class="[h|v]stack space-{px}>` creates consistent spacing between HStack and VStack children
+elements. Spacing can be any negative\* or positive range value.
 
-Note that spacing spaces children elements _horizontally_ or _vertically_ depending on the parent HStack or VStack context. **You don’t need to specifiy x-axis or y-axis-specific spacing**.
+Note that spacing spaces children elements _horizontally_ or _vertically_ depending on the parent HStack or VStack
+context. **You don’t need to specifiy x-axis or y-axis-specific spacing**.
 
 _\*Not yet implemented._
 
@@ -370,11 +407,14 @@ _\*Not yet implemented._
 
 ## ZStack
 
-ZStacks `<div class="zstack">` stack children elements on the z-axis _and_ center children elements across the x- and y- axes. ZStacks make layering elements on top of one another easy. ZStacks are intended to be used _with_ HStacks and or VStacks; they simply layer and center children elements.
+ZStacks `<div class="zstack">` stack children elements on the z-axis _and_ center children elements across the x- and y-
+axes. ZStacks make layering elements on top of one another easy. ZStacks are intended to be used _with_ HStacks and or
+VStacks; they simply layer and center children elements.
 
 ZStacks, unlike HStacks and VStacks, implement no modifiers.
 
-Note that ZStacks use `position: relative`, so children element that use `position: absolute` are bound to the parent ZStack bounding box.
+Note that ZStacks use `position: relative`, so children element that use `position: absolute` are bound to the parent
+ZStack bounding box.
 
 **Examples:**
 
@@ -396,7 +436,8 @@ Layers a red, green, and blue element on top of each other. The blue element is 
 
 ## Range
 
-The standard range describes legal range values. Some properties support negative ranges (`margin`) and some properties use a sub-range (`border`, etc.).
+The standard range describes legal range values. Some properties support negative ranges (`margin`) and some properties
+use a sub-range (`border`, etc.).
 
 **The standard range:**
 
@@ -408,7 +449,7 @@ The standard range describes legal range values. Some properties support negativ
  80-160 increments by 16 ->  80  96 112 128 144
 160-320 increments by 32 -> 160 192 224 256 288
 320-640 increments by 64 -> 320 384 448 512 576 640
-```	
+```
 
 <!--
 
