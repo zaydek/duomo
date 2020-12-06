@@ -82,6 +82,7 @@ $-opts: (
 				@each $nk, $nv in $mv {
 					#{$nk}: $nv;
 				}
+				z-index: 10;
 			}
 		}
 	}

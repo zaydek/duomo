@@ -44,6 +44,11 @@ $-align-self-opts: (
 		}
 	}
 
+	// .spacer {
+	// 	--duomo-display: flex;
+	// 	& > * { --duomo-display: initial; }
+	// }
+
 	.spacer {
 		flex: 1 0 var(--space);
 		&:first-child,
