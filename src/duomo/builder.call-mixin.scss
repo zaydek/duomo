@@ -1,3 +1,5 @@
+@use "core/typography";
+
 @use "core/aspect-ratio" as *;
 @use "core/background-color" as *;
 @use "core/border-color" as *;
@@ -31,6 +33,16 @@
 //
 // prettier-ignore
 @mixin call-mixin($mixin, $variants...) {
+	@if $mixin == "typography" {
+		@include typography.white-space(core);
+		@include typography.text-align(core);
+		@include typography.vertical-align(core);
+		@include typography.font-size(core);
+		@include typography.letter-spacing(core);
+		@include typography.line-height(core);
+		@include typography.font-weight(core);
+	}
+
 	@if $mixin == "aspect-ratio" { @include aspect-ratio($variants...); }
 	@if $mixin == "background-color" { @include background-color($variants...); }
 	@if $mixin == "border-color" { @include border-color($variants...); }

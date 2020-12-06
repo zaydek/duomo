@@ -1,8 +1,8 @@
-@use "../helpers" as *;
+@use "../../helpers" as *;
 
 $-opts: (left, center, right, justify);
 
-@mixin typography-text-align($variants...) {
+@mixin text-align($variants...) {
 	@include variants($variants...) using ($v) {
 		@each $opt in $-opts {
 			#{variant(text-#{$opt}, $v)} {

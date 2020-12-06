@@ -16,12 +16,12 @@ test("integration", () => {
 }
 
 @at-root {
-	@include background-color(root, responsive, hover, focus, group-hover, group-focus);
+	@include background-color(core, responsive, hover, focus, group-hover, group-focus);
 }
 `)
 	// prettier-ignore
 	expect(result).toBe(`
-/* root */
+/* core */
 .bg-indigo-500 {
 	background-color: var(--indigo-500);
 }

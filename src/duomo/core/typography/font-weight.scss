@@ -1,0 +1,33 @@
+@use "../../helpers" as *;
+
+@mixin font-weight($variants...) {
+	@include variants($variants...) using ($v) {
+		#{variant(thin, $v)} {
+			font-weight: 100;
+		}
+		#{variant(extralight, $v)} {
+			font-weight: 200;
+		}
+		#{variant(light, $v)} {
+			font-weight: 300;
+		}
+		#{variant(normal, $v)} {
+			font-weight: 400;
+		}
+		#{variant(medium, $v)} {
+			font-weight: 500;
+		}
+		#{variant(semibold, $v)} {
+			font-weight: 600;
+		}
+		#{variant(bold, $v)} {
+			font-weight: 700;
+		}
+		#{variant(extrabold, $v)} {
+			font-weight: 800;
+		}
+		#{variant(black, $v)} {
+			font-weight: 900;
+		}
+	}
+}

@@ -1,8 +1,8 @@
-@use "../helpers" as *;
+@use "../../helpers" as *;
 
 $-opts: (top, baseline, middle, bottom);
 
-@mixin typography-vertical-align($variants...) {
+@mixin vertical-align($variants...) {
 	@include variants($variants...) using ($v) {
 		@each $opt in $-opts {
 			#{variant(text-#{$opt}, $v)} {

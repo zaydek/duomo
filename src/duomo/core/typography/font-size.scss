@@ -1,6 +1,6 @@
-@use "../helpers" as *;
+@use "../../helpers" as *;
 
-@mixin typography-font-size($variants...) {
+@mixin font-size($variants...) {
 	// prettier-ignore
 	@include variants($variants...) using ($v) {
 		@include generate-from-range((

@@ -17,7 +17,7 @@ $color-map: (
 
 @at-root {
 	@include generate-from-colors((
-		variant: root,
+		variant: core,
 		shorthand: bg,
 		property: (background-color),
 		map: $color-map,

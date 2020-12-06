@@ -1,6 +1,6 @@
-@use "../helpers" as *;
+@use "../../helpers" as *;
 
-@mixin typography-white-space($variants...) {
+@mixin white-space($variants...) {
 	@include variants($variants...) using ($v) {
 		#{variant(ws-auto, $v)} {
 			white-space: normal;

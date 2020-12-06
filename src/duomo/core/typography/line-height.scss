@@ -1,6 +1,6 @@
-@use "../helpers" as *;
+@use "../../helpers" as *;
 
-@mixin typography-line-height($variants...) {
+@mixin line-height($variants...) {
 	// prettier-ignore
 	@include variants($variants...) using ($v) {
 		@include generate-from-range((
