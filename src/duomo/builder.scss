@@ -14,14 +14,10 @@
 @use "preflight/modern-normalize" as *;
 @use "preflight/vendored-font-smoothing" as *;
 
+// prettier-ignore
 @mixin custom-props {
 	// TODO: Can we use `null`?
-	$font-placeholder: (
-		sans: '""',
-		serif: '""',
-		mono: '""',
-	);
-	// prettier-ignore
+	$font-placeholder: (sans: '""', serif: '""', mono: '""');
 	@include custom-props-from-maps(
 		(shorthand: none, map: $font-placeholder),
 		// (shorthand: none, map: weights($raw: true)),
