@@ -1,13 +1,13 @@
-@use "../helpers/getters" as *;
+@use "../helpers" as *;
 
 // Based on Tailwind CSS 2.0.0 base.
 //
 // https://unpkg.com/tailwindcss@2.0.0/dist/base.css
 @mixin custom-tailwind-base {
 	:root {
-		--system-sans: font(sans);
-		--system-serif: font(serif);
-		--system-mono: font(mono);
+		--system-sans: #{font(sans, $raw: true)};
+		--system-serif: #{font(serif, $raw: true)};
+		--system-mono: #{font(mono, $raw: true)};
 	}
 
 	/**
