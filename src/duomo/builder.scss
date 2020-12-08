@@ -14,12 +14,23 @@
 @use "preflight/modern-normalize" as *;
 @use "preflight/vendored-font-smoothing" as *;
 
+$-system-fonts: (
+	sans: font(sans, $raw: true),
+	serif: font(serif, $raw: true),
+	mono: font(mono, $raw: true),
+);
+
+$-fonts: (
+	sans: '""',
+	serif: '""',
+	mono: '""',
+);
+
 // prettier-ignore
 @mixin custom-props {
-	// TODO: Can we use `null`?
-	$font-placeholder: (sans: '""', serif: '""', mono: '""');
 	@include custom-props-from-maps(
-		(shorthand: none, map: $font-placeholder),
+		(shorthand: system, map: $-system-fonts),
+		(shorthand: none, map: $-fonts),
 		// (shorthand: none, map: weights($raw: true)),
 		(shorthand: none, map: colors($raw: true)),
 		(shorthand: shadow, map: shadows($raw: true)),

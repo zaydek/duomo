@@ -4,12 +4,6 @@
 //
 // https://unpkg.com/tailwindcss@2.0.0/dist/base.css
 @mixin custom-tailwind-base {
-	:root {
-		--system-sans: #{font(sans, $raw: true)};
-		--system-serif: #{font(serif, $raw: true)};
-		--system-mono: #{font(mono, $raw: true)};
-	}
-
 	/**
 	 * Manually forked from SUIT CSS Base: https://github.com/suitcss/base
 	 * A thin layer on top of normalize.css that provides a starting point more
