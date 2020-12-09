@@ -83,6 +83,7 @@
 	}
 	@return var(--#{$key});
 }
+
 @function weight($key, $raw: false) {
 	$got: -getter("weight", configuration.$weight-map, $key);
 	@if $raw {
@@ -90,20 +91,31 @@
 	}
 	@return var(--#{$key});
 }
+
+@function decoration($key, $raw: false) {
+	$got: -getter("decoration", configuration.$decoration-map, $key);
+	@if $raw {
+		@return $got;
+	}
+	@return var(--#{$key});
+}
+
 @function color($key, $raw: false) {
 	$got: -getter("color", configuration.$color-map, $key);
 	@if $raw {
 		@return $got;
 	}
-	@return hsl(var(--#{$key}));
+	@return hsl(var(--#{$key}-raw));
 }
+
 @function extended-color($key, $raw: false) {
 	$got: -getter("extended-color", configuration.$extended-color-map, $key);
 	@if $raw {
 		@return $got;
 	}
-	@return hsl(var(--#{$key}));
+	@return hsl(var(--#{$key}-raw));
 }
+
 @function shadow($key, $raw: false) {
 	$got: -getter("shadow", configuration.$shadow-map, $key);
 	@if $raw {
@@ -111,6 +123,7 @@
 	}
 	@return var(--shadow-#{$key});
 }
+
 @function timing($key, $raw: false) {
 	$got: -getter("timing", configuration.$timing-map, $key);
 	@if $raw {
@@ -135,6 +148,7 @@
 	}
 	@return $ret;
 }
+
 @function weights($raw: false) {
 	$ret: ();
 	@each $mk, $mv in configuration.$weight-map {
@@ -142,6 +156,15 @@
 	}
 	@return $ret;
 }
+
+@function decorations($raw: false) {
+	$ret: ();
+	@each $mk, $mv in configuration.$decoration-map {
+		$ret: map.set($ret, $mk, decoration($mk, $raw));
+	}
+	@return $ret;
+}
+
 @function colors($raw: false) {
 	$ret: ();
 	@each $mk, $mv in configuration.$color-map {
@@ -149,6 +172,7 @@
 	}
 	@return $ret;
 }
+
 @function extended-colors($raw: false) {
 	$ret: ();
 	@each $mk, $mv in configuration.$extended-color-map {
@@ -156,6 +180,7 @@
 	}
 	@return $ret;
 }
+
 @function shadows($raw: false) {
 	$ret: ();
 	@each $mk, $mv in configuration.$shadow-map {
@@ -163,6 +188,7 @@
 	}
 	@return $ret;
 }
+
 @function timings($raw: false) {
 	$ret: ();
 	@each $mk, $mv in configuration.$timing-map {

@@ -1,5 +1,7 @@
 @use "../../helpers" as *;
 
+// TODO: Use `percent-range`?
+//
 // prettier-ignore
 $-opts: (
 	-0.1,
@@ -29,12 +31,11 @@ $-opts: (
 	 0.1,
 );
 
-// TODO: Use `percent-range`?
 // NOTE: `em($rv)` does not work because of percent-based numbers.
 @mixin letter-spacing($variants...) {
 	@include variants($variants...) using ($v) {
 		@each $rv in $-opts {
-			#{variant(#{n($rv)}char-#{escape(abs($rv * 100))}, $v)} {
+			#{variant(#{n($rv)}tracking-#{escape(abs($rv * 100))}, $v)} {
 				letter-spacing: $rv + em;
 			}
 		}

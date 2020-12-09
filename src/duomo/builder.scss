@@ -2,17 +2,23 @@
 @use "sass:map";
 
 @use "builder.call-mixin" as *;
-@use "configuration";
 @use "helpers" as *;
+@use "preflight" as *;
 
-@use "meta/custom-props-from-maps" as *;
-@use "meta/data-debug-space" as *;
-@use "meta/data-debug" as *;
-@use "meta/data-line" as *;
+// @use "meta/custom-props-from-maps" as *;
+// @use "meta/data-debug-space" as *;
+// @use "meta/data-debug" as *;
+// @use "meta/data-line" as *;
 
-@use "preflight/custom-tailwind-base" as *;
-@use "preflight/modern-normalize" as *;
-@use "preflight/vendored-font-smoothing" as *;
+@use "configuration";
+@use "introspection";
+
+// NOTE: Must use `""`; `null` does not work as expected.
+$-fonts: (
+	sans: '""',
+	serif: '""',
+	mono: '""',
+);
 
 $-system-fonts: (
 	sans: font(sans, $raw: true),
@@ -20,56 +26,39 @@ $-system-fonts: (
 	mono: font(mono, $raw: true),
 );
 
-$-fonts: (
-	sans: '""',
-	serif: '""',
-	mono: '""',
-);
-
-// prettier-ignore
-@mixin custom-props {
-	@include custom-props-from-maps(
-		(shorthand: system, map: $-system-fonts),
-		(shorthand: none, map: $-fonts),
-		// (shorthand: none, map: weights($raw: true)),
-		(shorthand: none, map: colors($raw: true)),
-		(shorthand: shadow, map: shadows($raw: true)),
-		(shorthand: none, map: timings($raw: true)),
-		(shorthand: none, map: breakpoints($raw: true)),
-	);
-}
-
 @at-root {
 	@if not configuration.$headless {
 		/*! duomo | MIT License | https://github.com/zaydek/duomo */
 
-		/* purgecss start ignore */
-		@include modern-normalize;
-		@include custom-tailwind-base;
-		@include vendored-font-smoothing;
-		/* purgecss end ignore */
+		// @include preflight;
 
-		@include data-debug;
-		@include data-debug-space;
-		@include data-line;
-		@include custom-props;
+		// prettier-ignore
+		:root {
+			@include introspection.vars((shorthand: none, map: $-fonts));
+			@include introspection.vars((shorthand: system, map: $-system-fonts));
+			@include introspection.vars((shorthand: none, map: weights($raw: true)));
+			@include introspection.color-vars;
+			@include introspection.vars((shorthand: shadow, map: shadows($raw: true)));
+			@include introspection.vars((shorthand: none, map: timings($raw: true)));
+			@include introspection.vars((shorthand: none, map: breakpoints($raw: true)));
+		}
 
-		// TODO: Add `take` pattern here.
-		@each $mk, $mv in configuration.$variants {
-			@if $mk != hidden {
-				@include call-mixin($mk, var-join(core, take($mv, responsive))...);
-			}
-		}
-		@each $mk, $mv in configuration.$variants {
-			@if $mk != hidden {
-				@if list.index($mv, responsive) {
-					@include call-mixin($mk, responsive);
-				}
-			}
-		}
-		// NOTE: `hidden` must be last.
-		@if map.get(configuration.$variants, hidden) {
-			@include call-mixin(hidden, var-join(core, map.get(configuration.$variants, hidden))...);
-		}
+		// // TODO: Add `take` pattern here.
+		// @each $mk, $mv in configuration.$variants {
+		// 	@if $mk != hidden {
+		// 		@include call-mixin($mk, var-join(core, take($mv, responsive))...);
+		// 	}
+		// }
+		// @each $mk, $mv in configuration.$variants {
+		// 	@if $mk != hidden {
+		// 		@if list.index($mv, responsive) {
+		// 			@include call-mixin($mk, responsive);
+		// 		}
+		// 	}
+		// }
+		// // NOTE: `hidden` must be last.
+		// @if map.get(configuration.$variants, hidden) {
+		// 	@include call-mixin(hidden, var-join(core, map.get(configuration.$variants, hidden))...);
+		// }
 	}
 }

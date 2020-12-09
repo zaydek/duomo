@@ -1,0 +1,12 @@
+@use "../helpers" as *;
+
+@mixin color-vars {
+	// Ex: --indigo-500-raw: 239deg, 84%, 67%;
+	@each $mk, $mv in colors($raw: true) {
+		--#{"" + $mk}-raw: #{$mv};
+	}
+	// Ex: --indigo-500: hsl(var(--indigo-500-raw));
+	@each $mk, $mv in colors() {
+		--#{"" + $mk}: #{$mv};
+	}
+}

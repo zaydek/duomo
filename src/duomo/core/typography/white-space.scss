@@ -1,21 +1,19 @@
 @use "../../helpers" as *;
 
+$-opts: (
+	ws-auto: normal,
+	ws-preserve: pre,
+	ws-preserve-wrap: pre-wrap,
+	ws-collapse: nowrap,
+	ws-collapse-wrap: pre-line,
+);
+
 @mixin white-space($variants...) {
 	@include variants($variants...) using ($v) {
-		#{variant(ws-auto, $v)} {
-			white-space: normal;
-		}
-		#{variant(ws-preserve, $v)} {
-			white-space: pre;
-		}
-		#{variant(ws-preserve-wrap, $v)} {
-			white-space: pre-wrap;
-		}
-		#{variant(ws-collapse, $v)} {
-			white-space: nowrap;
-		}
-		#{variant(ws-collapse-wrap, $v)} {
-			white-space: pre-line;
+		@each $mk, $mv in $-opts {
+			#{variant($mk, $v)} {
+				white-space: $mv;
+			}
 		}
 	}
 }

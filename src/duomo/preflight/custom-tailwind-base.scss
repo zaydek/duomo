@@ -70,7 +70,7 @@
 	 */
 
 	html {
-		font-family: var(--sans, ""), var(--system-sans); /* 1 */
+		font-family: var(--sans), var(--system-sans); /* 1 */
 		line-height: 1; /* 2 */
 	}
 
@@ -208,7 +208,7 @@
 	code,
 	kbd,
 	samp {
-		font-family: var(--mono, ""), var(--system-mono);
+		font-family: var(--mono), var(--system-mono);
 	}
 
 	/**

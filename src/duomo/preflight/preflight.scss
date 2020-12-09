@@ -1,0 +1,11 @@
+@use "custom-tailwind-base" as *;
+@use "modern-normalize" as *;
+@use "vendored-font-smoothing" as *;
+
+@mixin preflight {
+	/* purgecss start ignore */
+	@include modern-normalize;
+	@include custom-tailwind-base;
+	@include vendored-font-smoothing;
+	/* purgecss end ignore */
+}
