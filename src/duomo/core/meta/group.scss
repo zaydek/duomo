@@ -1,9 +1,8 @@
 @use "../../helpers" as *;
 
-@mixin group($variants...) {
-	@include variants($variants...) using ($v) {
-		#{variant(group, $v)} {
-			/* YOLO */
-		}
+// NOTE: Does not implement variants.
+@mixin group {
+	.group {
+		/* YOLO */
 	}
 }

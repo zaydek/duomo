@@ -1,19 +1,24 @@
 @use "../../../helpers" as *;
 
 @mixin vstack($variants...) {
-	// prettier-ignore
-	.vstack {
-		--dm-unhidden: flex;
-		& > * { --dm-unhidden: initial; }
-	}
-
 	@include variants($variants...) using ($v) {
+		// Implements the hidden API.
+		@if $v == core {
+			.vstack {
+				--dm-unhidden: flex;
+				> * {
+					--dm-unhidden: initial;
+				}
+			}
+		}
+
 		#{variant("vstack", $v)} {
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
 		}
+		// NOTE: Do not reset per responsive stack context.
 		@if $v == core {
 			.vstack > * {
 				--dm-space: 0;

@@ -1,11 +1,10 @@
 @use "../../helpers" as *;
 
-// TODO
 @mixin aspect-ratio($variants...) {
 	[style*="--aspect-ratio"] {
-		// NOTE: Use `(var(--aspect-ratio)` so `--aspect-ratio: 16 / 9` works.
 		position: relative;
-		padding-bottom: calc(100% / (var(--aspect-ratio)));
+		// NOTE: Use `(...)` so `--aspect-ratio: 16 / 9` works.
+		padding-bottom: calc(100% / (attr(data-aspect-ratio)));
 	}
 	[style*="--aspect-ratio"] > * {
 		position: absolute;

@@ -27,10 +27,10 @@ $-supported-variants: (
 	@return ".focus\\:#{$selector}:focus";
 }
 @function group-hover($selector) {
-	@return ".group:hover.group-hover\\:#{$selector}, .group:hover .group-hover\\:#{$selector}";
+	@return ".group:hover .group-hover\\:#{$selector}";
 }
 @function group-focus($selector) {
-	@return ".group:focus.group-focus\\:#{$selector}, .group:focus .group-focus\\:#{$selector}";
+	@return ".group:focus .group-focus\\:#{$selector}";
 }
 
 // prettier-ignore

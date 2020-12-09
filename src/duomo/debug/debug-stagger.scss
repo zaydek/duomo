@@ -1,0 +1,27 @@
+@use "sass:math";
+
+@mixin debug-stagger {
+	:root {
+		--data-stagger-1: math.percentage(4 / 8);
+		--data-stagger-2: math.percentage(6 / 8);
+		--data-stagger-3: math.percentage(7 / 8);
+		--data-stagger-4: math.percentage(5 / 8);
+		--data-stagger-last: 50%;
+	}
+
+	[data-stagger="1"] {
+		width: var(--data-stagger-1);
+	}
+	[data-stagger="2"] {
+		width: var(--data-stagger-2);
+	}
+	[data-stagger="3"] {
+		width: var(--data-stagger-3);
+	}
+	[data-stagger="4"] {
+		width: var(--data-stagger-4);
+	}
+	[data-stagger]:last-child {
+		width: var(--data-stagger-last);
+	}
+}

@@ -56,7 +56,7 @@
 	@if $mixin == "color" { @include color($variants...); }
 	@if $mixin == "container" { @include container($variants...); }
 	@if $mixin == "grid" { @include grid($variants...); }
-	@if $mixin == "group" { @include group($variants...); }
+	@if $mixin == "group" { @include group(/* No-op */); }
 	@if $mixin == "height" { @include height($variants...); }
 	@if $mixin == "hidden" { @include hidden($variants...); }
 	@if $mixin == "margin" { @include margin($variants...); }

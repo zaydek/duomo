@@ -52,29 +52,26 @@ $-opts: (
 );
 
 @mixin zstack($variants...) {
-	// prettier-ignore
 	.zstack {
 		--dm-unhidden: grid;
-		& > * { --dm-unhidden: initial; }
+		> * {
+			--dm-unhidden: initial;
+		}
 	}
 
+	// 1. Uses CSS Grid to center children.
+	// 2. Uses `place-items` as a shorthand for centering children.
+	// 3. Uses `relative` to constrain `absolute` children.
 	.zstack {
 		display: grid;
 		place-items: center;
 		position: relative;
+		> * {
+			grid-area: 1 / 1 / 1 / 1;
+		}
 	}
 
-	// https://codepen.io/everdimension/pen/BaNpeWe
-	//
-	// prettier-ignore
-	.zstack > * {
-		grid-area:
-			1 / // grid-row-start
-			1 / // grid-column-start
-			1 / // grid-row-end
-			1;  // grid-column-end
-	}
-
+	// Only the placement API implements variants.
 	@include variants($variants...) using ($v) {
 		@each $mk, $mv in $-opts {
 			#{variant(place-#{$mk}, $v)} {

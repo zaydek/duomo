@@ -4,11 +4,9 @@ $-opts: (sans, serif, mono);
 
 @mixin font-family($variants...) {
 	@include variants($variants...) using ($v) {
-		@if $v == core {
-			@each $each in $-opts {
-				.#{$each} {
-					font-family: var(--#{$each}), var(--system-#{$each});
-				}
+		@each $opt in $-opts {
+			#{variant($opt, $v)} {
+				font-family: var(--#{$opt}), var(--system-#{$opt});
 			}
 		}
 	}

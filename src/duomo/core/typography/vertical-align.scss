@@ -1,12 +1,6 @@
 @use "../../helpers" as *;
 
-// prettier-ignore
-$-opts: (
-	top,
-	baseline,
-	middle,
-	bottom,
-);
+$-opts: (top, baseline, middle, bottom);
 
 @mixin vertical-align($variants...) {
 	@include variants($variants...) using ($v) {

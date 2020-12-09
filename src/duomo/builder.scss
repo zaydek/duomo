@@ -11,6 +11,7 @@
 // @use "meta/data-line" as *;
 
 @use "configuration";
+@use "debug";
 @use "introspection";
 
 // NOTE: Must use `""`; `null` does not work as expected.
@@ -30,35 +31,35 @@ $-system-fonts: (
 	@if not configuration.$headless {
 		/*! duomo | MIT License | https://github.com/zaydek/duomo */
 
-		// @include preflight;
+		@include preflight;
 
 		// prettier-ignore
 		:root {
 			@include introspection.vars((shorthand: none, map: $-fonts));
 			@include introspection.vars((shorthand: system, map: $-system-fonts));
-			@include introspection.vars((shorthand: none, map: weights($raw: true)));
+			// TODO: Remove `transparent` and `current`?
 			@include introspection.color-vars;
-			@include introspection.vars((shorthand: shadow, map: shadows($raw: true)));
+			@include introspection.vars((shorthand: none, map: shadows($raw: true)));
+			// TODO: Remove `linear`?
 			@include introspection.vars((shorthand: none, map: timings($raw: true)));
-			@include introspection.vars((shorthand: none, map: breakpoints($raw: true)));
 		}
 
-		// // TODO: Add `take` pattern here.
-		// @each $mk, $mv in configuration.$variants {
-		// 	@if $mk != hidden {
-		// 		@include call-mixin($mk, var-join(core, take($mv, responsive))...);
-		// 	}
-		// }
-		// @each $mk, $mv in configuration.$variants {
-		// 	@if $mk != hidden {
-		// 		@if list.index($mv, responsive) {
-		// 			@include call-mixin($mk, responsive);
-		// 		}
-		// 	}
-		// }
-		// // NOTE: `hidden` must be last.
-		// @if map.get(configuration.$variants, hidden) {
-		// 	@include call-mixin(hidden, var-join(core, map.get(configuration.$variants, hidden))...);
-		// }
+		// TODO: Add `take` pattern here.
+		@each $mk, $mv in configuration.$variants {
+			@if $mk != hidden {
+				@include call-mixin($mk, var-join(core, take($mv, responsive))...);
+			}
+		}
+		@each $mk, $mv in configuration.$variants {
+			@if $mk != hidden {
+				@if list.index($mv, responsive) {
+					@include call-mixin($mk, responsive);
+				}
+			}
+		}
+		// NOTE: `hidden` must be last.
+		@if map.get(configuration.$variants, hidden) {
+			@include call-mixin(hidden, var-join(core, map.get(configuration.$variants, hidden))...);
+		}
 	}
 }

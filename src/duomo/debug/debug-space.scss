@@ -1,0 +1,58 @@
+@mixin -empty-content-block {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	content: "";
+}
+
+@mixin debug-space {
+	:root {
+		--debug-hstack-space-bg: hsla(240, 100%, 50%, 0.1);
+		--debug-vstack-space-bg: hsla(210, 100%, 50%, 0.1);
+	}
+
+	[data-debug-space] .hstack {
+		// Paints a background color for HStack non-spacers.
+		> *:not(.spacer) + *:not(.spacer) {
+			position: relative;
+			&::after {
+				@include -empty-content-block;
+				width: var(--dm-space);
+				background-color: var(--debug-hstack-space-bg);
+				transform: translateX(-100%);
+			}
+		}
+		// Paints a background color for HStack empty spacers.
+		> .spacer:empty {
+			position: relative;
+			&::before {
+				@include -empty-content-block;
+				background-color: var(--debug-hstack-space-bg);
+			}
+		}
+	}
+
+	[data-debug-space] .vstack {
+		// Paints a background color for VStack non-spacers.
+		> *:not(.spacer) + *:not(.spacer) {
+			position: relative;
+			&::after {
+				@include -empty-content-block;
+				height: var(--dm-space);
+				background-color: var(--debug-vstack-space-bg);
+				transform: translateY(-100%);
+			}
+		}
+		// Paints a background color for VStack empty spacers.
+		> .spacer:empty {
+			position: relative;
+			&::before {
+				@include -empty-content-block;
+				background-color: var(--debug-vstack-space-bg);
+			}
+		}
+	}
+}
