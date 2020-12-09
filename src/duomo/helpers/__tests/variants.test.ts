@@ -36,12 +36,12 @@ test("integration", () => {
 }
 
 /* group-hover */
-.group:hover.group-hover\\:bg-indigo-500, .group:hover .group-hover\\:bg-indigo-500 {
+.group:hover .group-hover\\:bg-indigo-500 {
 	background-color: var(--indigo-500);
 }
 
 /* group-focus */
-.group:focus.group-focus\\:bg-indigo-500, .group:focus .group-focus\\:bg-indigo-500 {
+.group:focus .group-focus\\:bg-indigo-500 {
 	background-color: var(--indigo-500);
 }
 

@@ -4,7 +4,7 @@ $-opts: (0, 100, 200, 250, 300, 400, 500, 600, 700, 750, 800, 900, 1000);
 
 @mixin transition($variants...) {
 	@include variants($variants...) using ($v) {
-		.transition {
+		#{variant(transition, $v)} {
 			--transition-duration: var(--transition-duration-default);
 			--transition-timing-function: var(--transition-timing-function-default);
 			transition: var(--transition-duration) var(--transition-timing-function);
