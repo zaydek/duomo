@@ -1,14 +1,9 @@
 @use "sass:list";
 @use "sass:map";
 
-@use "builder.call-mixin" as *;
+@use "builder-call-mixin" as *;
 @use "helpers" as *;
 @use "preflight" as *;
-
-// @use "meta/custom-props-from-maps" as *;
-// @use "meta/data-debug-space" as *;
-// @use "meta/data-debug" as *;
-// @use "meta/data-line" as *;
 
 @use "configuration";
 @use "debug";
@@ -37,11 +32,14 @@ $-system-fonts: (
 		:root {
 			@include introspection.vars((shorthand: none, map: $-fonts));
 			@include introspection.vars((shorthand: system, map: $-system-fonts));
-			// TODO: Remove `transparent` and `current`?
 			@include introspection.color-vars;
 			@include introspection.vars((shorthand: none, map: shadows($raw: true)));
-			// TODO: Remove `linear`?
 			@include introspection.vars((shorthand: none, map: timings($raw: true)));
+
+			--placeholder-color-default: color(gray-400);
+			--border-color-default: color(gray-200);
+			--transition-duration-default: 300ms;
+			--transition-timing-function-default: timing(ease-out);
 		}
 
 		// TODO: Add `take` pattern here.

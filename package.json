@@ -10,16 +10,13 @@
 	],
 	"scripts": {
 		"watch-consumer": "sass --watch --no-charset --no-source-map src/consumer.scss dist/index.css",
-		"watch-consumer-full": "sass --watch --no-charset --no-source-map src/consumer-full.scss dist/full.css",
 		"test": "jest",
 		"build-duomo": "sass --no-charset --no-source-map src/consumer.scss | tr -s '\\n\\n' '\\n' > dist/index.css",
 		"build-duomo-min": "sass --style=compressed --no-charset --no-source-map src/consumer.scss dist/index.min.css",
-		"build-duomo-full": "sass --no-charset --no-source-map src/consumer-full.scss | tr -s '\\n\\n' '\\n' > dist/full.css",
-		"build-duomo-full-min": "sass --style=compressed --no-charset --no-source-map src/consumer-full.scss dist/full.min.css",
 		"build-stacks": "sass --no-charset --no-source-map src/duomo/stacks.scss | tr -s '\\n\\n' '\\n' > dist/stacks.css",
 		"build-stacks-min": "sass --style=compressed --no-charset --no-source-map src/duomo/stacks.scss dist/stacks.min.css",
-		"build-css": "yarn build-duomo && yarn build-duomo-full && yarn build-stacks",
-		"build-css-min": "yarn build-duomo-min && yarn build-duomo-full-min && yarn build-stacks-min",
+		"build-css": "yarn build-duomo && yarn build-reset && yarn build-stacks",
+		"build-css-min": "yarn build-duomo-min && yarn build-reset-min && yarn build-stacks-min",
 		"build": "rm -rf dist && yarn test && yarn tsc && yarn build-css && yarn build-css-min",
 		"publish-dist-dry-run": "yarn build && npm publish --dry-run"
 	},

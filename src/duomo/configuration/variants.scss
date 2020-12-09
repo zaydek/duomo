@@ -23,7 +23,9 @@ $variants: (
 	opacity: (responsive, touch, group-touch),
 	overflow: (responsive),
 	z-index: (responsive, touch, group-touch),
+	// TODO: Make `transform` and `transition` use (responsive, touch, group-touch)?
+	transform: (responsive),
+	transition: (responsive),
 	pointer-events: (responsive),
-	transform: (responsive, touch, group-touch),
 	hidden: (responsive, touch, group-touch),
 ) !default;

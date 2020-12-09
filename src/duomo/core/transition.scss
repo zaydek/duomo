@@ -1,0 +1,26 @@
+@use "../helpers" as *;
+
+$-opts: (0, 100, 200, 250, 300, 400, 500, 600, 700, 750, 800, 900, 1000);
+
+@mixin transition($variants...) {
+	@include variants($variants...) using ($v) {
+		.transition {
+			--transition-duration: var(--transition-duration-default);
+			--transition-timing-function: var(--transition-timing-function-default);
+			transition: var(--transition-duration) var(--transition-timing-function);
+			transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+		}
+
+		@each $opt in $-opts {
+			#{variant(duration-#{$opt}, $v)} {
+				--transition-duration: #{$opt + ms};
+			}
+		}
+
+		@each $mk, $mv in timings() {
+			#{variant($mk, $v)} {
+				--transition-timing-function: #{$mv};
+			}
+		}
+	}
+}

@@ -24,6 +24,7 @@
 @use "core/pointer-events" as *;
 @use "core/position" as *;
 @use "core/transform" as *;
+@use "core/transition" as *;
 @use "core/width" as *;
 @use "core/z-index" as *;
 
@@ -70,6 +71,7 @@
 	@if $mixin == "position" { @include position($variants...); }
 	@if $mixin == "stacks" { @include stacks($variants...); }
 	@if $mixin == "transform" { @include transform($variants...); }
+	@if $mixin == "transition" { @include transition($variants...); }
 	@if $mixin == "width" { @include width($variants...); }
 	@if $mixin == "z-index" { @include z-index($variants...); }
 }
