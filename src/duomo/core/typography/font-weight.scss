@@ -10,7 +10,7 @@ $-opts: (
 	bold: 700,
 	extrabold: 800,
 	black: 900,
-) !default;
+);
 
 @mixin font-weight($variants...) {
 	@include variants($variants...) using ($v) {

@@ -46,6 +46,11 @@ test("integration", () => {
 }
 
 /* responsive */
+@media (min-width: 512px) {
+	.xs\\:bg-indigo-500 {
+		background-color: var(--indigo-500);
+	}
+}
 @media (min-width: 640px) {
 	.sm\\:bg-indigo-500 {
 		background-color: var(--indigo-500);
@@ -63,6 +68,11 @@ test("integration", () => {
 }
 @media (min-width: 1280px) {
 	.xl\\:bg-indigo-500 {
+		background-color: var(--indigo-500);
+	}
+}
+@media (min-width: 1536px) {
+	.\\32 xl\\:bg-indigo-500 {
 		background-color: var(--indigo-500);
 	}
 }
