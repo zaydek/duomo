@@ -34,29 +34,36 @@
 @function focus($selector) {
 	@return ".focus\\:#{$selector}:focus";
 }
+@function touch($selector) {
+	@return ".touch\\:#{$selector}:hover, .touch\\:#{$selector}:focus";
+}
+
 @function group-hover($selector) {
 	@return ".group:hover .group-hover\\:#{$selector}";
 }
 @function group-focus($selector) {
 	@return ".group:focus .group-focus\\:#{$selector}";
 }
+@function group-touch($selector) {
+	@return ".group:hover .group-touch\\:#{$selector}, .group:focus .group-touch\\:#{$selector}";
+}
 
-// // prettier-ignore
-// @function touch($selector) {
-// 	@return ".touch\\:#{$selector}:hover" + ", "
-// 		".touch\\:#{$selector}:focus";
-// }
-//
-// // prettier-ignore
-// @function group-touch($selector) {
-// 	@return ".group:hover .group-touch\\:#{$selector}" + ", "
-// 		".group:focus .group-touch\\:#{$selector}";
-// }
+@function responsive($selector) {
+	@return "#{&}#{$selector}";
+}
 
 @mixin variants($variants...) {
 	@content (take($variants, responsive));
 	@if list.index($variants, responsive) {
-		@content (responsive);
+		@each $key, $n in (sm: 640, md: 768, lg: 1024, xl: 1280) {
+			@media (min-width: $n + px) {
+				.#{$key}\: {
+					@at-root {
+						@content (responsive);
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -76,7 +83,7 @@
 	@return $concat-selector;
 }
 
-$variants: (core, hover, group-hover); // , responsive);
+$variants: (core, hover, focus, touch, group-hover, group-focus, group-touch, responsive);
 
 @at-root {
 	@include variants($variants...) using ($v) {
