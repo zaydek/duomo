@@ -2,6 +2,8 @@
 @use "sass:map";
 @use "sass:meta";
 
+$env: development !default;
+
 // Ex:
 //
 // take((0, 1, 2, 4), 4)             -> (0, 1, 2)
@@ -53,7 +55,16 @@
 }
 
 @mixin variants($variants...) {
-	@content (take($variants, responsive));
+	@if $env != development and $env != production {
+		@error "variants: $env must be `development` or `production`; $env=#{$env}";
+	}
+	@if $env == development {
+		@each $variant in take($variants, responsive) {
+			@content ($variant);
+		}
+	} @else if $env == production {
+		@content (take($variants, responsive));
+	}
 	@if list.index($variants, responsive) {
 		@each $key, $n in (sm: 640, md: 768, lg: 1024, xl: 1280) {
 			@media (min-width: $n + px) {
@@ -66,10 +77,6 @@
 		}
 	}
 }
-
-// $concat-selector: $concat-selector +
-// 	if($concat-selector == "", "", ", ") +
-// 	meta.call(meta.get-function($variant), $selector);
 
 @function variant($selector, $variants) {
 	$concat-selector: "";
@@ -92,9 +99,3 @@ $variants: (core, hover, focus, touch, group-hover, group-focus, group-touch, re
 		}
 	}
 }
-
-// @each $each in take((a, b, c), a) {
-// 	.#{$each} {
-// 		#{$each}: 0;
-// 	}
-// }

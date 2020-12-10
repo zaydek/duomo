@@ -9,13 +9,13 @@
 //
 @function take($collection, $item) {
 	$ret: ();
-	@if meta.type-of($collection) == "list" {
+	@if meta.type-of($collection) == list or meta.type-of($collection) == arglist {
 		@each $each in $collection {
 			@if $each != $item {
 				$ret: list.append($ret, $each);
 			}
 		}
-	} @else if meta.type-of($collection) == "map" {
+	} @else if meta.type-of($collection) == map {
 		@each $mk, $mv in $collection {
 			@if $mk != $item {
 				$ret: map.set($ret, $mk, $mv);
