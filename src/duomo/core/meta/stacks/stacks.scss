@@ -23,15 +23,15 @@ $-align-self-opts: (
 // NOTE: Does not implement variants.
 @mixin spacer {
 	.spacer {
-		--dm-unhidden: flex;
+		--unhidden: flex;
 		> * {
-			--dm-unhidden: initial;
+			--unhidden: initial;
 		}
 	}
 
 	// TODO: Add `min-content` polyfill for scrolling overflow.
 	.spacer {
-		flex: 1 0 var(--dm-space);
+		flex: 1 0 var(--space);
 		&:first-child,
 		&:last-child {
 			flex-basis: 0;
@@ -56,7 +56,7 @@ $-align-self-opts: (
 		}
 		@each $rv in var-join(nrange(), range()) {
 			#{variant("#{n($rv)}space-#{abs($rv)} > *", $v)} {
-				--dm-space: #{resolve($rv, rem)};
+				--space: #{resolve($rv, rem)};
 			}
 		}
 	}

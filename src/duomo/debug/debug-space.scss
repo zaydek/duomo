@@ -20,7 +20,7 @@
 			position: relative;
 			&::after {
 				@include -empty-content-block;
-				width: var(--dm-space);
+				width: var(--space);
 				background-color: var(--debug-hstack-space-bg);
 				transform: translateX(-100%);
 			}
@@ -41,7 +41,7 @@
 			position: relative;
 			&::after {
 				@include -empty-content-block;
-				height: var(--dm-space);
+				height: var(--space);
 				background-color: var(--debug-vstack-space-bg);
 				transform: translateY(-100%);
 			}

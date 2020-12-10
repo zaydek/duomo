@@ -5,7 +5,7 @@
 @function shadow-keys($map) {
 	$ret: ();
 	@each $mk, $mv in $map {
-		$ret: list.append($ret, var(--dm-shadow-#{$mk}), comma);
+		$ret: list.append($ret, var(--shadow-#{$mk}), comma);
 	}
 	@return $ret;
 }
@@ -14,14 +14,14 @@
 	@include variants($variants...) using ($v) {
 		#{variant(shadow, $v)} {
 			@each $mk, $mv in shadows() {
-				--dm-shadow-#{$mk}: 0 0 transparent;
+				--shadow-#{$mk}: 0 0 transparent;
 			}
-			box-shadow: #{shadow-keys(shadows())};
+			box-shadow: shadow-keys(shadows());
 		}
 
 		@each $mk, $mv in shadows() {
 			#{variant(shadow-#{$mk}, $v)} {
-				--dm-shadow-#{$mk}: #{shadow($mk)};
+				--shadow-#{$mk}: #{shadow($mk)};
 			}
 		}
 	}

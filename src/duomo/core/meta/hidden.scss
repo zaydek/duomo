@@ -6,7 +6,7 @@
 			display: none;
 		}
 		#{variant(unhidden, $v)} {
-			display: var(--dm-unhidden, block);
+			display: var(--unhidden, block);
 		}
 	}
 }

@@ -53,9 +53,9 @@ $-opts: (
 
 @mixin zstack($variants...) {
 	.zstack {
-		--dm-unhidden: grid;
+		--unhidden: grid;
 		> * {
-			--dm-unhidden: initial;
+			--unhidden: initial;
 		}
 	}
 

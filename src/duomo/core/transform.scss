@@ -1,42 +1,44 @@
 @use "../helpers" as *;
 
+$-translate-opts: (-100, -50, 0, 50, 100);
+
+// TODO: Use `percent-range`?
+//
+// prettier-ignore
+$-scale-opts: (
+	0, 0.1, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.75, 0.8, 0.9, 1,
+	1.1, 1.2, 1.25, 1.3, 1.4, 1.5, 1.6, 1.7, 1.75, 1.8, 1.9, 2,
+);
+
 @mixin transform($variants...) {
-	// prettier-ignore
 	@include variants($variants...) using ($v) {
 		#{variant(transform, $v)} {
-			--dm-translate-x: 0;
-			--dm-translate-y: 0;
-			--dm-rotate: 0;
-			--dm-skew-x: 0;
-			--dm-skew-y: 0;
-			--dm-scale-x: 1;
-			--dm-scale-y: 1;
-			transform: translate(var(--dm-translate-x), var(--dm-translate-y)) rotate(var(--dm-rotate))
-				skewX(var(--dm-skew-x)) skewY(var(--dm-skew-y)) scaleX(var(--dm-scale-x)) scaleY(var(--dm-scale-y));
+			--transform-translate-x: 0;
+			--transform-translate-y: 0;
+			--transform-scale: 1;
+			transform: translate(var(--transform-translate-x), var(--transform-translate-y)) scale(var(--transform-scale));
 		}
 
 		#{variant(transform-gpu, $v)} {
-			--dm-translate-x: 0;
-			--dm-translate-y: 0;
-			--dm-rotate: 0;
-			--dm-skew-x: 0;
-			--dm-skew-y: 0;
-			--dm-scale-x: 1;
-			--dm-scale-y: 1;
-			transform: translate3d(var(--dm-translate-x), var(--dm-translate-y), 0) rotate(var(--dm-rotate))
-				skewX(var(--dm-skew-x)) skewY(var(--dm-skew-y)) scaleX(var(--dm-scale-x)) scaleY(var(--dm-scale-y));
+			--transform-translate-x: 0;
+			--transform-translate-y: 0;
+			--transform-scale: 1;
+			transform: translate3d(var(--transform-translate-x), var(--transform-translate-y), 0)
+				scale(var(--transform-scale));
 		}
 
-		.-x-100 { --dm-translate-x: -100%; }
-		.-x-50 { --dm-translate-x: -50%; }
-		.-x-0 { --dm-translate-x: 0%; }
-		.x-50 { --dm-translate-x: 50%; }
-		.x-100 { --dm-translate-x: 100%; }
+		@each $axis in (x, y) {
+			@each $translate-opt in $-translate-opts {
+				#{variant(#{n($translate-opt)}translate-#{$axis}-#{abs($translate-opt)}, $v)} {
+					--transform-translate-#{$axis}: #{$translate-opt + "%"};
+				}
+			}
+		}
 
-		.-y-100 { --dm-translate-y: -100%; }
-		.-y-50 { --dm-translate-y: -50%; }
-		.-y-0 { --dm-translate-y: 0%; }
-		.y-50 { --dm-translate-y: 50%; }
-		.y-100 { --dm-translate-y: 100%; }
+		@each $scale-opt in $-scale-opts {
+			#{variant(scale-#{abs($scale-opt * 100)}, $v)} {
+				--transform-scale: #{$scale-opt};
+			}
+		}
 	}
 }
