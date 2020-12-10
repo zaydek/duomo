@@ -1,5 +1,0 @@
-@use "core/meta/stacks" as *;
-
-@at-root {
-	@include stacks(core, responsive);
-}

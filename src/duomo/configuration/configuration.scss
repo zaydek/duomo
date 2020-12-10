@@ -1,3 +1,13 @@
+// Describes whether to optimize Duomo CSS for development
+// or production.
+//
+// Ex:
+//
+// $env: development // Does not optimize Duomo CSS
+// $env: production  // Optimizes Duomo CSS
+//
+$env: development !default;
+
 // Describes whether to generate Duomo CSS.
 //
 // Ex:

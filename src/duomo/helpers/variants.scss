@@ -5,44 +5,30 @@
 @use "resolvers" as *;
 @use "take" as *;
 
-// prettier-ignore
-$-supported-variants: (
-	core,
-	responsive,
-	hover,
-	focus,
-	group-hover,
-	group-focus,
-	touch,
-	group-touch,
-);
+@use "../configuration";
 
 @function core($selector) {
 	@return ".#{$selector}";
 }
+
 @function hover($selector) {
 	@return ".hover\\:#{$selector}:hover";
 }
 @function focus($selector) {
 	@return ".focus\\:#{$selector}:focus";
 }
+@function touch($selector) {
+	@return ".touch\\:#{$selector}:hover, .touch\\:#{$selector}:focus";
+}
+
 @function group-hover($selector) {
 	@return ".group:hover .group-hover\\:#{$selector}";
 }
 @function group-focus($selector) {
 	@return ".group:focus .group-focus\\:#{$selector}";
 }
-
-// prettier-ignore
-@function touch($selector) {
-	@return ".touch\\:#{$selector}:hover" + ", "
-		".touch\\:#{$selector}:focus";
-}
-
-// prettier-ignore
 @function group-touch($selector) {
-	@return ".group:hover .group-touch\\:#{$selector}" + ", "
-		".group:focus .group-touch\\:#{$selector}";
+	@return ".group:hover .group-touch\\:#{$selector}, .group:focus .group-touch\\:#{$selector}";
 }
 
 @function responsive($selector) {
@@ -56,28 +42,18 @@ $-supported-variants: (
 // }
 //
 @mixin variants($variants...) {
-	@each $variant in $variants {
-		@if not list.index($-supported-variants, $variant) {
-			@error "variants: bad variant; $variant=#{$variant}";
-		}
+	// TODO: This logic doesn’t need to be here.
+	@if configuration.$env != development and configuration.$env != production {
+		@error "variants: $env must be `development` or `production`; $env=#{$env}";
 	}
-
-	// @each $variant in take($variants, responsive) {
-	// 	/* variant=#{$variant} */
-	// 	@content ($variant);
-	// }
-
-	// FIXME: `take($variants, responsive)` is broken.
-	@each $variant in $variants {
-		@if $variant != responsive {
-			@if $variant != core {
-				/* #{$variant} */
-			}
+	@if configuration.$env == development {
+		@each $variant in take($variants, responsive) {
 			@content ($variant);
 		}
+	} @else if configuration.$env == production {
+		@content (take($variants, responsive));
 	}
 	@if list.index($variants, responsive) {
-		/* responsive */
 		@each $key, $n in breakpoints() {
 			@media (min-width: px($n)) {
 				.#{delimit($key)} {
@@ -96,9 +72,18 @@ $-supported-variants: (
 //   ...
 // }
 //
-@function variant($selector, $variant-fn-name) {
-	@if not meta.function-exists($variant-fn-name) {
-		@error "variant: no such variant function name `$variant-fn-name`; $variant-fn-name=#{$variant-fn-name}";
+@function variant($selector, $variants) {
+	@if list.length($variants) == 0 {
+		@error "variant: variants are empty";
 	}
-	@return meta.call(meta.get-function($variant-fn-name), $selector);
+
+	$concat-selector: "";
+	@each $variant in $variants {
+		@if not meta.function-exists($variant) {
+			@error "variant: no such variant; $variant=#{$variant}";
+		}
+		$transformed-selector: meta.call(meta.get-function($variant), $selector);
+		$concat-selector: $concat-selector + if($concat-selector == "", "", ", ") + $transformed-selector;
+	}
+	@return $concat-selector;
 }

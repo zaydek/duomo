@@ -62,7 +62,7 @@ $-align-self-opts: (
 	}
 
 	@include spacer;
-	@include zstack;
+	@include zstack($variants...);
 
 	// Nested stacks that do not use an explicit `width` or `height`
 	// should stretch. This enables stacks to:

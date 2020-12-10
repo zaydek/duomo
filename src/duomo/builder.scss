@@ -42,22 +42,25 @@ $-system-fonts: (
 			--transition-timing-function-default: timing(ease-out);
 		}
 
-		// TODO: Add `take` pattern here.
-		@each $mk, $mv in configuration.$variants {
-			@if $mk != hidden {
-				@include call-mixin($mk, var-join(core, take($mv, responsive))...);
-			}
+		@each $module, $variants in configuration.$variants {
+			@include call-mixin($module, $variants...);
 		}
-		@each $mk, $mv in configuration.$variants {
-			@if $mk != hidden {
-				@if list.index($mv, responsive) {
-					@include call-mixin($mk, responsive);
-				}
-			}
-		}
-		// NOTE: `hidden` must be last.
-		@if map.get(configuration.$variants, hidden) {
-			@include call-mixin(hidden, var-join(core, map.get(configuration.$variants, hidden))...);
-		}
+
+		// @each $mk, $mv in configuration.$variants {
+		// 	@if $mk != hidden {
+		// 		@include call-mixin($mk, var-join(core, take($mv, responsive))...);
+		// 	}
+		// }
+		// @each $mk, $mv in configuration.$variants {
+		// 	@if $mk != hidden {
+		// 		@if list.index($mv, responsive) {
+		// 			@include call-mixin($mk, responsive);
+		// 		}
+		// 	}
+		// }
+		// // NOTE: `hidden` must be last.
+		// @if map.get(configuration.$variants, hidden) {
+		// 	@include call-mixin(hidden, var-join(core, map.get(configuration.$variants, hidden))...);
+		// }
 	}
 }
