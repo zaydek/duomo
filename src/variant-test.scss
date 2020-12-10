@@ -1,0 +1,93 @@
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
+
+// Ex:
+//
+// take((0, 1, 2, 4), 4)             -> (0, 1, 2)
+// take((a: 0, b: 1, c: 2, d: 4), d) -> (a: 0, b: 1, c: 2)
+//
+@function take($collection, $item) {
+	$ret: ();
+	@if meta.type-of($collection) == list or meta.type-of($collection) == arglist {
+		@each $each in $collection {
+			@if $each != $item {
+				$ret: list.append($ret, $each);
+			}
+		}
+	} @else if meta.type-of($collection) == map {
+		@each $mk, $mv in $collection {
+			@if $mk != $item {
+				$ret: map.set($ret, $mk, $mv);
+			}
+		}
+	}
+	@return $ret;
+}
+
+@function core($selector) {
+	@return ".#{$selector}";
+}
+@function hover($selector) {
+	@return ".hover\\:#{$selector}:hover";
+}
+@function focus($selector) {
+	@return ".focus\\:#{$selector}:focus";
+}
+@function group-hover($selector) {
+	@return ".group:hover .group-hover\\:#{$selector}";
+}
+@function group-focus($selector) {
+	@return ".group:focus .group-focus\\:#{$selector}";
+}
+
+// // prettier-ignore
+// @function touch($selector) {
+// 	@return ".touch\\:#{$selector}:hover" + ", "
+// 		".touch\\:#{$selector}:focus";
+// }
+//
+// // prettier-ignore
+// @function group-touch($selector) {
+// 	@return ".group:hover .group-touch\\:#{$selector}" + ", "
+// 		".group:focus .group-touch\\:#{$selector}";
+// }
+
+@mixin variants($variants...) {
+	@content (take($variants, responsive));
+	@if list.index($variants, responsive) {
+		@content (responsive);
+	}
+}
+
+// $concat-selector: $concat-selector +
+// 	if($concat-selector == "", "", ", ") +
+// 	meta.call(meta.get-function($variant), $selector);
+
+@function variant($selector, $variants) {
+	$concat-selector: "";
+	@each $variant in $variants {
+		@if not meta.function-exists($variant) {
+			@error "variant: no such variant; $variant=#{$variant}";
+		}
+		$transformed-selector: meta.call(meta.get-function($variant), $selector);
+		$concat-selector: $concat-selector + if($concat-selector == "", "", ", ") + $transformed-selector;
+	}
+	@return $concat-selector;
+}
+
+$variants: (core, hover, group-hover); // , responsive);
+
+@at-root {
+	@include variants($variants...) using ($v) {
+		#{variant(a, $v)} {
+			top: 0;
+		}
+	}
+}
+
+// @each $each in take((a, b, c), a) {
+// 	.#{$each} {
+// 		#{$each}: 0;
+// 	}
+// }
