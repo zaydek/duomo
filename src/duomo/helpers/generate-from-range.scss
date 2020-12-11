@@ -12,8 +12,8 @@
 // (0, 0.5, 1)  -> true
 // (0, 50, 100) -> false
 //
+// prettier-ignore
 @function percent-heuristic($range) {
-	// prettier-ignore
 	$ok: $range and
 		meta.type-of(list.nth($range, 1)) == "number" and
 		list.nth($range, 1) >= -1 and
@@ -36,10 +36,8 @@
 	@each $rv in $range {
 		#{variant(#{n($rv)}#{$shorthand}-#{desc(abs($rv), $as-percent)}, $v)} {
 			@each $prop in $property {
-				// TODO: Check whether `resolve` needs to be escaped.
 				#{$prop}: resolve($rv, $resolver);
 			}
 		}
 	}
 }
-

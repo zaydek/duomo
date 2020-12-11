@@ -16,8 +16,6 @@ $-align-self-opts: (
 	align-self-baseline: baseline,
 );
 
-// TODO: Add `<zstack>`.
-//
 // Based on https://codepen.io/zaydek/pen/JjRbBqP
 @mixin hstack-vstack($variants...) {
 	@include variants($variants...) using ($v) {

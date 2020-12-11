@@ -3,7 +3,6 @@
  */
 declare function sass(data: string): string
 
-// TODO: Add passthrough test case.
 test("integration", () => {
 	const result = sass(`
 @use "src/duomo/helpers/resolvers" as *;
