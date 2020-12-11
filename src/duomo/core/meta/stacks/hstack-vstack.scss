@@ -83,7 +83,7 @@ $-align-self-opts: (
 			justify-content: center;
 
 			// NOTE: Use `min-(width|height)` for `overflow(-x|-y)?-scroll`.
-			min-height: min-content;
+			min-width: min-content;
 			min-height: min-content;
 		}
 
@@ -130,12 +130,11 @@ $-align-self-opts: (
 		 */
 
 		@if $v == core {
-			// `<spacer>`s are collapsible to `var(--space)`.
+			// `<spacer>`s collapse to `var(--space)`.
 			.spacer {
 				flex: 1 0 var(--space);
 
 				// NOTE: Use `min-(width|height)` for `overflow(-x|-y)?-scroll`.
-				// NOTE: `min-content` does not measure `flex-basis`.
 				min-width: var(--space);
 				min-height: var(--space);
 
