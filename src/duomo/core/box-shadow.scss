@@ -2,7 +2,7 @@
 
 @use "../helpers" as *;
 
-@function -keys($map) {
+@function -dm-keys($map) {
 	$ret: ();
 	@each $mk, $mv in $map {
 		$ret: list.append($ret, var(--dm-#{$mk}), comma);
@@ -16,7 +16,7 @@
 			@each $mk, $mv in shadows() {
 				--dm-#{$mk}: 0 0 transparent;
 			}
-			box-shadow: -keys(shadows());
+			box-shadow: -dm-keys(shadows());
 		}
 
 		@each $mk, $mv in shadows() {

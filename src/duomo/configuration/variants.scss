@@ -4,16 +4,21 @@ $-variants: (hover, focus, touch, group-hover, group-focus, group-touch);
 
 // prettier-ignore
 $variants: (
-	// NOTE: container implements its own responsive variants.
-	container:        (), // var-join(),
-	group:            (), // var-join(),
+	aspect-ratio:     (), // TODO: Add `responsive`.
+	container:        (),
+	group:            (),
 
-	aspect-ratio:     var-join(responsive), // TODO
 	border-radius:    var-join(responsive),
 	border-width:     var-join(responsive),
+	font-family:      var-join(responsive),
+	font-size:        var-join(responsive),
+	font-style:       var-join(responsive),
+	font-weight:      var-join(responsive),
 	grid:             var-join(responsive),
 	height:           var-join(responsive),
 	hidden:           var-join(responsive), // TODO: Add `$-variants`.
+	letter-spacing:   var-join(responsive),
+	line-height:      var-join(responsive),
 	margin:           var-join(responsive),
 	max-width:        var-join(responsive),
 	min-height:       var-join(responsive),
@@ -23,6 +28,9 @@ $variants: (
 	pointer-events:   var-join(responsive),
 	position:         var-join(responsive),
 	stacks:           var-join(responsive),
+	text-align:       var-join(responsive),
+	vertical-align:   var-join(responsive),
+	white-space:      var-join(responsive),
 	width:            var-join(responsive),
 
 	background-color: var-join($-variants, responsive),
@@ -30,8 +38,8 @@ $variants: (
 	box-shadow:       var-join($-variants, responsive),
 	color:            var-join($-variants, responsive),
 	opacity:          var-join($-variants, responsive),
-	transform:        var-join($-variants, responsive),
+	text-decoration:  var-join($-variants, responsive),
+	transform:        var-join($-variants, responsive), // TODO?
 	transition:       var-join($-variants, responsive), // TODO?
-	typography:       var-join($-variants, responsive), // TODO?
 	z-index:          var-join($-variants, responsive), // TODO?
 ) !default;
