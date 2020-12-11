@@ -1,25 +1,13 @@
 @use "../helpers" as *;
 
+// Based on https://codepen.io/zaydek/pen/VwKmNgz.
 @mixin hidden($variants...) {
 	@include variants($variants...) using ($v) {
 		#{variant(hidden, $v)} {
 			display: none;
 		}
 		#{variant(unhidden, $v)} {
-			display: var(--unhidden, block);
+			display: var(--dm-display, block);
 		}
 	}
 }
-
-// @if $v == core {
-// 	// prettier-ignore
-// 	@keyframes \?wobble {
-// 		0% { box-shadow: 0 0 0 4px hsl(var(--red-500)); }
-// 		100% { box-shadow: 0 0 0 8px hsl(var(--red-500)); }
-// 	}
-// }
-//
-// // // https://twitter.com/gavinjoyce/status/1333412203232374785
-// #{variant(escape("?"), $v)} {
-// 	animation: \?wobble /**/ 0.5s var(--ease-in-out) alternate infinite;
-// }

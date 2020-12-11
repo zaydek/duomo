@@ -23,8 +23,14 @@ $-align-self-opts: (
 		 * <hstack>
 		 */
 
+		@if $v == core {
+			// prettier-ignore
+			.hstack > * { --dm-display: initial; }
+		}
+
 		#{variant(hstack, $v)} {
-			display: flex;
+			--dm-display: flex;
+			display: var(--dm-display);
 			flex-direction: row;
 			justify-content: center;
 
@@ -75,8 +81,14 @@ $-align-self-opts: (
 		 * <vstack>
 		 */
 
+		@if $v == core {
+			// prettier-ignore
+			.vstack > * { --dm-display: initial; }
+		}
+
 		#{variant(vstack, $v)} {
-			display: flex;
+			--dm-display: flex;
+			display: var(--dm-display);
 			flex-direction: column;
 			justify-content: center;
 

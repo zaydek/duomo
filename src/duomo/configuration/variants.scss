@@ -16,7 +16,6 @@ $variants: (
 	font-weight:      var-join(responsive),
 	grid:             var-join(responsive),
 	height:           var-join(responsive),
-	hidden:           var-join(responsive), // TODO: Add `$macro-variants`.
 	letter-spacing:   var-join(responsive),
 	line-height:      var-join(responsive),
 	margin:           var-join(responsive),
@@ -37,6 +36,7 @@ $variants: (
 	border-color:     var-join($macro-variants, responsive),
 	box-shadow:       var-join($macro-variants, responsive),
 	color:            var-join($macro-variants, responsive),
+	hidden:           var-join($macro-variants, responsive),
 	opacity:          var-join($macro-variants, responsive),
 	text-decoration:  var-join($macro-variants, responsive),
 	transform:        var-join($macro-variants, responsive), // TODO?

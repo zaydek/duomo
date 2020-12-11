@@ -2,10 +2,14 @@
 
 @mixin grid($variants...) {
 	@include variants($variants...) using ($v) {
-		// TODO
-		#{variant(grid, $v)} {
-			--unhidden: grid;
-			display: grid;
+		@if $rv == core {
+			// prettier-ignore
+			.grid > * { --dm-display: initial; }
+
+			.grid {
+				--dm-display: grid;
+				display: var(--dm-display);
+			}
 		}
 
 		@for $rv from 0 through 12 {

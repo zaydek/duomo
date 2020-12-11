@@ -31,16 +31,12 @@ $-opts: (
 	),
 );
 
-// .zstack {
-// 	--unhidden: grid;
-// 	> * {
-// 		--unhidden: initial;
-// 	}
-// }
-
 @mixin zstack($variants...) {
 	@include variants($variants...) using ($v) {
 		@if $v == core {
+			// prettier-ignore
+			.zstack > * { --dm-display: initial; }
+
 			// `<zstack>` is implemented using — surprisingly — CSS Grid.
 			// CSS Grid enables children to be stacked (on top of each other) and centered.
 			// When combined with `relative` / `absolute`, `<zstack>` can be faithfully simulated on the web.
@@ -48,7 +44,8 @@ $-opts: (
 			// https://twitter.com/bdc/status/1245399999300558853?lang=en
 			// https://codepen.io/everdimension/pen/BaNpeWe
 			.zstack {
-				display: grid;
+				--dm-display: grid;
+				display: var(--dm-display);
 				place-items: center;
 				position: relative;
 				> * {
