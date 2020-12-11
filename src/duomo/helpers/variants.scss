@@ -10,7 +10,6 @@
 @function core($selector) {
 	@return ".#{$selector}";
 }
-
 @function hover($selector) {
 	@return ".hover\\:#{$selector}:hover";
 }
@@ -20,7 +19,6 @@
 @function touch($selector) {
 	@return ".touch\\:#{$selector}:hover, .touch\\:#{$selector}:focus";
 }
-
 @function group-hover($selector) {
 	@return ".group:hover .group-hover\\:#{$selector}";
 }
@@ -30,7 +28,6 @@
 @function group-touch($selector) {
 	@return ".group:hover .group-touch\\:#{$selector}, .group:focus .group-touch\\:#{$selector}";
 }
-
 @function responsive($selector) {
 	@return "#{&}#{$selector}";
 }

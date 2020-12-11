@@ -50,42 +50,42 @@
 //
 // prettier-ignore
 @mixin call-mixin($mixin, $variants...) {
-	// @if $mixin == "aspect-ratio" { @include aspect-ratio($variants...); }
-	// @if $mixin == "background-color" { @include background-color($variants...); }
-	// @if $mixin == "border-color" { @include border-color($variants...); }
-	// @if $mixin == "border-radius" { @include border-radius($variants...); }
-	// @if $mixin == "border-width" { @include border-width($variants...); }
-	// @if $mixin == "box-shadow" { @include box-shadow($variants...); }
-	// @if $mixin == "color" { @include color($variants...); }
-	// @if $mixin == "container" { @include container($variants...); }
-	// @if $mixin == "font-family" { @include font-family($variants...); }
-	// @if $mixin == "font-size" { @include font-size($variants...); }
-	// @if $mixin == "font-style" { @include font-style($variants...); }
-	// @if $mixin == "font-weight" { @include font-weight($variants...); }
-	// @if $mixin == "grid" { @include grid($variants...); }
+	@if $mixin == "aspect-ratio" { @include aspect-ratio($variants...); }
+	@if $mixin == "background-color" { @include background-color($variants...); }
+	@if $mixin == "border-color" { @include border-color($variants...); }
+	@if $mixin == "border-radius" { @include border-radius($variants...); }
+	@if $mixin == "border-width" { @include border-width($variants...); }
+	@if $mixin == "box-shadow" { @include box-shadow($variants...); }
+	@if $mixin == "color" { @include color($variants...); }
+	@if $mixin == "container" { @include container($variants...); }
+	@if $mixin == "font-family" { @include font-family($variants...); }
+	@if $mixin == "font-size" { @include font-size($variants...); }
+	@if $mixin == "font-style" { @include font-style($variants...); }
+	@if $mixin == "font-weight" { @include font-weight($variants...); }
+	@if $mixin == "grid" { @include grid($variants...); }
 	@if $mixin == "group" { @include group($variants...); }
-	// @if $mixin == "height" { @include height($variants...); }
-	// @if $mixin == "hidden" { @include hidden($variants...); }
-	// @if $mixin == "letter-spacing" { @include letter-spacing($variants...); }
-	// @if $mixin == "line-height" { @include line-height($variants...); }
-	// @if $mixin == "margin" { @include margin($variants...); }
-	// @if $mixin == "max-width" { @include max-width($variants...); }
-	// @if $mixin == "min-height" { @include min-height($variants...); }
-	// @if $mixin == "min-width" { @include min-width($variants...); }
-	// @if $mixin == "opacity" { @include opacity($variants...); }
-	// @if $mixin == "overflow" { @include overflow($variants...); }
-	// @if $mixin == "padding" { @include padding($variants...); }
-	// @if $mixin == "pointer-events" { @include pointer-events($variants...); }
-	// @if $mixin == "position" { @include position($variants...); }
-	// @if $mixin == "stacks" { @include stacks($variants...); }
-	// @if $mixin == "text-align" { @include text-align($variants...); }
-	// @if $mixin == "text-decoration" { @include text-decoration($variants...); }
-	// @if $mixin == "transform" { @include transform($variants...); }
-	// @if $mixin == "transition" { @include transition($variants...); }
-	// @if $mixin == "vertical-align" { @include vertical-align($variants...); }
-	// @if $mixin == "white-space" { @include white-space($variants...); }
-	// @if $mixin == "width" { @include width($variants...); }
-	// @if $mixin == "z-index" { @include z-index($variants...); }
+	@if $mixin == "height" { @include height($variants...); }
+	@if $mixin == "hidden" { @include hidden($variants...); }
+	@if $mixin == "letter-spacing" { @include letter-spacing($variants...); }
+	@if $mixin == "line-height" { @include line-height($variants...); }
+	@if $mixin == "margin" { @include margin($variants...); }
+	@if $mixin == "max-width" { @include max-width($variants...); }
+	@if $mixin == "min-height" { @include min-height($variants...); }
+	@if $mixin == "min-width" { @include min-width($variants...); }
+	@if $mixin == "opacity" { @include opacity($variants...); }
+	@if $mixin == "overflow" { @include overflow($variants...); }
+	@if $mixin == "padding" { @include padding($variants...); }
+	@if $mixin == "pointer-events" { @include pointer-events($variants...); }
+	@if $mixin == "position" { @include position($variants...); }
+	@if $mixin == "stacks" { @include stacks($variants...); }
+	@if $mixin == "text-align" { @include text-align($variants...); }
+	@if $mixin == "text-decoration" { @include text-decoration($variants...); }
+	@if $mixin == "transform" { @include transform($variants...); }
+	@if $mixin == "transition" { @include transition($variants...); }
+	@if $mixin == "vertical-align" { @include vertical-align($variants...); }
+	@if $mixin == "white-space" { @include white-space($variants...); }
+	@if $mixin == "width" { @include width($variants...); }
+	@if $mixin == "z-index" { @include z-index($variants...); }
 }
 
 @mixin duomo {
