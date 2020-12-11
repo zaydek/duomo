@@ -180,7 +180,7 @@ $-align-self-opts: (
 		 */
 
 		@each $rv in var-join(nrange(), range()) {
-			#{variant("#{n($rv)}space-#{abs($rv)}", $v)} > * {
+			#{variant(#{n($rv)}space-#{abs($rv)}, $v)} > * {
 				--space: #{rem($rv)};
 			}
 		}

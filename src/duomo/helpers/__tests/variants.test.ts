@@ -5,6 +5,8 @@ declare function sass(data: string): string
 
 test("integration", () => {
 	const result = sass(`
+@use "src/duomo/helpers/getters" as *;
+@use "src/duomo/helpers/resolvers" as *;
 @use "src/duomo/helpers/variants" as *;
 
 @mixin background-color($variants...) {
@@ -16,7 +18,16 @@ test("integration", () => {
 }
 
 @at-root {
-	@include background-color(core, responsive, hover, focus, group-hover, group-focus);
+	@include background-color(core, hover, focus, group-hover, group-focus);
+	@each $key, $n in breakpoints() {
+		@media (min-width: px($n)) {
+			.#{delimit($key)} {
+				@at-root {
+					@include background-color(responsive);
+				}
+			}
+		}
+	}
 }
 `)
 	// prettier-ignore
