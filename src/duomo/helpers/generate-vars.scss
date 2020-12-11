@@ -1,0 +1,11 @@
+@use "sass:map";
+
+@mixin generate-vars($maps...) {
+	:root {
+		@each $map in $maps {
+			@each $mk, $mv in $map {
+				--#{"" + $mk}: #{$mv};
+			}
+		}
+	}
+}

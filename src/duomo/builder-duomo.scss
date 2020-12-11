@@ -1,11 +1,3 @@
-@use "core/typography";
-
-@use "core/meta/aspect-ratio" as *;
-@use "core/meta/container" as *;
-@use "core/meta/group" as *;
-@use "core/meta/hidden" as *;
-@use "core/meta/stacks" as *;
-
 @use "core/background-color" as *;
 @use "core/border-color" as *;
 @use "core/border-radius" as *;
@@ -16,6 +8,11 @@
 @use "core/height" as *;
 @use "core/margin" as *;
 @use "core/max-width" as *;
+@use "core/meta/aspect-ratio" as *;
+@use "core/meta/container" as *;
+@use "core/meta/group" as *;
+@use "core/meta/hidden" as *;
+@use "core/meta/stacks" as *;
 @use "core/min-height" as *;
 @use "core/min-width" as *;
 @use "core/opacity" as *;
@@ -25,29 +22,35 @@
 @use "core/position" as *;
 @use "core/transform" as *;
 @use "core/transition" as *;
+@use "core/typography/font-family" as *;
+@use "core/typography/font-size" as *;
+@use "core/typography/font-style" as *;
+@use "core/typography/font-weight" as *;
+@use "core/typography/letter-spacing" as *;
+@use "core/typography/line-height" as *;
+@use "core/typography/text-align" as *;
+@use "core/typography/text-decoration" as *;
+@use "core/typography/vertical-align" as *;
+@use "core/typography/white-space" as *;
 @use "core/width" as *;
 @use "core/z-index" as *;
 
-// NOTE: Dart Sass does not support dynamic mixin calls.
-// Therefore mixins are statically called using conditions.
+// NOTE: Dart Sass does not support dynamic mixin invocations.
 //
 // https://github.com/sass/sass/issues/626
 //
 // prettier-ignore
 @mixin call-mixin($mixin, $variants...) {
-	@if $mixin == "typography" {
-		@include typography.white-space($variants...);
-		@include typography.text-align($variants...);
-		@include typography.font-family($variants...);
-		@include typography.vertical-align($variants...);
-		@include typography.font-size($variants...);
-		@include typography.letter-spacing($variants...);
-		@include typography.line-height($variants...);
-		@include typography.font-style($variants...);
-		@include typography.font-weight($variants...);
-		@include typography.text-decoration($variants...);
-	}
-
+	@if $mixin == "white-space" { @include typography.white-space($variants...); }
+	@if $mixin == "text-align" { @include typography.text-align($variants...); }
+	@if $mixin == "font-family" { @include typography.font-family($variants...); }
+	@if $mixin == "vertical-align" { @include typography.vertical-align($variants...); }
+	@if $mixin == "font-size" { @include typography.font-size($variants...); }
+	@if $mixin == "letter-spacing" { @include typography.letter-spacing($variants...); }
+	@if $mixin == "line-height" { @include typography.line-height($variants...); }
+	@if $mixin == "font-style" { @include typography.font-style($variants...); }
+	@if $mixin == "font-weight" { @include typography.font-weight($variants...); }
+	@if $mixin == "text-decoration" { @include typography.text-decoration($variants...); }
 	@if $mixin == "aspect-ratio" { @include aspect-ratio($variants...); }
 	@if $mixin == "background-color" { @include background-color($variants...); }
 	@if $mixin == "border-color" { @include border-color($variants...); }
