@@ -4,33 +4,31 @@ $-variants: (hover, focus, touch, group-hover, group-focus, group-touch);
 
 // prettier-ignore
 $variants: (
-	// container:        var-join(core),
-	// group:            var-join(core),
-
-	// aspect-ratio:     var-join(core, responsive), // TODO
-	// border-radius:    var-join(core, responsive),
-	// border-width:     var-join(core, responsive),
-	// grid:             var-join(core, responsive),
-	// height:           var-join(core, responsive),
-	// hidden:           var-join(core, responsive),
-	// margin:           var-join(core, responsive),
-	// max-width:        var-join(core, responsive),
-	// min-height:       var-join(core, responsive),
-	// min-width:        var-join(core, responsive),
-	// overflow:         var-join(core, responsive),
-	// padding:          var-join(core, responsive),
-	// pointer-events:   var-join(core, responsive),
-	// position:         var-join(core, responsive),
-	stacks:           var-join(core, responsive),
-	// width:            var-join(core, responsive),
-
-	// background-color: var-join(core, $-variants, responsive),
-	// border-color:     var-join(core, $-variants, responsive),
-	// box-shadow:       var-join(core, $-variants, responsive),
-	// color:            var-join(core, $-variants, responsive),
-	// opacity:          var-join(core, $-variants, responsive),
-	// transform:        var-join(core, $-variants, responsive),
-	// transition:       var-join(core, $-variants, responsive),
-	// typography:       var-join(core, $-variants, responsive),
-	// z-index:          var-join(core, $-variants, responsive),
+	container:        var-join(),
+	group:            var-join(),
+	aspect-ratio:     var-join(responsive), // TODO
+	border-radius:    var-join(responsive),
+	border-width:     var-join(responsive),
+	grid:             var-join(responsive),
+	height:           var-join(responsive),
+	hidden:           var-join(responsive), // TODO: Add `$-variants`.
+	margin:           var-join(responsive),
+	max-width:        var-join(responsive),
+	min-height:       var-join(responsive),
+	min-width:        var-join(responsive),
+	overflow:         var-join(responsive),
+	padding:          var-join(responsive),
+	pointer-events:   var-join(responsive),
+	position:         var-join(responsive),
+	stacks:           var-join(responsive),
+	width:            var-join(responsive),
+	background-color: var-join($-variants, responsive),
+	border-color:     var-join($-variants, responsive),
+	box-shadow:       var-join($-variants, responsive),
+	color:            var-join($-variants, responsive),
+	opacity:          var-join($-variants, responsive),
+	transform:        var-join($-variants, responsive),
+	transition:       var-join($-variants, responsive), // TODO?
+	typography:       var-join($-variants, responsive), // TODO?
+	z-index:          var-join($-variants, responsive), // TODO?
 ) !default;

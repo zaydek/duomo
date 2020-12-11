@@ -1,7 +1,6 @@
 @use "../../helpers" as *;
 
-// NOTE: Does not implement variants.
-@mixin group {
+@mixin group($variants...) {
 	.group {
 		/* YOLO */
 	}

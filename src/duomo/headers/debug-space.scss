@@ -15,7 +15,7 @@
 	}
 
 	[data-debug-space] .hstack {
-		// Paints a background color for HStack non-spacers.
+		// Paints a background color for `<hstack>` non-spacers.
 		> *:not(.spacer) + *:not(.spacer) {
 			position: relative;
 			&::after {
@@ -25,7 +25,7 @@
 				transform: translateX(-100%);
 			}
 		}
-		// Paints a background color for HStack empty spacers.
+		// Paints a background color for `<hstack>` empty spacers.
 		> .spacer:empty {
 			position: relative;
 			&::before {
@@ -36,7 +36,7 @@
 	}
 
 	[data-debug-space] .vstack {
-		// Paints a background color for VStack non-spacers.
+		// Paints a background color for `<vstack>` non-spacers.
 		> *:not(.spacer) + *:not(.spacer) {
 			position: relative;
 			&::after {
@@ -46,7 +46,7 @@
 				transform: translateY(-100%);
 			}
 		}
-		// Paints a background color for VStack empty spacers.
+		// Paints a background color for `<vstack>` empty spacers.
 		> .spacer:empty {
 			position: relative;
 			&::before {

@@ -1,21 +1,11 @@
-// Describes whether to optimize Duomo CSS for development
-// or production.
-//
-// Ex:
-//
-// $env: development // Does not optimize Duomo CSS
-// $env: production  // Optimizes Duomo CSS
-//
+// Describes whether to optimize Duomo CSS for development or production.
 $env: development !default;
 
 // Describes whether to generate Duomo CSS.
-//
-// Ex:
-//
-// $headless: true  // Does not build Duomo CSS
-// $headless: false // Builds Duomo CSS
-//
 $headless: false !default;
+
+// // Describes whether to generate Duomo CSS debuggers.
+// $debugger: false !default;
 
 // Describes the delimiter used for breakpoints, etc.
 //

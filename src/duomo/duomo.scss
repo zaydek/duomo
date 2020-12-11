@@ -1,3 +1,8 @@
+@use "sass:list";
+@use "sass:map";
+
+@use "helpers" as *;
+
 @use "core/background-color" as *;
 @use "core/border-color" as *;
 @use "core/border-radius" as *;
@@ -12,6 +17,7 @@
 @use "core/meta/container" as *;
 @use "core/meta/group" as *;
 @use "core/meta/hidden" as *;
+@use "core/meta/hidden"; // TOD as *O
 @use "core/meta/stacks" as *;
 @use "core/min-height" as *;
 @use "core/min-width" as *;
@@ -35,22 +41,14 @@
 @use "core/width" as *;
 @use "core/z-index" as *;
 
+@use "configuration";
+
 // NOTE: Dart Sass does not support dynamic mixin invocations.
 //
 // https://github.com/sass/sass/issues/626
 //
 // prettier-ignore
 @mixin call-mixin($mixin, $variants...) {
-	@if $mixin == "white-space" { @include typography.white-space($variants...); }
-	@if $mixin == "text-align" { @include typography.text-align($variants...); }
-	@if $mixin == "font-family" { @include typography.font-family($variants...); }
-	@if $mixin == "vertical-align" { @include typography.vertical-align($variants...); }
-	@if $mixin == "font-size" { @include typography.font-size($variants...); }
-	@if $mixin == "letter-spacing" { @include typography.letter-spacing($variants...); }
-	@if $mixin == "line-height" { @include typography.line-height($variants...); }
-	@if $mixin == "font-style" { @include typography.font-style($variants...); }
-	@if $mixin == "font-weight" { @include typography.font-weight($variants...); }
-	@if $mixin == "text-decoration" { @include typography.text-decoration($variants...); }
 	@if $mixin == "aspect-ratio" { @include aspect-ratio($variants...); }
 	@if $mixin == "background-color" { @include background-color($variants...); }
 	@if $mixin == "border-color" { @include border-color($variants...); }
@@ -59,10 +57,16 @@
 	@if $mixin == "box-shadow" { @include box-shadow($variants...); }
 	@if $mixin == "color" { @include color($variants...); }
 	@if $mixin == "container" { @include container($variants...); }
+	@if $mixin == "font-family" { @include font-family($variants...); }
+	@if $mixin == "font-size" { @include font-size($variants...); }
+	@if $mixin == "font-style" { @include font-style($variants...); }
+	@if $mixin == "font-weight" { @include font-weight($variants...); }
 	@if $mixin == "grid" { @include grid($variants...); }
-	@if $mixin == "group" { @include group(/* No-op */); }
+	@if $mixin == "group" { @include group($variants...); }
 	@if $mixin == "height" { @include height($variants...); }
 	@if $mixin == "hidden" { @include hidden($variants...); }
+	@if $mixin == "letter-spacing" { @include letter-spacing($variants...); }
+	@if $mixin == "line-height" { @include line-height($variants...); }
 	@if $mixin == "margin" { @include margin($variants...); }
 	@if $mixin == "max-width" { @include max-width($variants...); }
 	@if $mixin == "min-height" { @include min-height($variants...); }
@@ -73,8 +77,26 @@
 	@if $mixin == "pointer-events" { @include pointer-events($variants...); }
 	@if $mixin == "position" { @include position($variants...); }
 	@if $mixin == "stacks" { @include stacks($variants...); }
+	@if $mixin == "text-align" { @include text-align($variants...); }
+	@if $mixin == "text-decoration" { @include text-decoration($variants...); }
 	@if $mixin == "transform" { @include transform($variants...); }
 	@if $mixin == "transition" { @include transition($variants...); }
+	@if $mixin == "vertical-align" { @include vertical-align($variants...); }
+	@if $mixin == "white-space" { @include white-space($variants...); }
 	@if $mixin == "width" { @include width($variants...); }
 	@if $mixin == "z-index" { @include z-index($variants...); }
+}
+
+@mixin duomo {
+	@each $mk, $mv in take(configuration.$variants, hidden) {
+		@include call-mixin($mk, var-join(core, take($mv, responsive))...);
+	}
+	@each $mk, $mv in take(configuration.$variants, hidden) {
+		@if list.index($mv, responsive) {
+			@include call-mixin($mk, responsive);
+		}
+	}
+	@if map.get(configuration.$variants, hidden) {
+		@include call-mixin(hidden, var-join(core, map.get(configuration.$variants, hidden))...);
+	}
 }

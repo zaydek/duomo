@@ -1,6 +1,4 @@
 // https://github.com/sindresorhus/modern-normalize/blob/master/modern-normalize.css
-//
-// prettier-ignore
 @mixin modern-normalize {
 	/*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
 
@@ -56,6 +54,7 @@
 	*/
 
 	body {
+		// prettier-ignore
 		font-family:
 			system-ui,
 			-apple-system, /* Firefox supports this but not yet `system-ui` */
@@ -114,13 +113,7 @@
 	kbd,
 	samp,
 	pre {
-		font-family:
-			ui-monospace,
-			SFMono-Regular,
-			Consolas,
-			'Liberation Mono',
-			Menlo,
-			monospace; /* 1 */
+		font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace; /* 1 */
 		font-size: 1em; /* 2 */
 	}
 
@@ -194,7 +187,8 @@
 	*/
 
 	button,
-	select { /* 1 */
+	select {
+		/* 1 */
 		text-transform: none;
 	}
 
@@ -203,9 +197,9 @@
 	*/
 
 	button,
-	[type='button'],
-	[type='reset'],
-	[type='submit'] {
+	[type="button"],
+	[type="reset"],
+	[type="submit"] {
 		-webkit-appearance: button;
 	}
 
@@ -265,7 +259,7 @@
 	2. Correct the outline style in Safari.
 	*/
 
-	[type='search'] {
+	[type="search"] {
 		-webkit-appearance: textfield; /* 1 */
 		outline-offset: -2px; /* 2 */
 	}

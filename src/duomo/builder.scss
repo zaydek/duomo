@@ -1,22 +1,12 @@
-@use "builder-build-duomo" as *;
-@use "headers/custom-tailwind-base" as *;
-@use "headers/introspection" as *;
-@use "headers/modern-normalize" as *;
-@use "headers/vendored-font-smoothing" as *;
-@use "helpers" as *;
+@use "duomo" as *;
+@use "headers" as *;
 
 @use "configuration";
-
-// // TOOD
-// @use "debug";
 
 @at-root {
 	@if not configuration.$headless {
 		/*! duomo | MIT License | https://github.com/zaydek/duomo */
-		@include modern-normalize;
-		@include custom-tailwind-base;
-		@include vendored-font-smoothing;
-		@include introspection;
-		@include build-duomo;
+		@include headers;
+		@include duomo;
 	}
 }

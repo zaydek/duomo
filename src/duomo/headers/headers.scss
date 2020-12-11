@@ -1,0 +1,19 @@
+@use "custom-tailwind-base" as *;
+@use "debug-space" as *;
+@use "debug-stagger" as *;
+@use "debug" as *;
+@use "introspection" as *;
+@use "modern-normalize" as *;
+@use "vendored-font-smoothing" as *;
+
+@mixin headers {
+	/* purgecss start ignore */
+	@include modern-normalize;
+	@include custom-tailwind-base;
+	@include vendored-font-smoothing;
+	@include introspection;
+	@include debug-space;
+	@include debug-stagger;
+	@include debug;
+	/* purgecss end ignore */
+}
