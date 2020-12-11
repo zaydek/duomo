@@ -1,0 +1,188 @@
+@use "../../../helpers" as *;
+
+$-align-opts: (
+	align-stretch: stretch,
+	align-start: flex-start,
+	align-center: center,
+	align-end: flex-end,
+	align-baseline: baseline,
+);
+
+$-align-self-opts: (
+	align-self-stretch: stretch,
+	align-self-start: flex-start,
+	align-self-center: center,
+	align-self-end: flex-end,
+	align-self-baseline: baseline,
+);
+
+// TODO: Add `<zstack>`.
+//
+// Based on https://codepen.io/zaydek/pen/JjRbBqP
+@mixin hstack-vstack($variants...) {
+	@include variants($variants...) using ($v) {
+		/*
+		 * <hstack>
+		 */
+
+		#{variant(hstack, $v)} {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+
+			// NOTE: Use `min-(width|height)` for `overflow(-x|-y)?-scroll`.
+			min-width: min-content;
+			min-height: min-content;
+		}
+
+		@if $v == core {
+			// Resets `--space` to prevent propagation to nested stack contexts.
+			.hstack > * {
+				--space: 0;
+			}
+		}
+
+		// Polyfill Flexbox gap.
+		#{variant(hstack, $v)} > * + * {
+			margin-top: 0; // Reset
+			margin-left: var(--space);
+		}
+
+		// `<spacer :empty>` and `<spacer :empty><element>` do not implement spacing.
+		//
+		// /////////////// <- Implements spacing
+		// <element>
+		// /////////////// <- Does not implement spacing
+		// <spacer :empty>
+		// /////////////// <- Does not implement spacing
+		// <element>
+		//
+		#{variant(hstack, $v)} > .spacer:empty,
+		#{variant(hstack, $v)} > .spacer:empty + * {
+			margin-left: 0;
+		}
+
+		@if $v == core {
+			// Implements SwiftUI-style centering; children must declare `w-*` or
+			// `h-*` classes to opt into this behavior.
+			//
+			// prettier-ignore
+			.hstack > [class^="w-"], .hstack > [class*=" w-"],
+			.hstack > [class^="h-"], .hstack > [class*=" h-"] {
+				align-self: center;
+			}
+		}
+
+		/*
+		 * <vstack>
+		 */
+
+		#{variant(vstack, $v)} {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+
+			// NOTE: Use `min-(width|height)` for `overflow(-x|-y)?-scroll`.
+			min-height: min-content;
+			min-height: min-content;
+		}
+
+		@if $v == core {
+			// Resets `--space` to prevent propagation to nested stack contexts.
+			.vstack > * {
+				--space: 0;
+			}
+		}
+
+		// Polyfill Flexbox gap.
+		#{variant(vstack, $v)} > * + * {
+			margin-left: 0; // Reset
+			margin-top: var(--space);
+		}
+
+		// `<spacer :empty>` and `<spacer :empty><element>` do not implement spacing.
+		//
+		// /////////////// <- Implements spacing
+		// <element>
+		// /////////////// <- Does not implement spacing
+		// <spacer :empty>
+		// /////////////// <- Does not implement spacing
+		// <element>
+		//
+		#{variant(vstack, $v)} > .spacer:empty,
+		#{variant(vstack, $v)} > .spacer:empty + * {
+			margin-top: 0;
+		}
+
+		@if $v == core {
+			// Implements SwiftUI-style centering; children must declare `w-*` or
+			// `h-*` classes to opt into this behavior.
+			//
+			// prettier-ignore
+			.vstack > [class^="w-"], .vstack > [class*=" w-"],
+			.vstack > [class^="h-"], .vstack > [class*=" h-"] {
+				align-self: center;
+			}
+		}
+
+		/*
+		 * <spacer>
+		 */
+
+		@if $v == core {
+			// `<spacer>`s are collapsible to `var(--space)`.
+			.spacer {
+				flex: 1 0 var(--space);
+
+				// NOTE: Use `min-(width|height)` for `overflow(-x|-y)?-scroll`.
+				// NOTE: `min-content` does not measure `flex-basis`.
+				min-width: var(--space);
+				min-height: var(--space);
+
+				&:first-child,
+				&:empty + &:empty,
+				&:last-child {
+					--space: 0; // Zero out
+				}
+			}
+		}
+
+		/*
+		 * <... align-* align-self-*>
+		 */
+
+		// Escape hatch: `<hstack>` and `<vstack>` can simulate `align-items` and
+		// `align-self` but requires more elements.
+		//
+		// `justify-content` and `justify-self` are not stamped out because
+		// `<spacer>`s are preferred.
+		//
+		@each $mk, $mv in $-align-opts {
+			#{variant($mk, $v)} {
+				align-items: $mv;
+			}
+		}
+
+		// Escape hatch: `<hstack>` and `<vstack>` can simulate `align-items` and
+		// `align-self` but requires more elements.
+		//
+		// `justify-content` and `justify-self` are not stamped out because
+		// `<spacer>`s are preferred.
+		//
+		@each $mk, $mv in $-align-self-opts {
+			#{variant($mk, $v)} {
+				align-self: $mv;
+			}
+		}
+
+		/*
+		 * <... space-*>
+		 */
+
+		@each $rv in var-join(nrange(), range()) {
+			#{variant("#{n($rv)}space-#{abs($rv)}", $v)} > * {
+				--space: #{resolve($rv, rem)};
+			}
+		}
+	}
+}
