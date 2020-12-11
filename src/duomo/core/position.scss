@@ -1,16 +1,9 @@
 @use "../helpers" as *;
 
-// prettier-ignore
-$-opts: (
-	static,
-	relative,
-	absolute,
-	fixed,
-	sticky,
-);
+$-opts: (static, relative, absolute, fixed, sticky);
 
+// prettier-ignore
 @mixin position($variants...) {
-	// prettier-ignore
 	@include variants($variants...) using ($v) {
 		@each $opt in $-opts {
 			#{variant($opt, $v)} {

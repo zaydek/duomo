@@ -1,10 +1,6 @@
 @use "../helpers" as *;
 
-// prettier-ignore
-$-opts: (
-	hidden,
-	scroll,
-);
+$-opts: (hidden, scroll);
 
 @mixin overflow($variants...) {
 	@include variants($variants...) using ($v) {

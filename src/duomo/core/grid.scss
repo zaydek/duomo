@@ -19,29 +19,20 @@
 			}
 		}
 
-		// prettier-ignore
-		@include generate-from-range((
-			variant: $v,
-			shorthand: gap,
-			property: (gap),
-			range: range(),
-			resolver: rem,
-		));
-		// prettier-ignore
-		@include generate-from-range((
-			variant: $v,
-			shorthand: gap-x,
-			property: (column-gap),
-			range: range(),
-			resolver: rem,
-		));
-		// prettier-ignore
-		@include generate-from-range((
-			variant: $v,
-			shorthand: gap-y,
-			property: (row-gap),
-			range: range(),
-			resolver: rem,
-		));
+		@each $rv in range() {
+			#{variant(gap-#{$rv}, $v)} {
+				gap: rem($rv);
+			}
+		}
+		@each $rv in range() {
+			#{variant(gap-x-#{$rv}, $v)} {
+				column-gap: rem($rv);
+			}
+		}
+		@each $rv in range() {
+			#{variant(gap-y-#{$rv}, $v)} {
+				row-gap: rem($rv);
+			}
+		}
 	}
 }

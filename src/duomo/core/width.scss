@@ -1,18 +1,13 @@
 @use "../helpers" as *;
 
+// prettier-ignore
 @mixin width($variants...) {
-	// prettier-ignore
 	@include variants($variants...) using ($v) {
 		@include generate-from-range((
 			variant: $v,
 			shorthand: w,
 			property: (width),
-			range: var-join(
-				auto,
-				range(),
-				100%,
-				100vw,
-			),
+			range: var-join(auto, range(), 100%, 100vw),
 			resolver: rem,
 		));
 	}

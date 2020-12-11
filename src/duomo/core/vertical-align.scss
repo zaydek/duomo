@@ -1,4 +1,4 @@
-@use "../../helpers" as *;
+@use "../helpers" as *;
 
 $-opts: (top, baseline, middle, bottom);
 
@@ -6,7 +6,7 @@ $-opts: (top, baseline, middle, bottom);
 	@include variants($variants...) using ($v) {
 		@each $opt in $-opts {
 			#{variant(text-#{$opt}, $v)} {
-				vertical-align: left;
+				vertical-align: $opt;
 			}
 		}
 	}

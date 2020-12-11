@@ -28,16 +28,16 @@ $-scale-opts: (
 		}
 
 		@each $axis in (x, y) {
-			@each $translate-opt in $-translate-opts {
-				#{variant(#{n($translate-opt)}translate-#{$axis}-#{abs($translate-opt)}, $v)} {
-					--transform-translate-#{$axis}: #{$translate-opt + "%"};
+			@each $opt in $-translate-opts {
+				#{variant(#{n($opt)}translate-#{$axis}-#{abs($opt)}, $v)} {
+					--transform-translate-#{$axis}: #{$opt + "%"};
 				}
 			}
 		}
 
-		@each $scale-opt in $-scale-opts {
-			#{variant(scale-#{abs($scale-opt * 100)}, $v)} {
-				--transform-scale: #{$scale-opt};
+		@each $opt in $-scale-opts {
+			#{variant(scale-#{abs($opt * 100)}, $v)} {
+				--transform-scale: #{$opt};
 			}
 		}
 	}

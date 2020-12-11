@@ -1,6 +1,6 @@
 @use "../helpers/var-join" as *;
 
-$-variants: (hover, focus, touch, group-hover, group-focus, group-touch);
+$macro-variants: (hover, focus, group-hover, group-focus) !default;
 
 // prettier-ignore
 $variants: (
@@ -16,7 +16,7 @@ $variants: (
 	font-weight:      var-join(responsive),
 	grid:             var-join(responsive),
 	height:           var-join(responsive),
-	hidden:           var-join(responsive), // TODO: Add `$-variants`.
+	hidden:           var-join(responsive), // TODO: Add `$macro-variants`.
 	letter-spacing:   var-join(responsive),
 	line-height:      var-join(responsive),
 	margin:           var-join(responsive),
@@ -33,13 +33,13 @@ $variants: (
 	white-space:      var-join(responsive),
 	width:            var-join(responsive),
 
-	background-color: var-join($-variants, responsive),
-	border-color:     var-join($-variants, responsive),
-	box-shadow:       var-join($-variants, responsive),
-	color:            var-join($-variants, responsive),
-	opacity:          var-join($-variants, responsive),
-	text-decoration:  var-join($-variants, responsive),
-	transform:        var-join($-variants, responsive), // TODO?
-	transition:       var-join($-variants, responsive), // TODO?
-	z-index:          var-join($-variants, responsive), // TODO?
+	background-color: var-join($macro-variants, responsive),
+	border-color:     var-join($macro-variants, responsive),
+	box-shadow:       var-join($macro-variants, responsive),
+	color:            var-join($macro-variants, responsive),
+	opacity:          var-join($macro-variants, responsive),
+	text-decoration:  var-join($macro-variants, responsive),
+	transform:        var-join($macro-variants, responsive), // TODO?
+	transition:       var-join($macro-variants, responsive), // TODO?
+	z-index:          var-join($macro-variants, responsive), // TODO?
 ) !default;

@@ -1,4 +1,4 @@
-@use "../../helpers" as *;
+@use "../helpers" as *;
 
 @mixin aspect-ratio($variants...) {
 	// NOTE: Use `(attr(...))` so `--aspect-ratio: 16 / 9` works.

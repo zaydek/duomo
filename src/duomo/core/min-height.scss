@@ -1,7 +1,7 @@
 @use "../helpers" as *;
 
+// prettier-ignore
 @mixin min-height($variants...) {
-	// prettier-ignore
 	@include variants($variants...) using ($v) {
 		@include generate-from-range((
 			variant: $v,

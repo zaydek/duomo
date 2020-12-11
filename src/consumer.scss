@@ -1,1 +1,4 @@
-@use "duomo" as * with ($env: production);
+@use "duomo" as * with (
+	$env: production,
+	$macro-variants: (hover, hover, touch, group-hover, group-focus, group-touch),
+);
