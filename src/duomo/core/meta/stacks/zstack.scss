@@ -1,0 +1,70 @@
+@use "../../../helpers" as *;
+
+$-opts: (
+	tl: (
+		top: 0,
+		left: 0,
+	),
+	t: (
+		top: 0,
+	),
+	tr: (
+		top: 0,
+		right: 0,
+	),
+	l: (
+		left: 0,
+	),
+	r: (
+		right: 0,
+	),
+	bl: (
+		bottom: 0,
+		left: 0,
+	),
+	b: (
+		bottom: 0,
+	),
+	br: (
+		right: 0,
+		bottom: 0,
+	),
+);
+
+// .zstack {
+// 	--unhidden: grid;
+// 	> * {
+// 		--unhidden: initial;
+// 	}
+// }
+
+@mixin zstack($variants...) {
+	@include variants($variants...) using ($v) {
+		@if $v == core {
+			// 1. `grid` / `place-items` / `grid-area` center children.
+			// 2. `relative` / `absolute` constrain children.
+			//
+			// https://twitter.com/bdc/status/1245399999300558853?lang=en
+			// https://codepen.io/everdimension/pen/BaNpeWe
+			//
+			.zstack {
+				display: grid;
+				place-items: center;
+				position: relative;
+				> * {
+					grid-area: 1 / 1 / 1 / 1;
+				}
+			}
+		}
+
+		@each $mk, $mv in $-opts {
+			#{variant(place-#{$mk}, $v)} {
+				position: absolute;
+				@each $mk, $mv in $mv {
+					#{$mk}: $mv;
+				}
+				z-index: 10;
+			}
+		}
+	}
+}
