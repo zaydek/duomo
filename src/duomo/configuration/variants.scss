@@ -4,8 +4,10 @@ $-variants: (hover, focus, touch, group-hover, group-focus, group-touch);
 
 // prettier-ignore
 $variants: (
-	container:        var-join(),
-	group:            var-join(),
+	// NOTE: container implements its own responsive variants.
+	container:        (), // var-join(),
+	group:            (), // var-join(),
+
 	aspect-ratio:     var-join(responsive), // TODO
 	border-radius:    var-join(responsive),
 	border-width:     var-join(responsive),
@@ -22,6 +24,7 @@ $variants: (
 	position:         var-join(responsive),
 	stacks:           var-join(responsive),
 	width:            var-join(responsive),
+
 	background-color: var-join($-variants, responsive),
 	border-color:     var-join($-variants, responsive),
 	box-shadow:       var-join($-variants, responsive),

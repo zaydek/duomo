@@ -20,7 +20,7 @@
 		}
 
 		@each $mk, $mv in shadows() {
-			#{variant(shadow-#{$mk}, $v)} {
+			#{variant($mk, $v)} {
 				--shadow-#{$mk}: #{shadow($mk)};
 			}
 		}

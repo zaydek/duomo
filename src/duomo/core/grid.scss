@@ -19,19 +19,20 @@
 			}
 		}
 
+		// TODO: Use a generator?
 		@each $rv in range() {
 			#{variant(gap-#{$rv}, $v)} {
-				gap: resolve($rv, rem);
+				gap: rem($rv);
 			}
 		}
 		@each $rv in range() {
 			#{variant(gap-x-#{$rv}, $v)} {
-				column-gap: resolve($rv, rem);
+				column-gap: rem($rv);
 			}
 		}
 		@each $rv in range() {
 			#{variant(gap-y-#{$rv}, $v)} {
-				row-gap: resolve($rv, rem);
+				row-gap: rem($rv);
 			}
 		}
 	}

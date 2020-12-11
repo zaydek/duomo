@@ -36,8 +36,10 @@
 	@each $rv in $range {
 		#{variant(#{n($rv)}#{$shorthand}-#{desc(abs($rv), $as-percent)}, $v)} {
 			@each $prop in $property {
+				// TODO: Check whether `resolve` needs to be escaped.
 				#{$prop}: resolve($rv, $resolver);
 			}
 		}
 	}
 }
+

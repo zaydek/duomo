@@ -7,6 +7,11 @@
 // var-join((1, 2), 3) -> (1, 2, 3)
 //
 @function var-join($lists...) {
+	// TODO
+	@if list.length($lists) == 0 {
+		@return ();
+	}
+
 	$var-join: ();
 	@each $list in $lists {
 		@if meta.type-of($list) != "list" {

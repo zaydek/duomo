@@ -1,1 +1,1 @@
-@use "duomo" as * with ($env: development);
+@use "duomo" as * with ($env: production);
