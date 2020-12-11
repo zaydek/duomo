@@ -70,6 +70,7 @@ $-align-self-opts: (
 	// 1. Center children automatically.
 	// 2. Stretch nested stacks.
 	//
+	// TODO
 	.hstack:not([class^="w-"]):not([class*=" w-"]):not([class^="h-"]):not([class*=" h-"]),
 	.vstack:not([class^="w-"]):not([class*=" w-"]):not([class^="h-"]):not([class*=" h-"]),
 	.zstack:not([class^="w-"]):not([class*=" w-"]):not([class^="h-"]):not([class*=" h-"]) {

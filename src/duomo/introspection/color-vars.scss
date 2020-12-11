@@ -1,7 +1,0 @@
-@use "../helpers" as *;
-
-@mixin color-vars {
-	@each $mk, $mv in colors($raw: true) {
-		--#{"" + $mk}: #{$mv};
-	}
-}

@@ -26,21 +26,21 @@ $-system-fonts: (
 	@if not configuration.$headless {
 		/*! duomo | MIT License | https://github.com/zaydek/duomo */
 
-		@include preflight;
+		// @include preflight;
 
-		// prettier-ignore
-		:root {
-			@include introspection.vars((shorthand: none, map: $-fonts));
-			@include introspection.vars((shorthand: system, map: $-system-fonts));
-			@include introspection.color-vars;
-			@include introspection.vars((shorthand: none, map: shadows($raw: true)));
-			@include introspection.vars((shorthand: none, map: timings($raw: true)));
-
-			--placeholder-color-default: color(gray-400);
-			--border-color-default: color(gray-200);
-			--transition-duration-default: 300ms;
-			--transition-timing-function-default: timing(ease-out);
-		}
+		// 		// prettier-ignore
+		// 		:root {
+		// 			@include introspection.vars((shorthand: none, map: $-fonts));
+		// 			@include introspection.vars((shorthand: system, map: $-system-fonts));
+		// 			@include introspection.vars((shorthand: none, map: colors($raw: true)));
+		// 			@include introspection.vars((shorthand: none, map: shadows($raw: true)));
+		// 			@include introspection.vars((shorthand: none, map: timings($raw: true)));
+		//
+		// 			--placeholder-color-default: color(gray-400);
+		// 			--border-color-default: color(gray-200);
+		// 			--transition-duration-default: 300ms;
+		// 			--transition-timing-function-default: timing(ease-out);
+		// 		}
 
 		@each $module, $variants in configuration.$variants {
 			@include call-mixin($module, $variants...);
