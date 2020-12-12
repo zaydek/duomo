@@ -18,7 +18,6 @@ $variants: (
 	height:           var-join(core, responsive),
 	letter-spacing:   var-join(core, responsive),
 	line-height:      var-join(core, responsive),
-	margin:           var-join(core, responsive),
 	max-width:        var-join(core, responsive),
 	min-height:       var-join(core, responsive),
 	min-width:        var-join(core, responsive),
@@ -26,8 +25,13 @@ $variants: (
 	padding:          var-join(core, responsive),
 	pointer-events:   var-join(core, responsive),
 	position:         var-join(core, responsive),
+
+	// NOTE: `stacks` takes precedence over `margin`.
 	stacks:           var-join(core, responsive),
+	margin:           var-join(core, responsive),
 	text-align:       var-join(core, responsive),
+	transform:        var-join(core, responsive),
+	transition:       var-join(core, responsive),
 	vertical-align:   var-join(core, responsive),
 	white-space:      var-join(core, responsive),
 	width:            var-join(core, responsive),
@@ -39,7 +43,5 @@ $variants: (
 	hidden:           var-join(core, $macro-variants, responsive),
 	opacity:          var-join(core, $macro-variants, responsive),
 	text-decoration:  var-join(core, $macro-variants, responsive),
-	transform:        var-join(core, $macro-variants, responsive), // TODO?
-	transition:       var-join(core, $macro-variants, responsive), // TODO?
 	z-index:          var-join(core, $macro-variants, responsive), // TODO?
 ) !default;

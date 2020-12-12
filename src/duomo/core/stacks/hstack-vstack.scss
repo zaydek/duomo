@@ -153,7 +153,7 @@ $-align-self-opts: (
 				&:first-child,
 				&:empty + &:empty,
 				&:last-child {
-					flex-basis: 0;
+					flex: 1 0 0;
 					min-width: 0;
 					min-height: 0;
 				}
