@@ -12,7 +12,7 @@
 // <div class="h-* ...">
 // <div class="... h-* ...">
 //
-// Alternatively, consumers can use `align-self-stretch` as a fallback
+// Alternatively, consumers can use `align-self-stretch` as a fallback.
 //
 @mixin stretch-polyfill {
 	.hstack:not([class^="w-"]):not([class*=" w-"]):not([class^="h-"]):not([class*=" h-"]),
