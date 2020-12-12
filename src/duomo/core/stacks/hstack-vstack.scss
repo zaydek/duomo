@@ -25,15 +25,16 @@ $-align-self-opts: (
 		 * <hstack>
 		 */
 
-		@if matches($v, core) {
-			// prettier-ignore
-			.hstack > * { --dm-display: initial; }
-		}
+		// @if matches($v, core) {
+		// 	// prettier-ignore
+		// 	.hstack > * { --dm-display: initial; }
+		// }
 
 		// NOTE: Use `min-(width|height)` for `overflow(-x|-y)?-scroll`.
 		#{variant(hstack, $v)} {
-			--dm-display: flex;
-			display: var(--dm-display);
+			// --dm-display: flex;
+			// display: var(--dm-display);
+			display: flex;
 			flex-direction: row;
 			justify-content: center;
 			align-items: center;
@@ -83,15 +84,16 @@ $-align-self-opts: (
 		 * <vstack>
 		 */
 
-		@if matches($v, core) {
-			// prettier-ignore
-			.vstack > * { --dm-display: initial; }
-		}
+		// @if matches($v, core) {
+		// 	// prettier-ignore
+		// 	.vstack > * { --dm-display: initial; }
+		// }
 
 		// NOTE: Use `min-(width|height)` for `overflow(-x|-y)?-scroll`.
 		#{variant(vstack, $v)} {
-			--dm-display: flex;
-			display: var(--dm-display);
+			// --dm-display: flex;
+			// display: var(--dm-display);
+			display: flex;
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;

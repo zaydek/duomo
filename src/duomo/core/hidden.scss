@@ -1,13 +1,13 @@
 @use "../helpers" as *;
 
-// Based on https://codepen.io/zaydek/pen/VwKmNgz.
-@mixin hidden($variants...) {
-	@include variants($variants...) using ($v) {
-		#{variant(hidden, $v)} {
-			display: none;
-		}
-		#{variant(unhidden, $v)} {
-			display: var(--dm-display, block);
-		}
-	}
-}
+// // Based on https://codepen.io/zaydek/pen/VwKmNgz.
+// @mixin hidden($variants...) {
+// 	@include variants($variants...) using ($v) {
+// 		#{variant(hidden, $v)} {
+// 			display: none;
+// 		}
+// 		#{variant(unhidden, $v)} {
+// 			display: var(--dm-display, block);
+// 		}
+// 	}
+// }
