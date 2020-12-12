@@ -2,7 +2,7 @@
 
 @mixin grid($variants...) {
 	@include variants($variants...) using ($v) {
-		@if $rv == core {
+		@if $v == core {
 			// prettier-ignore
 			.grid > * { --dm-display: initial; }
 
