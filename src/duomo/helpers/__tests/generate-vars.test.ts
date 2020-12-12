@@ -15,6 +15,11 @@ test("integration", () => {
 				b: y,
 				c: z,
 			),
+			(
+				d: x,
+				e: y,
+				f: z,
+			),
 		);
 	}
 }
@@ -25,6 +30,9 @@ test("integration", () => {
 	--a: x;
 	--b: y;
 	--c: z;
+	--d: x;
+	--f: y;
+	--f: z;
 }
 `.trim())
 })

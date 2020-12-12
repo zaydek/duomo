@@ -9,11 +9,6 @@
 }
 
 @mixin debug-space {
-	:root {
-		--debug-hstack-space-bg: hsla(240, 100%, 50%, 0.1);
-		--debug-vstack-space-bg: hsla(210, 100%, 50%, 0.1);
-	}
-
 	[data-debug-space] .hstack {
 		// Paints a background color for `<hstack>` non-spacers.
 		> *:not(.spacer) + *:not(.spacer) {
@@ -21,7 +16,7 @@
 			&::after {
 				@include -empty-content-block;
 				width: var(--space);
-				background-color: var(--debug-hstack-space-bg);
+				background-color: var(--debug-hstack-space-background-color);
 				transform: translateX(-100%);
 			}
 		}
@@ -30,7 +25,7 @@
 			position: relative;
 			&::before {
 				@include -empty-content-block;
-				background-color: var(--debug-hstack-space-bg);
+				background-color: var(--debug-hstack-space-background-color);
 			}
 		}
 	}
@@ -42,7 +37,7 @@
 			&::after {
 				@include -empty-content-block;
 				height: var(--space);
-				background-color: var(--debug-vstack-space-bg);
+				background-color: var(--debug-vstack-space-background-color);
 				transform: translateY(-100%);
 			}
 		}
@@ -51,7 +46,7 @@
 			position: relative;
 			&::before {
 				@include -empty-content-block;
-				background-color: var(--debug-vstack-space-bg);
+				background-color: var(--debug-vstack-space-background-color);
 			}
 		}
 	}

@@ -1,10 +1,10 @@
 @use "custom-tailwind-base" as *;
 @use "debug-space" as *;
-@use "debug-stagger" as *;
 @use "debug" as *;
 @use "duomo-root" as *;
 @use "introspection" as *;
 @use "modern-normalize" as *;
+@use "stagger" as *;
 
 @mixin headers {
 	/* purgecss start ignore */
@@ -12,8 +12,8 @@
 	@include custom-tailwind-base;
 	@include duomo-root;
 	@include introspection;
-	@include debug-space;
-	@include debug-stagger;
+	@include stagger;
 	@include debug;
+	@include debug-space;
 	/* purgecss end ignore */
 }

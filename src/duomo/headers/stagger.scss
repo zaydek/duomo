@@ -1,0 +1,18 @@
+@mixin stagger {
+	[data-stagger-1] {
+		width: var(--stagger-1-width);
+	}
+	[data-stagger-2] {
+		width: var(--stagger-2-width);
+	}
+	[data-stagger-3] {
+		width: var(--stagger-3-width);
+	}
+	[data-stagger-4] {
+		width: var(--stagger-4-width);
+	}
+	// TODO: Takes precedence before `data-stagger-1`?
+	[data-stagger]:last-child {
+		width: var(--stagger-last-width);
+	}
+}

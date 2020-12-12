@@ -1,19 +1,12 @@
 @mixin debug {
-	:root {
-		--debug-outline: 2px solid hsla(210, 100%, 50%, 0.5);
-		--debug-outline-offset: -1px;
-		--debug-spacer-bg: hsla(210, 100%, 50%, 0.25);
-		--debug-empty-spacer-bg: hsla(180, 100%, 50%, 0.25);
-	}
-
 	[data-debug] * {
 		outline: var(--debug-outline);
 		outline-offset: var(--debug-outline-offset);
 	}
 	[data-debug] .spacer {
-		background-color: var(--debug-spacer-bg);
+		background-color: var(--debug-spacer-background-color);
 	}
 	[data-debug] .spacer:empty {
-		background-color: var(--debug-empty-spacer-bg);
+		background-color: var(--debug-empty-spacer-background-color);
 	}
 }

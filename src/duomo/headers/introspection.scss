@@ -1,32 +1,44 @@
+@use "sass:math";
+
 @use "../helpers" as *;
 
-$-quote: "''";
-
-$-fonts: (
-	sans: $-quote,
-	serif: $-quote,
-	mono: $-quote,
-	system-sans: font(sans, $raw: true),
-	system-serif: font(serif, $raw: true),
-	system-mono: font(mono, $raw: true),
-);
-
-$-reset-vars: (
-	placeholder-color-default: color(gray-400),
-	border-color-default: color(gray-200),
-	transition-duration-default: 300ms,
-	transition-timing-function-default: timing(ease-out),
-);
-
-// prettier-ignore
 @mixin introspection {
 	:root {
-		@include generate-vars(
-			colors($raw: true),
-			shadows($raw: true),
-			timings($raw: true),
-			$-fonts,
-			$-reset-vars,
-		);
+		@include generate-vars(colors($raw: true));
+		@include generate-vars(shadows($raw: true));
+		@include generate-vars(timings($raw: true));
+
+		// CSS reset user-preferred fonts.
+		--sans: "''";
+		--serif: "''";
+		--mono: "''";
+
+		// CSS reset system fonts.
+		--ui-sans: #{font(sans, $raw: true)};
+		--ui-serif: #{font(serif, $raw: true)};
+		--ui-mono: #{font(mono, $raw: true)};
+
+		// CSS reset vars.
+		--placeholder-color-default: #{color(gray-400)};
+		--border-color-default: #{color(gray-200)};
+		--transition-duration-default: 300ms;
+		--transition-timing-function-default: #{timing(ease-out)};
+
+		// `data-stagger` presets.
+		--stagger-1-width: #{math.percentage(4 / 8)};
+		--stagger-2-width: #{math.percentage(6 / 8)};
+		--stagger-3-width: #{math.percentage(7 / 8)};
+		--stagger-4-width: #{math.percentage(5 / 8)};
+		--stagger-last-width: 50%;
+
+		// `data-debug` presets.
+		--debug-outline: 2px solid hsla(210, 100%, 50%, 0.5);
+		--debug-outline-offset: -1px;
+		--debug-spacer-background-color: hsla(210, 100%, 50%, 0.25);
+		--debug-empty-spacer-background-color: hsla(180, 100%, 50%, 0.25);
+
+		// `data-debug-space` presets.
+		--debug-hstack-space-background-color: hsla(240, 100%, 50%, 0.1);
+		--debug-vstack-space-background-color: hsla(210, 100%, 50%, 0.1);
 	}
 }
