@@ -8,13 +8,15 @@ test("integration", () => {
 @use "src/duomo/helpers/generate-vars" as *;
 
 @at-root {
-	@include generate-vars(
-		(
-			a: x,
-			b: y,
-			c: z,
-		),
-	);
+	:root {
+		@include generate-vars(
+			(
+				a: x,
+				b: y,
+				c: z,
+			),
+		);
+	}
 }
 `)
 	// prettier-ignore
