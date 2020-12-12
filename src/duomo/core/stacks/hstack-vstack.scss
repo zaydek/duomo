@@ -1,5 +1,7 @@
 @use "../../helpers" as *;
 
+@use "sass:list";
+
 $-align-opts: (
 	align-stretch: stretch,
 	align-start: flex-start,
@@ -23,7 +25,7 @@ $-align-self-opts: (
 		 * <hstack>
 		 */
 
-		@if $v == core {
+		@if matches($v, core) {
 			// prettier-ignore
 			.hstack > * { --dm-display: initial; }
 		}
@@ -39,7 +41,7 @@ $-align-self-opts: (
 			min-height: min-content;
 		}
 
-		@if $v == core {
+		@if matches($v, core) {
 			// Resets `--space` to prevent propagation to nested stack contexts.
 			.hstack > * {
 				--space: 0;
@@ -66,7 +68,7 @@ $-align-self-opts: (
 			margin-left: 0;
 		}
 
-		@if $v == core {
+		@if matches($v, core) {
 			// Implements SwiftUI-style centering; children must declare `w-*` or
 			// `h-*` classes to opt into this behavior.
 			//
@@ -81,7 +83,7 @@ $-align-self-opts: (
 		 * <vstack>
 		 */
 
-		@if $v == core {
+		@if matches($v, core) {
 			// prettier-ignore
 			.vstack > * { --dm-display: initial; }
 		}
@@ -97,7 +99,7 @@ $-align-self-opts: (
 			min-height: min-content;
 		}
 
-		@if $v == core {
+		@if matches($v, core) {
 			// Resets `--space` to prevent propagation to nested stack contexts.
 			.vstack > * {
 				--space: 0;
@@ -124,7 +126,7 @@ $-align-self-opts: (
 			margin-top: 0;
 		}
 
-		@if $v == core {
+		@if matches($v, core) {
 			// Implements SwiftUI-style centering; children must declare `w-*` or
 			// `h-*` classes to opt into this behavior.
 			//
@@ -139,7 +141,7 @@ $-align-self-opts: (
 		 * <spacer>
 		 */
 
-		@if $v == core {
+		@if matches($v, core) {
 			// `<spacer>`s collapse to `var(--space)`.
 			.spacer {
 				flex: 1 0 var(--space);

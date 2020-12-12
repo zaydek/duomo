@@ -33,7 +33,7 @@ $-opts: (
 
 @mixin zstack($variants...) {
 	@include variants($variants...) using ($v) {
-		@if $v == core {
+		@if matches($v, core) {
 			// prettier-ignore
 			.zstack > * { --dm-display: initial; }
 

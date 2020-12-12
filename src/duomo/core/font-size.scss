@@ -7,7 +7,7 @@
 			variant: $v,
 			shorthand: text,
 			property: (font-size),
-			range: limit(range(), 10, 64),
+			range: limit(range(), 8, 64),
 			resolver: rem,
 		));
 	}

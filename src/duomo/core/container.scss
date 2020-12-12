@@ -2,15 +2,17 @@
 
 @mixin container($variants...) {
 	@include variants($variants...) using ($v) {
-		.container {
-			width: 100%;
-		}
-		@each $key, $n in breakpoints() {
-			@media (min-width: px($n)) {
-				.container {
-					margin-left: auto;
-					margin-right: auto;
-					max-width: px($n);
+		@if matches($v, core) {
+			.container {
+				width: 100%;
+			}
+			@each $key, $n in breakpoints() {
+				@media (min-width: px($n)) {
+					.container {
+						margin-left: auto;
+						margin-right: auto;
+						max-width: px($n);
+					}
 				}
 			}
 		}

@@ -8,6 +8,11 @@
 // take((a: 0, b: 1, c: 2, d: 4), d) -> (a: 0, b: 1, c: 2)
 //
 @function take($collection, $item) {
+	@if meta.type-of($collection) != list and meta.type-of($collection) != arglist and meta.type-of($collection) != map {
+		@error "take: `$collection` is not a collection-type; " +
+			"meta.type-of($collection)=#{meta.type-of($collection)}";
+	}
+
 	$ret: ();
 	@if meta.type-of($collection) == list or meta.type-of($collection) == arglist {
 		@each $each in $collection {

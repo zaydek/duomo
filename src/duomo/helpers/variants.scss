@@ -45,13 +45,13 @@
 @mixin variants($variants...) {
 	$taken: take($variants, responsive);
 	@if list.length($taken) > 0 {
-		@if configuration.$env == development {
-			@each $variant in $taken {
-				@content ($variant);
-			}
-		} @else if configuration.$env == production {
-			@content ($taken);
-		}
+		// @if configuration.$env == development {
+		// 	@each $variant in $taken {
+		// 		@content ($variant...);
+		// 	}
+		// } @else if configuration.$env == production {
+		@content ($taken);
+		// }
 	}
 	@if list.index($variants, responsive) {
 		@content (responsive);
@@ -64,7 +64,6 @@
 //   ...
 // }
 //
-// NOTE: Use `$variants` not `$variants...`.
 @function variant($selector, $variants) {
 	@if list.length($variants) == 0 {
 		@error "variant: variants are empty";

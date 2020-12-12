@@ -2,10 +2,10 @@
 
 @mixin debug-stagger {
 	:root {
-		--data-stagger-1: math.percentage(4 / 8);
-		--data-stagger-2: math.percentage(6 / 8);
-		--data-stagger-3: math.percentage(7 / 8);
-		--data-stagger-4: math.percentage(5 / 8);
+		--data-stagger-1: #{math.percentage(4 / 8)};
+		--data-stagger-2: #{math.percentage(6 / 8)};
+		--data-stagger-3: #{math.percentage(7 / 8)};
+		--data-stagger-4: #{math.percentage(5 / 8)};
 		--data-stagger-last: 50%;
 	}
 

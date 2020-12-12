@@ -88,24 +88,20 @@
 }
 
 @mixin duomo {
-	$taken: take(configuration.$variants, hidden);
-	@each $property, $variants in $taken {
-		@include call-mixin($property, var-join(core, take($variants, responsive))...);
+	$non-hidden: take(configuration.$variants, hidden);
+	@each $mk, $mv in $non-hidden {
+		@include call-mixin($mk, take($mv, responsive)...);
 	}
-
-	// TODO
 	@include call-mixin(hidden, core);
-
 	@each $key, $n in breakpoints() {
 		@media (min-width: px($n)) {
 			.#{delimit($key)} {
 				@at-root {
-					@each $property, $variants in $taken {
+					@each $property, $variants in $non-hidden {
 						@if list.index($variants, responsive) {
 							@include call-mixin($property, responsive);
 						}
 					}
-					// TODO
 					@include call-mixin(hidden, responsive);
 				}
 			}
