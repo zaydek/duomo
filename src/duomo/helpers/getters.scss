@@ -121,7 +121,7 @@
 	@if $raw {
 		@return $got;
 	}
-	@return var(--shadow-#{$key});
+	@return var(--#{$key});
 }
 
 @function timing($key, $raw: false) {

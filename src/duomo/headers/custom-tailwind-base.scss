@@ -1,5 +1,12 @@
 @use "../helpers" as *;
 
+@mixin vendored-font-smoothing {
+	:root {
+		-webkit-font-smoothing: auto;
+		-moz-osx-font-smoothing: auto;
+	}
+}
+
 // Based on Tailwind CSS 2.0.0 base.
 //
 // https://unpkg.com/tailwindcss@2.0.0/dist/base.css
@@ -243,4 +250,6 @@
 		max-width: 100%;
 		height: auto;
 	}
+
+	@include vendored-font-smoothing;
 }
