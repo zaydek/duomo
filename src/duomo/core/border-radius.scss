@@ -7,63 +7,63 @@
 			variant: $v,
 			shorthand: rounded,
 			property: (border-radius),
-			range: var-join(limit(range(), null, 24), 9999px),
+			range: var-join(limit(range(), null, 32), 9999px),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: rounded-t,
 			property: (border-top-left-radius, border-top-right-radius),
-			range: var-join(limit(range(), null, 24), 9999px),
+			range: var-join(limit(range(), null, 32), 9999px),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: rounded-r,
 			property: (border-top-right-radius, border-bottom-right-radius),
-			range: var-join(limit(range(), null, 24), 9999px),
+			range: var-join(limit(range(), null, 32), 9999px),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: rounded-b,
 			property: (border-bottom-left-radius, border-bottom-right-radius),
-			range: var-join(limit(range(), null, 24), 9999px),
+			range: var-join(limit(range(), null, 32), 9999px),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: rounded-l,
 			property: (border-top-left-radius, border-bottom-left-radius),
-			range: var-join(limit(range(), null, 24), 9999px),
+			range: var-join(limit(range(), null, 32), 9999px),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: rounded-tr,
 			property: (border-top-right-radius),
-			range: var-join(limit(range(), null, 24), 9999px),
+			range: var-join(limit(range(), null, 32), 9999px),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: rounded-br,
 			property: (border-bottom-right-radius),
-			range: var-join(limit(range(), null, 24), 9999px),
+			range: var-join(limit(range(), null, 32), 9999px),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: rounded-bl,
 			property: (border-bottom-left-radius),
-			range: var-join(limit(range(), null, 24), 9999px),
+			range: var-join(limit(range(), null, 32), 9999px),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: rounded-tl,
 			property: (border-top-left-radius),
-			range: var-join(limit(range(), null, 24), 9999px),
+			range: var-join(limit(range(), null, 32), 9999px),
 			resolver: rem,
 		));
 	}
