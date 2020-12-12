@@ -8,10 +8,10 @@ $-opts: (hstack, vstack, zstack, grid);
 // Disables auto-centering alignment behavior for display-level elements
 // that use `w-{$rv}` and or `h-{$rv}` classes.
 //
-// <div class="w-* ...">
-// <div class="... w-* ...">
-// <div class="h-* ...">
-// <div class="... h-* ...">
+// -> <div class="w-* ...">
+// -> <div class="... w-* ...">
+// -> <div class="h-* ...">
+// -> <div class="... h-* ...">
 //
 // Alternatively, consumers can use `align-self-stretch` as a fallback.
 //

@@ -16,7 +16,7 @@
 			&::after {
 				@include -empty-content-block;
 				width: var(--space);
-				background-color: var(--debug-hstack-space-background-color);
+				background-color: var(--debug-space-background-color);
 				transform: translateX(-100%);
 			}
 		}
@@ -25,7 +25,7 @@
 			position: relative;
 			&::before {
 				@include -empty-content-block;
-				background-color: var(--debug-hstack-space-background-color);
+				background-color: var(--debug-space-background-color);
 			}
 		}
 	}
@@ -37,7 +37,7 @@
 			&::after {
 				@include -empty-content-block;
 				height: var(--space);
-				background-color: var(--debug-vstack-space-background-color);
+				background-color: var(--debug-space-background-color);
 				transform: translateY(-100%);
 			}
 		}
@@ -46,7 +46,7 @@
 			position: relative;
 			&::before {
 				@include -empty-content-block;
-				background-color: var(--debug-vstack-space-background-color);
+				background-color: var(--debug-space-background-color);
 			}
 		}
 	}
