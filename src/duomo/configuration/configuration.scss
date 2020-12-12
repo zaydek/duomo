@@ -4,8 +4,8 @@ $env: development !default;
 // Describes whether to generate Duomo CSS.
 $headless: false !default;
 
-// // Describes whether to generate Duomo CSS debuggers.
-// $debugger: false !default;
+// Describes whether to generate Duomo CSS debuggers.
+$data-debugger: true !default;
 
 // Describes the delimiter used for breakpoints, etc.
 //

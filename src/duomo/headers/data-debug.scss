@@ -1,4 +1,4 @@
-@mixin debug {
+@mixin data-debug {
 	[data-debug] * {
 		outline: var(--debug-outline);
 		outline-offset: var(--debug-outline-offset);
