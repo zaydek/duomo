@@ -6,7 +6,7 @@
 @at-root {
 	@if not configuration.$headless {
 		/*! duomo | MIT License | https://github.com/zaydek/duomo */
-		// @include headers;
+		@include headers;
 		@include duomo;
 	}
 }
