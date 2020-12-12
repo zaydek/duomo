@@ -18,7 +18,7 @@ $-align-self-opts: (
 	align-self-baseline: baseline,
 );
 
-// Based on https://codepen.io/zaydek/pen/JjRbBqP
+// Based on https://codepen.io/zaydek/pen/WNGRQGo.
 @mixin hstack-vstack($variants...) {
 	@include variants($variants...) using ($v) {
 		/*
@@ -30,13 +30,13 @@ $-align-self-opts: (
 			.hstack > * { --dm-display: initial; }
 		}
 
+		// NOTE: Use `min-(width|height)` for `overflow(-x|-y)?-scroll`.
 		#{variant(hstack, $v)} {
 			--dm-display: flex;
 			display: var(--dm-display);
 			flex-direction: row;
 			justify-content: center;
-
-			// NOTE: Use `min-(width|height)` for `overflow(-x|-y)?-scroll`.
+			align-items: center;
 			min-width: min-content;
 			min-height: min-content;
 		}
@@ -68,16 +68,16 @@ $-align-self-opts: (
 			margin-left: 0;
 		}
 
-		@if matches($v, core) {
-			// Implements SwiftUI-style centering; children must declare `w-*` or
-			// `h-*` classes to opt into this behavior.
-			//
-			// prettier-ignore
-			.hstack > [class^="w-"], .hstack > [class*=" w-"],
-			.hstack > [class^="h-"], .hstack > [class*=" h-"] {
-				align-self: center;
-			}
-		}
+		// @if matches($v, core) {
+		// 	// Implements SwiftUI-style centering; children must declare `w-*` or
+		// 	// `h-*` classes to opt into this behavior.
+		// 	//
+		// 	// prettier-ignore
+		// 	.hstack > [class^="w-"], .hstack > [class*=" w-"],
+		// 	.hstack > [class^="h-"], .hstack > [class*=" h-"] {
+		// 		align-self: center;
+		// 	}
+		// }
 
 		/*
 		 * <vstack>
@@ -88,13 +88,13 @@ $-align-self-opts: (
 			.vstack > * { --dm-display: initial; }
 		}
 
+		// NOTE: Use `min-(width|height)` for `overflow(-x|-y)?-scroll`.
 		#{variant(vstack, $v)} {
 			--dm-display: flex;
 			display: var(--dm-display);
 			flex-direction: column;
 			justify-content: center;
-
-			// NOTE: Use `min-(width|height)` for `overflow(-x|-y)?-scroll`.
+			align-items: center;
 			min-width: min-content;
 			min-height: min-content;
 		}
@@ -126,34 +126,32 @@ $-align-self-opts: (
 			margin-top: 0;
 		}
 
-		@if matches($v, core) {
-			// Implements SwiftUI-style centering; children must declare `w-*` or
-			// `h-*` classes to opt into this behavior.
-			//
-			// prettier-ignore
-			.vstack > [class^="w-"], .vstack > [class*=" w-"],
-			.vstack > [class^="h-"], .vstack > [class*=" h-"] {
-				align-self: center;
-			}
-		}
+		// @if matches($v, core) {
+		// 	// Implements SwiftUI-style centering; children must declare `w-*` or
+		// 	// `h-*` classes to opt into this behavior.
+		// 	//
+		// 	// prettier-ignore
+		// 	.vstack > [class^="w-"], .vstack > [class*=" w-"],
+		// 	.vstack > [class^="h-"], .vstack > [class*=" h-"] {
+		// 		align-self: center;
+		// 	}
+		// }
 
 		/*
 		 * <spacer>
 		 */
 
+		// NOTE: Use `min-(width|height)` for `overflow(-x|-y)?-scroll`.
+		// NOTE: `min-content` does not measure `flex-basis`.
 		@if matches($v, core) {
-			// `<spacer>`s collapse to `var(--space)`.
 			.spacer {
 				flex: 1 0 var(--space);
-
-				// NOTE: Use `min-(width|height)` for `overflow(-x|-y)?-scroll`.
 				min-width: var(--space);
 				min-height: var(--space);
-
 				&:first-child,
 				&:empty + &:empty,
 				&:last-child {
-					--space: 0; // Zero out
+					--space: 0;
 				}
 			}
 		}
