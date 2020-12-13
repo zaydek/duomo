@@ -3,12 +3,8 @@
 @mixin grid($variants...) {
 	@include variants($variants...) using ($v) {
 		@if matches($v, core) {
-			// // prettier-ignore
-			// .grid > * { --dm-display: initial; }
-
 			.grid {
-				// --dm-display: grid;
-				// display: var(--dm-display);
+				align-self: stretch;
 				display: grid;
 			}
 		}

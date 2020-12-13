@@ -3,10 +3,12 @@
 		outline: var(--debug-outline);
 		outline-offset: var(--debug-outline-offset);
 	}
-	[data-debug] .spacer {
-		background-color: var(--debug-spacer-background-color);
-	}
+	// [data-debug] .spacer {
+	// 	background-color: var(--debug-spacer-background-color);
+	// }
 	[data-debug] .spacer:empty {
-		background-color: var(--debug-empty-spacer-background-color);
+		// background-color: var(--debug-empty-spacer-background-color);
+		outline: var(--debug-empty-spacer-outline);
+		outline-offset: 0;
 	}
 }
