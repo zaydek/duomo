@@ -27,7 +27,6 @@ $-align-self-opts: (
 
 		// NOTE: Use `min-(width|height)` for `overflow(-x|-y)?-scroll`.
 		#{variant(hstack, $v)} {
-			align-self: stretch;
 			display: flex;
 			flex-direction: row;
 			justify-content: center;
@@ -69,7 +68,6 @@ $-align-self-opts: (
 
 		// NOTE: Use `min-(width|height)` for `overflow(-x|-y)?-scroll`.
 		#{variant(vstack, $v)} {
-			align-self: stretch;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;

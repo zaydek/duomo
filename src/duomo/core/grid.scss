@@ -4,7 +4,6 @@
 	@include variants($variants...) using ($v) {
 		@if matches($v, core) {
 			.grid {
-				align-self: stretch;
 				display: grid;
 			}
 		}
