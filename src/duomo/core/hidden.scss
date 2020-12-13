@@ -14,10 +14,13 @@ $-opts: (
 				--dm-display-default: block;
 				--dm-display: var(--dm-display-default);
 			}
+			// Takes precedence.
 			@each $k, $v in $-opts {
 				.#{$k} > * {
 					--dm-display: var(--dm-display-default);
 				}
+			}
+			@each $k, $v in $-opts {
 				.#{$k} {
 					--dm-display: #{$v};
 				}
