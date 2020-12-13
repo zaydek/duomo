@@ -33,10 +33,10 @@
 
 		// `data-debug` presets.
 		--debug-outline: 2px solid hsla(210, 100%, 50%, 0.5);
-		// --debug-empty-spacer-outline: 2px dashed hsla(210, 100%, 50%, 0.5);
+		--debug-empty-spacer-outline: 2px dashed hsla(210, 100%, 50%, 0.5);
 		--debug-outline-offset: -2px;
 		--debug-spacer-background-color: hsla(210, 100%, 50%, 0.25);
-		--debug-empty-spacer-background-color: hsla(180, 100%, 50%, 0.25);
+		// --debug-empty-spacer-background-color: hsla(180, 100%, 50%, 0.25);
 
 		// `data-debug-space` presets.
 		--debug-space-background-color: hsla(210, 100%, 50%, 0.1);
