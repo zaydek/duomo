@@ -1,6 +1,6 @@
 {
 	"name": "@zaydek/duomo",
-	"version": "0.7.0-rc.45",
+	"version": "0.7.0-rc.46",
 	"main": "dist/production.css",
 	"license": "MIT",
 	"files": [
