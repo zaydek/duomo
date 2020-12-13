@@ -64,7 +64,7 @@
 	@if $mixin == "grid" { @include grid($variants...); }
 	@if $mixin == "group" { @include group($variants...); }
 	@if $mixin == "height" { @include height($variants...); }
-	// @if $mixin == "hidden" { @include hidden($variants...); }
+	@if $mixin == "hidden" { @include hidden($variants...); }
 	@if $mixin == "letter-spacing" { @include letter-spacing($variants...); }
 	@if $mixin == "line-height" { @include line-height($variants...); }
 	@if $mixin == "margin" { @include margin($variants...); }
@@ -92,7 +92,7 @@
 	@each $mk, $mv in $non-hidden {
 		@include call-mixin($mk, take($mv, responsive)...);
 	}
-	// @include call-mixin(hidden, core);
+	@include call-mixin(hidden, core);
 	@each $key, $n in breakpoints() {
 		@media (min-width: px($n)) {
 			.#{delimit($key)} {
@@ -102,7 +102,7 @@
 							@include call-mixin($property, responsive);
 						}
 					}
-					// @include call-mixin(hidden, responsive);
+					@include call-mixin(hidden, responsive);
 				}
 			}
 		}

@@ -1,13 +1,34 @@
 @use "../helpers" as *;
 
-// // Based on https://codepen.io/zaydek/pen/VwKmNgz.
-// @mixin hidden($variants...) {
-// 	@include variants($variants...) using ($v) {
-// 		#{variant(hidden, $v)} {
-// 			display: none;
-// 		}
-// 		#{variant(unhidden, $v)} {
-// 			display: var(--dm-display, block);
-// 		}
-// 	}
-// }
+$-opts: (
+	hstack: flex,
+	vstack: flex,
+	zstack: grid,
+	grid: grid,
+);
+
+@mixin hidden($variants...) {
+	@include variants($variants...) using ($v) {
+		@if matches($variants, core) {
+			:root {
+				--dm-display-default: block;
+				--dm-display: var(--dm-display-default);
+			}
+			@each $k, $v in $-opts {
+				.#{$k} > * {
+					--dm-display: var(--dm-display-default);
+				}
+				.#{$k} {
+					--dm-display: #{$v};
+				}
+			}
+		}
+
+		#{variant(hidden, $v)} {
+			display: none;
+		}
+		#{variant(unhidden, $v)} {
+			display: var(--dm-display);
+		}
+	}
+}
