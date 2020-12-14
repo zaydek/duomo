@@ -21,6 +21,21 @@ $-align-self-opts: (
 // Based on https://codepen.io/zaydek/pen/XWjpqjQ.
 @mixin hstack-vstack($variants...) {
 	@include variants($variants...) using ($v) {
+		@if matches($v, core) {
+			.hstack {
+				align-self: stretch;
+			}
+			.vstack {
+				align-self: stretch;
+			}
+			.zstack {
+				align-self: stretch;
+			}
+			.grid {
+				align-self: stretch;
+			}
+		}
+
 		/*
 		 * <hstack>
 		 */
