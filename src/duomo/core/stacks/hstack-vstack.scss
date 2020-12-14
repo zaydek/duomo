@@ -18,19 +18,77 @@ $-align-self-opts: (
 	align-self-baseline: baseline,
 );
 
-// Based on https://codepen.io/zaydek/pen/XWjpqjQ.
+// SwiftUI-style auto-centering is hard to faithfully simulate on the web.
+// Several conditions must be met:
+//
+// 1. Stacks stretch; children are centered
+// 2. Fixed-size stacks center (overrides 1)
+// 3. Stacks can be manually aligned (overrides 2)
+//
+// In order to faithfully simulate this logic using CSS, variables and
+// properties are used together.
+//
+// Stacks stretch; children are centered (meets condition 1):
+//
+// .hstack,
+// .vstack {
+//   --dm-align-self: stretch;
+//   align-self: var(--dm-align-self); // Stacks stretch
+// }
+//
+// .hstack {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: center;
+//   align-items: center; // Children are centered
+// }
+//
+// .vstack {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center; // Children are centered
+// }
+//
+// Fixed-size stacks center (meets condition 2):
+//
+// .w-#{$rv} {
+//   --dm-align-self: center; // Overrides `--dm-align-self: stretch`
+//   width: rem($rv);
+// }
+//
+// .h-#{$rv} {
+//   --dm-align-self: center;
+//   height: rem($rv);
+// }
+//
+// Stacks can be manually aligned (meets condition 3):
+//
+// .align-start {
+//   align-items: flex-start; // Overrides `align-self: var(--dm-align-self)`
+// }
+//
+// .align-end {
+//   align-items: flex-end; // Overrides `align-self: var(--dm-align-self)`
+// }
+
+// Based on https://codepen.io/zaydek/pen/mdrRZpb.
 @mixin hstack-vstack($variants...) {
 	@include variants($variants...) using ($v) {
 		@if matches($v, core) {
 			.hstack {
-				align-self: stretch;
+				--dm-align-self: stretch;
+				align-self: var(--dm-align-self);
 			}
 			.vstack {
-				align-self: stretch;
+				--dm-align-self: stretch;
+				align-self: var(--dm-align-self);
 			}
+			// NOTE: Cannot be aligned.
 			.zstack {
 				align-self: stretch;
 			}
+			// NOTE: Cannot be aligned.
 			.grid {
 				align-self: stretch;
 			}
@@ -40,20 +98,18 @@ $-align-self-opts: (
 		 * <hstack>
 		 */
 
-		// NOTE: Use `min-(width|height)` for `overflow(-x|-y)?-scroll`.
 		#{variant(hstack, $v)} {
 			display: flex;
 			flex-direction: row;
 			justify-content: center;
 			align-items: center;
-			min-width: min-content;
+			min-width: min-content; // For `overflow-x-scroll`
 		}
 
 		@if matches($v, core) {
-			// Resets `--space` to prevent propagation to nested stack contexts.
 			.hstack > * {
-				--dm-spacer-min-width: var(--space);
-				--space: 0;
+				--dm-spacer-min-width: var(--space); // Reset
+				--space: 0; // Reset
 			}
 		}
 
@@ -81,20 +137,18 @@ $-align-self-opts: (
 		 * <vstack>
 		 */
 
-		// NOTE: Use `min-(width|height)` for `overflow(-x|-y)?-scroll`.
 		#{variant(vstack, $v)} {
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			min-width: auto; // Reset
+			min-width: auto; // For `overflow-x-scroll`
 		}
 
 		@if matches($v, core) {
-			// Resets `--space` to prevent propagation to nested stack contexts.
 			.vstack > * {
-				--dm-spacer-min-width: 0;
-				--space: 0;
+				--dm-spacer-min-width: 0; // Reset
+				--space: 0; // Reset
 			}
 		}
 
@@ -122,18 +176,16 @@ $-align-self-opts: (
 		 * <spacer>
 		 */
 
-		// NOTE: Use `min-(width|height)` for `overflow(-x|-y)?-scroll`.
-		// NOTE: `min-content` does not measure `flex-basis`.
 		@if matches($v, core) {
 			.spacer {
 				flex: 1 0 var(--space);
-				min-width: var(--dm-spacer-min-width);
+				min-width: var(--dm-spacer-min-width); // For `overflow-x-scroll`
 			}
 			.spacer:first-child,
 			.spacer:empty + .spacer:empty,
 			.spacer:last-child {
 				flex: 1 0 0;
-				min-width: 0;
+				min-width: 0; // For `overflow-x-scroll`
 			}
 		}
 

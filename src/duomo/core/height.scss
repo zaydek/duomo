@@ -2,30 +2,30 @@
 
 // prettier-ignore
 @mixin height($variants...) {
-	@include variants($variants...) using ($v) {
-		@include generate-from-range((
-			variant: $v,
-			shorthand: h,
-			property: (height),
-			range: var-join(auto, range(), 100%, 100vh),
-			resolver: rem,
-		));
-	}
-
 	// @include variants($variants...) using ($v) {
-	// 	#{variant(h-auto, $v)} {
-	// 		height: auto;
-	// 	}
-	// 	@each $rv in range() {
-	// 		#{variant(h-#{$rv}, $v)} {
-	// 			align-self: center;
-	// 			height: rem($rv);
-	// 		}
-	// 	}
-	// 	@each $rv in (100%, 100vh) {
-	// 		#{variant(h-#{desc($rv)}, $v)} {
-	// 			height: $rv;
-	// 		}
-	// 	}
+	// 	@include generate-from-range((
+	// 		variant: $v,
+	// 		shorthand: h,
+	// 		property: (height),
+	// 		range: var-join(auto, range(), 100%, 100vh),
+	// 		resolver: rem,
+	// 	));
 	// }
+
+	@include variants($variants...) using ($v) {
+		#{variant(h-auto, $v)} {
+			height: auto;
+		}
+		@each $rv in range() {
+			#{variant(h-#{$rv}, $v)} {
+				--dm-align-self: center;
+				height: rem($rv);
+			}
+		}
+		@each $rv in (100%, 100vh) {
+			#{variant(h-#{desc($rv)}, $v)} {
+				height: $rv;
+			}
+		}
+	}
 }

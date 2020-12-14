@@ -8,6 +8,18 @@ $variants: (
 	container:        var-join(core),
 	group:            var-join(core),
 
+
+	// 1. `margin` must be anywhere after `stacks` (see `stacks.space-*`)
+	// 2. `width` and `height` must be anywhere after `stacks` (see `stacks`)
+	//
+	stacks:           var-join(core, responsive),
+	margin:           var-join(core, responsive),
+	height:           var-join(core, responsive),
+	max-width:        var-join(core, responsive),
+	min-height:       var-join(core, responsive),
+	min-width:        var-join(core, responsive),
+	width:            var-join(core, responsive),
+
 	border-radius:    var-join(core, responsive),
 	border-width:     var-join(core, responsive),
 	font-family:      var-join(core, responsive),
@@ -15,27 +27,17 @@ $variants: (
 	font-style:       var-join(core, responsive),
 	font-weight:      var-join(core, responsive),
 	grid:             var-join(core, responsive),
-	height:           var-join(core, responsive),
 	letter-spacing:   var-join(core, responsive),
 	line-height:      var-join(core, responsive),
-	max-width:        var-join(core, responsive),
-	min-height:       var-join(core, responsive),
-	min-width:        var-join(core, responsive),
 	overflow:         var-join(core, responsive),
 	padding:          var-join(core, responsive),
 	pointer-events:   var-join(core, responsive),
 	position:         var-join(core, responsive),
-
-	// `stacks` takes precedence over `margin`.
-	stacks:           var-join(core, responsive),
-	margin:           var-join(core, responsive),
-
 	text-align:       var-join(core, responsive),
 	transform:        var-join(core, responsive),
 	transition:       var-join(core, responsive),
 	vertical-align:   var-join(core, responsive),
 	white-space:      var-join(core, responsive),
-	width:            var-join(core, responsive),
 
 	background-color: var-join(core, $macro-variants, responsive),
 	border-color:     var-join(core, $macro-variants, responsive),

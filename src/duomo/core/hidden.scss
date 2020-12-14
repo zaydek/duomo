@@ -14,7 +14,7 @@ $-opts: (
 				--dm-display-default: block;
 				--dm-display: var(--dm-display-default);
 			}
-			// Takes precedence.
+			// Takes precedence because variables need to be reset.
 			@each $k, $v in $-opts {
 				.#{$k} > * {
 					--dm-display: var(--dm-display-default);
