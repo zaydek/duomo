@@ -9,7 +9,7 @@ $-opts: (
 
 @mixin hidden($variants...) {
 	@include variants($variants...) using ($v) {
-		@if matches($variants, core) {
+		@if matches($v, core) {
 			:root {
 				--dm-display-default: block;
 				--dm-display: var(--dm-display-default);

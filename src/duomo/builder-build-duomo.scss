@@ -88,11 +88,14 @@
 }
 
 @mixin duomo {
+	$hidden: map.get(configuration.$variants, hidden);
 	$non-hidden: take(configuration.$variants, hidden);
+
 	@each $mk, $mv in $non-hidden {
 		@include call-mixin($mk, take($mv, responsive)...);
 	}
-	@include call-mixin(hidden, core);
+	// TODO: Move under `breakpoints()`?
+	@include call-mixin(hidden, take($hidden, responsive)...);
 	@each $key, $n in breakpoints() {
 		@media (min-width: px($n)) {
 			.#{delimit($key)} {
@@ -102,7 +105,10 @@
 							@include call-mixin($property, responsive);
 						}
 					}
-					@include call-mixin(hidden, responsive);
+					// TODO: Move under `breakpoints()`?
+					@if list.index($hidden, responsive) {
+						@include call-mixin(hidden, responsive);
+					}
 				}
 			}
 		}
