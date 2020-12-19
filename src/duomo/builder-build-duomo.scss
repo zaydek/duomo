@@ -15,7 +15,6 @@
 @use "core/font-size" as *;
 @use "core/font-style" as *;
 @use "core/font-weight" as *;
-@use "core/grid" as *;
 @use "core/group" as *;
 @use "core/height" as *;
 @use "core/hidden" as *;
@@ -61,7 +60,6 @@
 	@if $mixin == "font-size" { @include font-size($variants...); }
 	@if $mixin == "font-style" { @include font-style($variants...); }
 	@if $mixin == "font-weight" { @include font-weight($variants...); }
-	@if $mixin == "grid" { @include grid($variants...); }
 	@if $mixin == "group" { @include group($variants...); }
 	@if $mixin == "height" { @include height($variants...); }
 	@if $mixin == "hidden" { @include hidden($variants...); }
@@ -91,11 +89,13 @@
 	$hidden: map.get(configuration.$variants, hidden);
 	$non-hidden: take(configuration.$variants, hidden);
 
+	// Non-responsive:
 	@each $mk, $mv in $non-hidden {
 		@include call-mixin($mk, take($mv, responsive)...);
 	}
-	// TODO: Move under `breakpoints()`?
 	@include call-mixin(hidden, take($hidden, responsive)...);
+
+	// Responsive:
 	@each $key, $n in breakpoints() {
 		@media (min-width: px($n)) {
 			.#{delimit($key)} {
@@ -105,7 +105,6 @@
 							@include call-mixin($property, responsive);
 						}
 					}
-					// TODO: Move under `breakpoints()`?
 					@if list.index($hidden, responsive) {
 						@include call-mixin(hidden, responsive);
 					}

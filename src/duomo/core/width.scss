@@ -2,30 +2,13 @@
 
 // prettier-ignore
 @mixin width($variants...) {
-	// @include variants($variants...) using ($v) {
-	// 	@include generate-from-range((
-	// 		variant: $v,
-	// 		shorthand: w,
-	// 		property: (width),
-	// 		range: var-join(auto, range(), 100%, 100vw),
-	// 		resolver: rem,
-	// 	));
-	// }
-
 	@include variants($variants...) using ($v) {
-		#{variant(w-auto, $v)} {
-			width: auto;
-		}
-		@each $rv in range() {
-			#{variant(w-#{$rv}, $v)} {
-				--dm-align-self: center;
-				width: rem($rv);
-			}
-		}
-		@each $rv in (100%, 100vw) {
-			#{variant(w-#{desc($rv)}, $v)} {
-				width: $rv;
-			}
-		}
+		@include generate-from-range((
+			variant: $v,
+			shorthand: w,
+			property: (width),
+			range: var-join(auto, range(), 100%, 100vw),
+			resolver: rem,
+		));
 	}
 }

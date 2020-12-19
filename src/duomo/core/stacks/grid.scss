@@ -1,4 +1,4 @@
-@use "../helpers" as *;
+@use "../../helpers" as *;
 
 @mixin grid($variants...) {
 	@include variants($variants...) using ($v) {

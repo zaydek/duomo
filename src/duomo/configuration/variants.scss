@@ -10,9 +10,7 @@ $variants: (
 	container:        var-join(core),
 	group:            var-join(core),
 
-	// 1. `margin` must be anywhere after `stacks` (see `stacks.space-*`)
-	// 2. `width` and `height` must be anywhere after `stacks` (see `stacks`)
-	//
+	// Stacks (and CSS Grid) take precedence
 	stacks:           var-join(core, responsive),
 	border-radius:    var-join(core, responsive),
 	border-width:     var-join(core, responsive),
@@ -32,8 +30,6 @@ $variants: (
 	pointer-events:   var-join(core, responsive),
 	position:         var-join(core, responsive),
 	text-align:       var-join(core, responsive),
-	transform:        var-join(core, responsive), // TODO
-	transition:       var-join(core, responsive), // TODO
 	vertical-align:   var-join(core, responsive),
 	white-space:      var-join(core, responsive),
 	width:            var-join(core, responsive),
@@ -46,5 +42,7 @@ $variants: (
 	hidden:           var-join(core, $macro-variants, responsive),
 	opacity:          var-join(core, $macro-variants, responsive),
 	text-decoration:  var-join(core, $macro-variants, responsive),
+	transform:        var-join(core, $macro-variants, responsive),
+	transition:       var-join(core, $macro-variants, responsive),
 	z-index:          var-join(core, $macro-variants, responsive), // TODO?
 ) !default;
