@@ -6,17 +6,18 @@ declare namespace global {
 
 // Ex:
 //
-// sassy(`.t-0 { top: 0; }`)
+// sassy(`.mx-0 { margin-left: 0; margin-right: 0; }`)
 //
-// .t-0 {
-//   top: 0;
+// .mx-0 {
+//   margin-left: 0;
+//   margin-right: 0;
 // }
 //
 global.sass = (data: string) => {
 	const result = sass.renderSync({
+		data,
 		indentType: "tab",
 		indentWidth: 1,
-		data,
 	})
 	return result.css.toString()
 }
