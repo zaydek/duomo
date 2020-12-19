@@ -24,10 +24,11 @@
 
 $-opts: (100, 200, 300, 400, 500, 600, 700, 800, 900);
 
+// TODO: Change to `generate-from-range` API?
 @mixin font-weight($variants...) {
 	@include variants($variants...) using ($v) {
 		@each $rv in $-opts {
-			#{variant($rv, $v)} {
+			#{variant(weight-#{$rv}, $v)} {
 				font-weight: $rv;
 			}
 		}
