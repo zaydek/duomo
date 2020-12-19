@@ -9,12 +9,12 @@
 		"duomo.scss"
 	],
 	"scripts": {
-		"watch": "nodemon --exec 'sass --style=compressed --no-charset --no-source-map src/consumer.scss dist/development.css && yarn prettier --write dist/development.css' --ext css,scss --watch src",
+		"watch": "nodemon --exec 'sass --no-charset --no-source-map --style=compressed src/consumer.scss dist/development.css && yarn prettier --write dist/development.css' --ext css,scss --watch src",
 		"test": "jest",
-		"build-duomo-dev": "sass --style=compressed --no-charset --no-source-map builds/development.scss dist/development.css && yarn prettier -w dist/development.css",
-		"build-duomo-dev-full": "sass --style=compressed --no-charset --no-source-map builds/development-full.scss dist/development-full.css && yarn prettier -w dist/development-full.css",
-		"build-duomo-prod": "sass --style=compressed --no-charset --no-source-map builds/production.scss dist/production.css",
-		"build-duomo-prod-full": "sass --style=compressed --no-charset --no-source-map builds/production-full.scss dist/production-full.css",
+		"build-duomo-dev": "sass --no-charset --no-source-map --style=compressed builds/development.scss dist/development.css && yarn prettier -w dist/development.css",
+		"build-duomo-dev-full": "sass --no-charset --no-source-map --style=compressed builds/development-full.scss dist/development-full.css && yarn prettier -w dist/development-full.css",
+		"build-duomo-prod": "sass --no-charset --no-source-map --style=compressed builds/production.scss dist/production.css",
+		"build-duomo-prod-full": "sass --no-charset --no-source-map --style=compressed builds/production-full.scss dist/production-full.css",
 		"build": "yarn rimraf dist && yarn tsc && yarn build-duomo-dev && yarn build-duomo-dev-full && yarn build-duomo-prod && yarn build-duomo-prod-full",
 		"publish-dist-dry-run": "yarn build && npm publish --dry-run"
 	},

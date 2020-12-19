@@ -3,21 +3,17 @@
 
 @use "helpers" as *;
 
-@use "core/aspect-ratio" as *;
 @use "core/background-color" as *;
 @use "core/border-color" as *;
 @use "core/border-radius" as *;
 @use "core/border-width" as *;
 @use "core/box-shadow" as *;
 @use "core/color" as *;
-@use "core/container" as *;
 @use "core/font-family" as *;
 @use "core/font-size" as *;
 @use "core/font-style" as *;
 @use "core/font-weight" as *;
-@use "core/group" as *;
 @use "core/height" as *;
-@use "core/hidden" as *;
 @use "core/letter-spacing" as *;
 @use "core/line-height" as *;
 @use "core/margin" as *;
@@ -29,7 +25,6 @@
 @use "core/padding" as *;
 @use "core/pointer-events" as *;
 @use "core/position" as *;
-@use "core/stacks" as *;
 @use "core/text-align" as *;
 @use "core/text-decoration" as *;
 @use "core/transform" as *;
@@ -38,6 +33,12 @@
 @use "core/white-space" as *;
 @use "core/width" as *;
 @use "core/z-index" as *;
+
+@use "extensions/aspect-ratio" as *;
+@use "extensions/container" as *;
+@use "extensions/group" as *;
+@use "extensions/hidden" as *;
+@use "extensions/stacks" as *;
 
 @use "configuration";
 
