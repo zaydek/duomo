@@ -1,48 +1,48 @@
-@use "../helpers/var-join" as *;
+@use "../helpers/to-array" as *;
 
 $macro-variants: (hover, focus, group-hover, group-focus) !default;
 
-// NOTE: Use `var-join` because `(core)` resolves to a string.
+// NOTE: Use `to-array` because `(core)` resolves to a string.
 //
 // prettier-ignore
 $variants: (
-	aspect-ratio:     var-join(core), // TODO: Add `responsive`.
-	container:        var-join(core),
-	group:            var-join(core),
+	aspect-ratio:     to-array(core), // TODO: Add `responsive`.
+	container:        to-array(core),
+	group:            to-array(core),
 
 	// Stacks (and CSS Grid) take precedence
-	stacks:           var-join(core, responsive),
-	border-radius:    var-join(core, responsive),
-	border-width:     var-join(core, responsive),
-	font-family:      var-join(core, responsive),
-	font-size:        var-join(core, responsive),
-	font-weight:      var-join(core, responsive),
-	grid:             var-join(core, responsive),
-	height:           var-join(core, responsive),
-	letter-spacing:   var-join(core, responsive),
-	line-height:      var-join(core, responsive),
-	margin:           var-join(core, responsive),
-	max-width:        var-join(core, responsive),
-	min-height:       var-join(core, responsive),
-	min-width:        var-join(core, responsive),
-	overflow:         var-join(core, responsive),
-	padding:          var-join(core, responsive),
-	pointer-events:   var-join(core, responsive),
-	position:         var-join(core, responsive),
-	text-align:       var-join(core, responsive),
-	vertical-align:   var-join(core, responsive),
-	white-space:      var-join(core, responsive),
-	width:            var-join(core, responsive),
+	stacks:           to-array(core, responsive),
+	border-radius:    to-array(core, responsive),
+	border-width:     to-array(core, responsive),
+	font-family:      to-array(core, responsive),
+	font-size:        to-array(core, responsive),
+	font-weight:      to-array(core, responsive),
+	grid:             to-array(core, responsive),
+	height:           to-array(core, responsive),
+	letter-spacing:   to-array(core, responsive),
+	line-height:      to-array(core, responsive),
+	margin:           to-array(core, responsive),
+	max-width:        to-array(core, responsive),
+	min-height:       to-array(core, responsive),
+	min-width:        to-array(core, responsive),
+	overflow:         to-array(core, responsive),
+	padding:          to-array(core, responsive),
+	pointer-events:   to-array(core, responsive),
+	position:         to-array(core, responsive),
+	text-align:       to-array(core, responsive),
+	vertical-align:   to-array(core, responsive),
+	white-space:      to-array(core, responsive),
+	width:            to-array(core, responsive),
 
-	background-color: var-join(core, $macro-variants, responsive),
-	border-color:     var-join(core, $macro-variants, responsive),
-	box-shadow:       var-join(core, $macro-variants, responsive),
-	color:            var-join(core, $macro-variants, responsive),
-	font-style:       var-join(core, $macro-variants, responsive),
-	hidden:           var-join(core, $macro-variants, responsive),
-	opacity:          var-join(core, $macro-variants, responsive),
-	text-decoration:  var-join(core, $macro-variants, responsive),
-	transform:        var-join(core, $macro-variants, responsive),
-	transition:       var-join(core, $macro-variants, responsive),
-	z-index:          var-join(core, $macro-variants, responsive), // TODO?
+	background-color: to-array(core, $macro-variants, responsive),
+	border-color:     to-array(core, $macro-variants, responsive),
+	box-shadow:       to-array(core, $macro-variants, responsive),
+	color:            to-array(core, $macro-variants, responsive),
+	font-style:       to-array(core, $macro-variants, responsive),
+	hidden:           to-array(core, $macro-variants, responsive),
+	opacity:          to-array(core, $macro-variants, responsive),
+	text-decoration:  to-array(core, $macro-variants, responsive),
+	transform:        to-array(core, $macro-variants, responsive),
+	transition:       to-array(core, $macro-variants, responsive),
+	z-index:          to-array(core, $macro-variants, responsive), // TODO?
 ) !default;

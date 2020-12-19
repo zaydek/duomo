@@ -7,7 +7,7 @@
 			variant: $v,
 			shorthand: w,
 			property: (width),
-			range: var-join(auto, range(), 100%, 100vw),
+			range: to-array(auto, range(), 100%, 100vw),
 			resolver: rem,
 		));
 	}

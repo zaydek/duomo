@@ -1,0 +1,22 @@
+@use "sass:list";
+@use "sass:meta";
+
+// Ex:
+//
+// to-array(1, 2)      -> (1, 2)
+// to-array((1, 2), 3) -> (1, 2, 3)
+//
+@function to-array($lists...) {
+	$ret: ();
+	@each $list in $lists {
+		@if meta.type-of($list) != "list" {
+			$any: $list;
+			$ret: list.join($ret, $any);
+		} @else {
+			@each $any in $list {
+				$ret: list.join($ret, $any);
+			}
+		}
+	}
+	@return $ret;
+}

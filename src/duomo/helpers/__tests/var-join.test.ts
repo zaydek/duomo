@@ -5,10 +5,10 @@ declare function sass(data: string): string
 
 test("integration", () => {
 	const result = sass(`
-@use "src/duomo/helpers/var-join" as *;
+@use "src/duomo/helpers/to-array" as *;
 
 @at-root {
-	@each $rv in var-join((0, 1, 2, 4), (8, 16, 32, 64)) {
+	@each $rv in to-array((0, 1, 2, 4), (8, 16, 32, 64)) {
 		.w-#{$rv} {
 			width: $rv + px;
 		}

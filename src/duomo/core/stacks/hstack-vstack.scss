@@ -156,7 +156,7 @@ $-align-self-opts: (
 		 * <... space-*>
 		 */
 
-		@each $rv in var-join(nrange(), range()) {
+		@each $rv in to-array(nrange(), range()) {
 			#{variant(#{n($rv)}space-#{abs($rv)}, $v)} > * {
 				--dm-space: #{rem($rv)};
 			}

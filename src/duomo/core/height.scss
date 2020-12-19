@@ -7,7 +7,7 @@
 			variant: $v,
 			shorthand: h,
 			property: (height),
-			range: var-join(auto, range(), 100%, 100vh),
+			range: to-array(auto, range(), 100%, 100vh),
 			resolver: rem,
 		));
 	}
