@@ -10,7 +10,7 @@ $variants: (
 	container:        to-array(core),
 	group:            to-array(core),
 
-	// Stacks (and CSS Grid) take precedence.
+	// Stacks take precedence.
 	stacks:           to-array(core, responsive),
 	border-radius:    to-array(core, responsive),
 	border-width:     to-array(core, responsive),

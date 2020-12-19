@@ -13,6 +13,7 @@
 @use "core/font-size" as *;
 @use "core/font-style" as *;
 @use "core/font-weight" as *;
+@use "core/grid" as *;
 @use "core/height" as *;
 @use "core/letter-spacing" as *;
 @use "core/line-height" as *;
@@ -61,6 +62,7 @@
 	@if $mixin == "font-size" { @include font-size($variants...); }
 	@if $mixin == "font-style" { @include font-style($variants...); }
 	@if $mixin == "font-weight" { @include font-weight($variants...); }
+	@if $mixin == "grid" { @include grid($variants...); }
 	@if $mixin == "group" { @include group($variants...); }
 	@if $mixin == "height" { @include height($variants...); }
 	@if $mixin == "hidden" { @include hidden($variants...); }

@@ -1,7 +1,6 @@
 @use "../../helpers" as *;
 
-@use "grid" as *;
-@use "hstack-vstack" as *;
+@use "directional-stacks" as *;
 @use "zstack" as *;
 
 $-opts: (hstack, vstack, zstack, grid);
@@ -18,5 +17,4 @@ $-opts: (hstack, vstack, zstack, grid);
 	}
 	@include hstack-vstack($variants...);
 	@include zstack($variants...);
-	@include grid($variants...);
 }
