@@ -1,16 +1,15 @@
 const THEME_PREFERENCE_KEY = "duomo-theme-preference" as const
 
-// type Mode = "development" | "production" | "test"
-type Mode = typeof process.env.NODE_ENV
+type DevMode = "development" | "production"
 
 interface IRuntime {
-	init(mode: Mode): () => void
+	init(mode: DevMode): () => void
 	toggleDebugMode(): void
 	toggleDarkMode(): void
 }
 
+// prettier-ignore
 function localStoragePrefersDarkMode() {
-	// prettier-ignore
 	const ok = (
 		THEME_PREFERENCE_KEY in window.localStorage &&
 		window.localStorage[THEME_PREFERENCE_KEY] === "dark"
@@ -18,8 +17,8 @@ function localStoragePrefersDarkMode() {
 	return ok
 }
 
+// prettier-ignore
 function OSPrefersDarkMode() {
-	// prettier-ignore
 	const ok = (
 		"matchMedia" in window &&
 		window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -27,30 +26,20 @@ function OSPrefersDarkMode() {
 	return ok
 }
 
-// TODO: Add `useDuomoRuntime`.
 const Duomo: IRuntime = {
-	init(mode: Mode) {
+	init(mode: DevMode) {
 		const deferers: Array<() => void> = []
 
 		console.log("[Duomo] init=true")
 
 		// NOTE: localStorage takes precedence.
+		// TODO: Change to `[data-theme="dark"]`?
 		if (localStoragePrefersDarkMode() || !OSPrefersDarkMode()) {
 			document.body.classList.add("dark")
 		}
 
 		if ("matchMedia" in window) {
-			// NOTE: Prefer `media.addListener` (vs. `media.addEventListener`).
-			//
-			// > The addListener() method of the MediaQueryList interface adds a listener to the MediaQueryListener that will
-			// > run a custom callback function in response to the media query status changing.
-			// >
-			// > This is basically an alias of EventTarget.addEventListener(), for backwards compatibility purposes.
-			// > Older browsers should use addListener instead of addEventListener since MediaQueryList only inherits from
-			// > EventTarget in newer browsers.
-			//
-			// https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/addListener
-			//
+			// COMPAT: Prefer `media.addListener` not `media.addEventListener`.
 			const media = window.matchMedia("(prefers-color-scheme: dark)")
 			const handleMedia = () => {
 				Duomo.toggleDarkMode()
@@ -60,7 +49,6 @@ const Duomo: IRuntime = {
 		}
 
 		if (mode !== "production") {
-			// Handler for dark mode:
 			const handleKeyDownDarkMode = (e: KeyboardEvent) => {
 				if (!e.ctrlKey && (e.key.toLowerCase() === "d" || e.keyCode === 68)) {
 					Duomo.toggleDarkMode()
@@ -69,7 +57,6 @@ const Duomo: IRuntime = {
 			document.addEventListener("keydown", handleKeyDownDarkMode)
 			deferers.push(() => document.removeEventListener("keydown", handleKeyDownDarkMode))
 
-			// Handler for debug mode:
 			const handleKeyDownDebugMode = (e: KeyboardEvent) => {
 				if (e.ctrlKey && (e.key.toLowerCase() === "d" || e.keyCode === 68)) {
 					Duomo.toggleDebugMode()
