@@ -50,7 +50,7 @@ const Duomo: IRuntime = {
 
 		if (mode !== "production") {
 			const handleKeyDownDarkMode = (e: KeyboardEvent) => {
-				if (!e.ctrlKey && (e.key.toLowerCase() === "d" || e.keyCode === 68)) {
+				if (e.ctrlKey && (e.key.toLowerCase() === "d" || e.keyCode === 68)) {
 					Duomo.toggleDarkMode()
 				}
 			}
@@ -58,7 +58,7 @@ const Duomo: IRuntime = {
 			deferers.push(() => document.removeEventListener("keydown", handleKeyDownDarkMode))
 
 			const handleKeyDownDebugMode = (e: KeyboardEvent) => {
-				if (e.ctrlKey && (e.key.toLowerCase() === "d" || e.keyCode === 68)) {
+				if (!e.ctrlKey && (e.key.toLowerCase() === "d" || e.keyCode === 68)) {
 					Duomo.toggleDebugMode()
 				}
 			}

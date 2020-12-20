@@ -65,7 +65,7 @@ $-align-opts: (
 			flex-direction: row;
 			justify-content: center;
 			align-self: var(--dm-align-self);
-			align-items: var(--dm-align);
+			align-items: center;
 			min-width: min-content; // Needed for `overflow-x-scroll`
 		}
 
@@ -103,7 +103,7 @@ $-align-opts: (
 			flex-direction: column;
 			justify-content: center;
 			align-self: var(--dm-align-self);
-			align-items: var(--dm-align);
+			align-items: center;
 			min-width: auto; // Needed for `overflow-x-scroll`
 		}
 
@@ -213,7 +213,7 @@ $-align-opts: (
 
 		@each $mk, $mv in $-align-self-opts {
 			#{variant($mk, $v)} {
-				--dm-align-self: #{$mv};
+				align-self: #{$mv};
 			}
 		}
 
@@ -223,7 +223,7 @@ $-align-opts: (
 
 		@each $mk, $mv in $-align-opts {
 			#{variant($mk, $v)} {
-				--dm-align: #{$mv};
+				align-items: #{$mv};
 			}
 		}
 

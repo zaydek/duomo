@@ -5,7 +5,6 @@
 		@if matches($v, core) {
 			.grid {
 				display: grid;
-				align-self: var(--dm-align-self);
 			}
 		}
 
