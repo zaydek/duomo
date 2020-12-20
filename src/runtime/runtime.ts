@@ -27,7 +27,7 @@ function OSPrefersDarkMode() {
 }
 
 const Duomo: IRuntime = {
-	init(mode: DevMode) {
+	init(mode: DevMode = "production") {
 		const deferers: Array<() => void> = []
 
 		console.log("[Duomo] init=true")
@@ -102,5 +102,17 @@ const Duomo: IRuntime = {
 		}, 25)
 	},
 }
+
+declare global {
+	interface Window {
+		Duomo: IRuntime
+	}
+}
+
+;(() => {
+	if (typeof window !== "undefined") {
+		window.Duomo = Duomo
+	}
+})()
 
 export default Duomo
