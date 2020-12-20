@@ -1,8 +1,9 @@
 // prettier-ignore
 {
 	"compilerOptions": {
-		"target": "es6",                      // Changed
+		"target": "es2017",                   // Changed from `"es5"`
 		"module": "commonjs",
+		"lib": ["dom", "esnext"],             // Added
 		"jsx": "react",                       // Added
 		"declaration": true,                  // Added
 		"declarationMap": true,               // Added
@@ -25,14 +26,16 @@
 		"baseUrl": "./",                      // Added
 		"esModuleInterop": true,
 		"skipLibCheck": true,
-		"forceConsistentCasingInFileNames": true,
+		"forceConsistentCasingInFileNames": true
 	},
 	"include": [
 		"src/**/*.ts",
-		"src/**/*.tsx", "src/jest.setupFile.ts", "index.ts",
+		"src/**/*.tsx",
+		"src/jest.setupFile.ts",
 	],
 	"exclude": [
-		"src/**/*.test.*",
+		"src/**/*.test.ts",
+		"src/**/*.test.tsx",
 		"src/**/jest.setupFile.ts",
-	],
+	]
 }

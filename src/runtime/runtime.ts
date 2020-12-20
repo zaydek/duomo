@@ -3,7 +3,7 @@ const THEME_PREFERENCE_KEY = "duomo-theme-preference" as const
 // type Mode = "development" | "production" | "test"
 type Mode = typeof process.env.NODE_ENV
 
-interface IDuomo {
+interface IRuntime {
 	init(mode: Mode): () => void
 	toggleDebugMode(): void
 	toggleDarkMode(): void
@@ -29,7 +29,7 @@ function OSPrefersDarkMode() {
 
 // TODO: Can use esbuild as a bundler.
 // TODO: Add `useDuomoRuntime`.
-const Duomo: IDuomo = {
+const Duomo: IRuntime = {
 	init(mode: Mode) {
 		const deferers: Array<() => void> = []
 

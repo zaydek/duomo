@@ -1,21 +1,23 @@
 {
 	"name": "@zaydek/duomo",
 	"version": "0.7.3",
-	"main": "dist/production.css",
+	"main": "dist/prod.css",
 	"license": "MIT",
 	"files": [
 		"dist/",
-		"src/duomo/**/*.{css,scss}",
+		"src/sass/**/*.{css,scss}",
 		"duomo.scss"
 	],
 	"scripts": {
-		"watch": "nodemon --exec 'sass --no-charset --no-source-map --style=compressed src/consumer.scss dist/development.css && yarn prettier --write dist/development.css' --ext css,scss --watch src",
+		"watch": "nodemon --exec 'sass --style=compressed src/consumer.scss dist/dev.css && yarn prettier --write dist/dev.css' --ext css,scss --watch src",
 		"test": "jest",
-		"build-duomo-dev": "sass --no-charset --no-source-map --style=compressed builds/development.scss dist/development.css && yarn prettier -w dist/development.css",
-		"build-duomo-dev-full": "sass --no-charset --no-source-map --style=compressed builds/development-full.scss dist/development-full.css && yarn prettier -w dist/development-full.css",
-		"build-duomo-prod": "sass --no-charset --no-source-map --style=compressed builds/production.scss dist/production.css",
-		"build-duomo-prod-full": "sass --no-charset --no-source-map --style=compressed builds/production-full.scss dist/production-full.css",
-		"build": "rm -rf dist && yarn tsc && yarn build-duomo-dev && yarn build-duomo-dev-full && yarn build-duomo-prod && yarn build-duomo-prod-full",
+		"build-css-dev": "sass --style=compressed scripts/dev.scss dist/dev.css && yarn prettier --write dist/dev.css",
+		"build-css-dev-full": "sass --style=compressed scripts/dev-full.scss dist/dev-full.css && yarn prettier --write dist/dev-full.css",
+		"build-css-prod": "sass --style=compressed scripts/prod.scss dist/prod.css",
+		"build-css-prod-full": "sass --style=compressed scripts/prod-full.scss dist/prod-full.css",
+		"build-js": "tsc",
+		"build-browser-js": "NODE_ENV=production node scripts/browser.js",
+		"build": "rm -rf dist && yarn concurrently --raw 'yarn build-css-dev' 'yarn build-css-dev-full' 'yarn build-css-prod' 'yarn build-css-prod-full' 'yarn build-js' 'yarn build-browser-js'",
 		"publish-dist-dry-run": "yarn build && npm publish --dry-run"
 	},
 	"devDependencies": {
@@ -25,6 +27,7 @@
 		"@types/react": "^17.0.0",
 		"@types/react-dom": "^17.0.0",
 		"@types/sass": "^1.16.0",
+		"concurrently": "^5.3.0",
 		"esbuild": "^0.8.24",
 		"jest": "^26.6.3",
 		"nodemon": "^2.0.6",
