@@ -12,77 +12,77 @@ $-opts: (static, relative, absolute, fixed, sticky);
 		}
 		@include generate-from-range((
 			variant: $v,
-			shorthand: a,
+			shorthand: inset,
 			property: (top, right, bottom, left),
 			range: (auto, 0),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: x,
+			shorthand: inset-x,
 			property: (left, right),
 			range: (auto, 0),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: y,
+			shorthand: inset-y,
 			property: (top, bottom),
 			range: (auto, 0),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: t,
+			shorthand: top,
 			property: (top),
 			range: (auto, 0),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: r,
+			shorthand: right,
 			property: (right),
 			range: (auto, 0),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: b,
+			shorthand: bottom,
 			property: (bottom),
 			range: (auto, 0),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: l,
+			shorthand: left,
 			property: (left),
 			range: (auto, 0),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: tr,
+			shorthand: top-right,
 			property: (top, right),
 			range: (auto, 0),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: br,
+			shorthand: bottom-right,
 			property: (bottom, right),
 			range: (auto, 0),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: bl,
+			shorthand: bottom-left,
 			property: (bottom, left),
 			range: (auto, 0),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: tl,
+			shorthand: top-left,
 			property: (top, left),
 			range: (auto, 0),
 			resolver: rem,

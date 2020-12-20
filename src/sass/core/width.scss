@@ -1,14 +1,16 @@
-@use "../helpers" as *;
-
-// prettier-ignore
-@mixin width($variants...) {
-	@include variants($variants...) using ($v) {
-		@include generate-from-range((
-			variant: $v,
-			shorthand: w,
-			property: (width),
-			range: to-array(auto, range(), 100%, 100vw),
-			resolver: rem,
-		));
-	}
-}
+// NOTE: See `extensions/display.scss`.
+//
+// @use "../helpers" as *;
+//
+// // prettier-ignore
+// @mixin width($variants...) {
+// 	@include variants($variants...) using ($v) {
+// 		@include generate-from-range((
+// 			variant: $v,
+// 			shorthand: w,
+// 			property: (width),
+// 			range: to-array(auto, range(), 100%, 100vw),
+// 			resolver: rem,
+// 		));
+// 	}
+// }

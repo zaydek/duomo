@@ -1,0 +1,257 @@
+@use "../helpers" as *;
+
+$-stack-opts: (hstack, vstack, zstack, grid);
+
+// prettier-ignore
+$-place-opts: (
+	top-left: (top: 0, left: 0),
+	top: (top: 0),
+	top-right: (top: 0, right: 0),
+	left: (left: 0),
+	right: (right: 0),
+	bottom-left: (bottom: 0, left: 0),
+	bottom: (bottom: 0),
+	bottom-right: (bottom: 0, right: 0),
+);
+
+$-align-self-opts: (
+	align-self-stretch: stretch,
+	align-self-start: flex-start,
+	align-self-center: center,
+	align-self-end: flex-end,
+	align-self-baseline: baseline,
+);
+
+$-align-opts: (
+	align-stretch: stretch,
+	align-start: flex-start,
+	align-center: center,
+	align-end: flex-end,
+	align-baseline: baseline,
+);
+
+// SwiftUI-style auto-centering is hard to faithfully simulate on the web.
+// Several conditions must be met:
+//
+// - Stacks stretch
+// - Stacks can be manually aligned
+// - Stack children are centered
+// - Stack children can be manually aligned
+//
+// Based on https://codepen.io/zaydek/pen/RwGZwjJ.
+@mixin stacks($variants...) {
+	@include variants($variants...) using ($v) {
+		/*
+		 * <stack>
+		 */
+
+		@if matches($v, core) {
+			@each $opt in $-stack-opts {
+				.#{$opt} {
+					--dm-align-self: stretch;
+					@if $opt == hstack or $opt == vstack {
+						--dm-align: center;
+					}
+				}
+			}
+		}
+
+		/*
+		 * <hstack>
+		 */
+
+		#{variant(hstack, $v)} {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-self: var(--dm-align-self);
+			align-items: var(--dm-align);
+			min-width: min-content; // Needed for `overflow-x-scroll`
+		}
+
+		@if matches($v, core) {
+			.hstack > * {
+				--dm-spacer-min-width: var(--dm-space); // Reset
+				--dm-space: 0; // Reset
+			}
+		}
+
+		#{variant(hstack, $v)} > * + * {
+			margin-top: 0; // Reset
+			margin-left: var(--dm-space);
+		}
+
+		// `<spacer :empty>` and `<spacer :empty><element>` do not implement spacing.
+		//
+		// <element>
+		// --------------- -> flex-basis: 0;
+		// <spacer :empty> -> flex-basis: var(--dm-space);
+		// --------------- -> flex-basis: 0;
+		// <element>
+		//
+		#{variant(hstack, $v)} > .spacer:empty,
+		#{variant(hstack, $v)} > .spacer:empty + * {
+			margin-left: 0;
+		}
+
+		/*
+		 * <vstack>
+		 */
+
+		#{variant(vstack, $v)} {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-self: var(--dm-align-self);
+			align-items: var(--dm-align);
+			min-width: auto; // Needed for `overflow-x-scroll`
+		}
+
+		@if matches($v, core) {
+			.vstack > * {
+				--dm-spacer-min-width: 0; // Reset
+				--dm-space: 0; // Reset
+			}
+		}
+
+		#{variant(vstack, $v)} > * + * {
+			margin-left: 0; // Reset
+			margin-top: var(--dm-space);
+		}
+
+		// `<spacer :empty>` and `<spacer :empty><element>` do not implement spacing.
+		//
+		// <element>
+		// --------------- -> flex-basis: 0;
+		// <spacer :empty> -> flex-basis: var(--dm-space);
+		// --------------- -> flex-basis: 0;
+		// <element>
+		//
+		#{variant(vstack, $v)} > .spacer:empty,
+		#{variant(vstack, $v)} > .spacer:empty + * {
+			margin-top: 0;
+		}
+
+		/*
+		 * <zstack>
+		 */
+
+		@if matches($v, core) {
+			.zstack {
+				display: grid;
+				align-self: var(--dm-align-self);
+				align-items: center;
+				justify-items: center;
+				position: relative;
+			}
+			.zstack > * {
+				grid-row-start: 1;
+				grid-column-start: 1;
+				grid-row-end: 1;
+				grid-column-end: 1;
+			}
+		}
+
+		/*
+		 * <... place-*>
+		 */
+
+		@each $mk, $mv in $-place-opts {
+			#{variant(place-#{$mk}, $v)} {
+				position: absolute;
+				@each $mk, $mv in $mv {
+					#{$mk}: $mv;
+				}
+			}
+		}
+
+		/*
+		 * <... w-*>
+		 *
+		 * NOTE: Takes precedence over `align-self-*`.
+		 */
+
+		#{variant(w-auto, $v)} {
+			width: auto;
+		}
+		@each $rv in range() {
+			#{variant(w-#{$rv}, $v)} {
+				--dm-align-self: center;
+				width: rem($rv);
+			}
+		}
+		@each $rv in (100%, 100vw) {
+			#{variant(w-#{desc($rv)}, $v)} {
+				width: $rv;
+			}
+		}
+
+		/*
+		 * <... h-*>
+		 *
+		 * NOTE: Takes precedence over `align-self-*`.
+		 */
+
+		#{variant(h-auto, $v)} {
+			height: auto;
+		}
+		@each $rv in range() {
+			#{variant(h-#{$rv}, $v)} {
+				--dm-align-self: center;
+				height: rem($rv);
+			}
+		}
+		@each $rv in (100%, 100vh) {
+			#{variant(h-#{desc($rv)}, $v)} {
+				height: $rv;
+			}
+		}
+
+		/*
+		 * <... align-self-*>
+		 */
+
+		@each $mk, $mv in $-align-self-opts {
+			#{variant($mk, $v)} {
+				--dm-align-self: #{$mv};
+			}
+		}
+
+		/*
+		 * <... align-*>
+		 */
+
+		@each $mk, $mv in $-align-opts {
+			#{variant($mk, $v)} {
+				--dm-align: #{$mv};
+			}
+		}
+
+		/*
+		 * <... space-*>
+		 */
+
+		@each $rv in to-array(nrange(), range()) {
+			#{variant(#{n($rv)}space-#{abs($rv)}, $v)} > * {
+				--dm-space: #{rem($rv)};
+			}
+		}
+
+		/*
+		 * <spacer>
+		 */
+
+		@if matches($v, core) {
+			.spacer {
+				flex: 1 0 var(--dm-space);
+				min-width: var(--dm-spacer-min-width); // Needed for `overflow-x-scroll`
+			}
+			.spacer:first-child,
+			.spacer:empty + .spacer:empty,
+			.spacer:last-child {
+				flex: 1 0 0;
+				min-width: 0; // Needed for `overflow-x-scroll`
+			}
+		}
+	}
+}
