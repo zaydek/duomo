@@ -11,7 +11,7 @@ yarn add @zaydek/duomo
 
 **Usage: (CDN)**
 
-CodePen to get you started: https://codepen.io/zaydek/pen/ExgxjYy?editors=1000.
+CodePen to get you started: https://codepen.io/zaydek/pen/ExgxjYy.
 
 ```html
 <!DOCTYPE html>
