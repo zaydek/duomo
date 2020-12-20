@@ -1,6 +1,6 @@
 import React, { createElement } from "react"
 
-interface StackProps {
+interface DirectionalStackProps {
 	/**
 	 * DOM tag or React component.
 	 */
@@ -16,7 +16,7 @@ interface StackProps {
 	/**
 	 * Space between children.
 	 */
-	space?: string
+	space?: string // TODO
 	className?: string
 	children?: React.ReactNode
 }
@@ -24,7 +24,7 @@ interface StackProps {
 /**
  * **HStack** stacks children horizontally (x-axis).
  *
- * ![](https://i.ibb.co/z8frhcb/hstack.png)
+ * ![](https://i.ibb.co/L5Jyjjb/hstack.png)
  *
  * ```html
  * <div class="hstack">
@@ -43,7 +43,7 @@ export function HStack({
 	className,
 	children,
 	...props
-}: StackProps) {
+}: DirectionalStackProps) {
 	return (
 		<>
 			{createElement(
@@ -67,7 +67,7 @@ export function HStack({
 /**
  * **VStack** stacks children vertically (y-axis).
  *
- * ![](https://i.ibb.co/Xy21722/vstack.png)
+ * ![](https://i.ibb.co/hM7mcfY/vstack.png)
  *
  * ```html
  * <div class="vstack">
@@ -86,7 +86,7 @@ export function VStack({
 	className,
 	children,
 	...props
-}: StackProps) {
+}: DirectionalStackProps) {
 	return (
 		<>
 			{createElement(
@@ -98,6 +98,53 @@ export function VStack({
 						alignSelf !== undefined && `align-self-${align}`,
 						align !== undefined && `align-${align}`,
 						space !== undefined && `space-${space}`,
+						className,
+					].filter(Boolean).join(" "),
+					...props,
+				},
+				children,
+			)}
+		</>
+	)
+}
+
+interface ZStackProps {
+	/**
+	 * DOM tag or React component.
+	 */
+	tag?: string | React.FunctionComponent<any>
+	className?: string
+	children?: React.ReactNode
+}
+
+/**
+ * **ZStack** stacks children (z-axis).
+ *
+ * ![](https://i.ibb.co/cXpVWJN/zstack.png)
+ *
+ * ```html
+ * <div class="zstack">
+ *   <div class="w-32 h-32 ..."></div>
+ *   <div class="w-32 h-32 ..."></div>
+ *   <div class="w-32 h-32 ..."></div>
+ * </div>
+ * ```
+ */
+export function ZStack({
+	// prettier-ignore
+	tag,
+	className,
+	children,
+	...props
+}: ZStackProps) {
+	return (
+		<>
+			{createElement(
+				tag || "div",
+				{
+					// prettier-ignore
+					className: [
+						"zstack",
 						className,
 					].filter(Boolean).join(" "),
 					...props,
