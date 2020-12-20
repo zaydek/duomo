@@ -1,4 +1,7 @@
 @use "sass" as * with (
 	$env: development,
-	$macro-variants: (hover, hover, touch, group-hover, group-focus, group-touch),
+	$macro-variants: (
+		hover, focus, touch,
+		group-hover, group-focus, group-touch,
+	),
 );

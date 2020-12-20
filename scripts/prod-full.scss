@@ -8,5 +8,8 @@
 		xl: 1280,
 		2xl: 1536,
 	),
-	$macro-variants: (hover, hover, touch, group-hover, group-focus, group-touch),
+	$macro-variants: (
+		hover, focus, touch,
+		group-hover, group-focus, group-touch,
+	),
 );
