@@ -11,15 +11,17 @@ $-opts: (
 	@include variants($variants...) using ($v) {
 		@if matches($v, core) {
 			:root {
-				--dm-display-default: block;
-				--dm-display: var(--dm-display-default);
+				--dm-display-initial: block;
+				--dm-display: var(--dm-display-initial);
 			}
-			// Takes precedence because variables need to be reset.
+
+			// NOTE: Takes precedence.
 			@each $k, $v in $-opts {
 				.#{$k} > * {
-					--dm-display: var(--dm-display-default);
+					--dm-display: var(--dm-display-initial);
 				}
 			}
+
 			@each $k, $v in $-opts {
 				.#{$k} {
 					--dm-display: #{$v};
