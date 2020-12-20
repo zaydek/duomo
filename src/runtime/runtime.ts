@@ -27,7 +27,6 @@ function OSPrefersDarkMode() {
 	return ok
 }
 
-// TODO: Can use esbuild as a bundler.
 // TODO: Add `useDuomoRuntime`.
 const Duomo: IRuntime = {
 	init(mode: Mode) {
