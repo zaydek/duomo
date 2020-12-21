@@ -2,7 +2,8 @@
  * TypeScript
  */
 
-type DEV_MODE = "development" | "production"
+type NODE_ENV = "development" | "production"
+// type Theme = undefined | "light" | "dark"
 
 declare global {
 	interface Window {
@@ -17,7 +18,7 @@ declare global {
 const themePreferenceKey = "duomo-theme-preference" as const
 
 interface IRuntime {
-	init(mode: DEV_MODE): () => void
+	init(mode: NODE_ENV): () => void
 	toggleDebugMode(): void
 	toggleDebugSpaceMode(): void
 	toggleDarkMode(): void
@@ -42,7 +43,7 @@ function OSPrefersDarkMode() {
 }
 
 const Duomo: IRuntime = {
-	init(mode: DEV_MODE = "production") {
+	init(mode: NODE_ENV = "production") {
 		const html = document.documentElement
 		const deferers: (() => void)[] = []
 
@@ -100,7 +101,6 @@ const Duomo: IRuntime = {
 	},
 	toggleDebugMode() {
 		const html = document.documentElement
-
 		const hasAttribute = html.hasAttribute("data-debug")
 		if (!hasAttribute) {
 			console.log("[Duomo] debugMode=on")
@@ -112,7 +112,6 @@ const Duomo: IRuntime = {
 	},
 	toggleDebugSpaceMode() {
 		const html = document.documentElement
-
 		const hasAttribute = html.hasAttribute("data-debug-space")
 		if (!hasAttribute) {
 			console.log("[Duomo] debugSpaceMode=on")
@@ -122,13 +121,10 @@ const Duomo: IRuntime = {
 			html.removeAttribute("data-debug-space")
 		}
 	},
-	// TODO: `toggleDarkMode` is not currently cancelable. Should it be?
-	// TODO: Implement `toggleMode(mode: string = "dark")`.
-	toggleDarkMode() {
+	toggleDarkMode(disableEffect = false) {
 		const html = document.documentElement
 
-		html.setAttribute("data-theme-effect", "true")
-		setTimeout(() => {
+		function toggle() {
 			const hasAttribute = html.hasAttribute("data-theme")
 			if (!hasAttribute) {
 				console.log("[Duomo] darkMode=on")
@@ -139,6 +135,17 @@ const Duomo: IRuntime = {
 				html.removeAttribute("data-theme")
 				window.localStorage.setItem(themePreferenceKey, "light")
 			}
+		}
+
+		if (disableEffect) {
+			toggle()
+			return
+		}
+
+		// TODO: `toggleDarkMode` is not currently cancelable. Should it be?
+		html.setAttribute("data-theme-effect", "true")
+		setTimeout(() => {
+			toggle()
 			setTimeout(() => {
 				html.removeAttribute("data-theme-effect")
 			}, 300)
