@@ -1,18 +1,33 @@
-const THEME_PREFERENCE_KEY = "duomo-theme-preference" as const
+/*
+ * TypeScript
+ */
 
-type DevMode = "development" | "production"
+type DEV_MODE = "development" | "production"
+
+declare global {
+	interface Window {
+		Duomo: IRuntime
+	}
+}
+
+/*
+ * Runtime
+ */
+
+const themePreferenceKey = "duomo-theme-preference" as const
 
 interface IRuntime {
-	init(mode: DevMode): () => void
+	init(mode: DEV_MODE): () => void
 	toggleDebugMode(): void
+	toggleDebugSpaceMode(): void
 	toggleDarkMode(): void
 }
 
 // prettier-ignore
-function localStoragePrefersDarkMode() {
+function LSPrefersDarkMode() {
 	const ok = (
-		THEME_PREFERENCE_KEY in window.localStorage &&
-		window.localStorage[THEME_PREFERENCE_KEY] === "dark"
+		themePreferenceKey in window.localStorage &&
+		window.localStorage[themePreferenceKey] === "dark"
 	)
 	return ok
 }
@@ -27,15 +42,16 @@ function OSPrefersDarkMode() {
 }
 
 const Duomo: IRuntime = {
-	init(mode: DevMode = "production") {
-		const deferers: Array<() => void> = []
+	init(mode: DEV_MODE = "production") {
+		const html = document.documentElement
+		const deferers: (() => void)[] = []
 
 		console.log("[Duomo] init=true")
 
 		// NOTE: localStorage takes precedence.
 		// TODO: Change to `[data-theme="dark"]`?
-		if (localStoragePrefersDarkMode() || !OSPrefersDarkMode()) {
-			document.body.classList.add("dark")
+		if (LSPrefersDarkMode() || !OSPrefersDarkMode()) {
+			html.setAttribute("data-theme", "dark")
 		}
 
 		if ("matchMedia" in window) {
@@ -49,21 +65,32 @@ const Duomo: IRuntime = {
 		}
 
 		if (mode !== "production") {
-			const handleKeyDownDarkMode = (e: KeyboardEvent) => {
-				if (e.ctrlKey && (e.key.toLowerCase() === "d" || e.keyCode === 68)) {
-					Duomo.toggleDarkMode()
-				}
-			}
-			document.addEventListener("keydown", handleKeyDownDarkMode)
-			deferers.push(() => document.removeEventListener("keydown", handleKeyDownDarkMode))
-
+			// Key: `d`.
 			const handleKeyDownDebugMode = (e: KeyboardEvent) => {
-				if (!e.ctrlKey && (e.key.toLowerCase() === "d" || e.keyCode === 68)) {
+				if (!e.ctrlKey && !e.altKey && (e.key.toLowerCase() === "d" || e.keyCode === 68)) {
 					Duomo.toggleDebugMode()
 				}
 			}
 			document.addEventListener("keydown", handleKeyDownDebugMode)
 			deferers.push(() => document.removeEventListener("keydown", handleKeyDownDebugMode))
+
+			// Key: `alt-d`.
+			const handleKeyDownDebugSpaceMode = (e: KeyboardEvent) => {
+				if (!e.ctrlKey && e.altKey && (e.key.toLowerCase() === "d" || e.keyCode === 68)) {
+					Duomo.toggleDebugSpaceMode()
+				}
+			}
+			document.addEventListener("keydown", handleKeyDownDebugSpaceMode)
+			deferers.push(() => document.removeEventListener("keydown", handleKeyDownDebugSpaceMode))
+
+			// Key: `ctrl-d`.
+			const handleKeyDownDarkMode = (e: KeyboardEvent) => {
+				if (e.ctrlKey && !e.altKey && (e.key.toLowerCase() === "d" || e.keyCode === 68)) {
+					Duomo.toggleDarkMode()
+				}
+			}
+			document.addEventListener("keydown", handleKeyDownDarkMode)
+			deferers.push(() => document.removeEventListener("keydown", handleKeyDownDarkMode))
 		}
 
 		return () => {
@@ -72,41 +99,51 @@ const Duomo: IRuntime = {
 		}
 	},
 	toggleDebugMode() {
-		const hasAttribute = document.body.hasAttribute("data-debug")
+		const html = document.documentElement
+
+		const hasAttribute = html.hasAttribute("data-debug")
 		if (!hasAttribute) {
 			console.log("[Duomo] debugMode=on")
-			document.body.setAttribute("data-debug", "true")
+			html.setAttribute("data-debug", "true")
 		} else {
 			console.log("[Duomo] debugMode=off")
-			document.body.removeAttribute("data-debug")
+			html.removeAttribute("data-debug")
+		}
+	},
+	toggleDebugSpaceMode() {
+		const html = document.documentElement
+
+		const hasAttribute = html.hasAttribute("data-debug-space")
+		if (!hasAttribute) {
+			console.log("[Duomo] debugSpaceMode=on")
+			html.setAttribute("data-debug-space", "true")
+		} else {
+			console.log("[Duomo] debugSpaceMode=off")
+			html.removeAttribute("data-debug-space")
 		}
 	},
 	// TODO: `toggleDarkMode` is not currently cancelable. Should it be?
 	// TODO: Implement `toggleMode(mode: string = "dark")`.
 	toggleDarkMode() {
-		document.body.setAttribute("data-theme-effect", "true")
+		const html = document.documentElement
+
+		html.setAttribute("data-theme-effect", "true")
 		setTimeout(() => {
-			const hasAttribute = document.body.hasAttribute("data-theme")
+			const hasAttribute = html.hasAttribute("data-theme")
 			if (!hasAttribute) {
 				console.log("[Duomo] darkMode=on")
-				document.body.setAttribute("data-theme", "dark")
-				window.localStorage.setItem(THEME_PREFERENCE_KEY, "dark")
+				html.setAttribute("data-theme", "dark")
+				window.localStorage.setItem(themePreferenceKey, "dark")
 			} else {
 				console.log("[Duomo] darkMode=off")
-				document.body.removeAttribute("data-theme")
-				window.localStorage.setItem(THEME_PREFERENCE_KEY, "light")
+				html.removeAttribute("data-theme")
+				window.localStorage.setItem(themePreferenceKey, "light")
 			}
 			setTimeout(() => {
-				document.body.removeAttribute("data-theme-effect")
+				html.removeAttribute("data-theme-effect")
 			}, 300)
 		}, 25)
 	},
-}
-
-declare global {
-	interface Window {
-		Duomo: IRuntime
-	}
 }
 
 ;(() => {

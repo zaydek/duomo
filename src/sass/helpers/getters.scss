@@ -1,9 +1,10 @@
 @use "sass:map";
 @use "sass:meta";
 
-@use "../configuration";
 @use "escapers" as *;
 @use "resolvers" as *;
+
+@use "../configuration";
 
 // Ex:
 //

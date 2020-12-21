@@ -19,25 +19,25 @@
 		--ui-mono: #{font(mono, $raw: true)};
 
 		// CSS reset vars.
-		--placeholder-color-default: #{color(gray-400)};
-		--border-color-default: #{color(gray-200)};
+		--placeholder-color-default: hsl(#{color(gray-400)});
+		--border-color-default: hsl(#{color(gray-300)});
 		--transition-duration-default: 300ms;
 		--transition-timing-function-default: #{timing(ease-out)};
 
-		// `data-stagger` presets.
+		// [data-stagger]
 		--stagger-1-width: #{math.percentage(4 / 8)};
 		--stagger-2-width: #{math.percentage(6 / 8)};
 		--stagger-3-width: #{math.percentage(7 / 8)};
 		--stagger-4-width: #{math.percentage(5 / 8)};
 		--stagger-last-width: 50%;
 
-		// `data-debug` presets.
-		--debug-outline: 2px solid hsla(210, 100%, 50%, 0.5);
+		// [data-debug]
+		--debug-outline: 2px solid hsla(210, 100%, 50%, 0.25);
 		--debug-empty-spacer-outline: 1px dashed hsla(210, 100%, 50%, 0.25);
 		--debug-outline-offset: -2px;
 		--debug-spacer-background-color: hsla(210, 100%, 50%, 0.25);
 
-		// `data-debug-space` presets.
+		// [data-debug-space]
 		--debug-space-background-color: hsla(210, 100%, 50%, 0.1);
 	}
 }

@@ -1,12 +1,12 @@
 {
 	"name": "@zaydek/duomo",
 	"version": "0.7.6",
-	"main": "dist/prod.css",
+	"main": "dist/prod-full.css",
 	"license": "MIT",
 	"files": [
 		"dist/",
 		"src/sass/**/*.{css,scss}",
-		"duomo.scss"
+		"index.scss"
 	],
 	"scripts": {
 		"watch": "nodemon --exec 'sass --style=compressed src/consumer.scss dist/dev.css && yarn prettier --write dist/dev.css' --ext css,scss --watch src",
@@ -15,9 +15,8 @@
 		"build-css-dev-full": "sass --style=compressed scripts/dev-full.scss dist/dev-full.css && yarn prettier --write dist/dev-full.css",
 		"build-css-prod": "sass --style=compressed scripts/prod.scss dist/prod.css",
 		"build-css-prod-full": "sass --style=compressed scripts/prod-full.scss dist/prod-full.css",
-		"build-js": "tsc",
-		"build-browser-js": "node scripts/browser.js",
-		"build": "rm -rf dist && yarn concurrently --raw 'yarn build-css-dev' 'yarn build-css-dev-full' 'yarn build-css-prod' 'yarn build-css-prod-full' 'yarn build-js' 'yarn build-browser-js'",
+		"build-js": "tsc && node scripts/browser.js",
+		"build": "rm -rf dist && yarn concurrently --raw 'yarn build-css-dev' 'yarn build-css-dev-full' 'yarn build-css-prod' 'yarn build-css-prod-full' 'yarn build-js'",
 		"publish-dist-dry-run": "yarn build && npm publish --dry-run"
 	},
 	"devDependencies": {

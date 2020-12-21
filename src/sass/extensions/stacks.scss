@@ -172,17 +172,13 @@ $-align-opts: (
 		 */
 
 		#{variant(w-auto, $v)} {
+			--dm-align-self: stretch;
 			width: auto;
 		}
-		@each $rv in range() {
-			#{variant(w-#{$rv}, $v)} {
-				--dm-align-self: center;
-				width: rem($rv);
-			}
-		}
-		@each $rv in (100%, 100vw) {
+		@each $rv in to-array(range(), 100%, 100vw) {
 			#{variant(w-#{desc($rv)}, $v)} {
-				width: $rv;
+				--dm-align-self: center;
+				width: resolve($rv, rem);
 			}
 		}
 
@@ -193,19 +189,26 @@ $-align-opts: (
 		 */
 
 		#{variant(h-auto, $v)} {
+			--dm-align-self: stretch;
 			height: auto;
 		}
-		@each $rv in range() {
-			#{variant(h-#{$rv}, $v)} {
-				--dm-align-self: center;
-				height: rem($rv);
-			}
-		}
-		@each $rv in (100%, 100vh) {
+		@each $rv in to-array(range(), 100%, 100vh) {
 			#{variant(h-#{desc($rv)}, $v)} {
-				height: $rv;
+				--dm-align-self: center;
+				height: resolve($rv, rem);
 			}
 		}
+		// @each $rv in range() {
+		// 	#{variant(h-#{$rv}, $v)} {
+		// 		--dm-align-self: center;
+		// 		height: rem($rv);
+		// 	}
+		// }
+		// @each $rv in (100%, 100vh) {
+		// 	#{variant(h-#{desc($rv)}, $v)} {
+		// 		height: $rv;
+		// 	}
+		// }
 
 		/*
 		 * <... align-self-*>
