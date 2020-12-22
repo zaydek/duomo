@@ -12,28 +12,28 @@
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: border-t,
+			shorthand: border-top,
 			property: (border-top-width),
 			range: limit(range(), null, 8),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: border-r,
+			shorthand: border-right,
 			property: (border-right-width),
 			range: limit(range(), null, 8),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: border-b,
+			shorthand: border-bottom,
 			property: (border-bottom-width),
 			range: limit(range(), null, 8),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: border-l,
+			shorthand: border-left,
 			property: (border-left-width),
 			range: limit(range(), null, 8),
 			resolver: rem,

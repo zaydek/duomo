@@ -12,56 +12,56 @@
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: rounded-t,
+			shorthand: rounded-top,
 			property: (border-top-left-radius, border-top-right-radius),
 			range: to-array(limit(range(), null, 32), 9999px),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: rounded-r,
+			shorthand: rounded-right,
 			property: (border-top-right-radius, border-bottom-right-radius),
 			range: to-array(limit(range(), null, 32), 9999px),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: rounded-b,
+			shorthand: rounded-bottom,
 			property: (border-bottom-left-radius, border-bottom-right-radius),
 			range: to-array(limit(range(), null, 32), 9999px),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: rounded-l,
+			shorthand: rounded-left,
 			property: (border-top-left-radius, border-bottom-left-radius),
 			range: to-array(limit(range(), null, 32), 9999px),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: rounded-tr,
+			shorthand: rounded-top-right,
 			property: (border-top-right-radius),
 			range: to-array(limit(range(), null, 32), 9999px),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: rounded-br,
+			shorthand: rounded-bottom-right,
 			property: (border-bottom-right-radius),
 			range: to-array(limit(range(), null, 32), 9999px),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: rounded-bl,
+			shorthand: rounded-bottom-left,
 			property: (border-bottom-left-radius),
 			range: to-array(limit(range(), null, 32), 9999px),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
-			shorthand: rounded-tl,
+			shorthand: rounded-top-left,
 			property: (border-top-left-radius),
 			range: to-array(limit(range(), null, 32), 9999px),
 			resolver: rem,
