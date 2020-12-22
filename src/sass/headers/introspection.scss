@@ -2,27 +2,29 @@
 
 @use "../helpers" as *;
 
+@use "../configuration";
+
 @mixin introspection {
 	:root {
-		@include generate-vars(colors($raw: true));
+		--placeholder-color-default: hsl(#{color(gray-400)});
+		--border-color-default: hsl(#{color(gray-300)});
+
+		@include generate-vars(if(configuration.$skeleton, skeleton-colors($raw: true), colors($raw: true)));
 		@include generate-vars(shadows($raw: true));
 		@include generate-vars(timings($raw: true));
 
-		// CSS reset user-preferred fonts.
 		--sans: "''";
 		--serif: "''";
 		--mono: "''";
 
-		// CSS reset system fonts.
 		--ui-sans: #{font(sans, $raw: true)};
 		--ui-serif: #{font(serif, $raw: true)};
 		--ui-mono: #{font(mono, $raw: true)};
 
-		// CSS reset vars.
-		--placeholder-color-default: hsl(#{color(gray-400)});
-		--border-color-default: hsl(#{color(gray-300)});
-		--transition-duration-default: 300ms;
-		--transition-timing-function-default: #{timing(ease-out)};
+		@if not configuration.$skeleton {
+			--transition-duration-default: 300ms;
+			--transition-timing-function-default: #{timing(ease-out)};
+		}
 
 		// [data-stagger]
 		--stagger-1-width: #{math.percentage(4 / 8)};
