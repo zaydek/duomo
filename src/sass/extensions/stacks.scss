@@ -198,17 +198,6 @@ $-align-opts: (
 				height: resolve($rv, rem);
 			}
 		}
-		// @each $rv in range() {
-		// 	#{variant(h-#{$rv}, $v)} {
-		// 		--dm-align-self: center;
-		// 		height: rem($rv);
-		// 	}
-		// }
-		// @each $rv in (100%, 100vh) {
-		// 	#{variant(h-#{desc($rv)}, $v)} {
-		// 		height: $rv;
-		// 	}
-		// }
 
 		/*
 		 * <... align-self-*>
@@ -234,7 +223,7 @@ $-align-opts: (
 		 * <... space-*>
 		 */
 
-		@each $rv in to-array(nrange(), range()) {
+		@each $rv in to-array(nrange(), limit(range(), null, 320)) {
 			#{variant(#{n($rv)}space-#{abs($rv)}, $v)} > * {
 				--dm-space: #{rem($rv)};
 			}

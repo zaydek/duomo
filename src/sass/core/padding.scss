@@ -7,49 +7,49 @@
 			variant: $v,
 			shorthand: p,
 			property: (padding),
-			range: range(),
+			range: limit(range(), null, 320),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: px,
 			property: (padding-left, padding-right),
-			range: range(),
+			range: limit(range(), null, 320),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: py,
 			property: (padding-top, padding-bottom),
-			range: range(),
+			range: limit(range(), null, 320),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: pt,
 			property: (padding-top),
-			range: range(),
+			range: limit(range(), null, 320),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: pr,
 			property: (padding-right),
-			range: range(),
+			range: limit(range(), null, 320),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: pb,
 			property: (padding-bottom),
-			range: range(),
+			range: limit(range(), null, 320),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: pl,
 			property: (padding-left),
-			range: range(),
+			range: limit(range(), null, 320),
 			resolver: rem,
 		));
 	}

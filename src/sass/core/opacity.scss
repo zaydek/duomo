@@ -1,14 +1,18 @@
 @use "../helpers" as *;
 
+@use "../configuration";
+
 // prettier-ignore
 @mixin opacity($variants...) {
-	@include variants($variants...) using ($v) {
-		@include generate-from-range((
-			variant: $v,
-			shorthand: opacity,
-			property: (opacity),
-			range: percent-range(),
-			resolver: none,
-		));
+	@if not configuration.$skeleton {
+		@include variants($variants...) using ($v) {
+			@include generate-from-range((
+				variant: $v,
+				shorthand: opacity,
+				property: (opacity),
+				range: percent-range(),
+				resolver: none,
+			));
+		}
 	}
 }
