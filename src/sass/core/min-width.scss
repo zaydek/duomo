@@ -10,9 +10,9 @@
 			range: to-array(auto, min-content, max-content),
 			resolver: rem,
 		));
-		@each $key, $n in breakpoints() {
+		@each $key, $px in breakpoints() {
 			#{variant(min-w-#{$key}, $v)} {
-				min-width: px($n);
+				min-width: px($px);
 			}
 		}
 		@include generate-from-range((

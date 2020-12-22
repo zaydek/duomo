@@ -19,8 +19,8 @@ test("integration", () => {
 
 @at-root {
 	@include background-color(core, hover, focus, group-hover, group-focus);
-	@each $key, $n in breakpoints() {
-		@media (min-width: px($n)) {
+	@each $key, $px in breakpoints() {
+		@media (min-width: px($px)) {
 			.#{delimit($key)} {
 				@at-root {
 					@include background-color(responsive);
