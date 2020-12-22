@@ -1,14 +1,26 @@
 @use "../helpers" as *;
 
+// prettier-ignore
 @mixin min-width($variants...) {
 	@include variants($variants...) using ($v) {
-		#{variant(min-w-auto, $v)} {
-			min-width: auto;
-		}
+		@include generate-from-range((
+			variant: $v,
+			shorthand: min-w,
+			property: (min-width),
+			range: to-array(auto, min-content, max-content),
+			resolver: rem,
+		));
 		@each $key, $n in breakpoints() {
 			#{variant(min-w-#{$key}, $v)} {
 				min-width: px($n);
 			}
 		}
+		@include generate-from-range((
+			variant: $v,
+			shorthand: min-w,
+			property: (min-width),
+			range: to-array(100%, 100vw),
+			resolver: rem,
+		));
 	}
 }

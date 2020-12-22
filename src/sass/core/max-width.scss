@@ -1,11 +1,26 @@
 @use "../helpers" as *;
 
+// prettier-ignore
 @mixin max-width($variants...) {
 	@include variants($variants...) using ($v) {
+		@include generate-from-range((
+			variant: $v,
+			shorthand: max-w,
+			property: (max-width),
+			range: to-array(auto, min-content, max-content),
+			resolver: rem,
+		));
 		@each $key, $n in breakpoints() {
 			#{variant(max-w-#{$key}, $v)} {
 				max-width: px($n);
 			}
 		}
+		@include generate-from-range((
+			variant: $v,
+			shorthand: max-w,
+			property: (max-width),
+			range: to-array(100%, 100vw),
+			resolver: rem,
+		));
 	}
 }

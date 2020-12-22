@@ -121,6 +121,16 @@ $-align-opts: (
 		}
 
 		/*
+		 * <... wrap>
+		 */
+
+		@each $mk, $mv in (wrap-none: nowrap, wrap: wrap, wrap-reverse: wrap-reverse) {
+			#{variant($mk, $v)} {
+				flex-wrap: $mv;
+			}
+		}
+
+		/*
 		 * <zstack>
 		 */
 
