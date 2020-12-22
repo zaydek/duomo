@@ -109,6 +109,14 @@
 	@return var(--#{$key});
 }
 
+@function skeleton-color($key, $raw: false) {
+	$got: -getter("skeleton-color", configuration.$skeleton-color-map, $key);
+	@if $raw {
+		@return $got;
+	}
+	@return var(--#{$key});
+}
+
 @function extended-color($key, $raw: false) {
 	$got: -getter("extended-color", configuration.$extended-color-map, $key);
 	@if $raw {
@@ -172,6 +180,14 @@
 	$ret: ();
 	@each $mk, $mv in configuration.$color-map {
 		$ret: map.set($ret, $mk, color($mk, $raw));
+	}
+	@return $ret;
+}
+
+@function skeleton-colors($raw: false) {
+	$ret: ();
+	@each $mk, $mv in configuration.$skeleton-color-map {
+		$ret: map.set($ret, $mk, skeleton-color($mk, $raw));
 	}
 	@return $ret;
 }

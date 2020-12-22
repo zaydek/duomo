@@ -1,5 +1,4 @@
 @use "../src/sass" as * with (
-	$env: development,
 	$breakpoint-map: (
 		xs: 512,
 		sm: 640,
@@ -8,6 +7,7 @@
 		xl: 1280,
 		2xl: 1536,
 	),
+	$env: development,
 	$macro-variants: (
 		hover, focus, touch,
 		group-hover, group-focus, group-touch,

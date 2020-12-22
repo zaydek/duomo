@@ -1,5 +1,7 @@
 @use "../helpers" as *;
 
+@use "../configuration";
+
 // prettier-ignore
 @mixin background-color($variants...) {
 	@include variants($variants...) using ($v) {
@@ -7,7 +9,7 @@
 			variant: $v,
 			shorthand: bg,
 			property: (background-color),
-			map: colors(),
+			map: if(configuration.$skeleton, skeleton-colors(), colors()),
 			percent-range: percent-range(),
 		));
 	}

@@ -50,7 +50,6 @@ const Duomo: IRuntime = {
 		console.log("[Duomo] init=true")
 
 		// NOTE: localStorage takes precedence.
-		// TODO: Change to `[data-theme="dark"]`?
 		if (LSPrefersDarkMode() || !OSPrefersDarkMode()) {
 			html.setAttribute("data-theme", "dark")
 		}

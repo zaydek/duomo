@@ -1,7 +1,7 @@
 {
 	"name": "@zaydek/duomo",
 	"version": "0.7.8",
-	"main": "dist/prod-full.css",
+	"main": "dist/production-full.css",
 	"license": "MIT",
 	"files": [
 		"dist/",
@@ -9,12 +9,13 @@
 		"index.scss"
 	],
 	"scripts": {
-		"watch": "nodemon --exec 'sass --style=compressed src/consumer.scss dist/dev.css && yarn prettier --write dist/dev.css' --ext css,scss --watch src",
+		"watch-consumer": "nodemon --exec 'sass --no-source-map --style=compressed scripts/consumer.scss dist/consumer.css && yarn prettier --write dist/consumer.css' --ext css,scss --watch src",
+		"watch-skeleton": "nodemon --exec 'sass --no-source-map --style=compressed scripts/skeleton.scss dist/skeleton.css && yarn prettier --write dist/skeleton.css' --ext css,scss --watch src",
 		"test": "jest",
-		"build-css-dev": "sass --style=compressed scripts/dev.scss dist/dev.css && yarn prettier --write dist/dev.css",
-		"build-css-dev-full": "sass --style=compressed scripts/dev-full.scss dist/dev-full.css && yarn prettier --write dist/dev-full.css",
-		"build-css-prod": "sass --style=compressed scripts/prod.scss dist/prod.css",
-		"build-css-prod-full": "sass --style=compressed scripts/prod-full.scss dist/prod-full.css",
+		"build-css-dev": "sass --no-source-map --style=compressed scripts/development.scss dist/development.css && yarn prettier --write dist/development.css",
+		"build-css-dev-full": "sass --no-source-map --style=compressed scripts/development-full.scss dist/development-full.css && yarn prettier --write dist/development-full.css",
+		"build-css-prod": "sass --no-source-map --style=compressed scripts/production.scss dist/production.css",
+		"build-css-prod-full": "sass --no-source-map --style=compressed scripts/production-full.scss dist/production-full.css",
 		"build-js": "tsc && node scripts/browser.js",
 		"build": "rm -rf dist && yarn concurrently --raw 'yarn build-css-dev' 'yarn build-css-dev-full' 'yarn build-css-prod' 'yarn build-css-prod-full' 'yarn build-js'",
 		"publish-dist-dry-run": "yarn build && npm publish --dry-run"

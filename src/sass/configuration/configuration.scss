@@ -4,6 +4,9 @@ $env: development !default;
 // Describes whether to generate Duomo CSS.
 $headless: false !default;
 
+// Describes whether to generate skeleton Duomo CSS.
+$skeleton: false !default;
+
 // Describes whether to generate Duomo CSS debuggers.
 $data-debugger: true !default;
 

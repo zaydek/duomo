@@ -1,5 +1,7 @@
 @use "../helpers" as *;
 
+@use "../configuration";
+
 $-translate-range: (-100, -50, 0, 50, 100);
 
 // TODO: Use `percent-range`?
@@ -11,33 +13,35 @@ $-scale-range: (
 );
 
 @mixin transform($variants...) {
-	@include variants($variants...) using ($v) {
-		#{variant(transform, $v)} {
-			--transform-translate-x: 0;
-			--transform-translate-y: 0;
-			--transform-scale: 1;
-			transform: translate(var(--transform-translate-x), var(--transform-translate-y)) scale(var(--transform-scale));
-		}
+	@if not configuration.$skeleton {
+		@include variants($variants...) using ($v) {
+			#{variant(transform, $v)} {
+				--transform-translate-x: 0;
+				--transform-translate-y: 0;
+				--transform-scale: 1;
+				transform: translate(var(--transform-translate-x), var(--transform-translate-y)) scale(var(--transform-scale));
+			}
 
-		#{variant(transform-gpu, $v)} {
-			--transform-translate-x: 0;
-			--transform-translate-y: 0;
-			--transform-scale: 1;
-			transform: translate3d(var(--transform-translate-x), var(--transform-translate-y), 0)
-				scale(var(--transform-scale));
-		}
+			#{variant(transform-gpu, $v)} {
+				--transform-translate-x: 0;
+				--transform-translate-y: 0;
+				--transform-scale: 1;
+				transform: translate3d(var(--transform-translate-x), var(--transform-translate-y), 0)
+					scale(var(--transform-scale));
+			}
 
-		@each $axis in (x, y) {
-			@each $rv in $-translate-range {
-				#{variant(#{n($rv)}#{$axis}-#{abs($rv)}, $v)} {
-					--transform-translate-#{$axis}: #{$rv + "%"};
+			@each $axis in (x, y) {
+				@each $rv in $-translate-range {
+					#{variant(#{n($rv)}#{$axis}-#{abs($rv)}, $v)} {
+						--transform-translate-#{$axis}: #{$rv + "%"};
+					}
 				}
 			}
-		}
 
-		@each $rv in $-scale-range {
-			#{variant(scale-#{abs($rv * 100)}, $v)} {
-				--transform-scale: #{$rv};
+			@each $rv in $-scale-range {
+				#{variant(scale-#{abs($rv * 100)}, $v)} {
+					--transform-scale: #{$rv};
+				}
 			}
 		}
 	}

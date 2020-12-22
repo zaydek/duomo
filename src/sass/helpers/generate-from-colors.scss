@@ -3,6 +3,8 @@
 
 @use "variants" as *;
 
+@use "../configuration";
+
 // prettier-ignore
 @mixin generate-from-colors($info-map) {
 	$v:             map.get($info-map, variant);
@@ -22,9 +24,11 @@
 		}
 	}
 
-	@each $mv in $percent-range {
-		#{variant(#{$shorthand}-opacity-#{$mv * 100}, $v)} {
-			--#{$shorthand}-opacity: #{$mv};
+	@if not configuration.$skeleton {
+		@each $mv in $percent-range {
+			#{variant(#{$shorthand}-opacity-#{$mv * 100}, $v)} {
+				--#{$shorthand}-opacity: #{$mv};
+			}
 		}
 	}
 }
