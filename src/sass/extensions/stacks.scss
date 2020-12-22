@@ -2,18 +2,6 @@
 
 $-stack-opts: (hstack, vstack, zstack, grid);
 
-// prettier-ignore
-$-place-opts: (
-	top-left: (top: 0, left: 0),
-	top: (top: 0),
-	top-right: (top: 0, right: 0),
-	left: (left: 0),
-	right: (right: 0),
-	bottom-left: (bottom: 0, left: 0),
-	bottom: (bottom: 0),
-	bottom-right: (bottom: 0, right: 0),
-);
-
 $-align-self-opts: (
 	align-self-stretch: stretch,
 	align-self-start: flex-start,
@@ -150,18 +138,9 @@ $-align-opts: (
 				grid-row-end: 1;
 				grid-column-end: 1;
 			}
-		}
-
-		/*
-		 * <... place-*>
-		 */
-
-		@each $mk, $mv in $-place-opts {
-			#{variant(place-#{$mk}, $v)} {
+			.zstack > *:nth-child(n + 2) {
 				position: absolute;
-				@each $mk, $mv in $mv {
-					#{$mk}: $mv;
-				}
+				z-index: 10;
 			}
 		}
 
