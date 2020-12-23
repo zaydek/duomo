@@ -9,12 +9,12 @@
 		"index.scss"
 	],
 	"scripts": {
-		"watch-consumer-css": "nodemon --exec 'yarn build-consumer-css && yarn prettier --write dist/consumer.css' --ext css,scss --watch src",
-		"watch-skeleton-css": "nodemon --exec 'yarn build-skeleton-css && yarn prettier --write dist/skeleton.css' --ext css,scss --watch src",
+		"watch-consumer-css": "nodemon --exec 'yarn build-consumer-css && yarn prettier --tab-width 2 --use-tabs false --write dist/consumer.css' --ext css,scss --watch src",
+		"watch-skeleton-css": "nodemon --exec 'yarn build-skeleton-css && yarn prettier --tab-width 2 --use-tabs false --write dist/skeleton.css' --ext css,scss --watch src",
 		"test": "jest",
-		"build-consumer-css": "sass --no-source-map --style=compressed scripts/consumer.scss dist/consumer.css && yarn prettier --write dist/consumer.css",
-		"build-dev-css": "sass --no-source-map --style=compressed scripts/development.scss dist/development.css && yarn prettier --write dist/development.css",
-		"build-dev-full-css": "sass --no-source-map --style=compressed scripts/development-full.scss dist/development-full.css && yarn prettier --write dist/development-full.css",
+		"build-consumer-css": "sass --no-source-map --style=compressed scripts/consumer.scss dist/consumer.css && yarn prettier --tab-width 2 --use-tabs false --write dist/consumer.css",
+		"build-dev-css": "sass --no-source-map --style=compressed scripts/development.scss dist/development.css && yarn prettier --tab-width 2 --use-tabs false --write dist/development.css",
+		"build-dev-full-css": "sass --no-source-map --style=compressed scripts/development-full.scss dist/development-full.css && yarn prettier --tab-width 2 --use-tabs false --write dist/development-full.css",
 		"build-prod-css": "sass --no-source-map --style=compressed scripts/production.scss dist/production.css",
 		"build-prod-full-css": "sass --no-source-map --style=compressed scripts/production-full.scss dist/production-full.css",
 		"build-skeleton-css": "sass --no-source-map --style=compressed scripts/skeleton.scss dist/skeleton.css",
