@@ -7,7 +7,7 @@ test("escape: does not escape numbers", () => {
 	const result = sass(`
 @use "sass:math";
 
-@use "src/duomo/helpers/escapers" as *;
+@use "src/sass/helpers/escapers" as *;
 
 .-z-#{escape(math.abs(-10))} {
 	z-index: -10;
@@ -37,7 +37,7 @@ test("escape: does not escape numbers", () => {
 
 test("escape: escapes `$delimiter`", () => {
 	const result = sass(`
-@use "src/duomo/helpers/escapers" as *;
+@use "src/sass/helpers/escapers" as *;
 
 $delimiter: ":";
 .sm#{escape($delimiter)}px-24 {
@@ -54,7 +54,7 @@ $delimiter: ":";
 
 test("escape-breakpoint-key: does not escape `xl` but escapes `2xl`", () => {
 	const result = sass(`
-@use "src/duomo/helpers/escapers" as *;
+@use "src/sass/helpers/escapers" as *;
 
 .#{escape-breakpoint-key("xl")} {
 	/**/

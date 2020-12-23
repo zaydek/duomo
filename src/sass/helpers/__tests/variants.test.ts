@@ -5,9 +5,9 @@ declare function sass(data: string): string
 
 test("integration", () => {
 	const result = sass(`
-@use "src/duomo/helpers/getters" as *;
-@use "src/duomo/helpers/resolvers" as *;
-@use "src/duomo/helpers/variants" as *;
+@use "src/sass/helpers/getters" as *;
+@use "src/sass/helpers/resolvers" as *;
+@use "src/sass/helpers/variants" as *;
 
 @mixin background-color($variants...) {
 	@include variants($variants...) using ($v) {

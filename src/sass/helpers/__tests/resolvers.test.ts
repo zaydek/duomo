@@ -5,7 +5,7 @@ declare function sass(data: string): string
 
 test("integration", () => {
 	const result = sass(`
-@use "src/duomo/helpers/resolvers" as *;
+@use "src/sass/helpers/resolvers" as *;
 
 .m-4 {
 	margin: resolve(4, none);

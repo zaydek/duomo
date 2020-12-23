@@ -5,7 +5,7 @@ declare function sass(data: string): string
 
 test("integration", () => {
 	const result = sass(`
-@use "src/duomo/helpers/generate-from-range" as *;
+@use "src/sass/helpers/generate-from-range" as *;
 
 @at-root {
 	@include generate-from-range((

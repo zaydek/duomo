@@ -5,7 +5,7 @@ declare function sass(data: string): string
 
 test("take: list, erroneous case", () => {
 	const result = sass(`
-@use "src/duomo/helpers/take" as *;
+@use "src/sass/helpers/take" as *;
 
 @each $rv in take((0, 1, 2, 4), "Hello, world!") {
 	.w-#{$rv} {
@@ -35,7 +35,7 @@ test("take: list, erroneous case", () => {
 
 test("take: list, non-erroneous case", () => {
 	const result = sass(`
-@use "src/duomo/helpers/take" as *;
+@use "src/sass/helpers/take" as *;
 
 @each $rv in take((0, 1, 2, 4), 4) {
 	.w-#{$rv} {
@@ -61,7 +61,7 @@ test("take: list, non-erroneous case", () => {
 
 test("take: map, erroneous case", () => {
 	const result = sass(`
-@use "src/duomo/helpers/take" as *;
+@use "src/sass/helpers/take" as *;
 
 @each $mk, $mv in take((a: 0, b: 1, c: 2, d: 4), "Hello, world!") {
 	.#{$mk}-#{$mv} {
@@ -91,7 +91,7 @@ test("take: map, erroneous case", () => {
 
 test("take: map, non-erroneous case", () => {
 	const result = sass(`
-@use "src/duomo/helpers/take" as *;
+@use "src/sass/helpers/take" as *;
 
 @each $mk, $mv in take((a: 0, b: 1, c: 2, d: 4), d) {
 	.#{$mk}-#{$mv} {

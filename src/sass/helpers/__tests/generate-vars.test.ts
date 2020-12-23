@@ -5,7 +5,7 @@ declare function sass(data: string): string
 
 test("integration", () => {
 	const result = sass(`
-@use "src/duomo/helpers/generate-vars" as *;
+@use "src/sass/helpers/generate-vars" as *;
 
 @at-root {
 	:root {
@@ -31,7 +31,7 @@ test("integration", () => {
 	--b: y;
 	--c: z;
 	--d: x;
-	--f: y;
+	--e: y;
 	--f: z;
 }
 `.trim())
