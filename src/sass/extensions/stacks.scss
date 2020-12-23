@@ -1,6 +1,6 @@
 @use "../helpers" as *;
 
-$-stack-opts: (hstack, vstack, zstack, grid);
+$-layout-opts: (hstack, vstack, zstack, grid);
 
 $-align-self-opts: (
 	align-self-stretch: stretch,
@@ -30,11 +30,11 @@ $-align-opts: (
 @mixin stacks($variants...) {
 	@include variants($variants...) using ($v) {
 		/*
-		 * <stack>
+		 * <layout>
 		 */
 
 		@if matches($v, core) {
-			@each $opt in $-stack-opts {
+			@each $opt in $-layout-opts {
 				.#{$opt} {
 					--dm-align-self: stretch;
 					@if $opt == hstack or $opt == vstack {
@@ -49,11 +49,10 @@ $-align-opts: (
 		 */
 
 		#{variant(hstack, $v)} {
-			align-self: var(--dm-align-self);
-
 			display: flex;
 			flex-direction: row;
 			justify-content: center;
+			align-self: var(--dm-align-self);
 			align-items: center;
 			min-width: min-content; // Needed for `overflow-x-scroll`
 		}
@@ -88,11 +87,10 @@ $-align-opts: (
 		 */
 
 		#{variant(vstack, $v)} {
-			align-self: var(--dm-align-self);
-
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
+			align-self: var(--dm-align-self);
 			align-items: center;
 			min-width: auto; // Needed for `overflow-x-scroll`
 		}
@@ -136,12 +134,12 @@ $-align-opts: (
 		 * <zstack>
 		 */
 
+		// Based on https://codepen.io/zaydek/pen/MWjEvee.
 		@if matches($v, core) {
 			.zstack {
-				align-self: var(--dm-align-self);
-
 				display: grid;
 				justify-items: center;
+				align-self: var(--dm-align-self);
 				align-items: center;
 				position: relative;
 			}
@@ -150,10 +148,10 @@ $-align-opts: (
 				grid-column-start: 1;
 				grid-row-end: 1;
 				grid-column-end: 1;
+				z-index: 10;
 			}
 			.zstack > *:nth-child(n + 2) {
 				position: absolute;
-				z-index: 10;
 			}
 		}
 
