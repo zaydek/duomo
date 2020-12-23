@@ -14,7 +14,6 @@
 @use "core/font-style" as *;
 @use "core/font-weight" as *;
 @use "core/grid" as *;
-// @use "core/height" as *;
 @use "core/letter-spacing" as *;
 @use "core/line-height" as *;
 @use "core/margin" as *;
@@ -32,7 +31,6 @@
 @use "core/transition" as *;
 @use "core/vertical-align" as *;
 @use "core/white-space" as *;
-// @use "core/width" as *;
 @use "core/z-index" as *;
 
 @use "extensions/aspect-ratio" as *;
@@ -64,7 +62,6 @@
 	@if $mixin == "font-weight" { @include font-weight($variants...); }
 	@if $mixin == "grid" { @include grid($variants...); }
 	@if $mixin == "group" { @include group($variants...); }
-	// @if $mixin == "height" { @include height($variants...); }
 	@if $mixin == "hidden" { @include hidden($variants...); }
 	@if $mixin == "letter-spacing" { @include letter-spacing($variants...); }
 	@if $mixin == "line-height" { @include line-height($variants...); }
@@ -84,7 +81,6 @@
 	@if $mixin == "transition" { @include transition($variants...); }
 	@if $mixin == "vertical-align" { @include vertical-align($variants...); }
 	@if $mixin == "white-space" { @include white-space($variants...); }
-	// @if $mixin == "width" { @include width($variants...); }
 	@if $mixin == "z-index" { @include z-index($variants...); }
 }
 

@@ -3,15 +3,12 @@
 // TODO: Use `percent-range`?
 $-range: (1, 1.1, 1.2, 1.25, 1.3, 1.4, 1.5, 1.6, 1.7, 1.75, 1.8, 1.9, 2);
 
-// prettier-ignore
 @mixin line-height($variants...) {
 	@include variants($variants...) using ($v) {
-		@include generate-from-range((
-			variant: $v,
-			shorthand: leading,
-			property: (line-height),
-			range: $-range,
-			resolver: none,
-		));
+		@each $rv in $-range {
+			#{variant(leading-#{$rv * 100}, $v)} {
+				line-height: $rv;
+			}
+		}
 	}
 }

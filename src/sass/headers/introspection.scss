@@ -6,13 +6,6 @@
 
 @mixin introspection {
 	:root {
-		--placeholder-color-default: hsl(#{color(gray-400)});
-		--border-color-default: hsl(#{color(gray-300)});
-
-		@include generate-vars(if(configuration.$skeleton, skeleton-colors($raw: true), colors($raw: true)));
-		@include generate-vars(shadows($raw: true));
-		@include generate-vars(timings($raw: true));
-
 		--sans: "''";
 		--serif: "''";
 		--mono: "''";
@@ -21,7 +14,14 @@
 		--ui-serif: #{font(serif, $raw: true)};
 		--ui-mono: #{font(mono, $raw: true)};
 
+		--placeholder-color-default: hsl(#{color(gray-400)});
+		--border-color-default: hsl(#{color(gray-300)});
+
+		@include generate-vars(if(configuration.$skeleton, skeleton-colors($raw: true), colors($raw: true)));
+		@include generate-vars(shadows($raw: true));
+
 		@if not configuration.$skeleton {
+			@include generate-vars(timings($raw: true));
 			--transition-duration-default: 300ms;
 			--transition-timing-function-default: #{timing(ease-out)};
 		}

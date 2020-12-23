@@ -10,6 +10,18 @@ $-scale-range: (
 	1.1, 1.2, 1.25, 1.3, 1.4, 1.5, 1.6, 1.7, 1.75, 1.8, 1.9, 2,
 );
 
+$-origin-opts: (
+	top: top,
+	top-right: top right,
+	right: right,
+	bottom-right: bottom right,
+	bottom: bottom,
+	bottom-left: bottom left,
+	left: left,
+	top-left: top left,
+	center: center,
+);
+
 @mixin transform($variants...) {
 	@include variants($variants...) using ($v) {
 		#{variant(transform, $v)} {
@@ -38,6 +50,12 @@ $-scale-range: (
 		@each $rv in $-scale-range {
 			#{variant(scale-#{abs($rv * 100)}, $v)} {
 				--transform-scale: #{$rv};
+			}
+		}
+
+		@each $mk, $mv in $-origin-opts {
+			#{variant(origin-#{$mk}, $v)} {
+				transform-origin: $mv;
 			}
 		}
 	}
