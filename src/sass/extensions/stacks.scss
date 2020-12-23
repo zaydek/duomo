@@ -124,7 +124,7 @@ $-align-opts: (
 		 * <... wrap>
 		 */
 
-		@each $mk, $mv in (wrap-none: nowrap, wrap: wrap, wrap-reverse: wrap-reverse) {
+		@each $mk, $mv in (wrap: wrap, wrap-reverse: wrap-reverse, wrap-none: nowrap) {
 			#{variant($mk, $v)} {
 				flex-wrap: $mv;
 			}

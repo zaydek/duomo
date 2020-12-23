@@ -1,8 +1,8 @@
 @use "../helpers" as *;
 
 $-opts: (
-	italic-none: normal,
 	italic: italic,
+	italic-none: normal,
 );
 
 @mixin font-style($variants...) {
