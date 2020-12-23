@@ -6,9 +6,9 @@
 
 @mixin introspection {
 	:root {
-		--sans: "''";
-		--serif: "''";
-		--mono: "''";
+		--sans: "";
+		--serif: "";
+		--mono: "";
 
 		--ui-sans: #{font(sans, $raw: true)};
 		--ui-serif: #{font(serif, $raw: true)};
@@ -16,15 +16,12 @@
 
 		--placeholder-color-default: hsl(#{color(gray-400)});
 		--border-color-default: hsl(#{color(gray-300)});
+		--transition-duration-default: 300ms;
+		--transition-timing-function-default: #{timing(ease-out)};
 
 		@include generate-vars(if(configuration.$skeleton, skeleton-colors($raw: true), colors($raw: true)));
 		@include generate-vars(shadows($raw: true));
-
-		@if not configuration.$skeleton {
-			@include generate-vars(timings($raw: true));
-			--transition-duration-default: 300ms;
-			--transition-timing-function-default: #{timing(ease-out)};
-		}
+		@include generate-vars(timings($raw: true));
 
 		// [data-stagger]
 		--stagger-1-width: #{math.percentage(4 / 8)};

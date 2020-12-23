@@ -16,7 +16,7 @@ interface DirectionalStackProps {
 	/**
 	 * Space between children.
 	 */
-	space?: string // TODO
+	space?: string
 	className?: string
 	children?: React.ReactNode
 }

@@ -24,15 +24,15 @@
 				gap: rem($rv);
 			}
 		}
-		@each $rv in limit(range(), null, 320) {
-			#{variant(gap-x-#{$rv}, $v)} {
-				column-gap: rem($rv);
-			}
-		}
-		@each $rv in limit(range(), null, 320) {
-			#{variant(gap-y-#{$rv}, $v)} {
-				row-gap: rem($rv);
-			}
-		}
+		// @each $rv in limit(range(), null, 320) {
+		// 	#{variant(gap-x-#{$rv}, $v)} {
+		// 		column-gap: rem($rv);
+		// 	}
+		// }
+		// @each $rv in limit(range(), null, 320) {
+		// 	#{variant(gap-y-#{$rv}, $v)} {
+		// 		row-gap: rem($rv);
+		// 	}
+		// }
 	}
 }

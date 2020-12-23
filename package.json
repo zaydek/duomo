@@ -1,7 +1,7 @@
 {
 	"name": "@zaydek/duomo",
 	"version": "0.7.8",
-	"main": "dist/production-full.css",
+	"main": "dist/duomo-full.min.css",
 	"license": "MIT",
 	"files": [
 		"dist/",
@@ -13,14 +13,15 @@
 		"watch-skeleton-css": "nodemon --exec 'yarn build-skeleton-css && yarn prettier --tab-width 2 --use-tabs false --write dist/skeleton.css' --ext css,scss --watch src",
 		"test": "jest",
 		"build-consumer-css": "sass --no-source-map --style=compressed scripts/consumer.scss dist/consumer.css && yarn prettier --tab-width 2 --use-tabs false --write dist/consumer.css",
-		"build-dev-css": "sass --no-source-map --style=compressed scripts/development.scss dist/development.css && yarn prettier --tab-width 2 --use-tabs false --write dist/development.css",
-		"build-dev-full-css": "sass --no-source-map --style=compressed scripts/development-full.scss dist/development-full.css && yarn prettier --tab-width 2 --use-tabs false --write dist/development-full.css",
-		"build-prod-css": "sass --no-source-map --style=compressed scripts/production.scss dist/production.css",
-		"build-prod-full-css": "sass --no-source-map --style=compressed scripts/production-full.scss dist/production-full.css",
-		"build-skeleton-css": "sass --no-source-map --style=compressed scripts/skeleton.scss dist/skeleton.css",
+		"build-duomo-css": "sass --no-source-map --style=compressed scripts/duomo.scss dist/duomo.css && yarn prettier --tab-width 2 --use-tabs false --write dist/duomo.css",
+		"build-duomo-min-css": "sass --no-source-map --style=compressed scripts/duomo.min.scss dist/duomo.min.css",
+		"build-duomo-full-css": "sass --no-source-map --style=compressed scripts/duomo-full.scss dist/duomo-full.css && yarn prettier --tab-width 2 --use-tabs false --write dist/duomo-full.css",
+		"build-duomo-full-min-css": "sass --no-source-map --style=compressed scripts/duomo-full.min.scss dist/duomo-full.min.css",
+		"build-skeleton-css": "sass --no-source-map --style=compressed scripts/skeleton.scss dist/skeleton.css && yarn prettier --tab-width 2 --use-tabs false --write dist/skeleton.css",
+		"build-skeleton-min-css": "sass --no-source-map --style=compressed scripts/skeleton.min.scss dist/skeleton.min.css",
 		"build-js": "tsc && node scripts/browser.js",
 		"stats": "node scripts/stats.js",
-		"build": "rm -rf dist && yarn concurrently --raw 'yarn build-dev-css' 'yarn build-dev-full-css' 'yarn build-prod-css' 'yarn build-prod-full-css' 'yarn build-skeleton-css' 'yarn build-js' && yarn stats",
+		"build": "rm -rf dist && yarn concurrently --raw 'yarn build-duomo-css' 'yarn build-duomo-full-css' 'yarn build-duomo-min-css' 'yarn build-duomo-full-min-css' 'yarn build-skeleton-css' 'yarn build-skeleton-min-css' 'yarn build-js' && yarn stats",
 		"publish-dist-dry-run": "yarn build && npm publish --dry-run"
 	},
 	"devDependencies": {

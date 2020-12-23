@@ -49,10 +49,11 @@ $-align-opts: (
 		 */
 
 		#{variant(hstack, $v)} {
+			align-self: var(--dm-align-self);
+
 			display: flex;
 			flex-direction: row;
 			justify-content: center;
-			align-self: var(--dm-align-self);
 			align-items: center;
 			min-width: min-content; // Needed for `overflow-x-scroll`
 		}
@@ -87,10 +88,11 @@ $-align-opts: (
 		 */
 
 		#{variant(vstack, $v)} {
+			align-self: var(--dm-align-self);
+
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
-			align-self: var(--dm-align-self);
 			align-items: center;
 			min-width: auto; // Needed for `overflow-x-scroll`
 		}
@@ -136,10 +138,11 @@ $-align-opts: (
 
 		@if matches($v, core) {
 			.zstack {
-				display: grid;
 				align-self: var(--dm-align-self);
-				align-items: center;
+
+				display: grid;
 				justify-items: center;
+				align-items: center;
 				position: relative;
 			}
 			.zstack > * {
@@ -164,7 +167,7 @@ $-align-opts: (
 			--dm-align-self: stretch;
 			width: auto;
 		}
-		@each $rv in to-array(range(), 100%, 100vw) {
+		@each $rv in to-array(range(), min-content, max-content, 100%, 100vw) {
 			#{variant(w-#{desc($rv)}, $v)} {
 				--dm-align-self: center;
 				width: resolve($rv, rem);
@@ -181,7 +184,7 @@ $-align-opts: (
 			--dm-align-self: stretch;
 			height: auto;
 		}
-		@each $rv in to-array(range(), 100%, 100vh) {
+		@each $rv in to-array(range(), min-content, max-content, 100%, 100vh) {
 			#{variant(h-#{desc($rv)}, $v)} {
 				--dm-align-self: center;
 				height: resolve($rv, rem);
