@@ -5,13 +5,10 @@ function sleep(forMs: number) {
 }
 
 test("integration", async () => {
-	expect(window.localStorage.getItem(Duomo.localStorageKey)).toBe(null)
+	const defer = window.Duomo.init("development", { quiet: true })
 
-	const defer = window.Duomo.init("development") // , { quiet: true })
-	expect(window.Duomo.darkMode).toBe(false)
-
+	// NOTE: First dark mode write should be instant.
 	window.Duomo.darkMode = true
-	await sleep(500)
 	expect(window.Duomo.darkMode).toBe(true)
 	expect(window.localStorage.getItem(Duomo.localStorageKey)).toBe("dark")
 

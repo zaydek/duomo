@@ -6,7 +6,7 @@ type Env = "development" | "production"
 
 declare global {
 	interface Window {
-		Duomo: IRuntime
+		Duomo: Runtime
 	}
 }
 
@@ -14,12 +14,16 @@ declare global {
  * Runtime
  */
 
-interface IRuntime {
+interface RuntimeOptions {
+	quiet: boolean
+}
+
+interface Runtime {
 	darkMode: boolean
 	debugMode: boolean
 	debugSpaceMode: boolean
 
-	init(env: Env): () => void
+	init(env: Env, options?: RuntimeOptions): () => void
 }
 
 // Returns whether the user prefers dark mode.
@@ -79,11 +83,12 @@ function isKeyDownDebugSpaceMode(e: KeyboardEvent) {
 }
 
 // TODO: Add options; `{ quiet: true }` or `{ silent: true }`.
-class Duomo implements IRuntime {
+class Duomo implements Runtime {
 	static localStorageKey = "duomo-theme-preference"
 
-	#html: null | HTMLElement = null
+	#options: RuntimeOptions = { quiet: false }
 
+	#html: null | HTMLElement = null
 	#darkMode: boolean = false
 	#debugMode: boolean = false
 	#debugSpaceMode: boolean = false
@@ -94,11 +99,21 @@ class Duomo implements IRuntime {
 
 	#deferrers: (() => void)[] = []
 
-	init(env: Env) {
+	// NOTE: Uses `console.log` arguments / types.
+	private log(msg?: any, ...params: any[]) {
+		if (this.#options.quiet) {
+			// No-op
+			return
+		}
+		console.log(msg, ...params)
+	}
+
+	// TODO: Should dark mode precedence (`localStorage` or `matchMedia`) be user configurable?
+	init(env: Env, options: RuntimeOptions = { quiet: false }) {
+		this.#options = options
+
 		// TOOD: Guard for SSR?
 		this.#html = document.documentElement
-
-		// TODO: Should dark mode precedence be user configurable?
 		if (userPrefersDarkMode() || systemPrefersDarkMode()) {
 			this.darkMode = true
 		}
@@ -141,10 +156,10 @@ class Duomo implements IRuntime {
 			this.#deferrers.push(() => document.removeEventListener("keydown", handleDebugSpaceMode))
 		}
 
-		console.log("[Duomo] init=true")
+		this.log("[Duomo] init=true")
 		return () => {
 			this.#deferrers.reverse().forEach(defer => defer())
-			console.log("[Duomo] init=false")
+			this.log("[Duomo] init=false")
 		}
 	}
 
@@ -168,7 +183,7 @@ class Duomo implements IRuntime {
 				: () => this.#html!.setAttribute("data-theme", "dark")
 			action()
 			window.localStorage.setItem(Duomo.localStorageKey, !mode ? "light" : "dark")
-			console.log(`[Duomo] darkMode=${!mode ? "off" : "on"}`)
+			this.log(`[Duomo] darkMode=${!mode ? "off" : "on"}`)
 		}
 
 		if (!this.#didInitDarkMode) {
@@ -199,7 +214,7 @@ class Duomo implements IRuntime {
 	set debugMode(mode: boolean) {
 		this.#debugMode = mode
 		this.#html!.setAttribute("data-debug", "" + mode)
-		console.log(`[Duomo] debugMode=${!mode ? "off" : "on"}`)
+		this.log(`[Duomo] debugMode=${!mode ? "off" : "on"}`)
 	}
 
 	/*
@@ -215,7 +230,7 @@ class Duomo implements IRuntime {
 	set debugSpaceMode(mode: boolean) {
 		this.#debugSpaceMode = mode
 		this.#html!.setAttribute("data-debug-space", "" + mode)
-		console.log(`[Duomo] debugSpaceMode=${!mode ? "off" : "on"}`)
+		this.log(`[Duomo] debugSpaceMode=${!mode ? "off" : "on"}`)
 	}
 }
 
