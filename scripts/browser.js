@@ -10,6 +10,5 @@ const { build } = require("esbuild")
 		entryPoints: ["src/runtime/runtime.ts"],
 		minify: process.env.NODE_ENV === "production",
 		outfile: "dist/browser/index.js",
-		sourcemap: true,
 	})
 })()

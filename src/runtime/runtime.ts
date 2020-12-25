@@ -1,29 +1,29 @@
-/*
- * TypeScript
- */
-
-type Env = "development" | "production"
-
 declare global {
 	interface Window {
 		Duomo: Runtime
 	}
 }
 
-/*
- * Runtime
- */
+type Env = "development" | "production"
 
 interface RuntimeOptions {
 	quiet: boolean
 }
 
 interface Runtime {
-	darkMode: boolean
-	debugMode: boolean
-	debugSpaceMode: boolean
+	getDarkMode(): boolean
+	setDarkMode(mode: boolean): void
+	toggleDarkMode(): void
 
-	init(env: Env, options?: RuntimeOptions): () => void
+	getDebugMode(): boolean
+	setDebugMode(mode: boolean): void
+	toggleDebugMode(): void
+
+	getDebugSpaceMode(): boolean
+	setDebugSpaceMode(mode: boolean): void
+	toggleDebugSpaceMode(): void
+
+	init(env?: Env, options?: RuntimeOptions): () => void
 }
 
 // Returns whether the user prefers dark mode.
@@ -82,7 +82,6 @@ function isKeyDownDebugSpaceMode(e: KeyboardEvent) {
 	return ok
 }
 
-// TODO: Add options; `{ quiet: true }` or `{ silent: true }`.
 class Duomo implements Runtime {
 	static localStorageKey = "duomo-theme-preference"
 
@@ -99,8 +98,7 @@ class Duomo implements Runtime {
 
 	#deferrers: (() => void)[] = []
 
-	// NOTE: Uses `console.log` arguments / types.
-	private log(msg?: any, ...params: any[]) {
+	private __console_log(msg?: any, ...params: any[]) {
 		if (this.#options.quiet) {
 			// No-op
 			return
@@ -109,13 +107,14 @@ class Duomo implements Runtime {
 	}
 
 	// TODO: Should dark mode precedence (`localStorage` or `matchMedia`) be user configurable?
-	init(env: Env, options: RuntimeOptions = { quiet: false }) {
+	init(env: Env = "development", options: RuntimeOptions = { quiet: false }) {
 		this.#options = options
+		this.__console_log("[Duomo] init=true")
 
 		// TOOD: Guard for SSR?
 		this.#html = document.documentElement
 		if (userPrefersDarkMode() || systemPrefersDarkMode()) {
-			this.darkMode = true
+			this.setDarkMode(true)
 		}
 
 		// `matchMedia` handler.
@@ -123,7 +122,7 @@ class Duomo implements Runtime {
 			// COMPAT: Prefer `media.addListener` not `media.addEventListener`.
 			const media = window.matchMedia("(prefers-color-scheme: dark)")
 			const handleMedia = () => {
-				this.darkMode = !this.darkMode
+				this.toggleDarkMode()
 			}
 			media.addListener(handleMedia)
 			this.#deferrers.push(() => media.removeListener(handleMedia))
@@ -133,17 +132,17 @@ class Duomo implements Runtime {
 		if (env === "development") {
 			const handleDarkMode = (e: KeyboardEvent) => {
 				if (isKeyDownDarkMode(e)) {
-					this.#darkMode = !this.#darkMode
+					this.toggleDarkMode()
 				}
 			}
 			const handleDebugMode = (e: KeyboardEvent) => {
 				if (isKeyDownDebugMode(e)) {
-					this.#debugMode = !this.#debugMode
+					this.toggleDebugMode()
 				}
 			}
 			const handleDebugSpaceMode = (e: KeyboardEvent) => {
 				if (isKeyDownDebugSpaceMode(e)) {
-					this.#debugSpaceMode = !this.#debugSpaceMode
+					this.toggleDebugSpaceMode()
 				}
 			}
 
@@ -156,10 +155,9 @@ class Duomo implements Runtime {
 			this.#deferrers.push(() => document.removeEventListener("keydown", handleDebugSpaceMode))
 		}
 
-		this.log("[Duomo] init=true")
 		return () => {
 			this.#deferrers.reverse().forEach(defer => defer())
-			this.log("[Duomo] init=false")
+			this.__console_log("[Duomo] init=false")
 		}
 	}
 
@@ -167,14 +165,10 @@ class Duomo implements Runtime {
 	 * darkMode
 	 */
 
-	get darkMode() {
+	getDarkMode() {
 		return this.#darkMode
 	}
-	/**
-	 * @mode Sets dark mode; `[data-theme="dark"]`
-	 */
-	// TODO: `toggleDarkMode` is not currently cancelable. Should it be?
-	set darkMode(mode: boolean) {
+	setDarkMode(mode: boolean) {
 		this.#darkMode = mode
 
 		const toggle = (mode: boolean) => {
@@ -183,7 +177,7 @@ class Duomo implements Runtime {
 				: () => this.#html!.setAttribute("data-theme", "dark")
 			action()
 			window.localStorage.setItem(Duomo.localStorageKey, !mode ? "light" : "dark")
-			this.log(`[Duomo] darkMode=${!mode ? "off" : "on"}`)
+			this.__console_log(`[Duomo] darkMode=${!mode ? "off" : "on"}`)
 		}
 
 		if (!this.#didInitDarkMode) {
@@ -200,37 +194,46 @@ class Duomo implements Runtime {
 			}, 25)
 		}
 	}
+	toggleDarkMode() {
+		this.setDarkMode(!this.getDarkMode())
+	}
 
 	/*
 	 * debugMode
 	 */
 
-	get debugMode() {
+	getDebugMode() {
 		return this.#debugMode
 	}
-	/**
-	 * @mode Sets debug mode; `[data-debug-space]`
-	 */
-	set debugMode(mode: boolean) {
+	setDebugMode(mode: boolean) {
 		this.#debugMode = mode
-		this.#html!.setAttribute("data-debug", "" + mode)
-		this.log(`[Duomo] debugMode=${!mode ? "off" : "on"}`)
+		const action = !mode
+			? () => this.#html!.removeAttribute("data-debug")
+			: () => this.#html!.setAttribute("data-debug", "true")
+		action()
+		this.__console_log(`[Duomo] debugMode=${!mode ? "off" : "on"}`)
+	}
+	toggleDebugMode() {
+		this.setDebugMode(!this.getDebugMode())
 	}
 
 	/*
 	 * debugSpaceMode
 	 */
 
-	get debugSpaceMode() {
+	getDebugSpaceMode() {
 		return this.#debugSpaceMode
 	}
-	/**
-	 * @mode Sets debug space mode; `[data-debug-space]`
-	 */
-	set debugSpaceMode(mode: boolean) {
+	setDebugSpaceMode(mode: boolean) {
 		this.#debugSpaceMode = mode
-		this.#html!.setAttribute("data-debug-space", "" + mode)
-		this.log(`[Duomo] debugSpaceMode=${!mode ? "off" : "on"}`)
+		const action = !mode
+			? () => this.#html!.removeAttribute("data-debug-space")
+			: () => this.#html!.setAttribute("data-debug-space", "true")
+		action()
+		this.__console_log(`[Duomo] debugSpaceMode=${!mode ? "off" : "on"}`)
+	}
+	toggleDebugSpaceMode() {
+		this.setDebugSpaceMode(!this.getDebugSpaceMode())
 	}
 }
 
