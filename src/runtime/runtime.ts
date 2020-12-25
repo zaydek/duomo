@@ -14,8 +14,6 @@ declare global {
  * Runtime
  */
 
-const themePreferenceKey = "duomo-theme-preference" as const
-
 interface IRuntime {
 	darkMode: boolean
 	debugMode: boolean
@@ -31,8 +29,8 @@ interface IRuntime {
 function userPrefersDarkMode() {
 	const ok = (
 		typeof window !== undefined &&
-		themePreferenceKey in window.localStorage &&
-		window.localStorage[themePreferenceKey] === "dark"
+		Duomo.localStorageKey in window.localStorage &&
+		window.localStorage[Duomo.localStorageKey] === "dark"
 	)
 	return ok
 }
@@ -82,6 +80,8 @@ function isKeyDownDebugSpaceMode(e: KeyboardEvent) {
 
 // TODO: Add options; `{ quiet: true }` or `{ silent: true }`.
 class Duomo implements IRuntime {
+	static localStorageKey = "duomo-theme-preference"
+
 	#html: null | HTMLElement = null
 
 	#darkMode: boolean = false
@@ -167,7 +167,7 @@ class Duomo implements IRuntime {
 				? () => this.#html!.removeAttribute("data-theme")
 				: () => this.#html!.setAttribute("data-theme", "dark")
 			action()
-			window.localStorage.setItem(themePreferenceKey, !mode ? "light" : "dark")
+			window.localStorage.setItem(Duomo.localStorageKey, !mode ? "light" : "dark")
 			console.log(`[Duomo] darkMode=${!mode ? "off" : "on"}`)
 		}
 
