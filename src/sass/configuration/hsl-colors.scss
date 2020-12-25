@@ -21,6 +21,6 @@
 	@return $ret;
 }
 
-$color-map: -hex-to-hsl(hex.$color-map);
 $skeleton-color-map: -hex-to-hsl(hex.$skeleton-color-map);
+$color-map: -hex-to-hsl(hex.$color-map);
 $extended-color-map: -hex-to-hsl(hex.$extended-color-map);
