@@ -169,3 +169,15 @@ $breakpoint-map: (
 	lg: 1024,
 	xl: 1280,
 ) !default;
+
+// prettier-ignore
+$transition-props: (
+	background-color,
+	border-color,
+	box-shadow,
+	color,
+	fill,
+	opacity,
+	stroke,
+	transform,
+) !default;

@@ -1,0 +1,23 @@
+@use "sass:list";
+
+@use "../configuration";
+
+// Ex:
+//
+// :root {
+//   --theme-transition: #{theme-transition(700ms, timing(ease-out, $raw: true))};
+// }
+//
+// -> :root {
+// ->   --theme-transition:
+// ->     <property> <duration> <timing>,
+// ->     ...;
+// -> }
+//
+@function theme-transition($duration, $timing) {
+	$ret: ();
+	@each $prop in configuration.$transition-props {
+		$ret: list.append($ret, $prop $duration $timing, comma);
+	}
+	@return $ret;
+}

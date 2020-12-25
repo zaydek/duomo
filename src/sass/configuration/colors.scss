@@ -316,6 +316,8 @@ $color-map: (
 ) !default;
 
 $skeleton-color-map: (
+	transparent: map.get($extended-color-map, transparent),
+	current: map.get($extended-color-map, current),
 	black: map.get($extended-color-map, black),
 	white: map.get($extended-color-map, white),
 	gray-50: map.get($extended-color-map, cool-gray-50),

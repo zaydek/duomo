@@ -8,10 +8,10 @@ declare namespace global {
 //
 // sassy(`.mx-0 { margin-left: 0; margin-right: 0; }`)
 //
-// .mx-0 {
-//   margin-left: 0;
-//   margin-right: 0;
-// }
+// -> .mx-0 {
+// ->   margin-left: 0;
+// ->   margin-right: 0;
+// -> }
 //
 global.sass = (data: string) => {
 	const result = sass.renderSync({

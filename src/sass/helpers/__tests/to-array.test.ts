@@ -17,7 +17,6 @@ test("integration", () => {
 `)
 	// prettier-ignore
 	expect(result).toBe(`
-
 .w-0 {
 	width: 0px;
 }
