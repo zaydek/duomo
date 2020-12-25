@@ -1,5 +1,5 @@
 @mixin data-debug {
-	[data-debug] * {
+	[data-debug] :not(path) {
 		outline: var(--debug-outline);
 		outline-offset: var(--debug-outline-offset);
 	}

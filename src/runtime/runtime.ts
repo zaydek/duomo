@@ -26,30 +26,29 @@ interface Runtime {
 	init(env?: Env, options?: RuntimeOptions): () => void
 }
 
-// Returns whether the user prefers dark mode.
-// Implementation uses `localStorage`.
-//
 // prettier-ignore
-function userPrefersDarkMode() {
-	const ok = (
-		typeof window !== undefined &&
-		Duomo.localStorageKey in window.localStorage &&
-		window.localStorage[Duomo.localStorageKey] === "dark"
-	)
-	return ok
+function localStoragePreference() {
+	if (!(Duomo.localStorageKey in window.localStorage)) {
+		return null
+	}
+	const value = window.localStorage[Duomo.localStorageKey]
+	if (value !== "light" && value !== "dark") {
+		return null
+	}
+	return value
 }
 
-// Returns whether the computer (system) prefers dark mode.
-// Implementation uses `matchMedia`.
-//
 // prettier-ignore
-function systemPrefersDarkMode() {
-	const ok = (
-		typeof window !== undefined &&
-		"matchMedia" in window &&
-		window.matchMedia("(prefers-color-scheme: dark)").matches
-	)
-	return ok
+function matchMediaPreference() {
+	if (!("matchMedia" in window)) {
+		return null
+	}
+	const matches = window.matchMedia("(prefers-color-scheme: dark)").matches
+	const value = ({
+		false: "light",
+		true: "dark",
+	} as { [key: string]: string })["" + matches]
+	return value
 }
 
 // prettier-ignore
@@ -111,10 +110,12 @@ class Duomo implements Runtime {
 		this.#options = options
 		this.__console_log("[Duomo] init=true")
 
-		// TOOD: Guard for SSR?
 		this.#html = document.documentElement
-		if (userPrefersDarkMode() || systemPrefersDarkMode()) {
-			this.setDarkMode(true)
+
+		const lsPref = localStoragePreference()
+		const mmPref = matchMediaPreference()
+		if (lsPref || mmPref) {
+			this.setDarkMode((lsPref || mmPref) === "dark")
 		}
 
 		// `matchMedia` handler.

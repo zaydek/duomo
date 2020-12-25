@@ -11,7 +11,7 @@
 @mixin data-debug-space {
 	[data-debug-space] .hstack {
 		// Paints a background color for `<hstack>` non-spacers.
-		> *:not(.spacer) + *:not(.spacer) {
+		> :not(.spacer) + :not(.spacer) {
 			position: relative;
 			&::after {
 				@include -empty-content-block;
@@ -32,7 +32,7 @@
 
 	[data-debug-space] .vstack {
 		// Paints a background color for `<vstack>` non-spacers.
-		> *:not(.spacer) + *:not(.spacer) {
+		> :not(.spacer) + :not(.spacer) {
 			position: relative;
 			&::after {
 				@include -empty-content-block;
