@@ -2,6 +2,8 @@
 
 @use "../helpers" as *;
 
+// @use "../configuration";
+
 @function -dm-keys($map) {
 	$ret: ();
 	@each $mk, $mv in $map {
@@ -12,6 +14,7 @@
 
 @mixin box-shadow($variants...) {
 	@include variants($variants...) using ($v) {
+		// @if not configuration.$skeleton {
 		#{variant(shadow, $v)} {
 			@each $mk, $mv in shadows() {
 				--dm-#{$mk}: 0 0 transparent;
@@ -24,5 +27,6 @@
 				--dm-#{$mk}: #{shadow($mk)};
 			}
 		}
+		// }
 	}
 }

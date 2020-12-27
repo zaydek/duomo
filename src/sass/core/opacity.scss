@@ -1,6 +1,6 @@
 @use "../helpers" as *;
 
-@use "../configuration";
+// @use "../configuration";
 
 // prettier-ignore
 @mixin opacity($variants...) {
@@ -9,6 +9,7 @@
 			variant: $v,
 			shorthand: opacity,
 			property: (opacity),
+			// range: if(configuration.$skeleton, null, percent-range()),
 			range: percent-range(),
 			resolver: none,
 		));

@@ -6,6 +6,11 @@
 
 @mixin introspection {
 	:root {
+		// For `*-default` colors.
+		--color-opacity: 1;
+		--bg-opacity: 1;
+		--border-opacity: 1;
+
 		--sans: "";
 		--serif: "";
 		--mono: "";
