@@ -9,7 +9,7 @@
 			variant: $v,
 			shorthand: max-w,
 			property: (max-width),
-			range: utils.to-array(auto, min-content, max-content),
+			range: utils.list-of(auto, min-content, max-content),
 			resolver: rem,
 		));
 		@each $key, $px in breakpoints() {
@@ -21,7 +21,7 @@
 			variant: $v,
 			shorthand: max-w,
 			property: (max-width),
-			range: utils.to-array(100%, 100vw),
+			range: utils.list-of(100%, 100vw),
 			resolver: rem,
 		));
 	}

@@ -2,47 +2,47 @@
 
 $macro-variants: (hover, focus, group-hover, group-focus) !default;
 
-// NOTE: Use `utils.to-array` because `(core)` resolves to a string.
+// NOTE: Use `utils.list-of` because `(core)` resolves to a string.
 //
 // prettier-ignore
 $variants: (
-	aspect-ratio:     utils.to-array(core), // TODO: Add `responsive`.
-	container:        utils.to-array(core),
-	group:            utils.to-array(core),
+	aspect-ratio:     utils.list-of(core), // TODO: Add `responsive`.
+	container:        utils.list-of(core),
+	group:            utils.list-of(core),
 
 	// Stacks take precedence.
-	stacks:           utils.to-array(core, responsive),
-	border-radius:    utils.to-array(core, responsive),
-	border-width:     utils.to-array(core, responsive),
-	font-family:      utils.to-array(core, responsive),
-	font-size:        utils.to-array(core, responsive),
-	font-style:       utils.to-array(core, responsive),
-	font-weight:      utils.to-array(core, responsive),
-	grid:             utils.to-array(core, responsive),
-	height:           utils.to-array(core, responsive),
-	letter-spacing:   utils.to-array(core, responsive),
-	line-height:      utils.to-array(core, responsive),
-	margin:           utils.to-array(core, responsive),
-	max-width:        utils.to-array(core, responsive),
-	min-height:       utils.to-array(core, responsive),
-	min-width:        utils.to-array(core, responsive),
-	overflow:         utils.to-array(core, responsive),
-	padding:          utils.to-array(core, responsive),
-	pointer-events:   utils.to-array(core, responsive),
-	position:         utils.to-array(core, responsive),
-	text-align:       utils.to-array(core, responsive),
-	vertical-align:   utils.to-array(core, responsive),
-	white-space:      utils.to-array(core, responsive),
-	width:            utils.to-array(core, responsive),
+	stacks:           utils.list-of(core, responsive),
+	border-radius:    utils.list-of(core, responsive),
+	border-width:     utils.list-of(core, responsive),
+	font-family:      utils.list-of(core, responsive),
+	font-size:        utils.list-of(core, responsive),
+	font-style:       utils.list-of(core, responsive),
+	font-weight:      utils.list-of(core, responsive),
+	grid:             utils.list-of(core, responsive),
+	height:           utils.list-of(core, responsive),
+	letter-spacing:   utils.list-of(core, responsive),
+	line-height:      utils.list-of(core, responsive),
+	margin:           utils.list-of(core, responsive),
+	max-width:        utils.list-of(core, responsive),
+	min-height:       utils.list-of(core, responsive),
+	min-width:        utils.list-of(core, responsive),
+	overflow:         utils.list-of(core, responsive),
+	padding:          utils.list-of(core, responsive),
+	pointer-events:   utils.list-of(core, responsive),
+	position:         utils.list-of(core, responsive),
+	text-align:       utils.list-of(core, responsive),
+	vertical-align:   utils.list-of(core, responsive),
+	white-space:      utils.list-of(core, responsive),
+	width:            utils.list-of(core, responsive),
 
-	background-color: utils.to-array(core, $macro-variants, responsive),
-	border-color:     utils.to-array(core, $macro-variants, responsive),
-	box-shadow:       utils.to-array(core, $macro-variants, responsive),
-	color:            utils.to-array(core, $macro-variants, responsive),
-	hidden:           utils.to-array(core, $macro-variants, responsive),
-	opacity:          utils.to-array(core, $macro-variants, responsive),
-	text-decoration:  utils.to-array(core, $macro-variants, responsive),
-	transform:        utils.to-array(core, $macro-variants, responsive),
-	transition:       utils.to-array(core, $macro-variants, responsive),
-	z-index:          utils.to-array(core, $macro-variants, responsive), // TODO?
+	background-color: utils.list-of(core, $macro-variants, responsive),
+	border-color:     utils.list-of(core, $macro-variants, responsive),
+	box-shadow:       utils.list-of(core, $macro-variants, responsive),
+	color:            utils.list-of(core, $macro-variants, responsive),
+	hidden:           utils.list-of(core, $macro-variants, responsive),
+	opacity:          utils.list-of(core, $macro-variants, responsive),
+	text-decoration:  utils.list-of(core, $macro-variants, responsive),
+	transform:        utils.list-of(core, $macro-variants, responsive),
+	transition:       utils.list-of(core, $macro-variants, responsive),
+	z-index:          utils.list-of(core, $macro-variants, responsive), // TODO?
 ) !default;

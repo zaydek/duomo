@@ -185,7 +185,7 @@ $-align-self-opts: (
 			--dm-align-self: stretch;
 			width: auto;
 		}
-		@each $rv in utils.to-array(range(), min-content, max-content, 100%, 100vw) {
+		@each $rv in utils.list-of(range(), min-content, max-content, 100%, 100vw) {
 			#{variant(w-#{desc($rv)}, $v)} {
 				--dm-justify-self: center;
 				--dm-align-self: center;
@@ -204,7 +204,7 @@ $-align-self-opts: (
 			--dm-align-self: stretch;
 			height: auto;
 		}
-		@each $rv in utils.to-array(range(), min-content, max-content, 100%, 100vh) {
+		@each $rv in utils.list-of(range(), min-content, max-content, 100%, 100vh) {
 			#{variant(h-#{desc($rv)}, $v)} {
 				--dm-justify-self: center;
 				--dm-align-self: center;
@@ -256,7 +256,7 @@ $-align-self-opts: (
 		 * <... space-*>
 		 */
 
-		@each $rv in utils.to-array(nrange(), utils.limit(range(), null, 320)) {
+		@each $rv in utils.list-of(nrange(), utils.limit(range(), null, 320)) {
 			#{variant(#{n($rv)}space-#{abs($rv)}, $v)} > * {
 				--dm-space: #{rem($rv)};
 			}

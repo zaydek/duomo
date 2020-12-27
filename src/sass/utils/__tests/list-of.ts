@@ -5,10 +5,10 @@ declare function sass(data: string): string
 
 test("integration", () => {
 	const result = sass(`
-@use "src/sass/helpers/to-array" as *;
+@use "src/sass/helpers/list-of" as *;
 
 @at-root {
-	@each $rv in to-array((0, 1, 2, 4), (8, 16, 32, 64)) {
+	@each $rv in list-of((0, 1, 2, 4), (8, 16, 32, 64)) {
 		.w-#{$rv} {
 			width: $rv + px;
 		}

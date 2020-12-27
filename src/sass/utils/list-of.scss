@@ -3,10 +3,10 @@
 
 // Ex:
 //
-// to-array(1, 2)      -> (1, 2)
-// to-array((1, 2), 3) -> (1, 2, 3)
+// list-of(1, 2)      -> (1, 2)
+// list-of((1, 2), 3) -> (1, 2, 3)
 //
-@function to-array($lists...) {
+@function list-of($lists...) {
 	$ret: ();
 	@each $list in $lists {
 		@if meta.type-of($list) != "list" {
