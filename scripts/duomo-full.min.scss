@@ -8,8 +8,8 @@
 		2xl: 1536,
 	),
 	$env: production,
-	$macro-variants: (
-		hover, focus, touch,
-		group-hover, group-focus, group-touch,
-	),
+	// $macro-variants: (
+	// 	hover, focus, touch,
+	// 	group-hover, group-focus, group-touch,
+	// ),
 );
