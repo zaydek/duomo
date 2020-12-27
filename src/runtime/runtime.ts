@@ -65,16 +65,6 @@ function isKeyDownDebugMode(e: KeyboardEvent) {
 	return ok
 }
 
-// prettier-ignore
-function isKeyDownDebugSpaceMode(e: KeyboardEvent) {
-	const ok = (
-		!e.ctrlKey &&
-		e.altKey &&
-		(e.key.toLowerCase() === "d" || e.keyCode === 68)
-	)
-	return ok
-}
-
 class Duomo implements Runtime {
 	static localStorageKey = "duomo-theme-preference"
 
@@ -83,7 +73,6 @@ class Duomo implements Runtime {
 	#html: null | HTMLElement = null
 	#darkMode: boolean = false
 	#debugMode: boolean = false
-	#debugSpaceMode: boolean = false
 
 	// Tracks whether dark mode was set once; for FOUC.
 	// FOUC: Flash Of Unstyled Content.
@@ -130,24 +119,15 @@ class Duomo implements Runtime {
 					this.toggleDarkMode()
 				}
 			}
+			document.addEventListener("keydown", handleDarkMode)
+			this.#deferrers.push(() => document.removeEventListener("keydown", handleDarkMode))
 			const handleDebugMode = (e: KeyboardEvent) => {
 				if (isKeyDownDebugMode(e)) {
 					this.toggleDebugMode()
 				}
 			}
-			const handleDebugSpaceMode = (e: KeyboardEvent) => {
-				if (isKeyDownDebugSpaceMode(e)) {
-					this.toggleDebugSpaceMode()
-				}
-			}
-
-			document.addEventListener("keydown", handleDarkMode)
 			document.addEventListener("keydown", handleDebugMode)
-			document.addEventListener("keydown", handleDebugSpaceMode)
-
-			this.#deferrers.push(() => document.removeEventListener("keydown", handleDarkMode))
 			this.#deferrers.push(() => document.removeEventListener("keydown", handleDebugMode))
-			this.#deferrers.push(() => document.removeEventListener("keydown", handleDebugSpaceMode))
 		}
 
 		return () => {

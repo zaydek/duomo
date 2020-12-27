@@ -113,9 +113,10 @@
 	@return $ret;
 }
 
-@function colors($alpha: null) {
+// NOTE: Use `if($subset, configuration.$subset-color-map, configuration.$color-map)`.
+@function colors($alpha: null, $subset: true) {
 	$ret: ();
-	@each $mk, $mv in configuration.$color-map {
+	@each $mk, $mv in if($subset, configuration.$subset-color-map, configuration.$color-map) {
 		$ret: map.set($ret, $mk, color($mk, $alpha));
 	}
 	@return $ret;

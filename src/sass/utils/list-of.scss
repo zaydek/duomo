@@ -9,12 +9,15 @@
 @function list-of($lists...) {
 	$ret: ();
 	@each $list in $lists {
-		@if meta.type-of($list) != "list" {
-			$any: $list;
-			$ret: list.join($ret, $any);
-		} @else {
-			@each $any in $list {
+		// NOTE: Use `@if $list` to negate `null`.
+		@if $list {
+			@if meta.type-of($list) != list {
+				$any: $list;
 				$ret: list.join($ret, $any);
+			} @else {
+				@each $any in $list {
+					$ret: list.join($ret, $any);
+				}
 			}
 		}
 	}

@@ -1,5 +1,5 @@
 @use "../src/sass" as * with (
 	$env: development,
-	$macro-variants: (), // TODO: Change to `null`.
+	$macro-variants: null,
 	$skeleton: true,
 );

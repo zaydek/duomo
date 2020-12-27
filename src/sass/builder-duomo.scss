@@ -89,13 +89,10 @@
 	$hidden: map.get(configuration.$variants, hidden);
 	$non-hidden: utils.take(configuration.$variants, hidden);
 
-	// Non-responsive:
 	@each $mk, $mv in $non-hidden {
 		@include call-mixin($mk, utils.take($mv, responsive)...);
 	}
 	@include call-mixin(hidden, utils.take($hidden, responsive)...);
-
-	// Responsive:
 	@each $key, $px in breakpoints() {
 		@media (min-width: px($px)) {
 			.#{delimit($key)} {

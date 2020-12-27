@@ -1,4 +1,4 @@
-// For NPM consumers `@use "duomo"`.
+// For NPM consumers `@use "@zaydek/duomo"`.
 //
-// NOTE: Consumer must use `--load-path node_modules/@zaydek/duomo`.
+// NOTE: Consumer must use `sass --load-path=node_modules src.scss out.css`.
 @forward "src/sass";

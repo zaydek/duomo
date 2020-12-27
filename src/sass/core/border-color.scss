@@ -9,7 +9,7 @@
 			variant: $v,
 			shorthand: border,
 			property: (border-color),
-			map: if(configuration.$skeleton, skeleton-colors(), colors()),
+			map: if(configuration.$skeleton, null, colors()),
 			percent-range: percent-range(),
 		));
 	}

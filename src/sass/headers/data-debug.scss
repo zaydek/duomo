@@ -1,7 +1,10 @@
 @mixin data-debug {
-	[data-debug] :not(path) {
+	[data-debug] * {
 		outline: var(--debug-outline);
 		outline-offset: var(--debug-outline-offset);
+	}
+	[data-debug] svg * {
+		outline: none; // Reset
 	}
 	[data-debug] .spacer:empty {
 		outline: var(--debug-empty-spacer-outline);

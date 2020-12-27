@@ -25,7 +25,7 @@
 // abs(42)              -> 42
 //
 @function abs($any) {
-	@if meta.type-of($any) == "number" {
+	@if meta.type-of($any) == number {
 		@return math.abs($any);
 	}
 	@return $any;
@@ -61,7 +61,7 @@
 	@if $got {
 		@return $got;
 	}
-	@if meta.type-of($any) == "number" and $as-percent {
+	@if meta.type-of($any) == number and $as-percent {
 		$rv: $any;
 		@return escape($rv * 100);
 	}

@@ -17,11 +17,11 @@
 		--placeholder-bg-default: #{color(cool-gray-200, var(--bg-opacity))};
 		--border-color-default: #{color(cool-gray-200, var(--border-opacity))};
 		--transition-duration-default: 300ms;
-		--transition-timing-default: #{timing(ease-out)};
+		--transition-timing-default: #{timing(ease-out, $var: true)};
 
 		@include generate-vars(raw-colors());
-		@include generate-vars(shadows($var: true));
-		@include generate-vars(timings($var: true));
+		@include generate-vars(shadows());
+		@include generate-vars(timings());
 
 		--theme-transition: background-color var(--theme-transition-duration) var(--theme-transition-timing),
 			border-color var(--theme-transition-duration) var(--theme-transition-timing),
@@ -31,7 +31,7 @@
 			opacity var(--theme-transition-duration) var(--theme-transition-timing),
 			stroke var(--theme-transition-duration) var(--theme-transition-timing);
 
-		--theme-transition-duration: 500ms;
+		--theme-transition-duration: 600ms;
 		--theme-transition-timing: var(--ease-out);
 
 		// [data-stagger]

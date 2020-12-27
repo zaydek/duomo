@@ -11,8 +11,11 @@
 @use "sass:meta";
 @use "sass:string";
 
-$env: "production";
+$env: development;
 
+@function delimit($str-selector) {
+	@return $str-selector + "\\:";
+}
 @function delimiter() {
 	@return "\\:";
 }
@@ -60,7 +63,6 @@ $env: "production";
 	@return replace($str-selector, "#{delimiter()} .", delimiter());
 }
 
-// NOTE: Should use `delimiter()` throughout.
 @function core($str-selector) {
 	@return $str-selector;
 }
@@ -87,51 +89,27 @@ $env: "production";
 		".group\:focus .group-touch#{delimiter()}#{declass($str-selector)}";
 }
 
-@function responsive($str-selector) {
-	$repl: replace(string.slice($str-selector, 2), "\\#{delimiter()} .", "\\#{delimiter()}");
-	@return ".#{$repl}";
-}
-
-// @mixin variants-alt($variants...) {
-// 	$str-selector: "" + &;
-//
-// 	@each $variant in $variants {
-// 		@if $variant == core {
-// 			@content;
-// 		} @else if $variant == hover {
-// 			@at-root {
-// 				#{hover($str-selector)} {
-// 					@content;
-// 				}
-// 			}
-// 		}
-// 	}
-// }
-
-// NOTE: Use `@at-root` to escape the current context.
+// NOTE: Use `@at-root` to escape the current class context.
 @mixin prototype-dev($variants...) {
-	& {
-		@content;
-	}
 	@at-root {
 		@each $variant in $variants {
-			$transformed: meta.call(meta.get-function($variant), "" + &);
-			#{$transformed} {
+			$selector: meta.call(meta.get-function($variant), "" + &);
+			#{$selector} {
 				@content;
 			}
 		}
 	}
 }
 
-// NOTE: Use `@at-root` to escape the current context.
+// NOTE: Use `@at-root` to escape the current class context.
 @mixin prototype-prod($variants...) {
 	@at-root {
-		$concat-transformed: "" + &;
+		$concat-selector: "";
 		@each $variant in $variants {
-			$transformed: meta.call(meta.get-function($variant), "" + &);
-			$concat-transformed: $concat-transformed + ", " + $transformed;
+			$selector: meta.call(meta.get-function($variant), "" + &);
+			$concat-selector: $concat-selector + if($concat-selector == "", "", ", ") + $selector;
 		}
-		#{$concat-transformed} {
+		#{$concat-selector} {
 			@content;
 		}
 	}
@@ -150,22 +128,27 @@ $env: "production";
 			}
 		}
 	}
-	// @if list.index($variants, responsive) {
-	// 	@content (responsive);
-	// }
-
-	// 	} @else if $variant == responsive {
-	// 		@at-root {
-	// 			#{conjoin($str-selector)} {
-	// 				@content;
-	// 			}
-	// 		}
-	// 	}
-	// }
+	@if list.index($variants, responsive) {
+		@at-root {
+			#{conjoin("" + &)} {
+				@content;
+			}
+		}
+	}
 }
 
 .bg-red-500 {
-	@include variants(hover, focus, touch, group-hover, group-focus, group-touch) {
+	@include variants(core, hover, focus, touch, group-hover, group-focus, group-touch) {
 		background-color: hsl(var(--red-500));
+	}
+}
+
+@media (min-width: 640px) {
+	.#{delimit(sm)} {
+		.bg-red-500 {
+			@include variants(responsive) {
+				background-color: var(--red-500);
+			}
+		}
 	}
 }

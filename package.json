@@ -10,6 +10,7 @@
 	],
 	"scripts": {
 		"watch-consumer-css": "nodemon --exec 'yarn build-consumer-css && yarn prettier --tab-width 2 --use-tabs false --write dist/consumer.css' --ext css,scss --watch scripts --watch src",
+		"watch-duomo-css": "nodemon --exec 'yarn build-duomo-css && yarn prettier --tab-width 2 --use-tabs false --write dist/duomo.css' --ext css,scss --watch scripts --watch src",
 		"watch-skeleton-css": "nodemon --exec 'yarn build-skeleton-css && yarn prettier --tab-width 2 --use-tabs false --write dist/skeleton.css' --ext css,scss --watch scripts --watch src",
 		"test": "jest",
 		"build-consumer-css": "sass --no-source-map --style=compressed scripts/consumer.scss dist/consumer.css && yarn prettier --tab-width 2 --use-tabs false --write dist/consumer.css",
