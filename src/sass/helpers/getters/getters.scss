@@ -31,7 +31,8 @@
 	@return $got;
 }
 
-@function skeleton-color($key, $var: false) {
+// NOTE: `-skeleton-color` is not exported.
+@function -skeleton-color($key, $var: false) {
 	$got: -getter("skeleton-color", configuration.$skeleton-color-map, $key);
 	@if $var {
 		@return var(--#{$key});
@@ -39,7 +40,6 @@
 	@return $got;
 }
 
-// NOTE: Supports alpha channel.
 @function color($key, $alpha: null) {
 	$got: -getter("color", configuration.$color-map, $key);
 	// HSL
@@ -108,7 +108,7 @@
 @function skeleton-colors($var: false) {
 	$ret: ();
 	@each $mk, $mv in configuration.$skeleton-color-map {
-		$ret: map.set($ret, $mk, skeleton-color($mk, $var));
+		$ret: map.set($ret, $mk, -skeleton-color($mk, $var));
 	}
 	@return $ret;
 }
