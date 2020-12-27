@@ -83,6 +83,18 @@ $range: (
 	640,
 ) !default;
 
+$weight-map: (
+	thin: 100,
+	extralight: 200,
+	light: 300,
+	bold-none: 400,
+	medium: 500,
+	semibold: 600,
+	bold: 700,
+	extrabold: 800,
+	black: 900,
+) !default;
+
 $font-map: (
 	sans: (
 		ui-sans-serif,
@@ -117,6 +129,11 @@ $font-map: (
 		"Courier New",
 		monospace,
 	),
+) !default;
+
+$decoration-map: (
+	strikethrough: line-through,
+	underline: underline,
 ) !default;
 
 // NOTE:

@@ -1,0 +1,146 @@
+@use "sass:map";
+
+@use "../../configuration";
+
+/*
+ * Singular
+ */
+
+@function -getter($getter-name, $map, $key) {
+	$got: map.get($map, $key);
+	@if not $got {
+		@error "#{$getter-name}: no such key `$key`; $key=#{$key}";
+	}
+	@return $got;
+}
+
+@function weight($key, $var: false) {
+	$got: -getter("weight", configuration.$weight-map, $key);
+	@if $var {
+		@return var(--#{$key});
+	}
+	@return $got;
+}
+
+@function font($key, $var: false) {
+	$got: -getter("font", configuration.$font-map, $key);
+	@if $var {
+		@return var(--#{$key});
+	}
+	@return $got;
+}
+
+@function skeleton-color($key, $var: false) {
+	$got: -getter("skeleton-color", configuration.$skeleton-color-map, $key);
+	@if $var {
+		@return var(--#{$key});
+	}
+	@return $got;
+}
+
+@function color($key, $var: false) {
+	$got: -getter("color", configuration.$color-map, $key);
+	@if $var {
+		@return var(--#{$key});
+	}
+	@return $got;
+}
+
+@function decoration($key, $var: false) {
+	$got: -getter("decoration", configuration.$decoration-map, $key);
+	@if $var {
+		@return var(--#{$key});
+	}
+	@return $got;
+}
+
+@function shadow($key, $var: false) {
+	$got: -getter("shadow", configuration.$shadow-map, $key);
+	@if $var {
+		@return var(--#{$key});
+	}
+	@return $got;
+}
+
+@function timing($key, $var: false) {
+	$got: -getter("timing", configuration.$timing-map, $key);
+	@if $var {
+		@return var(--#{$key});
+	}
+	@return $got;
+}
+
+/* NOTE: Does not support `$var`. */
+@function breakpoint($key) {
+	$got: -getter("breakpoint", configuration.$breakpoint-map, $key);
+	@return $got;
+}
+
+/*
+ * Plural
+ */
+
+@function weights($var: false) {
+	$ret: ();
+	@each $mk, $mv in configuration.$weight-map {
+		$ret: map.set($ret, $mk, weight($mk, $var));
+	}
+	@return $ret;
+}
+
+@function fonts($var: false) {
+	$ret: ();
+	@each $mk, $mv in configuration.$font-map {
+		$ret: map.set($ret, $mk, font($mk, $var));
+	}
+	@return $ret;
+}
+
+@function skeleton-colors($var: false) {
+	$ret: ();
+	@each $mk, $mv in configuration.$skeleton-color-map {
+		$ret: map.set($ret, $mk, skeleton-color($mk, $var));
+	}
+	@return $ret;
+}
+
+@function colors($var: false) {
+	$ret: ();
+	@each $mk, $mv in configuration.$color-map {
+		$ret: map.set($ret, $mk, color($mk, $var));
+	}
+	@return $ret;
+}
+
+@function decorations($var: false) {
+	$ret: ();
+	@each $mk, $mv in configuration.$decoration-map {
+		$ret: map.set($ret, $mk, decoration($mk, $var));
+	}
+	@return $ret;
+}
+
+@function shadows($var: false) {
+	$ret: ();
+	@each $mk, $mv in configuration.$shadow-map {
+		$ret: map.set($ret, $mk, shadow($mk, $var));
+	}
+	@return $ret;
+}
+
+@function timings($var: false) {
+	$ret: ();
+	@each $mk, $mv in configuration.$timing-map {
+		$ret: map.set($ret, $mk, timing($mk, $var));
+	}
+	@return $ret;
+}
+
+/* NOTE: Does not support `$var`. */
+@function breakpoints() {
+	$ret: ();
+	@each $mk, $mv in configuration.$breakpoint-map {
+		$ret: map.set($ret, $mk, breakpoint($mk));
+	}
+	@return $ret;
+}

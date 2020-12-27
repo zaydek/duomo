@@ -9,19 +9,19 @@
 		--sans: "";
 		--serif: "";
 		--mono: "";
-		--ui-sans: #{font(sans, $raw: true)};
-		--ui-serif: #{font(serif, $raw: true)};
-		--ui-mono: #{font(mono, $raw: true)};
+		--ui-sans: #{font(sans)};
+		--ui-serif: #{font(serif)};
+		--ui-mono: #{font(mono)};
 
-		--placeholder-color-default: hsla(#{color(cool-gray-400)}, var(--color-opacity));
-		--placeholder-bg-default: hsla(#{color(cool-gray-200)}, var(--bg-opacity));
-		--border-color-default: hsla(#{color(cool-gray-200)}, var(--border-opacity));
+		--placeholder-color-default: #{color(cool-gray-400, var(--color-opacity))};
+		--placeholder-bg-default: #{color(cool-gray-200, var(--bg-opacity))};
+		--border-color-default: #{color(cool-gray-200, var(--border-opacity))};
 		--transition-duration-default: 300ms;
 		--transition-timing-default: #{timing(ease-out)};
 
-		@include generate-vars(colors($raw: true));
-		@include generate-vars(shadows($raw: true));
-		@include generate-vars(timings($raw: true));
+		@include generate-vars(colors());
+		@include generate-vars(shadows());
+		@include generate-vars(timings());
 
 		--theme-transition: background-color var(--theme-transition-duration) var(--theme-transition-timing),
 			border-color var(--theme-transition-duration) var(--theme-transition-timing),
