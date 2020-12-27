@@ -1,7 +1,106 @@
-@use "sass" as * with (
-	$env: development,
-	$macro-variants: (
-		hover, focus, touch,
-		group-hover, group-focus, group-touch,
-	),
-);
+// @use "sass" as * with (
+// 	$env: development,
+// 	$macro-variants: (
+// 		hover, focus, touch,
+// 		group-hover, group-focus, group-touch,
+// 	),
+// );
+
+@use "sass:string";
+
+@function replace($str, $s1, $s2) {
+	$n: string.index($str, $s1);
+	@return string.slice($str, 1, $n - 1) + $s2 + string.slice($str, $n + string.length($s1));
+}
+
+// Ex: ".class" -> "class"
+@function unclass($str-selector) {
+	@return string.slice($str-selector, 2);
+}
+
+// Ex: ".sm\\: .class" -> ".sm\\:class"
+@function conjoin($str-selector) {
+	@return replace($str-selector, "\\: .", "\\:");
+}
+
+@function hover($str-selector) {
+	@return ".hover\\:#{unclass($str-selector)}:hover";
+}
+@function focus($str-selector) {
+	@return ".focus\\:#{unclass($str-selector)}:focus";
+}
+@function touch($str-selector) {
+	@return ".touch\\:#{unclass($str-selector)}:hover, .touch\\:#{unclass($str-selector)}:focus";
+}
+
+@function group-hover($selector) {
+	@return ".group\:hover .#{unclass($str-selector)}";
+}
+@function group-focus($selector) {
+	@return ".group\:focus .#{unclass($str-selector)}";
+}
+@function group-touch($selector) {
+	@return ".group\:hover .#{unclass($str-selector)}, .group\:focus .#{unclass($str-selector)}";
+}
+
+@function delimiter() {
+	@return "\\:";
+}
+
+@function responsive($str-selector) {
+	$repl: replace(string.slice($str-selector, 2), "\\#{delimiter()} .", "\\#{delimiter()}");
+	@return ".#{$repl}";
+}
+
+@mixin variants($variants...) {
+	$str-selector: "" + &;
+	@each $variant in $variants {
+		@if $variant == core {
+			@content;
+		} @else if $variant == hover {
+			#{hover($str-selector)} {
+				@content;
+			}
+		} @else if $variant == focus {
+			#{focus($str-selector)} {
+				@content;
+			}
+		} @else if $variant == touch {
+			#{touch($str-selector)} {
+				@content;
+			}
+		} @else if $variant == group-hover {
+			#{group-hover($str-selector)} {
+				@content;
+			}
+		} @else if $variant == group-focus {
+			#{group-focus($str-selector)} {
+				@content;
+			}
+		} @else if $variant == group-touch {
+			#{group-touch($str-selector)} {
+				@content;
+			}
+		} @else if $variant == responsive {
+			@at-root {
+				#{conjoin($str-selector)} {
+					@content;
+				}
+			}
+		}
+	}
+}
+
+@mixin thing($variants...) {
+	.bg-red-500 {
+		@include variants($variants...) {
+			background-color: hsl(var(--red-500));
+		}
+	}
+}
+
+@media (min-width: 640px) {
+	.sm\: {
+		@include thing(responsive);
+	}
+}

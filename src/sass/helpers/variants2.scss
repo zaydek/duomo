@@ -1,0 +1,65 @@
+@use "sass:string";
+
+@function replace-string($str, $s1, $s2) {
+	$n: string.index($str, $s1);
+	@return string.slice($str, 1, $n - 1) + $s2 + string.slice($str, $n + string.length($s1));
+}
+
+@function -transform-hover($str-selector) {
+	@return ".hover\:#{string.slice("" + $str-selector, 2)}:hover";
+}
+@function -transform-focus($str-selector) {
+	@return ".focus\:#{string.slice("" + $str-selector, 2)}:focus";
+}
+@function -transform-touch($str-selector) {
+	@return ".touch\:#{string.slice("" + $str-selector, 2)}:hover, touch\:#{string.slice("" + $str-selector, 2)}:focus";
+}
+
+@function -transform-responsive($str-selector) {
+	// TODO: Add `delimiter()` here.
+	$repl: replace-string(string.slice($str-selector, 2), "\\: .", "\\:");
+	@return ".#{$repl}";
+}
+
+// @function -transform-group-hover($selector) {
+// 	@return ".group\:hover .#{string.slice("" + $selector, 2)}";
+// }
+// @function -transform-group-focus($selector) {
+// 	@return ".group\:focus .#{string.slice("" + $selector, 2)}";
+// }
+// @function -transform-group-touch($selector) {
+// 	@return ".group\:hover .#{string.slice("" + $selector, 2)}, .group\:focus .#{string.slice("" + $selector, 2)}";
+// }
+
+@mixin variants($variants...) {
+	@each $variant in $variants {
+		@if $variant == core {
+			@content;
+		} @else if $variant == hover {
+			// TODO: Do we need `@at-root`?
+			@at-root {
+				#{transform-hover("" + &)} {
+					@content;
+				}
+			}
+		} @else if $variant == focus {
+			@at-root {
+				#{transform-focus("" + &)} {
+					@content;
+				}
+			}
+		} @else if $variant == touch {
+			@at-root {
+				#{transform-touch("" + &)} {
+					@content;
+				}
+			}
+		} @else if $variant == responsive {
+			@at-root {
+				.#{replace-string(string.slice("" + &, 2), "\\: .", "\\:")} {
+					@content;
+				}
+			}
+		}
+	}
+}

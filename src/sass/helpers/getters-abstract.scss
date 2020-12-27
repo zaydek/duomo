@@ -31,12 +31,12 @@
 	@return $any;
 }
 
-// Ex: delimiter() -> "\:"
+// Ex: delimiter() -> "\\:"
 @function delimiter() {
 	@return escape(configuration.$delimiter);
 }
 
-// Ex: delimit(sm) -> "sm\:"
+// Ex: delimit(sm) -> "sm\\:"
 @function delimit($key) {
 	@return escape-breakpoint-key($key) + delimiter();
 }
