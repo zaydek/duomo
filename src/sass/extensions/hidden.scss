@@ -10,15 +10,10 @@ $-opts: (
 @mixin hidden($variants...) {
 	@include variants($variants...) using ($v) {
 		@if matches($v, core) {
-			:root {
-				--dm-display-initial: block;
-				--dm-display: var(--dm-display-initial);
-			}
-
-			// NOTE: Takes precedence.
+			// Takes precedence.
 			@each $k, $v in $-opts {
 				.#{$k} > * {
-					--dm-display: var(--dm-display-initial);
+					--dm-display: block; // Reset
 				}
 			}
 

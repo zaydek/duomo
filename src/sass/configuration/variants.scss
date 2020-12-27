@@ -1,6 +1,12 @@
 @use "../utils";
+@use "configuration";
 
-$macro-variants: (hover, focus, group-hover, group-focus) !default;
+// prettier-ignore
+$macro-variants: if(
+	configuration.$skeleton,
+	null,
+	(hover, focus, group-hover, group-focus),
+) !default;
 
 // NOTE: Use `utils.list-of` because `(core)` resolves to a string.
 //
@@ -44,5 +50,5 @@ $variants: (
 	text-decoration:  utils.list-of(core, $macro-variants, responsive),
 	transform:        utils.list-of(core, $macro-variants, responsive),
 	transition:       utils.list-of(core, $macro-variants, responsive),
-	z-index:          utils.list-of(core, $macro-variants, responsive), // TODO?
+	z-index:          utils.list-of(core, $macro-variants, responsive),
 ) !default;

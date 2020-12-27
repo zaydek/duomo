@@ -1,5 +1,4 @@
 @use "../src/sass" as * with (
 	$env: development,
-	$macro-variants: null,
 	$skeleton: true,
 );
