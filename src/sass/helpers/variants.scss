@@ -3,9 +3,9 @@
 
 @use "getters" as *;
 @use "resolvers" as *;
-@use "take" as *;
 
 @use "../configuration";
+@use "utils";
 
 @function core($selector) {
 	@return ".#{$selector}";
@@ -43,7 +43,7 @@
 // }
 //
 @mixin variants($variants...) {
-	$taken: take($variants, responsive);
+	$taken: utils.take($variants, responsive);
 	@if list.length($taken) > 0 {
 		@if configuration.$env == development {
 			@each $variant in $taken {

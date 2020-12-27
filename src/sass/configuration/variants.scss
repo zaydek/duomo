@@ -1,48 +1,48 @@
-@use "../helpers/to-array" as *;
+@use "../helpers/utils";
 
 $macro-variants: (hover, focus, group-hover, group-focus) !default;
 
-// NOTE: Use `to-array` because `(core)` resolves to a string.
+// NOTE: Use `utils.to-array` because `(core)` resolves to a string.
 //
 // prettier-ignore
 $variants: (
-	aspect-ratio:     to-array(core), // TODO: Add `responsive`.
-	container:        to-array(core),
-	group:            to-array(core),
+	aspect-ratio:     utils.to-array(core), // TODO: Add `responsive`.
+	container:        utils.to-array(core),
+	group:            utils.to-array(core),
 
 	// Stacks take precedence.
-	stacks:           to-array(core, responsive),
-	border-radius:    to-array(core, responsive),
-	border-width:     to-array(core, responsive),
-	font-family:      to-array(core, responsive),
-	font-size:        to-array(core, responsive),
-	font-style:       to-array(core, responsive),
-	font-weight:      to-array(core, responsive),
-	grid:             to-array(core, responsive),
-	height:           to-array(core, responsive),
-	letter-spacing:   to-array(core, responsive),
-	line-height:      to-array(core, responsive),
-	margin:           to-array(core, responsive),
-	max-width:        to-array(core, responsive),
-	min-height:       to-array(core, responsive),
-	min-width:        to-array(core, responsive),
-	overflow:         to-array(core, responsive),
-	padding:          to-array(core, responsive),
-	pointer-events:   to-array(core, responsive),
-	position:         to-array(core, responsive),
-	text-align:       to-array(core, responsive),
-	vertical-align:   to-array(core, responsive),
-	white-space:      to-array(core, responsive),
-	width:            to-array(core, responsive),
+	stacks:           utils.to-array(core, responsive),
+	border-radius:    utils.to-array(core, responsive),
+	border-width:     utils.to-array(core, responsive),
+	font-family:      utils.to-array(core, responsive),
+	font-size:        utils.to-array(core, responsive),
+	font-style:       utils.to-array(core, responsive),
+	font-weight:      utils.to-array(core, responsive),
+	grid:             utils.to-array(core, responsive),
+	height:           utils.to-array(core, responsive),
+	letter-spacing:   utils.to-array(core, responsive),
+	line-height:      utils.to-array(core, responsive),
+	margin:           utils.to-array(core, responsive),
+	max-width:        utils.to-array(core, responsive),
+	min-height:       utils.to-array(core, responsive),
+	min-width:        utils.to-array(core, responsive),
+	overflow:         utils.to-array(core, responsive),
+	padding:          utils.to-array(core, responsive),
+	pointer-events:   utils.to-array(core, responsive),
+	position:         utils.to-array(core, responsive),
+	text-align:       utils.to-array(core, responsive),
+	vertical-align:   utils.to-array(core, responsive),
+	white-space:      utils.to-array(core, responsive),
+	width:            utils.to-array(core, responsive),
 
-	background-color: to-array(core, $macro-variants, responsive),
-	border-color:     to-array(core, $macro-variants, responsive),
-	box-shadow:       to-array(core, $macro-variants, responsive),
-	color:            to-array(core, $macro-variants, responsive),
-	hidden:           to-array(core, $macro-variants, responsive),
-	opacity:          to-array(core, $macro-variants, responsive),
-	text-decoration:  to-array(core, $macro-variants, responsive),
-	transform:        to-array(core, $macro-variants, responsive),
-	transition:       to-array(core, $macro-variants, responsive),
-	z-index:          to-array(core, $macro-variants, responsive), // TODO?
+	background-color: utils.to-array(core, $macro-variants, responsive),
+	border-color:     utils.to-array(core, $macro-variants, responsive),
+	box-shadow:       utils.to-array(core, $macro-variants, responsive),
+	color:            utils.to-array(core, $macro-variants, responsive),
+	hidden:           utils.to-array(core, $macro-variants, responsive),
+	opacity:          utils.to-array(core, $macro-variants, responsive),
+	text-decoration:  utils.to-array(core, $macro-variants, responsive),
+	transform:        utils.to-array(core, $macro-variants, responsive),
+	transition:       utils.to-array(core, $macro-variants, responsive),
+	z-index:          utils.to-array(core, $macro-variants, responsive), // TODO?
 ) !default;

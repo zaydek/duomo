@@ -1,7 +1,7 @@
 @use "sass:math";
 @use "sass:meta";
 
-@use "has-suffix" as *;
+@use "utils";
 
 @function rem($any) {
 	@if meta.type-of($any) != "number" {
@@ -43,9 +43,9 @@
 	// prettier-ignore
 	$ok:
 		meta.type-of($any) != "number" or
-		has-suffix($any, "%") or
-		has-suffix($any, "vw") or
-		has-suffix($any, "vh") or
+		utils.has-suffix($any, "%") or
+		utils.has-suffix($any, "vw") or
+		utils.has-suffix($any, "vh") or
 		$any == 9999px;
 	@return $ok;
 }
