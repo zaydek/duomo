@@ -6,7 +6,40 @@
 // 	),
 // );
 
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
 @use "sass:string";
+
+$env: "production";
+
+// Ex:
+//
+// take((0, 1, 2, 4), 4)             -> (0, 1, 2)
+// take((a: 0, b: 1, c: 2, d: 4), d) -> (a: 0, b: 1, c: 2)
+//
+@function take($collection, $item) {
+	@if meta.type-of($collection) != list and meta.type-of($collection) != arglist and meta.type-of($collection) != map {
+		@error "take: `$collection` is not a collection-type; " +
+			"meta.type-of($collection)=#{meta.type-of($collection)}";
+	}
+
+	$ret: ();
+	@if meta.type-of($collection) == list or meta.type-of($collection) == arglist {
+		@each $each in $collection {
+			@if $each != $item {
+				$ret: list.append($ret, $each);
+			}
+		}
+	} @else if meta.type-of($collection) == map {
+		@each $mk, $mv in $collection {
+			@if $mk != $item {
+				$ret: map.set($ret, $mk, $mv);
+			}
+		}
+	}
+	@return $ret;
+}
 
 @function replace($str, $s1, $s2) {
 	$n: string.index($str, $s1);
@@ -23,6 +56,9 @@
 	@return replace($str-selector, "\\: .", "\\:");
 }
 
+@function core($str-selector) {
+	@return $str-selector;
+}
 @function hover($str-selector) {
 	@return ".hover\\:#{unclass($str-selector)}:hover";
 }
@@ -32,14 +68,13 @@
 @function touch($str-selector) {
 	@return ".touch\\:#{unclass($str-selector)}:hover, .touch\\:#{unclass($str-selector)}:focus";
 }
-
-@function group-hover($selector) {
+@function group-hover($str-selector) {
 	@return ".group\:hover .#{unclass($str-selector)}";
 }
-@function group-focus($selector) {
+@function group-focus($str-selector) {
 	@return ".group\:focus .#{unclass($str-selector)}";
 }
-@function group-touch($selector) {
+@function group-touch($str-selector) {
 	@return ".group\:hover .#{unclass($str-selector)}, .group\:focus .#{unclass($str-selector)}";
 }
 
@@ -52,55 +87,105 @@
 	@return ".#{$repl}";
 }
 
+// @mixin variants-alt($variants...) {
+// 	$str-selector: "" + &;
+//
+// 	@each $variant in $variants {
+// 		@if $variant == core {
+// 			@content;
+// 		} @else if $variant == hover {
+// 			@at-root {
+// 				#{hover($str-selector)} {
+// 					@content;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+
 @mixin variants($variants...) {
 	$str-selector: "" + &;
-	@each $variant in $variants {
-		@if $variant == core {
-			@content;
-		} @else if $variant == hover {
-			#{hover($str-selector)} {
+
+	$non-responsive-variants: take($variants, responsive);
+	@if list.length($non-responsive-variants) > 0 {
+		@if $env == development {
+			& {
 				@content;
 			}
-		} @else if $variant == focus {
-			#{focus($str-selector)} {
-				@content;
-			}
-		} @else if $variant == touch {
-			#{touch($str-selector)} {
-				@content;
-			}
-		} @else if $variant == group-hover {
-			#{group-hover($str-selector)} {
-				@content;
-			}
-		} @else if $variant == group-focus {
-			#{group-focus($str-selector)} {
-				@content;
-			}
-		} @else if $variant == group-touch {
-			#{group-touch($str-selector)} {
-				@content;
-			}
-		} @else if $variant == responsive {
 			@at-root {
-				#{conjoin($str-selector)} {
+				@each $variant in $non-responsive-variants {
+					$transformed: meta.call(meta.get-function($variant), $str-selector);
+					#{$transformed} {
+						@content;
+					}
+				}
+			}
+		} @else if $env == production {
+			@at-root {
+				$concat-transformed: $str-selector;
+				@each $variant in $non-responsive-variants {
+					$transformed: meta.call(meta.get-function($variant), $str-selector);
+					$concat-transformed: $concat-transformed + ", " + $transformed;
+				}
+				#{$concat-transformed} {
 					@content;
 				}
 			}
 		}
 	}
+	// @if list.index($variants, responsive) {
+	// 	@content (responsive);
+	// }
+
+	// @each $variant in $variants {
+	// 	@if $variant == core {
+	// 		@content;
+	// 	} @else if $variant == hover {
+	// 		#{hover($str-selector)} {
+	// 			@content;
+	// 		}
+	// 	} @else if $variant == focus {
+	// 		#{focus($str-selector)} {
+	// 			@content;
+	// 		}
+	// 	} @else if $variant == touch {
+	// 		#{touch($str-selector)} {
+	// 			@content;
+	// 		}
+	// 	} @else if $variant == group-hover {
+	// 		#{group-hover($str-selector)} {
+	// 			@content;
+	// 		}
+	// 	} @else if $variant == group-focus {
+	// 		#{group-focus($str-selector)} {
+	// 			@content;
+	// 		}
+	// 	} @else if $variant == group-touch {
+	// 		#{group-touch($str-selector)} {
+	// 			@content;
+	// 		}
+	// 	} @else if $variant == responsive {
+	// 		@at-root {
+	// 			#{conjoin($str-selector)} {
+	// 				@content;
+	// 			}
+	// 		}
+	// 	}
+	// }
 }
 
-@mixin thing($variants...) {
-	.bg-red-500 {
-		@include variants($variants...) {
-			background-color: hsl(var(--red-500));
-		}
-	}
-}
+// @mixin thing($variants...) {
+// 	.bg-red-500 {
+// 		@include variants($variants...) {
+// 			background-color: hsl(var(--red-500));
+// 		}
+// 	}
+// }
+//
+// @include thing(core, hover, focus, touch, group-hover, group-focus, group-touch);
 
-@media (min-width: 640px) {
-	.sm\: {
-		@include thing(responsive);
+.bg-red-500 {
+	@include variants(hover, focus, touch, group-hover, group-focus, group-touch) {
+		background-color: hsl(var(--red-500));
 	}
 }
