@@ -13,6 +13,10 @@
 
 $env: "production";
 
+@function delimiter() {
+	@return "\\:";
+}
+
 // Ex:
 //
 // take((0, 1, 2, 4), 4)             -> (0, 1, 2)
@@ -47,39 +51,40 @@ $env: "production";
 }
 
 // Ex: ".class" -> "class"
-@function unclass($str-selector) {
+@function declass($str-selector) {
 	@return string.slice($str-selector, 2);
 }
 
 // Ex: ".sm\\: .class" -> ".sm\\:class"
 @function conjoin($str-selector) {
-	@return replace($str-selector, "\\: .", "\\:");
+	@return replace($str-selector, "#{delimiter()} .", delimiter());
 }
 
+// NOTE: Should use `delimiter()` throughout.
 @function core($str-selector) {
 	@return $str-selector;
 }
 @function hover($str-selector) {
-	@return ".hover\\:#{unclass($str-selector)}:hover";
+	@return ".hover#{delimiter()}#{declass($str-selector)}:hover";
 }
 @function focus($str-selector) {
-	@return ".focus\\:#{unclass($str-selector)}:focus";
+	@return ".focus#{delimiter()}#{declass($str-selector)}:focus";
 }
+// prettier-ignore
 @function touch($str-selector) {
-	@return ".touch\\:#{unclass($str-selector)}:hover, .touch\\:#{unclass($str-selector)}:focus";
+	@return ".touch#{delimiter()}#{declass($str-selector)}:hover, " +
+		".touch#{delimiter()}#{declass($str-selector)}:focus";
 }
 @function group-hover($str-selector) {
-	@return ".group\:hover .#{unclass($str-selector)}";
+	@return ".group\:hover .group-hover#{delimiter()}#{declass($str-selector)}";
 }
 @function group-focus($str-selector) {
-	@return ".group\:focus .#{unclass($str-selector)}";
+	@return ".group\:focus .group-focus#{delimiter()}#{declass($str-selector)}";
 }
+// prettier-ignore
 @function group-touch($str-selector) {
-	@return ".group\:hover .#{unclass($str-selector)}, .group\:focus .#{unclass($str-selector)}";
-}
-
-@function delimiter() {
-	@return "\\:";
+	@return ".group\:hover .group-touch#{delimiter()}#{declass($str-selector)}, " +
+		".group\:focus .group-touch#{delimiter()}#{declass($str-selector)}";
 }
 
 @function responsive($str-selector) {
@@ -104,13 +109,13 @@ $env: "production";
 // }
 
 // NOTE: Use `@at-root` to escape the current context.
-@mixin prototype-dev($str-selector, $variants...) {
-	#{$str-selector} {
+@mixin prototype-dev($variants...) {
+	& {
 		@content;
 	}
 	@at-root {
 		@each $variant in $variants {
-			$transformed: meta.call(meta.get-function($variant), $str-selector);
+			$transformed: meta.call(meta.get-function($variant), "" + &);
 			#{$transformed} {
 				@content;
 			}
@@ -119,11 +124,11 @@ $env: "production";
 }
 
 // NOTE: Use `@at-root` to escape the current context.
-@mixin prototype-prod($str-selector, $variants...) {
+@mixin prototype-prod($variants...) {
 	@at-root {
-		$concat-transformed: $str-selector;
+		$concat-transformed: "" + &;
 		@each $variant in $variants {
-			$transformed: meta.call(meta.get-function($variant), $str-selector);
+			$transformed: meta.call(meta.get-function($variant), "" + &);
 			$concat-transformed: $concat-transformed + ", " + $transformed;
 		}
 		#{$concat-transformed} {
@@ -136,11 +141,11 @@ $env: "production";
 	$taken: take($variants, responsive);
 	@if list.length($taken) > 0 {
 		@if $env == development {
-			@include prototype-dev("" + &, $taken...) {
+			@include prototype-dev($taken...) {
 				@content;
 			}
 		} @else if $env == production {
-			@include prototype-prod("" + &, $taken...) {
+			@include prototype-prod($taken...) {
 				@content;
 			}
 		}
