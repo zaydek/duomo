@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "sass:string";
 
 @use "../../configuration";
 
@@ -38,11 +39,19 @@
 	@return $got;
 }
 
-@function color($key, $var: false) {
+// NOTE: Supports alpha channel.
+@function color($key, $alpha: null) {
 	$got: -getter("color", configuration.$color-map, $key);
-	@if $var {
-		@return var(--#{$key});
+	// HSL
+	@if not $alpha {
+		@return string.unquote("hsl(#{$got})");
 	}
+	// HSLA
+	@return string.unquote("hsla(#{$got}, #{$alpha})");
+}
+
+@function raw-color($key) {
+	$got: -getter("raw-color", configuration.$color-map, $key);
 	@return $got;
 }
 
@@ -104,10 +113,18 @@
 	@return $ret;
 }
 
-@function colors($var: false) {
+@function colors($alpha: null) {
 	$ret: ();
 	@each $mk, $mv in configuration.$color-map {
-		$ret: map.set($ret, $mk, color($mk, $var));
+		$ret: map.set($ret, $mk, color($mk, $alpha));
+	}
+	@return $ret;
+}
+
+@function raw-colors() {
+	$ret: ();
+	@each $mk, $mv in configuration.$color-map {
+		$ret: map.set($ret, $mk, raw-color($mk));
 	}
 	@return $ret;
 }

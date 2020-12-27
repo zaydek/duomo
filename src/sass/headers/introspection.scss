@@ -19,9 +19,9 @@
 		--transition-duration-default: 300ms;
 		--transition-timing-default: #{timing(ease-out)};
 
-		@include generate-vars(colors());
-		@include generate-vars(shadows());
-		@include generate-vars(timings());
+		@include generate-vars(raw-colors());
+		@include generate-vars(shadows($var: true));
+		@include generate-vars(timings($var: true));
 
 		--theme-transition: background-color var(--theme-transition-duration) var(--theme-transition-timing),
 			border-color var(--theme-transition-duration) var(--theme-transition-timing),
