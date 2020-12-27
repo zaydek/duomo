@@ -9,8 +9,8 @@ $-range: (0, 100, 200, 250, 300, 400, 500, 600, 700, 750, 800, 900, 1000);
 	@include variants($variants...) using ($v) {
 		#{variant(transition, $v)} {
 			--transition-duration: var(--transition-duration-default);
-			--transition-timing-function: var(--transition-timing-function-default);
-			transition: var(--transition-duration) var(--transition-timing-function);
+			--transition-timing: var(--transition-timing-default);
+			transition: var(--transition-duration) var(--transition-timing);
 			transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
 		}
 
@@ -22,7 +22,7 @@ $-range: (0, 100, 200, 250, 300, 400, 500, 600, 700, 750, 800, 900, 1000);
 
 		@each $mk, $mv in timings() {
 			#{variant($mk, $v)} {
-				--transition-timing-function: #{$mv};
+				--transition-timing: #{$mv};
 			}
 		}
 	}

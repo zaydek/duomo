@@ -87,24 +87,16 @@
 	@return var(--#{$key});
 }
 
-// @function weight($key, $raw: false) {
-// 	$got: -getter("weight", configuration.$weight-map, $key);
-// 	@if $raw {
-// 		@return $got;
-// 	}
-// 	@return var(--#{$key});
-// }
-//
-// @function decoration($key, $raw: false) {
-// 	$got: -getter("decoration", configuration.$decoration-map, $key);
-// 	@if $raw {
-// 		@return $got;
-// 	}
-// 	@return var(--#{$key});
-// }
+@function weight($key, $raw: false) {
+	$got: -getter("weight", configuration.$weight-map, $key);
+	@if $raw {
+		@return $got;
+	}
+	@return var(--#{$key});
+}
 
-@function color($key, $raw: false) {
-	$got: -getter("color", configuration.$color-map, $key);
+@function decoration($key, $raw: false) {
+	$got: -getter("decoration", configuration.$decoration-map, $key);
 	@if $raw {
 		@return $got;
 	}
@@ -119,8 +111,8 @@
 	@return var(--#{$key});
 }
 
-@function extended-color($key, $raw: false) {
-	$got: -getter("extended-color", configuration.$extended-color-map, $key);
+@function color($key, $raw: false) {
+	$got: -getter("color", configuration.$color-map, $key);
 	@if $raw {
 		@return $got;
 	}
@@ -162,26 +154,18 @@
 	@return $ret;
 }
 
-// @function weights($raw: false) {
-// 	$ret: ();
-// 	@each $mk, $mv in configuration.$weight-map {
-// 		$ret: map.set($ret, $mk, weight($mk, $raw));
-// 	}
-// 	@return $ret;
-// }
-//
-// @function decorations($raw: false) {
-// 	$ret: ();
-// 	@each $mk, $mv in configuration.$decoration-map {
-// 		$ret: map.set($ret, $mk, decoration($mk, $raw));
-// 	}
-// 	@return $ret;
-// }
-
-@function colors($raw: false) {
+@function weights($raw: false) {
 	$ret: ();
-	@each $mk, $mv in configuration.$color-map {
-		$ret: map.set($ret, $mk, color($mk, $raw));
+	@each $mk, $mv in configuration.$weight-map {
+		$ret: map.set($ret, $mk, weight($mk, $raw));
+	}
+	@return $ret;
+}
+
+@function decorations($raw: false) {
+	$ret: ();
+	@each $mk, $mv in configuration.$decoration-map {
+		$ret: map.set($ret, $mk, decoration($mk, $raw));
 	}
 	@return $ret;
 }
@@ -194,10 +178,10 @@
 	@return $ret;
 }
 
-@function extended-colors($raw: false) {
+@function colors($raw: false) {
 	$ret: ();
-	@each $mk, $mv in configuration.$extended-color-map {
-		$ret: map.set($ret, $mk, extended-color($mk, $raw));
+	@each $mk, $mv in configuration.$color-map {
+		$ret: map.set($ret, $mk, color($mk, $raw));
 	}
 	@return $ret;
 }

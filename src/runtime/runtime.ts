@@ -14,15 +14,9 @@ interface Runtime {
 	getDarkMode(): boolean
 	setDarkMode(mode: boolean): void
 	toggleDarkMode(): void
-
 	getDebugMode(): boolean
 	setDebugMode(mode: boolean): void
 	toggleDebugMode(): void
-
-	getDebugSpaceMode(): boolean
-	setDebugSpaceMode(mode: boolean): void
-	toggleDebugSpaceMode(): void
-
 	init(env?: Env, options?: RuntimeOptions): () => void
 }
 
@@ -216,25 +210,6 @@ class Duomo implements Runtime {
 	}
 	toggleDebugMode() {
 		this.setDebugMode(!this.getDebugMode())
-	}
-
-	/*
-	 * debugSpaceMode
-	 */
-
-	getDebugSpaceMode() {
-		return this.#debugSpaceMode
-	}
-	setDebugSpaceMode(mode: boolean) {
-		this.#debugSpaceMode = mode
-		const action = !mode
-			? () => this.#html!.removeAttribute("data-debug-space")
-			: () => this.#html!.setAttribute("data-debug-space", "true")
-		action()
-		this.__console_log(`[Duomo] debugSpaceMode=${!mode ? "off" : "on"}`)
-	}
-	toggleDebugSpaceMode() {
-		this.setDebugSpaceMode(!this.getDebugSpaceMode())
 	}
 }
 

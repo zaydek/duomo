@@ -4,7 +4,12 @@
 
 @use "colors" as hex;
 
-@function -hex-to-hsl($color-map) {
+// Ex:
+//
+// -conv-hex-to-hsl((white: #fff, black: #000))
+// -> (white: hsl(0deg, 0%, 100%), black: hsl(0deg, 0%, 0%))
+//
+@function -conv-hex-to-hsl($color-map) {
 	$ret: ();
 	@each $mk, $mv in $color-map {
 		@if $mk == transparent or $mk == current {
@@ -21,6 +26,5 @@
 	@return $ret;
 }
 
-$skeleton-color-map: -hex-to-hsl(hex.$skeleton-color-map);
-$color-map: -hex-to-hsl(hex.$color-map);
-$extended-color-map: -hex-to-hsl(hex.$extended-color-map);
+$skeleton-color-map: -conv-hex-to-hsl(hex.$skeleton-color-map);
+$color-map: -conv-hex-to-hsl(hex.$color-map);

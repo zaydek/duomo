@@ -4,6 +4,10 @@
 
 // prettier-ignore
 @mixin background-color($variants...) {
+	.bg-placeholder {
+		--bg-opacity: 1;
+		background-color: var(--placeholder-bg-default);
+	}
 	@include variants($variants...) using ($v) {
 		@include generate-from-colors((
 			variant: $v,

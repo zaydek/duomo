@@ -152,6 +152,7 @@
 
 	input::placeholder,
 	textarea::placeholder {
+		--placeholder-opacity: 1;
 		color: var(--placeholder-color-default);
 	}
 

@@ -9,17 +9,17 @@
 		--sans: "";
 		--serif: "";
 		--mono: "";
-
 		--ui-sans: #{font(sans, $raw: true)};
 		--ui-serif: #{font(serif, $raw: true)};
 		--ui-mono: #{font(mono, $raw: true)};
 
-		--placeholder-color-default: hsl(#{color(gray-400)});
-		--border-color-default: hsl(#{color(gray-300)});
+		--placeholder-color-default: hsla(#{color(cool-gray-400)}, var(--color-opacity));
+		--placeholder-bg-default: hsla(#{color(cool-gray-200)}, var(--bg-opacity));
+		--border-color-default: hsla(#{color(cool-gray-200)}, var(--border-opacity));
 		--transition-duration-default: 300ms;
-		--transition-timing-function-default: #{timing(ease-out)};
+		--transition-timing-default: #{timing(ease-out)};
 
-		@include generate-vars(if(configuration.$skeleton, skeleton-colors($raw: true), colors($raw: true)));
+		@include generate-vars(colors($raw: true));
 		@include generate-vars(shadows($raw: true));
 		@include generate-vars(timings($raw: true));
 
@@ -35,8 +35,5 @@
 		--debug-empty-spacer-outline: 1px dashed hsla(210, 100%, 50%, 0.25);
 		--debug-outline-offset: -2px;
 		--debug-spacer-background-color: hsla(210, 100%, 50%, 0.25);
-
-		// [data-debug-space]
-		--debug-space-background-color: hsla(210, 100%, 50%, 0.1);
 	}
 }
