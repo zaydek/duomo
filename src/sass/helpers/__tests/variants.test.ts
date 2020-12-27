@@ -5,6 +5,7 @@ declare function sass(data: string): string
 
 test("integration", () => {
 	const result = sass(`
+@use "src/sass/helpers/getters-abstract" as *;
 @use "src/sass/helpers/getters" as *;
 @use "src/sass/helpers/resolvers" as *;
 @use "src/sass/helpers/variants" as *;

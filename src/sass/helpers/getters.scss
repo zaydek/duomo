@@ -3,9 +3,9 @@
 
 @use "../configuration";
 
-/*
- * Singular
- */
+//
+// Singular
+//
 
 @function -getter($getter-name, $map, $key) {
 	$got: map.get($map, $key);
@@ -79,15 +79,15 @@
 	@return $got;
 }
 
-/* NOTE: Does not support `$var`. */
+// NOTE: Does not support `$var`.
 @function breakpoint($key) {
 	$got: -getter("breakpoint", configuration.$breakpoint-map, $key);
 	@return $got;
 }
 
-/*
- * Plural
- */
+//
+// Plural
+//
 
 @function weights($var: false) {
 	$ret: ();
@@ -153,7 +153,7 @@
 	@return $ret;
 }
 
-/* NOTE: Does not support `$var`. */
+// NOTE: Does not support `$var`.
 @function breakpoints() {
 	$ret: ();
 	@each $mk, $mv in configuration.$breakpoint-map {
