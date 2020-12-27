@@ -1,0 +1,71 @@
+@use "sass:map";
+@use "sass:meta";
+
+@use "../escapers" as *;
+
+@use "../../configuration";
+
+// Ex:
+//
+// n(-1) -> "-"
+// n(0) -> ""
+//
+@function n($rv) {
+	@if passthrough($rv) {
+		@return "";
+	}
+	@return if($rv < 0, "-", "");
+}
+
+// Ex: delimiter() -> "\:"
+@function delimiter() {
+	@return escape(configuration.$delimiter);
+}
+
+// Ex: delimit(sm) -> "sm\:"
+@function delimit($key) {
+	@return escape-breakpoint-key($key) + delimiter();
+}
+
+// Ex:
+//
+// desc(auto)  -> auto
+// desc(0)     -> 0
+// desc(100%)  -> max
+// desc(100vw) -> screen
+//
+@function desc($any, $as-percent: false) {
+	// prettier-ignore
+	$got: map.get((
+		min-content: min,
+		max-content: max,
+		100%: full,
+		100vw: screen,
+		100vh: screen,
+		9999px: full,
+	), $any);
+	@if $got {
+		@return $got;
+	}
+	@if meta.type-of($any) == "number" and $as-percent {
+		$rv: $any;
+		@return escape($rv * 100);
+	}
+	$rv: $any;
+	@return escape($rv);
+}
+
+// Ex: nrange() -> (-1, -2, -4, -8, ...)
+@function nrange() {
+	@return configuration.$nrange;
+}
+
+// Ex: range() -> (0, 1, 2, 4, 8, ...)
+@function range() {
+	@return configuration.$range;
+}
+
+// Ex: percent-range() -> (0, 0.05, ...)
+@function percent-range() {
+	@return configuration.$percent-range;
+}

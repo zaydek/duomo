@@ -23,6 +23,17 @@
 		@include generate-vars(shadows($raw: true));
 		@include generate-vars(timings($raw: true));
 
+		--theme-transition: background-color var(--theme-transition-duration) var(--theme-transition-timing),
+			border-color var(--theme-transition-duration) var(--theme-transition-timing),
+			box-shadow var(--theme-transition-duration) var(--theme-transition-timing),
+			color var(--theme-transition-duration) var(--theme-transition-timing),
+			fill var(--theme-transition-duration) var(--theme-transition-timing),
+			opacity var(--theme-transition-duration) var(--theme-transition-timing),
+			stroke var(--theme-transition-duration) var(--theme-transition-timing);
+
+		--theme-transition-duration: 500ms;
+		--theme-transition-timing: var(--ease-out);
+
 		// [data-stagger]
 		--stagger-1-width: #{math.percentage(4 / 8)};
 		--stagger-2-width: #{math.percentage(6 / 8)};

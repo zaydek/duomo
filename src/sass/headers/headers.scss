@@ -1,7 +1,6 @@
 @use "custom-tailwind-base" as *;
 @use "data-debug" as *;
 @use "data-stagger" as *;
-@use "duomo-root" as *;
 @use "introspection" as *;
 @use "modern-normalize" as *;
 
@@ -10,7 +9,6 @@
 @mixin headers {
 	@include modern-normalize;
 	@include custom-tailwind-base;
-	@include duomo-root;
 	@include introspection;
 	@include data-stagger;
 	@include data-debug;
