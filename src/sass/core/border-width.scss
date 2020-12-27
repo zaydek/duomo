@@ -1,5 +1,7 @@
 @use "../helpers" as *;
 
+@use "../utils";
+
 // prettier-ignore
 @mixin border-width($variants...) {
 	@include variants($variants...) using ($v) {
@@ -7,35 +9,35 @@
 			variant: $v,
 			shorthand: border,
 			property: (border-width),
-			range: limit(range(), null, 8),
+			range: utils.limit(range(), null, 8),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: border-top,
 			property: (border-top-width),
-			range: limit(range(), null, 8),
+			range: utils.limit(range(), null, 8),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: border-right,
 			property: (border-right-width),
-			range: limit(range(), null, 8),
+			range: utils.limit(range(), null, 8),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: border-bottom,
 			property: (border-bottom-width),
-			range: limit(range(), null, 8),
+			range: utils.limit(range(), null, 8),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: border-left,
 			property: (border-left-width),
-			range: limit(range(), null, 8),
+			range: utils.limit(range(), null, 8),
 			resolver: rem,
 		));
 	}

@@ -5,7 +5,7 @@
 @use "resolvers" as *;
 
 @use "../configuration";
-@use "utils";
+@use "../utils";
 
 @function core($selector) {
 	@return ".#{$selector}";

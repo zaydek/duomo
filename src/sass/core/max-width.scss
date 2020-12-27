@@ -1,5 +1,7 @@
 @use "../helpers" as *;
 
+@use "../utils";
+
 // prettier-ignore
 @mixin max-width($variants...) {
 	@include variants($variants...) using ($v) {
@@ -7,7 +9,7 @@
 			variant: $v,
 			shorthand: max-w,
 			property: (max-width),
-			range: to-array(auto, min-content, max-content),
+			range: utils.to-array(auto, min-content, max-content),
 			resolver: rem,
 		));
 		@each $key, $px in breakpoints() {
@@ -19,7 +21,7 @@
 			variant: $v,
 			shorthand: max-w,
 			property: (max-width),
-			range: to-array(100%, 100vw),
+			range: utils.to-array(100%, 100vw),
 			resolver: rem,
 		));
 	}

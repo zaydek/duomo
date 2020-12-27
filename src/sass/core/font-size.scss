@@ -1,5 +1,7 @@
 @use "../helpers" as *;
 
+@use "../utils";
+
 // prettier-ignore
 @mixin font-size($variants...) {
 	@include variants($variants...) using ($v) {
@@ -7,7 +9,7 @@
 			variant: $v,
 			shorthand: text,
 			property: (font-size),
-			range: limit(range(), 8, 64),
+			range: utils.limit(range(), 8, 64),
 			resolver: rem,
 		));
 	}

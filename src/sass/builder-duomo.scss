@@ -40,6 +40,7 @@
 @use "extensions/stacks" as *;
 
 @use "configuration";
+@use "utils";
 
 // NOTE: Dart Sass does not support dynamic mixin invocations.
 // Therefore mixins are conditionally, statically invoked.
@@ -86,13 +87,13 @@
 
 @mixin duomo {
 	$hidden: map.get(configuration.$variants, hidden);
-	$non-hidden: take(configuration.$variants, hidden);
+	$non-hidden: utils.take(configuration.$variants, hidden);
 
 	// Non-responsive:
 	@each $mk, $mv in $non-hidden {
-		@include call-mixin($mk, take($mv, responsive)...);
+		@include call-mixin($mk, utils.take($mv, responsive)...);
 	}
-	@include call-mixin(hidden, take($hidden, responsive)...);
+	@include call-mixin(hidden, utils.take($hidden, responsive)...);
 
 	// Responsive:
 	@each $key, $px in breakpoints() {

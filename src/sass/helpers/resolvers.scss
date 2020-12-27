@@ -1,7 +1,7 @@
 @use "sass:math";
 @use "sass:meta";
 
-@use "utils";
+@use "../utils";
 
 @function rem($any) {
 	@if meta.type-of($any) != "number" {

@@ -1,5 +1,7 @@
 @use "../helpers" as *;
 
+@use "../utils";
+
 // prettier-ignore
 @mixin margin($variants...) {
 	@include variants($variants...) using ($v) {
@@ -7,49 +9,49 @@
 			variant: $v,
 			shorthand: m,
 			property: (margin),
-			range: to-array(nrange(), auto, limit(range(), null, 320)),
+			range: utils.to-array(nrange(), auto, utils.limit(range(), null, 320)),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: mx,
 			property: (margin-left, margin-right),
-			range: to-array(nrange(), auto, limit(range(), null, 320)),
+			range: utils.to-array(nrange(), auto, utils.limit(range(), null, 320)),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: my,
 			property: (margin-top, margin-bottom),
-			range: to-array(nrange(), auto, limit(range(), null, 320)),
+			range: utils.to-array(nrange(), auto, utils.limit(range(), null, 320)),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: mt,
 			property: (margin-top),
-			range: to-array(nrange(), auto, limit(range(), null, 320)),
+			range: utils.to-array(nrange(), auto, utils.limit(range(), null, 320)),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: mr,
 			property: (margin-right),
-			range: to-array(nrange(), auto, limit(range(), null, 320)),
+			range: utils.to-array(nrange(), auto, utils.limit(range(), null, 320)),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: mb,
 			property: (margin-bottom),
-			range: to-array(nrange(), auto, limit(range(), null, 320)),
+			range: utils.to-array(nrange(), auto, utils.limit(range(), null, 320)),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: ml,
 			property: (margin-left),
-			range: to-array(nrange(), auto, limit(range(), null, 320)),
+			range: utils.to-array(nrange(), auto, utils.limit(range(), null, 320)),
 			resolver: rem,
 		));
 	}

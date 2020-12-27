@@ -1,5 +1,7 @@
 @use "../helpers" as *;
 
+@use "../utils";
+
 @mixin grid($variants...) {
 	@include variants($variants...) using ($v) {
 		@if matches($v, core) {
@@ -19,7 +21,7 @@
 			}
 		}
 
-		@each $rv in limit(range(), null, 320) {
+		@each $rv in utils.limit(range(), null, 320) {
 			#{variant(gap-#{$rv}, $v)} {
 				gap: rem($rv);
 			}
