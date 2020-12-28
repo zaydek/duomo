@@ -18,7 +18,9 @@ $dark: (
 	ui-app-bg: color(black),
 );
 
-@include themes($light, $dark);
+@at-root {
+	@include themes($light, $dark);
+}
 `)
 	// prettier-ignore
 	expect(css).toBe(`

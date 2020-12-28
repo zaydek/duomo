@@ -1,59 +1,65 @@
-@use "sass:string";
-
 @use "../src/sass" as * with ($headless: true);
 
-// :root {
-// 	--root-bg: hsl(var(--gray-50));
-// 	--placeholder-bg-default: hsl(var(--gray-300));
-// 	--border-color-default: hsl(var(--gray-200));
-// }
-//
-// [data-theme="dark"] {
-// 	--root-bg: #090c14;
-// 	--placeholder-bg-default: hsl(var(--gray-700));
-// 	--border-color-default: hsl(var(--gray-900));
-// }
-//
-// :root {
-// 	background-color: var(--root-bg);
-// 	transition: var(--theme-transition);
-// }
-//
-// [class*="border-"] {
-// 	transition: var(--theme-transition);
-// }
-
-$light: (
-	ft-app-bg: color-var(white),
-	ft-app-shadow: (
-		0 0 0 1px color-var(gray-200),
-		shadow-var(xs),
-		shadow-var(md),
-	),
-	ft-content-search-bar-bg: color-var(white),
-	ft-content-card-bg: color-var(white),
-	ft-sidebar-bg: color-var(white),
-	ft-sidebar-preview-bg: color-var(white),
-	ft-svg-color: color-var(black),
-	ft-faded-svg-color: color-var(black, 0.5),
-);
-
-$dark: (
-	ft-app-bg: color-var(gray-800),
-	ft-app-shadow: (
-		0 0 0 1px color-var(gray-700),
-		shadow-var(xs),
-		shadow-var(md),
-	),
-	ft-content-search-bar-bg: color-var(gray-800),
-	ft-content-card-bg: color-var(gray-800),
-	ft-sidebar-bg: color-var(gray-800),
-	ft-sidebar-preview-bg: color-var(gray-800),
-	ft-svg-color: color-var(white),
-	ft-faded-svg-color: color-var(white, 0.5),
-);
-
-// TODO: Add support for `.ui-...` or `[data-theme-id="..."]`.
-@at-root {
-	@include themes($light, $dark);
+.color-red {
+	color: color(red-500);
 }
+
+// @use "sass:string";
+
+// @use "../src/sass" as * with ($headless: true);
+
+// // :root {
+// // 	--root-bg: hsl(var(--gray-50));
+// // 	--placeholder-bg-default: hsl(var(--gray-300));
+// // 	--border-color-default: hsl(var(--gray-200));
+// // }
+// //
+// // [data-theme="dark"] {
+// // 	--root-bg: #090c14;
+// // 	--placeholder-bg-default: hsl(var(--gray-700));
+// // 	--border-color-default: hsl(var(--gray-900));
+// // }
+// //
+// // :root {
+// // 	background-color: var(--root-bg);
+// // 	transition: var(--theme-transition);
+// // }
+// //
+// // [class*="border-"] {
+// // 	transition: var(--theme-transition);
+// // }
+
+// $light: (
+// 	ft-app-bg: color-var(white),
+// 	ft-app-shadow: (
+// 		0 0 0 1px color-var(gray-200),
+// 		shadow-var(xs),
+// 		shadow-var(md),
+// 	),
+// 	ft-content-search-bar-bg: color-var(white),
+// 	ft-content-card-bg: color-var(white),
+// 	ft-sidebar-bg: color-var(white),
+// 	ft-sidebar-preview-bg: color-var(white),
+// 	ft-svg-color: color-var(black),
+// 	ft-faded-svg-color: color-var(black, 0.5),
+// );
+
+// $dark: (
+// 	ft-app-bg: color-var(gray-800),
+// 	ft-app-shadow: (
+// 		0 0 0 1px color-var(gray-700),
+// 		shadow-var(xs),
+// 		shadow-var(md),
+// 	),
+// 	ft-content-search-bar-bg: color-var(gray-800),
+// 	ft-content-card-bg: color-var(gray-800),
+// 	ft-sidebar-bg: color-var(gray-800),
+// 	ft-sidebar-preview-bg: color-var(gray-800),
+// 	ft-svg-color: color-var(white),
+// 	ft-faded-svg-color: color-var(white, 0.5),
+// );
+
+// // TODO: Add support for `.ui-...` or `[data-theme-id="..."]`.
+// @at-root {
+// 	@include themes($light, $dark);
+// }

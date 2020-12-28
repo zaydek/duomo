@@ -14,7 +14,7 @@
 
 // NOTE: Use `hsl(...)`.
 @function color($key, $alpha: null) {
-	@return getter("color", configuration.$color-map, $key);
+	$got: getter("color", configuration.$color-map, $key);
 	@if $alpha {
 		@return string.unquote("hsla(#{$got}, #{$alpha})");
 	}
@@ -23,6 +23,7 @@
 
 // NOTE: Use `hsl(...)`.
 @function color-var($key, $alpha: null) {
+	$got: getter("color", configuration.$color-map, $key);
 	@if $alpha {
 		@return string.unquote("hsla(var(--#{$key}), #{$alpha})");
 	}
