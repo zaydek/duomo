@@ -159,20 +159,20 @@
 
 @function colors($alpha: null, $opts) {
 	$subset: map.get($opts, subset);
-	$ret: ();
+	$list: ();
 	@each $mk, $mv in if($subset, configuration.$subset-color-map, configuration.$color-map) {
-		$ret: map.set($ret, $mk, color($mk, $alpha));
+		$list: list.append($list, color($mk, $alpha));
 	}
-	@return $ret;
+	@return $list;
 }
 
 @function color-vars($alpha: null, $opts) {
 	$subset: map.get($opts, subset);
-	$ret: ();
+	$list: ();
 	@each $mk, $mv in if($subset, configuration.$subset-color-map, configuration.$color-map) {
-		$ret: map.set($ret, $mk, color-var($mk, $alpha));
+		$list: list.append($list, color-var($mk, $alpha));
 	}
-	@return $ret;
+	@return $list;
 }
 
 @function decorations() {

@@ -7,12 +7,7 @@ test("integration", () => {
 	const result = sass(`
 @use "src/sass/helpers/getters" as *;
 
-.one {
-	text-decoration: decoration-var(strikethrough);
-	text-decoration: decoration-var(underline);
-}
-
-.many {
+.clsx {
 	@each $each in decoration-vars() {
 		text-decoration: $each;
 	}
@@ -20,12 +15,7 @@ test("integration", () => {
 `)
 	// prettier-ignore
 	expect(result).toBe(`
-.one {
-	text-decoration: var(--strikethrough);
-	text-decoration: var(--underline);
-}
-
-.many {
+.clsx {
 	text-decoration: var(--strikethrough);
 	text-decoration: var(--underline);
 }
