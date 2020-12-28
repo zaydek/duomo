@@ -176,27 +176,27 @@
 }
 
 @function decorations() {
-	$ret: ();
+	$list: ();
 	@each $mk, $mv in configuration.$decoration-map {
-		$ret: map.set($ret, $mk, decoration($mk));
+		$list: list.append($list, decoration($mk));
 	}
-	@return $ret;
+	@return $list;
 }
 
 @function decoration-vars() {
-	$ret: ();
+	$list: ();
 	@each $mk, $mv in configuration.$decoration-map {
-		$ret: map.set($ret, $mk, decoration-var($mk));
+		$list: list.append($list, decoration-var($mk));
 	}
-	@return $ret;
+	@return $list;
 }
 
 @function shadows() {
-	$ret: ();
+	$list: ();
 	@each $mk, $mv in configuration.$shadow-map {
-		$ret: map.set($ret, $mk, shadow($mk));
+		$list: list.append($list, shadow($mk));
 	}
-	@return $ret;
+	@return $list;
 }
 
 @function shadow-vars() {
@@ -208,21 +208,22 @@
 }
 
 @function timings() {
-	$ret: ();
+	$list: ();
 	@each $mk, $mv in configuration.$timing-map {
-		$ret: map.set($ret, $mk, timing($mk));
+		$list: map.set($list, timing($mk));
 	}
-	@return $ret;
+	@return $list;
 }
 
 @function timing-vars() {
-	$ret: ();
+	$list: ();
 	@each $mk, $mv in configuration.$timing-map {
-		$ret: map.set($ret, $mk, timing-var($mk));
+		$list: map.set($list, timing-var($mk));
 	}
-	@return $ret;
+	@return $list;
 }
 
+// TODO: Change to `breakpoint-map()`?
 @function breakpoints() {
 	$ret: ();
 	@each $mk, $mv in configuration.$breakpoint-map {

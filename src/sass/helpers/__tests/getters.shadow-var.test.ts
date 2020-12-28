@@ -3,12 +3,11 @@
  */
 declare function sass(data: string): string
 
-test("getters: shadow-var", () => {
+test("integration", () => {
 	const result = sass(`
 @use "src/sass/helpers/getters" as *;
 
-.shadows {
-	box-shadow: shadow-var(none);
+.one {
 	box-shadow: shadow-var(inner);
 	box-shadow: shadow-var(px);
 	box-shadow: shadow-var(xs);
@@ -18,11 +17,16 @@ test("getters: shadow-var", () => {
 	box-shadow: shadow-var(xl);
 	box-shadow: shadow-var(2xl);
 }
+
+.many {
+	@each $each in shadow-vars() {
+		box-shadow: $each;
+	}
+}
 `)
 	// prettier-ignore
 	expect(result).toBe(`
-.shadows {
-	box-shadow: var(--shadow-none);
+.one {
 	box-shadow: var(--shadow-inner);
 	box-shadow: var(--shadow-px);
 	box-shadow: var(--shadow-xs);
@@ -32,23 +36,8 @@ test("getters: shadow-var", () => {
 	box-shadow: var(--shadow-xl);
 	box-shadow: var(--shadow-2xl);
 }
-`.trim())
-})
 
-test("getters: shadow-vars", () => {
-	const result = sass(`
-@use "src/sass/helpers/getters" as *;
-
-.shadows {
-	@each $each in shadow-vars() {
-		box-shadow: $each;
-	}
-}
-`)
-	// prettier-ignore
-	expect(result).toBe(`
-.shadows {
-	box-shadow: var(--shadow-none);
+.many {
 	box-shadow: var(--shadow-inner);
 	box-shadow: var(--shadow-px);
 	box-shadow: var(--shadow-xs);
