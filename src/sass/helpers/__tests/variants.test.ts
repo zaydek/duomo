@@ -5,7 +5,6 @@ declare function sass(data: string): string
 
 test("integration", () => {
 	const result = sass(`
-@use "src/sass/helpers/getters-abstract" as *;
 @use "src/sass/helpers/getters" as *;
 @use "src/sass/helpers/resolvers" as *;
 @use "src/sass/helpers/variants" as *;
@@ -20,8 +19,8 @@ test("integration", () => {
 
 @at-root {
 	@include background-color(core, hover, focus, group-hover, group-focus);
-	@each $key, $px in breakpoints() {
-		@media (min-width: px($px)) {
+	@each $key, $px in breakpoint-map() {
+		@media (min-width: $px) {
 			.#{delimit($key)} {
 				@at-root {
 					@include background-color(responsive);
