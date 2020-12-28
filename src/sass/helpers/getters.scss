@@ -118,19 +118,19 @@
 }
 
 @function fonts() {
-	$ret: ();
+	$list: ();
 	@each $mk, $mv in configuration.$font-map {
-		$ret: map.set($ret, $mk, font($mk));
+		$list: list.append($list, font($mk));
 	}
-	@return $ret;
+	@return $list;
 }
 
 @function font-vars() {
-	$ret: ();
+	$list: ();
 	@each $mk, $mv in configuration.$font-map {
-		$ret: map.set($ret, $mk, font-var($mk));
+		$list: list.append($list, font-var($mk));
 	}
-	@return $ret;
+	@return $list;
 }
 
 @function raw-colors() {
