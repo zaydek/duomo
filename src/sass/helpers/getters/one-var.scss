@@ -1,6 +1,9 @@
+@use "sass:string";
+
 @use "getter" as *;
 
 @use "../../configuration";
+@use "../../utils";
 
 @function weight-var($key) {
 	$_: getter("weight-var", configuration.$weight-map, $key);
@@ -18,8 +21,11 @@
 }
 
 @function shadow-var($key) {
+	@if not utils.str-starts-with($key, "shadow-") {
+		$key: "shadow-" + $key;
+	}
 	$_: getter("shadow-var", configuration.$shadow-map, $key);
-	@return var(--shadow-#{$key});
+	@return var(--#{$key});
 }
 
 @function timing-var($key) {

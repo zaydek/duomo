@@ -1,0 +1,5 @@
+@use "sass:string";
+
+@function str-starts-with($str, $with) {
+	@return string.slice($str, 1, string.length($with)) == $with;
+}
