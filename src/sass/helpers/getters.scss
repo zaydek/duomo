@@ -210,7 +210,7 @@
 @function timings() {
 	$list: ();
 	@each $mk, $mv in configuration.$timing-map {
-		$list: map.set($list, timing($mk));
+		$list: list.append($list, timing($mk));
 	}
 	@return $list;
 }
@@ -218,7 +218,7 @@
 @function timing-vars() {
 	$list: ();
 	@each $mk, $mv in configuration.$timing-map {
-		$list: map.set($list, timing-var($mk));
+		$list: list.append($list, timing-var($mk));
 	}
 	@return $list;
 }
