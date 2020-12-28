@@ -48,7 +48,7 @@
 // -> }
 //
 // TODO: Add support for `root-bg` and `border-color-default`?
-// TODO: `data-theme` should be dynamic; change to `themes: (...)`?
+// TODO: Add support for n-many themes; `[data-theme="..."]` should be dynamic.
 //
 // prettier-ignore
 @mixin themes($light, $dark, $transition: true) {
@@ -126,35 +126,49 @@ $-legend: (
 	@return $ast;
 }
 
-// root-bg: ...
-// placeholder-bg-default: color(gray-700),
-// border-color-default: color(gray-900),
+:root {
+	--root-bg: hsl(var(--gray-50));
+	--placeholder-bg-default: hsl(var(--gray-300));
+	--border-color-default: hsl(var(--gray-200));
+}
+[data-theme="dark"] {
+	--root-bg: #090c14;
+	--placeholder-bg-default: hsl(var(--gray-700));
+	--border-color-default: hsl(var(--gray-900));
+}
+
+:root {
+	background-color: var(--root-bg);
+	transition: var(--theme-transition);
+}
+[class*="border-"] {
+	transition: var(--theme-transition);
+}
 
 // prettier-ignore
 $light: (
-	ui-app-bg: color(white),
-	ui-app-shadow: (0 0 0 1px color(gray-200), var(--shadow-xs), var(--shadow-md)),
-	ui-content-search-bar-bg: color(white),
-	ui-content-card-bg: color(white),
-	ui-sidebar-bg: color(white),
-	ui-sidebar-preview-bg: color(white),
-	ui-svg-color: color(black),
-	ui-svg-faded-color: color(black, 0.5),
+	ft-app-bg: color(white),
+	ft-app-shadow: (0 0 0 1px color(gray-200), var(--shadow-xs), var(--shadow-md)),
+	ft-content-search-bar-bg: color(white),
+	ft-content-card-bg: color(white),
+	ft-sidebar-bg: color(white),
+	ft-sidebar-preview-bg: color(white),
+	ft-svg-color: color(black),
+	ft-faded-svg-color: color(black, 0.5),
 );
 
 // prettier-ignore
 $dark: (
-	ui-app-bg: color(gray-800),
-	ui-app-shadow: (0 0 0 1px color(gray-700), var(--shadow-xs), var(--shadow-md)),
-	ui-content-search-bar-bg: color(gray-800),
-	ui-content-card-bg: color(gray-800),
-	ui-sidebar-bg: color(gray-800),
-	ui-sidebar-preview-bg: color(gray-800),
-	ui-svg-color: color(white),
-	ui-svg-faded-color: color(white, 0.5),
+	ft-app-bg: color(gray-800),
+	ft-app-shadow: (0 0 0 1px color(gray-700), var(--shadow-xs), var(--shadow-md)),
+	ft-content-search-bar-bg: color(gray-800),
+	ft-content-card-bg: color(gray-800),
+	ft-sidebar-bg: color(gray-800),
+	ft-sidebar-preview-bg: color(gray-800),
+	ft-svg-color: color(white),
+	ft-faded-svg-color: color(white, 0.5),
 );
 
 @at-root {
-	// @error parse-ast($light);
 	@include themes($light, $dark);
 }

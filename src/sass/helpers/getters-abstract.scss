@@ -80,6 +80,10 @@
 }
 
 // Ex: percent-range() -> (0, 0.05, ...)
+//
+// TODO: `percent-range` should probably talk to
+// configuration and use a resolver name as a
+// parameter to resolve units.
 @function percent-range() {
 	@return configuration.$percent-range;
 }

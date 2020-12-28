@@ -137,6 +137,7 @@ $env: development;
 	}
 }
 
+// TODO: Needs to support `:not([data-theme-effect]) .transition` edge case.
 .bg-red-500 {
 	@include variants(core, hover, focus, touch, group-hover, group-focus, group-touch) {
 		background-color: hsl(var(--red-500));
