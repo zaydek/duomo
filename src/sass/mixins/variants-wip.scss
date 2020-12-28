@@ -89,7 +89,20 @@ $env: development;
 		".group\:focus .group-touch#{delimiter()}#{declass($str-selector)}";
 }
 
-// NOTE: Use `@at-root` to escape the current class context.
+// Ex:
+//
+// .class {
+//   @include variants(...) {
+//     ...
+//   }
+// }
+//
+// -> .class { ... }
+// -> .hover\:class { ... }
+// -> .focus\:class { ... }
+// -> .group-hover\:class { ... }
+// -> .group-focus\:class { ... }
+//
 @mixin prototype-dev($variants...) {
 	@at-root {
 		@each $variant in $variants {
@@ -101,7 +114,20 @@ $env: development;
 	}
 }
 
-// NOTE: Use `@at-root` to escape the current class context.
+// Ex:
+//
+// .class {
+//   @include variants(...) {
+//     ...
+//   }
+// }
+//
+// -> .class,
+// -> .hover\:class,
+// -> .focus\:class,
+// -> .group-hover\:class,
+// -> .group-focus\:class { ... }
+//
 @mixin prototype-prod($variants...) {
 	@at-root {
 		$concat-selector: "";
@@ -115,6 +141,8 @@ $env: development;
 	}
 }
 
+// TODO: Needs to support `:not([data-theme-effect]) .transition` edge case.
+// Maybe we take the nth component of the selector and use that.
 @mixin variants($variants...) {
 	$taken: take($variants, responsive);
 	@if list.length($taken) > 0 {
@@ -137,7 +165,6 @@ $env: development;
 	}
 }
 
-// TODO: Needs to support `:not([data-theme-effect]) .transition` edge case.
 .bg-red-500 {
 	@include variants(core, hover, focus, touch, group-hover, group-focus, group-touch) {
 		background-color: hsl(var(--red-500));

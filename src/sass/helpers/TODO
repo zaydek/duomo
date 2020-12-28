@@ -1,0 +1,1 @@
+Deprecate `variants.scss`; prefer `mixins/variants.scss`.

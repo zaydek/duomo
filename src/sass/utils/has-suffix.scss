@@ -5,8 +5,8 @@
 // has-suffix(16, px)   -> false
 // has-suffix(16px, px) -> true
 //
-@function has-suffix($str, $end) {
-	$str: "" + $str;
-	$end: "" + $end;
-	@return string.slice($str, 1 + string.length($str) - string.length($end)) == $end;
+@function has-suffix($src, $cmp) {
+	$str-src: "" + $src;
+	$str-cmp: "" + $cmp;
+	@return string.slice($str-src, 1 + string.length($str-src) - string.length($str-cmp)) == $str-cmp;
 }

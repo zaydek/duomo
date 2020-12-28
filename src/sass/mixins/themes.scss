@@ -1,0 +1,103 @@
+@use "sass:list";
+@use "sass:map";
+@use "sass:string";
+
+@use "../utils";
+
+$-legend: (
+	background-color: bg,
+	border-color: border-color,
+	box-shadow: shadow,
+	color: color,
+	fill: fill,
+	opacity: opacity,
+	stroke: stroke,
+);
+
+// Parses a lightweight abstract syntax tree.
+@function -parse-ast($map) {
+	$ast: ();
+	@each $mk, $mv in $map {
+		@each $tk, $tv in $-legend {
+			@if utils.has-suffix($mk, $tv) {
+				$n: string.index($mk, $tv);
+				$key: string.slice($mk, 1, $n - 2);
+				$current: map.get($ast, $key);
+
+				// prettier-ignore
+				$ast: map.set(
+					$ast,
+					$key,
+					list.append(
+						if(not $current, (), $current),
+						(
+							var: $mk,      // -> app
+							property: $tk, // -> background-color
+							value: $mv,    // -> hsl(...)
+						)
+					)
+				);
+			}
+		}
+	}
+	@return $ast;
+}
+
+// Ex:
+//
+// @include themes(...);
+//
+// -> :root {
+// ->   --ui-app-color: hsl(0deg, 0%, 0%);
+// ->   --ui-app-bg: hsl(0deg, 0%, 100%);
+// -> }
+// ->
+// -> [data-theme="dark"] {
+// ->   --ui-app-color: hsl(0deg, 0%, 100%);
+// ->   --ui-app-bg: hsl(0deg, 0%, 0%);
+// -> }
+// ->
+// -> .ui-app {
+// ->   color: var(--ui-app-color);
+// ->   background-color: var(--ui-app-bg);
+// ->   transition: var(--theme-transition);
+// -> }
+//
+// TODO: Add support for `root-bg` and `border-color-default`?
+// TODO: Add support for n-many themes; `[data-theme="..."]` should be dynamic.
+//
+// prettier-ignore
+@mixin themes($light, $dark, $transition: true) {
+	$theme-transition: var(--theme-transition);
+	@if $transition == false {
+		$theme-transition: null;
+	}
+
+	// TODO: Assert `$light-ast` and `$dark-ast` are mirrors.
+	$light-ast: -parse-ast($light);
+	:root {
+		@each $mk, $mv in $light-ast {
+			@each $info in $mv {
+				--#{map.get($info, var)}: #{map.get($info, value)};
+			}
+		}
+	}
+
+	$dark-ast: -parse-ast($dark);
+	[data-theme="dark"] {
+		@each $mk, $mv in $dark-ast {
+			@each $info in $mv {
+				--#{map.get($info, var)}: #{map.get($info, value)};
+			}
+		}
+	}
+
+	@each $mk, $mv in $light-ast {
+		.#{$mk} {
+			@each $info in $mv {
+				#{map.get($info, property)}: var(--#{map.get($info, var)});
+			}
+			transition: $theme-transition;
+		}
+	}
+}
