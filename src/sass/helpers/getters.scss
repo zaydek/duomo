@@ -31,12 +31,17 @@
 	@return $got;
 }
 
-// NOTE: `-skeleton-color` is not exported.
+// NOTE: Unexported.
 @function -skeleton-color($key, $var: false) {
 	$got: -getter("skeleton-color", configuration.$skeleton-color-map, $key);
 	@if $var {
 		@return var(--#{$key});
 	}
+	@return $got;
+}
+
+@function raw-color($key) {
+	$got: -getter("raw-color", configuration.$color-map, $key);
 	@return $got;
 }
 
@@ -50,9 +55,11 @@
 	@return string.unquote("hsla(#{$got}, #{$alpha})");
 }
 
-@function raw-color($key) {
-	$got: -getter("raw-color", configuration.$color-map, $key);
-	@return $got;
+@function color-var($key, $alpha: null) {
+	@if $alpha {
+		@return string.unquote("hsla(var(--#{$key}), #{$alpha})");
+	}
+	@return string.unquote("hsl(var(--#{$key}))");
 }
 
 @function decoration($key, $var: false) {
@@ -113,7 +120,14 @@
 	@return $ret;
 }
 
-// NOTE: Use `if($subset, configuration.$subset-color-map, configuration.$color-map)`.
+@function raw-colors() {
+	$ret: ();
+	@each $mk, $mv in configuration.$color-map {
+		$ret: map.set($ret, $mk, raw-color($mk));
+	}
+	@return $ret;
+}
+
 @function colors($alpha: null, $subset: true) {
 	$ret: ();
 	@each $mk, $mv in if($subset, configuration.$subset-color-map, configuration.$color-map) {
@@ -122,10 +136,10 @@
 	@return $ret;
 }
 
-@function raw-colors() {
+@function colors-vars($alpha: null, $subset: true) {
 	$ret: ();
-	@each $mk, $mv in configuration.$color-map {
-		$ret: map.set($ret, $mk, raw-color($mk));
+	@each $mk, $mv in if($subset, configuration.$subset-color-map, configuration.$color-map) {
+		$ret: map.set($ret, $mk, color-var($mk, $alpha));
 	}
 	@return $ret;
 }
