@@ -27,8 +27,8 @@ $light: (
 	ft-app-bg: color-var(white),
 	ft-app-shadow: (
 		0 0 0 1px color-var(gray-200),
-		shadow(xs),
-		shadow(md),
+		shadow-var(xs),
+		shadow-var(md),
 	),
 	ft-content-search-bar-bg: color-var(white),
 	ft-content-card-bg: color-var(white),
@@ -42,8 +42,8 @@ $dark: (
 	ft-app-bg: color-var(gray-800),
 	ft-app-shadow: (
 		0 0 0 1px color-var(gray-700),
-		shadow(xs),
-		shadow(md),
+		shadow-var(xs),
+		shadow-var(md),
 	),
 	ft-content-search-bar-bg: color-var(gray-800),
 	ft-content-card-bg: color-var(gray-800),
@@ -53,6 +53,7 @@ $dark: (
 	ft-faded-svg-color: color-var(white, 0.5),
 );
 
+// TODO: Add support for `.ui-...` or `[data-theme-id="..."]`.
 @at-root {
 	@include themes($light, $dark);
 }

@@ -132,17 +132,19 @@ $font-map: (
 ) !default;
 
 $decoration-map: (
+	none: none,
 	strikethrough: line-through,
 	underline: underline,
 ) !default;
 
 // NOTE:
 //
-// - shadow-sm -> shadow-xs
-// - shadow    -> shadow-sm
+// shadow-sm -> shadow-xs
+// shadow    -> shadow-sm
 //
 // prettier-ignore
 $shadow-map: (
+	none: none,
 	inner: (inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)),
 	px: (0 0 0 1px rgba(0, 0, 0, 0.05)),
 	xs: (0 1px 2px 0 rgba(0, 0, 0, 0.05)),

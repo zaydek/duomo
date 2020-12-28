@@ -1,3 +1,4 @@
+@use "sass:list";
 @use "sass:map";
 @use "sass:string";
 
@@ -15,46 +16,49 @@
 	@return $got;
 }
 
-@function weight($key, $var: false) {
-	$got: -getter("weight", configuration.$weight-map, $key);
-	@if $var {
-		@return var(--#{$key});
-	}
-	@return $got;
+@function weight($key) {
+	@return -getter("weight", configuration.$weight-map, $key);
 }
 
-@function font($key, $var: false) {
-	$got: -getter("font", configuration.$font-map, $key);
-	@if $var {
-		@return var(--#{$key});
-	}
-	@return $got;
+@function weight-var($key) {
+	$_: -getter("weight-var", configuration.$weight-map, $key);
+	@return var(--#{$key});
 }
 
-// NOTE: Unexported.
-@function -skeleton-color($key, $var: false) {
-	$got: -getter("skeleton-color", configuration.$skeleton-color-map, $key);
-	@if $var {
-		@return var(--#{$key});
-	}
-	@return $got;
+@function font($key) {
+	@return -getter("font", configuration.$font-map, $key);
+}
+
+@function font-var($key) {
+	$_: -getter("font-var", configuration.$font-map, $key);
+	@return var(--#{$key});
 }
 
 @function raw-color($key) {
-	$got: -getter("raw-color", configuration.$color-map, $key);
-	@return $got;
+	@return -getter("raw-color", configuration.$color-map, $key);
 }
 
+// NOTE: Unexported.
+@function -skeleton-color($key) {
+	@return -getter("skeleton-color", configuration.$skeleton-color-map, $key);
+}
+
+// NOTE: Unexported.
+@function -skeleton-color-var($key) {
+	$_: -getter("skeleton-color-var", configuration.$font-map, $key);
+	@return var(--#{$key});
+}
+
+// FIXME: Do we need `string.unquote(...)`?
 @function color($key, $alpha: null) {
 	$got: -getter("color", configuration.$color-map, $key);
-	// HSL
-	@if not $alpha {
-		@return string.unquote("hsl(#{$got})");
+	@if $alpha {
+		@return string.unquote("hsla(#{$got}, #{$alpha})");
 	}
-	// HSLA
-	@return string.unquote("hsla(#{$got}, #{$alpha})");
+	@return string.unquote("hsl(#{$got})");
 }
 
+// FIXME: Do we need `string.unquote(...)`?
 @function color-var($key, $alpha: null) {
 	@if $alpha {
 		@return string.unquote("hsla(var(--#{$key}), #{$alpha})");
@@ -62,60 +66,69 @@
 	@return string.unquote("hsl(var(--#{$key}))");
 }
 
-@function decoration($key, $var: false) {
-	$got: -getter("decoration", configuration.$decoration-map, $key);
-	@if $var {
-		@return var(--#{$key});
-	}
-	@return $got;
+@function decoration($key) {
+	@return -getter("decoration", configuration.$decoration-map, $key);
 }
 
-@function shadow($key, $var: false) {
-	$got: -getter("shadow", configuration.$shadow-map, $key);
-	@if $var {
-		@return var(--#{$key});
-	}
-	@return $got;
+@function decoration-var($key) {
+	$_: -getter("decoration-var", configuration.$decoration-map, $key);
+	@return var(--#{$key});
 }
 
-@function timing($key, $var: false) {
-	$got: -getter("timing", configuration.$timing-map, $key);
-	@if $var {
-		@return var(--#{$key});
-	}
-	@return $got;
+@function shadow($key) {
+	@return -getter("shadow", configuration.$shadow-map, $key);
 }
 
-// NOTE: Does not support `$var`.
+@function shadow-var($key) {
+	$_: -getter("shadow-var", configuration.$shadow-map, $key);
+	@return var(--shadow-#{$key});
+}
+
+@function timing($key) {
+	@return -getter("timing", configuration.$timing-map, $key);
+}
+
+@function timing-var($key) {
+	$_: -getter("timing-var", configuration.$timing-map, $key);
+	@return var(--#{$key});
+}
+
 @function breakpoint($key) {
-	$got: -getter("breakpoint", configuration.$breakpoint-map, $key);
-	@return $got;
+	@return -getter("breakpoint", configuration.$breakpoint-map, $key);
 }
 
 //
 // Plural
 //
 
-@function weights($var: false) {
+@function weight() {
 	$ret: ();
 	@each $mk, $mv in configuration.$weight-map {
-		$ret: map.set($ret, $mk, weight($mk, $var));
+		$ret: map.set($ret, $mk, weight($mk));
 	}
 	@return $ret;
 }
 
-@function fonts($var: false) {
+@function weight-vars() {
+	$ret: ();
+	@each $mk, $mv in configuration.$weight-map {
+		$ret: map.set($ret, $mk, weight-var($mk));
+	}
+	@return $ret;
+}
+
+@function fonts() {
 	$ret: ();
 	@each $mk, $mv in configuration.$font-map {
-		$ret: map.set($ret, $mk, font($mk, $var));
+		$ret: map.set($ret, $mk, font($mk));
 	}
 	@return $ret;
 }
 
-@function skeleton-colors($var: false) {
+@function font-vars() {
 	$ret: ();
-	@each $mk, $mv in configuration.$skeleton-color-map {
-		$ret: map.set($ret, $mk, -skeleton-color($mk, $var));
+	@each $mk, $mv in configuration.$font-map {
+		$ret: map.set($ret, $mk, font-var($mk));
 	}
 	@return $ret;
 }
@@ -128,7 +141,24 @@
 	@return $ret;
 }
 
-@function colors($alpha: null, $subset: true) {
+@function skeleton-colors() {
+	$ret: ();
+	@each $mk, $mv in configuration.$skeleton-color-map {
+		$ret: map.set($ret, $mk, -skeleton-color($mk));
+	}
+	@return $ret;
+}
+
+@function skeleton-color-vars() {
+	$ret: ();
+	@each $mk, $mv in configuration.$skeleton-color-map {
+		$ret: map.set($ret, $mk, -skeleton-color-var($mk));
+	}
+	@return $ret;
+}
+
+@function colors($alpha: null, $opts) {
+	$subset: map.get($opts, subset);
 	$ret: ();
 	@each $mk, $mv in if($subset, configuration.$subset-color-map, configuration.$color-map) {
 		$ret: map.set($ret, $mk, color($mk, $alpha));
@@ -136,7 +166,8 @@
 	@return $ret;
 }
 
-@function colors-vars($alpha: null, $subset: true) {
+@function color-vars($alpha: null, $opts) {
+	$subset: map.get($opts, subset);
 	$ret: ();
 	@each $mk, $mv in if($subset, configuration.$subset-color-map, configuration.$color-map) {
 		$ret: map.set($ret, $mk, color-var($mk, $alpha));
@@ -144,31 +175,54 @@
 	@return $ret;
 }
 
-@function decorations($var: false) {
+@function decorations() {
 	$ret: ();
 	@each $mk, $mv in configuration.$decoration-map {
-		$ret: map.set($ret, $mk, decoration($mk, $var));
+		$ret: map.set($ret, $mk, decoration($mk));
 	}
 	@return $ret;
 }
 
-@function shadows($var: false) {
+@function decoration-vars() {
+	$ret: ();
+	@each $mk, $mv in configuration.$decoration-map {
+		$ret: map.set($ret, $mk, decoration-var($mk));
+	}
+	@return $ret;
+}
+
+@function shadows() {
 	$ret: ();
 	@each $mk, $mv in configuration.$shadow-map {
-		$ret: map.set($ret, $mk, shadow($mk, $var));
+		$ret: map.set($ret, $mk, shadow($mk));
 	}
 	@return $ret;
 }
 
-@function timings($var: false) {
+@function shadow-vars() {
+	$list: ();
+	@each $mk, $mv in configuration.$shadow-map {
+		$list: list.append($list, shadow-var($mk));
+	}
+	@return $list;
+}
+
+@function timings() {
 	$ret: ();
 	@each $mk, $mv in configuration.$timing-map {
-		$ret: map.set($ret, $mk, timing($mk, $var));
+		$ret: map.set($ret, $mk, timing($mk));
 	}
 	@return $ret;
 }
 
-// NOTE: Does not support `$var`.
+@function timing-vars() {
+	$ret: ();
+	@each $mk, $mv in configuration.$timing-map {
+		$ret: map.set($ret, $mk, timing-var($mk));
+	}
+	@return $ret;
+}
+
 @function breakpoints() {
 	$ret: ();
 	@each $mk, $mv in configuration.$breakpoint-map {
