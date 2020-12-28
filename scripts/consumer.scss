@@ -17,14 +17,52 @@
 	@return string.slice($str, 1 + string.length($str) - string.length($end)) == $end;
 }
 
-@mixin theme($theme-info) {
-	$light: map.get($theme-info, light);
-	$dark: map.get($theme-info, dark);
-	$theme-transition: if(not map.get($theme-info, theme-transition), null, var(--theme-transition));
+// Ex:
+//
+// $light: (
+//   ui-app-color: color(black),
+//   ui-app-bg: color(white),
+// );
+// $dark: (
+//   ui-app-color: color(white),
+//   ui-app-bg: color(black),
+// );
+// @include themes((
+//   light: $light,
+//   dark: $dark,
+// ));
+//
+// -> :root {
+// ->   --ui-app-color: hsl(0deg, 0%, 0%);
+// ->   --ui-app-bg: hsl(0deg, 0%, 100%);
+// ->   transition: var(--theme-transition);
+// -> }
+// -> [data-theme="dark"] {
+// ->   --ui-app-color: hsl(0deg, 0%, 100%);
+// ->   --ui-app-bg: hsl(0deg, 0%, 0%);
+// -> }
+// -> .ui-app {
+// ->   color: var(--ui-app-color);
+// ->   background-color: var(--ui-app-bg);
+// ->   transition: var(--theme-transition);
+// -> }
+//
+// TODO: Add support for `root-bg` and `border-color-default`?
+// TODO: `data-theme` should be dynamic; change to `themes: (...)`?
+//
+// prettier-ignore
+@mixin themes($theme-info) {
+	// TODO: Assert `$light-ast` and `$dark-ast` are mirrors.
+	$light:      map.get($theme-info, light);
+	$dark:       map.get($theme-info, dark);
+	$transition: map.get($theme-info, transition);
+
+	$theme-transition: var(--theme-transition);
+	@if $transition == false {
+		$theme-transition: null;
+	}
 
 	$light-ast: parse-ast($light);
-	$dark-ast: parse-ast($dark);
-
 	:root {
 		@each $mk, $mv in $light-ast {
 			@each $info in $mv {
@@ -34,6 +72,7 @@
 		transition: $theme-transition;
 	}
 
+	$dark-ast: parse-ast($dark);
 	[data-theme="dark"] {
 		@each $mk, $mv in $dark-ast {
 			@each $info in $mv {
@@ -52,7 +91,7 @@
 	}
 }
 
-$transitionable: (
+$-legend: (
 	bg: background-color,
 	border-color: border-color,
 	box-shadow: box-shadow,
@@ -62,37 +101,39 @@ $transitionable: (
 	stroke: stroke,
 );
 
+// Parses a lightweight abstract syntax tree.
 @function parse-ast($map) {
 	$ast: ();
 	@each $mk, $mv in $map {
-		@each $tk, $tv in $transitionable {
+		@each $tk, $tv in $-legend {
 			@if has-suffix($mk, $tk) {
 				$n: string.index($mk, $tk);
-				$key: string.slice($mk, 1, $n - 2); // TODO: Change for `--`?
-				$list: map.get($ast, $key);
-				$list: list.append(
-					if(not $list, (), $list),
-					(
-						var: $mk,
-						property: $tv,
-						value: $mv,
+				$key: string.slice($mk, 1, $n - 2);
+				$current: map.get($ast, $key);
+
+				// prettier-ignore
+				$ast: map.set(
+					$ast,
+					$key,
+					list.append(
+						if(not $current, (), $current),
+						(
+							var: $mk,      // -> app
+							property: $tv, // -> background-color
+							value: $mv,    // -> hsl(0deg, 0%, 100%)
+						)
 					)
 				);
-				$ast: map.set($ast, $key, $list);
 			}
 		}
 	}
 	@return $ast;
 }
 
+// prettier-ignore
 $light: (
-	fti-app-color: color(white),
 	fti-app-bg: color(white),
-	fti-app-shadow: (
-		0 0 0 1px color(gray-200),
-		shadow(xs),
-		shadow(md),
-	),
+	fti-app-shadow: (0 0 0 1px color(gray-200), shadow(xs), shadow(md)),
 	fti-content-search-bar-bg: color(white),
 	fti-content-card-bg: color(white),
 	fti-sidebar-bg: color(white),
@@ -101,14 +142,10 @@ $light: (
 	fti-faded-svg-color: color(black, 0.5),
 );
 
+// prettier-ignore
 $dark: (
-	fti-app-color: color(white),
-	fti-app-bg: color(white),
-	fti-app-shadow: (
-		0 0 0 1px color(gray-200),
-		shadow(xs),
-		shadow(md),
-	),
+	fti-app-bg: color(black),
+	fti-app-shadow: (0 0 0 1px color(gray-200), shadow(xs), shadow(md)),
 	fti-content-search-bar-bg: color(white),
 	fti-content-card-bg: color(white),
 	fti-sidebar-bg: color(white),
@@ -119,9 +156,5 @@ $dark: (
 
 // prettier-ignore
 @at-root {
-	@include theme((
-		light: $light,
-		dark: $dark,
-		theme-transition: true,
-	));
+	@include themes((light: $light, dark: $dark));
 }
