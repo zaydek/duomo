@@ -19,7 +19,7 @@ test("integration", () => {
 
 @at-root {
 	@include background-color(core, hover, focus, group-hover, group-focus);
-	@each $key, $px in breakpoint-map() {
+	@each $key, $px in breakpoints() {
 		@media (min-width: $px) {
 			.#{delimit($key)} {
 				@at-root {

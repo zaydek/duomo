@@ -63,7 +63,8 @@
 	@return $list;
 }
 
-@function breakpoint-map() {
+// NOTE: Returns a map -- not a list.
+@function breakpoints() {
 	$map: ();
 	@each $mk, $mv in configuration.$breakpoint-map {
 		$map: map.set($map, $mk, breakpoint($mk));

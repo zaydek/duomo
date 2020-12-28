@@ -14,7 +14,7 @@
 		));
 		@each $key, $px in breakpoints() {
 			#{variant(max-w-#{$key}, $v)} {
-				max-width: px($px);
+				max-width: $px;
 			}
 		}
 		@include generate-from-range((

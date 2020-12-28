@@ -14,7 +14,7 @@
 		));
 		@each $key, $px in breakpoints() {
 			#{variant(min-w-#{$key}, $v)} {
-				min-width: px($px);
+				min-width: $px;
 			}
 		}
 		@include generate-from-range((

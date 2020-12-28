@@ -7,11 +7,11 @@
 				width: 100%;
 			}
 			@each $key, $px in breakpoints() {
-				@media (min-width: px($px)) {
+				@media (min-width: $px) {
 					.container {
 						margin-left: auto;
 						margin-right: auto;
-						max-width: px($px);
+						max-width: $px;
 					}
 				}
 			}
