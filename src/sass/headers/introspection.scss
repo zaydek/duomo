@@ -28,16 +28,13 @@
 		@include generate-vars(configuration.$shadow-map);
 		@include generate-vars(configuration.$timing-map);
 
-		--theme-transition: background-color var(--theme-transition-duration) var(--theme-transition-timing),
-			border-color var(--theme-transition-duration) var(--theme-transition-timing),
-			box-shadow var(--theme-transition-duration) var(--theme-transition-timing),
-			color var(--theme-transition-duration) var(--theme-transition-timing),
-			fill var(--theme-transition-duration) var(--theme-transition-timing),
-			opacity var(--theme-transition-duration) var(--theme-transition-timing),
-			stroke var(--theme-transition-duration) var(--theme-transition-timing);
+		--theme-transition: background-color var(--theme-duration) var(--theme-timing),
+			border-color var(--theme-duration) var(--theme-timing), box-shadow var(--theme-duration) var(--theme-timing),
+			color var(--theme-duration) var(--theme-timing), fill var(--theme-duration) var(--theme-timing),
+			opacity var(--theme-duration) var(--theme-timing), stroke var(--theme-duration) var(--theme-timing);
 
-		--theme-transition-duration: 600ms;
-		--theme-transition-timing: var(--ease-out);
+		--theme-duration: 600ms;
+		--theme-timing: var(--ease-out);
 
 		// [data-stagger]
 		--stagger-1-width: #{math.percentage(4 / 8)};

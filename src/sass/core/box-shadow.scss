@@ -7,7 +7,7 @@
 @function -vendored-shadow-keys() {
 	$map: ();
 	@each $mk, $mv in configuration.$shadow-map {
-		$map: list.append($map, var(--dm-shadow-#{$mk}), comma);
+		$map: list.append($map, var(--dm-#{$mk}), comma);
 	}
 	@return $map;
 }
@@ -16,14 +16,14 @@
 	@include variants($variants...) using ($v) {
 		#{variant(shadow, $v)} {
 			@each $mk, $mv in configuration.$shadow-map {
-				--dm-shadow-#{$mk}: 0 0 transparent;
+				--dm-#{$mk}: 0 0 transparent;
 			}
 			box-shadow: -vendored-shadow-keys();
 		}
 
 		@each $mk, $mv in configuration.$shadow-map {
-			#{variant(shadow-#{$mk}, $v)} {
-				--dm-shadow-#{$mk}: #{shadow-var($mk)};
+			#{variant($mk, $v)} {
+				--dm-#{$mk}: #{shadow-var($mk)};
 			}
 		}
 	}

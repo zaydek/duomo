@@ -13,7 +13,7 @@
 			variant: $v,
 			shorthand: bg,
 			property: (background-color),
-			map: if(configuration.$skeleton, configuratoin.$skeleton-color-map,
+			map: if(configuration.$skeleton, configuration.$skeleton-color-map,
 				configuration.$subset-color-map),
 			percent-range: percent-range(),
 		));
