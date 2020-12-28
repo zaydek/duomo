@@ -1,0 +1,59 @@
+@use "sass:map";
+@use "sass:string";
+
+@use "../../configuration";
+
+@function -getter($getter-name, $map, $key) {
+	$got: map.get($map, $key);
+	@if not $got {
+		@error "#{$getter-name}: no such key `$key`; $key=#{$key}";
+	}
+	@return $got;
+}
+
+@function weight($key) {
+	$got: -getter("weight", configuration.$weight-map, $key);
+	@return $got;
+}
+
+@function font($key) {
+	$got: -getter("font", configuration.$font-map, $key);
+	@return $got;
+}
+
+@function decoration($key) {
+	$got: -getter("decoration", configuration.$decoration-map, $key);
+	@return $got;
+}
+
+@function shadow($key) {
+	$got: -getter("shadow", configuration.$shadow-map, $key);
+	@return $got;
+}
+
+@function timing($key) {
+	$got: -getter("timing", configuration.$timing-map, $key);
+	@return $got;
+}
+
+@function breakpoint($key) {
+	$got: -getter("breakpoint", configuration.$breakpoint-map, $key);
+	@return $got;
+}
+
+// NOTE: Use `hsl(...)`.
+@function color($key, $alpha: null) {
+	$got: -getter("color", configuration.$color-map, $key);
+	@if $alpha {
+		@return string.unquote("hsla(#{$got}, #{$alpha})");
+	}
+	@return string.unquote("hsl(#{$got})");
+}
+
+// NOTE: Use `hsl(...)`.
+@function color-var($key, $alpha: null) {
+	@if $alpha {
+		@return string.unquote("hsla(var(--#{$key}), #{$alpha})");
+	}
+	@return string.unquote("hsl(var(--#{$key}))");
+}

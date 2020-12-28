@@ -1,0 +1,45 @@
+@use "sass:list";
+
+@use "one-var" as *;
+
+@use "../../configuration";
+
+@function weight-vars() {
+	$list: ();
+	@each $mk, $mv in configuration.$weight-map {
+		$list: list.append($list, weight-var($mk));
+	}
+	@return $list;
+}
+
+@function font-vars() {
+	$list: ();
+	@each $mk, $mv in configuration.$font-map {
+		$list: list.append($list, font-var($mk));
+	}
+	@return $list;
+}
+
+@function decoration-vars() {
+	$list: ();
+	@each $mk, $mv in configuration.$decoration-map {
+		$list: list.append($list, decoration-var($mk));
+	}
+	@return $list;
+}
+
+@function shadow-vars() {
+	$list: ();
+	@each $mk, $mv in configuration.$shadow-map {
+		$list: list.append($list, shadow-var($mk));
+	}
+	@return $list;
+}
+
+@function timing-vars() {
+	$list: ();
+	@each $mk, $mv in configuration.$timing-map {
+		$list: list.append($list, timing-var($mk));
+	}
+	@return $list;
+}

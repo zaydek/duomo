@@ -1,0 +1,28 @@
+@use "getter" as *;
+
+@use "../../configuration";
+
+@function weight-var($key) {
+	$_: getter("weight-var", configuration.$weight-map, $key);
+	@return var(--#{$key});
+}
+
+@function font-var($key) {
+	$_: getter("font-var", configuration.$font-map, $key);
+	@return var(--#{$key});
+}
+
+@function decoration-var($key) {
+	$_: getter("decoration-var", configuration.$decoration-map, $key);
+	@return var(--#{$key});
+}
+
+@function shadow-var($key) {
+	$_: getter("shadow-var", configuration.$shadow-map, $key);
+	@return var(--shadow-#{$key});
+}
+
+@function timing-var($key) {
+	$_: getter("timing-var", configuration.$timing-map, $key);
+	@return var(--#{$key});
+}
