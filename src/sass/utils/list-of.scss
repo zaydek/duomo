@@ -9,7 +9,7 @@
 @function list-of($lists...) {
 	$list: ();
 	@each $each in $lists {
-		// NOTE: Use `@if $each` to negate `null`.
+		// NOTE: Guard `null` case; Sass does not support `@continue`.
 		@if $each {
 			@if meta.type-of($each) != list {
 				$any: $each;

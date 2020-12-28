@@ -2,9 +2,11 @@
 
 @use "../helpers" as *;
 
-@function -vendored-shadow-keys($map) {
+@use "../configuration";
+
+@function -vendored-shadow-keys() {
 	$map: ();
-	@each $mk, $mv in $map {
+	@each $mk, $mv in configuration.$shadow-map {
 		$map: list.append($map, var(--dm-shadow-#{$mk}), comma);
 	}
 	@return $map;
@@ -16,12 +18,12 @@
 			@each $mk, $mv in configuration.$shadow-map {
 				--dm-shadow-#{$mk}: 0 0 transparent;
 			}
-			box-shadow: -vendored-shadow-keys(configuration.$shadow-map);
+			box-shadow: -vendored-shadow-keys();
 		}
 
 		@each $mk, $mv in configuration.$shadow-map {
 			#{variant(shadow-#{$mk}, $v)} {
-				--dm-shadow-#{$mk}: #{shadow-var($mv)};
+				--dm-shadow-#{$mk}: #{shadow-var($mk)};
 			}
 		}
 	}

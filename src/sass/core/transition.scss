@@ -20,7 +20,7 @@ $-range: (0, 100, 200, 250, 300, 400, 500, 600, 700, 750, 800, 900, 1000);
 			}
 		}
 
-		@each $mk, $mv in timings() {
+		@each $mk, $mv in configuration.$timing-map {
 			#{variant($mk, $v)} {
 				--transition-timing: #{$mv};
 			}
