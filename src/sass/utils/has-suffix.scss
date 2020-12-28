@@ -2,8 +2,8 @@
 
 // Ex:
 //
-// has-suffix(8, px)   -> false
-// has-suffix(8px, px) -> true
+// has-suffix(16, px)   -> false
+// has-suffix(16px, px) -> true
 //
 @function has-suffix($str, $end) {
 	$str: "" + $str;

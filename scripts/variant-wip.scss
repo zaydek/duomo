@@ -1,0 +1,154 @@
+// @use "sass" as * with (
+// 	$env: development,
+// 	$macro-variants: (
+// 		hover, focus, touch,
+// 		group-hover, group-focus, group-touch,
+// 	),
+// );
+
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
+@use "sass:string";
+
+$env: development;
+
+@function delimit($str-selector) {
+	@return $str-selector + "\\:";
+}
+@function delimiter() {
+	@return "\\:";
+}
+
+// Ex:
+//
+// take((0, 1, 2, 4), 4)             -> (0, 1, 2)
+// take((a: 0, b: 1, c: 2, d: 4), d) -> (a: 0, b: 1, c: 2)
+//
+@function take($collection, $item) {
+	@if meta.type-of($collection) != list and meta.type-of($collection) != arglist and meta.type-of($collection) != map {
+		@error "take: `$collection` is not a collection-type; " +
+			"meta.type-of($collection)=#{meta.type-of($collection)}";
+	}
+
+	$ret: ();
+	@if meta.type-of($collection) == list or meta.type-of($collection) == arglist {
+		@each $each in $collection {
+			@if $each != $item {
+				$ret: list.append($ret, $each);
+			}
+		}
+	} @else if meta.type-of($collection) == map {
+		@each $mk, $mv in $collection {
+			@if $mk != $item {
+				$ret: map.set($ret, $mk, $mv);
+			}
+		}
+	}
+	@return $ret;
+}
+
+@function replace($str, $s1, $s2) {
+	$n: string.index($str, $s1);
+	@return string.slice($str, 1, $n - 1) + $s2 + string.slice($str, $n + string.length($s1));
+}
+
+// Ex: ".class" -> "class"
+@function declass($str-selector) {
+	@return string.slice($str-selector, 2);
+}
+
+// Ex: ".sm\\: .class" -> ".sm\\:class"
+@function conjoin($str-selector) {
+	@return replace($str-selector, "#{delimiter()} .", delimiter());
+}
+
+@function core($str-selector) {
+	@return $str-selector;
+}
+@function hover($str-selector) {
+	@return ".hover#{delimiter()}#{declass($str-selector)}:hover";
+}
+@function focus($str-selector) {
+	@return ".focus#{delimiter()}#{declass($str-selector)}:focus";
+}
+// prettier-ignore
+@function touch($str-selector) {
+	@return ".touch#{delimiter()}#{declass($str-selector)}:hover, " +
+		".touch#{delimiter()}#{declass($str-selector)}:focus";
+}
+@function group-hover($str-selector) {
+	@return ".group\:hover .group-hover#{delimiter()}#{declass($str-selector)}";
+}
+@function group-focus($str-selector) {
+	@return ".group\:focus .group-focus#{delimiter()}#{declass($str-selector)}";
+}
+// prettier-ignore
+@function group-touch($str-selector) {
+	@return ".group\:hover .group-touch#{delimiter()}#{declass($str-selector)}, " +
+		".group\:focus .group-touch#{delimiter()}#{declass($str-selector)}";
+}
+
+// NOTE: Use `@at-root` to escape the current class context.
+@mixin prototype-dev($variants...) {
+	@at-root {
+		@each $variant in $variants {
+			$selector: meta.call(meta.get-function($variant), "" + &);
+			#{$selector} {
+				@content;
+			}
+		}
+	}
+}
+
+// NOTE: Use `@at-root` to escape the current class context.
+@mixin prototype-prod($variants...) {
+	@at-root {
+		$concat-selector: "";
+		@each $variant in $variants {
+			$selector: meta.call(meta.get-function($variant), "" + &);
+			$concat-selector: $concat-selector + if($concat-selector == "", "", ", ") + $selector;
+		}
+		#{$concat-selector} {
+			@content;
+		}
+	}
+}
+
+@mixin variants($variants...) {
+	$taken: take($variants, responsive);
+	@if list.length($taken) > 0 {
+		@if $env == development {
+			@include prototype-dev($taken...) {
+				@content;
+			}
+		} @else if $env == production {
+			@include prototype-prod($taken...) {
+				@content;
+			}
+		}
+	}
+	@if list.index($variants, responsive) {
+		@at-root {
+			#{conjoin("" + &)} {
+				@content;
+			}
+		}
+	}
+}
+
+.bg-red-500 {
+	@include variants(core, hover, focus, touch, group-hover, group-focus, group-touch) {
+		background-color: hsl(var(--red-500));
+	}
+}
+
+@media (min-width: 640px) {
+	.#{delimit(sm)} {
+		.bg-red-500 {
+			@include variants(responsive) {
+				background-color: var(--red-500);
+			}
+		}
+	}
+}

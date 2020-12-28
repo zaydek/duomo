@@ -2,12 +2,10 @@
 
 @use "../helpers" as *;
 
-// @use "../configuration";
-
-@function -dm-keys($map) {
+@function -vendored-shadow-keys($map) {
 	$ret: ();
 	@each $mk, $mv in $map {
-		$ret: list.append($ret, var(--dm-#{$mk}), comma);
+		$ret: list.append($ret, var(--dm-shadow-#{$mk}), comma);
 	}
 	@return $ret;
 }
@@ -17,14 +15,14 @@
 		// @if not configuration.$skeleton {
 		#{variant(shadow, $v)} {
 			@each $mk, $mv in shadows() {
-				--dm-#{$mk}: 0 0 transparent;
+				--dm-shadow-#{$mk}: 0 0 transparent;
 			}
-			box-shadow: -dm-keys(shadows());
+			box-shadow: -vendored-shadow-keys(shadows());
 		}
 
 		@each $mk, $mv in shadows() {
-			#{variant($mk, $v)} {
-				--dm-#{$mk}: #{shadow($mk)};
+			#{variant(shadow-#{$mk}, $v)} {
+				--dm-shadow-#{$mk}: #{shadow($mk)};
 			}
 		}
 		// }
