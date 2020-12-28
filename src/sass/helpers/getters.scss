@@ -110,11 +110,11 @@
 }
 
 @function weight-vars() {
-	$ret: ();
+	$list: ();
 	@each $mk, $mv in configuration.$weight-map {
-		$ret: map.set($ret, $mk, weight-var($mk));
+		$list: list.append($list, weight-var($mk));
 	}
-	@return $ret;
+	@return $list;
 }
 
 @function fonts() {
