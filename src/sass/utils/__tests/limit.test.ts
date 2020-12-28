@@ -4,7 +4,7 @@
 declare function sass(data: string): string
 
 test("bar: negative case", () => {
-	const result = sass(`
+	const css = sass(`
 @use "sass:math";
 
 @use "src/sass/utils/limit" as *;
@@ -16,7 +16,7 @@ test("bar: negative case", () => {
 }
 `)
 	// prettier-ignore
-	expect(result).toBe(`
+	expect(css).toBe(`
 .-w-2 {
 	width: -2px;
 }
@@ -28,7 +28,7 @@ test("bar: negative case", () => {
 })
 
 test("bar: positive case", () => {
-	const result = sass(`
+	const css = sass(`
 @use "sass:math";
 
 @use "src/sass/utils/limit" as *;
@@ -40,7 +40,7 @@ test("bar: positive case", () => {
 }
 `)
 	// prettier-ignore
-	expect(result).toBe(`
+	expect(css).toBe(`
 .w-2 {
 	width: 2px;
 }
@@ -52,7 +52,7 @@ test("bar: positive case", () => {
 })
 
 test("cap: negative case", () => {
-	const result = sass(`
+	const css = sass(`
 @use "sass:math";
 
 @use "src/sass/utils/limit" as *;
@@ -64,7 +64,7 @@ test("cap: negative case", () => {
 }
 `)
 	// prettier-ignore
-	expect(result).toBe(`
+	expect(css).toBe(`
 .-w-0 {
 	width: 0px;
 }
@@ -80,7 +80,7 @@ test("cap: negative case", () => {
 })
 
 test("cap: positive case", () => {
-	const result = sass(`
+	const css = sass(`
 @use "src/sass/utils/limit" as *;
 
 @each $rv in limit((0, 1, 2, 4), null, 2) {
@@ -90,7 +90,7 @@ test("cap: positive case", () => {
 }
 `)
 	// prettier-ignore
-	expect(result).toBe(`
+	expect(css).toBe(`
 .w-0 {
 	width: 0px;
 }

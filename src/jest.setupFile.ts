@@ -14,10 +14,10 @@ declare namespace global {
 // -> }
 //
 global.sass = (data: string) => {
-	const result = sass.renderSync({
+	const res = sass.renderSync({
 		data,
 		indentType: "tab",
 		indentWidth: 1,
 	})
-	return result.css.toString()
+	return res.css.toString()
 }

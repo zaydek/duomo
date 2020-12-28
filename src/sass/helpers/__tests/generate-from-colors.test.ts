@@ -4,7 +4,7 @@
 declare function sass(data: string): string
 
 test("integration", () => {
-	const result = sass(`
+	const css = sass(`
 @use "src/sass/helpers/generate-from-colors" as *;
 
 $color-map: (
@@ -26,7 +26,7 @@ $color-map: (
 }
 `)
 	// prettier-ignore
-	expect(result).toBe(`
+	expect(css).toBe(`
 .bg-transparent {
 	background-color: transparent;
 }

@@ -4,7 +4,7 @@
 declare function sass(data: string): string
 
 test("integration", () => {
-	const result = sass(`
+	const css = sass(`
 @use "src/sass/helpers/getters" as *;
 @use "src/sass/helpers/resolvers" as *;
 @use "src/sass/helpers/variants" as *;
@@ -31,7 +31,7 @@ test("integration", () => {
 }
 `)
 	// prettier-ignore
-	expect(result).toBe(`
+	expect(css).toBe(`
 .bg-indigo-500 {
 	background-color: var(--indigo-500);
 }

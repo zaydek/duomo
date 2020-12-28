@@ -4,7 +4,7 @@
 declare function sass(data: string): string
 
 test("integration", () => {
-	const result = sass(`
+	const css = sass(`
 @use "src/sass/helpers/getters" as *;
 
 .clsx {
@@ -14,7 +14,7 @@ test("integration", () => {
 }
 `)
 	// prettier-ignore
-	expect(result).toBe(`
+	expect(css).toBe(`
 .clsx {
 	text-decoration: var(--strikethrough);
 	text-decoration: var(--underline);

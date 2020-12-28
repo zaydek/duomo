@@ -4,7 +4,7 @@
 declare function sass(data: string): string
 
 test("integration", () => {
-	const result = sass(`
+	const css = sass(`
 @use "src/sass/helpers/generate-vars" as *;
 
 @at-root {
@@ -25,7 +25,7 @@ test("integration", () => {
 }
 `)
 	// prettier-ignore
-	expect(result).toBe(`
+	expect(css).toBe(`
 :root {
 	--a: x;
 	--b: y;

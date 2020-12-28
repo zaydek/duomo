@@ -4,7 +4,7 @@
 declare function sass(data: string): string
 
 test("integration", () => {
-	const result = sass(`
+	const css = sass(`
 @use "src/sass/helpers/generate-from-range" as *;
 
 @at-root {
@@ -18,7 +18,7 @@ test("integration", () => {
 }
 `)
 	// prettier-ignore
-	expect(result).toBe(`
+	expect(css).toBe(`
 .square-0 {
 	width: 0;
 	height: 0;

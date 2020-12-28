@@ -4,7 +4,7 @@
 declare function sass(data: string): string
 
 test("integration", () => {
-	const result = sass(`
+	const css = sass(`
 @use "src/sass/utils/list-of" as *;
 
 @at-root {
@@ -16,7 +16,7 @@ test("integration", () => {
 }
 `)
 	// prettier-ignore
-	expect(result).toBe(`
+	expect(css).toBe(`
 .w-0 {
 	width: 0px;
 }

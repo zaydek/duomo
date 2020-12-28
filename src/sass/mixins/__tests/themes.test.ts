@@ -4,7 +4,7 @@
 declare function sass(data: string): string
 
 test("integration", () => {
-	const result = sass(`
+	const css = sass(`
 @use "src/sass/helpers" as *;
 @use "src/sass/mixins/themes" as *;
 
@@ -21,7 +21,7 @@ $dark: (
 @include themes($light, $dark);
 `)
 	// prettier-ignore
-	expect(result).toBe(`
+	expect(css).toBe(`
 :root {
 	--ui-app-color: hsl(0deg, 0%, 0%);
 	--ui-app-bg: hsl(0deg, 0%, 100%);

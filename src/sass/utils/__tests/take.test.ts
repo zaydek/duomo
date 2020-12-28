@@ -4,7 +4,7 @@
 declare function sass(data: string): string
 
 test("take: list, erroneous case", () => {
-	const result = sass(`
+	const css = sass(`
 @use "src/sass/utils/take" as *;
 
 @each $rv in take((0, 1, 2, 4), "Hello, world!") {
@@ -14,7 +14,7 @@ test("take: list, erroneous case", () => {
 }
 `)
 	// prettier-ignore
-	expect(result).toBe(`
+	expect(css).toBe(`
 .w-0 {
 	width: 0px;
 }
@@ -34,7 +34,7 @@ test("take: list, erroneous case", () => {
 })
 
 test("take: list, non-erroneous case", () => {
-	const result = sass(`
+	const css = sass(`
 @use "src/sass/utils/take" as *;
 
 @each $rv in take((0, 1, 2, 4), 4) {
@@ -44,7 +44,7 @@ test("take: list, non-erroneous case", () => {
 }
 `)
 	// prettier-ignore
-	expect(result).toBe(`
+	expect(css).toBe(`
 .w-0 {
 	width: 0px;
 }
@@ -60,7 +60,7 @@ test("take: list, non-erroneous case", () => {
 })
 
 test("take: map, erroneous case", () => {
-	const result = sass(`
+	const css = sass(`
 @use "src/sass/utils/take" as *;
 
 @each $mk, $mv in take((a: 0, b: 1, c: 2, d: 4), "Hello, world!") {
@@ -70,7 +70,7 @@ test("take: map, erroneous case", () => {
 }
 `)
 	// prettier-ignore
-	expect(result).toBe(`
+	expect(css).toBe(`
 .a-0 {
 	a: 0px;
 }
@@ -90,7 +90,7 @@ test("take: map, erroneous case", () => {
 })
 
 test("take: map, non-erroneous case", () => {
-	const result = sass(`
+	const css = sass(`
 @use "src/sass/utils/take" as *;
 
 @each $mk, $mv in take((a: 0, b: 1, c: 2, d: 4), d) {
@@ -100,7 +100,7 @@ test("take: map, non-erroneous case", () => {
 }
 `)
 	// prettier-ignore
-	expect(result).toBe(`
+	expect(css).toBe(`
 .a-0 {
 	a: 0px;
 }

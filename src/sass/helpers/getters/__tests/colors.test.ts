@@ -4,7 +4,7 @@
 declare function sass(data: string): string
 
 test("color-vars($alpha: null, (subset: true))", () => {
-	const result = sass(`
+	const css = sass(`
 @use "src/sass/helpers/getters" as *;
 
 .clsx {
@@ -14,7 +14,7 @@ test("color-vars($alpha: null, (subset: true))", () => {
 }
 `)
 	// prettier-ignore
-	expect(result).toBe(`
+	expect(css).toBe(`
 .clsx {
 	background-color: hsl(var(--transparent));
 	background-color: hsl(var(--current));
@@ -105,7 +105,7 @@ test("color-vars($alpha: null, (subset: true))", () => {
 })
 
 test("color-vars($alpha: var(--bg-opacity), (subset: true))", () => {
-	const result = sass(`
+	const css = sass(`
 @use "src/sass/helpers/getters" as *;
 
 .clsx {
@@ -115,7 +115,7 @@ test("color-vars($alpha: var(--bg-opacity), (subset: true))", () => {
 }
 `)
 	// prettier-ignore
-	expect(result).toBe(`
+	expect(css).toBe(`
 .clsx {
 	background-color: hsla(var(--transparent), var(--bg-opacity));
 	background-color: hsla(var(--current), var(--bg-opacity));

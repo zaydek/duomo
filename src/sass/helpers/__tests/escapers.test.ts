@@ -4,7 +4,7 @@
 declare function sass(data: string): string
 
 test("escape: does not escape numbers", () => {
-	const result = sass(`
+	const css = sass(`
 @use "sass:math";
 
 @use "src/sass/helpers/escapers" as *;
@@ -20,7 +20,7 @@ test("escape: does not escape numbers", () => {
 }
 `)
 	// prettier-ignore
-	expect(result).toBe(`
+	expect(css).toBe(`
 .-z-10 {
 	z-index: -10;
 }
@@ -36,7 +36,7 @@ test("escape: does not escape numbers", () => {
 })
 
 test("escape: escapes `$delimiter`", () => {
-	const result = sass(`
+	const css = sass(`
 @use "src/sass/helpers/escapers" as *;
 
 $delimiter: ":";
@@ -45,7 +45,7 @@ $delimiter: ":";
 }
 `)
 	// prettier-ignore
-	expect(result).toBe(`
+	expect(css).toBe(`
 .sm\\:px-24 {
 	/**/
 }
@@ -53,7 +53,7 @@ $delimiter: ":";
 })
 
 test("escape-breakpoint-key: does not escape `xl` but escapes `2xl`", () => {
-	const result = sass(`
+	const css = sass(`
 @use "src/sass/helpers/escapers" as *;
 
 .#{escape-breakpoint-key("xl")} {
@@ -64,7 +64,7 @@ test("escape-breakpoint-key: does not escape `xl` but escapes `2xl`", () => {
 }
 `)
 	// prettier-ignore
-	expect(result).toBe(`
+	expect(css).toBe(`
 .xl {
 	/**/
 }
