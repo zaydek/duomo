@@ -3,28 +3,26 @@
 @use "../helpers" as *;
 
 @function -vendored-shadow-keys($map) {
-	$ret: ();
+	$map: ();
 	@each $mk, $mv in $map {
-		$ret: list.append($ret, var(--dm-shadow-#{$mk}), comma);
+		$map: list.append($map, var(--dm-shadow-#{$mk}), comma);
 	}
-	@return $ret;
+	@return $map;
 }
 
 @mixin box-shadow($variants...) {
 	@include variants($variants...) using ($v) {
-		// @if not configuration.$skeleton {
 		#{variant(shadow, $v)} {
-			@each $mk, $mv in shadows() {
+			@each $mk, $mv in configuration.$shadow-map {
 				--dm-shadow-#{$mk}: 0 0 transparent;
 			}
-			box-shadow: -vendored-shadow-keys(shadows());
+			box-shadow: -vendored-shadow-keys(configuration.$shadow-map);
 		}
 
-		@each $mk, $mv in shadows() {
+		@each $mk, $mv in configuration.$shadow-map {
 			#{variant(shadow-#{$mk}, $v)} {
-				--dm-shadow-#{$mk}: #{shadow($mk)};
+				--dm-shadow-#{$mk}: #{shadow-var($mv)};
 			}
 		}
-		// }
 	}
 }

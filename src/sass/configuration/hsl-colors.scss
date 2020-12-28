@@ -6,26 +6,26 @@
 
 // Ex:
 //
-// -conv-hex-to-hsl((white: #fff, black: #000))
+// -conv((white: #fff, black: #000))
 // -> (white: hsl(0deg, 0%, 100%), black: hsl(0deg, 0%, 0%))
 //
-@function -conv-hex-to-hsl($color-map) {
-	$ret: ();
+@function -conv($color-map) {
+	$map: ();
 	@each $mk, $mv in $color-map {
 		@if $mk == transparent or $mk == current {
-			$ret: map.set($ret, $mk, $mv);
+			$map: map.set($map, $mk, $mv);
 		} @else {
 			// prettier-ignore
-			$ret: map.set($ret, $mk, (
+			$map: map.set($map, $mk, (
 				math.round(color.hue($mv)),
 				math.round(color.saturation($mv)),
 				math.round(color.lightness($mv)),
 			));
 		}
 	}
-	@return $ret;
+	@return $map;
 }
 
-$color-map: -conv-hex-to-hsl(hex.$color-map);
-$skeleton-color-map: -conv-hex-to-hsl(hex.$skeleton-color-map);
-$subset-color-map: -conv-hex-to-hsl(hex.$subset-color-map);
+$color-map: -conv(hex.$color-map);
+$skeleton-color-map: -conv(hex.$skeleton-color-map);
+$subset-color-map: -conv(hex.$subset-color-map);

@@ -7,19 +7,19 @@
 // list-of((1, 2), 3) -> (1, 2, 3)
 //
 @function list-of($lists...) {
-	$ret: ();
-	@each $list in $lists {
-		// NOTE: Use `@if $list` to negate `null`.
-		@if $list {
-			@if meta.type-of($list) != list {
-				$any: $list;
-				$ret: list.join($ret, $any);
+	$list: ();
+	@each $each in $lists {
+		// NOTE: Use `@if $each` to negate `null`.
+		@if $each {
+			@if meta.type-of($each) != list {
+				$any: $each;
+				$list: list.append($list, $any);
 			} @else {
-				@each $any in $list {
-					$ret: list.join($ret, $any);
+				@each $any in $each {
+					$list: list.append($list, $any);
 				}
 			}
 		}
 	}
-	@return $ret;
+	@return $list;
 }

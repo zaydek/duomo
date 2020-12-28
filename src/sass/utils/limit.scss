@@ -6,21 +6,21 @@
 // bar((0, 1, 2, 3, 4), 2) -> (2, 3, 4)
 //
 @function -bar($range, $limit) {
-	$ret: ();
+	$list: ();
 	@if $limit < 0 {
 		@each $rv in $range {
 			@if $rv <= $limit {
-				$ret: list.join($ret, $rv);
+				$list: list.append($list, $rv);
 			}
 		}
 	} @else {
 		@each $rv in $range {
 			@if $rv >= $limit {
-				$ret: list.join($ret, $rv);
+				$list: list.append($list, $rv);
 			}
 		}
 	}
-	@return $ret;
+	@return $list;
 }
 
 // Ex:
@@ -29,30 +29,30 @@
 // cap((0, 1, 2, 3, 4), 2) -> (0, 1, 2)
 //
 @function -cap($range, $limit) {
-	$ret: ();
+	$list: ();
 	@if $limit < 0 {
 		@each $rv in $range {
 			@if $rv >= $limit {
-				$ret: list.join($ret, $rv);
+				$list: list.append($list, $rv);
 			}
 		}
 	} @else {
 		@each $rv in $range {
 			@if $rv <= $limit {
-				$ret: list.join($ret, $rv);
+				$list: list.append($list, $rv);
 			}
 		}
 	}
-	@return $ret;
+	@return $list;
 }
 
 @function limit($range, $bar, $cap) {
-	$ret: $range;
+	$list: $range;
 	@if $bar {
-		$ret: -bar($ret, $bar);
+		$list: -bar($list, $bar);
 	}
 	@if $cap {
-		$ret: -cap($ret, $cap);
+		$list: -cap($list, $cap);
 	}
-	@return $ret;
+	@return $list;
 }
