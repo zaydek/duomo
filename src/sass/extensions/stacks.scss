@@ -4,12 +4,20 @@
 
 $-layout-opts: (hstack, vstack, zstack, grid);
 
-$-align-self-opts: (
-	align-self-stretch: stretch,
-	align-self-start: flex-start,
-	align-self-center: center,
-	align-self-end: flex-end,
-	align-self-baseline: baseline,
+$-justify-opts: (
+	justify-stretch: stretch,
+	justify-start: flex-start,
+	justify-center: center,
+	justify-end: flex-end,
+	justify-baseline: baseline,
+);
+
+$-justify-self-opts: (
+	justify-self-stretch: stretch,
+	justify-self-start: flex-start,
+	justify-self-center: center,
+	justify-self-end: flex-end,
+	justify-self-baseline: baseline,
 );
 
 $-align-opts: (
@@ -18,6 +26,14 @@ $-align-opts: (
 	align-center: center,
 	align-end: flex-end,
 	align-baseline: baseline,
+);
+
+$-align-self-opts: (
+	align-self-stretch: stretch,
+	align-self-start: flex-start,
+	align-self-center: center,
+	align-self-end: flex-end,
+	align-self-baseline: baseline,
 );
 
 // SwiftUI-style auto-centering is hard to faithfully simulate on the web.
@@ -38,10 +54,8 @@ $-align-opts: (
 		@if utils.matches($v, core) {
 			@each $opt in $-layout-opts {
 				.#{$opt} {
+					--dm-justify-self: stretch;
 					--dm-align-self: stretch;
-					@if $opt == hstack or $opt == vstack {
-						--dm-align: center;
-					}
 				}
 			}
 		}
@@ -53,6 +67,7 @@ $-align-opts: (
 		#{variant(hstack, $v)} {
 			display: flex;
 			flex-direction: row;
+			justify-self: var(--dm-justify-self);
 			justify-content: center;
 			align-self: var(--dm-align-self);
 			align-items: center;
@@ -91,6 +106,7 @@ $-align-opts: (
 		#{variant(vstack, $v)} {
 			display: flex;
 			flex-direction: column;
+			justify-self: var(--dm-justify-self);
 			justify-content: center;
 			align-self: var(--dm-align-self);
 			align-items: center;
@@ -140,7 +156,8 @@ $-align-opts: (
 		@if utils.matches($v, core) {
 			.zstack {
 				display: grid;
-				justify-items: center;
+				justify-self: var(--dm-justify-self);
+				justify-items: center; // NOTE: Use `justify-items` not `justify-content`.
 				align-self: var(--dm-align-self);
 				align-items: center;
 				position: relative;
@@ -164,11 +181,13 @@ $-align-opts: (
 		 */
 
 		#{variant(w-auto, $v)} {
+			--dm-justify-self: stretch;
 			--dm-align-self: stretch;
 			width: auto;
 		}
 		@each $rv in utils.list-of(range(), min-content, max-content, 100%, 100vw) {
 			#{variant(w-#{desc($rv)}, $v)} {
+				--dm-justify-self: center;
 				--dm-align-self: center;
 				width: resolve($rv, rem);
 			}
@@ -181,23 +200,35 @@ $-align-opts: (
 		 */
 
 		#{variant(h-auto, $v)} {
+			--dm-justify-self: stretch;
 			--dm-align-self: stretch;
 			height: auto;
 		}
 		@each $rv in utils.list-of(range(), min-content, max-content, 100%, 100vh) {
 			#{variant(h-#{desc($rv)}, $v)} {
+				--dm-justify-self: center;
 				--dm-align-self: center;
 				height: resolve($rv, rem);
 			}
 		}
 
 		/*
-		 * <... align-self-*>
+		 * <... justify-*>
 		 */
 
-		@each $mk, $mv in $-align-self-opts {
+		@each $mk, $mv in $-justify-opts {
 			#{variant($mk, $v)} {
-				align-self: #{$mv};
+				justify-content: #{$mv};
+			}
+		}
+
+		/*
+		 * <... justify-self-*>
+		 */
+
+		@each $mk, $mv in $-justify-self-opts {
+			#{variant($mk, $v)} {
+				justify-self: #{$mv};
 			}
 		}
 
@@ -208,6 +239,16 @@ $-align-opts: (
 		@each $mk, $mv in $-align-opts {
 			#{variant($mk, $v)} {
 				align-items: #{$mv};
+			}
+		}
+
+		/*
+		 * <... align-self-*>
+		 */
+
+		@each $mk, $mv in $-align-self-opts {
+			#{variant($mk, $v)} {
+				align-self: #{$mv};
 			}
 		}
 

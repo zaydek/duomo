@@ -25,11 +25,7 @@
 
 $light: (
 	ft-app-bg: color(white),
-	ft-app-shadow: (
-		0 0 0 1px color(gray-200),
-		shadow(xs),
-		shadow(md),
-	),
+	ft-app-shadow: (0 0 0 1px color(gray-200), shadow(xs), shadow(md)),
 	ft-content-search-bar-bg: color(white),
 	ft-content-card-bg: color(white),
 	ft-sidebar-bg: color(white),
@@ -40,11 +36,7 @@ $light: (
 
 $dark: (
 	ft-app-bg: color(gray-800),
-	ft-app-shadow: (
-		0 0 0 1px color(gray-700),
-		shadow(xs),
-		shadow(md),
-	),
+	ft-app-shadow: (0 0 0 1px color(gray-700), shadow(xs), shadow(md)),
 	ft-content-search-bar-bg: color(gray-800),
 	ft-content-card-bg: color(gray-800),
 	ft-sidebar-bg: color(gray-800),
