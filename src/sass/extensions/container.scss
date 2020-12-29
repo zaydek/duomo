@@ -1,8 +1,10 @@
 @use "../helpers" as *;
 
+@use "../utils";
+
 @mixin container($variants...) {
 	@include variants($variants...) using ($v) {
-		@if matches($v, core) {
+		@if utils.matches($v, core) {
 			.container {
 				width: 100%;
 			}

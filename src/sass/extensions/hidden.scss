@@ -1,5 +1,7 @@
 @use "../helpers" as *;
 
+@use "../utils";
+
 $-opts: (
 	hstack: flex,
 	vstack: flex,
@@ -9,7 +11,7 @@ $-opts: (
 
 @mixin hidden($variants...) {
 	@include variants($variants...) using ($v) {
-		@if matches($v, core) {
+		@if utils.matches($v, core) {
 			// Takes precedence.
 			@each $k, $v in $-opts {
 				.#{$k} > * {

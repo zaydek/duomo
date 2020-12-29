@@ -4,7 +4,7 @@
 
 @mixin grid($variants...) {
 	@include variants($variants...) using ($v) {
-		@if matches($v, core) {
+		@if utils.matches($v, core) {
 			.grid {
 				display: grid;
 			}
