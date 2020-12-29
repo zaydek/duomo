@@ -2,9 +2,9 @@
 @use "sass:math";
 @use "sass:meta";
 
-@use "../escapers" as *;
-
 @use "../../configuration";
+@use "../escapers" as esc;
+@use "../resolvers";
 
 // Ex:
 //
@@ -12,7 +12,7 @@
 // n(0) -> ""
 //
 @function n($rv) {
-	@if passthrough($rv) {
+	@if resolvers.passthrough($rv) {
 		@return "";
 	}
 	@return if($rv < 0, "-", "");
@@ -33,12 +33,12 @@
 
 // Ex: delimiter() -> "\\:"
 @function delimiter() {
-	@return escape(configuration.$delimiter);
+	@return esc.escape(configuration.$delimiter);
 }
 
 // Ex: delimit(sm) -> "sm\\:"
 @function delimit($key) {
-	@return escape-breakpoint-key($key) + delimiter();
+	@return esc.escape-breakpoint-key($key) + delimiter();
 }
 
 // Ex:
@@ -63,10 +63,10 @@
 	}
 	@if meta.type-of($any) == number and $as-percent {
 		$rv: $any;
-		@return escape($rv * 100);
+		@return esc.escape($rv * 100);
 	}
 	$rv: $any;
-	@return escape($rv);
+	@return esc.escape($rv);
 }
 
 // Ex: nrange() -> (-1, -2, -4, -8, ...)
