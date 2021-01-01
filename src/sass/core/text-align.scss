@@ -1,6 +1,13 @@
-@use "../helpers" as *;
+@use "../generators" as *;
+@use "../getters" as *;
 
-$-opts: (left, center, right, justify);
+// prettier-ignore
+$-opts: (
+	left,
+	center,
+	right,
+	justify,
+);
 
 @mixin text-align($variants...) {
 	@include variants($variants...) using ($v) {

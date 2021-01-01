@@ -1,7 +1,8 @@
 @use "sass:map";
 @use "sass:math";
 
-@use "../helpers" as *;
+@use "../generators" as *;
+@use "../getters" as *;
 
 @use "../configuration";
 

@@ -9,17 +9,22 @@ test("integration", () => {
 
 @use "src/sass/getters" as *;
 
+$start: 1;
+$end: -1;
+
 .clsx {
-	nspace-start: list.nth(nspaces(), 1);
-	nspace-end: list.nth(nspaces(), -1);
-	spaces-start: list.nth(spaces(), 1);
-	spaces-end: list.nth(spaces(), -1);
-	sizes-start: list.nth(sizes(), 1);
-	sizes-end: list.nth(sizes(), -1);
-	border-widths-start: list.nth(border-widths(), 1);
-	border-widths-end: list.nth(border-widths(), -1);
-	percent-range-start: list.nth(percent-range(), 1);
-	percent-range-end: list.nth(percent-range(), -1);
+	nspace-start: list.nth(nspaces(), $start);
+	nspace-end: list.nth(nspaces(), $end);
+	spaces-start: list.nth(spaces(), $start);
+	spaces-end: list.nth(spaces(), $end);
+	sizes-start: list.nth(sizes(), $start);
+	sizes-end: list.nth(sizes(), $end);
+	border-widths-start: list.nth(border-widths(), $start);
+	border-widths-end: list.nth(border-widths(), $end);
+	border-radii-start: list.nth(border-radii(), $start);
+	border-radii-end: list.nth(border-radii(), $end);
+	percent-range-start: list.nth(percent-range(), $start);
+	percent-range-end: list.nth(percent-range(), $end);
 }
 `)
 	// prettier-ignore
@@ -33,6 +38,8 @@ test("integration", () => {
 	sizes-end: 640;
 	border-widths-start: 0;
 	border-widths-end: 8;
+	border-radii-start: 0;
+	border-radii-end: 32;
 	percent-range-start: 0;
 	percent-range-end: 1;
 }

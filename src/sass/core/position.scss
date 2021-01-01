@@ -1,6 +1,14 @@
-@use "../helpers" as *;
+@use "../generators" as *;
+@use "../getters" as *;
 
-$-opts: (static, relative, absolute, fixed, sticky);
+// prettier-ignore
+$-opts: (
+	static,
+	relative,
+	absolute,
+	fixed,
+	sticky,
+);
 
 // prettier-ignore
 @mixin position($variants...) {

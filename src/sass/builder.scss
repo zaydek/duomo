@@ -1,8 +1,8 @@
 @use "sass:list";
 @use "sass:map";
 
+@use "getters" as *;
 @use "headers" as *;
-@use "helpers" as *;
 
 @use "core/background-color" as *;
 @use "core/border-color" as *;

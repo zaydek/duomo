@@ -3,14 +3,16 @@
 
 @use "../utils";
 
+// TODO: Add to `builder`.
+//
 // prettier-ignore
-@mixin min-height($variants...) {
+@mixin width($variants...) {
 	@include variants($variants...) using ($v) {
 		@include generate-from-range((
 			variant: $v,
-			shorthand: min-h,
-			property: (min-height),
-			range: utils.list-of(auto, min-content, max-content, 100%, 100vh),
+			shorthand: w,
+			property: (width),
+			range: utils.list-of(auto, range(), min-content, max-content, 100%, 100vw),
 			resolver: rem,
 		));
 	}

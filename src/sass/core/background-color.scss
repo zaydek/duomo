@@ -1,4 +1,5 @@
-@use "../helpers" as *;
+@use "../generators" as *;
+@use "../getters" as *;
 
 @use "../configuration";
 @use "../utils";

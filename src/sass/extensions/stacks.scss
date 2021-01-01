@@ -1,4 +1,5 @@
-@use "../helpers" as *;
+@use "../generators" as *;
+@use "../getters" as *;
 
 @use "../utils";
 
@@ -51,34 +52,34 @@ $-align-self-opts: (
 		 * <layout>
 		 */
 
-		@if utils.matches($v, core) {
-			@each $opt in $-layout-opts {
-				.#{$opt} {
-					--dm-justify-self: stretch;
-					--dm-align-self: stretch;
-				}
-			}
-		}
+		// @if utils.matches($v, core) {
+		// 	@each $opt in $-layout-opts {
+		// 		.#{$opt} {
+		// 			--dm-justify-self: stretch;
+		// 			--dm-align-self: stretch;
+		// 		}
+		// 	}
+		// }
 
 		/*
 		 * <hstack>
 		 */
-
-		#{variant(hstack, $v)} {
-			display: flex;
-			flex-direction: row;
-			justify-self: var(--dm-justify-self);
-			justify-content: center;
-			align-self: var(--dm-align-self);
-			align-items: center;
-			min-width: min-content; // Needed for `overflow-x-scroll`
-		}
 
 		@if utils.matches($v, core) {
 			.hstack > * {
 				--dm-spacer-min-width: var(--dm-space); // Reset
 				--dm-space: 0; // Reset
 			}
+		}
+
+		#{variant(hstack, $v)} {
+			display: flex;
+			flex-direction: row;
+			// justify-self: var(--dm-justify-self);
+			justify-content: center;
+			// align-self: var(--dm-align-self);
+			align-items: center;
+			min-width: min-content; // Needed for `overflow-x-scroll`
 		}
 
 		#{variant(hstack, $v)} > * + * {
@@ -103,21 +104,21 @@ $-align-self-opts: (
 		 * <vstack>
 		 */
 
-		#{variant(vstack, $v)} {
-			display: flex;
-			flex-direction: column;
-			justify-self: var(--dm-justify-self);
-			justify-content: center;
-			align-self: var(--dm-align-self);
-			align-items: center;
-			min-width: auto; // Needed for `overflow-x-scroll`
-		}
-
 		@if utils.matches($v, core) {
 			.vstack > * {
 				--dm-spacer-min-width: 0; // Reset
 				--dm-space: 0; // Reset
 			}
+		}
+
+		#{variant(vstack, $v)} {
+			display: flex;
+			flex-direction: column;
+			// justify-self: var(--dm-justify-self);
+			justify-content: center;
+			// align-self: var(--dm-align-self);
+			align-items: center;
+			min-width: auto; // Needed for `overflow-x-scroll`
 		}
 
 		#{variant(vstack, $v)} > * + * {
@@ -142,6 +143,7 @@ $-align-self-opts: (
 		 * <... wrap>
 		 */
 
+		// TODO: Extract?
 		@each $mk, $mv in (wrap: wrap, wrap-reverse: wrap-reverse, wrap-none: nowrap) {
 			#{variant($mk, $v)} {
 				flex-wrap: $mv;
@@ -175,47 +177,10 @@ $-align-self-opts: (
 		}
 
 		/*
-		 * <... w-*>
-		 *
-		 * NOTE: Takes precedence over `align-self-*`.
-		 */
-
-		#{variant(w-auto, $v)} {
-			--dm-justify-self: stretch;
-			--dm-align-self: stretch;
-			width: auto;
-		}
-		@each $rv in utils.list-of(range(), min-content, max-content, 100%, 100vw) {
-			#{variant(w-#{desc($rv)}, $v)} {
-				--dm-justify-self: center;
-				--dm-align-self: center;
-				width: resolve($rv, rem);
-			}
-		}
-
-		/*
-		 * <... h-*>
-		 *
-		 * NOTE: Takes precedence over `align-self-*`.
-		 */
-
-		#{variant(h-auto, $v)} {
-			--dm-justify-self: stretch;
-			--dm-align-self: stretch;
-			height: auto;
-		}
-		@each $rv in utils.list-of(range(), min-content, max-content, 100%, 100vh) {
-			#{variant(h-#{desc($rv)}, $v)} {
-				--dm-justify-self: center;
-				--dm-align-self: center;
-				height: resolve($rv, rem);
-			}
-		}
-
-		/*
 		 * <... justify-*>
 		 */
 
+		// TODO: Extract?
 		@each $mk, $mv in $-justify-opts {
 			#{variant($mk, $v)} {
 				justify-content: #{$mv};
@@ -226,6 +191,7 @@ $-align-self-opts: (
 		 * <... justify-self-*>
 		 */
 
+		// TODO: Extract?
 		@each $mk, $mv in $-justify-self-opts {
 			#{variant($mk, $v)} {
 				justify-self: #{$mv};
@@ -236,6 +202,7 @@ $-align-self-opts: (
 		 * <... align-*>
 		 */
 
+		// TODO: Extract?
 		@each $mk, $mv in $-align-opts {
 			#{variant($mk, $v)} {
 				align-items: #{$mv};
@@ -246,6 +213,7 @@ $-align-self-opts: (
 		 * <... align-self-*>
 		 */
 
+		// TODO: Extract?
 		@each $mk, $mv in $-align-self-opts {
 			#{variant($mk, $v)} {
 				align-self: #{$mv};
@@ -256,7 +224,7 @@ $-align-self-opts: (
 		 * <... space-*>
 		 */
 
-		@each $rv in utils.list-of(nrange(), utils.limit(range(), null, 128)) {
+		@each $rv in utils.list-of(nspaces(), spaces()) {
 			#{variant(#{n($rv)}space-#{abs($rv)}, $v)} > * {
 				--dm-space: #{rem($rv)};
 			}

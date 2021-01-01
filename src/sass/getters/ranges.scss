@@ -31,6 +31,10 @@
 	@return -range(configuration.$limit-border-width);
 }
 
+@function border-radii() {
+	@return -range(configuration.$limit-border-radius);
+}
+
 // Ex: percent-range() -> (0, 0.05, ...)
 //
 // TODO: `percent-range` should probably talk to
