@@ -1,59 +1,58 @@
-@use "../generators" as *;
-@use "../getters" as *;
-
-@use "../configuration";
+@use "../configuration" as conf;
+@use "../generators" as gen;
+@use "../getters" as get;
 @use "../utils";
 
 // prettier-ignore
 @mixin padding($variants...) {
-	@include variants($variants...) using ($v) {
-		@include generate-from-range((
-			variant: $v,
+	@each $variant in $variants {
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: p,
 			property: (padding),
-			range: spaces(),
+			range: get.spaces(),
 			resolver: rem,
 		));
-		@include generate-from-range((
-			variant: $v,
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: px,
 			property: (padding-left, padding-right),
-			range: spaces(),
+			range: get.spaces(),
 			resolver: rem,
 		));
-		@include generate-from-range((
-			variant: $v,
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: py,
 			property: (padding-top, padding-bottom),
-			range: spaces(),
+			range: get.spaces(),
 			resolver: rem,
 		));
-		@include generate-from-range((
-			variant: $v,
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: pt,
 			property: (padding-top),
-			range: spaces(),
+			range: get.spaces(),
 			resolver: rem,
 		));
-		@include generate-from-range((
-			variant: $v,
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: pr,
 			property: (padding-right),
-			range: spaces(),
+			range: get.spaces(),
 			resolver: rem,
 		));
-		@include generate-from-range((
-			variant: $v,
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: pb,
 			property: (padding-bottom),
-			range: spaces(),
+			range: get.spaces(),
 			resolver: rem,
 		));
-		@include generate-from-range((
-			variant: $v,
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: pl,
 			property: (padding-left),
-			range: spaces(),
+			range: get.spaces(),
 			resolver: rem,
 		));
 	}

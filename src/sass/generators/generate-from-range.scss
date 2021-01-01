@@ -25,7 +25,7 @@
 @mixin generate-from-range($info-map) {
 	$variant:   map.get($info-map, variant);
 	$shorthand: map.get($info-map, shorthand);
-	$props:     map.get($info-map, props);
+	$property:  map.get($info-map, property);
 	$range:     map.get($info-map, range);
 	$resolver:  map.get($info-map, resolver);
 
@@ -35,7 +35,7 @@
 	@each $rv in $range {
 		.#{get.n($rv)}#{$shorthand}-#{get.desc(get.abs($rv), $as-percent)} {
 			@include mx.variants($variant) {
-				@each $prop in $props {
+				@each $prop in $property {
 					#{$prop}: rs.resolve($rv, $resolver);
 				}
 			}

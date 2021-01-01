@@ -9,7 +9,7 @@
 		@include gen.generate-from-range((
 			variant: $variant,
 			shorthand: w,
-			props: (width),
+			property: (width),
 			range: utils.list-of(auto, get.sizes(), min-content, max-content, 100%, 100vw),
 			resolver: rem,
 		));

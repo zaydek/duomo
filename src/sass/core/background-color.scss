@@ -1,25 +1,17 @@
-@use "../generators" as *;
-@use "../getters" as *;
-
-@use "../configuration";
+@use "../configuration" as conf;
+@use "../generators" as gen;
+@use "../getters" as get;
 @use "../utils";
 
 // prettier-ignore
 @mixin background-color($variants...) {
-	@include variants($variants...) using ($v) {
-		// TODO
-		// @if utils.matches($v, core) {
-		// 	.bg-placeholder {
-		// 		--bg-opacity: 1;
-		// 		background-color: hsla(var(--placeholder-bg-default), var(--bg-opacity));
-		// 	}
-		// }
-		@include generate-from-colors((
-			variant: $v,
+	@each $variant in $variants {
+		@include gen.generate-from-colors((
+			variant: $variant,
 			shorthand: bg,
 			property: (background-color),
-			map: if(configuration.$layout, null, configuration.$subset-color-map),
-			percent-range: percent-range(),
+			map: if(conf.$layout, null, conf.$subset-color-map),
+			percent-range: get.percent-range(),
 		));
 	}
 }

@@ -1,26 +1,29 @@
-@use "../generators" as *;
-@use "../getters" as *;
-
-@use "../configuration";
+@use "../configuration" as conf;
+@use "../generators" as gen;
+@use "../getters" as get;
 @use "../utils";
+
+@use "../mixins" as mx;
 
 // prettier-ignore
 @mixin min-width($variants...) {
-	@include variants($variants...) using ($v) {
-		@include generate-from-range((
-			variant: $v,
+	@each $variant in $variants {
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: min-w,
 			property: (min-width),
 			range: utils.list-of(auto, min-content, max-content),
 			resolver: rem,
 		));
-		@each $key, $px in breakpoints() {
-			#{variant(min-w-#{$key}, $v)} {
-				min-width: $px;
+		@each $key, $px in get.breakpoints() {
+			.min-w-#{$key} {
+				@include mx.variants($variant) {
+					min-width: $px;
+				}
 			}
 		}
-		@include generate-from-range((
-			variant: $v,
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: min-w,
 			property: (min-width),
 			range: utils.list-of(100%, 100vw),
