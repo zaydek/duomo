@@ -20,6 +20,20 @@
 	@return var(--#{$key});
 }
 
+@function color-var($key, $alpha: null) {
+	$got: getter("color", configuration.$color-map, $key);
+	@if $key == transparent or $key == current {
+		// @if $alpha {
+		// 	@error "color-var: cannot accept `$key=transparent` or `$key=current` and `$alpha=#{$alpha}`";
+		// }
+		@return var(--#{$key});
+	}
+	@if $alpha {
+		@return string.unquote("hsla(var(--#{$key}), #{$alpha})");
+	}
+	@return string.unquote("hsl(var(--#{$key}))");
+}
+
 @function shadow-var($key) {
 	@if not utils.str-starts-with($key, "shadow-") {
 		$key: "shadow-" + $key;

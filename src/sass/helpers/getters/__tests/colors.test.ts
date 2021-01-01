@@ -16,8 +16,8 @@ test("color-vars($alpha: null, (subset: true))", () => {
 	// prettier-ignore
 	expect(css).toBe(`
 .clsx {
-	background-color: hsl(var(--transparent));
-	background-color: hsl(var(--current));
+	background-color: var(--transparent);
+	background-color: var(--current);
 	background-color: hsl(var(--black));
 	background-color: hsl(var(--white));
 	background-color: hsl(var(--cool-gray-50));
@@ -117,8 +117,8 @@ test("color-vars($alpha: var(--bg-opacity), (subset: true))", () => {
 	// prettier-ignore
 	expect(css).toBe(`
 .clsx {
-	background-color: hsla(var(--transparent), var(--bg-opacity));
-	background-color: hsla(var(--current), var(--bg-opacity));
+	background-color: var(--transparent);
+	background-color: var(--current);
 	background-color: hsla(var(--black), var(--bg-opacity));
 	background-color: hsla(var(--white), var(--bg-opacity));
 	background-color: hsla(var(--cool-gray-50), var(--bg-opacity));

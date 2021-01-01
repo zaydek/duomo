@@ -19,7 +19,7 @@ test("integration", () => {
 	font-weight: var(--thin);
 	font-weight: var(--extralight);
 	font-weight: var(--light);
-	font-weight: var(--bold-none);
+	font-weight: var(--normal);
 	font-weight: var(--medium);
 	font-weight: var(--semibold);
 	font-weight: var(--bold);

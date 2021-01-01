@@ -13,26 +13,22 @@
 	@return getter("font", configuration.$font-map, $key);
 }
 
-// NOTE: Use `hsl(...)`.
+@function decoration($key) {
+	@return getter("decoration", configuration.$decoration-map, $key);
+}
+
 @function color($key, $alpha: null) {
 	$got: getter("color", configuration.$color-map, $key);
+	@if $key == transparent or $key == current {
+		// @if $alpha {
+		// 	@error "color-var: cannot accept `$key=transparent` or `$key=current` and `$alpha=#{$alpha}`";
+		// }
+		@return $got;
+	}
 	@if $alpha {
 		@return string.unquote("hsla(#{$got}, #{$alpha})");
 	}
 	@return string.unquote("hsl(#{$got})");
-}
-
-// NOTE: Use `hsl(...)`.
-@function color-var($key, $alpha: null) {
-	$got: getter("color", configuration.$color-map, $key);
-	@if $alpha {
-		@return string.unquote("hsla(var(--#{$key}), #{$alpha})");
-	}
-	@return string.unquote("hsl(var(--#{$key}))");
-}
-
-@function decoration($key) {
-	@return getter("decoration", configuration.$decoration-map, $key);
 }
 
 @function shadow($key) {

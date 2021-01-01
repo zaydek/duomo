@@ -13,17 +13,19 @@
 }
 
 @mixin box-shadow($variants...) {
-	@include variants($variants...) using ($v) {
-		#{variant(shadow, $v)} {
-			@each $mk, $mv in configuration.$shadow-map {
-				--dm-#{$mk}: 0 0 transparent;
+	@if not configuration.$skeleton {
+		@include variants($variants...) using ($v) {
+			#{variant(shadow, $v)} {
+				@each $mk, $mv in configuration.$shadow-map {
+					--dm-#{$mk}: 0 0 transparent;
+				}
+				box-shadow: -vendored-shadow-keys();
 			}
-			box-shadow: -vendored-shadow-keys();
-		}
 
-		@each $mk, $mv in configuration.$shadow-map {
-			#{variant($mk, $v)} {
-				--dm-#{$mk}: #{shadow-var($mk)};
+			@each $mk, $mv in configuration.$shadow-map {
+				#{variant($mk, $v)} {
+					--dm-#{$mk}: #{shadow-var($mk)};
+				}
 			}
 		}
 	}

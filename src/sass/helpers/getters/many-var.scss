@@ -1,4 +1,5 @@
 @use "sass:list";
+@use "sass:map";
 
 @use "one-var" as *;
 
@@ -24,6 +25,15 @@
 	$list: ();
 	@each $mk, $mv in configuration.$decoration-map {
 		$list: list.append($list, decoration-var($mk));
+	}
+	@return $list;
+}
+
+@function color-vars($alpha: null, $opts) {
+	$subset: map.get($opts, subset);
+	$list: ();
+	@each $mk, $mv in if($subset, configuration.$subset-color-map, configuration.$color-map) {
+		$list: list.append($list, color-var($mk, $alpha));
 	}
 	@return $list;
 }

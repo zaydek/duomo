@@ -21,28 +21,19 @@
 	@return $list;
 }
 
+@function decorations() {
+	$list: ();
+	@each $mk, $mv in configuration.$decoration-map {
+		$list: list.append($list, decoration($mk));
+	}
+	@return $list;
+}
+
 @function colors($alpha: null, $opts) {
 	$subset: map.get($opts, subset);
 	$list: ();
 	@each $mk, $mv in if($subset, configuration.$subset-color-map, configuration.$color-map) {
 		$list: list.append($list, color($mk, $alpha));
-	}
-	@return $list;
-}
-
-@function color-vars($alpha: null, $opts) {
-	$subset: map.get($opts, subset);
-	$list: ();
-	@each $mk, $mv in if($subset, configuration.$subset-color-map, configuration.$color-map) {
-		$list: list.append($list, color-var($mk, $alpha));
-	}
-	@return $list;
-}
-
-@function decorations() {
-	$list: ();
-	@each $mk, $mv in configuration.$decoration-map {
-		$list: list.append($list, decoration($mk));
 	}
 	@return $list;
 }
