@@ -1,4 +1,4 @@
-import { em, px, rem } from "../utils"
+import { em, px, rem } from "../../src/runtime"
 
 test("rem", () => {
 	expect(rem(0)).toBe(0)

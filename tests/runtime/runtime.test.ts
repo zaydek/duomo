@@ -1,4 +1,5 @@
-import Duomo from "../runtime"
+// FIXME: Why does `import { Duomo }` work but not `import Duomo`?
+import { Duomo } from "../../src/runtime"
 
 function sleep(forMs: number) {
 	return new Promise(resolve => setTimeout(resolve, forMs))
