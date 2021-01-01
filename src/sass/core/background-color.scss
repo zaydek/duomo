@@ -1,14 +1,17 @@
 @use "../helpers" as *;
 
 @use "../configuration";
+@use "../utils";
 
 // prettier-ignore
 @mixin background-color($variants...) {
-	.bg-placeholder {
-		--bg-opacity: 1;
-		background-color: var(--placeholder-bg-default);
-	}
 	@include variants($variants...) using ($v) {
+		@if utils.matches($v, core) {
+			.bg-placeholder {
+				--bg-opacity: 1;
+				background-color: hsla(var(--placeholder-bg-default), var(--bg-opacity));
+			}
+		}
 		@include generate-from-colors((
 			variant: $v,
 			shorthand: bg,

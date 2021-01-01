@@ -18,21 +18,18 @@ $delimiter: ":" !default;
 
 // prettier-ignore
 $nrange: (
-	 -1,
+	     // <- Decrement by 2
+	 -1, // (Adds -1)
 	 -2,
-	 -3,
 	 -4,
-	 -5,
 	 -6,
-	 -7,
 	 -8,
-	 -9,
 	-10,
 	-12,
 	-14,
 	-16,
 	-18,
-	-20,
+	-20, // <- Decrement by 4
 	-24,
 	-28,
 	-32,
@@ -40,42 +37,38 @@ $nrange: (
 
 // prettier-ignore
 $range: (
-	  0,
-	  1,
+	  0, // <- Increment by 2
+	  1, // (Adds 1)
 	  2,
-	  3,
 	  4,
-	  5,
 	  6,
-	  7,
 	  8,
-	  9,
 	 10,
 	 12,
 	 14,
 	 16,
 	 18,
-	 20,
+	 20, // <- Increment by 4
 	 24,
 	 28,
 	 32,
 	 36,
-	 40,
+	 40, // <- Increment by 8
 	 48,
 	 56,
 	 64,
 	 72,
-	 80,
+	 80, // <- Increment by 16
 	 96,
 	112,
 	128,
 	144,
-	160,
+	160, // <- Increment by 32
 	192,
 	224,
 	256,
 	288,
-	320,
+	320, // <- Increment by 64
 	384,
 	448,
 	512,
@@ -83,11 +76,13 @@ $range: (
 	640,
 ) !default;
 
+// TOOD: `weight-map` should be used for the `weight()` getter.
+// NOTE: `normal` and `black` possibly lead to collisions.
 $weight-map: (
 	thin: 100,
 	extralight: 200,
 	light: 300,
-	bold-none: 400,
+	normal: 400,
 	medium: 500,
 	semibold: 600,
 	bold: 700,

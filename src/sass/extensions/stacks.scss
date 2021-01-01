@@ -256,7 +256,7 @@ $-align-self-opts: (
 		 * <... space-*>
 		 */
 
-		@each $rv in utils.list-of(nrange(), utils.limit(range(), null, 320)) {
+		@each $rv in utils.list-of(nrange(), utils.limit(range(), null, 128)) {
 			#{variant(#{n($rv)}space-#{abs($rv)}, $v)} > * {
 				--dm-space: #{rem($rv)};
 			}

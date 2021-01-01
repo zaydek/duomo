@@ -52,7 +52,7 @@ $-legend: (
 // ->   --ui-app-bg: hsl(0deg, 0%, 100%);
 // -> }
 // ->
-// -> [data-theme="dark"] {
+// -> [data-theme-id="dark"] {
 // ->   --ui-app-color: hsl(0deg, 0%, 100%);
 // ->   --ui-app-bg: hsl(0deg, 0%, 0%);
 // -> }
@@ -64,16 +64,17 @@ $-legend: (
 // -> }
 //
 // TODO: Add support for `root-bg` and `border-color-default`?
-// TODO: Add support for n-many themes; `[data-theme="..."]` should be dynamic.
+// TODO: Add support for n-many themes; `[data-theme-id="..."]` should be dynamic.
 //
 // prettier-ignore
-@mixin themes($light, $dark, $transition: true) {
-	$theme-transition: var(--theme-transition);
-	@if $transition == false {
-		$theme-transition: null;
-	}
+@mixin themes($options) {
+	$light:          map.get($options, light);
+	$dark:           map.get($options, dark);
+	$theme-duration: map.get($options, duration);
+	$theme-timing:   map.get($options, timing);
 
-	// TODO: Assert `$light-ast` and `$dark-ast` are mirrors.
+	$theme-transition: var(--theme-transition);
+
 	$light-ast: -parse-ast($light);
 	:root {
 		@each $mk, $mv in $light-ast {
@@ -81,6 +82,8 @@ $-legend: (
 				--#{map.get($info, var)}: #{map.get($info, value)};
 			}
 		}
+		--theme-duration-default: #{$theme-duration};
+		--theme-timing-default: #{$theme-timing};
 	}
 
 	$dark-ast: -parse-ast($dark);
@@ -93,7 +96,7 @@ $-legend: (
 	}
 
 	@each $mk, $mv in $light-ast {
-		.#{$mk} {
+		[data-theme-id="#{$mk}"] {
 			@each $info in $mv {
 				#{map.get($info, property)}: var(--#{map.get($info, var)});
 			}

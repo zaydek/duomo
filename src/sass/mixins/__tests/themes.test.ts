@@ -9,34 +9,41 @@ test("integration", () => {
 @use "src/sass/mixins/themes" as *;
 
 $light: (
-	ui-app-color: color(black),
-	ui-app-bg: color(white),
+	app-color: color(black),
+	app-bg: color(white),
 );
 
 $dark: (
-	ui-app-color: color(white),
-	ui-app-bg: color(black),
+	app-color: color(white),
+	app-bg: color(black),
 );
 
 @at-root {
-	@include themes($light, $dark);
+	@include themes((
+		light: $light,
+		dark: $dark,
+		duration: 700ms,
+		timing: timing-var(ease-out),
+	));
 }
 `)
 	// prettier-ignore
 	expect(css).toBe(`
 :root {
-	--ui-app-color: hsl(0deg, 0%, 0%);
-	--ui-app-bg: hsl(0deg, 0%, 100%);
+	--app-color: hsl(0deg, 0%, 0%);
+	--app-bg: hsl(0deg, 0%, 100%);
+	--theme-duration-default: 700ms;
+	--theme-timing-default: var(--ease-out);
 }
 
 [data-theme=dark] {
-	--ui-app-color: hsl(0deg, 0%, 100%);
-	--ui-app-bg: hsl(0deg, 0%, 0%);
+	--app-color: hsl(0deg, 0%, 100%);
+	--app-bg: hsl(0deg, 0%, 0%);
 }
 
-.ui-app {
-	color: var(--ui-app-color);
-	background-color: var(--ui-app-bg);
+[data-theme-id=app] {
+	color: var(--app-color);
+	background-color: var(--app-bg);
 	transition: var(--theme-transition);
 }
 `.trim())

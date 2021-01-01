@@ -21,7 +21,7 @@
 			}
 		}
 
-		@each $rv in utils.limit(range(), null, 320) {
+		@each $rv in utils.limit(range(), null, 128) {
 			#{variant(gap-#{$rv}, $v)} {
 				gap: rem($rv);
 			}

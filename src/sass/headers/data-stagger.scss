@@ -1,17 +1,17 @@
 @mixin data-stagger {
-	[data-stagger="1"] {
-		width: var(--stagger-1-width);
+	[data-stagger-id="1"] {
+		width: var(--stagger-id-1-default);
 	}
-	[data-stagger="2"] {
-		width: var(--stagger-2-width);
+	[data-stagger-id="2"] {
+		width: var(--stagger-id-2-default);
 	}
-	[data-stagger="3"] {
-		width: var(--stagger-3-width);
+	[data-stagger-id="3"] {
+		width: var(--stagger-id-3-default);
 	}
-	[data-stagger="4"] {
-		width: var(--stagger-4-width);
+	[data-stagger-id="4"] {
+		width: var(--stagger-id-4-default);
 	}
-	[data-stagger="last"] {
-		width: var(--stagger-last-width);
+	[data-stagger-id="last"] {
+		width: var(--stagger-last-default);
 	}
 }
