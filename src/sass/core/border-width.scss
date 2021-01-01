@@ -1,59 +1,58 @@
-@use "../generators" as *;
-@use "../getters" as *;
-
-@use "../configuration";
+@use "../configuration" as conf;
+@use "../generators" as gen;
+@use "../getters" as get;
 @use "../utils";
 
 // prettier-ignore
 @mixin border-width($variants...) {
-	@include variants($variants...) using ($v) {
-		@include generate-from-range((
-			variant: $v,
+	@each $variant in $variants {
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: border,
 			property: (border-width),
-			range: border-widths(),
+			range: get.border-widths(),
 			resolver: rem,
 		));
-		@include generate-from-range((
-			variant: $v,
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: border-x,
 			property: (border-left-width, border-right-width),
-			range: border-widths(),
+			range: get.border-widths(),
 			resolver: rem,
 		));
-		@include generate-from-range((
-			variant: $v,
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: border-y,
 			property: (border-top-width, border-bottom-width),
-			range: border-widths(),
+			range: get.border-widths(),
 			resolver: rem,
 		));
-		@include generate-from-range((
-			variant: $v,
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: border-top,
 			property: (border-top-width),
-			range: border-widths(),
+			range: get.border-widths(),
 			resolver: rem,
 		));
-		@include generate-from-range((
-			variant: $v,
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: border-right,
 			property: (border-right-width),
-			range: border-widths(),
+			range: get.border-widths(),
 			resolver: rem,
 		));
-		@include generate-from-range((
-			variant: $v,
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: border-bottom,
 			property: (border-bottom-width),
-			range: border-widths(),
+			range: get.border-widths(),
 			resolver: rem,
 		));
-		@include generate-from-range((
-			variant: $v,
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: border-left,
 			property: (border-left-width),
-			range: border-widths(),
+			range: get.border-widths(),
 			resolver: rem,
 		));
 	}

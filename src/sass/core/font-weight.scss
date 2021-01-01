@@ -1,17 +1,31 @@
-@use "../generators" as *;
-@use "../getters" as *;
-
-@use "../configuration";
+@use "../configuration" as conf;
+@use "../generators" as gen;
+@use "../getters" as get;
 @use "../utils";
 
-$-range: (100, 200, 300, 400, 500, 600, 700, 800, 900);
+@use "../mixins" as mx;
+
+// prettier-ignore
+$-range: (
+	100,
+	200,
+	300,
+	400,
+	500,
+	600,
+	700,
+	800,
+	900,
+);
 
 // TODO: Change to `generate-from-range` API?
 @mixin font-weight($variants...) {
-	@include variants($variants...) using ($v) {
+	@each $variant in $variants {
 		@each $rv in $-range {
-			#{variant(weight-#{$rv}, $v)} {
-				font-weight: $rv;
+			.weight-#{$rv} {
+				@include mx.variants($variant) {
+					font-weight: $rv;
+				}
 			}
 		}
 	}

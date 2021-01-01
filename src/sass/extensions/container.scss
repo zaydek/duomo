@@ -1,16 +1,17 @@
-@use "../generators" as *;
-@use "../getters" as *;
-
-@use "../configuration";
+@use "../configuration" as conf;
+@use "../generators" as gen;
+@use "../getters" as get;
 @use "../utils";
 
 @mixin container($variants...) {
-	@include variants($variants...) using ($v) {
-		@if utils.matches($v, core) {
+	@each $variant in $variants {
+		@if utils.matches($variant, core) {
 			.container {
+				// margin-left: auto;
+				// margin-right: auto;
 				width: 100%;
 			}
-			@each $key, $px in breakpoints() {
+			@each $key, $px in get.breakpoints() {
 				@media (min-width: $px) {
 					.container {
 						margin-left: auto;

@@ -1,17 +1,36 @@
-@use "../generators" as *;
-@use "../getters" as *;
-
-@use "../configuration";
+@use "../configuration" as conf;
+@use "../generators" as gen;
+@use "../getters" as get;
 @use "../utils";
 
+@use "../mixins" as mx;
+
 // TODO: Use `percent-range`?
-$-range: (1, 1.1, 1.2, 1.25, 1.3, 1.4, 1.5, 1.6, 1.7, 1.75, 1.8, 1.9, 2);
+//
+// prettier-ignore
+$-range: (
+	1,
+	1.1,
+	1.2,
+	1.25,
+	1.3,
+	1.4,
+	1.5,
+	1.6,
+	1.7,
+	1.75,
+	1.8,
+	1.9,
+	2,
+);
 
 @mixin line-height($variants...) {
-	@include variants($variants...) using ($v) {
+	@each $variant in $variants {
 		@each $rv in $-range {
-			#{variant(leading-#{$rv * 100}, $v)} {
-				line-height: $rv;
+			.leading-#{$rv * 100} {
+				@include mx.variants($variant) {
+					line-height: $rv;
+				}
 			}
 		}
 	}

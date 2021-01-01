@@ -1,8 +1,9 @@
-@use "../generators" as *;
-@use "../getters" as *;
-
-@use "../configuration";
+@use "../configuration" as conf;
+@use "../generators" as gen;
+@use "../getters" as get;
 @use "../utils";
+
+@use "../mixins" as mx;
 
 // prettier-ignore
 $-opts: (
@@ -11,29 +12,37 @@ $-opts: (
 );
 
 @mixin overflow($variants...) {
-	@include variants($variants...) using ($v) {
+	@each $variant in $variants {
 		@each $opt in $-opts {
-			#{variant(overflow-#{$opt}, $v)} {
-				@if $opt == scroll {
-					-webkit-overflow-scrolling: touch;
+			.overflow-#{$opt} {
+				@include mx.variants($variant) {
+					@if $opt == scroll {
+						-webkit-overflow-scrolling: touch;
+					}
+					overflow: $opt;
 				}
-				overflow: $opt;
 			}
 		}
+
 		@each $opt in $-opts {
-			#{variant(overflow-x-#{$opt}, $v)} {
-				@if $opt == scroll {
-					-webkit-overflow-scrolling: touch;
+			.overflow-x-#{$opt} {
+				@include mx.variants($variant) {
+					@if $opt == scroll {
+						-webkit-overflow-scrolling: touch;
+					}
+					overflow-x: $opt;
 				}
-				overflow-x: $opt;
 			}
 		}
+
 		@each $opt in $-opts {
-			#{variant(overflow-y-#{$opt}, $v)} {
-				@if $opt == scroll {
-					-webkit-overflow-scrolling: touch;
+			.overflow-y-#{$opt} {
+				@include mx.variants($variant) {
+					@if $opt == scroll {
+						-webkit-overflow-scrolling: touch;
+					}
+					overflow-y: $opt;
 				}
-				overflow-y: $opt;
 			}
 		}
 	}

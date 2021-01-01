@@ -1,8 +1,9 @@
-@use "../generators" as *;
-@use "../getters" as *;
-
-@use "../configuration";
+@use "../configuration" as conf;
+@use "../generators" as gen;
+@use "../getters" as get;
 @use "../utils";
+
+@use "../mixins" as mx;
 
 $-opts: (
 	strikethrough: line-through,
@@ -10,10 +11,12 @@ $-opts: (
 );
 
 @mixin text-decoration($variants...) {
-	@include variants($variants...) using ($v) {
+	@each $variant in $variants {
 		@each $mk, $mv in $-opts {
-			#{variant($mk, $v)} {
-				text-decoration: $mv;
+			.#{$mk} {
+				@include mx.variants($variant) {
+					text-decoration: $mv;
+				}
 			}
 		}
 	}

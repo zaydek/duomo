@@ -1,22 +1,26 @@
-@use "../generators" as *;
-@use "../getters" as *;
-
-@use "../configuration";
+@use "../configuration" as conf;
+@use "../generators" as gen;
+@use "../getters" as get;
 @use "../utils";
 
 @mixin aspect-ratio($variants...) {
-	// NOTE: Use `(var(...))` so `--aspect-ratio: 16 / 9` works.
-	[style*="--aspect-ratio"] {
-		position: relative;
-		padding-bottom: calc(100% / (var(--aspect-ratio)));
-	}
-	[style*="--aspect-ratio"] > * {
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
+	@each $variant in $variants {
+		@if utils.matches($variant, core) {
+			[style*="--aspect-ratio"] {
+				position: relative;
+
+				// NOTE: Use `(var(...))` so `--aspect-ratio: 16 / 9` works.
+				padding-bottom: calc(100% / (var(--aspect-ratio)));
+			}
+			[style*="--aspect-ratio"] > * {
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+		}
 	}
 }

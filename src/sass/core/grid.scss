@@ -1,31 +1,39 @@
-@use "../generators" as *;
-@use "../getters" as *;
-
-@use "../configuration";
+@use "../configuration" as conf;
+@use "../generators" as gen;
+@use "../getters" as get;
 @use "../utils";
 
+@use "../mixins" as mx;
+
 @mixin grid($variants...) {
-	@include variants($variants...) using ($v) {
-		@if utils.matches($v, core) {
+	@each $variant in $variants {
+		@if utils.matches($variant, core) {
 			.grid {
 				display: grid;
 			}
 		}
 
 		@for $rv from 0 through 12 {
-			#{variant(grid-cols-#{$rv}, $v)} {
-				grid-template-columns: repeat($rv, minmax(0, 1fr));
+			.grid-cols-#{$rv} {
+				@include mx.variants($variant) {
+					grid-template-columns: repeat($rv, minmax(0, 1fr));
+				}
 			}
 		}
 		@for $rv from 0 through 12 {
-			#{variant(grid-rows-#{$rv}, $v)} {
-				grid-template-rows: repeat($rv, minmax(0, 1fr));
+			.grid-rows-#{$rv} {
+				@include mx.variants($variant) {
+					grid-template-rows: repeat($rv, minmax(0, 1fr));
+				}
 			}
 		}
 
-		@each $rv in spaces() {
-			#{variant(gap-#{$rv}, $v)} {
-				gap: rem($rv);
+		// TODO: Can use `gen.generate-from-range` here.
+		@each $rv in get.spaces() {
+			.gap-#{$rv} {
+				@include mx.variants($variant) {
+					gap: gen.rem($rv);
+				}
 			}
 		}
 		// @each $rv in spaces() {

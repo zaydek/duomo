@@ -1,8 +1,9 @@
-@use "../generators" as *;
-@use "../getters" as *;
-
-@use "../configuration";
+@use "../configuration" as conf;
+@use "../generators" as gen;
+@use "../getters" as get;
 @use "../utils";
+
+@use "../mixins" as mx;
 
 $-opts: (
 	hstack: flex,
@@ -12,15 +13,13 @@ $-opts: (
 );
 
 @mixin hidden($variants...) {
-	@include variants($variants...) using ($v) {
-		@if utils.matches($v, core) {
-			// Takes precedence.
+	@each $variant in $variants {
+		@if utils.matches($variant, core) {
 			@each $k, $v in $-opts {
 				.#{$k} > * {
 					--dm-display: block; // Reset
 				}
 			}
-
 			@each $k, $v in $-opts {
 				.#{$k} {
 					--dm-display: #{$v};
@@ -28,11 +27,15 @@ $-opts: (
 			}
 		}
 
-		#{variant(hidden, $v)} {
-			display: none;
+		.hidden {
+			@include mx.variants($variant) {
+				display: none;
+			}
 		}
-		#{variant(unhidden, $v)} {
-			display: var(--dm-display);
+		.unhidden {
+			@include mx.variants($variant) {
+				display: var(--dm-display);
+			}
 		}
 	}
 }

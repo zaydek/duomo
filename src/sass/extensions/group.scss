@@ -1,11 +1,14 @@
-@use "../generators" as *;
-@use "../getters" as *;
-
-@use "../configuration";
+@use "../configuration" as conf;
+@use "../generators" as gen;
+@use "../getters" as get;
 @use "../utils";
 
 @mixin group($variants...) {
-	.group {
-		/*! NOTE: Do not omit empty ruleset. */
+	@each $variant in $variants {
+		@if utils.matches($variant, core) {
+			.group {
+				/*! NOTE: Do not omit empty ruleset. */
+			}
+		}
 	}
 }

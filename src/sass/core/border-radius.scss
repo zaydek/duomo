@@ -1,73 +1,72 @@
-@use "../generators" as *;
-@use "../getters" as *;
-
-@use "../configuration";
+@use "../configuration" as conf;
+@use "../generators" as gen;
+@use "../getters" as get;
 @use "../utils";
 
 // prettier-ignore
 @mixin border-radius($variants...) {
-	@include variants($variants...) using ($v) {
-		@include generate-from-range((
-			variant: $v,
+	@each $variant in $variants {
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: rounded,
 			property: (border-radius),
-			range: utils.list-of(border-radii(), 9999px),
+			range: utils.list-of(get.border-radii(), 9999px),
 			resolver: rem,
 		));
-		@include generate-from-range((
-			variant: $v,
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: rounded-top,
 			property: (border-top-left-radius, border-top-right-radius),
-			range: utils.list-of(border-radii(), 9999px),
+			range: utils.list-of(get.border-radii(), 9999px),
 			resolver: rem,
 		));
-		@include generate-from-range((
-			variant: $v,
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: rounded-right,
 			property: (border-top-right-radius, border-bottom-right-radius),
-			range: utils.list-of(border-radii(), 9999px),
+			range: utils.list-of(get.border-radii(), 9999px),
 			resolver: rem,
 		));
-		@include generate-from-range((
-			variant: $v,
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: rounded-bottom,
 			property: (border-bottom-left-radius, border-bottom-right-radius),
-			range: utils.list-of(border-radii(), 9999px),
+			range: utils.list-of(get.border-radii(), 9999px),
 			resolver: rem,
 		));
-		@include generate-from-range((
-			variant: $v,
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: rounded-left,
 			property: (border-top-left-radius, border-bottom-left-radius),
-			range: utils.list-of(border-radii(), 9999px),
+			range: utils.list-of(get.border-radii(), 9999px),
 			resolver: rem,
 		));
-		@include generate-from-range((
-			variant: $v,
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: rounded-top-right,
 			property: (border-top-right-radius),
-			range: utils.list-of(border-radii(), 9999px),
+			range: utils.list-of(get.border-radii(), 9999px),
 			resolver: rem,
 		));
-		@include generate-from-range((
-			variant: $v,
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: rounded-bottom-right,
 			property: (border-bottom-right-radius),
-			range: utils.list-of(border-radii(), 9999px),
+			range: utils.list-of(get.border-radii(), 9999px),
 			resolver: rem,
 		));
-		@include generate-from-range((
-			variant: $v,
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: rounded-bottom-left,
 			property: (border-bottom-left-radius),
-			range: utils.list-of(border-radii(), 9999px),
+			range: utils.list-of(get.border-radii(), 9999px),
 			resolver: rem,
 		));
-		@include generate-from-range((
-			variant: $v,
+		@include gen.generate-from-range((
+			variant: $variant,
 			shorthand: rounded-top-left,
 			property: (border-top-left-radius),
-			range: utils.list-of(border-radii(), 9999px),
+			range: utils.list-of(get.border-radii(), 9999px),
 			resolver: rem,
 		));
 	}

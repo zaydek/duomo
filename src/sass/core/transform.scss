@@ -1,10 +1,18 @@
-@use "../generators" as *;
-@use "../getters" as *;
-
-@use "../configuration";
+@use "../configuration" as conf;
+@use "../generators" as gen;
+@use "../getters" as get;
 @use "../utils";
 
-$-translate-range: (-100, -50, 0, 50, 100);
+@use "../mixins" as mx;
+
+// prettier-ignore
+$-translate-range: (
+	-100,
+	 -50,
+	   0,
+	  50,
+	 100,
+);
 
 // TODO: Use `percent-range`?
 //
@@ -27,39 +35,49 @@ $-origin-opts: (
 );
 
 @mixin transform($variants...) {
-	@include variants($variants...) using ($v) {
-		#{variant(transform, $v)} {
-			--transform-translate-x: 0;
-			--transform-translate-y: 0;
-			--transform-scale: 1;
-			transform: translate(var(--transform-translate-x), var(--transform-translate-y)) scale(var(--transform-scale));
+	@each $variant in $variants {
+		.transform {
+			@include mx.variants($variant) {
+				--transform-translate-x: 0;
+				--transform-translate-y: 0;
+				--transform-scale: 1;
+				transform: translate(var(--transform-translate-x), var(--transform-translate-y)) scale(var(--transform-scale));
+			}
 		}
 
-		#{variant(transform-gpu, $v)} {
-			--transform-translate-x: 0;
-			--transform-translate-y: 0;
-			--transform-scale: 1;
-			transform: translate3d(var(--transform-translate-x), var(--transform-translate-y), 0)
-				scale(var(--transform-scale));
+		.transform-gpu {
+			@include mx.variants($variant) {
+				--transform-translate-x: 0;
+				--transform-translate-y: 0;
+				--transform-scale: 1;
+				transform: translate3d(var(--transform-translate-x), var(--transform-translate-y), 0)
+					scale(var(--transform-scale));
+			}
 		}
 
 		@each $axis in (x, y) {
 			@each $rv in $-translate-range {
-				#{variant(#{n($rv)}translate-#{$axis}-#{abs($rv)}, $v)} {
-					--transform-translate-#{$axis}: #{$rv + "%"};
+				.#{get.n($rv)}translate-#{$axis}-#{abs($rv)} {
+					@include mx.variants($variant) {
+						--transform-translate-#{$axis}: #{$rv + "%"};
+					}
 				}
 			}
 		}
 
 		@each $rv in $-scale-range {
-			#{variant(scale-#{abs($rv * 100)}, $v)} {
-				--transform-scale: #{$rv};
+			.scale-#{get.abs($rv * 100)} {
+				@include mx.variants($variant) {
+					--transform-scale: #{$rv};
+				}
 			}
 		}
 
 		@each $mk, $mv in $-origin-opts {
-			#{variant(origin-#{$mk}, $v)} {
-				transform-origin: $mv;
+			.origin-#{$mk} {
+				@include mx.variants($variant) {
+					transform-origin: $mv;
+				}
 			}
 		}
 	}
