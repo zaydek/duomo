@@ -1,6 +1,8 @@
 @use "../configuration";
 @use "../utils";
 
+// TODO: Add support for `bar`?
+// Then we can have `bar` and `cap`.
 @function -nrange($limit: null) {
 	@if $limit {
 		@return utils.cap(configuration.$nrange, $limit);
@@ -8,6 +10,8 @@
 	@return configuration.$nrange;
 }
 
+// TODO: Add support for `bar`?
+// Then we can have `bar` and `cap`.
 @function -range($limit: null) {
 	@if $limit {
 		@return utils.cap(configuration.$range, $limit);
@@ -27,6 +31,11 @@
 	@return -range(configuration.$limit-size);
 }
 
+// NOTE: Bar from `8` to prevent generating useless classes.
+@function font-sizes() {
+	@return utils.bar(-range(configuration.$limit-font-size), 8);
+}
+
 @function border-widths() {
 	@return -range(configuration.$limit-border-width);
 }
@@ -35,7 +44,7 @@
 	@return -range(configuration.$limit-border-radius);
 }
 
-// Ex: percent-range() -> (0, 0.05, ...)
+// Ex: percent-range() > (0, 0.05, ...)
 //
 // TODO: `percent-range` should probably talk to
 // configuration and use a resolver name as a

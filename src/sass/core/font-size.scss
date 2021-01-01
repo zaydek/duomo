@@ -10,7 +10,7 @@
 			variant: $v,
 			shorthand: text,
 			property: (font-size),
-			range: utils.limit(range(), 8, 64),
+			range: font-sizes(),
 			resolver: rem,
 		));
 	}

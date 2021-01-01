@@ -22,17 +22,17 @@
 			}
 		}
 
-		@each $rv in utils.limit(range(), null, 128) {
+		@each $rv in spaces() {
 			#{variant(gap-#{$rv}, $v)} {
 				gap: rem($rv);
 			}
 		}
-		// @each $rv in limit(range(), null, 320) {
+		// @each $rv in spaces() {
 		// 	#{variant(gap-x-#{$rv}, $v)} {
 		// 		column-gap: rem($rv);
 		// 	}
 		// }
-		// @each $rv in limit(range(), null, 320) {
+		// @each $rv in spaces() {
 		// 	#{variant(gap-y-#{$rv}, $v)} {
 		// 		row-gap: rem($rv);
 		// 	}

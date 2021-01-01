@@ -10,49 +10,49 @@
 			variant: $v,
 			shorthand: m,
 			property: (margin),
-			range: utils.list-of(nrange(), auto, utils.limit(range(), null, 128)),
+			range: utils.list-of(nspaces(), auto, spaces()),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: mx,
 			property: (margin-left, margin-right),
-			range: utils.list-of(nrange(), auto, utils.limit(range(), null, 128)),
+			range: utils.list-of(nspaces(), auto, spaces()),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: my,
 			property: (margin-top, margin-bottom),
-			range: utils.list-of(nrange(), auto, utils.limit(range(), null, 128)),
+			range: utils.list-of(nspaces(), auto, spaces()),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: mt,
 			property: (margin-top),
-			range: utils.list-of(nrange(), auto, utils.limit(range(), null, 128)),
+			range: utils.list-of(nspaces(), auto, spaces()),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: mr,
 			property: (margin-right),
-			range: utils.list-of(nrange(), auto, utils.limit(range(), null, 128)),
+			range: utils.list-of(nspaces(), auto, spaces()),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: mb,
 			property: (margin-bottom),
-			range: utils.list-of(nrange(), auto, utils.limit(range(), null, 128)),
+			range: utils.list-of(nspaces(), auto, spaces()),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: ml,
 			property: (margin-left),
-			range: utils.list-of(nrange(), auto, utils.limit(range(), null, 128)),
+			range: utils.list-of(nspaces(), auto, spaces()),
 			resolver: rem,
 		));
 	}

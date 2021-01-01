@@ -10,49 +10,49 @@
 			variant: $v,
 			shorthand: border,
 			property: (border-width),
-			range: utils.limit(range(), null, 8),
+			range: border-widths(),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: border-x,
 			property: (border-left-width, border-right-width),
-			range: utils.limit(range(), null, 8),
+			range: border-widths(),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: border-y,
 			property: (border-top-width, border-bottom-width),
-			range: utils.limit(range(), null, 8),
+			range: border-widths(),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: border-top,
 			property: (border-top-width),
-			range: utils.limit(range(), null, 8),
+			range: border-widths(),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: border-right,
 			property: (border-right-width),
-			range: utils.limit(range(), null, 8),
+			range: border-widths(),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: border-bottom,
 			property: (border-bottom-width),
-			range: utils.limit(range(), null, 8),
+			range: border-widths(),
 			resolver: rem,
 		));
 		@include generate-from-range((
 			variant: $v,
 			shorthand: border-left,
 			property: (border-left-width),
-			range: utils.limit(range(), null, 8),
+			range: border-widths(),
 			resolver: rem,
 		));
 	}
