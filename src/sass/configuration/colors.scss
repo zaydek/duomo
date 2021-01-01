@@ -313,20 +313,3 @@ $subset-color-map: (
 	pink-800: map.get($color-map, pink-800),
 	pink-900: map.get($color-map, pink-900),
 ) !default;
-
-$skeleton-color-map: (
-	transparent: map.get($color-map, transparent),
-	current: map.get($color-map, current),
-	black: map.get($color-map, black),
-	white: map.get($color-map, white),
-	gray-50: map.get($color-map, cool-gray-50),
-	gray-100: map.get($color-map, cool-gray-100),
-	gray-200: map.get($color-map, cool-gray-200),
-	gray-300: map.get($color-map, cool-gray-300),
-	gray-400: map.get($color-map, cool-gray-400),
-	gray-500: map.get($color-map, cool-gray-500),
-	gray-600: map.get($color-map, cool-gray-600),
-	gray-700: map.get($color-map, cool-gray-700),
-	gray-800: map.get($color-map, cool-gray-800),
-	gray-900: map.get($color-map, cool-gray-900),
-) !default;

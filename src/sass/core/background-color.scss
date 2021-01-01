@@ -7,18 +7,18 @@
 // prettier-ignore
 @mixin background-color($variants...) {
 	@include variants($variants...) using ($v) {
-		@if utils.matches($v, core) {
-			.bg-placeholder {
-				--bg-opacity: 1;
-				background-color: hsla(var(--placeholder-bg-default), var(--bg-opacity));
-			}
-		}
+		// TODO
+		// @if utils.matches($v, core) {
+		// 	.bg-placeholder {
+		// 		--bg-opacity: 1;
+		// 		background-color: hsla(var(--placeholder-bg-default), var(--bg-opacity));
+		// 	}
+		// }
 		@include generate-from-colors((
 			variant: $v,
 			shorthand: bg,
 			property: (background-color),
-			map: if(configuration.$skeleton, configuration.$skeleton-color-map,
-				configuration.$subset-color-map),
+			map: if(configuration.$skeleton, null, configuration.$subset-color-map),
 			percent-range: percent-range(),
 		));
 	}

@@ -37,6 +37,9 @@ $-align-self-opts: (
 	align-self-baseline: baseline,
 );
 
+// NOTE: Stacks do not use a compositional API because
+// `justify-self` and `align-self` need to apply to non-stack elements.
+
 // SwiftUI-style auto-centering is hard to faithfully simulate on the web.
 // Several conditions must be met:
 //
