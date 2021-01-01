@@ -1,13 +1,13 @@
 @use "sass:color";
 @use "sass:map";
 
-@use "variants" as *;
+@use "../mixins";
 
 @use "../configuration";
 
 // prettier-ignore
 @mixin generate-from-colors($info-map) {
-	$v:             map.get($info-map, variant);
+	$variants:      map.get($info-map, variants);
 	$shorthand:     map.get($info-map, shorthand);
 	$property:      map.get($info-map, property);
 	$map:           map.get($info-map, map);
@@ -15,18 +15,23 @@
 
 	@if $map {
 		@each $mk, $mv in $map {
-			#{variant(#{$shorthand}-#{$mk}, $v)} {
-				@if $mk == transparent or $mk == current {
-					#{$property}: #{$mv};
-				} @else {
-					--#{$shorthand}-opacity: 1;
-					#{$property}: hsla(var(--#{$mk}), var(--#{$shorthand}-opacity));
+			.#{$shorthand}-#{$mk} {
+				@include mixin.variants($variants) {
+					@if $mk == transparent or $mk == current {
+						#{$property}: #{$mv};
+					} @else {
+						--#{$shorthand}-opacity: 1;
+						#{$property}: hsla(var(--#{$mk}), var(--#{$shorthand}-opacity));
+					}
 				}
 			}
 		}
+
 		@each $mv in $percent-range {
-			#{variant(#{$shorthand}-opacity-#{$mv * 100}, $v)} {
-				--#{$shorthand}-opacity: #{$mv};
+			.#{$shorthand}-opacity-#{$mv * 100} {
+				@include mixin.variants($variants) {
+					--#{$shorthand}-opacity: #{$mv};
+				}
 			}
 		}
 	}

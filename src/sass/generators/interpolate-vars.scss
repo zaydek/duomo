@@ -1,6 +1,7 @@
 @use "sass:map";
 
-@mixin generate-vars($maps...) {
+// Interpolates a map as CSS variables at the current selector.
+@mixin interpolate-vars($maps...) {
 	@each $map in $maps {
 		@each $mk, $mv in $map {
 			--#{"" + $mk}: #{$mv};

@@ -108,11 +108,13 @@
 	$non-responsive: utils.take($variants, responsive);
 	@if list.length($non-responsive) > 0 {
 		@if configuration.$env == development {
-			@include prototype-dev(utils.list-of(core, $non-responsive)...) {
+			// utils.list-of(core, $non-responsive)
+			@include prototype-dev($non-responsive...) {
 				@content;
 			}
 		} @else if configuration.$env == production {
-			@include prototype-prod(utils.list-of(core, $non-responsive)...) {
+			// utils.list-of(core, $non-responsive)
+			@include prototype-prod($non-responsive...) {
 				@content;
 			}
 		}

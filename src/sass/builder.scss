@@ -118,8 +118,10 @@
 
 @at-root {
 	@if not configuration.$headless {
-		/*! Duomo CSS | MIT License | https://github.com/zaydek/duomo */
-		@include headers;
-		@include duomo;
+		// /*! Duomo CSS | MIT License | https://github.com/zaydek/duomo */
+		// @include headers;
+		// @include duomo;
+
+		@include width(core, hover);
 	}
 }

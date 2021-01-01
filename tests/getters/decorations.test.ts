@@ -5,7 +5,7 @@ declare function sass(data: string): string
 
 test("integration", () => {
 	const css = sass(`
-@use "src/sass/getters" as *;
+@use "index" as * with ($headless: true);
 
 .clsx {
 	@each $each in decoration-vars() {

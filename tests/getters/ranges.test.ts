@@ -7,7 +7,7 @@ test("integration", () => {
 	const css = sass(`
 @use "sass:list";
 
-@use "src/sass/getters" as *;
+@use "index" as * with ($headless: true);
 
 $start: 1;
 $end: -1;

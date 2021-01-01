@@ -5,7 +5,7 @@ declare function sass(data: string): string
 
 test("integration", () => {
 	const css = sass(`
-@use "src/sass/generators/generate-from-range" as *;
+@use "index" as * with ($headless: true);
 
 @at-root {
 	@include generate-from-range((

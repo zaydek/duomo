@@ -5,7 +5,7 @@ declare function sass(data: string): string
 
 test("integration", () => {
 	const css = sass(`
-@use "src/sass/generators/generate-from-colors" as *;
+@use "index" as * with ($headless: true);
 
 $color-map: (
 	transparent: transparent,

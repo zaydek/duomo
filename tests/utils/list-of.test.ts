@@ -5,13 +5,11 @@ declare function sass(data: string): string
 
 test("integration", () => {
 	const css = sass(`
-@use "src/sass/utils/list-of" as *;
+@use "index" as * with ($headless: true);
 
-@at-root {
-	@each $rv in list-of((0, 1, 2, 4), (8, 16, 32, 64)) {
-		.w-#{$rv} {
-			width: $rv + px;
-		}
+@each $rv in list-of((0, 1, 2, 4), (8, 16, 32, 64)) {
+	.w-#{$rv} {
+		width: $rv + px;
 	}
 }
 `)

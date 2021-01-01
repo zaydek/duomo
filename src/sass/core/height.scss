@@ -13,7 +13,7 @@
 			variant: $v,
 			shorthand: h,
 			property: (height),
-			range: utils.list-of(auto, range(), min-content, max-content, 100%, 100vh),
+			range: utils.list-of(auto, sizes(), min-content, max-content, 100%, 100vh),
 			resolver: rem,
 		));
 	}

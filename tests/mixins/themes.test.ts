@@ -5,7 +5,7 @@ declare function sass(data: string): string
 
 test("integration", () => {
 	const css = sass(`
-@use "src/sass/mixins" as *;
+@use "index" as * with ($headless: true);
 
 $light: (
 	app-color: color(black),

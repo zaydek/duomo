@@ -5,23 +5,21 @@ declare function sass(data: string): string
 
 test("integration", () => {
 	const css = sass(`
-@use "src/sass/generators/generate-vars" as *;
+@use "index" as * with ($headless: true);
 
-@at-root {
-	:root {
-		@include generate-vars(
-			(
-				a: x,
-				b: y,
-				c: z,
-			),
-			(
-				d: x,
-				e: y,
-				f: z,
-			),
-		);
-	}
+:root {
+	@include generate-vars(
+		(
+			a: x,
+			b: y,
+			c: z,
+		),
+		(
+			d: x,
+			e: y,
+			f: z,
+		),
+	);
 }
 `)
 	// prettier-ignore

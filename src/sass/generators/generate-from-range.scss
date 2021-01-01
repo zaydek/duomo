@@ -2,9 +2,9 @@
 @use "sass:map";
 @use "sass:meta";
 
-@use "../getters" as *;
-@use "resolvers" as *;
-@use "variants" as *;
+@use "../getters" as get;
+@use "../mixins" as mx;
+@use "resolvers" as rs;
 
 // Ex:
 //
@@ -23,9 +23,9 @@
 
 // prettier-ignore
 @mixin generate-from-range($info-map) {
-	$v:         map.get($info-map, variant);
+	$variant:   map.get($info-map, variant);
 	$shorthand: map.get($info-map, shorthand);
-	$property:  map.get($info-map, property);
+	$props:     map.get($info-map, props);
 	$range:     map.get($info-map, range);
 	$resolver:  map.get($info-map, resolver);
 
@@ -33,9 +33,11 @@
 	$as-percent: percent-heuristic($range);
 
 	@each $rv in $range {
-		#{variant(#{n($rv)}#{$shorthand}-#{desc(abs($rv), $as-percent)}, $v)} {
-			@each $prop in $property {
-				#{$prop}: resolve($rv, $resolver);
+		.#{get.n($rv)}#{$shorthand}-#{get.desc(get.abs($rv), $as-percent)} {
+			@include mx.variants($variant) {
+				@each $prop in $props {
+					#{$prop}: rs.resolve($rv, $resolver);
+				}
 			}
 		}
 	}

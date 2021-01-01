@@ -5,7 +5,7 @@ declare function sass(data: string): string
 
 test("color-vars($alpha: null, (subset: true))", () => {
 	const css = sass(`
-@use "src/sass/getters" as *;
+@use "index" as * with ($headless: true);
 
 .clsx {
 	@each $each in color-vars(null, (subset: true)) {
