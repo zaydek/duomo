@@ -7,9 +7,9 @@ test("bar: negative case", () => {
 	const css = sass(`
 @use "sass:math";
 
-@use "src/sass/utils/limit" as *;
+@use "src/sass/utils/limiters" as *;
 
-@each $rv in limit((0, -1, -2, -4), -2, null) {
+@each $rv in bar((0, -1, -2, -4), -2) {
 	.-w-#{math.abs($rv)} {
 		width: $rv + px;
 	}
@@ -31,9 +31,9 @@ test("bar: positive case", () => {
 	const css = sass(`
 @use "sass:math";
 
-@use "src/sass/utils/limit" as *;
+@use "src/sass/utils/limiters" as *;
 
-@each $rv in limit((0, 1, 2, 4), 2, null) {
+@each $rv in bar((0, 1, 2, 4), 2) {
 	.w-#{math.abs($rv)} {
 		width: $rv + px;
 	}
@@ -55,9 +55,9 @@ test("cap: negative case", () => {
 	const css = sass(`
 @use "sass:math";
 
-@use "src/sass/utils/limit" as *;
+@use "src/sass/utils/limiters" as *;
 
-@each $rv in limit((0, -1, -2, -4), null, -2) {
+@each $rv in cap((0, -1, -2, -4), -2) {
 	.-w-#{math.abs($rv)} {
 		width: $rv + px;
 	}
@@ -81,9 +81,9 @@ test("cap: negative case", () => {
 
 test("cap: positive case", () => {
 	const css = sass(`
-@use "src/sass/utils/limit" as *;
+@use "src/sass/utils/limiters" as *;
 
-@each $rv in limit((0, 1, 2, 4), null, 2) {
+@each $rv in cap((0, 1, 2, 4), 2) {
 	.w-#{$rv} {
 		width: $rv + px;
 	}

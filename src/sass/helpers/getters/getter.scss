@@ -1,7 +1,5 @@
 @use "sass:map";
 
-@use "../../configuration";
-
 @function getter($getter-name, $map, $key) {
 	$got: map.get($map, $key);
 	@if not $got {

@@ -1,64 +1,55 @@
 @use "sass:list";
 @use "sass:map";
 
-@use "one" as *;
+@use "singular-var" as *;
 
 @use "../../configuration";
 
-@function weights() {
+@function weight-vars() {
 	$list: ();
 	@each $mk, $mv in configuration.$weight-map {
-		$list: list.append($list, weight($mk));
+		$list: list.append($list, weight-var($mk));
 	}
 	@return $list;
 }
 
-@function fonts() {
+@function font-vars() {
 	$list: ();
 	@each $mk, $mv in configuration.$font-map {
-		$list: list.append($list, font($mk));
+		$list: list.append($list, font-var($mk));
 	}
 	@return $list;
 }
 
-@function decorations() {
+@function decoration-vars() {
 	$list: ();
 	@each $mk, $mv in configuration.$decoration-map {
-		$list: list.append($list, decoration($mk));
+		$list: list.append($list, decoration-var($mk));
 	}
 	@return $list;
 }
 
-@function colors($alpha: null, $opts) {
+@function color-vars($alpha: null, $opts) {
 	$subset: map.get($opts, subset);
 	$list: ();
 	@each $mk, $mv in if($subset, configuration.$subset-color-map, configuration.$color-map) {
-		$list: list.append($list, color($mk, $alpha));
+		$list: list.append($list, color-var($mk, $alpha));
 	}
 	@return $list;
 }
 
-@function shadows() {
+@function shadow-vars() {
 	$list: ();
 	@each $mk, $mv in configuration.$shadow-map {
-		$list: list.append($list, shadow($mk));
+		$list: list.append($list, shadow-var($mk));
 	}
 	@return $list;
 }
 
-@function timings() {
+@function timing-vars() {
 	$list: ();
 	@each $mk, $mv in configuration.$timing-map {
-		$list: list.append($list, timing($mk));
+		$list: list.append($list, timing-var($mk));
 	}
 	@return $list;
-}
-
-// NOTE: Returns a map -- not a list.
-@function breakpoints() {
-	$map: ();
-	@each $mk, $mv in configuration.$breakpoint-map {
-		$map: map.set($map, $mk, breakpoint($mk));
-	}
-	@return $map;
 }

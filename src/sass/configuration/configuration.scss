@@ -16,23 +16,50 @@ $skeleton: false !default;
 //
 $delimiter: ":" !default;
 
+$limit-nspace: -128 !default;
+$limit-space: 128 !default;
+$limit-size: 640 !default;
+$limit-border-width: 8 !default;
+
 // prettier-ignore
 $nrange: (
-	     // <- Decrement by 2
-	 -1, // (Adds -1)
-	 -2,
-	 -4,
-	 -6,
-	 -8,
-	-10,
-	-12,
-	-14,
-	-16,
-	-18,
-	-20, // <- Decrement by 4
-	-24,
-	-28,
-	-32,
+	      // <- Decrement by 2
+	  -1, // (Adds 1)
+	  -2,
+	  -4,
+	  -6,
+	  -8,
+	 -10,
+	 -12,
+	 -14,
+	 -16,
+	 -18,
+	 -20, // <- Decrement by 4
+	 -24,
+	 -28,
+	 -32,
+	 -36,
+	 -40, // <- Decrement by 8
+	 -48,
+	 -56,
+	 -64,
+	 -72,
+	 -80, // <- Decrement by 16
+	 -96,
+	-112,
+	-128,
+	-144,
+	-160, // <- Decrement by 32
+	-192,
+	-224,
+	-256,
+	-288,
+	-320, // <- Decrement by 64
+	-384,
+	-448,
+	-512,
+	-576,
+	-640,
 ) !default;
 
 // prettier-ignore

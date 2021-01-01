@@ -1,0 +1,32 @@
+@use "../../configuration";
+@use "../../utils";
+
+@function -nrange($limit: null) {
+	@if $limit {
+		@return utils.cap(configuration.$nrange, $limit);
+	}
+	@return configuration.$nrange;
+}
+
+@function -range($limit: null) {
+	@if $limit {
+		@return utils.cap(configuration.$range, $limit);
+	}
+	@return configuration.$range;
+}
+
+@function nspaces() {
+	@return -nrange(configuration.$limit-nspace);
+}
+
+@function spaces() {
+	@return -range(configuration.$limit-space);
+}
+
+@function sizes() {
+	@return -range(configuration.$limit-size);
+}
+
+@function border-widths() {
+	@return -range(configuration.$limit-border-width);
+}
