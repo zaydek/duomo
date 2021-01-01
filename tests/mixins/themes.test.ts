@@ -6,6 +6,7 @@ declare function sass(data: string): string
 test("integration", () => {
 	const css = sass(`
 @use "src/sass/generators" as *;
+@use "src/sass/getters" as *;
 @use "src/sass/mixins/themes" as *;
 
 $light: (
