@@ -1,17 +1,7 @@
 @mixin data-stagger {
-	[data-stagger-id="1"] {
-		width: var(--stagger-id-1-default);
-	}
-	[data-stagger-id="2"] {
-		width: var(--stagger-id-2-default);
-	}
-	[data-stagger-id="3"] {
-		width: var(--stagger-id-3-default);
-	}
-	[data-stagger-id="4"] {
-		width: var(--stagger-id-4-default);
-	}
-	[data-stagger-id="last"] {
-		width: var(--stagger-last-default);
+	@each $rv in (1, 2, 3, 4, last) {
+		[data-stagger="#{$rv}"] {
+			width: var(--default-stagger-#{$rv});
+		}
 	}
 }

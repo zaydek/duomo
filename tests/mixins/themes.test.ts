@@ -33,8 +33,8 @@ $dark: (
 :root {
 	--app-color: hsl(0deg, 0%, 0%);
 	--app-bg: hsl(0deg, 0%, 100%);
-	--theme-duration-default: 700ms;
-	--theme-timing-default: var(--ease-out);
+	--default-theme-transition-duration: 700ms;
+	--default-theme-transition-timing: var(--ease-out);
 }
 
 [data-theme=dark] {

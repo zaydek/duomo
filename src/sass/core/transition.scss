@@ -10,8 +10,8 @@ $-range: (0, 100, 200, 250, 300, 400, 500, 600, 700, 750, 800, 900, 1000);
 @mixin transition($variants...) {
 	@include variants($variants...) using ($v) {
 		:not([data-theme-effect]) #{variant(transition, $v)} {
-			--transition-duration: var(--transition-duration-default);
-			--transition-timing: var(--transition-timing-default);
+			--transition-duration: var(--default-transition-duration);
+			--transition-timing: var(--default-transition-timing);
 			transition: var(--transition-duration) var(--transition-timing);
 			transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
 		}

@@ -68,10 +68,10 @@ $-legend: (
 //
 // prettier-ignore
 @mixin themes($options) {
-	$light:          map.get($options, light);
-	$dark:           map.get($options, dark);
-	$theme-duration: map.get($options, duration);
-	$theme-timing:   map.get($options, timing);
+	$light:    map.get($options, light);
+	$dark:     map.get($options, dark);
+	$duration: map.get($options, duration);
+	$timing:   map.get($options, timing);
 
 	$theme-transition: var(--theme-transition);
 
@@ -82,8 +82,8 @@ $-legend: (
 				--#{map.get($info, var)}: #{map.get($info, value)};
 			}
 		}
-		--theme-duration-default: #{$theme-duration};
-		--theme-timing-default: #{$theme-timing};
+		--default-theme-transition-duration: #{$duration};
+		--default-theme-transition-timing: #{$timing};
 	}
 
 	$dark-ast: -parse-ast($dark);

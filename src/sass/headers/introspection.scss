@@ -8,6 +8,15 @@
 
 @mixin introspection {
 	:root {
+		@if not configuration.$layout {
+			// // NOTE: Cannot include `$weight-map` because of `var(--black)` collision.
+			// @include generate-vars(configuration.$weight-map);
+			@include generate-vars(configuration.$decoration-map);
+			@include generate-vars(configuration.$color-map);
+			@include generate-vars(configuration.$shadow-map);
+			@include generate-vars(configuration.$timing-map);
+		}
+
 		--sans: "";
 		--serif: "";
 		--mono: "";
@@ -16,43 +25,37 @@
 		--ui-serif: #{font(serif)};
 		--ui-mono: #{font(mono)};
 
-		// // NOTE: Cannot include `$weight-map` because of `var(--black)` collision.
-		// @include generate-vars(configuration.$weight-map);
-		@include generate-vars(configuration.$decoration-map);
-		@include generate-vars(configuration.$color-map);
-		@include generate-vars(configuration.$shadow-map);
-		@include generate-vars(configuration.$timing-map);
-
-		--placeholder-color-default: var(--cool-gray-400);
-		--placeholder-bg-default: var(--cool-gray-200);
-		--border-color-default: var(--cool-gray-200);
-		--transition-duration-default: 300ms;
-		--transition-timing-default: var(--ease-out);
+		// TODO: Add support for `-1`, `-2`, `-3`, and `-4`;
+		// matches stagger API.
+		--default-placeholder-color: color(cool-gray-400);
+		--default-placeholder-bg: color(cool-gray-200);
+		--default-border-color: color(cool-gray-200);
+		--default-transition-duration: 250ms;
+		--default-transition-timing: timing(ease-out);
+		--default-theme-transition-duration: 500ms;
+		--default-theme-transition-timing: timing(ease-out);
 
 		// prettier-ignore
 		--theme-transition:
-			background-color var(--theme-transition-duration-default) var(--theme-transition-timing-default),
-			border-color     var(--theme-transition-duration-default) var(--theme-transition-timing-default),
-			box-shadow       var(--theme-transition-duration-default) var(--theme-transition-timing-default),
-			color            var(--theme-transition-duration-default) var(--theme-transition-timing-default),
-			fill             var(--theme-transition-duration-default) var(--theme-transition-timing-default),
-			opacity          var(--theme-transition-duration-default) var(--theme-transition-timing-default),
-			stroke           var(--theme-transition-duration-default) var(--theme-transition-timing-default);
+			background-color var(--default-theme-transition-duration) var(--default-theme-transition-timing),
+			border-color     var(--default-theme-transition-duration) var(--default-theme-transition-timing),
+			box-shadow       var(--default-theme-transition-duration) var(--default-theme-transition-timing),
+			color            var(--default-theme-transition-duration) var(--default-theme-transition-timing),
+			fill             var(--default-theme-transition-duration) var(--default-theme-transition-timing),
+			opacity          var(--default-theme-transition-duration) var(--default-theme-transition-timing),
+			stroke           var(--default-theme-transition-duration) var(--default-theme-transition-timing);
 
-		--theme-transition-duration-default: 600ms;
-		--theme-transition-timing-default: var(--ease-out);
-
-		// [data-stagger-id]
-		--stagger-id-1-default: #{math.percentage(4 / 8)};
-		--stagger-id-2-default: #{math.percentage(6 / 8)};
-		--stagger-id-3-default: #{math.percentage(7 / 8)};
-		--stagger-id-4-default: #{math.percentage(5 / 8)};
-		--stagger-last-default: #{math.percentage(4 / 8)};
+		// [data-stagger]
+		--default-stagger-1: #{math.percentage(4 / 8)};
+		--default-stagger-2: #{math.percentage(6 / 8)};
+		--default-stagger-3: #{math.percentage(7 / 8)};
+		--default-stagger-4: #{math.percentage(5 / 8)};
+		--default-stagger-last: #{math.percentage(4 / 8)};
 
 		// [data-debug]
-		--debug-outline: 2px solid hsla(210, 100%, 50%, 0.25);
-		--debug-empty-spacer-outline: 1px dashed hsla(210, 100%, 50%, 0.25);
-		--debug-outline-offset: -2px;
-		--debug-spacer-background-color: hsla(210, 100%, 50%, 0.25);
+		--default-debug-outline: 2px solid hsla(210, 100%, 50%, 0.25);
+		--default-debug-empty-spacer-outline: 1px dashed hsla(210, 100%, 50%, 0.25);
+		--default-debug-outline-offset: -2px;
+		--default-debug-spacer-background-color: hsla(210, 100%, 50%, 0.25);
 	}
 }

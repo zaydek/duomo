@@ -6,6 +6,6 @@
 
 @mixin group($variants...) {
 	.group {
-		/*!*/
+		/*! NOTE: Do not omit empty ruleset. */
 	}
 }

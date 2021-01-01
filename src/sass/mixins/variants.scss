@@ -1,54 +1,15 @@
-// @use "sass" as * with (
-// 	$env: development,
-// 	$macro-variants: (
-// 		hover, focus, touch,
-// 		group-hover, group-focus, group-touch,
-// 	),
-// );
-
 @use "sass:list";
 @use "sass:map";
 @use "sass:meta";
 @use "sass:string";
 
-$env: development;
+@use "../getters" as *;
 
-@function delimit($str-selector) {
-	@return $str-selector + "\\:";
-}
-@function delimiter() {
-	@return "\\:";
-}
+@use "../configuration";
+@use "../utils";
 
-// Ex:
-//
-// take((0, 1, 2, 4), 4)             -> (0, 1, 2)
-// take((a: 0, b: 1, c: 2, d: 4), d) -> (a: 0, b: 1, c: 2)
-//
-@function take($collection, $item) {
-	@if meta.type-of($collection) != list and meta.type-of($collection) != arglist and meta.type-of($collection) != map {
-		@error "take: `$collection` is not a collection-type; " +
-			"meta.type-of($collection)=#{meta.type-of($collection)}";
-	}
-
-	$ret: ();
-	@if meta.type-of($collection) == list or meta.type-of($collection) == arglist {
-		@each $each in $collection {
-			@if $each != $item {
-				$ret: list.append($ret, $each);
-			}
-		}
-	} @else if meta.type-of($collection) == map {
-		@each $mk, $mv in $collection {
-			@if $mk != $item {
-				$ret: map.set($ret, $mk, $mv);
-			}
-		}
-	}
-	@return $ret;
-}
-
-@function replace($str, $s1, $s2) {
+// TODO: Extract to `utils`? Can Sass do this natively?
+@function str-replace($str, $s1, $s2) {
 	$n: string.index($str, $s1);
 	@return string.slice($str, 1, $n - 1) + $s2 + string.slice($str, $n + string.length($s1));
 }
@@ -60,7 +21,7 @@ $env: development;
 
 // Ex: ".sm\\: .class" -> ".sm\\:class"
 @function conjoin($str-selector) {
-	@return replace($str-selector, "#{delimiter()} .", delimiter());
+	@return str-replace($str-selector, "#{delimiter()} .", delimiter());
 }
 
 @function core($str-selector) {
@@ -144,14 +105,14 @@ $env: development;
 // TODO: Needs to support `:not([data-theme-effect]) .transition` edge case.
 // Maybe we take the nth component of the selector and use that.
 @mixin variants($variants...) {
-	$taken: take($variants, responsive);
-	@if list.length($taken) > 0 {
-		@if $env == development {
-			@include prototype-dev($taken...) {
+	$non-responsive: utils.take($variants, responsive);
+	@if list.length($non-responsive) > 0 {
+		@if configuration.$env == development {
+			@include prototype-dev(utils.list-of(core, $non-responsive)...) {
 				@content;
 			}
-		} @else if $env == production {
-			@include prototype-prod($taken...) {
+		} @else if configuration.$env == production {
+			@include prototype-prod(utils.list-of(core, $non-responsive)...) {
 				@content;
 			}
 		}
@@ -160,22 +121,6 @@ $env: development;
 		@at-root {
 			#{conjoin("" + &)} {
 				@content;
-			}
-		}
-	}
-}
-
-.bg-red-500 {
-	@include variants(core, hover, focus, touch, group-hover, group-focus, group-touch) {
-		background-color: hsl(var(--red-500));
-	}
-}
-
-@media (min-width: 640px) {
-	.#{delimit(sm)} {
-		.bg-red-500 {
-			@include variants(responsive) {
-				background-color: var(--red-500);
 			}
 		}
 	}
