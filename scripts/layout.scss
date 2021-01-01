@@ -1,4 +1,4 @@
 @use "../src/sass" as * with (
 	$env: development,
-	$skeleton: true,
+	$layout: true,
 );

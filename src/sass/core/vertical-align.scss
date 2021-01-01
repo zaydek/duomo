@@ -1,7 +1,16 @@
 @use "../generators" as *;
 @use "../getters" as *;
 
-$-opts: (top, baseline, middle, bottom);
+@use "../configuration";
+@use "../utils";
+
+// prettier-ignore
+$-opts: (
+	top,
+	baseline,
+	middle,
+	bottom,
+);
 
 @mixin vertical-align($variants...) {
 	@include variants($variants...) using ($v) {

@@ -1,7 +1,14 @@
 @use "../generators" as *;
 @use "../getters" as *;
 
-$-opts: (auto, none);
+@use "../configuration";
+@use "../utils";
+
+// prettier-ignore
+$-opts: (
+	auto,
+	none,
+);
 
 @mixin pointer-events($variants...) {
 	@include variants($variants...) using ($v) {

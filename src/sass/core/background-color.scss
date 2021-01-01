@@ -18,7 +18,7 @@
 			variant: $v,
 			shorthand: bg,
 			property: (background-color),
-			map: if(configuration.$skeleton, null, configuration.$subset-color-map),
+			map: if(configuration.$layout, null, configuration.$subset-color-map),
 			percent-range: percent-range(),
 		));
 	}

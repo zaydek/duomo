@@ -4,6 +4,7 @@
 @use "../getters" as *;
 
 @use "../configuration";
+@use "../utils";
 
 @function -vendored-shadow-keys() {
 	$map: ();
@@ -14,7 +15,7 @@
 }
 
 @mixin box-shadow($variants...) {
-	@if not configuration.$skeleton {
+	@if not configuration.$layout {
 		@include variants($variants...) using ($v) {
 			#{variant(shadow, $v)} {
 				@each $mk, $mv in configuration.$shadow-map {

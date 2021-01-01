@@ -3,7 +3,7 @@
 
 // prettier-ignore
 $macro-variants: if(
-	configuration.$skeleton,
+	configuration.$layout,
 	null,
 	(hover, focus, group-hover, group-focus),
 ) !default;

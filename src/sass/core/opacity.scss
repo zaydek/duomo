@@ -1,8 +1,8 @@
 @use "../generators" as *;
 @use "../getters" as *;
 
-// TODO
-// @use "../configuration";
+@use "../configuration";
+@use "../utils";
 
 // prettier-ignore
 @mixin opacity($variants...) {
@@ -11,8 +11,7 @@
 			variant: $v,
 			shorthand: opacity,
 			property: (opacity),
-			// range: if(configuration.$skeleton, null, percent-range()),
-			range: percent-range(),
+			range: if(configuration.$layout, null, percent-range()),
 			resolver: none,
 		));
 	}

@@ -1,6 +1,9 @@
 @use "../generators" as *;
 @use "../getters" as *;
 
+@use "../configuration";
+@use "../utils";
+
 $-range: (100, 200, 300, 400, 500, 600, 700, 800, 900);
 
 // TODO: Change to `generate-from-range` API?

@@ -2,6 +2,7 @@
 @use "../getters" as *;
 
 @use "../configuration";
+@use "../utils";
 
 // prettier-ignore
 @mixin color($variants...) {
@@ -10,7 +11,7 @@
 			variant: $v,
 			shorthand: color,
 			property: (color),
-			map: if(configuration.$skeleton, null, configuration.$subset-color-map),
+			map: if(configuration.$layout, null, configuration.$subset-color-map),
 			percent-range: percent-range(),
 		));
 	}
