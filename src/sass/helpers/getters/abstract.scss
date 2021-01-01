@@ -68,22 +68,3 @@
 	$rv: $any;
 	@return esc.escape($rv);
 }
-
-// Ex: nrange() -> (-1, -2, -4, -8, ...)
-@function nrange() {
-	@return configuration.$nrange;
-}
-
-// Ex: range() -> (0, 1, 2, 4, 8, ...)
-@function range() {
-	@return configuration.$range;
-}
-
-// Ex: percent-range() -> (0, 0.05, ...)
-//
-// TODO: `percent-range` should probably talk to
-// configuration and use a resolver name as a
-// parameter to resolve units.
-@function percent-range() {
-	@return configuration.$percent-range;
-}
