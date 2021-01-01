@@ -3,7 +3,7 @@
 
 @use "singular-var" as *;
 
-@use "../../configuration";
+@use "../configuration";
 
 @function weight-vars() {
 	$list: ();

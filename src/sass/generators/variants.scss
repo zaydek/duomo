@@ -1,9 +1,6 @@
 @use "sass:list";
 @use "sass:meta";
 
-@use "getters" as *;
-@use "resolvers" as *;
-
 @use "../configuration";
 @use "../utils";
 
@@ -31,10 +28,6 @@
 @function responsive($selector) {
 	@return "#{&}#{$selector}";
 }
-
-// @if configuration.$env != development and configuration.$env != production {
-// 	@error "variants: `$env` must be `development` or `production`; $env=#{$env}";
-// }
 
 // Ex:
 //

@@ -7,7 +7,7 @@ test("integration", () => {
 	const css = sass(`
 @use "sass:list";
 
-@use "src/sass/helpers/getters" as *;
+@use "src/sass/getters" as *;
 
 .clsx {
 	nspace-start: list.nth(nspaces(), 1);

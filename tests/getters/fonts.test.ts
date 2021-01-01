@@ -5,19 +5,20 @@ declare function sass(data: string): string
 
 test("integration", () => {
 	const css = sass(`
-@use "src/sass/helpers/getters" as *;
+@use "src/sass/getters" as *;
 
 .clsx {
-	@each $each in decoration-vars() {
-		text-decoration: $each;
+	@each $each in font-vars() {
+		font-family: $each;
 	}
 }
 `)
 	// prettier-ignore
 	expect(css).toBe(`
 .clsx {
-	text-decoration: var(--strikethrough);
-	text-decoration: var(--underline);
+	font-family: var(--sans);
+	font-family: var(--serif);
+	font-family: var(--mono);
 }
 `.trim())
 })

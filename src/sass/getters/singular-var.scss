@@ -2,8 +2,8 @@
 
 @use "getter" as *;
 
-@use "../../configuration";
-@use "../../utils";
+@use "../configuration";
+@use "../utils";
 
 @function weight-var($key) {
 	$_: getter("weight-var", configuration.$weight-map, $key);

@@ -5,7 +5,7 @@ declare function sass(data: string): string
 
 test("integration", () => {
 	const css = sass(`
-@use "src/sass/helpers/resolvers" as *;
+@use "src/sass/generators/resolvers" as *;
 
 .m-4 {
 	margin: resolve(4, none);

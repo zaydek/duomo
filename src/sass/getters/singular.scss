@@ -2,8 +2,8 @@
 
 @use "getter" as *;
 
-@use "../../configuration";
-@use "../../utils";
+@use "../configuration";
+@use "../utils";
 
 @function weight($key) {
 	@return getter("weight", configuration.$weight-map, $key);

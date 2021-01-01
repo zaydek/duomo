@@ -2,9 +2,9 @@
 @use "sass:math";
 @use "sass:meta";
 
-@use "../../configuration";
-@use "../escapers" as esc;
-@use "../resolvers";
+@use "../configuration";
+@use "../generators/escapers" as esc;
+@use "../generators/resolvers";
 
 // Ex:
 //

@@ -5,7 +5,7 @@ declare function sass(data: string): string
 
 test("integration", () => {
 	const css = sass(`
-@use "src/sass/helpers" as *;
+@use "src/sass/generators" as *;
 @use "src/sass/mixins/themes" as *;
 
 $light: (

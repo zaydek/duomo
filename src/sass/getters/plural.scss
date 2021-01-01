@@ -3,7 +3,7 @@
 
 @use "singular" as *;
 
-@use "../../configuration";
+@use "../configuration";
 
 @function weights() {
 	$list: ();

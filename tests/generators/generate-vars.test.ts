@@ -5,7 +5,7 @@ declare function sass(data: string): string
 
 test("integration", () => {
 	const css = sass(`
-@use "src/sass/helpers/generate-vars" as *;
+@use "src/sass/generators/generate-vars" as *;
 
 @at-root {
 	:root {

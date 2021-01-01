@@ -3,7 +3,7 @@
 @use "../utils";
 
 @function rem($any) {
-	@if meta.type-of($any) != "number" {
+	@if meta.type-of($any) != number {
 		@return $any;
 	}
 	$num: $any;
@@ -14,7 +14,7 @@
 }
 
 @function em($any) {
-	@if meta.type-of($any) != "number" {
+	@if meta.type-of($any) != number {
 		@return $any;
 	}
 	$num: $any;
@@ -25,7 +25,7 @@
 }
 
 @function px($any) {
-	@if meta.type-of($any) != "number" {
+	@if meta.type-of($any) != number {
 		@return $any;
 	}
 	$num: $any;
@@ -36,7 +36,7 @@
 }
 
 @function passthrough($any) {
-	$ok: meta.type-of($any) != "number" or utils.has-suffix($any, "%") or utils.has-suffix($any, "vw") or
+	$ok: meta.type-of($any) != number or utils.has-suffix($any, "%") or utils.has-suffix($any, "vw") or
 		utils.has-suffix($any, "vh") or $any == 9999px;
 	@return $ok;
 }
