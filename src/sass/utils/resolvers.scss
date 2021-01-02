@@ -1,6 +1,6 @@
 @use "sass:meta";
 
-@use "has-suffix" as str;
+@use "str-ends-with" as str;
 
 @function rem($any) {
 	@if meta.type-of($any) != number {
@@ -36,8 +36,8 @@
 }
 
 @function passthrough($any) {
-	$ok: meta.type-of($any) != number or str.has-suffix($any, "%") or str.has-suffix($any, "vw") or
-		str.has-suffix($any, "vh") or $any == 9999px;
+	$ok: meta.type-of($any) != number or str.str-ends-with($any, "%") or str.str-ends-with($any, "vw") or
+		str.str-ends-with($any, "vh") or $any == 9999px;
 	@return $ok;
 }
 

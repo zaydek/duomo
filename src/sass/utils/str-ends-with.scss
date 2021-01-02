@@ -2,10 +2,10 @@
 
 // Ex:
 //
-// has-suffix(16, px)   -> false
-// has-suffix(16px, px) -> true
+// str-ends-with(16, px)   -> false
+// str-ends-with(16px, px) -> true
 //
-@function has-suffix($src, $cmp) {
+@function str-ends-with($src, $cmp) {
 	$str-src: "" + $src;
 	$str-cmp: "" + $cmp;
 	@return string.slice($str-src, 1 + string.length($str-src) - string.length($str-cmp)) == $str-cmp;

@@ -19,7 +19,7 @@ $-legend: (
 	$ast: ();
 	@each $mk, $mv in $map {
 		@each $tk, $tv in $-legend {
-			@if utils.has-suffix($mk, $tv) {
+			@if utils.str-ends-with($mk, $tv) {
 				$n: string.index($mk, $tv);
 				$key: string.slice($mk, 1, $n - 2);
 				$current: map.get($ast, $key);
