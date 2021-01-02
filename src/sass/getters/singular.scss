@@ -2,23 +2,23 @@
 
 @use "getter" as *;
 
-@use "../configuration";
+@use "../configuration" as conf;
 @use "../utils";
 
 @function weight($key) {
-	@return getter("weight", configuration.$weight-map, $key);
+	@return getter("weight", conf.$weight-map, $key);
 }
 
 @function font($key) {
-	@return getter("font", configuration.$font-map, $key);
+	@return getter("font", conf.$font-map, $key);
 }
 
 @function decoration($key) {
-	@return getter("decoration", configuration.$decoration-map, $key);
+	@return getter("decoration", conf.$decoration-map, $key);
 }
 
 @function color($key, $alpha: null) {
-	$got: getter("color", configuration.$color-map, $key);
+	$got: getter("color", conf.$color-map, $key);
 	@if $key == transparent or $key == current {
 		// @if $alpha {
 		// 	@error "color-var: cannot accept `$key=transparent` or `$key=current` and `$alpha=#{$alpha}`";
@@ -35,13 +35,13 @@
 	@if not utils.str-starts-with($key, "shadow-") {
 		$key: "shadow-" + $key;
 	}
-	@return getter("shadow", configuration.$shadow-map, $key);
+	@return getter("shadow", conf.$shadow-map, $key);
 }
 
 @function timing($key) {
-	@return getter("timing", configuration.$timing-map, $key);
+	@return getter("timing", conf.$timing-map, $key);
 }
 
 @function breakpoint($key) {
-	@return getter("breakpoint", configuration.$breakpoint-map, $key);
+	@return getter("breakpoint", conf.$breakpoint-map, $key);
 }

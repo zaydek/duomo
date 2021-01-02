@@ -2,9 +2,9 @@
 @use "sass:math";
 @use "sass:meta";
 
-@use "../configuration";
+@use "../configuration" as conf;
 @use "../generators/escapers" as esc;
-@use "../generators/resolvers";
+@use "../generators/resolvers" as res;
 
 // Ex:
 //
@@ -12,7 +12,7 @@
 // n(0) -> ""
 //
 @function n($rv) {
-	@if resolvers.passthrough($rv) {
+	@if res.passthrough($rv) {
 		@return "";
 	}
 	@return if($rv < 0, "-", "");
@@ -33,7 +33,7 @@
 
 // Ex: delimiter() -> "\\:"
 @function delimiter() {
-	@return esc.escape(configuration.$delimiter);
+	@return esc.escape(conf.$delimiter);
 }
 
 // Ex: delimit(sm) -> "sm\\:"

@@ -2,26 +2,26 @@
 
 @use "getter" as *;
 
-@use "../configuration";
+@use "../configuration" as conf;
 @use "../utils";
 
 @function weight-var($key) {
-	$_: getter("weight-var", configuration.$weight-map, $key);
+	$_: getter("weight-var", conf.$weight-map, $key);
 	@return var(--#{$key});
 }
 
 @function font-var($key) {
-	$_: getter("font-var", configuration.$font-map, $key);
+	$_: getter("font-var", conf.$font-map, $key);
 	@return var(--#{$key});
 }
 
 @function decoration-var($key) {
-	$_: getter("decoration-var", configuration.$decoration-map, $key);
+	$_: getter("decoration-var", conf.$decoration-map, $key);
 	@return var(--#{$key});
 }
 
 @function color-var($key, $alpha: null) {
-	$got: getter("color", configuration.$color-map, $key);
+	$got: getter("color", conf.$color-map, $key);
 	@if $key == transparent or $key == current {
 		// @if $alpha {
 		// 	@error "color-var: cannot accept `$key=transparent` or `$key=current` and `$alpha=#{$alpha}`";
@@ -38,11 +38,11 @@
 	@if not utils.str-starts-with($key, "shadow-") {
 		$key: "shadow-" + $key;
 	}
-	$_: getter("shadow-var", configuration.$shadow-map, $key);
+	$_: getter("shadow-var", conf.$shadow-map, $key);
 	@return var(--#{$key});
 }
 
 @function timing-var($key) {
-	$_: getter("timing-var", configuration.$timing-map, $key);
+	$_: getter("timing-var", conf.$timing-map, $key);
 	@return var(--#{$key});
 }

@@ -1,54 +1,54 @@
-@use "../configuration";
+@use "../configuration" as conf;
 @use "../utils";
 
 // TODO: Add support for `bar`?
 // Then we can have `bar` and `cap`.
 @function -nrange($limit: null) {
 	@if $limit {
-		@return utils.cap(configuration.$nrange, $limit);
+		@return utils.cap(conf.$nrange, $limit);
 	}
-	@return configuration.$nrange;
+	@return conf.$nrange;
 }
 
 // TODO: Add support for `bar`?
 // Then we can have `bar` and `cap`.
 @function -range($limit: null) {
 	@if $limit {
-		@return utils.cap(configuration.$range, $limit);
+		@return utils.cap(conf.$range, $limit);
 	}
-	@return configuration.$range;
+	@return conf.$range;
 }
 
 @function nspaces() {
-	@return -nrange(configuration.$limit-nspace);
+	@return -nrange(conf.$limit-nspace);
 }
 
 @function spaces() {
-	@return -range(configuration.$limit-space);
+	@return -range(conf.$limit-space);
 }
 
 @function sizes() {
-	@return -range(configuration.$limit-size);
+	@return -range(conf.$limit-size);
 }
 
 // NOTE: Bar from `8` to prevent generating useless classes.
 @function font-sizes() {
-	@return utils.bar(-range(configuration.$limit-font-size), 8);
+	@return utils.bar(-range(conf.$limit-font-size), 8);
 }
 
 @function border-widths() {
-	@return -range(configuration.$limit-border-width);
+	@return -range(conf.$limit-border-width);
 }
 
 @function border-radii() {
-	@return -range(configuration.$limit-border-radius);
+	@return -range(conf.$limit-border-radius);
 }
 
 // Ex: percent-range() > (0, 0.05, ...)
 //
 // TODO: `percent-range` should probably talk to
-// configuration and use a resolver name as a
+// conf and use a resolver name as a
 // parameter to resolve units.
 @function percent-range() {
-	@return configuration.$percent-range;
+	@return conf.$percent-range;
 }
