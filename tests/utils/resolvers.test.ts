@@ -10,12 +10,15 @@ test("integration", () => {
 .m-4 {
 	margin: resolve(4, none);
 }
+
 .m-4-rem {
 	margin: resolve(4, rem);
 }
+
 .m-4-em {
 	margin: resolve(4, em);
 }
+
 .m-4-px {
 	margin: resolve(4, px);
 }

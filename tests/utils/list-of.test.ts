@@ -9,14 +9,14 @@ test("integration", () => {
 
 @each $rv in list-of((0, 1, 2, 4), (8, 16, 32, 64)) {
 	.w-#{$rv} {
-		width: $rv + px;
+		width: px($rv);
 	}
 }
 `)
 	// prettier-ignore
 	expect(css).toBe(`
 .w-0 {
-	width: 0px;
+	width: 0;
 }
 
 .w-1 {

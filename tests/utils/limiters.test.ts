@@ -11,7 +11,7 @@ test("bar: negative case", () => {
 
 @each $rv in bar((0, -1, -2, -4), -2) {
 	.-w-#{math.abs($rv)} {
-		width: $rv + px;
+		width: px($rv);
 	}
 }
 `)
@@ -35,7 +35,7 @@ test("bar: positive case", () => {
 
 @each $rv in bar((0, 1, 2, 4), 2) {
 	.w-#{math.abs($rv)} {
-		width: $rv + px;
+		width: px($rv);
 	}
 }
 `)
@@ -59,14 +59,14 @@ test("cap: negative case", () => {
 
 @each $rv in cap((0, -1, -2, -4), -2) {
 	.-w-#{math.abs($rv)} {
-		width: $rv + px;
+		width: px($rv);
 	}
 }
 `)
 	// prettier-ignore
 	expect(css).toBe(`
 .-w-0 {
-	width: 0px;
+	width: 0;
 }
 
 .-w-1 {
@@ -85,14 +85,14 @@ test("cap: positive case", () => {
 
 @each $rv in cap((0, 1, 2, 4), 2) {
 	.w-#{$rv} {
-		width: $rv + px;
+		width: px($rv);
 	}
 }
 `)
 	// prettier-ignore
 	expect(css).toBe(`
 .w-0 {
-	width: 0px;
+	width: 0;
 }
 
 .w-1 {

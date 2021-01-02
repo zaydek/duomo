@@ -12,9 +12,11 @@ test("escape: does not escape numbers", () => {
 .-z-#{escape(math.abs(-10))} {
 	z-index: -10;
 }
+
 .z-#{escape(0)} {
 	z-index: 0;
 }
+
 .z-#{escape(10)} {
 	z-index: 10;
 }
@@ -59,6 +61,7 @@ test("escape-breakpoint-key: does not escape `xl` but escapes `2xl`", () => {
 .#{escape-breakpoint-key("xl")} {
 	/**/
 }
+
 .#{escape-breakpoint-key("2xl")} {
 	/**/
 }

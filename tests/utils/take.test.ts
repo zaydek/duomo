@@ -18,16 +18,19 @@ test("take: list, erroneous case", () => {
 .w-0 {
 	width: 0;
 }
+
 .w-1 {
 	width: 1px;
 }
+
 .w-2 {
 	width: 2px;
 }
+
 .w-4 {
 	width: 4px;
 }
-`.trimStart())
+`.trim())
 })
 
 test("take: list, non-erroneous case", () => {
@@ -45,13 +48,15 @@ test("take: list, non-erroneous case", () => {
 .w-0 {
 	width: 0;
 }
+
 .w-1 {
 	width: 1px;
 }
+
 .w-2 {
 	width: 2px;
 }
-`.trimStart())
+`.trim())
 })
 
 test("take: map, erroneous case", () => {
@@ -69,16 +74,19 @@ test("take: map, erroneous case", () => {
 .a-0 {
 	a: 0;
 }
+
 .b-1 {
 	b: 1px;
 }
+
 .c-2 {
 	c: 2px;
 }
+
 .d-4 {
 	d: 4px;
 }
-`.trimStart())
+`.trim())
 })
 
 test("take: map, non-erroneous case", () => {
@@ -96,11 +104,13 @@ test("take: map, non-erroneous case", () => {
 .a-0 {
 	a: 0;
 }
+
 .b-1 {
 	b: 1px;
 }
+
 .c-2 {
 	c: 2px;
 }
-`.trimStart())
+`.trim())
 })
