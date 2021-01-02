@@ -5,15 +5,22 @@
 
 @use "../mixins" as mx;
 
+// // prettier-ignore
+// $-opts: (
+//   auto,
+//   default,
+//   pointer,
+//   wait,
+//   text,
+//   move,
+//   not-allowed,
+// );
+
 // prettier-ignore
 $-opts: (
-  auto,
-  default,
-  pointer,
-  wait,
-  text,
-  move,
-  not-allowed,
+	auto,
+	default,
+	pointer,
 );
 
 @mixin cursor($variants...) {

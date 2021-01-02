@@ -10,6 +10,7 @@
 @use "core/border-width" as *;
 @use "core/box-shadow" as *;
 @use "core/color" as *;
+@use "core/cursor" as *;
 @use "core/font-family" as *;
 @use "core/font-size" as *;
 @use "core/font-style" as *;
@@ -60,6 +61,7 @@
 	/* OK */ @if $mixin == "box-shadow"       { @include box-shadow($variants...); }
 	/* OK */ @if $mixin == "color"            { @include color($variants...); }
 	/* OK */ @if $mixin == "container"        { @include container($variants...); }
+	/* OK */ @if $mixin == "cursor"           { @include cursor($variants...); }
 	/* OK */ @if $mixin == "font-family"      { @include font-family($variants...); }
 	/* OK */ @if $mixin == "font-size"        { @include font-size($variants...); }
 	/* OK */ @if $mixin == "font-style"       { @include font-style($variants...); }
@@ -157,6 +159,7 @@
 		// @include white-space(core, hover, focus, group-focus);
 		// @include width(core, hover, focus, group-focus);
 		// @include z-index(core, hover, focus, group-focus);
-		@include stacks(core, hover, focus, group-focus);
+		// @include stacks(core, hover, focus, group-focus);
+		@include cursor(core, hover, focus, group-focus);
 	}
 }
