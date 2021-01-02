@@ -4,13 +4,24 @@
 @use "../utils";
 
 // prettier-ignore
+$-range: (
+	-10,
+	  0,
+	 10,
+	 20,
+	 30,
+	 40,
+	 50,
+);
+
+// prettier-ignore
 @mixin z-index($variants...) {
 	@each $variant in $variants {
 		@include gen.generate-from-range((
 			variant: $variant,
 			shorthand: z,
 			property: (z-index),
-			range: (-10, 0, 10, 20, 30, 40, 50),
+			range: $-range,
 			resolver: none,
 		));
 	}

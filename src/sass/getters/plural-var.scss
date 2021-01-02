@@ -4,6 +4,10 @@
 @use "singular-var";
 
 @function weight-vars() {
+	@if conf.$layout {
+		@warn "weight-vars: cannot access `*-var` getters when `$layout=true`";
+	}
+
 	$map: ();
 	@each $mk, $mv in conf.$weight-map {
 		$map: map.set($map, $mk, singular-var.weight-var($mk));
@@ -12,6 +16,10 @@
 }
 
 @function font-vars() {
+	@if conf.$layout {
+		@warn "font-vars: cannot access `*-var` getters when `$layout=true`";
+	}
+
 	$map: ();
 	@each $mk, $mv in conf.$font-map {
 		$map: map.set($map, $mk, singular-var.font-var($mk));
@@ -20,6 +28,10 @@
 }
 
 @function decoration-vars() {
+	@if conf.$layout {
+		@warn "decoration-vars: cannot access `*-var` getters when `$layout=true`";
+	}
+
 	$map: ();
 	@each $mk, $mv in conf.$decoration-map {
 		$map: map.set($map, $mk, singular-var.decoration-var($mk));
@@ -28,6 +40,10 @@
 }
 
 @function color-vars($alpha: null, $opts) {
+	@if conf.$layout {
+		@warn "color-vars: cannot access `*-var` getters when `$layout=true`";
+	}
+
 	$subset: map.get($opts, subset);
 	$map: ();
 	@each $mk, $mv in if($subset, conf.$subset-color-map, conf.$color-map) {
@@ -37,6 +53,10 @@
 }
 
 @function shadow-vars() {
+	@if conf.$layout {
+		@warn "shadow-vars: cannot access `*-var` getters when `$layout=true`";
+	}
+
 	$map: ();
 	@each $mk, $mv in conf.$shadow-map {
 		$map: map.set($map, $mk, singular-var.shadow-var($mk));
@@ -45,6 +65,10 @@
 }
 
 @function timing-vars() {
+	@if conf.$layout {
+		@warn "timing-vars: cannot access `*-var` getters when `$layout=true`";
+	}
+
 	$map: ();
 	@each $mk, $mv in conf.$timing-map {
 		$map: map.set($map, $mk, singular-var.timing-var($mk));

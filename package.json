@@ -1,7 +1,7 @@
 {
 	"name": "@zaydek/duomo",
 	"version": "0.7.11",
-	"main": "dist/duomo-full.css",
+	"main": "dist/duomo.css",
 	"license": "MIT",
 	"files": [
 		"dist/",
