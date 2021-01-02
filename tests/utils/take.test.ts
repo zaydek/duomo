@@ -9,28 +9,25 @@ test("take: list, erroneous case", () => {
 
 @each $rv in take((0, 1, 2, 4), "Hello, world!") {
 	.w-#{$rv} {
-		width: $rv + px;
+		width: px($rv);
 	}
 }
 `)
 	// prettier-ignore
 	expect(css).toBe(`
 .w-0 {
-	width: 0px;
+	width: 0;
 }
-
 .w-1 {
 	width: 1px;
 }
-
 .w-2 {
 	width: 2px;
 }
-
 .w-4 {
 	width: 4px;
 }
-`.trim())
+`.trimStart())
 })
 
 test("take: list, non-erroneous case", () => {
@@ -39,24 +36,22 @@ test("take: list, non-erroneous case", () => {
 
 @each $rv in take((0, 1, 2, 4), 4) {
 	.w-#{$rv} {
-		width: $rv + px;
+		width: px($rv);
 	}
 }
 `)
 	// prettier-ignore
 	expect(css).toBe(`
 .w-0 {
-	width: 0px;
+	width: 0;
 }
-
 .w-1 {
 	width: 1px;
 }
-
 .w-2 {
 	width: 2px;
 }
-`.trim())
+`.trimStart())
 })
 
 test("take: map, erroneous case", () => {
@@ -65,28 +60,25 @@ test("take: map, erroneous case", () => {
 
 @each $mk, $mv in take((a: 0, b: 1, c: 2, d: 4), "Hello, world!") {
 	.#{$mk}-#{$mv} {
-		#{$mk}: $mv + px;
+		#{$mk}: px($mv);
 	}
 }
 `)
 	// prettier-ignore
 	expect(css).toBe(`
 .a-0 {
-	a: 0px;
+	a: 0;
 }
-
 .b-1 {
 	b: 1px;
 }
-
 .c-2 {
 	c: 2px;
 }
-
 .d-4 {
 	d: 4px;
 }
-`.trim())
+`.trimStart())
 })
 
 test("take: map, non-erroneous case", () => {
@@ -95,22 +87,20 @@ test("take: map, non-erroneous case", () => {
 
 @each $mk, $mv in take((a: 0, b: 1, c: 2, d: 4), d) {
 	.#{$mk}-#{$mv} {
-		#{$mk}: $mv + px;
+		#{$mk}: px($mv);
 	}
 }
 `)
 	// prettier-ignore
 	expect(css).toBe(`
 .a-0 {
-	a: 0px;
+	a: 0;
 }
-
 .b-1 {
 	b: 1px;
 }
-
 .c-2 {
 	c: 2px;
 }
-`.trim())
+`.trimStart())
 })

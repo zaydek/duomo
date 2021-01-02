@@ -1,3 +1,4 @@
+import prettier from "prettier"
 import sass from "sass"
 
 declare namespace global {
@@ -16,8 +17,12 @@ declare namespace global {
 global.sass = (data: string) => {
 	const res = sass.renderSync({
 		data,
-		indentType: "tab",
-		indentWidth: 1,
+		outputStyle: "compressed" as const,
 	})
-	return res.css.toString()
+	const fmt = prettier.format(res.css.toString(), {
+		parser: "css",
+		tabWidth: 2,
+		useTabs: true,
+	})
+	return fmt
 }

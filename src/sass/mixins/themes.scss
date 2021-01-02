@@ -48,18 +48,18 @@ $-legend: (
 // @include themes(...);
 //
 // -> :root {
-// ->   --ui-app-color: hsl(0deg, 0%, 0%);
-// ->   --ui-app-bg: hsl(0deg, 0%, 100%);
+// ->   --app-color: hsl(0deg, 0%, 0%);
+// ->   --app-bg: hsl(0deg, 0%, 100%);
 // -> }
 // ->
 // -> [data-theme-id="dark"] {
-// ->   --ui-app-color: hsl(0deg, 0%, 100%);
-// ->   --ui-app-bg: hsl(0deg, 0%, 0%);
+// ->   --app-color: hsl(0deg, 0%, 100%);
+// ->   --app-bg: hsl(0deg, 0%, 0%);
 // -> }
 // ->
 // -> .x-app {
-// ->   color: var(--ui-app-color);
-// ->   background-color: var(--ui-app-bg);
+// ->   color: var(--app-color);
+// ->   background-color: var(--app-bg);
 // ->   transition: var(--theme-transition);
 // -> }
 //
