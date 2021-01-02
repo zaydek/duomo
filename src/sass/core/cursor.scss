@@ -1,0 +1,29 @@
+@use "../configuration" as conf;
+@use "../generators" as gen;
+@use "../getters" as get;
+@use "../utils";
+
+@use "../mixins" as mx;
+
+// prettier-ignore
+$-opts: (
+  auto,
+  default,
+  pointer,
+  wait,
+  text,
+  move,
+  not-allowed,
+);
+
+@mixin cursor($variants...) {
+	@each $variant in $variants {
+		@each $opt in $-opts {
+			.cursor-#{$opt} {
+				@include mx.variants($variant) {
+					cursor: $opt;
+				}
+			}
+		}
+	}
+}
