@@ -87,22 +87,19 @@
 // Maybe we take the nth component of the selector and use that.
 @mixin variants($variants...) {
 	@at-root {
-		// 	$taken: utils.take($variants, responsive);
-		// 	@if list.length($taken) > 0 {
-		// 		@if conf.$env == development {
-		// 			@include -impl-dev($taken...) {
-		// 				@content;
-		// 			}
-		// 		} @else if conf.$env == production {
-		// 			@include -impl-prod($taken...) {
-		// 				@content;
-		// 			}
-		// 		}
-		// 	}
-
-		// @error $variants;
+		$taken: utils.take($variants, responsive);
+		@if list.length($taken) > 0 {
+			@if conf.$env == development {
+				@include -impl-dev($taken...) {
+					@content;
+				}
+			} @else if conf.$env == production {
+				@include -impl-prod($taken...) {
+					@content;
+				}
+			}
+		}
 		@if list.index($variants, responsive) {
-			// @error "" + &;
 			#{declass-responsive(&)} {
 				@content;
 			}

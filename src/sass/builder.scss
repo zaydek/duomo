@@ -136,7 +136,7 @@
 @at-root {
 	@if not conf.$headless {
 		/*! Duomo | MIT | https://github.com/zaydek/duomo */
-		// @include headers;
+		@include headers;
 		@include duomo;
 	}
 }
