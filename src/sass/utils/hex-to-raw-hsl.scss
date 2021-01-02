@@ -1,0 +1,21 @@
+@use "sass:color";
+@use "sass:map";
+@use "sass:math";
+
+// Ex:
+//
+// hex-to-raw-hsl((white: #fff, black: #000))
+// -> (white: hsl(0deg, 0%, 100%), black: hsl(0deg, 0%, 0%))
+//
+@function hex-to-raw-hsl($hex) {
+	@if $hex == transparent or $hex == currentColor {
+		@return $hex;
+	}
+	// prettier-ignore
+	$raw-hsl: (
+		math.round(color.hue($hex)),
+		math.round(color.saturation($hex)),
+		math.round(color.lightness($hex)),
+	);
+	@return $raw-hsl;
+}

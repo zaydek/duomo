@@ -27,15 +27,15 @@
 @function color($key, $alpha: null) {
 	$got: -impl("color", conf.$color-map, $key);
 	@if $key == transparent or $key == current {
-		// @if $alpha {
-		// 	@error "color-var: cannot accept `$key=transparent` or `$key=current` and `$alpha=#{$alpha}`";
-		// }
 		@return $got;
 	}
+
+	// NOTE: Convert from HEX to HSLA to support `var(--bg-opacity)`, etc.
+	$raw-hsl: utils.hex-to-raw-hsl($got);
 	@if $alpha {
-		@return string.unquote("hsla(#{$got}, #{$alpha})");
+		@return string.unquote("hsla(#{$raw-hsl}, #{$alpha})");
 	}
-	@return string.unquote("hsl(#{$got})");
+	@return string.unquote("hsl(#{$raw-hsl})");
 }
 
 @function shadow($key) {

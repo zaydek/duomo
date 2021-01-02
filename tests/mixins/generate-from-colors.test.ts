@@ -44,7 +44,7 @@ $color-map: (
 
 .bg-white {
 	--bg-opacity: 1;
-	background-color: hsla(0debg, 0%, 100%, var(--bg-opacity));
+	background-color: hsla(0deg, 0%, 100%, var(--bg-opacity));
 }
 
 .bg-red {

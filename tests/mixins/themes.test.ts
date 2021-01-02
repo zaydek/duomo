@@ -22,7 +22,7 @@ $dark: (
 		light: $light,
 		dark: $dark,
 		duration: 700ms,
-		timing: timing-var(ease-out),
+		timing: timing(ease-out),
 	));
 }
 `)
@@ -32,7 +32,7 @@ $dark: (
 	--app-color: hsl(0deg, 0%, 0%);
 	--app-bg: hsl(0deg, 0%, 100%);
 	--default-theme-transition-duration: 700ms;
-	--default-theme-transition-timing: var(--ease-out);
+	--default-theme-transition-timing: cubic-bezier(0, 0, 0.2, 1);
 }
 
 [data-theme=dark] {
