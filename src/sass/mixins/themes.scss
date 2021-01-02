@@ -16,17 +16,17 @@ $-legend: (
 
 // Parses a lightweight abstract syntax tree.
 @function -parse-ast($map) {
-	$ast: ();
+	$info-map: ();
 	@each $mk, $mv in $map {
 		@each $tk, $tv in $-legend {
 			@if utils.str-ends-with($mk, $tv) {
 				$n: string.index($mk, $tv);
 				$key: string.slice($mk, 1, $n - 2);
-				$current: map.get($ast, $key);
+				$current: map.get($info-map, $key);
 
 				// prettier-ignore
-				$ast: map.set(
-					$ast,
+				$info-map: map.set(
+					$info-map,
 					$key,
 					list.append(
 						if(not $current, (), $current),
@@ -40,7 +40,7 @@ $-legend: (
 			}
 		}
 	}
-	@return $ast;
+	@return $info-map;
 }
 
 // Ex:
@@ -57,7 +57,7 @@ $-legend: (
 // ->   --ui-app-bg: hsl(0deg, 0%, 0%);
 // -> }
 // ->
-// -> .ui-app {
+// -> .x-app {
 // ->   color: var(--ui-app-color);
 // ->   background-color: var(--ui-app-bg);
 // ->   transition: var(--theme-transition);
@@ -78,8 +78,8 @@ $-legend: (
 	$light-ast: -parse-ast($light);
 	:root {
 		@each $mk, $mv in $light-ast {
-			@each $info in $mv {
-				--#{map.get($info, var)}: #{map.get($info, value)};
+			@each $info-map in $mv {
+				--#{map.get($info-map, var)}: #{map.get($info-map, value)};
 			}
 		}
 		--default-theme-transition-duration: #{$duration};
@@ -89,16 +89,16 @@ $-legend: (
 	$dark-ast: -parse-ast($dark);
 	[data-theme="dark"] {
 		@each $mk, $mv in $dark-ast {
-			@each $info in $mv {
-				--#{map.get($info, var)}: #{map.get($info, value)};
+			@each $info-map in $mv {
+				--#{map.get($info-map, var)}: #{map.get($info-map, value)};
 			}
 		}
 	}
 
 	@each $mk, $mv in $light-ast {
-		[data-theme-id="#{$mk}"] {
-			@each $info in $mv {
-				#{map.get($info, property)}: var(--#{map.get($info, var)});
+		.x-#{$mk} {
+			@each $info-map in $mv {
+				#{map.get($info-map, property)}: var(--#{map.get($info-map, var)});
 			}
 			transition: $theme-transition;
 		}

@@ -53,8 +53,7 @@
 // -> .hover\:class { ... }
 // -> .focus\:class { ... }
 //
-// NOTE: Use `$variants` not `$variants...` to `arglist` errors.
-@mixin -impl-dev($variants) {
+@mixin -impl-dev($variants...) {
 	@each $variant in $variants {
 		$selector: meta.call(meta.get-function($variant), &);
 		#{$selector} {
@@ -71,8 +70,7 @@
 // -> .hover\:class,
 // -> .focus\:class { ... }
 //
-// NOTE: Use `$variants` not `$variants...` to `arglist` errors.
-@mixin -impl-prod($variants) {
+@mixin -impl-prod($variants...) {
 	$concat-selector: "";
 	@each $variant in $variants {
 		$selector: meta.call(meta.get-function($variant), &);

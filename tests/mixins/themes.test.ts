@@ -40,7 +40,7 @@ $dark: (
 	--app-bg: hsl(0deg, 0%, 0%);
 }
 
-[data-theme-id=app] {
+.x-app {
 	color: var(--app-color);
 	background-color: var(--app-bg);
 	transition: var(--theme-transition);

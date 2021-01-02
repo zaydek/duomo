@@ -14,12 +14,9 @@
 		--ui-mono: #{get.font(mono)};
 
 		--default-placeholder-color: get.color(cool-gray-400);
-		--default-placeholder-bg: get.color(cool-gray-200);
 		--default-border-color: get.color(cool-gray-200);
 		--default-transition-duration: 250ms;
 		--default-transition-timing: get.timing(ease-out);
-		--default-theme-transition-duration: 500ms;
-		--default-theme-transition-timing: get.timing(ease-out);
 
 		// prettier-ignore
 		--theme-transition:
@@ -30,6 +27,9 @@
 			fill             var(--default-theme-transition-duration) var(--default-theme-transition-timing),
 			opacity          var(--default-theme-transition-duration) var(--default-theme-transition-timing),
 			stroke           var(--default-theme-transition-duration) var(--default-theme-transition-timing);
+
+		--default-theme-transition-duration: 500ms;
+		--default-theme-transition-timing: get.timing(ease-out);
 
 		// [data-stagger]
 		--default-stagger-1: #{math.percentage(4 / 8)};
