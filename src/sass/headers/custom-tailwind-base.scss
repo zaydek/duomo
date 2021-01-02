@@ -1,5 +1,3 @@
-@use "../getters" as *;
-
 @mixin vendored-font-smoothing {
 	:root {
 		-webkit-font-smoothing: antialiased;

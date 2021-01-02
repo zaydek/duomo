@@ -3,8 +3,7 @@
 @use "sass:meta";
 
 @use "../configuration" as conf;
-@use "../generators/escapers" as esc;
-@use "../generators/resolvers" as res;
+@use "../utils" as utils;
 
 // Ex:
 //
@@ -12,7 +11,7 @@
 // n(0) -> ""
 //
 @function n($rv) {
-	@if res.passthrough($rv) {
+	@if utils.passthrough($rv) {
 		@return "";
 	}
 	@return if($rv < 0, "-", "");
@@ -33,12 +32,12 @@
 
 // Ex: delimiter() -> "\\:"
 @function delimiter() {
-	@return esc.escape(conf.$delimiter);
+	@return utils.escape(conf.$delimiter);
 }
 
 // Ex: delimit(sm) -> "sm\\:"
 @function delimit($key) {
-	@return esc.escape-breakpoint-key($key) + delimiter();
+	@return utils.escape-breakpoint-key($key) + delimiter();
 }
 
 // Ex:
@@ -63,8 +62,8 @@
 	}
 	@if meta.type-of($any) == number and $as-percent {
 		$rv: $any;
-		@return esc.escape($rv * 100);
+		@return utils.escape($rv * 100);
 	}
 	$rv: $any;
-	@return esc.escape($rv);
+	@return utils.escape($rv);
 }

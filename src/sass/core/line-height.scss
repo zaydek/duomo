@@ -1,10 +1,9 @@
 @use "../configuration" as conf;
-@use "../generators" as gen;
 @use "../getters" as get;
 @use "../mixins" as mix;
 @use "../utils";
 
-// TODO: Use `percent-range`?
+// TODO: Change to `percent-range`.
 //
 // prettier-ignore
 $-range: (

@@ -1,10 +1,9 @@
 @use "../configuration" as conf;
-@use "../generators" as gen;
 @use "../getters" as get;
 @use "../mixins" as mix;
 @use "../utils";
 
-// TODO: Use `percent-range`?
+// TODO: Change to `percent-range`.
 //
 // prettier-ignore
 $-range: (
@@ -36,11 +35,10 @@ $-range: (
 );
 
 // NOTE: Do not use `em($rv)` because values are percent-based.
-// TODO: If API changes to use `percent-range()`, this can possibly be compensated for.
 @mixin letter-spacing($variants...) {
 	@each $variant in $variants {
 		@each $rv in $-range {
-			.#{get.n($rv)}tracking-#{gen.escape(get.abs($rv * 100))} {
+			.#{get.n($rv)}tracking-#{utils.escape(get.abs($rv * 100))} {
 				@include mix.variants($variant) {
 					letter-spacing: $rv + em;
 				}

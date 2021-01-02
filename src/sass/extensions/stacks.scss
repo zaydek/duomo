@@ -1,47 +1,14 @@
 @use "../configuration" as conf;
-@use "../generators" as gen;
 @use "../getters" as get;
 @use "../mixins" as mix;
 @use "../utils";
 
-$-layout-opts: (hstack, vstack, zstack, grid);
-
-$-justify-opts: (
-	justify-stretch: stretch,
-	justify-start: flex-start,
-	justify-center: center,
-	justify-end: flex-end,
-	justify-baseline: baseline,
-);
-
-$-justify-self-opts: (
-	justify-self-stretch: stretch,
-	justify-self-start: flex-start,
-	justify-self-center: center,
-	justify-self-end: flex-end,
-	justify-self-baseline: baseline,
-);
-
-$-align-opts: (
-	align-stretch: stretch,
-	align-start: flex-start,
-	align-center: center,
-	align-end: flex-end,
-	align-baseline: baseline,
-);
-
-$-align-self-opts: (
-	align-self-stretch: stretch,
-	align-self-start: flex-start,
-	align-self-center: center,
-	align-self-end: flex-end,
-	align-self-baseline: baseline,
-);
-
-$-wrap-opts: (
-	wrap: wrap,
-	wrap-reverse: wrap-reverse,
-	wrap-none: nowrap,
+// prettier-ignore
+$-layout-opts: (
+	hstack,
+	vstack,
+	zstack,
+	grid,
 );
 
 // NOTE: Stacks do not use a compositional API because
@@ -162,15 +129,31 @@ $-wrap-opts: (
 		}
 
 		/*
-		 * <... wrap>
+		 * <... space-*>
 		 */
 
-		// TODO: Extract?
-		@each $mk, $mv in $-wrap-opts {
-			.#{$mk} {
+		@each $rv in utils.list-of(get.nspaces(), get.spaces()) {
+			.#{get.n($rv)}space-#{get.abs($rv)} > * {
 				@include mix.variants($variant) {
-					flex-wrap: $mv;
+					--dm-space: #{utils.rem($rv)};
 				}
+			}
+		}
+
+		/*
+		 * <spacer>
+		 */
+
+		@if utils.matches($variant, core) {
+			.spacer {
+				flex: 1 0 var(--dm-space);
+				min-width: var(--dm-spacer-min-width); // Needed for `overflow-x-scroll`
+			}
+			.spacer:first-child,
+			.spacer:empty + .spacer:empty,
+			.spacer:last-child {
+				flex: 1 0 0;
+				min-width: 0; // Needed for `overflow-x-scroll`
 			}
 		}
 
@@ -197,87 +180,6 @@ $-wrap-opts: (
 			}
 			.zstack > :nth-child(n + 2) {
 				position: absolute;
-			}
-		}
-
-		/*
-		 * <... justify-*>
-		 */
-
-		// TODO: Extract?
-		@each $mk, $mv in $-justify-opts {
-			.#{$mk} {
-				@include mix.variants($variant) {
-					justify-content: #{$mv};
-				}
-			}
-		}
-
-		/*
-		 * <... justify-self-*>
-		 */
-
-		// TODO: Extract?
-		@each $mk, $mv in $-justify-self-opts {
-			.#{$mk} {
-				@include mix.variants($variant) {
-					justify-self: #{$mv};
-				}
-			}
-		}
-
-		/*
-		 * <... align-*>
-		 */
-
-		// TODO: Extract?
-		@each $mk, $mv in $-align-opts {
-			.#{$mk} {
-				@include mix.variants($variant) {
-					align-items: #{$mv};
-				}
-			}
-		}
-
-		/*
-		 * <... align-self-*>
-		 */
-
-		// TODO: Extract?
-		@each $mk, $mv in $-align-self-opts {
-			.#{$mk} {
-				@include mix.variants($variant) {
-					align-self: #{$mv};
-				}
-			}
-		}
-
-		/*
-		 * <... space-*>
-		 */
-
-		@each $rv in utils.list-of(get.nspaces(), get.spaces()) {
-			.#{get.n($rv)}space-#{get.abs($rv)} > * {
-				@include mix.variants($variant) {
-					--dm-space: #{gen.rem($rv)};
-				}
-			}
-		}
-
-		/*
-		 * <spacer>
-		 */
-
-		@if utils.matches($variant, core) {
-			.spacer {
-				flex: 1 0 var(--dm-space);
-				min-width: var(--dm-spacer-min-width); // Needed for `overflow-x-scroll`
-			}
-			.spacer:first-child,
-			.spacer:empty + .spacer:empty,
-			.spacer:last-child {
-				flex: 1 0 0;
-				min-width: 0; // Needed for `overflow-x-scroll`
 			}
 		}
 	}

@@ -1,24 +1,31 @@
+@use "sass:map";
 @use "sass:string";
-
-@use "getter" as *;
 
 @use "../configuration" as conf;
 @use "../utils";
 
+@function -impl($getter-name, $map, $key) {
+	$got: map.get($map, $key);
+	@if not $got {
+		@error "#{$getter-name}: no such key `$key`; $key=#{$key}";
+	}
+	@return $got;
+}
+
 @function weight($key) {
-	@return getter("weight", conf.$weight-map, $key);
+	@return -impl("weight", conf.$weight-map, $key);
 }
 
 @function font($key) {
-	@return getter("font", conf.$font-map, $key);
+	@return -impl("font", conf.$font-map, $key);
 }
 
 @function decoration($key) {
-	@return getter("decoration", conf.$decoration-map, $key);
+	@return -impl("decoration", conf.$decoration-map, $key);
 }
 
 @function color($key, $alpha: null) {
-	$got: getter("color", conf.$color-map, $key);
+	$got: -impl("color", conf.$color-map, $key);
 	@if $key == transparent or $key == current {
 		// @if $alpha {
 		// 	@error "color-var: cannot accept `$key=transparent` or `$key=current` and `$alpha=#{$alpha}`";
@@ -35,13 +42,13 @@
 	@if not utils.str-starts-with($key, "shadow-") {
 		$key: "shadow-" + $key;
 	}
-	@return getter("shadow", conf.$shadow-map, $key);
+	@return -impl("shadow", conf.$shadow-map, $key);
 }
 
 @function timing($key) {
-	@return getter("timing", conf.$timing-map, $key);
+	@return -impl("timing", conf.$timing-map, $key);
 }
 
 @function breakpoint($key) {
-	@return getter("breakpoint", conf.$breakpoint-map, $key);
+	@return -impl("breakpoint", conf.$breakpoint-map, $key);
 }

@@ -1,7 +1,7 @@
 @use "sass:color";
 @use "sass:map";
 
-@use "../mixins" as mix;
+@use "variants" as v;
 
 // prettier-ignore
 @mixin generate-from-colors($info-map) {
@@ -14,7 +14,7 @@
 	@if $map {
 		@each $mk, $mv in $map {
 			.#{$shorthand}-#{"" + $mk} {
-				@include mix.variants($variant) {
+				@include v.variants($variant) {
 					@if $mk == transparent or $mk == current {
 						#{$property}: #{$mv};
 					} @else {
@@ -27,7 +27,7 @@
 
 		@each $mv in $percent-range {
 			.#{$shorthand}-opacity-#{$mv * 100} {
-				@include mix.variants($variant) {
+				@include v.variants($variant) {
 					--#{$shorthand}-opacity: #{$mv};
 				}
 			}

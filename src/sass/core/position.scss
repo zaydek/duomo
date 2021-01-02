@@ -1,5 +1,4 @@
 @use "../configuration" as conf;
-@use "../generators" as gen;
 @use "../getters" as get;
 @use "../mixins" as mix;
 @use "../utils";
@@ -23,77 +22,77 @@ $-opts: (
 				}
 			}
 		}
-		@include gen.generate-from-range((
+		@include mix.generate-from-range((
 			variant: $variant,
 			shorthand: a,
 			property: (top, right, bottom, left),
 			range: (auto, 0),
 			resolver: rem,
 		));
-		@include gen.generate-from-range((
+		@include mix.generate-from-range((
 			variant: $variant,
 			shorthand: x,
 			property: (left, right),
 			range: (auto, 0),
 			resolver: rem,
 		));
-		@include gen.generate-from-range((
+		@include mix.generate-from-range((
 			variant: $variant,
 			shorthand: y,
 			property: (top, bottom),
 			range: (auto, 0),
 			resolver: rem,
 		));
-		@include gen.generate-from-range((
+		@include mix.generate-from-range((
 			variant: $variant,
 			shorthand: t,
 			property: (top),
 			range: (auto, 0),
 			resolver: rem,
 		));
-		@include gen.generate-from-range((
+		@include mix.generate-from-range((
 			variant: $variant,
 			shorthand: r,
 			property: (right),
 			range: (auto, 0),
 			resolver: rem,
 		));
-		@include gen.generate-from-range((
+		@include mix.generate-from-range((
 			variant: $variant,
 			shorthand: b,
 			property: (bottom),
 			range: (auto, 0),
 			resolver: rem,
 		));
-		@include gen.generate-from-range((
+		@include mix.generate-from-range((
 			variant: $variant,
 			shorthand: l,
 			property: (left),
 			range: (auto, 0),
 			resolver: rem,
 		));
-		@include gen.generate-from-range((
+		@include mix.generate-from-range((
 			variant: $variant,
 			shorthand: tr,
 			property: (top, right),
 			range: (auto, 0),
 			resolver: rem,
 		));
-		@include gen.generate-from-range((
+		@include mix.generate-from-range((
 			variant: $variant,
 			shorthand: br,
 			property: (bottom, right),
 			range: (auto, 0),
 			resolver: rem,
 		));
-		@include gen.generate-from-range((
+		@include mix.generate-from-range((
 			variant: $variant,
 			shorthand: bl,
 			property: (bottom, left),
 			range: (auto, 0),
 			resolver: rem,
 		));
-		@include gen.generate-from-range((
+		@include mix.generate-from-range((
 			variant: $variant,
 			shorthand: tl,
 			property: (top, left),

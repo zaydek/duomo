@@ -3,9 +3,8 @@
 @use "sass:meta";
 @use "sass:string";
 
-@use "../getters" as *;
-
-@use "../configuration";
+@use "../configuration" as conf;
+@use "../getters" as get;
 @use "../utils";
 
 // TODO: Extract to `utils`? Can Sass do this natively?
@@ -21,33 +20,33 @@
 
 // Ex: ".sm\\: .class" -> ".sm\\:class"
 @function conjoin($str-selector) {
-	@return str-replace($str-selector, "#{delimiter()} .", delimiter());
+	@return str-replace($str-selector, "#{get.delimiter()} .", get.delimiter());
 }
 
 @function core($str-selector) {
 	@return $str-selector;
 }
 @function hover($str-selector) {
-	@return ".hover#{delimiter()}#{declass($str-selector)}:hover";
+	@return ".hover#{get.delimiter()}#{declass($str-selector)}:hover";
 }
 @function focus($str-selector) {
-	@return ".focus#{delimiter()}#{declass($str-selector)}:focus";
+	@return ".focus#{get.delimiter()}#{declass($str-selector)}:focus";
 }
 // prettier-ignore
 @function touch($str-selector) {
-	@return ".touch#{delimiter()}#{declass($str-selector)}:hover, " +
-		".touch#{delimiter()}#{declass($str-selector)}:focus";
+	@return ".touch#{get.delimiter()}#{declass($str-selector)}:hover, " +
+		".touch#{get.delimiter()}#{declass($str-selector)}:focus";
 }
 @function group-hover($str-selector) {
-	@return ".group\:hover .group-hover#{delimiter()}#{declass($str-selector)}";
+	@return ".group\:hover .group-hover#{get.delimiter()}#{declass($str-selector)}";
 }
 @function group-focus($str-selector) {
-	@return ".group\:focus .group-focus#{delimiter()}#{declass($str-selector)}";
+	@return ".group\:focus .group-focus#{get.delimiter()}#{declass($str-selector)}";
 }
 // prettier-ignore
 @function group-touch($str-selector) {
-	@return ".group\:hover .group-touch#{delimiter()}#{declass($str-selector)}, " +
-		".group\:focus .group-touch#{delimiter()}#{declass($str-selector)}";
+	@return ".group\:hover .group-touch#{get.delimiter()}#{declass($str-selector)}, " +
+		".group\:focus .group-touch#{get.delimiter()}#{declass($str-selector)}";
 }
 
 // Ex:
@@ -107,12 +106,12 @@
 @mixin variants($variants...) {
 	$non-responsive: utils.take($variants, responsive);
 	@if list.length($non-responsive) > 0 {
-		@if configuration.$env == development {
+		@if conf.$env == development {
 			// utils.list-of(core, $non-responsive)
 			@include prototype-dev($non-responsive...) {
 				@content;
 			}
-		} @else if configuration.$env == production {
+		} @else if conf.$env == production {
 			// utils.list-of(core, $non-responsive)
 			@include prototype-prod($non-responsive...) {
 				@content;

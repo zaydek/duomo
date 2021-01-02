@@ -1,10 +1,7 @@
 @use "sass:map";
 @use "sass:math";
 
-@use "../generators" as *;
-@use "../getters" as *;
-
-@use "../configuration";
+@use "../getters" as get;
 
 @mixin introspection {
 	:root {
@@ -12,17 +9,17 @@
 		--serif: "";
 		--mono: "";
 
-		--ui-sans: #{font(sans)};
-		--ui-serif: #{font(serif)};
-		--ui-mono: #{font(mono)};
+		--ui-sans: #{get.font(sans)};
+		--ui-serif: #{get.font(serif)};
+		--ui-mono: #{get.font(mono)};
 
-		--default-placeholder-color: color(cool-gray-400);
-		--default-placeholder-bg: color(cool-gray-200);
-		--default-border-color: color(cool-gray-200);
+		--default-placeholder-color: get.color(cool-gray-400);
+		--default-placeholder-bg: get.color(cool-gray-200);
+		--default-border-color: get.color(cool-gray-200);
 		--default-transition-duration: 250ms;
-		--default-transition-timing: timing(ease-out);
+		--default-transition-timing: get.timing(ease-out);
 		--default-theme-transition-duration: 500ms;
-		--default-theme-transition-timing: timing(ease-out);
+		--default-theme-transition-timing: get.timing(ease-out);
 
 		// prettier-ignore
 		--theme-transition:

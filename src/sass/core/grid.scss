@@ -1,5 +1,4 @@
 @use "../configuration" as conf;
-@use "../generators" as gen;
 @use "../getters" as get;
 @use "../mixins" as mix;
 @use "../utils";
@@ -27,23 +26,26 @@
 			}
 		}
 
-		// TODO: Can use `gen.generate-from-range` here.
 		@each $rv in get.spaces() {
 			.gap-#{$rv} {
 				@include mix.variants($variant) {
-					gap: gen.rem($rv);
+					gap: utils.rem($rv);
 				}
 			}
 		}
-		// @each $rv in spaces() {
-		// 	#{variant(gap-x-#{$rv}, $v)} {
-		// 		column-gap: rem($rv);
-		// 	}
-		// }
-		// @each $rv in spaces() {
-		// 	#{variant(gap-y-#{$rv}, $v)} {
-		// 		row-gap: rem($rv);
-		// 	}
-		// }
+		@each $rv in get.spaces() {
+			.gap-x-#{$rv} {
+				@include mix.variants($variant) {
+					column-gap: utils.rem($rv);
+				}
+			}
+		}
+		@each $rv in get.spaces() {
+			.gap-y-#{$rv} {
+				@include mix.variants($variant) {
+					row-gap: utils.rem($rv);
+				}
+			}
+		}
 	}
 }
