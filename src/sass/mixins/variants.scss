@@ -7,120 +7,98 @@
 @use "../getters" as get;
 @use "../utils";
 
-// TODO: Extract to `utils`? Can Sass do this natively?
-@function str-replace($str, $s1, $s2) {
-	$n: string.index($str, $s1);
-	@return string.slice($str, 1, $n - 1) + $s2 + string.slice($str, $n + string.length($s1));
-}
-
 // Ex: ".class" -> "class"
-@function declass($str-selector) {
+@function declass($selector) {
+	$str-selector: "" + $selector;
 	@return string.slice($str-selector, 2);
 }
 
 // Ex: ".sm\\: .class" -> ".sm\\:class"
-@function conjoin($str-selector) {
-	@return str-replace($str-selector, "#{get.delimiter()} .", get.delimiter());
+@function declass-responsive($selector) {
+	$str-selector: "" + $selector;
+	@return utils.str-replace($str-selector, "#{get.delimiter()} .", get.delimiter());
 }
 
-@function core($str-selector) {
-	@return $str-selector;
+@function core($selector) {
+	@return $selector;
 }
-@function hover($str-selector) {
-	@return ".hover#{get.delimiter()}#{declass($str-selector)}:hover";
+@function hover($selector) {
+	@return ".hover#{get.delimiter()}#{declass($selector)}:hover";
 }
-@function focus($str-selector) {
-	@return ".focus#{get.delimiter()}#{declass($str-selector)}:focus";
-}
-// prettier-ignore
-@function touch($str-selector) {
-	@return ".touch#{get.delimiter()}#{declass($str-selector)}:hover, " +
-		".touch#{get.delimiter()}#{declass($str-selector)}:focus";
-}
-@function group-hover($str-selector) {
-	@return ".group\:hover .group-hover#{get.delimiter()}#{declass($str-selector)}";
-}
-@function group-focus($str-selector) {
-	@return ".group\:focus .group-focus#{get.delimiter()}#{declass($str-selector)}";
+@function focus($selector) {
+	@return ".focus#{get.delimiter()}#{declass($selector)}:focus";
 }
 // prettier-ignore
-@function group-touch($str-selector) {
-	@return ".group\:hover .group-touch#{get.delimiter()}#{declass($str-selector)}, " +
-		".group\:focus .group-touch#{get.delimiter()}#{declass($str-selector)}";
+@function touch($selector) {
+	@return ".touch#{get.delimiter()}#{declass($selector)}:hover, " +
+		".touch#{get.delimiter()}#{declass($selector)}:focus";
+}
+@function group-hover($selector) {
+	@return ".group\:hover .group-hover#{get.delimiter()}#{declass($selector)}";
+}
+@function group-focus($selector) {
+	@return ".group\:focus .group-focus#{get.delimiter()}#{declass($selector)}";
+}
+// prettier-ignore
+@function group-touch($selector) {
+	@return ".group\:hover .group-touch#{get.delimiter()}#{declass($selector)}, " +
+		".group\:focus .group-touch#{get.delimiter()}#{declass($selector)}";
 }
 
 // Ex:
 //
-// .class {
-//   @include variants(...) {
-//     ...
-//   }
-// }
+// .class { @include variants(...) { ... } }
 //
 // -> .class { ... }
 // -> .hover\:class { ... }
 // -> .focus\:class { ... }
-// -> .group-hover\:class { ... }
-// -> .group-focus\:class { ... }
 //
-@mixin prototype-dev($variants...) {
-	@at-root {
-		@each $variant in $variants {
-			$selector: meta.call(meta.get-function($variant), "" + &);
-			#{$selector} {
-				@content;
-			}
+@mixin -impl-dev($variants...) {
+	@each $variant in $variants {
+		$selector: meta.call(meta.get-function($variant), &);
+		#{$selector} {
+			@content;
 		}
 	}
 }
 
 // Ex:
 //
-// .class {
-//   @include variants(...) {
-//     ...
-//   }
-// }
+// .class { @include variants(...) { ... } }
 //
 // -> .class,
 // -> .hover\:class,
-// -> .focus\:class,
-// -> .group-hover\:class,
-// -> .group-focus\:class { ... }
+// -> .focus\:class { ... }
 //
-@mixin prototype-prod($variants...) {
-	@at-root {
-		$concat-selector: "";
-		@each $variant in $variants {
-			$selector: meta.call(meta.get-function($variant), "" + &);
-			$concat-selector: $concat-selector + if($concat-selector == "", "", ", ") + $selector;
-		}
-		#{$concat-selector} {
-			@content;
-		}
+@mixin -impl-prod($variants...) {
+	$concat-selector: "";
+	@each $variant in $variants {
+		$selector: meta.call(meta.get-function($variant), &);
+		$concat-selector: $concat-selector + if($concat-selector == "", "", ", ") + $selector;
+	}
+	#{$concat-selector} {
+		@content;
 	}
 }
 
 // TODO: Needs to support `:not([data-theme-effect]) .transition` edge case.
 // Maybe we take the nth component of the selector and use that.
 @mixin variants($variants...) {
-	$non-responsive: utils.take($variants, responsive);
-	@if list.length($non-responsive) > 0 {
-		@if conf.$env == development {
-			// utils.list-of(core, $non-responsive)
-			@include prototype-dev($non-responsive...) {
-				@content;
-			}
-		} @else if conf.$env == production {
-			// utils.list-of(core, $non-responsive)
-			@include prototype-prod($non-responsive...) {
-				@content;
+	@at-root {
+		$taken: utils.take($variants, responsive);
+		@if list.length($taken) > 0 {
+			@if conf.$env == development {
+				@include -impl-dev($taken...) {
+					@content;
+				}
+			} @else if conf.$env == production {
+				@include -impl-prod($taken...) {
+					@content;
+				}
 			}
 		}
-	}
-	@if list.index($variants, responsive) {
-		@at-root {
-			#{conjoin("" + &)} {
+		@if list.index($variants, responsive) {
+			#{declass-responsive(&)} {
 				@content;
 			}
 		}

@@ -101,30 +101,37 @@
 }
 
 @mixin duomo {
-	$hidden: map.get(conf.$variants, hidden);
-	$non-hidden: utils.take(conf.$variants, hidden);
+	$non-hidden-variants: utils.take(conf.$variants, hidden);
+	$hidden-variants: map.get(conf.$variants, hidden);
 
-	@each $mk, $mv in $non-hidden {
+	@each $mk, $mv in $non-hidden-variants {
 		@include call-mixin($mk, utils.take($mv, responsive)...);
 	}
-	@include call-mixin(hidden, utils.take($hidden, responsive)...);
 
-	// @each $key, $px in get.breakpoints() {
-	// 	@media (min-width: $px) {
-	// 		.#{get.delimit($key)} {
-	// 			@at-root {
-	// 				@each $property, $variants in $non-hidden {
-	// 					@if list.index($variants, responsive) {
-	// 						@include call-mixin($property, responsive);
-	// 					}
-	// 				}
-	// 				@if list.index($hidden, responsive) {
-	// 					@include call-mixin(hidden, responsive);
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-	// }
+	// Defer `hidden` to the end of the current scope.
+	// TODO: In theory, `hidden` can exist anywhere after
+	// `grid` and `stacks`.
+	@if $hidden-variants {
+		@include call-mixin(hidden, utils.take($hidden-variants, responsive)...);
+	}
+
+	@each $key, $px in get.breakpoints() {
+		@media (min-width: $px) {
+			.#{get.delimit($key)} {
+				@each $module, $variants in $non-hidden-variants {
+					@if list.index($variants, responsive) {
+						@include call-mixin($module, responsive);
+					}
+				}
+				// Defer `hidden` to the end of the current scope.
+				// TODO: In theory, `hidden` can exist anywhere after
+				// `grid` and `stacks`.
+				@if list.index($hidden-variants, responsive) {
+					@include call-mixin(hidden, responsive);
+				}
+			}
+		}
+	}
 }
 
 @at-root {

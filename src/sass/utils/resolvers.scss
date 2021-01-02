@@ -36,8 +36,12 @@
 }
 
 @function passthrough($any) {
-	$ok: meta.type-of($any) != number or str.str-ends-with($any, "%") or str.str-ends-with($any, "vw") or
-		str.str-ends-with($any, "vh") or $any == 9999px;
+	// prettier-ignore
+	$ok: meta.type-of($any) != number or
+		str.str-ends-with($any, "%") or
+		str.str-ends-with($any, "vw") or
+		str.str-ends-with($any, "vh") or
+		$any == 9999px;
 	@return $ok;
 }
 

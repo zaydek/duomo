@@ -5,6 +5,8 @@
 @use "../utils";
 @use "variants" as v;
 
+// NOTE: `$map` can be `null` when `$layout=true`.
+//
 // prettier-ignore
 @mixin generate-from-colors($info-map) {
 	$variant:       map.get($info-map, variant);
@@ -13,7 +15,6 @@
 	$map:           map.get($info-map, map);
 	$percent-range: map.get($info-map, percent-range);
 
-	// NOTE: `$map` can be `null` when `$layout=true`.
 	@if $map {
 		@each $mk, $mv in $map {
 			.#{$shorthand}-#{"" + $mk} {
@@ -28,10 +29,12 @@
 			}
 		}
 
-		@each $mv in $percent-range {
-			.#{$shorthand}-opacity-#{$mv * 100} {
-				@include v.variants($variant) {
-					--#{$shorthand}-opacity: #{$mv};
+		@if $map{
+			@each $mv in $percent-range {
+				.#{$shorthand}-opacity-#{$mv * 100} {
+					@include v.variants($variant) {
+						--#{$shorthand}-opacity: #{$mv};
+					}
 				}
 			}
 		}

@@ -1,0 +1,10 @@
+@use "sass:string";
+
+// prettier-ignore
+@function str-replace($src, $s1, $s2) {
+	$str-src: "" + $src;
+	$str-s1:  "" + $s1;
+	$str-s2:  "" + $s2;
+	$n: string.index($str-src, $str-s1);
+	@return string.slice($str-src, 1, $n - 1) + $str-s2 + string.slice($str-src, $n + string.length($str-s1));
+}
