@@ -8,43 +8,40 @@
 // - https://codepen.io/everdimension/pen/BaNpeWe
 // - https://codepen.io/zaydek/pen/MWjEvee
 //
+// <relative>
+//   <children />
+//   <absolute top? right? bottom? left?>
+//     ...
+//   </absolute>
+// </relative>
+//
+// ZStack pattern:
+//
+// <zstack>
+//   <children />
+//   <direction>
+//     ...
+//   </direction>
+// </zstack>
+//
+// prettier-ignore
 @mixin zstack($variants...) {
 	@each $variant in $variants {
 		@if utils.matches($variant, core) {
 			.zstack {
-				// NOTE: Constrain children to the ZStack bounding box.
-				// This prevents direct and indirect children from escaping
-				// the ZStack bounding box.
-				//
-				// Common pattern:
-				//
-				// <relative>
-				//   <children />
-				//   <absolute top? right? bottom? left?>
-				//     ...
-				//   </absolute>
-				// </relative>
-				//
-				// ZStack pattern:
-				//
-				// <zstack>
-				//   <children />
-				//   <direction>
-				//     ...
-				//   </direction>
-				// </zstack>
-				//
 				position: relative;
 				display: grid;
-				justify-items: center;
-				align-items: center;
+				justify-items: center; // Simulates `place-items`
+				align-items: center;   // Simulates `place-items`
 			}
+			// This selector refers to direct and indirect children.
 			.zstack > * {
 				grid-row-start: 1;
 				grid-column-start: 1;
 				grid-row-end: 1;
 				grid-column-end: 1;
 			}
+			// This selector refers to indirect children.
 			.zstack > :nth-child(n + 2) {
 				position: absolute;
 			}
