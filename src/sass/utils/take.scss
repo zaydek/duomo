@@ -9,7 +9,7 @@
 //
 @function take($collection, $item) {
 	@if meta.type-of($collection) != list and meta.type-of($collection) != arglist and meta.type-of($collection) != map {
-		@error "take: `$collection` is not a collection-type; " +
+		@error "take: `$collection` is not a collection type; " +
 			"meta.type-of($collection)=#{meta.type-of($collection)}";
 	}
 

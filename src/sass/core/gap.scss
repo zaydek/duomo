@@ -3,11 +3,13 @@
 @use "../mixins" as mix;
 @use "../utils";
 
-@mixin grid($variants...) {
+@mixin gap($variants...) {
 	@each $variant in $variants {
-		@if utils.matches($variant, core) {
-			.grid {
-				display: grid;
+		@each $rv in get.spaces() {
+			.gap-#{$rv} {
+				@include mix.variants($variant) {
+					gap: utils.rem($rv);
+				}
 			}
 		}
 	}

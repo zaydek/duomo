@@ -1,0 +1,16 @@
+@use "../configuration" as conf;
+@use "../getters" as get;
+@use "../mixins" as mix;
+@use "../utils";
+
+@mixin grid-template-rows($variants...) {
+	@each $variant in $variants {
+		@for $rv from 0 through 12 {
+			.grid-rows-#{$rv} {
+				@include mix.variants($variant) {
+					grid-template-rows: repeat($rv, minmax(0, 1fr));
+				}
+			}
+		}
+	}
+}

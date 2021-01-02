@@ -53,7 +53,8 @@
 // -> .hover\:class { ... }
 // -> .focus\:class { ... }
 //
-@mixin -impl-dev($variants...) {
+// NOTE: Use `$variants` not `$variants...` to `arglist` errors.
+@mixin -impl-dev($variants) {
 	@each $variant in $variants {
 		$selector: meta.call(meta.get-function($variant), &);
 		#{$selector} {
@@ -70,7 +71,8 @@
 // -> .hover\:class,
 // -> .focus\:class { ... }
 //
-@mixin -impl-prod($variants...) {
+// NOTE: Use `$variants` not `$variants...` to `arglist` errors.
+@mixin -impl-prod($variants) {
 	$concat-selector: "";
 	@each $variant in $variants {
 		$selector: meta.call(meta.get-function($variant), &);
@@ -85,19 +87,22 @@
 // Maybe we take the nth component of the selector and use that.
 @mixin variants($variants...) {
 	@at-root {
-		$taken: utils.take($variants, responsive);
-		@if list.length($taken) > 0 {
-			@if conf.$env == development {
-				@include -impl-dev($taken...) {
-					@content;
-				}
-			} @else if conf.$env == production {
-				@include -impl-prod($taken...) {
-					@content;
-				}
-			}
-		}
+		// 	$taken: utils.take($variants, responsive);
+		// 	@if list.length($taken) > 0 {
+		// 		@if conf.$env == development {
+		// 			@include -impl-dev($taken...) {
+		// 				@content;
+		// 			}
+		// 		} @else if conf.$env == production {
+		// 			@include -impl-prod($taken...) {
+		// 				@content;
+		// 			}
+		// 		}
+		// 	}
+
+		// @error $variants;
 		@if list.index($variants, responsive) {
+			// @error "" + &;
 			#{declass-responsive(&)} {
 				@content;
 			}
