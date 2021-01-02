@@ -1,9 +1,8 @@
 @use "../configuration" as conf;
 @use "../generators" as gen;
 @use "../getters" as get;
+@use "../mixins" as mix;
 @use "../utils";
-
-@use "../mixins" as mx;
 
 @mixin grid($variants...) {
 	@each $variant in $variants {
@@ -15,14 +14,14 @@
 
 		@for $rv from 0 through 12 {
 			.grid-cols-#{$rv} {
-				@include mx.variants($variant) {
+				@include mix.variants($variant) {
 					grid-template-columns: repeat($rv, minmax(0, 1fr));
 				}
 			}
 		}
 		@for $rv from 0 through 12 {
 			.grid-rows-#{$rv} {
-				@include mx.variants($variant) {
+				@include mix.variants($variant) {
 					grid-template-rows: repeat($rv, minmax(0, 1fr));
 				}
 			}
@@ -31,7 +30,7 @@
 		// TODO: Can use `gen.generate-from-range` here.
 		@each $rv in get.spaces() {
 			.gap-#{$rv} {
-				@include mx.variants($variant) {
+				@include mix.variants($variant) {
 					gap: gen.rem($rv);
 				}
 			}

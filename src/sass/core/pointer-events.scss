@@ -1,9 +1,8 @@
 @use "../configuration" as conf;
 @use "../generators" as gen;
 @use "../getters" as get;
+@use "../mixins" as mix;
 @use "../utils";
-
-@use "../mixins" as mx;
 
 // prettier-ignore
 $-opts: (
@@ -15,7 +14,7 @@ $-opts: (
 	@each $variant in $variants {
 		@each $opt in $-opts {
 			.pointer-events-#{$opt} {
-				@include mx.variants($variant) {
+				@include mix.variants($variant) {
 					pointer-events: $opt;
 				}
 			}

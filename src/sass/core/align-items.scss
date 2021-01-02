@@ -1,9 +1,8 @@
 @use "../configuration" as conf;
 @use "../generators" as gen;
 @use "../getters" as get;
+@use "../mixins" as mix;
 @use "../utils";
-
-@use "../mixins" as mx;
 
 // prettier-ignore
 $-align-opts: (
@@ -18,7 +17,7 @@ $-align-opts: (
 	@each $variant in $variants {
 		@each $mk, $mv in $-align-opts {
 			.#{$mk} {
-				@include mx.variants($variant) {
+				@include mix.variants($variant) {
 					align-items: $mv;
 				}
 			}

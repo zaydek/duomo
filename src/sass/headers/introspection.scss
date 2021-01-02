@@ -11,10 +11,10 @@
 		@if not configuration.$layout {
 			// // NOTE: Cannot include `$weight-map` because of `var(--black)` collision.
 			// @include generate-vars(configuration.$weight-map);
-			@include generate-vars(configuration.$decoration-map);
-			@include generate-vars(configuration.$color-map);
-			@include generate-vars(configuration.$shadow-map);
-			@include generate-vars(configuration.$timing-map);
+			@include interpolate-vars(configuration.$decoration-map);
+			@include interpolate-vars(configuration.$color-map);
+			@include interpolate-vars(configuration.$shadow-map);
+			@include interpolate-vars(configuration.$timing-map);
 		}
 
 		--sans: "";
@@ -25,8 +25,6 @@
 		--ui-serif: #{font(serif)};
 		--ui-mono: #{font(mono)};
 
-		// TODO: Add support for `-1`, `-2`, `-3`, and `-4`;
-		// matches stagger API.
 		--default-placeholder-color: color(cool-gray-400);
 		--default-placeholder-bg: color(cool-gray-200);
 		--default-border-color: color(cool-gray-200);

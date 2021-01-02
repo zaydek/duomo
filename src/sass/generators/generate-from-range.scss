@@ -3,7 +3,7 @@
 @use "sass:meta";
 
 @use "../getters" as get;
-@use "../mixins" as mx;
+@use "../mixins" as mix;
 @use "resolvers" as rs;
 
 // Ex:
@@ -34,7 +34,7 @@
 
 	@each $rv in $range {
 		.#{get.n($rv)}#{$shorthand}-#{get.desc(get.abs($rv), $as-percent)} {
-			@include mx.variants($variant) {
+			@include mix.variants($variant) {
 				@each $prop in $property {
 					#{$prop}: rs.resolve($rv, $resolver);
 				}

@@ -3,9 +3,8 @@
 @use "../configuration" as conf;
 @use "../generators" as gen;
 @use "../getters" as get;
+@use "../mixins" as mix;
 @use "../utils";
-
-@use "../mixins" as mx;
 
 @function -vendored-shadow-keys() {
 	$map: ();
@@ -19,7 +18,7 @@
 	@if not conf.$layout {
 		@each $variant in $variants {
 			.shadow {
-				@include mx.variants($variant) {
+				@include mix.variants($variant) {
 					@each $mk, $mv in conf.$shadow-map {
 						--dm-#{$mk}: 0 0 transparent;
 					}
@@ -29,7 +28,7 @@
 
 			@each $mk, $mv in conf.$shadow-map {
 				.#{$mk} {
-					@include mx.variants($variant) {
+					@include mix.variants($variant) {
 						--dm-#{$mk}: #{get.shadow-var($mk)};
 					}
 				}

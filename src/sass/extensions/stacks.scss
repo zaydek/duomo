@@ -1,9 +1,8 @@
 @use "../configuration" as conf;
 @use "../generators" as gen;
 @use "../getters" as get;
+@use "../mixins" as mix;
 @use "../utils";
-
-@use "../mixins" as mx;
 
 $-layout-opts: (hstack, vstack, zstack, grid);
 
@@ -84,7 +83,7 @@ $-wrap-opts: (
 		}
 
 		.hstack {
-			@include mx.variants($variant) {
+			@include mix.variants($variant) {
 				display: flex;
 				flex-direction: row;
 				// justify-self: var(--dm-justify-self);
@@ -96,7 +95,7 @@ $-wrap-opts: (
 		}
 
 		.hstack > * + * {
-			@include mx.variants($variant) {
+			@include mix.variants($variant) {
 				margin-top: 0; // Reset
 				margin-left: var(--dm-space);
 			}
@@ -112,7 +111,7 @@ $-wrap-opts: (
 		//
 		.hstack > .spacer:empty,
 		.hstack > .spacer:empty + * {
-			@include mx.variants($variant) {
+			@include mix.variants($variant) {
 				margin-left: 0;
 			}
 		}
@@ -129,7 +128,7 @@ $-wrap-opts: (
 		}
 
 		.vstack {
-			@include mx.variants($variant) {
+			@include mix.variants($variant) {
 				display: flex;
 				flex-direction: column;
 				// justify-self: var(--dm-justify-self);
@@ -141,7 +140,7 @@ $-wrap-opts: (
 		}
 
 		.vstack > * + * {
-			@include mx.variants($variant) {
+			@include mix.variants($variant) {
 				margin-left: 0; // Reset
 				margin-top: var(--dm-space);
 			}
@@ -157,7 +156,7 @@ $-wrap-opts: (
 		//
 		.vstack > .spacer:empty,
 		.vstack > .spacer:empty + * {
-			@include mx.variants($variant) {
+			@include mix.variants($variant) {
 				margin-top: 0;
 			}
 		}
@@ -169,7 +168,7 @@ $-wrap-opts: (
 		// TODO: Extract?
 		@each $mk, $mv in $-wrap-opts {
 			.#{$mk} {
-				@include mx.variants($variant) {
+				@include mix.variants($variant) {
 					flex-wrap: $mv;
 				}
 			}
@@ -208,7 +207,7 @@ $-wrap-opts: (
 		// TODO: Extract?
 		@each $mk, $mv in $-justify-opts {
 			.#{$mk} {
-				@include mx.variants($variant) {
+				@include mix.variants($variant) {
 					justify-content: #{$mv};
 				}
 			}
@@ -221,7 +220,7 @@ $-wrap-opts: (
 		// TODO: Extract?
 		@each $mk, $mv in $-justify-self-opts {
 			.#{$mk} {
-				@include mx.variants($variant) {
+				@include mix.variants($variant) {
 					justify-self: #{$mv};
 				}
 			}
@@ -234,7 +233,7 @@ $-wrap-opts: (
 		// TODO: Extract?
 		@each $mk, $mv in $-align-opts {
 			.#{$mk} {
-				@include mx.variants($variant) {
+				@include mix.variants($variant) {
 					align-items: #{$mv};
 				}
 			}
@@ -247,7 +246,7 @@ $-wrap-opts: (
 		// TODO: Extract?
 		@each $mk, $mv in $-align-self-opts {
 			.#{$mk} {
-				@include mx.variants($variant) {
+				@include mix.variants($variant) {
 					align-self: #{$mv};
 				}
 			}
@@ -259,7 +258,7 @@ $-wrap-opts: (
 
 		@each $rv in utils.list-of(get.nspaces(), get.spaces()) {
 			.#{get.n($rv)}space-#{get.abs($rv)} > * {
-				@include mx.variants($variant) {
+				@include mix.variants($variant) {
 					--dm-space: #{gen.rem($rv)};
 				}
 			}

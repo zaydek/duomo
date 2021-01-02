@@ -1,9 +1,8 @@
 @use "../configuration" as conf;
 @use "../generators" as gen;
 @use "../getters" as get;
+@use "../mixins" as mix;
 @use "../utils";
-
-@use "../mixins" as mx;
 
 // prettier-ignore
 $-wrap-opts: (
@@ -16,7 +15,7 @@ $-wrap-opts: (
 	@each $variant in $variants {
 		@each $mk, $mv in $-wrap-opts {
 			.#{$mk} {
-				@include mx.variants($variant) {
+				@include mix.variants($variant) {
 					flex-wrap: $mv;
 				}
 			}

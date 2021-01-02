@@ -1,9 +1,8 @@
 @use "../configuration" as conf;
 @use "../generators" as gen;
 @use "../getters" as get;
+@use "../mixins" as mix;
 @use "../utils";
-
-@use "../mixins" as mx;
 
 // prettier-ignore
 $-translate-range: (
@@ -37,7 +36,7 @@ $-origin-opts: (
 @mixin transform($variants...) {
 	@each $variant in $variants {
 		.transform {
-			@include mx.variants($variant) {
+			@include mix.variants($variant) {
 				--transform-translate-x: 0;
 				--transform-translate-y: 0;
 				--transform-scale: 1;
@@ -46,7 +45,7 @@ $-origin-opts: (
 		}
 
 		.transform-gpu {
-			@include mx.variants($variant) {
+			@include mix.variants($variant) {
 				--transform-translate-x: 0;
 				--transform-translate-y: 0;
 				--transform-scale: 1;
@@ -58,7 +57,7 @@ $-origin-opts: (
 		@each $axis in (x, y) {
 			@each $rv in $-translate-range {
 				.#{get.n($rv)}translate-#{$axis}-#{abs($rv)} {
-					@include mx.variants($variant) {
+					@include mix.variants($variant) {
 						--transform-translate-#{$axis}: #{$rv + "%"};
 					}
 				}
@@ -67,7 +66,7 @@ $-origin-opts: (
 
 		@each $rv in $-scale-range {
 			.scale-#{get.abs($rv * 100)} {
-				@include mx.variants($variant) {
+				@include mix.variants($variant) {
 					--transform-scale: #{$rv};
 				}
 			}
@@ -75,7 +74,7 @@ $-origin-opts: (
 
 		@each $mk, $mv in $-origin-opts {
 			.origin-#{$mk} {
-				@include mx.variants($variant) {
+				@include mix.variants($variant) {
 					transform-origin: $mv;
 				}
 			}

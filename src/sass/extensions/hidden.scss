@@ -1,9 +1,8 @@
 @use "../configuration" as conf;
 @use "../generators" as gen;
 @use "../getters" as get;
+@use "../mixins" as mix;
 @use "../utils";
-
-@use "../mixins" as mx;
 
 $-opts: (
 	hstack: flex,
@@ -28,12 +27,12 @@ $-opts: (
 		}
 
 		.hidden {
-			@include mx.variants($variant) {
+			@include mix.variants($variant) {
 				display: none;
 			}
 		}
 		.unhidden {
-			@include mx.variants($variant) {
+			@include mix.variants($variant) {
 				display: var(--dm-display);
 			}
 		}

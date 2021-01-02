@@ -1,9 +1,8 @@
 @use "../configuration" as conf;
 @use "../generators" as gen;
 @use "../getters" as get;
+@use "../mixins" as mix;
 @use "../utils";
-
-@use "../mixins" as mx;
 
 // TODO: Use `percent-range`?
 //
@@ -42,7 +41,7 @@ $-range: (
 	@each $variant in $variants {
 		@each $rv in $-range {
 			.#{get.n($rv)}tracking-#{gen.escape(get.abs($rv * 100))} {
-				@include mx.variants($variant) {
+				@include mix.variants($variant) {
 					letter-spacing: $rv + em;
 				}
 			}
