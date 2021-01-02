@@ -8,15 +8,6 @@
 
 @mixin introspection {
 	:root {
-		@if not configuration.$layout {
-			// // NOTE: Cannot include `$weight-map` because of `var(--black)` collision.
-			// @include generate-vars(configuration.$weight-map);
-			@include interpolate-vars(configuration.$decoration-map);
-			@include interpolate-vars(configuration.$color-map);
-			@include interpolate-vars(configuration.$shadow-map);
-			@include interpolate-vars(configuration.$timing-map);
-		}
-
 		--sans: "";
 		--serif: "";
 		--mono: "";

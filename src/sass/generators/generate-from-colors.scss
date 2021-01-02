@@ -19,7 +19,7 @@
 						#{$property}: #{$mv};
 					} @else {
 						--#{$shorthand}-opacity: 1;
-						#{$property}: hsla(var(--#{$mk}), var(--#{$shorthand}-opacity));
+						#{$property}: hsla($mv, var(--#{$shorthand}-opacity));
 					}
 				}
 			}

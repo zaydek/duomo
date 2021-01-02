@@ -29,7 +29,7 @@
 			@each $mk, $mv in conf.$shadow-map {
 				.#{$mk} {
 					@include mix.variants($variant) {
-						--dm-#{$mk}: #{get.shadow-var($mk)};
+						--dm-#{$mk}: #{get.shadow($mk)};
 					}
 				}
 			}
