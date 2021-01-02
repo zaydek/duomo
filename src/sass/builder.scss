@@ -1,9 +1,6 @@
 @use "sass:list";
 @use "sass:map";
 
-@use "getters" as *;
-@use "headers" as *;
-
 @use "core/align-items" as *;
 @use "core/align-self" as *;
 @use "core/background-color" as *;
@@ -47,7 +44,10 @@
 @use "extensions/hidden" as *;
 @use "extensions/stacks" as *;
 
-@use "configuration";
+@use "headers" as *;
+
+@use "configuration" as conf;
+@use "getters" as get;
 @use "utils";
 
 // NOTE: Dart Sass does not support dynamic mixin invocations.
@@ -101,35 +101,36 @@
 }
 
 @mixin duomo {
-	$hidden: map.get(configuration.$variants, hidden);
-	$non-hidden: utils.take(configuration.$variants, hidden);
+	$hidden: map.get(conf.$variants, hidden);
+	$non-hidden: utils.take(conf.$variants, hidden);
 
 	@each $mk, $mv in $non-hidden {
 		@include call-mixin($mk, utils.take($mv, responsive)...);
 	}
 	@include call-mixin(hidden, utils.take($hidden, responsive)...);
-	@each $key, $px in breakpoints() {
-		@media (min-width: $px) {
-			.#{delimit($key)} {
-				@at-root {
-					@each $property, $variants in $non-hidden {
-						@if list.index($variants, responsive) {
-							@include call-mixin($property, responsive);
-						}
-					}
-					@if list.index($hidden, responsive) {
-						@include call-mixin(hidden, responsive);
-					}
-				}
-			}
-		}
-	}
+
+	// @each $key, $px in get.breakpoints() {
+	// 	@media (min-width: $px) {
+	// 		.#{get.delimit($key)} {
+	// 			@at-root {
+	// 				@each $property, $variants in $non-hidden {
+	// 					@if list.index($variants, responsive) {
+	// 						@include call-mixin($property, responsive);
+	// 					}
+	// 				}
+	// 				@if list.index($hidden, responsive) {
+	// 					@include call-mixin(hidden, responsive);
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
 }
 
 @at-root {
-	@if not configuration.$headless {
+	@if not conf.$headless {
 		/*! https://github.com/zaydek/duomo */
-		@include headers;
+		// @include headers;
 		@include duomo;
 	}
 }
