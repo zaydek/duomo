@@ -1,0 +1,30 @@
+@use "../configuration" as conf;
+@use "../getters" as get;
+@use "../mixins" as mix;
+@use "../utils";
+
+// Based on:
+//
+// - https://codepen.io/everdimension/pen/BaNpeWe
+// - https://codepen.io/zaydek/pen/MWjEvee
+//
+@mixin zstack($variants...) {
+	@each $variant in $variants {
+		@if utils.matches($variant, core) {
+			.zstack {
+				display: grid;
+				place-items: center;
+
+				// Constrains children to the ZStack bounding box.
+				position: relative;
+			}
+			.zstack > * {
+				grid-area: 1 / 1 / 1 / 1;
+				z-index: 10;
+			}
+			.zstack > :nth-child(n + 2) {
+				position: absolute;
+			}
+		}
+	}
+}

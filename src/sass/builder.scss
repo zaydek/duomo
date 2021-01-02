@@ -48,10 +48,11 @@
 @use "extensions/aspect-ratio" as *;
 @use "extensions/circle" as *;
 @use "extensions/container" as *;
+@use "extensions/flex-stacks" as *;
 @use "extensions/group" as *;
 @use "extensions/hidden" as *;
 @use "extensions/square" as *;
-@use "extensions/stacks" as *;
+@use "extensions/zstack" as *;
 
 @use "configuration" as conf;
 @use "getters" as get;
@@ -76,6 +77,7 @@
 	@if $mixin == color { @include color($variants...); }
 	@if $mixin == column-gap { @include column-gap($variants...); }
 	@if $mixin == container { @include container($variants...); }
+	@if $mixin == flex-stacks { @include flex-stacks($variants...); }
 	@if $mixin == flex-wrap { @include flex-wrap($variants...); }
 	@if $mixin == font-family { @include font-family($variants...); }
 	@if $mixin == font-size { @include font-size($variants...); }
@@ -103,7 +105,6 @@
 	@if $mixin == position { @include position($variants...); }
 	@if $mixin == row-gap { @include row-gap($variants...); }
 	@if $mixin == square { @include square($variants...); }
-	@if $mixin == stacks { @include stacks($variants...); }
 	@if $mixin == text-align { @include text-align($variants...); }
 	@if $mixin == text-decoration { @include text-decoration($variants...); }
 	@if $mixin == transform { @include transform($variants...); }
@@ -112,6 +113,7 @@
 	@if $mixin == white-space { @include white-space($variants...); }
 	@if $mixin == width { @include width($variants...); }
 	@if $mixin == z-index { @include z-index($variants...); }
+	@if $mixin == zstack { @include zstack($variants...); }
 }
 
 @mixin duomo {

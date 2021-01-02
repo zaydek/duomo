@@ -3,14 +3,6 @@
 @use "../mixins" as mix;
 @use "../utils";
 
-// prettier-ignore
-$-layout-opts: (
-	hstack,
-	vstack,
-	zstack,
-	grid,
-);
-
 // NOTE: Stacks do not use a compositional API because
 // `justify-self` and `align-self` need to apply to non-stack elements.
 
@@ -23,21 +15,8 @@ $-layout-opts: (
 // - Stack children can be manually aligned
 //
 // Based on https://codepen.io/zaydek/pen/RwGZwjJ.
-@mixin stacks($variants...) {
+@mixin flex-stacks($variants...) {
 	@each $variant in $variants {
-		/*
-		 * <layout>
-		 */
-
-		// @if utils.matches($variant, core) {
-		// 	@each $opt in $-layout-opts {
-		// 		.#{$opt} {
-		// 			--dm-justify-self: stretch;
-		// 			--dm-align-self: stretch;
-		// 		}
-		// 	}
-		// }
-
 		/*
 		 * <hstack>
 		 */
@@ -53,9 +32,7 @@ $-layout-opts: (
 			@include mix.variants($variant) {
 				display: flex;
 				flex-direction: row;
-				// justify-self: var(--dm-justify-self);
 				justify-content: center;
-				// align-self: var(--dm-align-self);
 				align-items: center;
 				min-width: min-content; // Needed for `overflow-x-scroll`
 			}
@@ -98,9 +75,7 @@ $-layout-opts: (
 			@include mix.variants($variant) {
 				display: flex;
 				flex-direction: column;
-				// justify-self: var(--dm-justify-self);
 				justify-content: center;
-				// align-self: var(--dm-align-self);
 				align-items: center;
 				min-width: auto; // Needed for `overflow-x-scroll`
 			}
@@ -154,32 +129,6 @@ $-layout-opts: (
 			.spacer:last-child {
 				flex: 1 0 0;
 				min-width: 0; // Needed for `overflow-x-scroll`
-			}
-		}
-
-		/*
-		 * <zstack>
-		 */
-
-		// Based on https://codepen.io/zaydek/pen/MWjEvee.
-		@if utils.matches($variant, core) {
-			.zstack {
-				display: grid;
-				justify-self: var(--dm-justify-self);
-				justify-items: center; // NOTE: Use `justify-items` not `justify-content`.
-				align-self: var(--dm-align-self);
-				align-items: center;
-				position: relative;
-			}
-			.zstack > * {
-				grid-row-start: 1;
-				grid-column-start: 1;
-				grid-row-end: 1;
-				grid-column-end: 1;
-				z-index: 10;
-			}
-			.zstack > :nth-child(n + 2) {
-				position: absolute;
 			}
 		}
 	}
