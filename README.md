@@ -308,7 +308,7 @@ Spacers, unlike HStacks and VStacks, implement no modifiers.
 
 **Examples:**
 
-Simualtes `justify-content: flex-start`.
+Simulates `justify-content: flex-start`.
 
 ```html
 <!--
@@ -323,12 +323,12 @@ Simualtes `justify-content: flex-start`.
 </div>
 ```
 
-Simualtes `justify-content: flex-end`.
+Simulates `justify-content: flex-end`.
 
 ```html
 <!--
 	. . .
-	. . x
+	x x .
 	. . .
 -->
 <div class="hstack">
@@ -338,7 +338,7 @@ Simualtes `justify-content: flex-end`.
 </div>
 ```
 
-Simualtes `justify-content: space-evenly`.
+Simulates `justify-content: space-evenly`.
 
 ```html
 <!--
