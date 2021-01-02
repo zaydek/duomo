@@ -1,0 +1,27 @@
+@use "../configuration" as conf;
+@use "../generators" as gen;
+@use "../getters" as get;
+@use "../utils";
+
+@use "../mixins" as mx;
+
+// prettier-ignore
+$-justify-self-opts: (
+	justify-self-stretch: stretch,
+	justify-self-start: flex-start,
+	justify-self-center: center,
+	justify-self-end: flex-end,
+	justify-self-baseline: baseline,
+);
+
+@mixin justify-self($variants...) {
+	@each $variant in $variants {
+		@each $mk, $mv in $-justify-self-opts {
+			.#{$mk} {
+				@include mx.variants($variant) {
+					justify-self: $mv;
+				}
+			}
+		}
+	}
+}

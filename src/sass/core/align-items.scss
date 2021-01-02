@@ -1,0 +1,27 @@
+@use "../configuration" as conf;
+@use "../generators" as gen;
+@use "../getters" as get;
+@use "../utils";
+
+@use "../mixins" as mx;
+
+// prettier-ignore
+$-align-opts: (
+	align-stretch: stretch,
+	align-start: flex-start,
+	align-center: center,
+	align-end: flex-end,
+	align-baseline: baseline,
+);
+
+@mixin align-items($variants...) {
+	@each $variant in $variants {
+		@each $mk, $mv in $-align-opts {
+			.#{$mk} {
+				@include mx.variants($variant) {
+					align-items: $mv;
+				}
+			}
+		}
+	}
+}
