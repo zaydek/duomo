@@ -8,7 +8,7 @@ test("integration", () => {
 @use "index" as * with ($headless: true);
 
 .bg-red-500 {
-	@include variants(hover, focus, group-hover, group-focus) {
+	@include variants(core, hover, focus, group-hover, group-focus) {
 		background-color: color(red-500);
 	}
 }

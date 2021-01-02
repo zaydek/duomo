@@ -13,7 +13,7 @@
 
 	@if $map {
 		@each $mk, $mv in $map {
-			.#{$shorthand}-#{$mk} {
+			.#{$shorthand}-#{"" + $mk} {
 				@include mx.variants($variant) {
 					@if $mk == transparent or $mk == current {
 						#{$property}: #{$mv};

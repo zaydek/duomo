@@ -8,7 +8,7 @@ test("integration", () => {
 @use "index" as * with ($headless: true);
 
 :root {
-	@include generate-vars(
+	@include interpolate-vars(
 		(
 			a: x,
 			b: y,
