@@ -8,18 +8,11 @@ test("integration", () => {
 @use "index" as * with ($headless: true);
 
 :root {
-	@include interpolate-vars(
-		(
-			a: x,
-			b: y,
-			c: z,
-		),
-		(
-			d: x,
-			e: y,
-			f: z,
-		),
-	);
+	@include interpolate-vars((
+		a: x,
+		b: y,
+		c: z,
+	));
 }
 `)
 	// prettier-ignore
@@ -28,9 +21,6 @@ test("integration", () => {
 	--a: x;
 	--b: y;
 	--c: z;
-	--d: x;
-	--e: y;
-	--f: z;
 }
 `.trim())
 })

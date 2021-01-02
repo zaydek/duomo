@@ -7,16 +7,19 @@ test("integration", () => {
 	const css = sass(`
 @use "index" as * with ($headless: true);
 
-.clsx {
-	@each $each in decoration-vars() {
-		text-decoration: $each;
+@each $mk, $mv in decoration-vars() {
+	.#{$mk} {
+		text-decoration: $mv;
 	}
 }
 `)
 	// prettier-ignore
 	expect(css).toBe(`
-.clsx {
+.strikethrough {
 	text-decoration: var(--strikethrough);
+}
+
+.underline {
 	text-decoration: var(--underline);
 }
 `.trim())

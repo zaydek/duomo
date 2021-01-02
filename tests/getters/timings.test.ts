@@ -7,18 +7,27 @@ test("integration", () => {
 	const css = sass(`
 @use "index" as * with ($headless: true);
 
-.clsx {
-	@each $each in timing-vars() {
-		transition-timing-function: $each;
+@each $mk, $mv in timing-vars() {
+	.#{$mk} {
+		transition-timing-function: $mv;
 	}
 }
 `)
 	// prettier-ignore
 	expect(css).toBe(`
-.clsx {
+.linear {
 	transition-timing-function: var(--linear);
+}
+
+.ease-in {
 	transition-timing-function: var(--ease-in);
+}
+
+.ease-out {
 	transition-timing-function: var(--ease-out);
+}
+
+.ease-in-out {
 	transition-timing-function: var(--ease-in-out);
 }
 `.trim())

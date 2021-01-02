@@ -7,22 +7,43 @@ test("integration", () => {
 	const css = sass(`
 @use "index" as * with ($headless: true);
 
-.clsx {
-	@each $each in shadow-vars() {
-		box-shadow: $each;
+@each $mk, $mv in shadow-vars() {
+	.#{$mk} {
+		box-shadow: $mv;
 	}
 }
 `)
 	// prettier-ignore
 	expect(css).toBe(`
-.clsx {
+.shadow-inner {
 	box-shadow: var(--shadow-inner);
+}
+
+.shadow-px {
 	box-shadow: var(--shadow-px);
+}
+
+.shadow-xs {
 	box-shadow: var(--shadow-xs);
+}
+
+.shadow-sm {
 	box-shadow: var(--shadow-sm);
+}
+
+.shadow-md {
 	box-shadow: var(--shadow-md);
+}
+
+.shadow-lg {
 	box-shadow: var(--shadow-lg);
+}
+
+.shadow-xl {
 	box-shadow: var(--shadow-xl);
+}
+
+.shadow-2xl {
 	box-shadow: var(--shadow-2xl);
 }
 `.trim())

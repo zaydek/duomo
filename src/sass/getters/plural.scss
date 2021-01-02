@@ -1,64 +1,61 @@
-@use "sass:list";
 @use "sass:map";
 
-@use "singular" as *;
-
-@use "../configuration";
+@use "../configuration" as conf;
+@use "singular";
 
 @function weights() {
-	$list: ();
-	@each $mk, $mv in configuration.$weight-map {
-		$list: list.append($list, weight($mk));
+	$map: ();
+	@each $mk, $_ in conf.$weight-map {
+		$map: map.set($map, $mk, singular.weight($mk));
 	}
-	@return $list;
+	@return $map;
 }
 
 @function fonts() {
-	$list: ();
-	@each $mk, $mv in configuration.$font-map {
-		$list: list.append($list, font($mk));
+	$map: ();
+	@each $mk, $_ in conf.$font-map {
+		$map: map.set($map, $mk, singular.font($mk));
 	}
-	@return $list;
+	@return $map;
 }
 
 @function decorations() {
-	$list: ();
-	@each $mk, $mv in configuration.$decoration-map {
-		$list: list.append($list, decoration($mk));
+	$map: ();
+	@each $mk, $_ in conf.$decoration-map {
+		$map: map.set($map, $mk, singular.decoration($mk));
 	}
-	@return $list;
+	@return $map;
 }
 
 @function colors($alpha: null, $opts) {
 	$subset: map.get($opts, subset);
-	$list: ();
-	@each $mk, $mv in if($subset, configuration.$subset-color-map, configuration.$color-map) {
-		$list: list.append($list, color($mk, $alpha));
+	$map: ();
+	@each $mk, $_ in if($subset, conf.$subset-color-map, conf.$color-map) {
+		$map: map.set($map, $mk, singular.color($mk, $alpha));
 	}
-	@return $list;
+	@return $map;
 }
 
 @function shadows() {
-	$list: ();
-	@each $mk, $mv in configuration.$shadow-map {
-		$list: list.append($list, shadow($mk));
+	$map: ();
+	@each $mk, $_ in conf.$shadow-map {
+		$map: map.set($map, $mk, singular.shadow($mk));
 	}
-	@return $list;
+	@return $map;
 }
 
 @function timings() {
-	$list: ();
-	@each $mk, $mv in configuration.$timing-map {
-		$list: list.append($list, timing($mk));
+	$map: ();
+	@each $mk, $_ in conf.$timing-map {
+		$map: map.set($map, $mk, singular.timing($mk));
 	}
-	@return $list;
+	@return $map;
 }
 
-// NOTE: Returns a map -- not a list.
 @function breakpoints() {
 	$map: ();
-	@each $mk, $mv in configuration.$breakpoint-map {
-		$map: map.set($map, $mk, breakpoint($mk));
+	@each $mk, $_ in conf.$breakpoint-map {
+		$map: map.set($map, $mk, singular.breakpoint($mk));
 	}
 	@return $map;
 }

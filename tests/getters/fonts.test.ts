@@ -7,17 +7,23 @@ test("integration", () => {
 	const css = sass(`
 @use "index" as * with ($headless: true);
 
-.clsx {
-	@each $each in font-vars() {
-		font-family: $each;
+@each $mk, $mv in font-vars() {
+	.#{$mk} {
+		font-family: $mv;
 	}
 }
 `)
 	// prettier-ignore
 	expect(css).toBe(`
-.clsx {
+.sans {
 	font-family: var(--sans);
+}
+
+.serif {
 	font-family: var(--serif);
+}
+
+.mono {
 	font-family: var(--mono);
 }
 `.trim())
