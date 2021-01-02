@@ -1,23 +1,19 @@
 @use "../utils";
-@use "configuration";
+@use "configuration" as conf;
 
 // prettier-ignore
 $macro-variants: if(
-	configuration.$layout,
+	conf.$layout,
 	null,
 	(hover, focus, group-hover, group-focus),
 ) !default;
 
-// NOTE: Use `utils.list-of` because `(core)` resolves to a string.
-//
 // prettier-ignore
 $variants: (
-	aspect-ratio:     utils.list-of(core), // TODO: Add `responsive`.
 	container:        utils.list-of(core),
 	group:            utils.list-of(core),
 
-	// Stacks take precedence.
-	stacks:           utils.list-of(core, responsive),
+	aspect-ratio:     utils.list-of(core, responsive),
 	border-radius:    utils.list-of(core, responsive),
 	border-width:     utils.list-of(core, responsive),
 	font-family:      utils.list-of(core, responsive),
@@ -36,6 +32,7 @@ $variants: (
 	padding:          utils.list-of(core, responsive),
 	pointer-events:   utils.list-of(core, responsive),
 	position:         utils.list-of(core, responsive),
+	stacks:           utils.list-of(core, responsive),
 	text-align:       utils.list-of(core, responsive),
 	vertical-align:   utils.list-of(core, responsive),
 	white-space:      utils.list-of(core, responsive),
