@@ -12,15 +12,38 @@
 	@each $variant in $variants {
 		@if utils.matches($variant, core) {
 			.zstack {
-				display: grid;
-				place-items: center;
-
-				// Constrains children to the ZStack bounding box.
+				// NOTE: Constrain children to the ZStack bounding box.
+				// This prevents direct and indirect children from escaping
+				// the ZStack bounding box.
+				//
+				// Common pattern:
+				//
+				// <relative>
+				//   <children />
+				//   <absolute top? right? bottom? left?>
+				//     ...
+				//   </absolute>
+				// </relative>
+				//
+				// ZStack pattern:
+				//
+				// <zstack>
+				//   <children />
+				//   <direction>
+				//     ...
+				//   </direction>
+				// </zstack>
+				//
 				position: relative;
+				display: grid;
+				justify-items: center;
+				align-items: center;
 			}
 			.zstack > * {
-				grid-area: 1 / 1 / 1 / 1;
-				z-index: 10;
+				grid-row-start: 1;
+				grid-column-start: 1;
+				grid-row-end: 1;
+				grid-column-end: 1;
 			}
 			.zstack > :nth-child(n + 2) {
 				position: absolute;
