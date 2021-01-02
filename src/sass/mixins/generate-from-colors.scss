@@ -1,7 +1,30 @@
 @use "sass:color";
 @use "sass:map";
+@use "sass:math";
 
 @use "variants" as v;
+
+// Ex:
+//
+// -hex-to-hsl((white: #fff, black: #000))
+// -> (white: hsl(0deg, 0%, 100%), black: hsl(0deg, 0%, 0%))
+//
+@function -hex-to-hsl($color-map) {
+	$map: ();
+	@each $mk, $mv in $color-map {
+		@if $mk == transparent or $mk == current {
+			$map: map.set($map, $mk, $mv);
+		} @else {
+			// prettier-ignore
+			$map: map.set($map, $mk, (
+				math.round(color.hue($mv)),
+				math.round(color.saturation($mv)),
+				math.round(color.lightness($mv)),
+			));
+		}
+	}
+	@return $map;
+}
 
 // prettier-ignore
 @mixin generate-from-colors($info-map) {
@@ -11,8 +34,10 @@
 	$map:           map.get($info-map, map);
 	$percent-range: map.get($info-map, percent-range);
 
+	$hsl-map: -hex-to-hsl($map);
+
 	@if $map {
-		@each $mk, $mv in $map {
+		@each $mk, $mv in $hsl-map {
 			.#{$shorthand}-#{"" + $mk} {
 				@include v.variants($variant) {
 					@if $mk == transparent or $mk == current {

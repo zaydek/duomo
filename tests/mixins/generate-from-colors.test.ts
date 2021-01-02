@@ -10,6 +10,8 @@ test("integration", () => {
 $color-map: (
 	transparent: transparent,
 	current: currentColor,
+	black: #000,
+	white: #fff,
 	red: #f00,
 	green: #0f0,
 	blue: #00f,
@@ -35,19 +37,29 @@ $color-map: (
 	background-color: currentColor;
 }
 
+.bg-black {
+	--bg-opacity: 1;
+	background-color: hsla(0deg, 0%, 0%, var(--bg-opacity));
+}
+
+.bg-white {
+	--bg-opacity: 1;
+	background-color: hsla(0debg, 0%, 100%, var(--bg-opacity));
+}
+
 .bg-red {
 	--bg-opacity: 1;
-	background-color: hsla(var(--red), var(--bg-opacity));
+	background-color: hsla(0deg, 100%, 50%, var(--bg-opacity));
 }
 
 .bg-green {
 	--bg-opacity: 1;
-	background-color: hsla(var(--green), var(--bg-opacity));
+	background-color: hsla(120deg, 100%, 50%, var(--bg-opacity));
 }
 
 .bg-blue {
 	--bg-opacity: 1;
-	background-color: hsla(var(--blue), var(--bg-opacity));
+	background-color: hsla(240deg, 100%, 50%, var(--bg-opacity));
 }
 
 .bg-opacity-0 {
