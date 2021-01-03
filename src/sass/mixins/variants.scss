@@ -20,7 +20,8 @@
 	// Edge case:
 	//
 	// .sm\: :root:not([data-theme-effect]) .transition
-	// -> .sm\: .transition                           (1)
+	//
+	// -> .sm\: .transition                                (1)
 	// -> :root:not([data-theme-effect]) .sm\: .transition (2)
 	// -> :root:not([data-theme-effect]) .sm\:transition   (3)
 	//
@@ -37,32 +38,6 @@
 	@return utils.str-replace($str-selector, "#{get.delimiter()} .", get.delimiter());
 }
 
-// @function core($selector) {
-// 	@return ".#{$selector}";
-// }
-// @function hover($selector) {
-// 	@return ".hover#{get.delimiter()}#{str-declass($selector)}:hover";
-// }
-// @function focus($selector) {
-// 	@return ".focus#{get.delimiter()}#{str-declass($selector)}:focus";
-// }
-// // prettier-ignore
-// @function touch($selector) {
-// 	@return ".touch#{get.delimiter()}#{str-declass($selector)}:hover, " +
-// 		".touch#{get.delimiter()}#{str-declass($selector)}:focus";
-// }
-// @function group-hover($selector) {
-// 	@return ".group\:hover .group-hover#{get.delimiter()}#{str-declass($selector)}";
-// }
-// @function group-focus($selector) {
-// 	@return ".group\:focus .group-focus#{get.delimiter()}#{str-declass($selector)}";
-// }
-// // prettier-ignore
-// @function group-touch($selector) {
-// 	@return ".group\:hover .group-touch#{get.delimiter()}#{str-declass($selector)}, " +
-// 		".group\:focus .group-touch#{get.delimiter()}#{str-declass($selector)}";
-// }
-
 @function core($selector) {
 	@return ".#{$selector}";
 }
@@ -75,8 +50,10 @@
 	@return ".focus\\:#{$selector}:focus";
 }
 
+// prettier-ignore
 @function touch($selector) {
-	@return ".touch\\:#{$selector}:hover, "+ ".touch\\:#{$selector}:focus";
+	@return ".touch\\:#{$selector}:hover, "+
+		".touch\\:#{$selector}:focus";
 }
 
 @function group-hover($selector) {
@@ -87,8 +64,10 @@
 	@return ".group:focus .group-focus\\:#{$selector}";
 }
 
+// prettier-ignore
 @function group-touch($selector) {
-	@return ".group:hover .group-touch\\:#{$selector}, "+ ".group:focus .group-touch\\:#{$selector}";
+	@return ".group:hover .group-touch\\:#{$selector}, "+
+		".group:focus .group-touch\\:#{$selector}";
 }
 
 // @function responsive($selector) {
@@ -103,7 +82,7 @@
 // -> .hover\:class { ... }
 // -> .focus\:class { ... }
 //
-@mixin -ungrouped($ampersand, $variants...) {
+@mixin -ungroup-selectors($ampersand, $variants...) {
 	@each $variant in $variants {
 		$selector: meta.call(meta.get-function($variant), str-declass($ampersand));
 		#{$selector} {
@@ -120,7 +99,7 @@
 // -> .hover\:class,
 // -> .focus\:class { ... }
 //
-@mixin -grouped($ampersand, $variants...) {
+@mixin -group-selectors($ampersand, $variants...) {
 	$selector: "";
 	@each $variant in $variants {
 		$selector: $selector + if($selector == "", "", ", ") + meta.call($variant, str-declass($ampersand));
@@ -140,11 +119,11 @@
 		$taken: utils.take($variants, responsive);
 		@if list.length($taken) > 0 {
 			@if conf.$env == development {
-				@include -ungrouped(&, $taken...) {
+				@include -ungroup-selectors(&, $taken...) {
 					@content;
 				}
 			} @else if conf.$env == production {
-				@include -grouped(&, $taken...) {
+				@include -group-selectors(&, $taken...) {
 					@content;
 				}
 			}
