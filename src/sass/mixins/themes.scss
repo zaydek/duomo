@@ -1,17 +1,19 @@
 @use "sass:map";
+@use "sass:selector";
 
 // TODO: Right now, `$duration` must be described in duration units.
 // In the future, it would be preferable to be able to describe `$duration`
 // as a unitless number.
 //
-// Based on https://codepen.io/zaydek/pen/wvzyENQ.
+// This line of reasoning should also extend to `$timing`, so that
+// `timing: ease-out` works, too.
+//
+// Based on https://codepen.io/zaydek/pen/GRjxyrm.
 //
 // prettier-ignore
-@mixin themes($info-map) {
-	$light:    map.get($info-map, light);
-	$dark:     map.get($info-map, dark);
-	$duration: map.get($info-map, duration);
-	$timing:   map.get($info-map, timing);
+@mixin themes($theme-map, $duration, $timing) {
+	$light: map.get($theme-map, light);
+	$dark:  map.get($theme-map, dark);
 
 	:root {
 		@each $mk, $mv in $light {
@@ -41,12 +43,12 @@
 //
 // .clsx {
 //   @include theme-transition {
-//     // ...
+//     ...
 //   }
 // }
 //
 // -> .clsx {
-// ->   // ...
+// ->   ...
 // ->   transition: var(--theme-transition);
 // -> }
 //
@@ -55,13 +57,30 @@
 	transition: var(--theme-transition);
 }
 
-@mixin theme-variants($variants...) {
+// Ex:
+//
+// .x-hoverable {
+//   @include theme-variants(hover) {
+//     ...
+//   }
+// }
+//
+// -> .x-hoverable {
+// ->   transition: var(--theme-transition);
+// -> }
+// ->
+// -> :root:not([data-theme-effect]) .x-hoverable:hover {
+// ->   transition: 250ms background-color var(--ease-out);
+// -> }
+// ->
+// -> .x-hoverable:hover {
+// ->   ...
+// -> }
+//
+@mixin theme-variants($variants, $duration, $timing) {
 	$negate-selector: "";
 	@each $variant in $variants {
-		$negate-selector: $negate-selector +
-			if($negate-selector == "", "", ", ") +
-			":root:not([data-theme-effect]) " +
-			selector.append(&, ":" + $variant);
+		$negate-selector: $negate-selector + if($negate-selector == "", "", ", ") + ":root:not([data-theme-effect]) " + &;
 	}
 
 	$selector: "";
@@ -72,13 +91,13 @@
 	@at-root {
 		// Opts-in to theme-transitioning.
 		& {
-			// transition: var(--theme-transition);
-			@include theme-transition {
-			}
+			// prettier-ignore
+			@include theme-transition {}
 		}
 		// Opts-out of theme-transitioning.
 		#{$negate-selector} {
-			transition: $x-duration background-color var(--ease-out);
+			// TODO
+			transition: $duration background-color $timing;
 		}
 		#{$selector} {
 			@content;
