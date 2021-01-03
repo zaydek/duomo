@@ -16,6 +16,23 @@
 // Ex: ".sm\\: .class" -> ".sm\\:class"
 @function str-declass-responsive($selector) {
 	$str-selector: "" + $selector;
+
+	// Edge case:
+	//
+	// .sm\: :not([data-theme-effect]) .transition
+	// -> .sm\: .transition                           (1)
+	// -> :not([data-theme-effect]) .sm\: .transition (2)
+	// -> :not([data-theme-effect]) .sm\:transition   (3)
+	//
+	@if utils.str-ends-with($str-selector, ":not([data-theme-effect]) .transition") {
+		// prettier-ignore
+		$str-selector: utils.str-replace(
+			$str-selector,
+			"#{get.delimiter()} :not([data-theme-effect])",
+			get.delimiter()
+		);
+		$str-selector: ":not([data-theme-effect]) #{$str-selector}";
+	}
 	@return utils.str-replace($str-selector, "#{get.delimiter()} .", get.delimiter());
 }
 
