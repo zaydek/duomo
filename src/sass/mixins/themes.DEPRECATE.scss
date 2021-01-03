@@ -1,0 +1,106 @@
+@use "sass:list";
+@use "sass:map";
+@use "sass:string";
+
+@use "../utils";
+
+$-legend: (
+	background-color: bg,
+	border-color: border-color,
+	box-shadow: shadow,
+	color: color,
+	fill: fill,
+	opacity: opacity,
+	stroke: stroke,
+);
+
+// Parses a lightweight abstract syntax tree.
+@function -parse-ast($map) {
+	$info-map: ();
+	@each $mk, $mv in $map {
+		@each $tk, $tv in $-legend {
+			@if utils.str-ends-with($mk, $tv) {
+				$n: string.index($mk, $tv);
+				$key: string.slice($mk, 1, $n - 2);
+				$current: map.get($info-map, $key);
+
+				// prettier-ignore
+				$info-map: map.set(
+					$info-map,
+					$key,
+					list.append(
+						if(not $current, (), $current),
+						(
+							var: $mk,      // -> app
+							property: $tk, // -> background-color
+							value: $mv,    // -> hsl(...)
+						)
+					)
+				);
+			}
+		}
+	}
+	@return $info-map;
+}
+
+// Ex:
+//
+// @include themes(...);
+//
+// -> :root {
+// ->   --app-color: hsl(0deg, 0%, 0%);
+// ->   --app-bg: hsl(0deg, 0%, 100%);
+// -> }
+// ->
+// -> [data-theme-id="dark"] {
+// ->   --app-color: hsl(0deg, 0%, 100%);
+// ->   --app-bg: hsl(0deg, 0%, 0%);
+// -> }
+// ->
+// -> .x-app {
+// ->   color: var(--app-color);
+// ->   background-color: var(--app-bg);
+// ->   transition: var(--theme-transition);
+// -> }
+//
+// TODO: Add support for `root-bg` and `border-color-default`?
+// TODO: Add support for n-many themes; `[data-theme-id="..."]` should be dynamic.
+//
+// prettier-ignore
+@mixin themes($options) {
+	$light:    map.get($options, light);
+	$dark:     map.get($options, dark);
+	$duration: map.get($options, duration);
+	$timing:   map.get($options, timing);
+
+	$theme-transition: var(--theme-transition);
+
+	$light-ast: -parse-ast($light);
+	:root {
+		@each $mk, $mv in $light-ast {
+			@each $info-map in $mv {
+				--#{map.get($info-map, var)}: #{map.get($info-map, value)};
+			}
+		}
+		--default-theme-transition-duration: #{$duration};
+		--default-theme-transition-timing: #{$timing};
+	}
+
+	$dark-ast: -parse-ast($dark);
+	[data-theme="dark"] {
+		@each $mk, $mv in $dark-ast {
+			@each $info-map in $mv {
+				--#{map.get($info-map, var)}: #{map.get($info-map, value)};
+			}
+		}
+	}
+
+	@each $mk, $mv in $light-ast {
+		.x-#{$mk} {
+			@each $info-map in $mv {
+				#{map.get($info-map, property)}: var(--#{map.get($info-map, var)});
+			}
+			transition: $theme-transition;
+		}
+	}
+}

@@ -19,19 +19,19 @@
 
 	// Edge case:
 	//
-	// .sm\: :not([data-theme-effect]) .transition
+	// .sm\: :root:not([data-theme-effect]) .transition
 	// -> .sm\: .transition                           (1)
-	// -> :not([data-theme-effect]) .sm\: .transition (2)
-	// -> :not([data-theme-effect]) .sm\:transition   (3)
+	// -> :root:not([data-theme-effect]) .sm\: .transition (2)
+	// -> :root:not([data-theme-effect]) .sm\:transition   (3)
 	//
-	@if utils.str-ends-with($str-selector, ":not([data-theme-effect]) .transition") {
+	@if utils.str-ends-with($str-selector, ":root:not([data-theme-effect]) .transition") {
 		// prettier-ignore
 		$str-selector: utils.str-replace(
 			$str-selector,
-			"#{get.delimiter()} :not([data-theme-effect])",
+			"#{get.delimiter()} :root:not([data-theme-effect])",
 			get.delimiter()
 		);
-		$str-selector: ":not([data-theme-effect]) #{$str-selector}";
+		$str-selector: ":root:not([data-theme-effect]) #{$str-selector}";
 	}
 	@return utils.str-replace($str-selector, "#{get.delimiter()} .", get.delimiter());
 }
@@ -98,8 +98,6 @@
 	}
 }
 
-// TODO: Needs to support `:not([data-theme-effect]) .transition` edge case.
-// Maybe we take the nth component of the selector and use that.
 @mixin variants($variants...) {
 	@at-root {
 		$taken: utils.take($variants, responsive);

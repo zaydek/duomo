@@ -25,7 +25,8 @@ $-range: (
 @mixin transition($variants...) {
 	@each $variant in $variants {
 		// TODO: Programmatically generate from `$transition-props`.
-		:not([data-theme-effect]) .transition {
+		// TODO: Does `root:not([data-theme-effect])` work without `:root`?
+		:root:not([data-theme-effect]) .transition {
 			@include mix.variants($variant) {
 				--transition-duration: var(--default-transition-duration);
 				--transition-timing: var(--default-transition-timing);
