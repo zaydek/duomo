@@ -1,3 +1,5 @@
+@use "sass:list";
+
 @use "../configuration" as conf;
 @use "../getters" as get;
 @use "../mixins" as mix;
@@ -24,14 +26,13 @@ $-range: (
 
 @mixin transition($variants...) {
 	@each $variant in $variants {
-		// TODO: Programmatically generate from `$transition-props`.
-		// TODO: Does `root:not([data-theme-effect])` work without `:root`?
+		// FIXME: https://github.com/zaydek/duomo/issues/244.
 		:root:not([data-theme-effect]) .transition {
 			@include mix.variants($variant) {
 				--transition-duration: var(--default-transition-duration);
 				--transition-timing: var(--default-transition-timing);
 				transition: var(--transition-duration) var(--transition-timing);
-				transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+				transition-property: list.append(conf.$transition-props, transform);
 			}
 		}
 

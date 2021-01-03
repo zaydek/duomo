@@ -81,14 +81,16 @@
 // -> }
 //
 @mixin theme-variants($variants, $duration, $timing) {
+	// This is the primary selector.
+	$primary-selector: "";
+	@each $variant in $variants {
+		$primary-selector: $primary-selector + if($primary-selector == "", "", ", ") + selector.append(&, ":" + $variant);
+	}
+
+	// This is the negated selector; negates `:root:data([data-theme-effect])`.
 	$negate-selector: "";
 	@each $variant in $variants {
 		$negate-selector: $negate-selector + if($negate-selector == "", "", ", ") + ":root:not([data-theme-effect]) " + &;
-	}
-
-	$selector: "";
-	@each $variant in $variants {
-		$selector: $selector + if($selector == "", "", ", ") + selector.append(&, ":" + $variant);
 	}
 
 	@at-root {
@@ -101,7 +103,7 @@
 		#{$negate-selector} {
 			transition: utils.build-transition(conf.$transition-props, $duration, $timing);
 		}
-		#{$selector} {
+		#{$primary-selector} {
 			@content;
 		}
 	}
