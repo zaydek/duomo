@@ -5,9 +5,9 @@
 
 // prettier-ignore
 @mixin background-color($variants...) {
-	@each $variant in $variants {
+	@include mixins.compose($variants) using ($composed) {
 		@include mixins.generate-from-colors((
-			variant: $variant,
+			composed: $composed,
 			shorthand: bg,
 			property: (background-color),
 			map: if(conf.$layout, null, conf.$subset-color-map),

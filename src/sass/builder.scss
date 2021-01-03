@@ -116,6 +116,13 @@
 		// /*! Duomo | MIT | https://github.com/zaydek/duomo */
 		// @include head;
 		// @include body(conf.$variants);
-		@include core.width(core, focus);
+		// @include core.width(core, focus);
+		// @include core.background-color(core, focus);
+
+		@media (min-width: 640px) {
+			.sm\: {
+				@include core.width(responsive);
+			}
+		}
 	}
 }

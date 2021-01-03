@@ -9,7 +9,7 @@
 //
 // prettier-ignore
 @mixin generate-from-colors($info-map) {
-	$variant:       map.get($info-map, variant);
+	$composed:      map.get($info-map, composed);
 	$shorthand:     map.get($info-map, shorthand);
 	$property:      map.get($info-map, property);
 	$map:           map.get($info-map, map);
@@ -18,7 +18,7 @@
 	@if $map {
 		@each $mk, $mv in $map {
 			.#{$shorthand}-#{"" + $mk} {
-				@include v.variants($variant) {
+				@include v.variants($composed...) {
 					@if $mk == transparent or $mk == current {
 						#{$property}: #{$mv};
 					} @else {
@@ -32,7 +32,7 @@
 		@if $map{
 			@each $mv in $percent-range {
 				.#{$shorthand}-opacity-#{$mv * 100} {
-					@include v.variants($variant) {
+					@include v.variants($composed...) {
 						--#{$shorthand}-opacity: #{$mv};
 					}
 				}
