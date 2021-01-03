@@ -1,13 +1,20 @@
+// Based on https://codepen.io/zaydek/pen/wvzyZWy.
 @mixin data-debug {
 	[data-debug] * {
-		outline: var(--debug-outline);
-		outline-offset: var(--debug-outline-offset);
+		outline: 2px solid hsla(210, 100%, 50%, 0.5);
+		outline-offset: -2px; // Invert
 	}
-	[data-debug] svg * {
-		outline: none; // Reset
-	}
-	[data-debug] .spacer:empty {
-		outline: var(--debug-empty-spacer-outline);
+	// Non-spaced spacers.
+	[data-debug] :not([class*="space-"]) > .spacer:empty {
+		outline: 1px dashed hsla(210, 100%, 50%, 0.5);
 		outline-offset: 0; // Reset
+	}
+	// Spaced spacers.
+	[data-debug] [class*="space-"] > .spacer:empty {
+		justify-self: stretch;
+		align-self: stretch;
+		background-color: hsla(210, 100%, 50%, 0.05);
+		outline: 2px dashed hsla(210, 100%, 50%, 0.5);
+		outline-offset: -2px; // Invert
 	}
 }

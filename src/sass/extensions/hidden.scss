@@ -13,6 +13,7 @@ $-opts: (
 @mixin hidden($variants...) {
 	@each $variant in $variants {
 		@if utils.matches($variant, core) {
+			// Resets
 			@each $k, $v in $-opts {
 				.#{$k} > * {
 					--dm-display: block; // Reset

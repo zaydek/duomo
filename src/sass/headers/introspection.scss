@@ -37,11 +37,5 @@
 		--default-stagger-3: #{math.percentage(7 / 8)};
 		--default-stagger-4: #{math.percentage(5 / 8)};
 		--default-stagger-last: #{math.percentage(4 / 8)};
-
-		// [data-debug]
-		--default-debug-outline: 2px solid hsla(210, 100%, 50%, 0.25);
-		--default-debug-empty-spacer-outline: 1px dashed hsla(210, 100%, 50%, 0.25);
-		--default-debug-outline-offset: -2px;
-		--default-debug-spacer-background-color: hsla(210, 100%, 50%, 0.25);
 	}
 }
