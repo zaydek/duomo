@@ -1,12 +1,11 @@
 @use "sass:list";
 @use "sass:map";
 
-@use "head" as *;
-
 @use "configuration" as conf;
 @use "core";
 @use "extensions";
 @use "getters" as get;
+@use "head" as *;
 @use "utils";
 
 // NOTE: Dart Sass does not support dynamic mixin invocations.
