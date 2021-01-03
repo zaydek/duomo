@@ -25,8 +25,8 @@ $-range: (
 );
 
 @mixin aspect-ratio($variants...) {
-	@each $variant in $variants {
-		@if utils.matches($variant, core) {
+	@include mixins.compose($variants) using ($composed) {
+		@if utils.matches($composed, core) {
 			.aspect {
 				--dm-aspect-w: 1;
 				--dm-aspect-h: 1;
@@ -60,14 +60,14 @@ $-range: (
 		}
 		@each $rv in $-range {
 			.aspect-w-#{$rv} {
-				@include mixins.variants($variant) {
+				@include mixins.variants($composed...) {
 					--dm-aspect-w: 16;
 				}
 			}
 		}
 		@each $rv in $-range {
 			.aspect-h-#{$rv} {
-				@include mixins.variants($variant) {
+				@include mixins.variants($composed...) {
 					--dm-aspect-h: 16;
 				}
 			}

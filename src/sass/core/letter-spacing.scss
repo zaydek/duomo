@@ -34,12 +34,16 @@ $-range: (
 	 0.1,
 );
 
-// NOTE: Do not use `em($rv)` because values are percent-based.
+// NOTE: Do not use `em($rv)`.
+//
+// - 0.1 + em -> 0.01em
+// - em(0.1)  -> 0.00625em
+//
 @mixin letter-spacing($variants...) {
-	@each $variant in $variants {
+	@include mixins.compose($variants) using ($composed) {
 		@each $rv in $-range {
 			.#{get.n($rv)}tracking-#{utils.escape(get.abs($rv * 100))} {
-				@include mixins.variants($variant) {
+				@include mixins.variants($composed...) {
 					letter-spacing: $rv + em;
 				}
 			}

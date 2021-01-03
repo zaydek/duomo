@@ -19,12 +19,8 @@ $-opts: (
 //
 // Based on https://codepen.io/zaydek/pen/dypmZow.
 @mixin zstack($variants...) {
-	@each $variant in $variants {
-		/*
-		 * <zstack>
-		 */
-
-		@if utils.matches($variant, core) {
+	@include mixins.compose($variants) using ($composed) {
+		@if utils.matches($composed, core) {
 			.zstack {
 				position: relative; // Takes precedence (for semantic reasons)
 				display: grid;
@@ -47,14 +43,9 @@ $-opts: (
 			}
 		}
 
-		/*
-		 * <... place-*>
-		 */
-
-		// This is the placement API.
 		@each $mk, $mv in $-opts {
 			.place-#{$mk} {
-				@include mixins.variants($variant) {
+				@include mixins.variants($composed...) {
 					position: absolute;
 					@each $prop in $mv {
 						#{$prop}: 0;

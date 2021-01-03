@@ -4,12 +4,13 @@
 @use "../utils";
 
 @mixin circle($variants...) {
-	@each $variant in $variants {
+	@include mixins.compose($variants) using ($composed) {
 		@each $rv in get.sizes() {
 			.circle-#{$rv} {
-				@include mixins.variants($variant) {
+				@include mixins.variants($composed...) {
 					width: utils.rem($rv);
 					height: utils.rem($rv);
+					// border-radius: utils.rem($rv / 2);
 					border-radius: 9999px;
 				}
 			}

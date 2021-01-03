@@ -4,12 +4,12 @@
 @use "../utils";
 
 @mixin container($variants...) {
-	@each $variant in $variants {
-		@if utils.matches($variant, core) {
+	@include mixins.compose($variants) using ($composed) {
+		@if utils.matches($composed, core) {
 			.container {
 				width: 100%;
 			}
-			@each $key, $px in get.breakpoints() {
+			@each $_, $px in get.breakpoints() {
 				@media (min-width: $px) {
 					.container {
 						margin-left: auto;

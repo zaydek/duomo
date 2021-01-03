@@ -16,9 +16,9 @@ $-range: (
 
 // prettier-ignore
 @mixin z-index($variants...) {
-	@each $variant in $variants {
+	@include mixins.compose($variants) using ($composed) {
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: z,
 			property: (z-index),
 			range: $-range,

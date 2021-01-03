@@ -5,15 +5,15 @@
 
 // prettier-ignore
 $-opts: (
-	hidden,
 	scroll,
+	hidden,
 );
 
 @mixin overflow($variants...) {
-	@each $variant in $variants {
+	@include mixins.compose($variants) using ($composed) {
 		@each $opt in $-opts {
 			.overflow-#{$opt} {
-				@include mixins.variants($variant) {
+				@include mixins.variants($composed...) {
 					@if $opt == scroll {
 						-webkit-overflow-scrolling: touch;
 					}
@@ -24,7 +24,7 @@ $-opts: (
 
 		@each $opt in $-opts {
 			.overflow-x-#{$opt} {
-				@include mixins.variants($variant) {
+				@include mixins.variants($composed...) {
 					@if $opt == scroll {
 						-webkit-overflow-scrolling: touch;
 					}
@@ -35,7 +35,7 @@ $-opts: (
 
 		@each $opt in $-opts {
 			.overflow-y-#{$opt} {
-				@include mixins.variants($variant) {
+				@include mixins.variants($composed...) {
 					@if $opt == scroll {
 						-webkit-overflow-scrolling: touch;
 					}

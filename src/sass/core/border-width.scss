@@ -5,51 +5,51 @@
 
 // prettier-ignore
 @mixin border-width($variants...) {
-	@each $variant in $variants {
+	@include mixins.compose($variants) using ($composed) {
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: border,
 			property: (border-width),
 			range: get.border-widths(),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: border-x,
 			property: (border-left-width, border-right-width),
 			range: get.border-widths(),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: border-y,
 			property: (border-top-width, border-bottom-width),
 			range: get.border-widths(),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: border-top,
 			property: (border-top-width),
 			range: get.border-widths(),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: border-right,
 			property: (border-right-width),
 			range: get.border-widths(),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: border-bottom,
 			property: (border-bottom-width),
 			range: get.border-widths(),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: border-left,
 			property: (border-left-width),
 			range: get.border-widths(),

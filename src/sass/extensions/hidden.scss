@@ -14,14 +14,14 @@ $-opts: (
 );
 
 @mixin hidden($variants...) {
-	@each $variant in $variants {
-		@if utils.matches($variant, core) {
+	@include mixins.compose($variants) using ($composed) {
+		@if utils.matches($composed, core) {
 			/*
 			 * <... hidden md:unhidden>
 			 * <... unhidden md:hidden>
 			 */
 
-			// NOTE: Reset take precedence.
+			// NOTE: Reset takes precedence.
 			@each $mk, $mv in $-opts {
 				.#{$mk} > * {
 					// Descendent selectors are reset to `block`.
@@ -37,12 +37,13 @@ $-opts: (
 		}
 
 		.hidden {
-			@include mixins.variants($variant) {
+			@include mixins.variants($composed...) {
 				display: none;
 			}
 		}
+
 		.unhidden {
-			@include mixins.variants($variant) {
+			@include mixins.variants($composed...) {
 				display: var(--dm-display);
 			}
 		}

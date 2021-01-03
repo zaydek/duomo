@@ -5,7 +5,17 @@
 @use "../mixins";
 @use "../utils";
 
-@function -vendored-shadow-keys() {
+// Ex:
+//
+// -var-shadows()
+//
+// -> (
+// ->   var(--dm-shadow-sm),
+// ->   var(--dm-shadow-md),
+// ->   ...
+// -> )
+//
+@function -var-shadows() {
 	$map: ();
 	@each $mk, $mv in conf.$shadow-map {
 		$map: list.append($map, var(--dm-#{$mk}), comma);
@@ -15,19 +25,19 @@
 
 @mixin box-shadow($variants...) {
 	@if not conf.$layout {
-		@each $variant in $variants {
+		@include mixins.compose($variants) using ($composed) {
 			.shadow {
-				@include mixins.variants($variant) {
+				@include mixins.variants($composed...) {
 					@each $mk, $mv in conf.$shadow-map {
 						--dm-#{$mk}: 0 0 transparent;
 					}
-					box-shadow: -vendored-shadow-keys();
+					box-shadow: -var-shadows();
 				}
 			}
 
 			@each $mk, $mv in conf.$shadow-map {
 				.#{$mk} {
-					@include mixins.variants($variant) {
+					@include mixins.variants($composed...) {
 						--dm-#{$mk}: #{get.shadow($mk)};
 					}
 				}

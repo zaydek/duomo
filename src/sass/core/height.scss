@@ -5,9 +5,9 @@
 
 // prettier-ignore
 @mixin height($variants...) {
-	@each $variant in $variants {
+	@include mixins.compose($variants) using ($composed) {
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: h,
 			property: (height),
 			range: utils.list-of(auto, get.sizes(), min-content, max-content, 100%, 100vh),

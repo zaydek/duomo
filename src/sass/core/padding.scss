@@ -5,51 +5,51 @@
 
 // prettier-ignore
 @mixin padding($variants...) {
-	@each $variant in $variants {
+	@include mixins.compose($variants) using ($composed) {
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: p,
 			property: (padding),
 			range: get.spaces(),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: px,
 			property: (padding-left, padding-right),
 			range: get.spaces(),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: py,
 			property: (padding-top, padding-bottom),
 			range: get.spaces(),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: pt,
 			property: (padding-top),
 			range: get.spaces(),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: pr,
 			property: (padding-right),
 			range: get.spaces(),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: pb,
 			property: (padding-bottom),
 			range: get.spaces(),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: pl,
 			property: (padding-left),
 			range: get.spaces(),

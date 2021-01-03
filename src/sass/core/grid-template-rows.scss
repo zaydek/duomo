@@ -4,10 +4,10 @@
 @use "../utils";
 
 @mixin grid-template-rows($variants...) {
-	@each $variant in $variants {
+	@include mixins.compose($variants) using ($composed) {
 		@for $rv from 0 through 12 {
 			.grid-rows-#{$rv} {
-				@include mixins.variants($variant) {
+				@include mixins.variants($composed...) {
 					grid-template-rows: repeat($rv, minmax(0, 1fr));
 				}
 			}

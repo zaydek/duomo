@@ -4,7 +4,7 @@
 @use "../utils";
 
 // prettier-ignore
-$-justify-opts: (
+$-opts: (
 	justify-stretch: stretch,
 	justify-start: flex-start,
 	justify-center: center,
@@ -13,10 +13,10 @@ $-justify-opts: (
 );
 
 @mixin justify-content($variants...) {
-	@each $variant in $variants {
-		@each $mk, $mv in $-justify-opts {
+	@include mixins.compose($variants) using ($composed) {
+		@each $mk, $mv in $-opts {
 			.#{$mk} {
-				@include mixins.variants($variant) {
+				@include mixins.variants($composed...) {
 					justify-content: $mv;
 				}
 			}

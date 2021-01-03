@@ -12,13 +12,13 @@
 //
 // Based on https://codepen.io/zaydek/pen/wvzyZWy.
 @mixin flex-stack($variants...) {
-	@each $variant in $variants {
+	@include mixins.compose($variants) using ($composed) {
 		/*
 		 * <hstack>
 		 */
 
-		// NOTE: Reset take precedence.
-		@if utils.matches($variant, core) {
+		// NOTE: Reset takes precedence.
+		@if utils.matches($composed, core) {
 			.hstack > * {
 				// Compensate for `flex-basis: var(--dm-space)`; `min-width` does not measure `flex-basis`.
 				// Only HStacks implement `min-width: min-content`.
@@ -29,7 +29,7 @@
 		}
 
 		.hstack {
-			@include mixins.variants($variant) {
+			@include mixins.variants($composed...) {
 				display: flex;
 				flex-direction: row;
 				justify-content: center;
@@ -39,7 +39,7 @@
 		}
 
 		.hstack > * + * {
-			@include mixins.variants($variant) {
+			@include mixins.variants($composed...) {
 				margin-top: 0; // Reset
 				margin-left: var(--dm-space);
 			}
@@ -49,8 +49,8 @@
 		 * <vstack>
 		 */
 
-		// NOTE: Reset take precedence.
-		@if utils.matches($variant, core) {
+		// NOTE: Reset takes precedence.
+		@if utils.matches($composed, core) {
 			.vstack > * {
 				// See note in `.hstack > *`.
 				--dm-spacer-min-width: 0; // Reset
@@ -59,7 +59,7 @@
 		}
 
 		.vstack {
-			@include mixins.variants($variant) {
+			@include mixins.variants($composed...) {
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
@@ -69,7 +69,7 @@
 		}
 
 		.vstack > * + * {
-			@include mixins.variants($variant) {
+			@include mixins.variants($composed...) {
 				margin-left: 0; // Reset
 				margin-top: var(--dm-space);
 			}
@@ -82,7 +82,7 @@
 		// NOTE: Cannot use a generator because of `... > *` selector.
 		@each $rv in utils.list-of(get.nspaces(), get.spaces()) {
 			.#{get.n($rv)}space-#{get.abs($rv)} > * {
-				@include mixins.variants($variant) {
+				@include mixins.variants($composed...) {
 					--dm-space: #{utils.rem($rv)};
 				}
 			}
@@ -92,7 +92,7 @@
 		 * <spacer>
 		 */
 
-		@if utils.matches($variant, core) {
+		@if utils.matches($composed, core) {
 			// Spacers are collapsible to `var(--dm-space)`.
 			//
 			// NOTE: `min-width: min-content` (from `.hstack`) does not measure `flex-basis: var(--dm-space)`.

@@ -23,10 +23,10 @@ $-range: (
 );
 
 @mixin line-height($variants...) {
-	@each $variant in $variants {
+	@include mixins.compose($variants) using ($composed) {
 		@each $rv in $-range {
 			.leading-#{$rv * 100} {
-				@include mixins.variants($variant) {
+				@include mixins.variants($composed...) {
 					line-height: $rv;
 				}
 			}

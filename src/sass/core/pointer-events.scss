@@ -10,10 +10,10 @@ $-opts: (
 );
 
 @mixin pointer-events($variants...) {
-	@each $variant in $variants {
+	@include mixins.compose($variants) using ($composed) {
 		@each $opt in $-opts {
 			.pointer-events-#{$opt} {
-				@include mixins.variants($variant) {
+				@include mixins.variants($composed...) {
 					pointer-events: $opt;
 				}
 			}

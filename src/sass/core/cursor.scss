@@ -22,10 +22,10 @@ $-opts: (
 );
 
 @mixin cursor($variants...) {
-	@each $variant in $variants {
+	@include mixins.compose($variants) using ($composed) {
 		@each $opt in $-opts {
 			.cursor-#{$opt} {
-				@include mixins.variants($variant) {
+				@include mixins.variants($composed...) {
 					cursor: $opt;
 				}
 			}

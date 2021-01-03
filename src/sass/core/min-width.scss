@@ -5,9 +5,9 @@
 
 // prettier-ignore
 @mixin min-width($variants...) {
-	@each $variant in $variants {
+	@include mixins.compose($variants) using ($composed) {
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: min-w,
 			property: (min-width),
 			range: utils.list-of(auto, min-content, max-content),
@@ -15,13 +15,13 @@
 		));
 		@each $key, $px in get.breakpoints() {
 			.min-w-#{$key} {
-				@include mixins.variants($variant) {
+				@include mixins.variants($composed...) {
 					min-width: $px;
 				}
 			}
 		}
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: min-w,
 			property: (min-width),
 			range: utils.list-of(100%, 100vw),

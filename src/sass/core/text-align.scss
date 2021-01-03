@@ -12,10 +12,10 @@ $-opts: (
 );
 
 @mixin text-align($variants...) {
-	@each $variant in $variants {
+	@include mixins.compose($variants) using ($composed) {
 		@each $opt in $-opts {
 			.text-#{$opt} {
-				@include mixins.variants($variant) {
+				@include mixins.variants($composed...) {
 					text-align: $opt;
 				}
 			}

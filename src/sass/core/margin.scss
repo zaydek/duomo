@@ -5,51 +5,51 @@
 
 // prettier-ignore
 @mixin margin($variants...) {
-	@each $variant in $variants {
+	@include mixins.compose($variants) using ($composed) {
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: m,
 			property: (margin),
 			range: utils.list-of(get.nspaces(), auto, get.spaces()),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: mx,
 			property: (margin-left, margin-right),
 			range: utils.list-of(get.nspaces(), auto, get.spaces()),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: my,
 			property: (margin-top, margin-bottom),
 			range: utils.list-of(get.nspaces(), auto, get.spaces()),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: mt,
 			property: (margin-top),
 			range: utils.list-of(get.nspaces(), auto, get.spaces()),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: mr,
 			property: (margin-right),
 			range: utils.list-of(get.nspaces(), auto, get.spaces()),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: mb,
 			property: (margin-bottom),
 			range: utils.list-of(get.nspaces(), auto, get.spaces()),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: ml,
 			property: (margin-left),
 			range: utils.list-of(get.nspaces(), auto, get.spaces()),

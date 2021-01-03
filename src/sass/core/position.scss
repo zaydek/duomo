@@ -14,86 +14,86 @@ $-opts: (
 
 // prettier-ignore
 @mixin position($variants...) {
-	@each $variant in $variants {
+	@include mixins.compose($variants) using ($composed) {
 		@each $opt in $-opts {
 			.#{$opt} {
-				@include mixins.variants($variant) {
+				@include mixins.variants($composed...) {
 					position: $opt;
 				}
 			}
 		}
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: a,
 			property: (top, right, bottom, left),
 			range: (auto, 0),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: x,
 			property: (left, right),
 			range: (auto, 0),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: y,
 			property: (top, bottom),
 			range: (auto, 0),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: t,
 			property: (top),
 			range: (auto, 0),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: r,
 			property: (right),
 			range: (auto, 0),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: b,
 			property: (bottom),
 			range: (auto, 0),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: l,
 			property: (left),
 			range: (auto, 0),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: tr,
 			property: (top, right),
 			range: (auto, 0),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: br,
 			property: (bottom, right),
 			range: (auto, 0),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: bl,
 			property: (bottom, left),
 			range: (auto, 0),
 			resolver: rem,
 		));
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: tl,
 			property: (top, left),
 			range: (auto, 0),

@@ -12,10 +12,10 @@ $-opts: (
 );
 
 @mixin white-space($variants...) {
-	@each $variant in $variants {
+	@include mixins.compose($variants) using ($composed) {
 		@each $mk, $mv in $-opts {
 			.ws-#{$mk} {
-				@include mixins.variants($variant) {
+				@include mixins.variants($composed...) {
 					white-space: $mv;
 				}
 			}

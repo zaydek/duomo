@@ -3,21 +3,12 @@
 @use "../mixins";
 @use "../utils";
 
-// TODO: Change to `fonts` or `font-vars`.
-//
-// prettier-ignore
-$-opts: (
-	sans,
-	serif,
-	mono,
-);
-
 @mixin font-family($variants...) {
-	@each $variant in $variants {
-		@each $opt in $-opts {
-			.#{$opt} {
-				@include mixins.variants($variant) {
-					font-family: var(--#{$opt}), var(--system-#{$opt});
+	@include mixins.compose($variants) using ($composed) {
+		@each $mk, $_ in get.fonts() {
+			.#{$mk} {
+				@include mixins.variants($composed...) {
+					font-family: var(--#{$mk}), var(--system-#{$mk});
 				}
 			}
 		}

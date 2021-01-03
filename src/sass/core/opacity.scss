@@ -5,9 +5,9 @@
 
 // prettier-ignore
 @mixin opacity($variants...) {
-	@each $variant in $variants {
+	@include mixins.compose($variants) using ($composed) {
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: opacity,
 			property: (opacity),
 			range: if(conf.$layout, null, get.percent-range()),

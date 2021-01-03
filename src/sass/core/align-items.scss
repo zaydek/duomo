@@ -4,7 +4,7 @@
 @use "../utils";
 
 // prettier-ignore
-$-align-opts: (
+$-opts: (
 	align-stretch: stretch,
 	align-start: flex-start,
 	align-center: center,
@@ -13,10 +13,10 @@ $-align-opts: (
 );
 
 @mixin align-items($variants...) {
-	@each $variant in $variants {
-		@each $mk, $mv in $-align-opts {
+	@include mixins.compose($variants) using ($composed) {
+		@each $mk, $mv in $-opts {
 			.#{$mk} {
-				@include mixins.variants($variant) {
+				@include mixins.variants($composed...) {
 					align-items: $mv;
 				}
 			}

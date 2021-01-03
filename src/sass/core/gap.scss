@@ -4,10 +4,10 @@
 @use "../utils";
 
 @mixin gap($variants...) {
-	@each $variant in $variants {
+	@include mixins.compose($variants) using ($composed) {
 		@each $rv in get.spaces() {
 			.gap-#{$rv} {
-				@include mixins.variants($variant) {
+				@include mixins.variants($composed...) {
 					gap: utils.rem($rv);
 				}
 			}

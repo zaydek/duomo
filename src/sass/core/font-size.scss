@@ -5,9 +5,9 @@
 
 // prettier-ignore
 @mixin font-size($variants...) {
-	@each $variant in $variants {
+	@include mixins.compose($variants) using ($composed) {
 		@include mixins.generate-from-range((
-			variant: $variant,
+			composed: $composed,
 			shorthand: text,
 			property: (font-size),
 			range: get.font-sizes(),

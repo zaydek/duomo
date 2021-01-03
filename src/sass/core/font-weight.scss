@@ -3,26 +3,19 @@
 @use "../mixins";
 @use "../utils";
 
-// prettier-ignore
-$-range: (
-	100,
-	200,
-	300,
-	400,
-	500,
-	600,
-	700,
-	800,
-	900,
-);
-
-// TODO: Change to `generate-from-range` API?
 @mixin font-weight($variants...) {
-	@each $variant in $variants {
-		@each $rv in $-range {
-			.weight-#{$rv} {
-				@include mixins.variants($variant) {
-					font-weight: $rv;
+	@include mixins.compose($variants) using ($composed) {
+		@each $mk, $mv in get.weights() {
+			.weight-#{$mk} {
+				@include mixins.variants($composed...) {
+					font-weight: $mv;
+				}
+			}
+		}
+		@each $_, $mv in get.weights() {
+			.weight-#{$mv} {
+				@include mixins.variants($composed...) {
+					font-weight: $mv;
 				}
 			}
 		}

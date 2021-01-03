@@ -9,10 +9,10 @@ $-opts: (
 );
 
 @mixin text-decoration($variants...) {
-	@each $variant in $variants {
+	@include mixins.compose($variants) using ($composed) {
 		@each $mk, $mv in $-opts {
 			.#{$mk} {
-				@include mixins.variants($variant) {
+				@include mixins.variants($composed...) {
 					text-decoration: $mv;
 				}
 			}

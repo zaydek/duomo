@@ -4,8 +4,8 @@
 @use "../utils";
 
 @mixin group($variants...) {
-	@each $variant in $variants {
-		@if utils.matches($variant, core) {
+	@include mixins.compose($variants) using ($composed) {
+		@if utils.matches($composed, core) {
 			.group {
 				/*! NOTE: Do not omit empty ruleset. */
 			}
