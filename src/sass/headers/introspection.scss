@@ -3,39 +3,45 @@
 
 @use "../getters" as get;
 
+// prettier-ignore
+$-introspection: (
+	sans: '""',
+	serif: '""',
+	mono: '""',
+
+	ui-sans: #{get.font(sans)},
+	ui-serif: #{get.font(serif)},
+	ui-mono: #{get.font(mono)},
+
+	default-placeholder-color: get.color(cool-gray-400),
+	default-border-color: get.color(cool-gray-200),
+	default-transition-duration: 250ms,
+	default-transition-timing: get.timing(ease-out),
+
+	theme-transition: (
+		background-color var(--default-theme-transition-duration) var(--default-theme-transition-timing),
+		border-color     var(--default-theme-transition-duration) var(--default-theme-transition-timing),
+		box-shadow       var(--default-theme-transition-duration) var(--default-theme-transition-timing),
+		color            var(--default-theme-transition-duration) var(--default-theme-transition-timing),
+		fill             var(--default-theme-transition-duration) var(--default-theme-transition-timing),
+		opacity          var(--default-theme-transition-duration) var(--default-theme-transition-timing),
+		stroke           var(--default-theme-transition-duration) var(--default-theme-transition-timing)
+	),
+
+	default-theme-transition-duration: 500ms,
+	default-theme-transition-timing: get.timing(ease-out),
+
+	default-stagger-1: math.percentage(4 / 8),
+	default-stagger-2: math.percentage(6 / 8),
+	default-stagger-3: math.percentage(7 / 8),
+	default-stagger-4: math.percentage(5 / 8),
+	default-stagger-last: math.percentage(4 / 8),
+);
+
 @mixin introspection {
 	:root {
-		--sans: "";
-		--serif: "";
-		--mono: "";
-
-		--ui-sans: #{get.font(sans)};
-		--ui-serif: #{get.font(serif)};
-		--ui-mono: #{get.font(mono)};
-
-		--default-placeholder-color: get.color(cool-gray-400);
-		--default-border-color: get.color(cool-gray-200);
-		--default-transition-duration: 250ms;
-		--default-transition-timing: get.timing(ease-out);
-
-		// prettier-ignore
-		--theme-transition:
-			background-color var(--default-theme-transition-duration) var(--default-theme-transition-timing),
-			border-color     var(--default-theme-transition-duration) var(--default-theme-transition-timing),
-			box-shadow       var(--default-theme-transition-duration) var(--default-theme-transition-timing),
-			color            var(--default-theme-transition-duration) var(--default-theme-transition-timing),
-			fill             var(--default-theme-transition-duration) var(--default-theme-transition-timing),
-			opacity          var(--default-theme-transition-duration) var(--default-theme-transition-timing),
-			stroke           var(--default-theme-transition-duration) var(--default-theme-transition-timing);
-
-		--default-theme-transition-duration: 500ms;
-		--default-theme-transition-timing: get.timing(ease-out);
-
-		// [data-stagger]
-		--default-stagger-1: #{math.percentage(4 / 8)};
-		--default-stagger-2: #{math.percentage(6 / 8)};
-		--default-stagger-3: #{math.percentage(7 / 8)};
-		--default-stagger-4: #{math.percentage(5 / 8)};
-		--default-stagger-last: #{math.percentage(4 / 8)};
+		@each $mk, $mv in $-introspection {
+			--#{$mk}: #{$mv};
+		}
 	}
 }
