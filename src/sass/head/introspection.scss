@@ -3,6 +3,7 @@
 
 @use "../configuration" as conf;
 @use "../getters" as get;
+@use "../utils";
 
 // prettier-ignore
 $-introspection: (
@@ -22,7 +23,7 @@ $-introspection: (
 	default-theme-transition-timing: get.timing(ease-out),
 
 	theme-transition:
-		build-transition(
+		utils.build-transition(
 			conf.$transition-props,
 			var(--default-theme-transition-duration),
 			var(--default-theme-transition-timing)

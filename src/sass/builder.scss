@@ -27,7 +27,7 @@
 	@if $mixin == border-width { @include core.border-width($variants...); }
 	@if $mixin == box-shadow { @include core.box-shadow($variants...); }
 	@if $mixin == color { @include core.color($variants...); }
-	@if $mixin == column-gap { @include core.column-gap($variants...); }
+	// @if $mixin == column-gap { @include core.column-gap($variants...); }
 	@if $mixin == cursor { @include core.cursor($variants...); }
 	@if $mixin == flex-wrap { @include core.flex-wrap($variants...); }
 	@if $mixin == font-family { @include core.font-family($variants...); }
@@ -52,7 +52,7 @@
 	@if $mixin == padding { @include core.padding($variants...); }
 	@if $mixin == pointer-events { @include core.pointer-events($variants...); }
 	@if $mixin == position { @include core.position($variants...); }
-	@if $mixin == row-gap { @include core.row-gap($variants...); }
+	// @if $mixin == row-gap { @include core.row-gap($variants...); }
 	@if $mixin == text-align { @include core.text-align($variants...); }
 	@if $mixin == text-decoration { @include core.text-decoration($variants...); }
 	@if $mixin == transform { @include core.transform($variants...); }
@@ -66,12 +66,12 @@
 	 * src/sass/extensions/*
 	 */
 	@if $mixin == aspect-ratio { @include extensions.aspect-ratio($variants...); }
-	@if $mixin == circle { @include extensions.circle($variants...); }
+	// @if $mixin == circle { @include extensions.circle($variants...); }
 	@if $mixin == container { @include extensions.container($variants...); }
 	@if $mixin == flex-stack { @include extensions.flex-stack($variants...); }
 	@if $mixin == group { @include extensions.group($variants...); }
 	@if $mixin == hidden { @include extensions.hidden($variants...); }
-	@if $mixin == square { @include extensions.square($variants...); }
+	// @if $mixin == square { @include extensions.square($variants...); }
 	@if $mixin == zstack { @include extensions.zstack($variants...); }
 
 }
