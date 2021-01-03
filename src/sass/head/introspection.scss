@@ -18,6 +18,7 @@ $-introspection: (
 	default-transition-duration: 250ms,
 	default-transition-timing: get.timing(ease-out),
 
+	// TODO: Programmatically generate from `$transition-props`.
 	theme-transition: (
 		background-color var(--default-theme-transition-duration) var(--default-theme-transition-timing),
 		border-color     var(--default-theme-transition-duration) var(--default-theme-transition-timing),

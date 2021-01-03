@@ -8,13 +8,13 @@
 @use "../utils";
 
 // Ex: ".class" -> "class"
-@function declass($selector) {
+@function str-declass($selector) {
 	$str-selector: "" + $selector;
 	@return string.slice($str-selector, 2);
 }
 
 // Ex: ".sm\\: .class" -> ".sm\\:class"
-@function declass-responsive($selector) {
+@function str-declass-responsive($selector) {
 	$str-selector: "" + $selector;
 	@return utils.str-replace($str-selector, "#{get.delimiter()} .", get.delimiter());
 }
@@ -23,26 +23,26 @@
 	@return $selector;
 }
 @function hover($selector) {
-	@return ".hover#{get.delimiter()}#{declass($selector)}:hover";
+	@return ".hover#{get.delimiter()}#{str-declass($selector)}:hover";
 }
 @function focus($selector) {
-	@return ".focus#{get.delimiter()}#{declass($selector)}:focus";
+	@return ".focus#{get.delimiter()}#{str-declass($selector)}:focus";
 }
 // prettier-ignore
 @function touch($selector) {
-	@return ".touch#{get.delimiter()}#{declass($selector)}:hover, " +
-		".touch#{get.delimiter()}#{declass($selector)}:focus";
+	@return ".touch#{get.delimiter()}#{str-declass($selector)}:hover, " +
+		".touch#{get.delimiter()}#{str-declass($selector)}:focus";
 }
 @function group-hover($selector) {
-	@return ".group\:hover .group-hover#{get.delimiter()}#{declass($selector)}";
+	@return ".group\:hover .group-hover#{get.delimiter()}#{str-declass($selector)}";
 }
 @function group-focus($selector) {
-	@return ".group\:focus .group-focus#{get.delimiter()}#{declass($selector)}";
+	@return ".group\:focus .group-focus#{get.delimiter()}#{str-declass($selector)}";
 }
 // prettier-ignore
 @function group-touch($selector) {
-	@return ".group\:hover .group-touch#{get.delimiter()}#{declass($selector)}, " +
-		".group\:focus .group-touch#{get.delimiter()}#{declass($selector)}";
+	@return ".group\:hover .group-touch#{get.delimiter()}#{str-declass($selector)}, " +
+		".group\:focus .group-touch#{get.delimiter()}#{str-declass($selector)}";
 }
 
 // Ex:
@@ -98,7 +98,7 @@
 			}
 		}
 		@if list.index($variants, responsive) {
-			#{declass-responsive(&)} {
+			#{str-declass-responsive(&)} {
 				@content;
 			}
 		}

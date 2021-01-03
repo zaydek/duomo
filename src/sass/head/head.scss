@@ -4,7 +4,7 @@
 @use "introspection" as *;
 @use "modern-normalize" as *;
 
-@mixin headers {
+@mixin head {
 	@include modern-normalize;
 	@include custom-tailwind-base;
 	@include introspection;

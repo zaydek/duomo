@@ -22,32 +22,32 @@ $-range: (
 	1000,
 );
 
-// FIXME
 @mixin transition($variants...) {
-	// @each $variant in $variants {
-	// 	:not([data-theme-effect]) .transition {
-	// 		@include mix.variants($variant) {
-	// 			--transition-duration: var(--default-transition-duration);
-	// 			--transition-timing: var(--default-transition-timing);
-	// 			transition: var(--transition-duration) var(--transition-timing);
-	// 			transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
-	// 		}
-	// 	}
-	//
-	// 	@each $rv in $-range {
-	// 		.duration-#{$rv} {
-	// 			@include mix.variants($variant) {
-	// 				--transition-duration: #{$rv + ms};
-	// 			}
-	// 		}
-	// 	}
-	//
-	// 	@each $mk, $mv in conf.$timing-map {
-	// 		.#{$mk} {
-	// 			@include mix.variants($variant) {
-	// 				--transition-timing: #{$mv};
-	// 			}
-	// 		}
-	// 	}
-	// }
+	@each $variant in $variants {
+		// TODO: Programmatically generate from `$transition-props`.
+		:not([data-theme-effect]) .transition {
+			@include mix.variants($variant) {
+				--transition-duration: var(--default-transition-duration);
+				--transition-timing: var(--default-transition-timing);
+				transition: var(--transition-duration) var(--transition-timing);
+				transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+			}
+		}
+
+		@each $rv in $-range {
+			.duration-#{$rv} {
+				@include mix.variants($variant) {
+					--transition-duration: #{$rv + ms};
+				}
+			}
+		}
+
+		@each $mk, $mv in conf.$timing-map {
+			.#{$mk} {
+				@include mix.variants($variant) {
+					--transition-timing: #{$mv};
+				}
+			}
+		}
+	}
 }

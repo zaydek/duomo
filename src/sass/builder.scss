@@ -1,60 +1,11 @@
 @use "sass:list";
 @use "sass:map";
 
-@use "headers" as *;
-
-@use "core/align-items" as *;
-@use "core/align-self" as *;
-@use "core/background-color" as *;
-@use "core/border-color" as *;
-@use "core/border-radius" as *;
-@use "core/border-width" as *;
-@use "core/box-shadow" as *;
-@use "core/color" as *;
-@use "core/column-gap" as *;
-@use "core/flex-wrap" as *;
-@use "core/font-family" as *;
-@use "core/font-size" as *;
-@use "core/font-style" as *;
-@use "core/font-weight" as *;
-@use "core/gap" as *;
-@use "core/grid-template-columns" as *;
-@use "core/grid-template-rows" as *;
-@use "core/grid" as *;
-@use "core/height" as *;
-@use "core/justify-content" as *;
-@use "core/justify-self" as *;
-@use "core/letter-spacing" as *;
-@use "core/line-height" as *;
-@use "core/margin" as *;
-@use "core/max-width" as *;
-@use "core/min-height" as *;
-@use "core/min-width" as *;
-@use "core/opacity" as *;
-@use "core/overflow" as *;
-@use "core/padding" as *;
-@use "core/pointer-events" as *;
-@use "core/position" as *;
-@use "core/row-gap" as *;
-@use "core/text-align" as *;
-@use "core/text-decoration" as *;
-@use "core/transform" as *;
-@use "core/transition" as *;
-@use "core/vertical-align" as *;
-@use "core/white-space" as *;
-@use "core/width" as *;
-@use "core/z-index" as *;
-
-@use "extensions/aspect-ratio" as *;
-@use "extensions/circle" as *;
-@use "extensions/container" as *;
-@use "extensions/flex-stack" as *;
-@use "extensions/group" as *;
-@use "extensions/hidden" as *;
-@use "extensions/square" as *;
-@use "extensions/zstack" as *;
+@use "head" as *;
 
 @use "configuration" as conf;
+@use "core";
+@use "extensions";
 @use "getters" as get;
 @use "utils";
 
@@ -65,58 +16,58 @@
 //
 // prettier-ignore
 @mixin call-mixin($mixin, $variants...) {
-	@if $mixin == align-items { @include align-items($variants...); }
-	@if $mixin == align-self { @include align-self($variants...); }
-	@if $mixin == aspect-ratio { @include aspect-ratio($variants...); }
-	@if $mixin == background-color { @include background-color($variants...); }
-	@if $mixin == border-color { @include border-color($variants...); }
-	@if $mixin == border-radius { @include border-radius($variants...); }
-	@if $mixin == border-width { @include border-width($variants...); }
-	@if $mixin == box-shadow { @include box-shadow($variants...); }
-	@if $mixin == circle { @include circle($variants...); }
-	@if $mixin == color { @include color($variants...); }
-	@if $mixin == column-gap { @include column-gap($variants...); }
-	@if $mixin == container { @include container($variants...); }
-	@if $mixin == flex-stack { @include flex-stack($variants...); }
-	@if $mixin == flex-wrap { @include flex-wrap($variants...); }
-	@if $mixin == font-family { @include font-family($variants...); }
-	@if $mixin == font-size { @include font-size($variants...); }
-	@if $mixin == font-style { @include font-style($variants...); }
-	@if $mixin == font-weight { @include font-weight($variants...); }
-	@if $mixin == gap { @include gap($variants...); }
-	@if $mixin == grid { @include grid($variants...); }
-	@if $mixin == grid-template-columns { @include grid-template-columns($variants...); }
-	@if $mixin == grid-template-rows { @include grid-template-rows($variants...); }
-	@if $mixin == group { @include group($variants...); }
-	@if $mixin == height { @include height($variants...); }
-	@if $mixin == hidden { @include hidden($variants...); }
-	@if $mixin == justify-content { @include justify-content($variants...); }
-	@if $mixin == justify-self { @include justify-self($variants...); }
-	@if $mixin == letter-spacing { @include letter-spacing($variants...); }
-	@if $mixin == line-height { @include line-height($variants...); }
-	@if $mixin == margin { @include margin($variants...); }
-	@if $mixin == max-width { @include max-width($variants...); }
-	@if $mixin == min-height { @include min-height($variants...); }
-	@if $mixin == min-width { @include min-width($variants...); }
-	@if $mixin == opacity { @include opacity($variants...); }
-	@if $mixin == overflow { @include overflow($variants...); }
-	@if $mixin == padding { @include padding($variants...); }
-	@if $mixin == pointer-events { @include pointer-events($variants...); }
-	@if $mixin == position { @include position($variants...); }
-	@if $mixin == row-gap { @include row-gap($variants...); }
-	@if $mixin == square { @include square($variants...); }
-	@if $mixin == text-align { @include text-align($variants...); }
-	@if $mixin == text-decoration { @include text-decoration($variants...); }
-	@if $mixin == transform { @include transform($variants...); }
-	@if $mixin == transition { @include transition($variants...); }
-	@if $mixin == vertical-align { @include vertical-align($variants...); }
-	@if $mixin == white-space { @include white-space($variants...); }
-	@if $mixin == width { @include width($variants...); }
-	@if $mixin == z-index { @include z-index($variants...); }
-	@if $mixin == zstack { @include zstack($variants...); }
+	@if $mixin == align-items { @include core.align-items($variants...); }
+	@if $mixin == align-self { @include core.align-self($variants...); }
+	@if $mixin == aspect-ratio { @include core.aspect-ratio($variants...); }
+	@if $mixin == background-color { @include core.background-color($variants...); }
+	@if $mixin == border-color { @include core.border-color($variants...); }
+	@if $mixin == border-radius { @include core.border-radius($variants...); }
+	@if $mixin == border-width { @include core.border-width($variants...); }
+	@if $mixin == box-shadow { @include core.box-shadow($variants...); }
+	@if $mixin == circle { @include core.circle($variants...); }
+	@if $mixin == color { @include core.color($variants...); }
+	@if $mixin == column-gap { @include core.column-gap($variants...); }
+	@if $mixin == container { @include core.container($variants...); }
+	@if $mixin == flex-stack { @include core.flex-stack($variants...); }
+	@if $mixin == flex-wrap { @include core.flex-wrap($variants...); }
+	@if $mixin == font-family { @include core.font-family($variants...); }
+	@if $mixin == font-size { @include core.font-size($variants...); }
+	@if $mixin == font-style { @include core.font-style($variants...); }
+	@if $mixin == font-weight { @include core.font-weight($variants...); }
+	@if $mixin == gap { @include core.gap($variants...); }
+	@if $mixin == grid { @include core.grid($variants...); }
+	@if $mixin == grid-template-columns { @include core.grid-template-columns($variants...); }
+	@if $mixin == grid-template-rows { @include core.grid-template-rows($variants...); }
+	@if $mixin == group { @include core.group($variants...); }
+	@if $mixin == height { @include core.height($variants...); }
+	@if $mixin == hidden { @include core.hidden($variants...); }
+	@if $mixin == justify-content { @include core.justify-content($variants...); }
+	@if $mixin == justify-self { @include core.justify-self($variants...); }
+	@if $mixin == letter-spacing { @include core.letter-spacing($variants...); }
+	@if $mixin == line-height { @include core.line-height($variants...); }
+	@if $mixin == margin { @include core.margin($variants...); }
+	@if $mixin == max-width { @include core.max-width($variants...); }
+	@if $mixin == min-height { @include core.min-height($variants...); }
+	@if $mixin == min-width { @include core.min-width($variants...); }
+	@if $mixin == opacity { @include core.opacity($variants...); }
+	@if $mixin == overflow { @include core.overflow($variants...); }
+	@if $mixin == padding { @include core.padding($variants...); }
+	@if $mixin == pointer-events { @include core.pointer-events($variants...); }
+	@if $mixin == position { @include core.position($variants...); }
+	@if $mixin == row-gap { @include core.row-gap($variants...); }
+	@if $mixin == square { @include core.square($variants...); }
+	@if $mixin == text-align { @include core.text-align($variants...); }
+	@if $mixin == text-decoration { @include core.text-decoration($variants...); }
+	@if $mixin == transform { @include core.transform($variants...); }
+	@if $mixin == transition { @include core.transition($variants...); }
+	@if $mixin == vertical-align { @include core.vertical-align($variants...); }
+	@if $mixin == white-space { @include core.white-space($variants...); }
+	@if $mixin == width { @include core.width($variants...); }
+	@if $mixin == z-index { @include core.z-index($variants...); }
+	@if $mixin == zstack { @include core.zstack($variants...); }
 }
 
-@mixin duomo {
+@mixin body {
 	$hidden-variants: map.get(conf.$variants, hidden);
 	$non-hidden-variants: utils.take(conf.$variants, hidden);
 
@@ -151,8 +102,10 @@
 
 @at-root {
 	@if not conf.$headless {
-		/*! Duomo | MIT | https://github.com/zaydek/duomo */
-		@include headers;
-		@include duomo;
+		// /*! Duomo | MIT | https://github.com/zaydek/duomo */
+		// @include head;
+		// @include body;
+
+		@include core.transition(core);
 	}
 }
