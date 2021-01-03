@@ -37,31 +37,63 @@
 	@return utils.str-replace($str-selector, "#{get.delimiter()} .", get.delimiter());
 }
 
+// @function core($selector) {
+// 	@return ".#{$selector}";
+// }
+// @function hover($selector) {
+// 	@return ".hover#{get.delimiter()}#{str-declass($selector)}:hover";
+// }
+// @function focus($selector) {
+// 	@return ".focus#{get.delimiter()}#{str-declass($selector)}:focus";
+// }
+// // prettier-ignore
+// @function touch($selector) {
+// 	@return ".touch#{get.delimiter()}#{str-declass($selector)}:hover, " +
+// 		".touch#{get.delimiter()}#{str-declass($selector)}:focus";
+// }
+// @function group-hover($selector) {
+// 	@return ".group\:hover .group-hover#{get.delimiter()}#{str-declass($selector)}";
+// }
+// @function group-focus($selector) {
+// 	@return ".group\:focus .group-focus#{get.delimiter()}#{str-declass($selector)}";
+// }
+// // prettier-ignore
+// @function group-touch($selector) {
+// 	@return ".group\:hover .group-touch#{get.delimiter()}#{str-declass($selector)}, " +
+// 		".group\:focus .group-touch#{get.delimiter()}#{str-declass($selector)}";
+// }
+
 @function core($selector) {
-	@return $selector;
+	@return ".#{$selector}";
 }
+
 @function hover($selector) {
-	@return ".hover#{get.delimiter()}#{str-declass($selector)}:hover";
+	@return ".hover\\:#{$selector}:hover";
 }
+
 @function focus($selector) {
-	@return ".focus#{get.delimiter()}#{str-declass($selector)}:focus";
+	@return ".focus\\:#{$selector}:focus";
 }
-// prettier-ignore
+
 @function touch($selector) {
-	@return ".touch#{get.delimiter()}#{str-declass($selector)}:hover, " +
-		".touch#{get.delimiter()}#{str-declass($selector)}:focus";
+	@return ".touch\\:#{$selector}:hover, "+ ".touch\\:#{$selector}:focus";
 }
+
 @function group-hover($selector) {
-	@return ".group\:hover .group-hover#{get.delimiter()}#{str-declass($selector)}";
+	@return ".group:hover .group-hover\\:#{$selector}";
 }
+
 @function group-focus($selector) {
-	@return ".group\:focus .group-focus#{get.delimiter()}#{str-declass($selector)}";
+	@return ".group:focus .group-focus\\:#{$selector}";
 }
-// prettier-ignore
+
 @function group-touch($selector) {
-	@return ".group\:hover .group-touch#{get.delimiter()}#{str-declass($selector)}, " +
-		".group\:focus .group-touch#{get.delimiter()}#{str-declass($selector)}";
+	@return ".group:hover .group-touch\\:#{$selector}, "+ ".group:focus .group-touch\\:#{$selector}";
 }
+
+// @function responsive($selector) {
+// 	@return "#{&}#{$selector}";
+// }
 
 // Ex:
 //
@@ -71,9 +103,9 @@
 // -> .hover\:class { ... }
 // -> .focus\:class { ... }
 //
-@mixin -impl-dev($variants...) {
+@mixin -ungrouped($ampersand, $variants...) {
 	@each $variant in $variants {
-		$selector: meta.call(meta.get-function($variant), &);
+		$selector: meta.call(meta.get-function($variant), str-declass($ampersand));
 		#{$selector} {
 			@content;
 		}
@@ -88,27 +120,31 @@
 // -> .hover\:class,
 // -> .focus\:class { ... }
 //
-@mixin -impl-prod($variants...) {
-	$concat-selector: "";
+@mixin -grouped($ampersand, $variants...) {
+	$selector: "";
 	@each $variant in $variants {
-		$selector: meta.call(meta.get-function($variant), &);
-		$concat-selector: $concat-selector + if($concat-selector == "", "", ", ") + $selector;
+		$selector: $selector + if($selector == "", "", ", ") + meta.call($variant, str-declass($ampersand));
 	}
-	#{$concat-selector} {
+	#{$selector} {
 		@content;
 	}
 }
 
 @mixin variants($variants...) {
+	// TODO
+	// @if list.length($variants) == 0 {
+	// 	// prettier-ignore
+	// 	$variants: (core,);
+	// }
 	@at-root {
 		$taken: utils.take($variants, responsive);
 		@if list.length($taken) > 0 {
 			@if conf.$env == development {
-				@include -impl-dev($taken...) {
+				@include -ungrouped(&, $taken...) {
 					@content;
 				}
 			} @else if conf.$env == production {
-				@include -impl-prod($taken...) {
+				@include -grouped(&, $taken...) {
 					@content;
 				}
 			}
@@ -118,5 +154,30 @@
 				@content;
 			}
 		}
+	}
+}
+
+// Ex:
+//
+// @include compose($variants) using ($v) {
+//   .bg-red-400 { @include variants($v) { ... } }
+//   .bg-red-400 { @include variants($v) { ... } }
+//   .bg-red-600 { @include variants($v) { ... } }
+// }
+//
+// -> .bg-red-400 { ... }
+// -> .bg-red-400 { ... }
+// -> .bg-red-600 { ... }
+// -> .hover\:bg-red-400:hover { ... }
+// -> .hover\:bg-red-400:hover { ... }
+// -> .hover\:bg-red-600:hover { ... }
+//
+@mixin compose($variants) {
+	@if conf.$env == development {
+		@each $variant in $variants {
+			@content ($variant);
+		}
+	} @else if conf.$env == production {
+		@content ($variants);
 	}
 }

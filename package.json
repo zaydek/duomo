@@ -20,7 +20,7 @@
 		"build-layout-min-css": "sass --no-source-map --style=compressed scripts/layout.min.scss dist/layout.min.css",
 		"build-js": "tsc && node scripts/browser.js",
 		"stats": "node scripts/stats.js",
-		"build": "rm -rf dist && yarn concurrently --raw 'yarn build-duomo-css' 'yarn build-duomo-min-css' 'yarn build-layout-css' 'yarn build-layout-min-css' 'yarn build-js' && yarn stats",
+		"build": "yarn test && rm -rf dist && yarn concurrently --raw 'yarn build-duomo-css' 'yarn build-duomo-min-css' 'yarn build-layout-css' 'yarn build-layout-min-css' 'yarn build-js' && yarn stats",
 		"publish-dist-dry-run": "yarn build && npm publish --dry-run"
 	},
 	"devDependencies": {

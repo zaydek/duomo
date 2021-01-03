@@ -113,8 +113,9 @@
 
 @at-root {
 	@if not conf.$headless {
-		/*! Duomo | MIT | https://github.com/zaydek/duomo */
-		@include head;
-		@include body(conf.$variants);
+		// /*! Duomo | MIT | https://github.com/zaydek/duomo */
+		// @include head;
+		// @include body(conf.$variants);
+		@include core.width(core, focus);
 	}
 }
