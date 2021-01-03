@@ -1,6 +1,6 @@
 @use "../configuration" as conf;
 @use "../getters" as get;
-@use "../mixins" as mix;
+@use "../mixins";
 @use "../utils";
 
 // prettier-ignore
@@ -54,7 +54,7 @@ $-opts: (
 		// This is the placement API.
 		@each $mk, $mv in $-opts {
 			.place-#{$mk} {
-				@include mix.variants($variant) {
+				@include mixins.variants($variant) {
 					position: absolute;
 					@each $prop in $mv {
 						#{$prop}: 0;

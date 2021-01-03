@@ -1,12 +1,12 @@
 @use "../configuration" as conf;
 @use "../getters" as get;
-@use "../mixins" as mix;
+@use "../mixins";
 @use "../utils";
 
 // prettier-ignore
 @mixin color($variants...) {
 	@each $variant in $variants {
-		@include mix.generate-from-colors((
+		@include mixins.generate-from-colors((
 			variant: $variant,
 			shorthand: color,
 			property: (color),

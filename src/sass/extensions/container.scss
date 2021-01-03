@@ -1,6 +1,6 @@
 @use "../configuration" as conf;
 @use "../getters" as get;
-@use "../mixins" as mix;
+@use "../mixins";
 @use "../utils";
 
 @mixin container($variants...) {

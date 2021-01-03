@@ -1,6 +1,6 @@
 @use "../configuration" as conf;
 @use "../getters" as get;
-@use "../mixins" as mix;
+@use "../mixins";
 @use "../utils";
 
 // These are the layout options. Only `hstack`, `vstack`, `zstack`, and `grid`
@@ -37,12 +37,12 @@ $-opts: (
 		}
 
 		.hidden {
-			@include mix.variants($variant) {
+			@include mixins.variants($variant) {
 				display: none;
 			}
 		}
 		.unhidden {
-			@include mix.variants($variant) {
+			@include mixins.variants($variant) {
 				display: var(--dm-display);
 			}
 		}

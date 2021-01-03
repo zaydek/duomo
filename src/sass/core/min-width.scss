@@ -1,12 +1,12 @@
 @use "../configuration" as conf;
 @use "../getters" as get;
-@use "../mixins" as mix;
+@use "../mixins";
 @use "../utils";
 
 // prettier-ignore
 @mixin min-width($variants...) {
 	@each $variant in $variants {
-		@include mix.generate-from-range((
+		@include mixins.generate-from-range((
 			variant: $variant,
 			shorthand: min-w,
 			property: (min-width),
@@ -15,12 +15,12 @@
 		));
 		@each $key, $px in get.breakpoints() {
 			.min-w-#{$key} {
-				@include mix.variants($variant) {
+				@include mixins.variants($variant) {
 					min-width: $px;
 				}
 			}
 		}
-		@include mix.generate-from-range((
+		@include mixins.generate-from-range((
 			variant: $variant,
 			shorthand: min-w,
 			property: (min-width),

@@ -1,12 +1,12 @@
 @use "../configuration" as conf;
 @use "../getters" as get;
-@use "../mixins" as mix;
+@use "../mixins";
 @use "../utils";
 
 // prettier-ignore
 @mixin max-width($variants...) {
 	@each $variant in $variants {
-		@include mix.generate-from-range((
+		@include mixins.generate-from-range((
 			variant: $variant,
 			shorthand: max-w,
 			property: (max-width),
@@ -15,12 +15,12 @@
 		));
 		@each $key, $px in get.breakpoints() {
 			.max-w-#{$key} {
-				@include mix.variants($variant) {
+				@include mixins.variants($variant) {
 					max-width: $px;
 				}
 			}
 		}
-		@include mix.generate-from-range((
+		@include mixins.generate-from-range((
 			variant: $variant,
 			shorthand: max-w,
 			property: (max-width),

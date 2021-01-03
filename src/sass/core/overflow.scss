@@ -1,6 +1,6 @@
 @use "../configuration" as conf;
 @use "../getters" as get;
-@use "../mixins" as mix;
+@use "../mixins";
 @use "../utils";
 
 // prettier-ignore
@@ -13,7 +13,7 @@ $-opts: (
 	@each $variant in $variants {
 		@each $opt in $-opts {
 			.overflow-#{$opt} {
-				@include mix.variants($variant) {
+				@include mixins.variants($variant) {
 					@if $opt == scroll {
 						-webkit-overflow-scrolling: touch;
 					}
@@ -24,7 +24,7 @@ $-opts: (
 
 		@each $opt in $-opts {
 			.overflow-x-#{$opt} {
-				@include mix.variants($variant) {
+				@include mixins.variants($variant) {
 					@if $opt == scroll {
 						-webkit-overflow-scrolling: touch;
 					}
@@ -35,7 +35,7 @@ $-opts: (
 
 		@each $opt in $-opts {
 			.overflow-y-#{$opt} {
-				@include mix.variants($variant) {
+				@include mixins.variants($variant) {
 					@if $opt == scroll {
 						-webkit-overflow-scrolling: touch;
 					}

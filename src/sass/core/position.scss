@@ -1,6 +1,6 @@
 @use "../configuration" as conf;
 @use "../getters" as get;
-@use "../mixins" as mix;
+@use "../mixins";
 @use "../utils";
 
 // prettier-ignore
@@ -17,82 +17,82 @@ $-opts: (
 	@each $variant in $variants {
 		@each $opt in $-opts {
 			.#{$opt} {
-				@include mix.variants($variant) {
+				@include mixins.variants($variant) {
 					position: $opt;
 				}
 			}
 		}
-		@include mix.generate-from-range((
+		@include mixins.generate-from-range((
 			variant: $variant,
 			shorthand: a,
 			property: (top, right, bottom, left),
 			range: (auto, 0),
 			resolver: rem,
 		));
-		@include mix.generate-from-range((
+		@include mixins.generate-from-range((
 			variant: $variant,
 			shorthand: x,
 			property: (left, right),
 			range: (auto, 0),
 			resolver: rem,
 		));
-		@include mix.generate-from-range((
+		@include mixins.generate-from-range((
 			variant: $variant,
 			shorthand: y,
 			property: (top, bottom),
 			range: (auto, 0),
 			resolver: rem,
 		));
-		@include mix.generate-from-range((
+		@include mixins.generate-from-range((
 			variant: $variant,
 			shorthand: t,
 			property: (top),
 			range: (auto, 0),
 			resolver: rem,
 		));
-		@include mix.generate-from-range((
+		@include mixins.generate-from-range((
 			variant: $variant,
 			shorthand: r,
 			property: (right),
 			range: (auto, 0),
 			resolver: rem,
 		));
-		@include mix.generate-from-range((
+		@include mixins.generate-from-range((
 			variant: $variant,
 			shorthand: b,
 			property: (bottom),
 			range: (auto, 0),
 			resolver: rem,
 		));
-		@include mix.generate-from-range((
+		@include mixins.generate-from-range((
 			variant: $variant,
 			shorthand: l,
 			property: (left),
 			range: (auto, 0),
 			resolver: rem,
 		));
-		@include mix.generate-from-range((
+		@include mixins.generate-from-range((
 			variant: $variant,
 			shorthand: tr,
 			property: (top, right),
 			range: (auto, 0),
 			resolver: rem,
 		));
-		@include mix.generate-from-range((
+		@include mixins.generate-from-range((
 			variant: $variant,
 			shorthand: br,
 			property: (bottom, right),
 			range: (auto, 0),
 			resolver: rem,
 		));
-		@include mix.generate-from-range((
+		@include mixins.generate-from-range((
 			variant: $variant,
 			shorthand: bl,
 			property: (bottom, left),
 			range: (auto, 0),
 			resolver: rem,
 		));
-		@include mix.generate-from-range((
+		@include mixins.generate-from-range((
 			variant: $variant,
 			shorthand: tl,
 			property: (top, left),

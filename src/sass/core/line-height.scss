@@ -1,6 +1,6 @@
 @use "../configuration" as conf;
 @use "../getters" as get;
-@use "../mixins" as mix;
+@use "../mixins";
 @use "../utils";
 
 // TODO: Change to `percent-range`.
@@ -26,7 +26,7 @@ $-range: (
 	@each $variant in $variants {
 		@each $rv in $-range {
 			.leading-#{$rv * 100} {
-				@include mix.variants($variant) {
+				@include mixins.variants($variant) {
 					line-height: $rv;
 				}
 			}

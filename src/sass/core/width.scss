@@ -1,12 +1,12 @@
 @use "../configuration" as conf;
 @use "../getters" as get;
-@use "../mixins" as mix;
+@use "../mixins";
 @use "../utils";
 
 // prettier-ignore
 @mixin width($variants...) {
-	@include mix.compose($variants) using ($composed) {
-		@include mix.generate-from-range((
+	@include mixins.compose($variants) using ($composed) {
+		@include mixins.generate-from-range((
 			composed: $composed,
 			shorthand: w,
 			property: (width),

@@ -1,6 +1,6 @@
 @use "../configuration" as conf;
 @use "../getters" as get;
-@use "../mixins" as mix;
+@use "../mixins";
 @use "../utils";
 
 // TODO: Change to `fonts` or `font-vars`.
@@ -16,7 +16,7 @@ $-opts: (
 	@each $variant in $variants {
 		@each $opt in $-opts {
 			.#{$opt} {
-				@include mix.variants($variant) {
+				@include mixins.variants($variant) {
 					font-family: var(--#{$opt}), var(--system-#{$opt});
 				}
 			}

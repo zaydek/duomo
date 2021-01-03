@@ -1,6 +1,6 @@
 @use "../configuration" as conf;
 @use "../getters" as get;
-@use "../mixins" as mix;
+@use "../mixins";
 @use "../utils";
 
 // Stacks are a lightweight abstraction on top of Flexbox inspired by SwiftUI.
@@ -29,7 +29,7 @@
 		}
 
 		.hstack {
-			@include mix.variants($variant) {
+			@include mixins.variants($variant) {
 				display: flex;
 				flex-direction: row;
 				justify-content: center;
@@ -39,7 +39,7 @@
 		}
 
 		.hstack > * + * {
-			@include mix.variants($variant) {
+			@include mixins.variants($variant) {
 				margin-top: 0; // Reset
 				margin-left: var(--dm-space);
 			}
@@ -59,7 +59,7 @@
 		}
 
 		.vstack {
-			@include mix.variants($variant) {
+			@include mixins.variants($variant) {
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
@@ -69,7 +69,7 @@
 		}
 
 		.vstack > * + * {
-			@include mix.variants($variant) {
+			@include mixins.variants($variant) {
 				margin-left: 0; // Reset
 				margin-top: var(--dm-space);
 			}
@@ -82,7 +82,7 @@
 		// NOTE: Cannot use a generator because of `... > *` selector.
 		@each $rv in utils.list-of(get.nspaces(), get.spaces()) {
 			.#{get.n($rv)}space-#{get.abs($rv)} > * {
-				@include mix.variants($variant) {
+				@include mixins.variants($variant) {
 					--dm-space: #{utils.rem($rv)};
 				}
 			}

@@ -1,54 +1,54 @@
 @use "../configuration" as conf;
 @use "../getters" as get;
-@use "../mixins" as mix;
+@use "../mixins";
 @use "../utils";
 
 // prettier-ignore
 @mixin padding($variants...) {
 	@each $variant in $variants {
-		@include mix.generate-from-range((
+		@include mixins.generate-from-range((
 			variant: $variant,
 			shorthand: p,
 			property: (padding),
 			range: get.spaces(),
 			resolver: rem,
 		));
-		@include mix.generate-from-range((
+		@include mixins.generate-from-range((
 			variant: $variant,
 			shorthand: px,
 			property: (padding-left, padding-right),
 			range: get.spaces(),
 			resolver: rem,
 		));
-		@include mix.generate-from-range((
+		@include mixins.generate-from-range((
 			variant: $variant,
 			shorthand: py,
 			property: (padding-top, padding-bottom),
 			range: get.spaces(),
 			resolver: rem,
 		));
-		@include mix.generate-from-range((
+		@include mixins.generate-from-range((
 			variant: $variant,
 			shorthand: pt,
 			property: (padding-top),
 			range: get.spaces(),
 			resolver: rem,
 		));
-		@include mix.generate-from-range((
+		@include mixins.generate-from-range((
 			variant: $variant,
 			shorthand: pr,
 			property: (padding-right),
 			range: get.spaces(),
 			resolver: rem,
 		));
-		@include mix.generate-from-range((
+		@include mixins.generate-from-range((
 			variant: $variant,
 			shorthand: pb,
 			property: (padding-bottom),
 			range: get.spaces(),
 			resolver: rem,
 		));
-		@include mix.generate-from-range((
+		@include mixins.generate-from-range((
 			variant: $variant,
 			shorthand: pl,
 			property: (padding-left),

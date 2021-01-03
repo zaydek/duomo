@@ -1,6 +1,6 @@
 @use "../configuration" as conf;
 @use "../getters" as get;
-@use "../mixins" as mix;
+@use "../mixins";
 @use "../utils";
 
 // prettier-ignore
@@ -17,7 +17,7 @@ $-range: (
 // prettier-ignore
 @mixin z-index($variants...) {
 	@each $variant in $variants {
-		@include mix.generate-from-range((
+		@include mixins.generate-from-range((
 			variant: $variant,
 			shorthand: z,
 			property: (z-index),

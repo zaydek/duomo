@@ -2,7 +2,7 @@
 
 @use "../configuration" as conf;
 @use "../getters" as get;
-@use "../mixins" as mix;
+@use "../mixins";
 @use "../utils";
 
 @function -vendored-shadow-keys() {
@@ -17,7 +17,7 @@
 	@if not conf.$layout {
 		@each $variant in $variants {
 			.shadow {
-				@include mix.variants($variant) {
+				@include mixins.variants($variant) {
 					@each $mk, $mv in conf.$shadow-map {
 						--dm-#{$mk}: 0 0 transparent;
 					}
@@ -27,7 +27,7 @@
 
 			@each $mk, $mv in conf.$shadow-map {
 				.#{$mk} {
-					@include mix.variants($variant) {
+					@include mixins.variants($variant) {
 						--dm-#{$mk}: #{get.shadow($mk)};
 					}
 				}

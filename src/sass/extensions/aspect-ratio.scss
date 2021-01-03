@@ -1,6 +1,6 @@
 @use "../configuration" as conf;
 @use "../getters" as get;
-@use "../mixins" as mix;
+@use "../mixins";
 @use "../utils";
 
 // prettier-ignore
@@ -60,14 +60,14 @@ $-range: (
 		}
 		@each $rv in $-range {
 			.aspect-w-#{$rv} {
-				@include mix.variants($variant) {
+				@include mixins.variants($variant) {
 					--dm-aspect-w: 16;
 				}
 			}
 		}
 		@each $rv in $-range {
 			.aspect-h-#{$rv} {
-				@include mix.variants($variant) {
+				@include mixins.variants($variant) {
 					--dm-aspect-h: 16;
 				}
 			}
