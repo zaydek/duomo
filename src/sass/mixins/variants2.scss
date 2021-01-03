@@ -1,0 +1,93 @@
+@use "sass:list";
+@use "sass:map";
+@use "sass:string";
+
+// FIXME: Use getter instead.
+$-fixme-breakpoints: (
+	sm: 640px,
+	md: 768px,
+	lg: 1024px,
+	xl: 1028px,
+);
+
+// FIXME: Use getter instead.
+@function -fixme_breakpoint($key) {
+	@return map.get($-fixme-breakpoints, $key);
+}
+
+@mixin sm {
+	@media (min-width: -fixme_breakpoint(sm)) {
+		.sm\: {
+			@content;
+		}
+	}
+}
+
+@mixin md {
+	@media (min-width: -fixme_breakpoint(md)) {
+		.md\: {
+			@content;
+		}
+	}
+}
+
+@mixin lg {
+	@media (min-width: -fixme_breakpoint(lg)) {
+		.lg\: {
+			@content;
+		}
+	}
+}
+
+@mixin xl {
+	@media (min-width: -fixme_breakpoint(xl)) {
+		.xl\: {
+			@content;
+		}
+	}
+}
+
+// TODO: Extract to `utils`.
+@function -fixme_declass($selector) {
+	@return string.slice("" + $selector, 2);
+}
+
+@mixin variants2($variants...) {
+	@at-root {
+		& {
+			@content;
+		}
+
+		$selector: -fixme_declass(&);
+		@each $variant in $variants {
+			@if $variant == sm or $variant == responsive {
+				@include sm {
+					&#{$selector} {
+						@content;
+					}
+				}
+			}
+			@if $variant == md or $variant == responsive {
+				@include md {
+					&#{$selector} {
+						@content;
+					}
+				}
+			}
+			@if $variant == lg or $variant == responsive {
+				@include lg {
+					&#{$selector} {
+						@content;
+					}
+				}
+			}
+			@if $variant == xl or $variant == responsive {
+				@include xl {
+					&#{$selector} {
+						@content;
+					}
+				}
+			}
+		}
+	}
+}
