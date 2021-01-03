@@ -56,7 +56,7 @@
 	@if $mixin == text-align { @include core.text-align($variants...); }
 	@if $mixin == text-decoration { @include core.text-decoration($variants...); }
 	@if $mixin == transform { @include core.transform($variants...); }
-	@if $mixin == transition { @include core.transition($variants...); }
+	// @if $mixin == transition { @include core.transition($variants...); }
 	@if $mixin == vertical-align { @include core.vertical-align($variants...); }
 	@if $mixin == white-space { @include core.white-space($variants...); }
 	@if $mixin == width { @include core.width($variants...); }

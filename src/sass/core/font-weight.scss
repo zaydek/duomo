@@ -6,7 +6,7 @@
 @mixin font-weight($variants...) {
 	@include mixins.compose($variants) using ($composed) {
 		@each $mk, $mv in get.weights() {
-			.weight-#{$mk} {
+			.weight-#{"" + $mk} {
 				@include mixins.variants($composed...) {
 					font-weight: $mv;
 				}

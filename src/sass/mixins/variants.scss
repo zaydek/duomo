@@ -102,7 +102,9 @@
 @mixin -group-selectors($ampersand, $variants...) {
 	$selector: "";
 	@each $variant in $variants {
-		$selector: $selector + if($selector == "", "", ", ") + meta.call($variant, str-declass($ampersand));
+		$selector: $selector +
+			if($selector == "", "", ", ") +
+			meta.call(meta.get-function($variant), str-declass($ampersand));
 	}
 	#{$selector} {
 		@content;

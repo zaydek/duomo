@@ -1,4 +1,6 @@
-@use "../src/sass" as * with ($headless: true);
+@use "../src/sass" as * with (
+	$headless: true,
+);
 
 // @each $v in (core, hover, focus) {
 // 	@each $each in (red-500, green-500, blue-500) {

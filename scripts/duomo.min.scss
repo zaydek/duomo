@@ -1,1 +1,3 @@
-@use "../src/sass" as * with ($env: production);
+@use "../src/sass" as * with (
+	$env: production,
+);
