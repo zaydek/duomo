@@ -64,20 +64,20 @@
 	/*
 	 * src/sass/extensions/*
 	 */
-	@if $mixin == aspect-ratio { @include extensions.aspect-ratio($variants); }
-	@if $mixin == circle { @include extensions.circle($variants); }
-	@if $mixin == container { @include extensions.container($variants); }
-	@if $mixin == flex-stack { @include extensions.flex-stack($variants); }
-	@if $mixin == group { @include extensions.group($variants); }
-	@if $mixin == hidden { @include extensions.hidden($variants); }
-	@if $mixin == square { @include extensions.square($variants); }
-	@if $mixin == zstack { @include extensions.zstack($variants); }
+	@if $mixin == aspect-ratio { @include extensions.aspect-ratio($variants...); }
+	@if $mixin == circle { @include extensions.circle($variants...); }
+	@if $mixin == container { @include extensions.container($variants...); }
+	@if $mixin == flex-stack { @include extensions.flex-stack($variants...); }
+	@if $mixin == group { @include extensions.group($variants...); }
+	@if $mixin == hidden { @include extensions.hidden($variants...); }
+	@if $mixin == square { @include extensions.square($variants...); }
+	@if $mixin == zstack { @include extensions.zstack($variants...); }
 
 }
 
-@mixin body {
-	$hidden-variants: map.get(conf.$variants, hidden);
-	$non-hidden-variants: utils.take(conf.$variants, hidden);
+@mixin body($global-variants) {
+	$hidden-variants: map.get($global-variants, hidden);
+	$non-hidden-variants: utils.take($global-variants, hidden);
 
 	@each $module, $variants in $non-hidden-variants {
 		$non-responsive: utils.take($variants, responsive);
@@ -113,16 +113,8 @@
 
 @at-root {
 	@if not conf.$headless {
-		// /*! Duomo | MIT | https://github.com/zaydek/duomo */
-		// @include head;
-		// @include body;
-
-		@media (min-width: 640) {
-			.sm\: {
-				// @include extensions.flex-stack(responsive);
-				// @include core.width(responsive);
-				@include core.transition(responsive);
-			}
-		}
+		/*! Duomo | MIT | https://github.com/zaydek/duomo */
+		@include head;
+		@include body(conf.$variants);
 	}
 }
