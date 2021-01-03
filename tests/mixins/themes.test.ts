@@ -74,7 +74,7 @@ $dark: (
 }
 
 :root:not([data-theme-effect]) .x-hoverable {
-	transition: 250ms background-color cubic-bezier(0, 0, 0.2, 1);
+	transition: 250ms background-color cubic-bezier(0, 0, 0.2, 1), 250ms border-color cubic-bezier(0, 0, 0.2, 1), 250ms box-shadow cubic-bezier(0, 0, 0.2, 1), 250ms color cubic-bezier(0, 0, 0.2, 1), 250ms fill cubic-bezier(0, 0, 0.2, 1), 250ms opacity cubic-bezier(0, 0, 0.2, 1), 250ms stroke cubic-bezier(0, 0, 0.2, 1);
 }
 
 .x-hoverable:hover {

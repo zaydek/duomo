@@ -1,0 +1,9 @@
+@use "sass:list";
+
+@function build-transition($props, $duration, $timing) {
+	$list: ();
+	@each $prop in $props {
+		$list: list.append($list, $duration $prop $timing, comma);
+	}
+	@return $list;
+}

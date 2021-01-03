@@ -1,6 +1,9 @@
 @use "sass:map";
 @use "sass:selector";
 
+@use "../configuration" as conf;
+@use "../utils";
+
 // TODO: Right now, `$duration` must be described in duration units.
 // In the future, it would be preferable to be able to describe `$duration`
 // as a unitless number.
@@ -96,8 +99,7 @@
 		}
 		// Opts-out of theme-transitioning.
 		#{$negate-selector} {
-			// TODO
-			transition: $duration background-color $timing;
+			transition: utils.build-transition(conf.$transition-props, $duration, $timing);
 		}
 		#{$selector} {
 			@content;
