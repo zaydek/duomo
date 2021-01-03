@@ -48,7 +48,7 @@
 @use "extensions/aspect-ratio" as *;
 @use "extensions/circle" as *;
 @use "extensions/container" as *;
-@use "extensions/flex-stacks" as *;
+@use "extensions/flex-stack" as *;
 @use "extensions/group" as *;
 @use "extensions/hidden" as *;
 @use "extensions/square" as *;
@@ -77,7 +77,7 @@
 	@if $mixin == color { @include color($variants...); }
 	@if $mixin == column-gap { @include column-gap($variants...); }
 	@if $mixin == container { @include container($variants...); }
-	@if $mixin == flex-stacks { @include flex-stacks($variants...); }
+	@if $mixin == flex-stack { @include flex-stack($variants...); }
 	@if $mixin == flex-wrap { @include flex-wrap($variants...); }
 	@if $mixin == font-family { @include font-family($variants...); }
 	@if $mixin == font-size { @include font-size($variants...); }
@@ -117,18 +117,32 @@
 }
 
 @mixin duomo {
-	@each $module, $variants in conf.$variants {
+	$hidden-variants: map.get(conf.$variants, hidden);
+	$non-hidden-variants: utils.take(conf.$variants, hidden);
+
+	@each $module, $variants in $non-hidden-variants {
 		$non-responsive: utils.take($variants, responsive);
 		@include call-mixin($module, $non-responsive...);
+	}
+
+	// Defer `hidden` to the end of the current scope.
+	@if $hidden-variants {
+		$non-responsive: utils.take($hidden-variants, responsive);
+		@include call-mixin(hidden, $non-responsive...);
 	}
 
 	@each $key, $px in get.breakpoints() {
 		@media (min-width: $px) {
 			.#{get.delimit($key)} {
-				@each $mixin, $variants in conf.$variants {
+				@each $mixin, $variants in $non-hidden-variants {
 					@if list.index($variants, responsive) {
 						@include call-mixin($mixin, responsive);
 					}
+				}
+
+				// Defer `hidden` to the end of the current scope.
+				@if list.index($hidden-variants, responsive) {
+					@include call-mixin(hidden, responsive);
 				}
 			}
 		}

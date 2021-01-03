@@ -3,47 +3,63 @@
 @use "../mixins" as mix;
 @use "../utils";
 
-// Based on:
-//
-// - https://codepen.io/everdimension/pen/BaNpeWe
-// - https://codepen.io/zaydek/pen/MWjEvee
-//
-// <relative>
-//   <children />
-//   <absolute top? right? bottom? left?>
-//     ...
-//   </absolute>
-// </relative>
-//
-// ZStack pattern:
-//
-// <zstack>
-//   <children />
-//   <direction>
-//     ...
-//   </direction>
-// </zstack>
-//
 // prettier-ignore
+$-opts: (
+	top: (top),
+	right: (right),
+	bottom: (bottom),
+	left: (left),
+	top-right: (top, right),
+	bottom-right: (bottom, right),
+	bottom-left: (bottom, left),
+	top-left: (top, left),
+);
+
+// Inspired by @everdimension’s implementation: https://codepen.io/everdimension/pen/BaNpeWe.
+//
+// Based on https://codepen.io/zaydek/pen/dypmZow.
 @mixin zstack($variants...) {
 	@each $variant in $variants {
+		/*
+		 * <zstack>
+		 */
+
 		@if utils.matches($variant, core) {
 			.zstack {
-				position: relative;
+				position: relative; // Takes precedence (for semantic reasons)
 				display: grid;
 				justify-items: center; // Simulates `place-items`
-				align-items: center;   // Simulates `place-items`
+				align-items: center; // Simulates `place-items`
 			}
-			// This selector refers to direct and indirect children.
+
+			// Direct children refers to ZStack children.
+			// Indirect children refers to ZStack children that use the placement API.
 			.zstack > * {
 				grid-row-start: 1;
 				grid-column-start: 1;
 				grid-row-end: 1;
 				grid-column-end: 1;
+
+				// NOTE: Use `z-index: 10` to normalize direct and indirect children.
+				// Children should appear based on order, not based on the directness of children.
+				// Using `z-index` for all children normalizes appearance order.
+				z-index: 10;
 			}
-			// This selector refers to indirect children.
-			.zstack > :nth-child(n + 2) {
-				position: absolute;
+		}
+
+		/*
+		 * <... place-*>
+		 */
+
+		// This is the placement API.
+		@each $mk, $mv in $-opts {
+			.place-#{$mk} {
+				@include mix.variants($variant) {
+					position: absolute;
+					@each $prop in $mv {
+						#{$prop}: 0;
+					}
+				}
 			}
 		}
 	}

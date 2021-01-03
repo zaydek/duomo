@@ -11,13 +11,13 @@
 // - https://youtube.com/watch?v=fvOlTDJpNcM
 //
 // Based on https://codepen.io/zaydek/pen/wvzyZWy.
-@mixin flex-stacks($variants...) {
+@mixin flex-stack($variants...) {
 	@each $variant in $variants {
 		/*
 		 * <hstack>
 		 */
 
-		// Resets
+		// NOTE: Reset take precedence.
 		@if utils.matches($variant, core) {
 			.hstack > * {
 				// Compensate for `flex-basis: var(--dm-space)`; `min-width` does not measure `flex-basis`.
@@ -49,6 +49,7 @@
 		 * <vstack>
 		 */
 
+		// NOTE: Reset take precedence.
 		@if utils.matches($variant, core) {
 			.vstack > * {
 				// See note in `.hstack > *`.
@@ -100,7 +101,7 @@
 				flex: 1 0 var(--dm-space);
 				min-width: var(--dm-spacer-min-width); // Needed for `overflow-x-scroll`
 			}
-			// First, last, and empty spacers (incl. siblings) are collapsible to `0`.
+			// These spaces are collapsible to `0`.
 			.spacer:first-child,
 			.spacer:empty + .spacer:empty,
 			.spacer:last-child {
