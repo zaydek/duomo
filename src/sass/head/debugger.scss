@@ -1,0 +1,23 @@
+// Based on https://codepen.io/zaydek/pen/wvzyZWy.
+@mixin debugger {
+	[data-debug] * {
+		outline: 2px solid hsla(210, 100%, 50%, 0.5);
+		outline-offset: -2px; // Reverse
+	}
+
+	// Selects:
+	//
+	// <div data-debug>
+	//   <div class="hstack space-*" :empty>...</div> <-
+	//   <div class="vstack space-*" :empty>...</div> <-
+	// </div>
+	//
+	[data-debug] .vstack[class*="space-"] > .spacer:empty,
+	[data-debug] .hstack[class*="space-"] > .spacer:empty {
+		justify-self: stretch;
+		align-self: stretch;
+		background-color: hsla(210, 100%, 50%, 0.05);
+		outline: 2px dashed hsla(210, 100%, 50%, 0.5);
+		outline-offset: -2px; // Reverse
+	}
+}

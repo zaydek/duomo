@@ -1,6 +1,3 @@
-@use "sass:map";
-@use "sass:math";
-
 @use "../configuration" as conf;
 @use "../getters" as get;
 @use "../utils";
@@ -28,12 +25,6 @@ $-introspection: (
 			var(--default-theme-transition-duration),
 			var(--default-theme-transition-timing)
 		),
-
-	default-stagger-1: math.percentage(4 / 8),
-	default-stagger-2: math.percentage(6 / 8),
-	default-stagger-3: math.percentage(7 / 8),
-	default-stagger-4: math.percentage(5 / 8),
-	default-stagger-last: math.percentage(4 / 8),
 );
 
 @mixin introspection {

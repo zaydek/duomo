@@ -1,7 +1,0 @@
-@mixin data-stagger {
-	@each $rv in (1, 2, 3, 4, last) {
-		[data-stagger="#{$rv}"] {
-			width: var(--default-stagger-#{$rv});
-		}
-	}
-}
