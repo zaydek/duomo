@@ -138,6 +138,8 @@ $-flex-wrap-opts: (
 		.hstack {
 			@include mixins.variants($composed...) {
 				@if utils.matches($composed, core) {
+					flex-shrink: revert; // Reset (because of `w-*` and `h-*`)
+
 					display: flex;
 					flex-direction: row;
 					justify-content: center;
@@ -174,6 +176,8 @@ $-flex-wrap-opts: (
 		.vstack {
 			@include mixins.variants($composed...) {
 				@if utils.matches($composed, core) {
+					flex-shrink: revert; // Reset (because of `w-*` and `h-*`)
+
 					display: flex;
 					flex-direction: column;
 					justify-content: center;

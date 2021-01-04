@@ -6,7 +6,8 @@
 // prettier-ignore
 @mixin margin($variants...) {
 	@include mixins.compose($variants) using ($composed) {
-		// @if utils.matches($composed, core) { // Takes precedence so can be overridden
+		// // Takes precedence so can be overridden.
+		// @if utils.matches($composed, core) {
 		// 	.m-space { margin: var(--dm-space); }
 		// 	.mx-space {
 		// 		margin-left: var(--dm-space);

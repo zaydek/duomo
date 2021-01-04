@@ -16,7 +16,7 @@ $-stagger-opts: (
 @mixin width($variants...) {
 	@include mixins.compose($variants) using ($composed) {
 		@if utils.matches($composed, core) {
-			// Takes precedence so can be overridden
+			// Takes precedence so can be overridden.
 			@each $mk, $mv in $-stagger-opts {
 				.w-stagger-#{$mk} {
 					width: $mv;
@@ -27,7 +27,7 @@ $-stagger-opts: (
 		@each $rv in get.sizes() {
 			.w-#{$rv} {
 				@include mixins.variants($composed...) {
-					flex-shrink: 0; // Needed for HStack and VStack
+					flex-shrink: 0; // Needed for `hstack` and `vstack`
 					width: utils.rem($rv);
 				}
 			}
