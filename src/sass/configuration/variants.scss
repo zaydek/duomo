@@ -20,8 +20,8 @@ $variants: (
 	// NOTE: `w-*` and `h-*` take precedence before stacks.
 	width:                 utils.list-of(core, responsive),
 	height:                utils.list-of(core, responsive),
-	max-width:             utils.list-of(core, responsive),
 	min-width:             utils.list-of(core, responsive),
+	max-width:             utils.list-of(core, responsive),
 	min-height:            utils.list-of(core, responsive),
 	flex-stack:            utils.list-of(core, responsive),
 	zstack:                utils.list-of(core, responsive),
@@ -50,17 +50,8 @@ $variants: (
 	vertical-align:        utils.list-of(core, responsive),
 	white-space:           utils.list-of(core, responsive),
 
-	// // DEPRECATE
-	// align-items:           utils.list-of(core, responsive),
-	// align-self:            utils.list-of(core, responsive),
-	// circle:                utils.list-of(core, responsive),
-	// column-gap:            utils.list-of(core, responsive),
-	// flex-wrap:             utils.list-of(core, responsive),
-	// justify-content:       utils.list-of(core, responsive),
-	// justify-self:          utils.list-of(core, responsive),
-	// row-gap:               utils.list-of(core, responsive),
-	// square:                utils.list-of(core, responsive),
-	// width-stagger:         utils.list-of(core, responsive),
+	// column-gap:         utils.list-of(core, responsive),
+	// row-gap:            utils.list-of(core, responsive),
 
 	background-color:      utils.list-of(core, $macro-variants, responsive),
 	border-color:          utils.list-of(core, $macro-variants, responsive),
