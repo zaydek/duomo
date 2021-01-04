@@ -61,14 +61,14 @@ $-range: (
 		@each $rv in $-range {
 			.aspect-w-#{$rv} {
 				@include mixins.variants($composed...) {
-					--dm-aspect-w: 16;
+					--dm-aspect-w: #{$rv};
 				}
 			}
 		}
 		@each $rv in $-range {
 			.aspect-h-#{$rv} {
 				@include mixins.variants($composed...) {
-					--dm-aspect-h: 16;
+					--dm-aspect-h: #{$rv};
 				}
 			}
 		}
