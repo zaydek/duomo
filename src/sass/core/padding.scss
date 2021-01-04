@@ -56,7 +56,6 @@
 			resolver: rem,
 		));
 
-		// prettier-ignore
 		@if utils.matches($composed, core) {
 			.p-space { padding: var(--dm-space); }
 			.px-space {

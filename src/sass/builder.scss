@@ -71,7 +71,6 @@
 	@if $mixin == group { @include extensions.group($variants...); }
 	@if $mixin == hidden { @include extensions.hidden($variants...); }
 	// @if $mixin == square { @include extensions.square($variants...); }
-	@if $mixin == w-stagger { @include extensions.w-stagger($variants...); }
 	@if $mixin == zstack { @include extensions.zstack($variants...); }
 
 }
