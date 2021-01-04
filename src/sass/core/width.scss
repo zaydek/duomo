@@ -34,7 +34,7 @@ $-stagger-opts: (
 		}
 
 		@each $rv in (auto, min-content, max-content, 100%, 100vw) {
-			.w-#{get.desc($rv)} {
+			.w-#{get.name($rv)} {
 				@include mixins.variants($composed...) {
 					flex-shrink: revert;
 					width: $rv;

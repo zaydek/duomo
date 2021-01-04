@@ -42,12 +42,12 @@
 
 // Ex:
 //
-// desc(auto)  -> auto
-// desc(0)     -> 0
-// desc(100%)  -> max
-// desc(100vw) -> screen
+// name(auto)  -> auto
+// name(0)     -> 0
+// name(100%)  -> max
+// name(100vw) -> screen
 //
-@function desc($any, $as-percent: false) {
+@function name($any, $as-percent: false) {
 	// prettier-ignore
 	$got: map.get((
 		min-content: min,
