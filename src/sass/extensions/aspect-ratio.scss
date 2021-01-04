@@ -29,8 +29,8 @@ $-range: (
 	@include mixins.compose($variants) using ($composed) {
 		@if utils.matches($composed, core) {
 			.aspect {
-				--dm-aspect-w: revert;
-				--dm-aspect-h: revert;
+				--dm-aspect-w: 1; // `revert` does not work here
+				--dm-aspect-h: 1; // `revert` does not work here
 				position: relative;
 				padding-bottom: calc(100% * var(--dm-aspect-h) / var(--dm-aspect-w));
 			}

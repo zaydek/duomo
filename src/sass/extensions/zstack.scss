@@ -21,7 +21,6 @@ $-opts: (
 @mixin zstack($variants...) {
 	@include mixins.compose($variants) using ($composed) {
 		@if utils.matches($composed, core) {
-			// TODO: Add `align-self: stretch`?
 			.zstack {
 				// For the reveal API.
 				--dm-display: grid;
