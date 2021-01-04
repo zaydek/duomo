@@ -132,6 +132,7 @@ $-flex-wrap-opts: (
 
 				display: flex;           // Use Flexbox
 				flex-direction: row;     // Flexbox as row
+				justify-self: stretch;   // Stretch on the main-axis
 				align-self: stretch;     // Stretch on the cross-axis
 				justify-content: center; // Center children along the main-axis
 				align-items: center;     // Center children along the cross-axis
@@ -182,6 +183,7 @@ $-flex-wrap-opts: (
 
 				display: flex;           // Use Flexbox
 				flex-direction: column;  // Flexbox as column
+				justify-self: stretch;   // Stretch on the main-axis
 				align-self: stretch;     // Stretch on the cross-axis
 				justify-content: center; // Center children along the main-axis
 				align-items: center;     // Center children along the cross-axis
@@ -248,7 +250,7 @@ $-flex-wrap-opts: (
 				min-width: var(--dm-spacer-min-width);
 			}
 
-			// These spaces are collapsible to `0`.
+			// Edge case spacers are collapsible to `0`.
 			.spacer:first-child,
 			.spacer:empty + .spacer:empty,
 			.spacer:last-child {

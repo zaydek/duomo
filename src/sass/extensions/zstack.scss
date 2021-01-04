@@ -28,9 +28,10 @@ $-opts: (
 				// Constrain children to the current bounding box.
 				position: relative;
 
-				display: grid;       // Use CSS Grid
-				align-self: stretch; // Stretch on the cross-axis
-				place-items: center; // Center children along the main and cross-axes
+				display: grid;         // Use CSS Grid
+				justify-self: stretch; // Stretch on the main-axis
+				align-self: stretch;   // Stretch on the cross-axis
+				place-items: center;   // Center children along the main and cross-axes
 			}
 
 			.zstack > * {
