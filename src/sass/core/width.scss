@@ -15,6 +15,14 @@ $-stagger-opts: (
 // prettier-ignore
 @mixin width($variants...) {
 	@include mixins.compose($variants) using ($composed) {
+		@if utils.matches($composed, core) {
+			@each $mk, $mv in $-stagger-opts {
+				.w-stagger-#{$mk} {
+					width: $mv;
+				}
+			}
+		}
+
 		@include mixins.generate-from-range((
 			composed: $composed,
 			shorthand: w,
@@ -23,12 +31,5 @@ $-stagger-opts: (
 			resolver: rem,
 		));
 
-		@if utils.matches($composed, core) {
-			@each $mk, $mv in $-stagger-opts {
-				.w-stagger-#{$mk} {
-					width: $mv;
-				}
-			}
-		}
 	}
 }

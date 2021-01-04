@@ -6,6 +6,22 @@
 // prettier-ignore
 @mixin padding($variants...) {
 	@include mixins.compose($variants) using ($composed) {
+		@if utils.matches($composed, core) {
+			.p-space { padding: var(--dm-space); }
+			.px-space {
+				padding-left: var(--dm-space);
+				padding-right: var(--dm-space);
+			}
+			.py-space {
+				padding-top: var(--dm-space);
+				padding-bottom: var(--dm-space);
+			}
+			.pt-space { padding-top: var(--dm-space); }
+			.pr-space { padding-right: var(--dm-space); }
+			.pb-space { padding-bottom: var(--dm-space); }
+			.pl-space { padding-left: var(--dm-space); }
+		}
+
 		@include mixins.generate-from-range((
 			composed: $composed,
 			shorthand: p,
@@ -55,21 +71,5 @@
 			range: get.spaces(),
 			resolver: rem,
 		));
-
-		@if utils.matches($composed, core) {
-			.p-space { padding: var(--dm-space); }
-			.px-space {
-				padding-left: var(--dm-space);
-				padding-right: var(--dm-space);
-			}
-			.py-space {
-				padding-top: var(--dm-space);
-				padding-bottom: var(--dm-space);
-			}
-			.pt-space { padding-top: var(--dm-space); }
-			.pr-space { padding-right: var(--dm-space); }
-			.pb-space { padding-bottom: var(--dm-space); }
-			.pl-space { padding-left: var(--dm-space); }
-		}
 	}
 }
