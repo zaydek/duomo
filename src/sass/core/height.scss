@@ -26,7 +26,7 @@ $-stagger-opts: (
 
 		@each $rv in get.sizes() {
 			.h-#{$rv} {
-				@include mixins.variants($composed) {
+				@include mixins.variants($composed...) {
 					flex-shrink: 0; // Needed for HStack and VStack
 					height: utils.rem($rv);
 				}
@@ -35,7 +35,7 @@ $-stagger-opts: (
 
 		@each $rv in (auto, min-content, max-content, 100%, 100vh) {
 			.h-#{get.desc($rv)} {
-				@include mixins.variants($composed) {
+				@include mixins.variants($composed...) {
 					flex-shrink: revert;
 					height: $rv;
 				}
