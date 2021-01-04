@@ -5,11 +5,11 @@
 		outline-offset: -2px; // Invert
 	}
 
-	// Non-spaced spacers.
-	[data-debug] :not([class*="space-"]) > .spacer:empty {
-		outline: 1px dashed hsla(210, 100%, 50%, 0.5);
-		outline-offset: 0; // Reset
-	}
+	// // Non-spaced spacers.
+	// [data-debug] :not([class*="space-"]) > .spacer:empty {
+	// 	outline: 1px dashed hsla(210, 100%, 50%, 0.5);
+	// 	outline-offset: 0; // Reset
+	// }
 
 	// Spaced spacers.
 	[data-debug] [class*="space-"] > .spacer:empty {
