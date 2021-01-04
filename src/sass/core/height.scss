@@ -19,7 +19,7 @@ $-stagger-opts: (
 			// Takes precedence so can be overridden.
 			@each $mk, $mv in $-stagger-opts {
 				.h-stagger-#{$mk} {
-					flex-shrink: revert; // Revert
+					flex-shrink: revert;
 					height: $mv;
 				}
 			}
@@ -37,7 +37,7 @@ $-stagger-opts: (
 		@each $rv in (auto, min-content, max-content, 100%, 100vh) {
 			.h-#{get.name($rv)} {
 				@include mixins.variants($composed...) {
-					flex-shrink: revert; // Revert
+					flex-shrink: revert;
 					height: $rv;
 				}
 			}

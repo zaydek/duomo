@@ -127,7 +127,9 @@ $-flex-wrap-opts: (
 		// NOTE: Reset takes precedence.
 		@if utils.matches($composed, core) {
 			.hstack > * {
-				--dm-space: 0; // `revert` does not work here
+				// NOTE: `revert` does not work here because it will
+				// be used as a numerical CSS variable.
+				--dm-space: 0;
 
 				// Compensate for `flex-basis: var(--dm-space)`; `min-width` does not measure `flex-basis`.
 				// Only HStacks implement `min-width: min-content`.
@@ -183,8 +185,13 @@ $-flex-wrap-opts: (
 		// NOTE: Reset takes precedence.
 		@if utils.matches($composed, core) {
 			.vstack > * {
-				--dm-space: 0; // `revert` does not work here
-				--dm-spacer-min-width: revert;
+				// NOTE: `revert` does not work here because it will
+				// be used as a numerical CSS variable.
+				--dm-space: 0;
+
+				// NOTE: `revert` does not work here because it will
+				// be used as a numerical CSS variable.
+				--dm-spacer-min-width: 0;
 			}
 		}
 
