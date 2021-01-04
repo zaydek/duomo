@@ -124,37 +124,17 @@ $-flex-wrap-opts: (
 		 * <hstack>
 		 */
 
-		// NOTE: Reset takes precedence.
-		@if utils.matches($composed, core) {
-			.hstack > * {
-				// NOTE: `revert` does not work here because it will
-				// be used as a numerical CSS variable.
-				--dm-space: 0;
-
-				// Compensate for `flex-basis: var(--dm-space)`; `min-width` does not measure `flex-basis`.
-				// Only HStacks implement `min-width: min-content`.
-				// Therefore VStacks implement `--dm-spacer-min-width: 0`.
-				--dm-spacer-min-width: var(--dm-space);
-			}
-		}
-
 		// (Core)
 		@if utils.matches($composed, core) {
+			// prettier-ignore
 			.hstack {
 				--dm-display: flex;
-				--dm-flex-shrink: 1;
 
-				// Stacks are shrinkable (responsive) by default (1) and
-				// stretch on the cross-axis. (2)
-				flex-shrink: var(--dm-flex-shrink); // (1)
-				align-self: stretch; // (2)
-
-				// Center children; justify on the main-axis (1) and
-				// align on the cross-axis. (2)
-				display: flex;
-				flex-direction: row;
-				justify-content: center; // (1)
-				align-items: center; // (2)
+				display: flex;           // Use Flexbox
+				flex-direction: row;     // Flexbox as row
+				align-self: stretch;     // Stretch on the cross-axis
+				justify-content: center; // Center children along the main-axis
+				align-items: center;     // Center children along the cross-axis
 
 				// For `.overflow-x-scroll`.
 				min-width: min-content;
@@ -166,8 +146,20 @@ $-flex-wrap-opts: (
 			.hstack {
 				@include mixins.variants($composed...) {
 					flex-direction: row;
-					min-width: min-content;
 				}
+			}
+		}
+
+		@if utils.matches($composed, core) {
+			.hstack > * {
+				// NOTE: `revert` does not work here because it will
+				// be used as a numerical CSS variable.
+				--dm-space: 0;
+
+				// Compensate for `flex-basis: var(--dm-space)`; `min-width` does not measure `flex-basis`.
+				// Only HStacks implement `min-width: min-content`.
+				// Therefore VStacks implement `--dm-spacer-min-width: 0`.
+				--dm-spacer-min-width: var(--dm-space);
 			}
 		}
 
@@ -182,7 +174,32 @@ $-flex-wrap-opts: (
 		 * <vstack>
 		 */
 
-		// NOTE: Reset takes precedence.
+		// (Core)
+		@if utils.matches($composed, core) {
+			// prettier-ignore
+			.vstack {
+				--dm-display: flex;
+
+				display: flex;           // Use Flexbox
+				flex-direction: column;  // Flexbox as column
+				align-self: stretch;     // Stretch on the cross-axis
+				justify-content: center; // Center children along the main-axis
+				align-items: center;     // Center children along the cross-axis
+
+				// For `.overflow-x-scroll`.
+				min-width: min-content;
+			}
+		}
+
+		// (Responsive)
+		@if not utils.matches($composed, core) {
+			.vstack {
+				@include mixins.variants($composed...) {
+					flex-direction: column;
+				}
+			}
+		}
+
 		@if utils.matches($composed, core) {
 			.vstack > * {
 				// NOTE: `revert` does not work here because it will
@@ -192,39 +209,6 @@ $-flex-wrap-opts: (
 				// NOTE: `revert` does not work here because it will
 				// be used as a numerical CSS variable.
 				--dm-spacer-min-width: 0;
-			}
-		}
-
-		// (Core)
-		@if utils.matches($composed, core) {
-			.vstack {
-				--dm-display: flex;
-				--dm-flex-shrink: 1;
-
-				// Stacks are shrinkable (responsive) by default (1) and
-				// stretch on the cross-axis. (2)
-				flex-shrink: var(--dm-flex-shrink); // (1)
-				align-self: stretch; // (2)
-
-				// Center children; justify on the main-axis (1) and
-				// align on the cross-axis. (2)
-				display: flex;
-				flex-direction: column;
-				justify-content: center; // (1)
-				align-items: center; // (2)
-
-				// For `.overflow-x-scroll`.
-				min-width: revert;
-			}
-		}
-
-		// (Responsive)
-		@if not utils.matches($composed, core) {
-			.vstack {
-				@include mixins.variants($composed...) {
-					flex-direction: column;
-					min-width: revert;
-				}
 			}
 		}
 

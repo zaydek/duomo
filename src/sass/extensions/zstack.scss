@@ -21,43 +21,23 @@ $-opts: (
 @mixin zstack($variants...) {
 	@include mixins.compose($variants) using ($composed) {
 		@if utils.matches($composed, core) {
+			// prettier-ignore
 			.zstack {
 				--dm-display: grid;
-				--dm-flex-shrink: 1;
 
 				// Constrain children to the current bounding box.
 				position: relative;
 
-				// Stacks are shrinkable (responsive) by default (1) and
-				// stretch on the cross-axis. (2)
-				flex-shrink: var(--dm-flex-shrink); // (1)
-				align-self: stretch; // (2)
-
-				// Center children; justify on the main-axis (1) and
-				// align on the cross-axis. (2)
-				//
-				// NOTE: Use `justify-items` not `justify-content`.
-				display: grid;
-				justify-items: center; // (1)
-				align-items: center; // (2)
-
-				// For `.overflow-x-scroll`.
-				//
-				// TOOD: Needs to be tested.
-				min-width: min-content;
+				display: grid;       // Use CSS Grid
+				align-self: stretch; // Stretch on the cross-axis
+				place-items: center; // Center children along the main and cross-axes
 			}
 
-			// Direct children refers to ZStack children.
-			// Indirect children refers to ZStack children that use the placement API.
 			.zstack > * {
-				grid-row-start: 1;
-				grid-column-start: 1;
-				grid-row-end: 1;
-				grid-column-end: 1;
+				grid-area: 1 / 1 / 1 / 1;
 
-				// NOTE: Use `z-index: 10` to normalize direct and indirect children.
-				// Children should appear based on order, not based on the directness of children.
-				// Using `z-index` for all children normalizes appearance order.
+				// Normalize appearance order for direct and
+				// indirect children.
 				z-index: 10;
 			}
 		}
