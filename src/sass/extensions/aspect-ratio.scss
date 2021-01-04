@@ -30,9 +30,11 @@ $-range: (
 			.aspect {
 				--dm-aspect-w: 1;
 				--dm-aspect-h: 1;
+
 				position: relative;
 				padding-bottom: calc(100% * var(--dm-aspect-h) / var(--dm-aspect-w));
 			}
+
 			.aspect > * {
 				position: absolute;
 				top: 0;
@@ -42,11 +44,13 @@ $-range: (
 				width: 100%;
 				height: 100%;
 			}
+
 			// prettier-ignore
 			.aspect-none {
 				position: static;  // Reset
 				padding-bottom: 0; // Reset
 			}
+
 			// prettier-ignore
 			.aspect-none > * {
 				position: static;  // Reset
@@ -58,6 +62,7 @@ $-range: (
 				height: auto;      // Reset
 			}
 		}
+
 		@each $rv in $-range {
 			.aspect-w-#{$rv} {
 				@include mixins.variants($composed...) {
