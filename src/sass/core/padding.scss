@@ -6,7 +6,7 @@
 // prettier-ignore
 @mixin padding($variants...) {
 	@include mixins.compose($variants) using ($composed) {
-		@if utils.matches($composed, core) {
+		@if utils.matches($composed, core) { // Takes precedence so can be overridden
 			.p-space { padding: var(--dm-space); }
 			.px-space {
 				padding-left: var(--dm-space);

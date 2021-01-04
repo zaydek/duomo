@@ -15,7 +15,7 @@ $-stagger-opts: (
 // prettier-ignore
 @mixin width($variants...) {
 	@include mixins.compose($variants) using ($composed) {
-		@if utils.matches($composed, core) {
+		@if utils.matches($composed, core) { // Takes precedence so can be overridden
 			@each $mk, $mv in $-stagger-opts {
 				.w-stagger-#{$mk} {
 					width: $mv;
