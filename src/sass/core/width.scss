@@ -15,7 +15,8 @@ $-stagger-opts: (
 // prettier-ignore
 @mixin width($variants...) {
 	@include mixins.compose($variants) using ($composed) {
-		@if utils.matches($composed, core) { // Takes precedence so can be overridden
+		@if utils.matches($composed, core) {
+			// Takes precedence so can be overridden
 			@each $mk, $mv in $-stagger-opts {
 				.w-stagger-#{$mk} {
 					width: $mv;
@@ -23,13 +24,22 @@ $-stagger-opts: (
 			}
 		}
 
-		@include mixins.generate-from-range((
-			composed: $composed,
-			shorthand: w,
-			property: (width),
-			range: utils.list-of(auto, get.sizes(), min-content, max-content, 100%, 100vw),
-			resolver: rem,
-		));
+		@each $rv in get.sizes() {
+			.w-#{$rv} {
+				@include mixins.variants($composed) {
+					flex-shrink: 0; // Needed for HStack and VStack
+					width: utils.rem($rv);
+				}
+			}
+		}
 
+		@each $rv in (auto, min-content, max-content, 100%, 100vw) {
+			.w-#{get.desc($rv)} {
+				@include mixins.variants($composed) {
+					flex-shrink: revert;
+					width: $rv;
+				}
+			}
+		}
 	}
 }

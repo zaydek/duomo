@@ -1,17 +1,45 @@
+@use "sass:math";
+
 @use "../configuration" as conf;
 @use "../getters" as get;
 @use "../mixins";
 @use "../utils";
 
+$-stagger-opts: (
+	1: math.percentage(4 / 8),
+	2: math.percentage(6 / 8),
+	3: math.percentage(7 / 8),
+	4: math.percentage(5 / 8),
+);
+
 // prettier-ignore
 @mixin height($variants...) {
 	@include mixins.compose($variants) using ($composed) {
-		@include mixins.generate-from-range((
-			composed: $composed,
-			shorthand: h,
-			property: (height),
-			range: utils.list-of(auto, get.sizes(), min-content, max-content, 100%, 100vh),
-			resolver: rem,
-		));
+		@if utils.matches($composed, core) {
+			// Takes precedence so can be overridden
+			@each $mk, $mv in $-stagger-opts {
+				.h-stagger-#{$mk} {
+					height: $mv;
+				}
+			}
+		}
+
+		@each $rv in get.sizes() {
+			.h-#{$rv} {
+				@include mixins.variants($composed) {
+					flex-shrink: 0; // Needed for HStack and VStack
+					height: utils.rem($rv);
+				}
+			}
+		}
+
+		@each $rv in (auto, min-content, max-content, 100%, 100vh) {
+			.h-#{get.desc($rv)} {
+				@include mixins.variants($composed) {
+					flex-shrink: revert;
+					height: $rv;
+				}
+			}
+		}
 	}
 }
