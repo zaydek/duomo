@@ -1,25 +1,25 @@
-@use "../configuration" as conf;
-@use "../getters" as get;
-@use "../mixins";
-@use "../utils";
-
-// prettier-ignore
-$-opts: (
-	align-self-stretch: stretch,
-	align-self-start: flex-start,
-	align-self-center: center,
-	align-self-end: flex-end,
-	align-self-baseline: baseline,
-);
-
-@mixin align-self($variants...) {
-	@include mixins.compose($variants) using ($composed) {
-		@each $mk, $mv in $-opts {
-			.#{$mk} {
-				@include mixins.variants($composed...) {
-					align-self: $mv;
-				}
-			}
-		}
-	}
-}
+// @use "../configuration" as conf;
+// @use "../getters" as get;
+// @use "../mixins";
+// @use "../utils";
+//
+// // prettier-ignore
+// $-opts: (
+// 	align-self-stretch: stretch,
+// 	align-self-start: flex-start,
+// 	align-self-center: center,
+// 	align-self-end: flex-end,
+// 	align-self-baseline: baseline,
+// );
+//
+// @mixin align-self($variants...) {
+// 	@include mixins.compose($variants) using ($composed) {
+// 		@each $mk, $mv in $-opts {
+// 			.#{$mk} {
+// 				@include mixins.variants($composed...) {
+// 					align-self: $mv;
+// 				}
+// 			}
+// 		}
+// 	}
+// }

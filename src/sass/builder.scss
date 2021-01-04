@@ -18,8 +18,8 @@
 	/*
 	 * src/sass/core/*
 	 */
-	@if $mixin == align-items { @include core.align-items($variants...); }
-	@if $mixin == align-self { @include core.align-self($variants...); }
+	// @if $mixin == align-items { @include core.align-items($variants...); }
+	// @if $mixin == align-self { @include core.align-self($variants...); }
 	@if $mixin == background-color { @include core.background-color($variants...); }
 	@if $mixin == border-color { @include core.border-color($variants...); }
 	@if $mixin == border-radius { @include core.border-radius($variants...); }
@@ -28,7 +28,7 @@
 	@if $mixin == color { @include core.color($variants...); }
 	// @if $mixin == column-gap { @include core.column-gap($variants...); }
 	@if $mixin == cursor { @include core.cursor($variants...); }
-	@if $mixin == flex-wrap { @include core.flex-wrap($variants...); }
+	// @if $mixin == flex-wrap { @include core.flex-wrap($variants...); }
 	@if $mixin == font-family { @include core.font-family($variants...); }
 	@if $mixin == font-size { @include core.font-size($variants...); }
 	@if $mixin == font-style { @include core.font-style($variants...); }
@@ -38,8 +38,8 @@
 	@if $mixin == grid-template-rows { @include core.grid-template-rows($variants...); }
 	@if $mixin == grid { @include core.grid($variants...); }
 	@if $mixin == height { @include core.height($variants...); }
-	@if $mixin == justify-content { @include core.justify-content($variants...); }
-	@if $mixin == justify-self { @include core.justify-self($variants...); }
+	// @if $mixin == justify-content { @include core.justify-content($variants...); }
+	// @if $mixin == justify-self { @include core.justify-self($variants...); }
 	@if $mixin == letter-spacing { @include core.letter-spacing($variants...); }
 	@if $mixin == line-height { @include core.line-height($variants...); }
 	@if $mixin == margin { @include core.margin($variants...); }

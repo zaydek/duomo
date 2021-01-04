@@ -3,6 +3,113 @@
 @use "../mixins";
 @use "../utils";
 
+// prettier-ignore
+$-justify-content-opts: (
+	justify-stretch: stretch,
+	justify-start: flex-start,
+	justify-center: center,
+	justify-end: flex-end,
+	justify-baseline: baseline,
+);
+
+// prettier-ignore
+$-justify-self-opts: (
+	justify-self-stretch: stretch,
+	justify-self-start: flex-start,
+	justify-self-center: center,
+	justify-self-end: flex-end,
+	justify-self-baseline: baseline,
+);
+
+// prettier-ignore
+$-align-items-opts: (
+	align-stretch: stretch,
+	align-start: flex-start,
+	align-center: center,
+	align-end: flex-end,
+	align-baseline: baseline,
+);
+
+// prettier-ignore
+$-align-self-opts: (
+	align-self-stretch: stretch,
+	align-self-start: flex-start,
+	align-self-center: center,
+	align-self-end: flex-end,
+	align-self-baseline: baseline,
+);
+
+// prettier-ignore
+$-flex-wrap-opts: (
+	wrap: wrap,
+	wrap-reverse: wrap-reverse,
+	wrap-none: nowrap,
+);
+
+@mixin -modifiers($variants...) {
+	@include mixins.compose($variants) using ($composed) {
+		/*
+		 * <... justify-*>
+		 */
+
+		@each $mk, $mv in $-justify-content-opts {
+			.#{$mk} {
+				@include mixins.variants($composed...) {
+					justify-content: $mv;
+				}
+			}
+		}
+
+		/*
+		 * <... justify-self-*>
+		 */
+
+		@each $mk, $mv in $-justify-self-opts {
+			.#{$mk} {
+				@include mixins.variants($composed...) {
+					justify-self: $mv;
+				}
+			}
+		}
+
+		/*
+		 * <... align-*>
+		 */
+
+		@each $mk, $mv in $-align-items-opts {
+			.#{$mk} {
+				@include mixins.variants($composed...) {
+					align-items: $mv;
+				}
+			}
+		}
+
+		/*
+		 * <... align-self-*>
+		 */
+
+		@each $mk, $mv in $-align-self-opts {
+			.#{$mk} {
+				@include mixins.variants($composed...) {
+					align-self: $mv;
+				}
+			}
+		}
+
+		/*
+		 * <... wrap-*>
+		 */
+
+		@each $mk, $mv in $-flex-wrap-opts {
+			.#{$mk} {
+				@include mixins.variants($composed...) {
+					flex-wrap: $mv;
+				}
+			}
+		}
+	}
+}
+
 // Stacks are a lightweight abstraction on top of Flexbox inspired by SwiftUI.
 //
 // This implementation was originally inspired by several works:
@@ -122,4 +229,6 @@
 			}
 		}
 	}
+
+	@include -modifiers($variants...);
 }
