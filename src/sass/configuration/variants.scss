@@ -17,14 +17,14 @@ $variants: (
 	container:             utils.list-of(core),
 	group:                 utils.list-of(core),
 
-	// NOTE: `w-*` and `h-*` take precedence before stacks.
+	// NOTE: Stacks take precedence.
+	flex-stack:            utils.list-of(core, responsive),
+	zstack:                utils.list-of(core, responsive),
 	width:                 utils.list-of(core, responsive),
 	height:                utils.list-of(core, responsive),
 	min-width:             utils.list-of(core, responsive),
 	max-width:             utils.list-of(core, responsive),
 	min-height:            utils.list-of(core, responsive),
-	flex-stack:            utils.list-of(core, responsive),
-	zstack:                utils.list-of(core, responsive),
 
 	aspect-ratio:          utils.list-of(core, responsive),
 	border-radius:         utils.list-of(core, responsive),

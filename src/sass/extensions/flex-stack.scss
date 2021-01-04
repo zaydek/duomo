@@ -141,12 +141,12 @@ $-flex-wrap-opts: (
 		// (Core)
 		@if utils.matches($composed, core) {
 			.hstack {
-				// For the reveal API.
 				--dm-display: flex;
+				--dm-flex-shrink: 1;
 
-				// Shrinkable (responsive) on the main-axis (1) and
+				// Stacks are shrinkable (responsive) by default (1) and
 				// stretch on the cross-axis. (2)
-				flex-shrink: revert; // (1)
+				flex-shrink: var(--dm-flex-shrink); // (1)
 				align-self: stretch; // (2)
 
 				// Center children; justify on the main-axis (1) and
@@ -198,12 +198,12 @@ $-flex-wrap-opts: (
 		// (Core)
 		@if utils.matches($composed, core) {
 			.vstack {
-				// For the reveal API.
 				--dm-display: flex;
+				--dm-flex-shrink: 1;
 
-				// Shrinkable (responsive) on the main-axis (1) and
+				// Stacks are shrinkable (responsive) by default (1) and
 				// stretch on the cross-axis. (2)
-				flex-shrink: revert; // (1)
+				flex-shrink: var(--dm-flex-shrink); // (1)
 				align-self: stretch; // (2)
 
 				// Center children; justify on the main-axis (1) and
