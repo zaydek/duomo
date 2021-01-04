@@ -47,19 +47,19 @@ $-range: (
 
 			// prettier-ignore
 			.aspect-none {
-				position: static;  // Reset
-				padding-bottom: 0; // Reset
+				position: revert;       // Revert
+				padding-bottom: revert; // Revert
 			}
 
 			// prettier-ignore
 			.aspect-none > * {
-				position: static;  // Reset
-				top: auto;         // Reset
-				right: auto;       // Reset
-				bottom: auto;      // Reset
-				left: auto;        // Reset
-				width: auto;       // Reset
-				height: auto;      // Reset
+				position: revert;       // Revert
+				top: revert;            // Revert
+				right: revert;          // Revert
+				bottom: revert;         // Revert
+				left: revert;           // Revert
+				width: revert;          // Revert
+				height: revert;         // Revert
 			}
 		}
 
