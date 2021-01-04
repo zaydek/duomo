@@ -144,17 +144,17 @@ $-flex-wrap-opts: (
 				// For the reveal API.
 				--dm-display: flex;
 
-				// Shrinkable (responsive) by default.
-				flex-shrink: revert;
+				// Shrinkable (responsive) on the main-axis (1) and
+				// stretch on the cross-axis. (2)
+				flex-shrink: revert; // (1)
+				align-self: stretch; // (2)
 
-				// Stretch on the cross-axis.
-				align-self: stretch;
-
-				// Center children.
+				// Center children; justify on the main-axis (1) and
+				// align on the cross-axis. (2)
 				display: flex;
 				flex-direction: row;
-				justify-content: center;
-				align-items: center;
+				justify-content: center; // (1)
+				align-items: center; // (2)
 
 				// For `.overflow-x-scroll`.
 				min-width: min-content;
@@ -201,17 +201,17 @@ $-flex-wrap-opts: (
 				// For the reveal API.
 				--dm-display: flex;
 
-				// Shrinkable (responsive) by default.
-				flex-shrink: revert;
+				// Shrinkable (responsive) on the main-axis (1) and
+				// stretch on the cross-axis. (2)
+				flex-shrink: revert; // (1)
+				align-self: stretch; // (2)
 
-				// Stretch on the cross-axis.
-				align-self: stretch;
-
-				// Center children.
+				// Center children; justify on the main-axis (1) and
+				// align on the cross-axis. (2)
 				display: flex;
 				flex-direction: column;
-				justify-content: center;
-				align-items: center;
+				justify-content: center; // (1)
+				align-items: center; // (2)
 
 				// For `.overflow-x-scroll`.
 				min-width: revert;
@@ -276,5 +276,6 @@ $-flex-wrap-opts: (
 		}
 	}
 
+	// NOTE: Stacks take precedence over modifiers.
 	@include -modifiers($variants...);
 }

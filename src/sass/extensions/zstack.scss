@@ -25,24 +25,21 @@ $-opts: (
 				// For the reveal API.
 				--dm-display: grid;
 
-				// Use `relative` to constrain children to the
-				// current element bounding box.
+				// Constrain children to the current bounding box.
 				position: relative;
 
-				// Shrinkable (responsive) by default.
-				//
-				// TOOD: Needs to be tested.
-				flex-shrink: revert;
+				// Shrinkable (responsive) on the main-axis (1) and
+				// stretch on the cross-axis. (2)
+				flex-shrink: revert; // (1)
+				align-self: stretch; // (2)
 
-				// Stretch on the cross-axis.
+				// Center children; justify on the main-axis (1) and
+				// align on the cross-axis. (2)
 				//
-				// TOOD: Needs to be tested.
-				align-self: stretch;
-
-				// Center children.
+				// NOTE: Use `justify-items` not `justify-content`.
 				display: grid;
-				justify-items: center;
-				align-items: center;
+				justify-items: center; // (1)
+				align-items: center; // (2)
 
 				// For `.overflow-x-scroll`.
 				//
