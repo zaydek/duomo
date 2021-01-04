@@ -5,17 +5,23 @@
 
 @mixin reveal($variants...) {
 	@include mixins.compose($variants) using ($composed) {
-		// NOTE: Uses `!important` so that the reveal API is order-independent.
+		// prettier-ignore
+		@if utils.matches($composed, core) {
+			.hstack > * { --dm-display: revert; }
+			.vstack > * { --dm-display: revert; }
+			.zstack > * { --dm-display: revert; }
+			.grid   > * { --dm-display: revert; }
+		}
+
 		.hide {
 			@include mixins.variants($composed...) {
-				display: none !important;
+				display: none;
 			}
 		}
 
-		// NOTE: Uses `!important` so that the reveal API is order-independent.
 		.show {
 			@include mixins.variants($composed...) {
-				display: var(--dm-display) !important;
+				display: var(--dm-display);
 			}
 		}
 	}

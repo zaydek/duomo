@@ -7,6 +7,9 @@
 	@include mixins.compose($variants) using ($composed) {
 		@if utils.matches($composed, core) {
 			.grid {
+				// For the reveal API.
+				--dm-display: grid;
+
 				display: grid;
 			}
 		}

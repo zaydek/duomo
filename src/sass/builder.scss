@@ -76,35 +76,32 @@
 }
 
 @mixin body($global-variants) {
-	$hidden-variants: map.get($global-variants, hidden);
-	$non-hidden-variants: utils.take($global-variants, hidden);
+	$reveal-variants: map.get($global-variants, reveal);
+	$non-reveal-variants: utils.take($global-variants, reveal);
 
-	@each $module, $variants in $non-hidden-variants {
+	@each $module, $variants in $non-reveal-variants {
 		$non-responsive: utils.take($variants, responsive);
 		@include call-mixin($module, $non-responsive...);
 	}
 
-	// Defer `hidden` to the end of the current scope.
-	@if $hidden-variants {
-		$non-responsive: utils.take($hidden-variants, responsive);
-		@include call-mixin(hidden, $non-responsive...);
+	// Defer the reveal API to the end of the current scope.
+	@if $reveal-variants {
+		$non-responsive: utils.take($reveal-variants, responsive);
+		@include call-mixin(reveal, $non-responsive...);
 	}
 
 	@each $key, $px in get.breakpoints() {
 		@media (min-width: $px) {
 			.#{get.delimit($key)} {
-				@each $mixin, $variants in $non-hidden-variants {
+				@each $mixin, $variants in $non-reveal-variants {
 					@if list.index($variants, responsive) {
 						@include call-mixin($mixin, responsive);
 					}
 				}
 
-				// Defer `hidden` to the end of the current scope.
-				//
-				// TODO: This can be anywhere, right? It shouldn’t matter because
-				// the previous `hidden` mixin takes care of global initialization.
-				@if list.index($hidden-variants, responsive) {
-					@include call-mixin(hidden, responsive);
+				// Defer the reveal API to the end of the current scope.
+				@if list.index($reveal-variants, responsive) {
+					@include call-mixin(reveal, responsive);
 				}
 			}
 		}
