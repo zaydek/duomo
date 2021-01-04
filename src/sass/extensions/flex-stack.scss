@@ -138,8 +138,12 @@ $-flex-wrap-opts: (
 		// (Core)
 		@if utils.matches($composed, core) {
 			.hstack {
+				// For the reveal API.
+				--dm-display: flex;
+
 				// Shrinkable (responsive) by default.
-				flex-shrink: revert; // (See `w-*` and `h-*`)
+				// See `w-*` and `h-*` for more context.
+				flex-shrink: revert;
 
 				// Stretch on the cross-axis.
 				align-self: stretch;
@@ -188,8 +192,12 @@ $-flex-wrap-opts: (
 		// (Core)
 		@if utils.matches($composed, core) {
 			.vstack {
+				// For the reveal API.
+				--dm-display: flex;
+
 				// Shrinkable (responsive) by default.
-				flex-shrink: revert; // (See `w-*` and `h-*`)
+				// See `w-*` and `h-*` for more context.
+				flex-shrink: revert;
 
 				// Stretch on the cross-axis.
 				align-self: stretch;
@@ -246,14 +254,18 @@ $-flex-wrap-opts: (
 			// Therefore use `min-width: var(--dm-spacer-min-width)`.
 			.spacer {
 				flex: 1 0 var(--dm-space);
-				min-width: var(--dm-spacer-min-width); // Needed for `overflow-x-scroll`
+
+				// For `overflow-x-scroll`.
+				min-width: var(--dm-spacer-min-width);
 			}
 			// These spaces are collapsible to `0`.
 			.spacer:first-child,
 			.spacer:empty + .spacer:empty,
 			.spacer:last-child {
 				flex: 1 0 0;
-				min-width: 0; // Needed for `overflow-x-scroll`
+
+				// For `overflow-x-scroll`.
+				min-width: 0;
 			}
 		}
 	}

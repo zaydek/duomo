@@ -1,0 +1,22 @@
+@use "../configuration" as conf;
+@use "../getters" as get;
+@use "../mixins";
+@use "../utils";
+
+@mixin reveal($variants...) {
+	@include mixins.compose($variants) using ($composed) {
+		// NOTE: Uses `!important` so that the reveal API is order-independent.
+		.hide {
+			@include mixins.variants($composed...) {
+				display: none !important;
+			}
+		}
+
+		// NOTE: Uses `!important` so that the reveal API is order-independent.
+		.show {
+			@include mixins.variants($composed...) {
+				display: var(--dm-display) !important;
+			}
+		}
+	}
+}

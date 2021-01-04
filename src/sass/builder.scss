@@ -69,7 +69,7 @@
 	@if $mixin == container { @include extensions.container($variants...); }
 	@if $mixin == flex-stack { @include extensions.flex-stack($variants...); }
 	@if $mixin == group { @include extensions.group($variants...); }
-	// @if $mixin == hidden { @include extensions.hidden($variants...); }
+	@if $mixin == reveal { @include extensions.reveal($variants...); }
 	// @if $mixin == square { @include extensions.square($variants...); }
 	@if $mixin == zstack { @include extensions.zstack($variants...); }
 

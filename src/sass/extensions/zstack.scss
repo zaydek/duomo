@@ -21,11 +21,20 @@ $-opts: (
 @mixin zstack($variants...) {
 	@include mixins.compose($variants) using ($composed) {
 		@if utils.matches($composed, core) {
+			// TODO: Add `align-self: stretch`?
 			.zstack {
-				position: relative; // Takes precedence (for semantic reasons)
+				// For the reveal API.
+				--dm-display: grid;
+
+				// Use `relative` to constrain children to the
+				// current element bounding box.
+				position: relative;
+
+				// Center children; use `*-items` to emulate
+				// `place-items: center`.
 				display: grid;
-				justify-items: center; // Simulates `place-items`
-				align-items: center; // Simulates `place-items`
+				justify-items: center;
+				align-items: center;
 			}
 
 			// Direct children refers to ZStack children.
