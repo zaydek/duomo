@@ -24,17 +24,16 @@ $-range: (
 	16,
 );
 
+// prettier-ignore
 @mixin aspect-ratio($variants...) {
 	@include mixins.compose($variants) using ($composed) {
 		@if utils.matches($composed, core) {
 			.aspect {
-				--dm-aspect-w: 1;
-				--dm-aspect-h: 1;
-
+				--dm-aspect-w: revert;
+				--dm-aspect-h: revert;
 				position: relative;
 				padding-bottom: calc(100% * var(--dm-aspect-h) / var(--dm-aspect-w));
 			}
-
 			.aspect > * {
 				position: absolute;
 				top: 0;
@@ -45,21 +44,18 @@ $-range: (
 				height: 100%;
 			}
 
-			// prettier-ignore
 			.aspect-none {
-				position: revert;       // Revert
-				padding-bottom: revert; // Revert
+				position: revert;
+				padding-bottom: revert;
 			}
-
-			// prettier-ignore
 			.aspect-none > * {
-				position: revert;       // Revert
-				top: revert;            // Revert
-				right: revert;          // Revert
-				bottom: revert;         // Revert
-				left: revert;           // Revert
-				width: revert;          // Revert
-				height: revert;         // Revert
+				position: revert;
+				top: revert;
+				right: revert;
+				bottom: revert;
+				left: revert;
+				width: revert;
+				height: revert;
 			}
 		}
 

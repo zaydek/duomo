@@ -1,7 +1,9 @@
 @use "sass:list";
 
-// matches((a, b, c), a) -> true
-// matches((a, b, z), a) -> false
+// NOTE: `matches` is simply a shorthand for `list.index`.
+//
+// matches((1, 2, 3), 1)  -> 1
+// matches((1, 2, 3), -1) -> null
 //
 @function matches($list, $item) {
 	@return list.index($list, $item);

@@ -142,7 +142,6 @@ $-flex-wrap-opts: (
 				--dm-display: flex;
 
 				// Shrinkable (responsive) by default.
-				// See `w-*` and `h-*` for more context.
 				flex-shrink: revert;
 
 				// Stretch on the cross-axis.
@@ -154,7 +153,7 @@ $-flex-wrap-opts: (
 				justify-content: center;
 				align-items: center;
 
-				// For `overflow-x-scroll`.
+				// For `.overflow-x-scroll`.
 				min-width: min-content;
 			}
 		}
@@ -183,7 +182,6 @@ $-flex-wrap-opts: (
 		// NOTE: Reset takes precedence.
 		@if utils.matches($composed, core) {
 			.vstack > * {
-				// See note in `.hstack > *`.
 				--dm-spacer-min-width: revert;
 				--dm-space: revert;
 			}
@@ -196,7 +194,6 @@ $-flex-wrap-opts: (
 				--dm-display: flex;
 
 				// Shrinkable (responsive) by default.
-				// See `w-*` and `h-*` for more context.
 				flex-shrink: revert;
 
 				// Stretch on the cross-axis.
@@ -208,7 +205,7 @@ $-flex-wrap-opts: (
 				justify-content: center;
 				align-items: center;
 
-				// For `overflow-x-scroll`.
+				// For `.overflow-x-scroll`.
 				min-width: revert;
 			}
 		}
@@ -234,7 +231,7 @@ $-flex-wrap-opts: (
 		 * <... space-*>
 		 */
 
-		// NOTE: Cannot use a generator because of `... > *` selector.
+		// NOTE: Cannot use a generator because of the descendent selector..
 		@each $rv in utils.list-of(get.nspaces(), get.spaces()) {
 			.#{get.n($rv)}space-#{get.abs($rv)} > * {
 				@include mixins.variants($composed...) {
@@ -255,16 +252,17 @@ $-flex-wrap-opts: (
 			.spacer {
 				flex: 1 0 var(--dm-space);
 
-				// For `overflow-x-scroll`.
+				// For `.overflow-x-scroll`.
 				min-width: var(--dm-spacer-min-width);
 			}
+
 			// These spaces are collapsible to `0`.
 			.spacer:first-child,
 			.spacer:empty + .spacer:empty,
 			.spacer:last-child {
 				flex: 1 0 0;
 
-				// For `overflow-x-scroll`.
+				// For `.overflow-x-scroll`.
 				min-width: 0;
 			}
 		}

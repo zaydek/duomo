@@ -30,11 +30,25 @@ $-opts: (
 				// current element bounding box.
 				position: relative;
 
-				// Center children; use `*-items` to emulate
-				// `place-items: center`.
+				// Shrinkable (responsive) by default.
+				//
+				// TOOD: Needs to be tested.
+				flex-shrink: revert;
+
+				// Stretch on the cross-axis.
+				//
+				// TOOD: Needs to be tested.
+				align-self: stretch;
+
+				// Center children.
 				display: grid;
 				justify-items: center;
 				align-items: center;
+
+				// For `.overflow-x-scroll`.
+				//
+				// TOOD: Needs to be tested.
+				min-width: min-content;
 			}
 
 			// Direct children refers to ZStack children.
