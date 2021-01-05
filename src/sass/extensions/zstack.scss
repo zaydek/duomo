@@ -17,23 +17,23 @@ $-opts: (
 
 // Inspired by @everdimension’s implementation: https://codepen.io/everdimension/pen/BaNpeWe.
 //
-// Based on https://codepen.io/zaydek/pen/dypmZow.
+// Based on https://codepen.io/zaydek/pen/VwKxrQR.
 @mixin zstack($variants...) {
 	@include mixins.compose($variants) using ($composed) {
 		@if utils.matches($composed, core) {
 			// prettier-ignore
 			.zstack {
 				--dm-display: grid;
-				position: relative;  // Constrain children to the current bounding box
-				display: grid;       // Use CSS Grid
-				place-items: center; // Center children along the main and cross-axes
+				position: relative;       // Constrain children to the current bounding box
+				display: grid;            // Use CSS Grid
+				place-content: center;    // Center children along both axes (the parent element’s bounding box)
+				place-items: center;      // Center children along both axes (the child element’s bounding box)
 			}
 
-			// NOTE: Use `z-index: 10` to normalize appearance order for direct and
-			// indirect children.
+			// prettier-ignore
 			.zstack > * {
-				grid-area: 1 / 1 / 1 / 1;
-				z-index: 10;
+				grid-area: 1 / 1 / 1 / 1; // Self-center
+				z-index: 10;              // Normalize appearance order for direct and indirect (e.g. `place-*`) children
 			}
 		}
 
