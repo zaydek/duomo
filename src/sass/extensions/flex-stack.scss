@@ -168,6 +168,26 @@ $-flex-wrap-opts: (
 			}
 		}
 
+		// Negate the empty `spacer` at the start.
+		//
+		// NOTE: Do not merge selectors because of `mixins.variants` implementation.
+		// `mixin.variants` cannot process comma-delimited selectors yet.
+		.hstack > .spacer:empty:first-child + * {
+			@include mixins.variants($composed...) {
+				margin-left: revert;
+			}
+		}
+
+		// Negate the empty `spacer` at the end.
+		//
+		// NOTE: Do not merge selectors because of `mixins.variants` implementation.
+		// `mixin.variants` cannot process comma-delimited selectors yet.
+		.hstack > * + .spacer:empty:last-child {
+			@include mixins.variants($composed...) {
+				margin-left: revert;
+			}
+		}
+
 		/*
 		 * <vstack>
 		 */
@@ -214,6 +234,26 @@ $-flex-wrap-opts: (
 			@include mixins.variants($composed...) {
 				margin-left: revert;
 				margin-top: var(--dm-space);
+			}
+		}
+
+		// Negate the empty `spacer` at the start.
+		//
+		// NOTE: Do not merge selectors because of `mixins.variants` implementation.
+		// `mixin.variants` cannot process comma-delimited selectors yet.
+		.vstack > .spacer:empty:first-child + * {
+			@include mixins.variants($composed...) {
+				margin-top: revert;
+			}
+		}
+
+		// Negate the empty `spacer` at the end.
+		//
+		// NOTE: Do not merge selectors because of `mixins.variants` implementation.
+		// `mixin.variants` cannot process comma-delimited selectors yet.
+		.vstack > * + .spacer:empty:last-child {
+			@include mixins.variants($composed...) {
+				margin-top: revert;
 			}
 		}
 
