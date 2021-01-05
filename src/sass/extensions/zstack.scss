@@ -24,21 +24,15 @@ $-opts: (
 			// prettier-ignore
 			.zstack {
 				--dm-display: grid;
-
-				// Constrain children to the current bounding box.
-				position: relative;
-
-				display: grid;         // Use CSS Grid
-				justify-self: stretch; // Stretch on the main-axis
-				align-self: stretch;   // Stretch on the cross-axis
-				place-items: center;   // Center children along the main and cross-axes
+				position: relative;  // Constrain children to the current bounding box
+				display: grid;       // Use CSS Grid
+				place-items: center; // Center children along the main and cross-axes
 			}
 
+			// NOTE: Use `z-index: 10` to normalize appearance order for direct and
+			// indirect children.
 			.zstack > * {
 				grid-area: 1 / 1 / 1 / 1;
-
-				// Normalize appearance order for direct and
-				// indirect children.
 				z-index: 10;
 			}
 		}

@@ -132,7 +132,6 @@ $-flex-wrap-opts: (
 
 				display: flex;           // Use Flexbox
 				flex-direction: row;     // Flexbox as row
-				justify-self: stretch;   // Stretch on the main-axis
 				align-self: stretch;     // Stretch on the cross-axis
 				justify-content: center; // Center children along the main-axis
 				align-items: center;     // Center children along the cross-axis
@@ -183,7 +182,6 @@ $-flex-wrap-opts: (
 
 				display: flex;           // Use Flexbox
 				flex-direction: column;  // Flexbox as column
-				justify-self: stretch;   // Stretch on the main-axis
 				align-self: stretch;     // Stretch on the cross-axis
 				justify-content: center; // Center children along the main-axis
 				align-items: center;     // Center children along the cross-axis

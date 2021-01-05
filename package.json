@@ -21,7 +21,7 @@
 		"build-js": "tsc && node scripts/browser.js",
 		"stats": "node scripts/stats.js",
 		"build": "yarn rimraf dist && yarn concurrently --raw 'yarn build-duomo-css' 'yarn build-duomo-min-css' 'yarn build-layout-css' 'yarn build-layout-min-css' 'yarn build-js' && yarn stats",
-		"version-release-candidate": "npm version prerelease --preid=rc"
+		"version-rc": "npm version prerelease --preid=rc"
 	},
 	"devDependencies": {
 		"@babel/preset-env": "^7.12.7",
