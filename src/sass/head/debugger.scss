@@ -1,4 +1,16 @@
+@mixin -zero-out($inset: 0) {
+	position: absolute;
+	top: $inset;
+	right: $inset;
+	bottom: $inset;
+	left: $inset;
+	content: "";
+	@content;
+}
+
 // Based on https://codepen.io/zaydek/pen/vYXjdXe.
+//
+// prettier-ignore
 @mixin debugger {
 	[data-debug] * {
 		// TODO: Extract:
@@ -12,9 +24,14 @@
 	}
 
 	[data-debug] .spacer:empty {
-		align-self: stretch;
-		background-color: hsla(210deg, 100%, 50%, 0.05);
-		outline: 2px dashed hsla(210deg, 100%, 50%, 0.5);
-		outline-offset: -2px; // Invert
+		align-self: stretch;  // Stretch on the cross-axis
+		outline: revert;      // No-op debug `outline`
+
+		position: relative;
+		&::before {
+			@include -zero-out(-1px) {
+				background-color: hsla(210deg, 100%, 50%, 0.1);
+			}
+		}
 	}
 }
