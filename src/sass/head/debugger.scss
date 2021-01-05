@@ -1,6 +1,5 @@
 // Based on https://codepen.io/zaydek/pen/vYXjdXe.
 @mixin debugger {
-	// TODO: Add `[data-debug="none"]`?
 	[data-debug] * {
 		// TODO: Extract:
 		//
@@ -9,14 +8,13 @@
 		// - var(--debug-lightness)
 		//
 		outline: 2px solid hsla(210deg, 100%, 50%, 0.5);
-		outline-offset: -2px; // Invert
+		outline-offset: -1px; // Inset
 	}
 
-	[data-debug] .hstack > .spacer:empty,
-	[data-debug] .vstack > .spacer:empty {
+	[data-debug] .spacer:empty {
 		align-self: stretch;
 		background-color: hsla(210deg, 100%, 50%, 0.05);
 		outline: 2px dashed hsla(210deg, 100%, 50%, 0.5);
-		outline-offset: -2px; // Invert
+		outline-offset: -1px; // Inset
 	}
 }
