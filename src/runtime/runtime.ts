@@ -48,9 +48,9 @@ function matchMediaPreference() {
 // prettier-ignore
 function isKeyDownDarkMode(e: KeyboardEvent) {
 	const ok = (
-		e.ctrlKey &&
+		!e.ctrlKey &&
 		!e.altKey &&
-		(e.key.toLowerCase() === "d" || e.keyCode === 68)
+		(e.key.toLowerCase() === "`" || e.keyCode === 68)
 	)
 	return ok
 }
@@ -58,9 +58,9 @@ function isKeyDownDarkMode(e: KeyboardEvent) {
 // prettier-ignore
 function isKeyDownDebugMode(e: KeyboardEvent) {
 	const ok = (
-		!e.ctrlKey &&
+		e.ctrlKey &&
 		!e.altKey &&
-		(e.key.toLowerCase() === "d" || e.keyCode === 68)
+		(e.key.toLowerCase() === "`" || e.keyCode === 68)
 	)
 	return ok
 }
