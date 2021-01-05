@@ -8,7 +8,7 @@
 		// - var(--debug-lightness)
 		//
 		outline: 2px solid hsla(210deg, 100%, 50%, 0.5);
-		outline-offset: -2px; // Invert
+		outline-offset: -1px; // Inset
 	}
 
 	[data-debug] .spacer:empty {
