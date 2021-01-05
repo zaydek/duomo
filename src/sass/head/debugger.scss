@@ -8,13 +8,13 @@
 		// - var(--debug-lightness)
 		//
 		outline: 2px solid hsla(210deg, 100%, 50%, 0.5);
-		outline-offset: -1px; // Inset
+		outline-offset: -2px; // Invert
 	}
 
 	[data-debug] .spacer:empty {
 		align-self: stretch;
 		background-color: hsla(210deg, 100%, 50%, 0.05);
 		outline: 2px dashed hsla(210deg, 100%, 50%, 0.5);
-		outline-offset: -1px; // Inset
+		outline-offset: -2px; // Invert
 	}
 }
