@@ -110,14 +110,12 @@ $-flex-wrap-opts: (
 	}
 }
 
-// Stacks are a lightweight abstraction on top of Flexbox inspired by SwiftUI.
-//
 // This implementation was originally inspired by several works:
 //
 // - https://almonk.github.io/pylon
 // - https://youtube.com/watch?v=fvOlTDJpNcM
 //
-// Based on https://codepen.io/zaydek/pen/wvzyZWy.
+// Reference implementation: https://codepen.io/zaydek/pen/wvzyZWy.
 @mixin flex-stack($variants...) {
 	@include mixins.compose($variants) using ($composed) {
 		/*

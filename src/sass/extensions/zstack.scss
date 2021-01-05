@@ -15,9 +15,12 @@ $-opts: (
 	top-left: (top, left),
 );
 
-// Inspired by @everdimension’s implementation: https://codepen.io/everdimension/pen/BaNpeWe.
+// This implementation was originally inspired by several works:
 //
-// Based on https://codepen.io/zaydek/pen/VwKxrQR.
+// - https://codepen.io/everdimension/pen/BaNpeWe
+// - https://twitter.com/bdc/status/1245399999300558853
+//
+// Reference implementation: https://codepen.io/zaydek/pen/VwKxrQR.
 @mixin zstack($variants...) {
 	@include mixins.compose($variants) using ($composed) {
 		@if utils.matches($composed, core) {
@@ -26,8 +29,7 @@ $-opts: (
 				--dm-display: grid;
 				position: relative;       // Constrain children to the current bounding box
 				display: grid;            // Use CSS Grid
-				place-content: center;    // Center children along both axes (the parent element’s bounding box)
-				place-items: center;      // Center children along both axes (the child element’s bounding box)
+				place-items: center;      // Center children along both axes
 			}
 
 			// prettier-ignore
