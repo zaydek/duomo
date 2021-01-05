@@ -1,16 +1,22 @@
-// Based on https://codepen.io/zaydek/pen/wvzyZWy.
+// Based on https://codepen.io/zaydek/pen/vYXjdXe.
 @mixin debugger {
 	// TODO: Add `[data-debug="none"]`?
 	[data-debug] * {
-		outline: 2px solid hsla(210, 100%, 50%, 0.5);
+		// TODO: Extract:
+		//
+		// - var(--debug-hue)
+		// - var(--debug-saturation)
+		// - var(--debug-lightness)
+		//
+		outline: 2px solid hsla(210deg, 100%, 50%, 0.5);
 		outline-offset: -2px; // Invert
 	}
 
 	[data-debug] .hstack > .spacer:empty,
 	[data-debug] .vstack > .spacer:empty {
 		align-self: stretch;
-		background-color: hsla(210, 100%, 50%, 0.05);
-		outline: 2px dashed hsla(210, 100%, 50%, 0.5);
+		background-color: hsla(210deg, 100%, 50%, 0.05);
+		outline: 2px dashed hsla(210deg, 100%, 50%, 0.5);
 		outline-offset: -2px; // Invert
 	}
 }
