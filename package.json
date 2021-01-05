@@ -1,6 +1,6 @@
 {
 	"name": "@zaydek/duomo",
-	"version": "0.7.12-rc.21",
+	"version": "0.7.12-rc.22",
 	"main": "dist/duomo.css",
 	"license": "MIT",
 	"files": [
