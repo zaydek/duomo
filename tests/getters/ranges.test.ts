@@ -12,7 +12,7 @@ test("integration", () => {
 $start: 1;
 $end: -1;
 
-.clsx {
+.class {
 	nspace-start: list.nth(nspaces(), $start);
 	nspace-end: list.nth(nspaces(), $end);
 	spaces-start: list.nth(spaces(), $start);
@@ -31,7 +31,7 @@ $end: -1;
 `)
 	// prettier-ignore
 	expect(css).toBe(`
-.clsx {
+.class {
 	nspace-start: -1;
 	nspace-end: -128;
 	spaces-start: 0;
