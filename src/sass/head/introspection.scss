@@ -4,17 +4,18 @@
 
 // prettier-ignore
 $-introspection: (
-	sans: '""',
+	sans:  '""',
 	serif: '""',
-	mono: '""',
+	mono:  '""',
 
-	ui-sans: #{get.font(sans)},
+	ui-sans:  #{get.font(sans)},
 	ui-serif: #{get.font(serif)},
-	ui-mono: #{get.font(mono)},
+	ui-mono:  #{get.font(mono)},
 
 	default-placeholder-color: get.color(cool-gray-400),
 	default-border-color: get.color(cool-gray-200),
-	default-transition-duration: 250ms,
+
+	default-transition-duration: 250,
 	default-transition-timing: get.timing(ease-out),
 	default-theme-transition-duration: 500ms,
 	default-theme-transition-timing: get.timing(ease-out),

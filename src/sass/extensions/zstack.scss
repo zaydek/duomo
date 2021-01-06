@@ -3,24 +3,85 @@
 @use "../mixins";
 @use "../utils";
 
-// prettier-ignore
-$-opts: (
-	all: (top, right, bottom, left),
-
-	top-all: (top, left, right),
-	right-all: (right, top, bottom),
-	bottom-all: (bottom, left, right),
-	left-all: (left, top, bottom),
-
-	top-right: (top, right),
-	bottom-right: (bottom, right),
-	bottom-left: (bottom, left),
-	top-left: (top, left),
-
-	top: (top),
-	right: (right),
-	bottom: (bottom),
-	left: (left),
+$-placement-opts: (
+	all: (
+		top: 0,
+		right: 0,
+		bottom: 0,
+		left: 0,
+	),
+	top-all: (
+		top: 0,
+		right: 0,
+		bottom: revert,
+		left: 0,
+	),
+	right-all: (
+		top: 0,
+		right: 0,
+		bottom: 0,
+		left: revert,
+	),
+	bottom-all: (
+		top: revert,
+		right: 0,
+		bottom: 0,
+		left: 0,
+	),
+	left-all: (
+		top: 0,
+		right: revert,
+		bottom: 0,
+		left: 0,
+	),
+	top-right: (
+		top: 0,
+		right: 0,
+		bottom: revert,
+		left: revert,
+	),
+	bottom-right: (
+		top: revert,
+		right: 0,
+		bottom: 0,
+		left: revert,
+	),
+	bottom-left: (
+		top: revert,
+		right: revert,
+		bottom: 0,
+		left: 0,
+	),
+	top-left: (
+		top: 0,
+		right: revert,
+		bottom: revert,
+		left: 0,
+	),
+	top: (
+		top: 0,
+		right: revert,
+		bottom: revert,
+		left: revert,
+	),
+	right: (
+		top: revert,
+		right: 0,
+		bottom: revert,
+		left: revert,
+	),
+	bottom: (
+		top: revert,
+		right: revert,
+		bottom: 0,
+		left: revert,
+	),
+	left: (
+		top: revert,
+		right: revert,
+		bottom: revert,
+		left: 0,
+	),
 );
 
 // This implementation was originally inspired by several works:
@@ -34,7 +95,6 @@ $-opts: (
 		@if utils.matches($composed, core) {
 			// prettier-ignore
 			.zstack {
-				--dm-display: grid;
 				position: relative;       // Constrain children to the current bounding box
 				display: grid;            // Use CSS Grid
 				place-items: center;      // Center children along both axes
@@ -47,12 +107,12 @@ $-opts: (
 			}
 		}
 
-		@each $mk, $mv in $-opts {
+		@each $mk, $mv in $-placement-opts {
 			.place-#{$mk} {
 				@include mixins.variants($composed...) {
 					position: absolute;
-					@each $prop in $mv {
-						#{$prop}: 0;
+					@each $prop, $value in $mv {
+						#{$prop}: #{$value};
 					}
 				}
 			}

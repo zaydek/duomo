@@ -126,8 +126,6 @@ $-flex-wrap-opts: (
 		@if utils.matches($composed, core) {
 			// prettier-ignore
 			.hstack {
-				--dm-display: flex;
-
 				justify-self: stretch;   // Stretch on the main-axis
 				align-self: stretch;     // Stretch on the cross-axis
 
@@ -203,8 +201,6 @@ $-flex-wrap-opts: (
 		@if utils.matches($composed, core) {
 			// prettier-ignore
 			.vstack {
-				--dm-display: flex;
-
 				justify-self: stretch;   // Stretch on the main-axis
 				align-self: stretch;     // Stretch on the cross-axis
 
