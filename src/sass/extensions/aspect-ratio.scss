@@ -37,8 +37,9 @@ $-range: (
 				// be used as a numerical CSS variable.
 				--dm-aspect-h: 1;
 
+				// NOTE: `var(--dm-aspect-h)` takes precedence.
 				position: relative;
-				padding-bottom: calc(100% * var(--dm-aspect-h) / var(--dm-aspect-w));
+				padding-bottom: calc(var(--dm-aspect-h) / var(--dm-aspect-w) * 100%);
 			}
 			.aspect > * {
 				position: absolute;

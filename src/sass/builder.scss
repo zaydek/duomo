@@ -64,8 +64,6 @@
 	@if $mixin == flex-stack { @include extensions.flex-stack($variants...); }
 	@if $mixin == group { @include extensions.group($variants...); }
 	@if $mixin == reveal { @include extensions.reveal($variants...); }
-	@if $mixin == zstack { @include extensions.zstack($variants...); }
-
 }
 
 @mixin body($global-variants) {

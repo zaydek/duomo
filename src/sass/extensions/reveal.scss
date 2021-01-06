@@ -5,23 +5,16 @@
 
 @mixin reveal($variants...) {
 	@include mixins.compose($variants) using ($composed) {
+		// prettier-ignore
 		@if utils.matches($composed, core) {
 			// Takes precedence so can be overridden.
-			.hstack > *,
-			.vstack > *,
-			.zstack > *,
-			.grid > * {
-				--dm-display: revert;
-			}
+			.hstack > * { --dm-display: revert; }
+			.vstack > * { --dm-display: revert; }
+			.grid   > * { --dm-display: revert; }
 
-			.hstack,
-			.vstack {
-				--dm-display: flex;
-			}
-			.zstack,
-			.grid {
-				--dm-display: grid;
-			}
+			.hstack { --dm-display: flex; }
+			.vstack { --dm-display: flex; }
+			.grid   { --dm-display: grid; }
 		}
 
 		.hide {
