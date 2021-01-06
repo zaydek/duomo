@@ -5,6 +5,8 @@
 
 // prettier-ignore
 $-opts: (
+	all: (top, right, bottom, left),
+
 	top-all: (top, left, right),
 	right-all: (right, top, bottom),
 	bottom-all: (bottom, left, right),
