@@ -128,9 +128,11 @@ $-flex-wrap-opts: (
 			.hstack {
 				--dm-display: flex;
 
+				justify-self: stretch;   // Stretch on the main-axis
+				align-self: stretch;     // Stretch on the cross-axis
+
 				display: flex;           // Use Flexbox
 				flex-direction: row;     // Flexbox as row
-				align-self: stretch;     // Stretch on the cross-axis
 				justify-content: center; // Center children along the main-axis
 				align-items: center;     // Center children along the cross-axis
 
@@ -168,21 +170,26 @@ $-flex-wrap-opts: (
 			}
 		}
 
-		// Negate the empty `spacer` at the start.
+		// Reference implementation: https://codepen.io/zaydek/pen/qBaYvWp.
 		//
 		// NOTE: Do not merge selectors because of `mixins.variants` implementation.
 		// `mixin.variants` cannot process comma-delimited selectors yet.
-		.hstack > .spacer:empty:first-child + * {
+		.hstack > .spacer:first-child:empty + * {
 			@include mixins.variants($composed...) {
 				margin-left: revert;
 			}
 		}
-
-		// Negate the empty `spacer` at the end.
-		//
-		// NOTE: Do not merge selectors because of `mixins.variants` implementation.
-		// `mixin.variants` cannot process comma-delimited selectors yet.
-		.hstack > * + .spacer:empty:last-child {
+		.hstack > .spacer:empty {
+			@include mixins.variants($composed...) {
+				margin-left: revert;
+			}
+		}
+		.hstack > .spacer:empty + * {
+			@include mixins.variants($composed...) {
+				margin-left: revert;
+			}
+		}
+		.hstack > * + .spacer:last-child:empty {
 			@include mixins.variants($composed...) {
 				margin-left: revert;
 			}
@@ -198,9 +205,11 @@ $-flex-wrap-opts: (
 			.vstack {
 				--dm-display: flex;
 
+				justify-self: stretch;   // Stretch on the main-axis
+				align-self: stretch;     // Stretch on the cross-axis
+
 				display: flex;           // Use Flexbox
 				flex-direction: column;  // Flexbox as column
-				align-self: stretch;     // Stretch on the cross-axis
 				justify-content: center; // Center children along the main-axis
 				align-items: center;     // Center children along the cross-axis
 
@@ -237,21 +246,26 @@ $-flex-wrap-opts: (
 			}
 		}
 
-		// Negate the empty `spacer` at the start.
+		// Reference implementation: https://codepen.io/zaydek/pen/qBaYvWp.
 		//
 		// NOTE: Do not merge selectors because of `mixins.variants` implementation.
 		// `mixin.variants` cannot process comma-delimited selectors yet.
-		.vstack > .spacer:empty:first-child + * {
+		.vstack > .spacer:first-child:empty + * {
 			@include mixins.variants($composed...) {
 				margin-top: revert;
 			}
 		}
-
-		// Negate the empty `spacer` at the end.
-		//
-		// NOTE: Do not merge selectors because of `mixins.variants` implementation.
-		// `mixin.variants` cannot process comma-delimited selectors yet.
-		.vstack > * + .spacer:empty:last-child {
+		.vstack > .spacer:empty {
+			@include mixins.variants($composed...) {
+				margin-top: revert;
+			}
+		}
+		.vstack > .spacer:empty + * {
+			@include mixins.variants($composed...) {
+				margin-top: revert;
+			}
+		}
+		.vstack > * + .spacer:last-child:empty {
 			@include mixins.variants($composed...) {
 				margin-top: revert;
 			}

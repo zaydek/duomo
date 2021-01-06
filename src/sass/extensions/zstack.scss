@@ -5,14 +5,20 @@
 
 // prettier-ignore
 $-opts: (
-	top: (top),
-	right: (right),
-	bottom: (bottom),
-	left: (left),
+	top-all: (top, left, right),
+	right-all: (right, top, bottom),
+	bottom-all: (bottom, left, right),
+	left-all: (left, top, bottom),
+
 	top-right: (top, right),
 	bottom-right: (bottom, right),
 	bottom-left: (bottom, left),
 	top-left: (top, left),
+
+	top: (top),
+	right: (right),
+	bottom: (bottom),
+	left: (left),
 );
 
 // This implementation was originally inspired by several works:
