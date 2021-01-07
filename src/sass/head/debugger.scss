@@ -1,3 +1,4 @@
+// FIXME: Convert to a top-level API (mixin).
 @mixin -zero-out($inset: 0) {
 	position: absolute;
 	top: $inset;
@@ -23,7 +24,7 @@
 		outline-offset: -1px; // Inset
 	}
 
-	[data-debug] .spacer:empty {
+	[data-debug] .grow:empty {
 		align-self: stretch;  // Stretch on the cross-axis
 		outline: revert;      // No-op debug `outline`
 
