@@ -3,7 +3,7 @@
 @use "../mixins";
 @use "../utils";
 
-$flex-opts: (
+$-flex-opts: (
 	stretch: stretch,
 	start: flex-start,
 	center: center,
@@ -17,17 +17,12 @@ $-flex-wrap-opts: (
 	wrap-none: nowrap,
 );
 
-// This implementation was originally inspired by several works:
-//
-// - https://almonk.github.io/pylon
-// - https://youtube.com/watch?v=fvOlTDJpNcM
-//
 // Reference implementations:
 //
 // - https://codepen.io/zaydek/pen/wvzyZWy
 // - https://codepen.io/zaydek/pen/QWKxYpZ (most recent)
 //
-@mixin flex {
+@mixin flex($variants...) {
 	@include mixins.compose($variants) using ($composed) {
 		// flex-row
 		.flex-row {
@@ -169,7 +164,7 @@ $-flex-wrap-opts: (
 		}
 
 		// m-gap-*
-		@each $rv in $range {
+		@each $rv in get.spaces() {
 			.#{get.n($rv)}m-gap-#{get.abs($rv)} > * {
 				@include mixins.variants($composed...) {
 					--dm-m-gap: utils.rem($rv);

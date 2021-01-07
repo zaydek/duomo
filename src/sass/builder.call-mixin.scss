@@ -32,7 +32,6 @@
 	@if $mixin == letter-spacing        { @include letter-spacing($variants...); }
 	@if $mixin == line-height           { @include line-height($variants...); }
 	@if $mixin == margin                { @include margin($variants...); }
-	@if $mixin == max-width             { @include max-width($variants...); }
 	@if $mixin == min-height            { @include min-height($variants...); }
 	@if $mixin == min-width             { @include min-width($variants...); }
 	@if $mixin == opacity               { @include opacity($variants...); }

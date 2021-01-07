@@ -27,7 +27,7 @@ $-range: (
 // prettier-ignore
 @mixin aspect-ratio($variants...) {
 	@include mixins.compose($variants) using ($composed) {
-		@if utils.matches($composed, core) {
+		@if not & {
 			.aspect {
 				// NOTE: `revert` does not work here because it will
 				// be used as a numerical CSS variable.

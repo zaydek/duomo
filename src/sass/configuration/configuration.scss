@@ -207,7 +207,7 @@ $breakpoint-map: (
 	xl: 1280px,
 ) !default;
 
-// NOTE: Intentionally excludes `transform`. That being said, `transition.scss`
+// NOTE: Intentionally omits `transform`. That being said, `transition.scss`
 // does append `transform`.
 //
 // prettier-ignore

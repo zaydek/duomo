@@ -5,7 +5,7 @@
 
 @mixin container($variants...) {
 	@include mixins.compose($variants) using ($composed) {
-		@if utils.matches($composed, core) {
+		@if not & {
 			// prettier-ignore
 			.container {
 				margin-left: auto;  // Self-center (x-axis)
