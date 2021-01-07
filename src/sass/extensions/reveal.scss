@@ -7,6 +7,11 @@
 	@include mixins.compose($variants) using ($composed) {
 		// prettier-ignore
 		@if utils.matches($composed, core) {
+			// Fallback so `var(--dm-display)` is always defined.
+			:root {
+				--dm-display: block;
+			}
+
 			// Takes precedence so can be overridden.
 			.hstack > * { --dm-display: revert; }
 			.vstack > * { --dm-display: revert; }
