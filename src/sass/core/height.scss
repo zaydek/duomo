@@ -29,7 +29,7 @@ $-stagger-opts: (
 			.h-#{$rv} {
 				@include mixins.variants($composed...) {
 					flex-shrink: 0;
-					height: utils.rem($rv);
+					height: get.rem($rv);
 				}
 			}
 		}

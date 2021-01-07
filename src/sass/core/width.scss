@@ -28,7 +28,7 @@ $-stagger-opts: (
 			.w-#{$rv} {
 				@include mixins.variants($composed...) {
 					flex-shrink: 0;
-					width: utils.rem($rv);
+					width: get.rem($rv);
 				}
 			}
 		}
@@ -41,7 +41,7 @@ $-stagger-opts: (
 			}
 		}
 
-		// Replaces `w-full max-w-sm`, etc.
+		// w-full max-w-sm -> w-sm
 		@each $key, $px in get.breakpoints() {
 			.w-#{$key} {
 				@include mixins.variants($composed...) {

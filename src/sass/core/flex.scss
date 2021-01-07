@@ -167,7 +167,7 @@ $-flex-wrap-opts: (
 		@each $rv in get.spaces() {
 			.#{get.n($rv)}m-gap-#{get.abs($rv)} > * {
 				@include mixins.variants($composed...) {
-					--dm-m-gap: utils.rem($rv);
+					--dm-m-gap: #{get.rem($rv)};
 				}
 			}
 		}

@@ -4,6 +4,7 @@
 
 @use "../getters" as get;
 @use "../utils";
+
 @use "variants" as v;
 
 // Ex:
@@ -11,13 +12,10 @@
 // (0, 0.5, 1)  -> true
 // (0, 50, 100) -> false
 //
-// prettier-ignore
 @function percent-heuristic($range) {
-	$ok: $range and
-		meta.type-of(list.nth($range, 1)) == number and
-		list.nth($range, 1) >= -1 and
-		meta.type-of(list.nth($range, -1)) == number and
-		list.nth($range, -1) <= 1;
+	$ok: $range and meta.type-of(list.nth($range, 1)) == number and list.nth($range, 1) >= -1 and meta.type-of(
+			list.nth($range, -1)
+		) == number and list.nth($range, -1) <= 1;
 	@return $ok;
 }
 
@@ -36,7 +34,7 @@
 		.#{get.n($rv)}#{$shorthand}-#{get.name(get.abs($rv), $as-percent)} {
 			@include v.variants($composed...) {
 				@each $prop in $property {
-					#{$prop}: utils.resolve($rv, $resolver);
+					#{$prop}: get.resolve($rv, $resolver);
 				}
 			}
 		}
