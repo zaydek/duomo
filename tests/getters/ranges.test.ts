@@ -33,9 +33,9 @@ $end: -1;
 	expect(css).toBe(`
 .class {
 	nspace-start: -1;
-	nspace-end: -128;
+	nspace-end: -64;
 	spaces-start: 0;
-	spaces-end: 128;
+	spaces-end: 64;
 	sizes-start: 0;
 	sizes-end: 640;
 	font-sizes-start: 8;
