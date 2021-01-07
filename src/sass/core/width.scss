@@ -12,11 +12,10 @@ $-stagger-opts: (
 	4: math.percentage(5 / 8),
 );
 
-// prettier-ignore
 @mixin width($variants...) {
 	@include mixins.compose($variants) using ($composed) {
-		@if utils.matches($composed, core) {
-			// Takes precedence so can be overridden.
+		// w-stagger-*
+		@if not & {
 			@each $mk, $mv in $-stagger-opts {
 				.w-stagger-#{$mk} {
 					width: $mv;
@@ -24,6 +23,7 @@ $-stagger-opts: (
 			}
 		}
 
+		// w-*
 		@each $rv in get.sizes() {
 			.w-#{$rv} {
 				@include mixins.variants($composed...) {
@@ -32,12 +32,22 @@ $-stagger-opts: (
 				}
 			}
 		}
-
 		@each $rv in (auto, min-content, max-content, 100%, 100vw) {
 			.w-#{get.name($rv)} {
 				@include mixins.variants($composed...) {
 					flex-shrink: revert;
 					width: $rv;
+				}
+			}
+		}
+
+		// Replaces `w-full max-w-sm`, etc.
+		@each $key, $px in get.breakpoints() {
+			.w-#{$key} {
+				@include mixins.variants($composed...) {
+					flex-shrink: revert;
+					width: 100%;
+					max-width: $px;
 				}
 			}
 		}

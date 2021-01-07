@@ -1,98 +1,23 @@
 @use "sass:list";
-@use "sass:map";
 
+@use "builder.call-mixin" as *;
 @use "configuration" as conf;
-@use "core";
-@use "extensions";
 @use "getters" as get;
 @use "head" as *;
 @use "utils";
 
-// NOTE: Dart Sass does not support dynamic mixin invocations.
-// Therefore mixins are conditionally, statically invoked.
-//
-// https://github.com/sass/sass/issues/626
-//
-// prettier-ignore
-@mixin call-mixin($mixin, $variants...) {
-	/*
-	 * src/sass/core/*
-	 */
-	@if $mixin == background-color { @include core.background-color($variants...); }
-	@if $mixin == border-color { @include core.border-color($variants...); }
-	@if $mixin == border-radius { @include core.border-radius($variants...); }
-	@if $mixin == border-width { @include core.border-width($variants...); }
-	@if $mixin == box-shadow { @include core.box-shadow($variants...); }
-	@if $mixin == color { @include core.color($variants...); }
-	// @if $mixin == column-gap { @include core.column-gap($variants...); }
-	@if $mixin == cursor { @include core.cursor($variants...); }
-	@if $mixin == font-family { @include core.font-family($variants...); }
-	@if $mixin == font-size { @include core.font-size($variants...); }
-	@if $mixin == font-style { @include core.font-style($variants...); }
-	@if $mixin == font-weight { @include core.font-weight($variants...); }
-	@if $mixin == gap { @include core.gap($variants...); }
-	@if $mixin == grid-template-columns { @include core.grid-template-columns($variants...); }
-	@if $mixin == grid-template-rows { @include core.grid-template-rows($variants...); }
-	@if $mixin == grid { @include core.grid($variants...); }
-	@if $mixin == height { @include core.height($variants...); }
-	@if $mixin == letter-spacing { @include core.letter-spacing($variants...); }
-	@if $mixin == line-height { @include core.line-height($variants...); }
-	@if $mixin == margin { @include core.margin($variants...); }
-	@if $mixin == max-width { @include core.max-width($variants...); }
-	@if $mixin == min-height { @include core.min-height($variants...); }
-	@if $mixin == min-width { @include core.min-width($variants...); }
-	@if $mixin == opacity { @include core.opacity($variants...); }
-	@if $mixin == overflow { @include core.overflow($variants...); }
-	@if $mixin == padding { @include core.padding($variants...); }
-	@if $mixin == pointer-events { @include core.pointer-events($variants...); }
-	@if $mixin == position { @include core.position($variants...); }
-	// @if $mixin == row-gap { @include core.row-gap($variants...); }
-	@if $mixin == text-align { @include core.text-align($variants...); }
-	@if $mixin == text-decoration { @include core.text-decoration($variants...); }
-	@if $mixin == transform { @include core.transform($variants...); }
-	// @if $mixin == transition { @include core.transition($variants...); }
-	@if $mixin == vertical-align { @include core.vertical-align($variants...); }
-	@if $mixin == white-space { @include core.white-space($variants...); }
-	@if $mixin == width { @include core.width($variants...); }
-	@if $mixin == z-index { @include core.z-index($variants...); }
-
-	/*
-	 * src/sass/extensions/*
-	 */
-	@if $mixin == aspect-ratio { @include extensions.aspect-ratio($variants...); }
-	@if $mixin == container { @include extensions.container($variants...); }
-	@if $mixin == flex-stack { @include extensions.flex-stack($variants...); }
-	@if $mixin == group { @include extensions.group($variants...); }
-	@if $mixin == reveal { @include extensions.reveal($variants...); }
-}
-
 @mixin body($global-variants) {
-	$reveal-variants: map.get($global-variants, reveal);
-	$non-reveal-variants: utils.take($global-variants, reveal);
-
-	@each $module, $variants in $non-reveal-variants {
+	@each $module, $variants in $global-variants {
 		$non-responsive: utils.take($variants, responsive);
 		@include call-mixin($module, $non-responsive...);
 	}
-
-	// Defer the reveal API to the end of the current scope.
-	@if $reveal-variants {
-		$non-responsive: utils.take($reveal-variants, responsive);
-		@include call-mixin(reveal, $non-responsive...);
-	}
-
 	@each $key, $px in get.breakpoints() {
 		@media (min-width: $px) {
 			.#{get.delimit($key)} {
-				@each $mixin, $variants in $non-reveal-variants {
+				@each $mixin, $variants in $global-variants {
 					@if list.index($variants, responsive) {
 						@include call-mixin($mixin, responsive);
 					}
-				}
-
-				// Defer the reveal API to the end of the current scope.
-				@if list.index($reveal-variants, responsive) {
-					@include call-mixin(reveal, responsive);
 				}
 			}
 		}

@@ -37,7 +37,7 @@
 	}
 
 	// Convert from HEX to HSLA to support `var(--bg-opacity)`, etc.
-	$raw-hsl: utils.hex-to-raw-hsl($got);
+	$raw-hsl: utils.color-to-raw-hsl($got);
 	@if $alpha {
 		@return string.unquote("hsla(#{$raw-hsl}, #{$alpha})");
 	}

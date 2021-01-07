@@ -49,7 +49,7 @@ $-introspection: (
 		@if not conf.$layout {
 			@if conf.$introspect-design-tokens {
 				@include -introspect(
-					utils.hex-to-raw-hsl-map(conf.$subset-color-map),
+					utils.color-to-raw-hsl-map(conf.$subset-color-map),
 					conf.$shadow-map,
 					conf.$timing-map,
 				);

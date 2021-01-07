@@ -8,10 +8,6 @@ $macro-variants: if(
 	(hover, focus, group-hover, group-focus),
 ) !default;
 
-// NOTE: `$variants` should be order-independent. Properties are sorted
-// alphabetically for organizational purposes. Note that `builder.scss` should
-// order `$variants` if needed.
-//
 // prettier-ignore
 $variants: (
 	container:             utils.list-of(core),
@@ -21,7 +17,7 @@ $variants: (
 	border-radius:         utils.list-of(core, responsive),
 	border-width:          utils.list-of(core, responsive),
 	cursor:                utils.list-of(core, responsive),
-	flex-stack:            utils.list-of(core, responsive),
+	flex:                  utils.list-of(core, responsive),
 	font-family:           utils.list-of(core, responsive),
 	font-size:             utils.list-of(core, responsive),
 	font-style:            utils.list-of(core, responsive),
@@ -46,10 +42,6 @@ $variants: (
 	vertical-align:        utils.list-of(core, responsive),
 	white-space:           utils.list-of(core, responsive),
 	width:                 utils.list-of(core, responsive),
-	zstack:                utils.list-of(core, responsive),
-
-	// column-gap:         utils.list-of(core, responsive),
-	// row-gap:            utils.list-of(core, responsive),
 
 	background-color:      utils.list-of(core, $macro-variants, responsive),
 	border-color:          utils.list-of(core, $macro-variants, responsive),
