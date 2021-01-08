@@ -15,6 +15,18 @@ declare namespace global {
 // -> }
 //
 global.sass = (data: string) => {
+	// global.sass = (data: string) => {
+	// 	const res = sass.renderSync({
+	// 		data,
+	// 		outputStyle: "compressed" as const,
+	// 	})
+	// 	const fmt = prettier.format(res.css.toString(), {
+	// 		parser: "css",
+	// 		tabWidth: 2,
+	// 		useTabs: true,
+	// 	})
+	// 	return fmt
+	// }
 	const res = sass.renderSync({
 		data,
 		indentType: "tab",
