@@ -102,5 +102,15 @@ $-placement-opts: (
 				}
 			}
 		}
+
+		@each $mk, $mv in $-placement-opts {
+			.#{$mk} {
+				@include mixins.variants($composed...) {
+					@each $prop, $value in $mv {
+						#{$prop}: #{$value};
+					}
+				}
+			}
+		}
 	}
 }
