@@ -19,8 +19,8 @@ $-hide-opts: (
 		// show
 		//
 		// prettier-ignore
-		@each $mk, $mv in $hide-opts {
-			#{$amp}show#{if(not $mk, [class], "." + $mk)} { // (0, 2, 0)
+		@each $mk, $mv in $-hide-opts {
+			.show#{if(not $mk, [class], "." + $mk)} { // (0, 2, 0)
 				@include mixins.variants($composed...) {
 					display: $mv;
 				}
@@ -30,7 +30,7 @@ $-hide-opts: (
 		// hide
 		//
 		// prettier-ignore
-		#{$amp}hide[class] { // (0, 2, 0)
+		.hide[class] { // (0, 2, 0)
 			@include mixins.variants($composed...) {
 				display: none;
 			}
