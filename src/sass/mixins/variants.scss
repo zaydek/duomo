@@ -25,7 +25,7 @@
 	// -> :root:not([data-theme-effect]) .sm\: .transition (2)
 	// -> :root:not([data-theme-effect]) .sm\:transition   (3)
 	//
-	// FIXME: https://github.com/zaydek/duomo/issues/244.
+	// TODO: https://github.com/zaydek/duomo/issues/244.
 	@if utils.str-ends-with($str-selector, ":root:not([data-theme-effect]) .transition") {
 		// prettier-ignore
 		$str-selector: utils.str-replace(
