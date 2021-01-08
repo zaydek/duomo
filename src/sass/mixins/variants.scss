@@ -1,40 +1,67 @@
 @use "sass:list";
 @use "sass:meta";
+@use "sass:selector";
 @use "sass:string";
 
 @use "../configuration" as conf;
 @use "../getters" as get;
 @use "../utils";
 
+// // Ex: ".class" -> "class"
+// //
+// // TODO: Extract to `utils` or `str`.
+// // TODO: Add unit tests.
+// @function str-declass($original-selector) {
+// 	$selectors: selector.parse($original-selector);
+// 	$out: ();
+// 	@each $selector in $selectors {
+// 		$str: "" + $selector;
+// 		$declassed: string.slice($str, 2);
+// 		$out: list.append($out, $declassed, comma);
+// 	}
+// 	@return $out;
+// }
+
 // Ex: ".class" -> "class"
+//
+// TODO: Extract to `utils` or `str`.
+// TODO: Add unit tests.
 @function str-declass($selector) {
 	$str-selector: "" + $selector;
 	@return string.slice($str-selector, 2);
 }
 
 // Ex: ".sm\\: .class" -> ".sm\\:class"
-@function str-declass-responsive($selector) {
-	$str-selector: "" + $selector;
-
-	// Edge case:
-	//
-	// .sm\: :root:not([data-theme-effect]) .transition
-	//
-	// -> .sm\: .transition                                (1)
-	// -> :root:not([data-theme-effect]) .sm\: .transition (2)
-	// -> :root:not([data-theme-effect]) .sm\:transition   (3)
-	//
-	// TODO: https://github.com/zaydek/duomo/issues/244.
-	@if utils.str-ends-with($str-selector, ":root:not([data-theme-effect]) .transition") {
-		// prettier-ignore
-		$str-selector: utils.str-replace(
-			$str-selector,
-			"#{get.delimiter()} :root:not([data-theme-effect])",
-			get.delimiter()
-		);
-		$str-selector: ":root:not([data-theme-effect]) #{$str-selector}";
+//
+// TODO: Extract to `utils` or `str`.
+// TODO: Add unit tests.
+@function str-declass-responsive($original-selector) {
+	$selectors: selector.parse($original-selector);
+	$out: ();
+	@each $selector in $selectors {
+		// Edge case:
+		//
+		// .sm\: :root:not([data-theme-effect]) .transition
+		//
+		// -> .sm\: .transition                                (1)
+		// -> :root:not([data-theme-effect]) .sm\: .transition (2)
+		// -> :root:not([data-theme-effect]) .sm\:transition   (3)
+		//
+		// TODO: https://github.com/zaydek/duomo/issues/244.
+		$str: "" + $selector;
+		@if utils.str-ends-with($str, ":root:not([data-theme-effect]) .transition") {
+			// prettier-ignore
+			$str: utils.str-replace(
+				$str,
+				"#{get.delimiter()} :root:not([data-theme-effect])",
+				get.delimiter()
+			);
+			$str: ":root:not([data-theme-effect]) #{$str}";
+		}
+		$declassed: utils.str-replace($str, "#{get.delimiter()} .", get.delimiter());
+		$out: list.append($out, $declassed, comma);
 	}
-	@return utils.str-replace($str-selector, "#{get.delimiter()} .", get.delimiter());
+	@return $out;
 }
 
 @function core($selector) {
