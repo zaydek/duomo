@@ -27,7 +27,6 @@ $-stagger-opts: (
 		@each $rv in get.sizes() {
 			.w-#{$rv} {
 				@include mixins.variants($composed...) {
-					flex-shrink: 0;
 					width: get.rem($rv);
 				}
 			}
@@ -35,7 +34,6 @@ $-stagger-opts: (
 		@each $rv in (auto, min-content, max-content, 100%, 100vw) {
 			.w-#{get.name($rv)} {
 				@include mixins.variants($composed...) {
-					flex-shrink: revert;
 					width: $rv;
 				}
 			}
@@ -45,7 +43,6 @@ $-stagger-opts: (
 		@each $key, $px in get.breakpoints() {
 			.w-#{$key} {
 				@include mixins.variants($composed...) {
-					flex-shrink: revert;
 					width: 100%;
 					max-width: $px;
 				}
