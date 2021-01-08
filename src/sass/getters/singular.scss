@@ -25,13 +25,19 @@
 }
 
 @function color($key, $alpha: null) {
+	// Normalize `currentColor` as `current`.
+	@if $key == currentColor {
+		$key: current;
+	}
+
+	// Edge case: cover `transparent` and `current`.
 	$got: -impl("color", conf.$color-map, $key);
 	@if $key == transparent or $key == current {
 		@return $got;
 	}
 
-	// NOTE: Convert from HEX to HSLA to support `var(--bg-opacity)`, etc.
-	$raw-hsl: utils.hex-to-raw-hsl($got);
+	// Convert from HEX to HSLA to support `var(--bg-opacity)`, etc.
+	$raw-hsl: utils.color-to-raw-hsl($got);
 	@if $alpha {
 		@return string.unquote("hsla(#{$raw-hsl}, #{$alpha})");
 	}

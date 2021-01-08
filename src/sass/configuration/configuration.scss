@@ -4,6 +4,9 @@ $env: development !default;
 // Describes whether to generate Duomo CSS.
 $headless: false !default;
 
+// Describes whether to introspect design tokens as CSS variables.
+$introspect-design-tokens: true !default;
+
 // Describes whether to generate layout-based Duomo CSS.
 $layout: false !default;
 
@@ -16,8 +19,8 @@ $layout: false !default;
 //
 $delimiter: ":" !default;
 
-$limit-nspace: -128 !default;
-$limit-space: 128 !default;
+$limit-nspace: -320 !default;
+$limit-space: 320 !default;
 $limit-size: 640 !default;
 $limit-font-size: 64 !default;
 $limit-border-width: 8 !default;
@@ -105,8 +108,6 @@ $range: (
 	640,
 ) !default;
 
-// TOOD: `weight-map` should be used for the `weight()` getter.
-// NOTE: `normal` and `black` possibly lead to collisions.
 $weight-map: (
 	thin: 100,
 	extralight: 200,
@@ -206,7 +207,7 @@ $breakpoint-map: (
 	xl: 1280px,
 ) !default;
 
-// NOTE: Intentionally excludes `transform`. That being said, `transition.scss`
+// NOTE: Intentionally omits `transform`. That being said, `transition.scss`
 // does append `transform`.
 //
 // prettier-ignore

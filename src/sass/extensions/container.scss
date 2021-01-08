@@ -5,15 +5,17 @@
 
 @mixin container($variants...) {
 	@include mixins.compose($variants) using ($composed) {
-		@if utils.matches($composed, core) {
+		@if not & {
+			// prettier-ignore
 			.container {
+				margin-left: auto;  // Self-center (x-axis)
+				margin-right: auto; // Self-center (x-axis)
 				width: 100%;
 			}
 			@each $_, $px in get.breakpoints() {
 				@media (min-width: $px) {
 					.container {
-						margin-left: auto;
-						margin-right: auto;
+						width: 100%;
 						max-width: $px;
 					}
 				}

@@ -1,21 +1,29 @@
+@use "sass:map";
+
 @use "../configuration" as conf;
 @use "../getters" as get;
 @use "../utils";
 
 // prettier-ignore
 $-introspection: (
-	sans: '""',
-	serif: '""',
-	mono: '""',
+	debug-raw-hsl: (210deg, 100%, 50%),
 
-	ui-sans: #{get.font(sans)},
+	sans:  '""',
+	serif: '""',
+	mono:  '""',
+
+	ui-sans:  #{get.font(sans)},
 	ui-serif: #{get.font(serif)},
-	ui-mono: #{get.font(mono)},
+	ui-mono:  #{get.font(mono)},
 
 	default-placeholder-color: get.color(cool-gray-400),
 	default-border-color: get.color(cool-gray-200),
+
+	// Non-theme
 	default-transition-duration: 250ms,
 	default-transition-timing: get.timing(ease-out),
+
+	// Theme
 	default-theme-transition-duration: 500ms,
 	default-theme-transition-timing: get.timing(ease-out),
 
@@ -27,10 +35,27 @@ $-introspection: (
 		),
 );
 
+@mixin -introspect($maps...) {
+	@each $map in $maps {
+		@each $mk, $mv in $map {
+			--#{"" + $mk}: #{$mv};
+		}
+	}
+}
+
 @mixin introspection {
 	:root {
-		@each $mk, $mv in $-introspection {
-			--#{$mk}: #{$mv};
+		@include -introspect($-introspection);
+
+		// prettier-ignore
+		@if not conf.$layout {
+			@if conf.$introspect-design-tokens {
+				@include -introspect(
+					utils.color-to-raw-hsl-map(conf.$subset-color-map),
+					conf.$shadow-map,
+					conf.$timing-map,
+				);
+			}
 		}
 	}
 }

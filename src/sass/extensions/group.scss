@@ -5,7 +5,7 @@
 
 @mixin group($variants...) {
 	@include mixins.compose($variants) using ($composed) {
-		@if utils.matches($composed, core) {
+		@if not & {
 			.group {
 				/*! NOTE: Do not omit empty ruleset. */
 			}

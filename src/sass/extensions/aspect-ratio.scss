@@ -24,44 +24,44 @@ $-range: (
 	16,
 );
 
-// prettier-ignore
+// Based on https://github.com/tailwindlabs/tailwindcss-aspect-ratio.
 @mixin aspect-ratio($variants...) {
 	@include mixins.compose($variants) using ($composed) {
-		@if utils.matches($composed, core) {
+		@if not & {
 			.aspect {
-				// NOTE: `revert` does not work here because it will
-				// be used as a numerical CSS variable.
+				// Use a numerical value not `revert`.
 				--dm-aspect-w: 1;
 
-				// NOTE: `revert` does not work here because it will
-				// be used as a numerical CSS variable.
+				// Use a numerical value not `revert`.
 				--dm-aspect-h: 1;
 
 				position: relative;
-				padding-bottom: calc(100% * var(--dm-aspect-h) / var(--dm-aspect-w));
+				padding-bottom: calc(var(--dm-aspect-h) / var(--dm-aspect-w) * 100%);
 			}
+			// prettier-ignore
 			.aspect > * {
 				position: absolute;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
+				top:      0;
+				right:    0;
+				bottom:   0;
+				left:     0;
+				width:    100%;
+				height:   100%;
 			}
 
 			.aspect-none {
 				position: revert;
 				padding-bottom: revert;
 			}
+			// prettier-ignore
 			.aspect-none > * {
 				position: revert;
-				top: revert;
-				right: revert;
-				bottom: revert;
-				left: revert;
-				width: revert;
-				height: revert;
+				top:      revert;
+				right:    revert;
+				bottom:   revert;
+				left:     revert;
+				width:    revert;
+				height:   revert;
 			}
 		}
 

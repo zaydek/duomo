@@ -6,23 +6,6 @@
 // prettier-ignore
 @mixin margin($variants...) {
 	@include mixins.compose($variants) using ($composed) {
-		// // Takes precedence so can be overridden.
-		// @if utils.matches($composed, core) {
-		// 	.m-space { margin: var(--dm-space); }
-		// 	.mx-space {
-		// 		margin-left: var(--dm-space);
-		// 		margin-right: var(--dm-space);
-		// 	}
-		// 	.my-space {
-		// 		margin-top: var(--dm-space);
-		// 		margin-bottom: var(--dm-space);
-		// 	}
-		// 	.mt-space { margin-top: var(--dm-space); }
-		// 	.mr-space { margin-right: var(--dm-space); }
-		// 	.mb-space { margin-bottom: var(--dm-space); }
-		// 	.ml-space { margin-left: var(--dm-space); }
-		// }
-
 		@include mixins.generate-from-range((
 			composed: $composed,
 			shorthand: m,

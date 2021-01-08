@@ -52,6 +52,7 @@ $-fixme-breakpoints: (
 	@return string.slice("" + $selector, 2);
 }
 
+// TODO: Add support for `xs` and `2xl`.
 @mixin variants2($variants...) {
 	@at-root {
 		& {

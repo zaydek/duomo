@@ -4,7 +4,7 @@
 @use "../utils";
 
 // prettier-ignore
-$-opts: (
+$-position-opts: (
 	static,
 	relative,
 	absolute,
@@ -12,92 +12,105 @@ $-opts: (
 	sticky,
 );
 
-// prettier-ignore
+$-placement-opts: (
+	all: (
+		top: 0,
+		right: 0,
+		bottom: 0,
+		left: 0,
+	),
+	top-all: (
+		top: 0,
+		right: 0,
+		bottom: revert,
+		left: 0,
+	),
+	right-all: (
+		top: 0,
+		right: 0,
+		bottom: 0,
+		left: revert,
+	),
+	bottom-all: (
+		top: revert,
+		right: 0,
+		bottom: 0,
+		left: 0,
+	),
+	left-all: (
+		top: 0,
+		right: revert,
+		bottom: 0,
+		left: 0,
+	),
+	top-right: (
+		top: 0,
+		right: 0,
+		bottom: revert,
+		left: revert,
+	),
+	bottom-right: (
+		top: revert,
+		right: 0,
+		bottom: 0,
+		left: revert,
+	),
+	bottom-left: (
+		top: revert,
+		right: revert,
+		bottom: 0,
+		left: 0,
+	),
+	top-left: (
+		top: 0,
+		right: revert,
+		bottom: revert,
+		left: 0,
+	),
+	top: (
+		top: 0,
+		right: revert,
+		bottom: revert,
+		left: revert,
+	),
+	right: (
+		top: revert,
+		right: 0,
+		bottom: revert,
+		left: revert,
+	),
+	bottom: (
+		top: revert,
+		right: revert,
+		bottom: 0,
+		left: revert,
+	),
+	left: (
+		top: revert,
+		right: revert,
+		bottom: revert,
+		left: 0,
+	),
+);
+
 @mixin position($variants...) {
 	@include mixins.compose($variants) using ($composed) {
-		@each $opt in $-opts {
+		@each $opt in $-position-opts {
 			.#{$opt} {
 				@include mixins.variants($composed...) {
 					position: $opt;
 				}
 			}
 		}
-		@include mixins.generate-from-range((
-			composed: $composed,
-			shorthand: a,
-			property: (top, right, bottom, left),
-			range: (auto, 0),
-			resolver: rem,
-		));
-		@include mixins.generate-from-range((
-			composed: $composed,
-			shorthand: x,
-			property: (left, right),
-			range: (auto, 0),
-			resolver: rem,
-		));
-		@include mixins.generate-from-range((
-			composed: $composed,
-			shorthand: y,
-			property: (top, bottom),
-			range: (auto, 0),
-			resolver: rem,
-		));
-		@include mixins.generate-from-range((
-			composed: $composed,
-			shorthand: t,
-			property: (top),
-			range: (auto, 0),
-			resolver: rem,
-		));
-		@include mixins.generate-from-range((
-			composed: $composed,
-			shorthand: r,
-			property: (right),
-			range: (auto, 0),
-			resolver: rem,
-		));
-		@include mixins.generate-from-range((
-			composed: $composed,
-			shorthand: b,
-			property: (bottom),
-			range: (auto, 0),
-			resolver: rem,
-		));
-		@include mixins.generate-from-range((
-			composed: $composed,
-			shorthand: l,
-			property: (left),
-			range: (auto, 0),
-			resolver: rem,
-		));
-		@include mixins.generate-from-range((
-			composed: $composed,
-			shorthand: tr,
-			property: (top, right),
-			range: (auto, 0),
-			resolver: rem,
-		));
-		@include mixins.generate-from-range((
-			composed: $composed,
-			shorthand: br,
-			property: (bottom, right),
-			range: (auto, 0),
-			resolver: rem,
-		));
-		@include mixins.generate-from-range((
-			composed: $composed,
-			shorthand: bl,
-			property: (bottom, left),
-			range: (auto, 0),
-			resolver: rem,
-		));
-		@include mixins.generate-from-range((
-			composed: $composed,
-			shorthand: tl,
-			property: (top, left),
-			range: (auto, 0),
-			resolver: rem,
-		));
+
+		@each $mk, $mv in $-placement-opts {
+			.#{$mk} {
+				@include mixins.variants($composed...) {
+					@each $prop, $value in $mv {
+						#{$prop}: #{$value};
+					}
+				}
+			}
+		}
 	}
 }

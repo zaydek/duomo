@@ -4,14 +4,14 @@
 @use "../configuration" as conf;
 @use "../utils";
 
-// TODO: Right now, `$duration` must be described in duration units.
-// In the future, it would be preferable to be able to describe `$duration`
-// as a unitless number.
+// TODO: Right now, `$duration` must be described in duration units. In the
+// future, it would be preferable to be able to describe `$duration` as a
+// unitless number.
 //
 // This line of reasoning should also extend to `$timing`, so that
 // `timing: ease-out` works, too.
 //
-// Based on https://codepen.io/zaydek/pen/GRjxyrm.
+// Reference implementation: https://codepen.io/zaydek/pen/GRjxyrm.
 //
 // prettier-ignore
 @mixin themes($theme-map, $duration, $timing) {
@@ -44,13 +44,13 @@
 
 // Ex:
 //
-// .clsx {
+// .class {
 //   @include theme-transition {
 //     ...
 //   }
 // }
 //
-// -> .clsx {
+// -> .class {
 // ->   ...
 // ->   transition: var(--theme-transition);
 // -> }

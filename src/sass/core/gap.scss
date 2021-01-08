@@ -8,7 +8,7 @@
 		@each $rv in get.spaces() {
 			.gap-#{$rv} {
 				@include mixins.variants($composed...) {
-					gap: utils.rem($rv);
+					gap: get.rem($rv);
 				}
 			}
 		}

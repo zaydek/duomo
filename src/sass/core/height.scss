@@ -15,8 +15,8 @@ $-stagger-opts: (
 // prettier-ignore
 @mixin height($variants...) {
 	@include mixins.compose($variants) using ($composed) {
-		@if utils.matches($composed, core) {
-			// Takes precedence so can be overridden.
+		// h-stagger-*
+		@if not & {
 			@each $mk, $mv in $-stagger-opts {
 				.h-stagger-#{$mk} {
 					height: $mv;
@@ -24,19 +24,17 @@ $-stagger-opts: (
 			}
 		}
 
+		// h-*
 		@each $rv in get.sizes() {
 			.h-#{$rv} {
 				@include mixins.variants($composed...) {
-					flex-shrink: 0;
-					height: utils.rem($rv);
+					height: get.rem($rv);
 				}
 			}
 		}
-
 		@each $rv in (auto, min-content, max-content, 100%, 100vh) {
 			.h-#{get.name($rv)} {
 				@include mixins.variants($composed...) {
-					flex-shrink: revert;
 					height: $rv;
 				}
 			}

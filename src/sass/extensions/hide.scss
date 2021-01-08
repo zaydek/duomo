@@ -1,0 +1,37 @@
+@use "../configuration" as conf;
+@use "../getters" as get;
+@use "../mixins";
+@use "../utils";
+
+$-hide-opts: (
+	null: revert,
+	flex-row: flex,
+	flex-col: flex,
+	grid: grid,
+);
+
+// NOTE: Use `[class]` to arbitrarily increase selector specificity from `1` to
+// `2`. This makes the API order-independent both internally and externally.
+@mixin hide($variants...) {
+	@include mixins.compose($variants) using ($composed) {
+		// show
+		//
+		// prettier-ignore
+		@each $mk, $mv in $-hide-opts {
+			.show#{if(not $mk, [class], "." + $mk)} { // (0, 2, 0)
+				@include mixins.variants($composed...) {
+					display: $mv;
+				}
+			}
+		}
+
+		// hide
+		//
+		// prettier-ignore
+		.hide[class] { // (0, 2, 0)
+			@include mixins.variants($composed...) {
+				display: none;
+			}
+		}
+	}
+}

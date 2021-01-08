@@ -1,10 +1,8 @@
 @forward "build-transition";
+@forward "color-to-raw-hsl";
 @forward "escapers";
-@forward "hex-to-raw-hsl";
 @forward "limiters";
 @forward "list-of";
-@forward "matches";
-@forward "resolvers";
 @forward "str-ends-with";
 @forward "str-replace";
 @forward "str-starts-with";

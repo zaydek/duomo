@@ -5,9 +5,8 @@
 
 @mixin grid($variants...) {
 	@include mixins.compose($variants) using ($composed) {
-		@if utils.matches($composed, core) {
+		@if not & {
 			.grid {
-				--dm-display: grid;
 				display: grid;
 			}
 		}

@@ -1,16 +1,21 @@
-// Based on https://codepen.io/zaydek/pen/wvzyZWy.
+@use "../mixins";
+
+// Reference implementation: https://codepen.io/zaydek/pen/vYXjdXe.
 @mixin debugger {
 	[data-debug] * {
-		outline: 2px solid hsla(210, 100%, 50%, 0.5);
-		outline-offset: -2px; // Reverse
+		outline: 2px solid hsla(var(--debug-raw-hsl), 0.5);
+		outline-offset: -1px; // Inset
 	}
 
-	[data-debug] .vstack > .spacer:empty,
-	[data-debug] .hstack > .spacer:empty {
-		justify-self: stretch;
-		align-self: stretch;
-		background-color: hsla(210, 100%, 50%, 0.05);
-		outline: 2px dashed hsla(210, 100%, 50%, 0.5);
-		outline-offset: -2px; // Reverse
+	[data-debug] .grow:empty {
+		outline: revert;
+
+		position: relative;
+		&::before {
+			@include mixins.zero-out(-1px) {
+				content: "";
+				background-color: hsla(var(--debug-raw-hsl), 0.1);
+			}
+		}
 	}
 }

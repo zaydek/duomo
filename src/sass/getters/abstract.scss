@@ -5,13 +5,15 @@
 @use "../configuration" as conf;
 @use "../utils" as utils;
 
+@use "resolvers";
+
 // Ex:
 //
 // n(-1) -> "-"
 // n(0) -> ""
 //
 @function n($rv) {
-	@if utils.passthrough($rv) {
+	@if resolvers.passthrough($rv) {
 		@return "";
 	}
 	@return if($rv < 0, "-", "");
