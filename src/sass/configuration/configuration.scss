@@ -19,8 +19,8 @@ $layout: false !default;
 //
 $delimiter: ":" !default;
 
-$limit-nspace: -64 !default;
-$limit-space: 64 !default;
+$limit-nspace: -32 !default;
+$limit-space: 320 !default;
 $limit-size: 640 !default;
 $limit-font-size: 64 !default;
 $limit-border-width: 8 !default;
