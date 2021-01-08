@@ -30,8 +30,7 @@ $-flex-wrap-opts: (
 				display: flex;
 				flex-direction: row;
 
-				// For `.overflow-x-scroll > .flex-row.justify-center` and no-ops need
-				// for `flex-shrink: 0` on `w-*` and `h-*` classes.
+				// For `.overflow-x-scroll > .flex-row.justify-center`.
 				//
 				// Reference implementation: https://codepen.io/zaydek/pen/OJREKbM.
 				min-width: min-content;
@@ -89,8 +88,7 @@ $-flex-wrap-opts: (
 				display: flex;
 				flex-direction: column;
 
-				// For `.overflow-x-scroll > .flex-row.justify-center` and no-ops need
-				// for `flex-shrink: 0` on `w-*` and `h-*` classes.
+				// For `.overflow-x-scroll > .flex-row.justify-center`.
 				//
 				// Reference implementation: https://codepen.io/zaydek/pen/OJREKbM.
 				min-width: min-content;

@@ -1,0 +1,11 @@
+@use "../getters" as get;
+
+// Zeroes out the current selector.
+@mixin zero-out($inset: 0) {
+	position: absolute;
+	top: $inset;
+	right: $inset;
+	bottom: $inset;
+	left: $inset;
+	@content;
+}

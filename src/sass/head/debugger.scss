@@ -1,37 +1,20 @@
-// FIXME: Convert to a top-level API (mixin).
-@mixin -zero-out($inset: 0) {
-	position: absolute;
-	top: $inset;
-	right: $inset;
-	bottom: $inset;
-	left: $inset;
-	content: "";
-	@content;
-}
+@use "../mixins";
 
-// Based on https://codepen.io/zaydek/pen/vYXjdXe.
-//
-// prettier-ignore
+// Reference implementation: https://codepen.io/zaydek/pen/vYXjdXe.
 @mixin debugger {
 	[data-debug] * {
-		// TODO: Extract:
-		//
-		// - var(--debug-hue)
-		// - var(--debug-saturation)
-		// - var(--debug-lightness)
-		//
-		outline: 2px solid hsla(210deg, 100%, 50%, 0.5);
+		outline: 2px solid hsla(var(--debug-raw-hsl), 0.5);
 		outline-offset: -1px; // Inset
 	}
 
 	[data-debug] .grow:empty {
-		align-self: stretch;  // Stretch on the cross-axis
-		outline: revert;      // No-op debug `outline`
+		outline: revert;
 
 		position: relative;
 		&::before {
-			@include -zero-out(-1px) {
-				background-color: hsla(210deg, 100%, 50%, 0.1);
+			@include mixins.zero-out(-1px) {
+				content: "";
+				background-color: hsla(var(--debug-raw-hsl), 0.1);
 			}
 		}
 	}
