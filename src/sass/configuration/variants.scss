@@ -48,6 +48,7 @@ $variants: (
 	border-color:          utils.list-of(core, $macro-variants, responsive),
 	box-shadow:            utils.list-of(core, $macro-variants, responsive),
 	color:                 utils.list-of(core, $macro-variants, responsive),
+	hide:                  utils.list-of(core, $macro-variants, responsive),
 	opacity:               utils.list-of(core, $macro-variants, responsive),
 	text-decoration:       utils.list-of(core, $macro-variants, responsive),
 	transform:             utils.list-of(core, $macro-variants, responsive),
