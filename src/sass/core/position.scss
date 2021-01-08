@@ -93,23 +93,12 @@ $-placement-opts: (
 	),
 );
 
-// prettier-ignore
 @mixin position($variants...) {
 	@include mixins.compose($variants) using ($composed) {
 		@each $opt in $-position-opts {
 			.#{$opt} {
 				@include mixins.variants($composed...) {
 					position: $opt;
-				}
-			}
-		}
-
-		@each $mk, $mv in $-placement-opts {
-			.#{$mk} {
-				@include mixins.variants($composed...) {
-					@each $prop, $value in $mv {
-						#{$prop}: #{$value};
-					}
 				}
 			}
 		}

@@ -4,7 +4,16 @@
 @use "../utils";
 
 // prettier-ignore
-$-range: (
+$-position-opts: (
+	static,
+	relative,
+	absolute,
+	fixed,
+	sticky,
+);
+
+// prettier-ignore
+$-z-range: (
 	-10,
 	  0,
 	 10,
@@ -14,15 +23,34 @@ $-range: (
 	 50,
 );
 
-// prettier-ignore
+// NOTE: Use `[class]` to arbitrarily increase selector specificity from `1` to
+// `2`. This makes the API order-independent both internally and externally.
 @mixin z-index($variants...) {
 	@include mixins.compose($variants) using ($composed) {
-		@include mixins.generate-from-range((
-			composed: $composed,
-			shorthand: z,
-			property: (z-index),
-			range: $-range,
-			resolver: none,
-		));
+		// (z-10)
+		//
+		// prettier-ignore
+		@each $opt in $-position-opts {
+			.#{$opt}[class] { // (0, 2, 0)
+				@include mixins.variants($composed...) {
+					@if $opt == static {
+						z-index: revert;
+					} @else {
+						z-index: 10;
+					}
+				}
+			}
+		}
+
+		// z-*
+		//
+		// prettier-ignore
+		@each $rv in $-z-range {
+			.#{get.n($rv)}z-#{get.abs($rv)}[class] { // (0, 2, 0)
+				@include mixins.variants($composed...) {
+					z-index: $rv;
+				}
+			}
+		}
 	}
 }
