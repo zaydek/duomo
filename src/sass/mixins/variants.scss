@@ -1,5 +1,4 @@
 @use "sass:list";
-@use "sass:map";
 @use "sass:meta";
 @use "sass:string";
 
@@ -135,30 +134,5 @@
 				@content;
 			}
 		}
-	}
-}
-
-// Ex:
-//
-// @include compose($variants) using ($v) {
-//   .bg-red-400 { @include variants($v) { ... } }
-//   .bg-red-400 { @include variants($v) { ... } }
-//   .bg-red-600 { @include variants($v) { ... } }
-// }
-//
-// -> .bg-red-400 { ... }
-// -> .bg-red-400 { ... }
-// -> .bg-red-600 { ... }
-// -> .hover\:bg-red-400:hover { ... }
-// -> .hover\:bg-red-400:hover { ... }
-// -> .hover\:bg-red-600:hover { ... }
-//
-@mixin compose($variants) {
-	@if conf.$env == development {
-		@each $variant in $variants {
-			@content ($variant);
-		}
-	} @else if conf.$env == production {
-		@content ($variants);
 	}
 }
