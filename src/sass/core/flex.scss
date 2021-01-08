@@ -17,8 +17,42 @@ $-flex-wrap-opts: (
 	wrap-none: nowrap,
 );
 
+// Reference implementations:
+//
+// - https://codepen.io/zaydek/pen/wvzyZWy
+// - https://codepen.io/zaydek/pen/QWKxYpZ (most recent)
+//
 @mixin flex($variants...) {
 	@include mixins.compose($variants) using ($composed) {
+		// flex-row
+		.flex-row {
+			@include mixins.variants($composed...) {
+				display: flex;
+				flex-direction: row;
+
+				// For `.overflow-x-scroll > .flex-row.justify-center`.
+				//
+				// Reference implementation: https://codepen.io/zaydek/pen/OJREKbM.
+				min-width: min-content;
+			}
+		}
+		.flex-row > * {
+			@include mixins.variants($composed...) {
+				// Use a numerical value not `revert`.
+				--dm-m-gap: 0;
+
+				// Compensate for `flex-basis: var(--dm-m-gap)`; `min-width` does not
+				// measure `flex-basis`.
+				--dm-grow-min-width: var(--dm-m-gap);
+			}
+		}
+		.flex-row > * + * {
+			@include mixins.variants($composed...) {
+				margin-top: revert;
+				margin-left: var(--dm-m-gap);
+			}
+		}
+
 		// Reference implementations:
 		//
 		// - https://codepen.io/zaydek/pen/qBaYvWp
@@ -32,173 +66,129 @@ $-flex-wrap-opts: (
 				margin-left: revert;
 			}
 		}
+
+		// flex-col
+		.flex-col {
+			@include mixins.variants($composed...) {
+				display: flex;
+				flex-direction: column;
+
+				// For `.overflow-x-scroll > .flex-row.justify-center`.
+				//
+				// Reference implementation: https://codepen.io/zaydek/pen/OJREKbM.
+				min-width: min-content;
+			}
+		}
+		.flex-col > * {
+			@include mixins.variants($composed...) {
+				// Use a numerical value not `revert`.
+				--dm-m-gap: 0;
+
+				// Compensate for `flex-basis: var(--dm-m-gap)`; `min-width` does not
+				// measure `flex-basis`.
+				--dm-grow-min-width: var(--dm-m-gap);
+			}
+		}
+		.flex-col > * + * {
+			@include mixins.variants($composed...) {
+				margin-top: var(--dm-m-gap);
+				margin-left: revert;
+			}
+		}
+
+		// Reference implementations:
+		//
+		// - https://codepen.io/zaydek/pen/qBaYvWp
+		// - https://codepen.io/zaydek/pen/PoGavmE
+		//
+		.flex-col > .grow:empty:first-child + *,
+		.flex-col > .grow:empty,
+		.flex-col > .grow:empty + *,
+		.flex-col > * + .grow:empty:last-child {
+			@include mixins.variants($composed...) {
+				margin-top: revert;
+			}
+		}
+
+		// justify-self-*
+		//
+		// TODO: Extract.
+		@each $mk, $mv in $-flex-opts {
+			.justify-self-#{$mk} {
+				@include mixins.variants($composed...) {
+					justify-self: $mv;
+				}
+			}
+		}
+		// align-self-*
+		//
+		// TODO: Extract.
+		@each $mk, $mv in $-flex-opts {
+			.align-self-#{$mk} {
+				@include mixins.variants($composed...) {
+					align-self: $mv;
+				}
+			}
+		}
+		// justify-*
+		//
+		// TODO: Extract.
+		@each $mk, $mv in $-flex-opts {
+			.justify-#{$mk} {
+				@include mixins.variants($composed...) {
+					justify-content: $mv;
+				}
+			}
+		}
+		// align-*
+		//
+		// TODO: Extract.
+		@each $mk, $mv in $-flex-opts {
+			.align-#{$mk} {
+				@include mixins.variants($composed...) {
+					align-items: $mv;
+				}
+			}
+		}
+
+		// m-gap-*
+		@each $rv in get.spaces() {
+			.#{get.n($rv)}m-gap-#{get.abs($rv)} > * {
+				@include mixins.variants($composed...) {
+					--dm-m-gap: #{get.rem($rv)};
+				}
+			}
+		}
+
+		// grow
+		//
+		// Reference implementations:
+		//
+		// - https://codepen.io/zaydek/pen/qBaYvWp
+		// - https://codepen.io/zaydek/pen/PoGavmE
+		//
+		@if not & {
+			.grow {
+				flex-grow: 1;
+			}
+
+			// Collapsible to `var(--dm-m-gap)`.
+			.grow:empty {
+				flex: 1 0 var(--dm-m-gap);
+
+				// For `.overflow-x-scroll > .flex-row.justify-center > .grow`.
+				min-width: var(--dm-grow-min-width);
+			}
+
+			// Collapsible to `0`.
+			.grow:empty:first-child,
+			.grow:empty + .grow:empty,
+			.grow:empty:last-child {
+				flex: 1 0 0;
+
+				// For `.overflow-x-scroll > .flex-row.justify-center > .grow`.
+				min-width: 0;
+			}
+		}
 	}
 }
-
-// // Reference implementations:
-// //
-// // - https://codepen.io/zaydek/pen/wvzyZWy
-// // - https://codepen.io/zaydek/pen/QWKxYpZ (most recent)
-// //
-// @mixin flex($variants...) {
-// 	@include mixins.compose($variants) using ($composed) {
-// 		// flex-row
-// 		.flex-row {
-// 			@include mixins.variants($composed...) {
-// 				display: flex;
-// 				flex-direction: row;
-//
-// 				// For `.overflow-x-scroll > .flex-row.justify-center`.
-// 				//
-// 				// Reference implementation: https://codepen.io/zaydek/pen/OJREKbM.
-// 				min-width: min-content;
-// 			}
-// 		}
-// 		.flex-row > * {
-// 			@include mixins.variants($composed...) {
-// 				// Use a numerical value not `revert`.
-// 				--dm-m-gap: 0;
-//
-// 				// Compensate for `flex-basis: var(--dm-m-gap)`; `min-width` does not
-// 				// measure `flex-basis`.
-// 				--dm-grow-min-width: var(--dm-m-gap);
-// 			}
-// 		}
-// 		.flex-row > * + * {
-// 			@include mixins.variants($composed...) {
-// 				margin-top: revert;
-// 				margin-left: var(--dm-m-gap);
-// 			}
-// 		}
-//
-// 		// Reference implementations:
-// 		//
-// 		// - https://codepen.io/zaydek/pen/qBaYvWp
-// 		// - https://codepen.io/zaydek/pen/PoGavmE
-// 		//
-// 		.flex-row > .grow:empty:first-child + *,
-// 		.flex-row > .grow:empty,
-// 		.flex-row > .grow:empty + *,
-// 		.flex-row > * + .grow:empty:last-child {
-// 			@include mixins.variants($composed...) {
-// 				margin-left: revert;
-// 			}
-// 		}
-//
-// 		// flex-col
-// 		.flex-col {
-// 			@include mixins.variants($composed...) {
-// 				display: flex;
-// 				flex-direction: column;
-//
-// 				// For `.overflow-x-scroll > .flex-row.justify-center`.
-// 				//
-// 				// Reference implementation: https://codepen.io/zaydek/pen/OJREKbM.
-// 				min-width: min-content;
-// 			}
-// 		}
-// 		.flex-col > * {
-// 			@include mixins.variants($composed...) {
-// 				// Use a numerical value not `revert`.
-// 				--dm-m-gap: 0;
-//
-// 				// Compensate for `flex-basis: var(--dm-m-gap)`; `min-width` does not
-// 				// measure `flex-basis`.
-// 				--dm-grow-min-width: var(--dm-m-gap);
-// 			}
-// 		}
-// 		.flex-col > * + * {
-// 			@include mixins.variants($composed...) {
-// 				margin-top: var(--dm-m-gap);
-// 				margin-left: revert;
-// 			}
-// 		}
-//
-// 		// Reference implementations:
-// 		//
-// 		// - https://codepen.io/zaydek/pen/qBaYvWp
-// 		// - https://codepen.io/zaydek/pen/PoGavmE
-// 		//
-// 		.flex-col > .grow:empty:first-child + *,
-// 		.flex-col > .grow:empty,
-// 		.flex-col > .grow:empty + *,
-// 		.flex-col > * + .grow:empty:last-child {
-// 			@include mixins.variants($composed...) {
-// 				margin-top: revert;
-// 			}
-// 		}
-//
-// 		// justify-self-*
-// 		@each $mk, $mv in $-flex-opts {
-// 			.justify-self-#{$mk} {
-// 				@include mixins.variants($composed...) {
-// 					justify-self: $mv;
-// 				}
-// 			}
-// 		}
-// 		// align-self-*
-// 		@each $mk, $mv in $-flex-opts {
-// 			.align-self-#{$mk} {
-// 				@include mixins.variants($composed...) {
-// 					align-self: $mv;
-// 				}
-// 			}
-// 		}
-// 		// justify-*
-// 		@each $mk, $mv in $-flex-opts {
-// 			.justify-#{$mk} {
-// 				@include mixins.variants($composed...) {
-// 					justify-content: $mv;
-// 				}
-// 			}
-// 		}
-// 		// align-*
-// 		@each $mk, $mv in $-flex-opts {
-// 			.align-#{$mk} {
-// 				@include mixins.variants($composed...) {
-// 					align-items: $mv;
-// 				}
-// 			}
-// 		}
-//
-// 		// m-gap-*
-// 		@each $rv in get.spaces() {
-// 			.#{get.n($rv)}m-gap-#{get.abs($rv)} > * {
-// 				@include mixins.variants($composed...) {
-// 					--dm-m-gap: #{get.rem($rv)};
-// 				}
-// 			}
-// 		}
-//
-// 		// grow
-// 		//
-// 		// Reference implementations:
-// 		//
-// 		// - https://codepen.io/zaydek/pen/qBaYvWp
-// 		// - https://codepen.io/zaydek/pen/PoGavmE
-// 		//
-// 		@if not & {
-// 			.grow {
-// 				flex-grow: 1;
-// 			}
-//
-// 			// Collapsible to `var(--dm-m-gap)`.
-// 			.grow:empty {
-// 				flex: 1 0 var(--dm-m-gap);
-//
-// 				// For `.overflow-x-scroll > .flex-row.justify-center > .grow`.
-// 				min-width: var(--dm-grow-min-width);
-// 			}
-//
-// 			// Collapsible to `0`.
-// 			.grow:empty:first-child,
-// 			.grow:empty + .grow:empty,
-// 			.grow:empty:last-child {
-// 				flex: 1 0 0;
-//
-// 				// For `.overflow-x-scroll > .flex-row.justify-center > .grow`.
-// 				min-width: 0;
-// 			}
-// 		}
-// 	}
-// }
