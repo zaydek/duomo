@@ -36,8 +36,8 @@ $-flex-wrap-opts: (
 				min-width: min-content;
 			}
 		}
-		.flex-row > * {
-			@include mixins.variants($composed...) {
+		@if not & {
+			.flex-row > * {
 				// Use a numerical value not `revert`.
 				--dm-m-gap: 0;
 
@@ -79,8 +79,8 @@ $-flex-wrap-opts: (
 				min-width: min-content;
 			}
 		}
-		.flex-col > * {
-			@include mixins.variants($composed...) {
+		@if not & {
+			.flex-col > * {
 				// Use a numerical value not `revert`.
 				--dm-m-gap: 0;
 
@@ -110,6 +110,28 @@ $-flex-wrap-opts: (
 			}
 		}
 
+		// self-*
+		//
+		// TODO: Extract.
+		@each $mk, $mv in $-flex-opts {
+			.self-#{$mk} {
+				@include mixins.variants($composed...) {
+					justify-self: $mv;
+					align-self: $mv;
+				}
+			}
+		}
+		// *
+		//
+		// TODO: Extract.
+		@each $mk, $mv in $-flex-opts {
+			.#{$mk} {
+				@include mixins.variants($composed...) {
+					justify-self: $mv;
+					align-self: $mv;
+				}
+			}
+		}
 		// justify-self-*
 		//
 		// TODO: Extract.
@@ -147,6 +169,16 @@ $-flex-wrap-opts: (
 			.align-#{$mk} {
 				@include mixins.variants($composed...) {
 					align-items: $mv;
+				}
+			}
+		}
+		// wrap-*
+		//
+		// TODO: Extract.
+		@each $mk, $mv in $-flex-wrap-opts {
+			.#{$mk} {
+				@include mixins.variants($composed...) {
+					flex-wrap: $mv;
 				}
 			}
 		}
