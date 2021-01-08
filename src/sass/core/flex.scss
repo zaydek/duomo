@@ -113,6 +113,7 @@ $-flex-wrap-opts: (
 		// self-*
 		//
 		// TODO: Extract.
+		// Takes precedence.
 		@each $mk, $mv in $-flex-opts {
 			.self-#{$mk} {
 				@include mixins.variants($composed...) {
@@ -124,11 +125,12 @@ $-flex-wrap-opts: (
 		// *
 		//
 		// TODO: Extract.
+		// Takes precedence.
 		@each $mk, $mv in $-flex-opts {
 			.#{$mk} {
 				@include mixins.variants($composed...) {
-					justify-self: $mv;
-					align-self: $mv;
+					justify-content: $mv;
+					align-items: $mv;
 				}
 			}
 		}
