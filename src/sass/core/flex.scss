@@ -38,8 +38,7 @@ $-flex-wrap-opts: (
 		}
 		.flex-row > * {
 			@include mixins.variants($composed...) {
-				// `revert` does not work here because it will
-				// be used as a numerical CSS variable.
+				// Use a numerical value not `revert`.
 				--dm-m-gap: 0;
 
 				// Compensate for `flex-basis: var(--dm-m-gap)`; `min-width` does not
@@ -96,8 +95,7 @@ $-flex-wrap-opts: (
 		}
 		.flex-col > * {
 			@include mixins.variants($composed...) {
-				// `revert` does not work here because it will
-				// be used as a numerical CSS variable.
+				// Use a numerical value not `revert`.
 				--dm-m-gap: 0;
 
 				// Compensate for `flex-basis: var(--dm-m-gap)`; `min-width` does not

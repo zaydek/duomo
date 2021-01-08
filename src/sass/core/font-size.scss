@@ -3,15 +3,14 @@
 @use "../mixins";
 @use "../utils";
 
-// prettier-ignore
 @mixin font-size($variants...) {
 	@include mixins.compose($variants) using ($composed) {
-		@include mixins.generate-from-range((
-			composed: $composed,
-			shorthand: text,
-			property: (font-size),
-			range: get.font-sizes(),
-			resolver: rem,
-		));
+		@each $rv in get.font-sizes() {
+			.text-#{$rv} {
+				@include mixins.variants($composed...) {
+					font-size: get.rem($rv);
+				}
+			}
+		}
 	}
 }

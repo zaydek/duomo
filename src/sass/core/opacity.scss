@@ -3,6 +3,8 @@
 @use "../mixins";
 @use "../utils";
 
+// TODO: Consider converting to `@each $rv` when `percent-range` is upgraded.
+//
 // prettier-ignore
 @mixin opacity($variants...) {
 	@include mixins.compose($variants) using ($composed) {

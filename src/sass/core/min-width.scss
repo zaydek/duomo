@@ -3,7 +3,6 @@
 @use "../mixins";
 @use "../utils";
 
-// prettier-ignore
 @mixin min-width($variants...) {
 	@include mixins.compose($variants) using ($composed) {
 		@each $rv in (auto, min-content, max-content, 100%, 100vw) {

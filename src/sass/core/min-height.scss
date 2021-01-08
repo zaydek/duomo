@@ -3,15 +3,14 @@
 @use "../mixins";
 @use "../utils";
 
-// prettier-ignore
 @mixin min-height($variants...) {
 	@include mixins.compose($variants) using ($composed) {
-		@include mixins.generate-from-range((
-			composed: $composed,
-			shorthand: min-h,
-			property: (min-height),
-			range: utils.list-of(auto, min-content, max-content, 100%, 100vh),
-			resolver: rem,
-		));
+		@each $rv in (auto, min-content, max-content, 100%, 100vh) {
+			.min-h-#{get.name($rv)} {
+				@include mixins.variants($composed...) {
+					min-height: $rv;
+				}
+			}
+		}
 	}
 }

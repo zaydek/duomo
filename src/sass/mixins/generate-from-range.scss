@@ -12,10 +12,14 @@
 // (0, 0.5, 1)  -> true
 // (0, 50, 100) -> false
 //
+// prettier-ignore
 @function percent-heuristic($range) {
-	$ok: $range and meta.type-of(list.nth($range, 1)) == number and list.nth($range, 1) >= -1 and meta.type-of(
-			list.nth($range, -1)
-		) == number and list.nth($range, -1) <= 1;
+	$ok:
+		$range and
+		meta.type-of(list.nth($range, 1)) == number and
+		list.nth($range, 1) >= -1 and
+		meta.type-of(list.nth($range, -1)) == number and
+		list.nth($range, -1) <= 1;
 	@return $ok;
 }
 

@@ -1,4 +1,4 @@
-// FIXME: Why does `import { Duomo }` work but not `import Duomo`?
+// TODO: Why does `import { Duomo }` work but not `import Duomo`?
 import { Duomo } from "../../src/runtime"
 
 function sleep(forMs: number) {
@@ -8,7 +8,6 @@ function sleep(forMs: number) {
 test("integration", async () => {
 	const defer = window.Duomo.init("development", { quiet: true })
 
-	// NOTE: First dark mode write should be instant.
 	window.Duomo.setDarkMode(true)
 	expect(window.Duomo.getDarkMode()).toBe(true)
 	expect(window.localStorage.getItem(Duomo.localStorageKey)).toBe("dark")
