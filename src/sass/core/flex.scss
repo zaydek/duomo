@@ -55,7 +55,10 @@ $-flex-wrap-opts: (
 			}
 		}
 
-		// Reference implementation: https://codepen.io/zaydek/pen/qBaYvWp.
+		// Reference implementations:
+		//
+		// - https://codepen.io/zaydek/pen/qBaYvWp
+		// - https://codepen.io/zaydek/pen/PoGavmE
 		//
 		// NOTE: Do not merge selectors because of `mixins.variants` implementation.
 		// `mixin.variants` cannot process comma-delimited selectors yet.
@@ -111,7 +114,10 @@ $-flex-wrap-opts: (
 			}
 		}
 
-		// Reference implementation: https://codepen.io/zaydek/pen/qBaYvWp.
+		// Reference implementations:
+		//
+		// - https://codepen.io/zaydek/pen/qBaYvWp
+		// - https://codepen.io/zaydek/pen/PoGavmE
 		//
 		// NOTE: Do not merge selectors because of `mixins.variants` implementation.
 		// `mixin.variants` cannot process comma-delimited selectors yet.
@@ -179,10 +185,17 @@ $-flex-wrap-opts: (
 		}
 
 		// grow
+		//
+		// Reference implementations:
+		//
+		// - https://codepen.io/zaydek/pen/qBaYvWp
+		// - https://codepen.io/zaydek/pen/PoGavmE
+		//
 		@if not & {
 			.grow {
 				flex-grow: 1;
 			}
+
 			// Collapsible to `var(--dm-m-gap)`.
 			.grow:empty {
 				flex: 1 0 var(--dm-m-gap);
@@ -190,9 +203,10 @@ $-flex-wrap-opts: (
 				// For `.overflow-x-scroll > .flex-row.justify-center > .grow`.
 				min-width: var(--dm-grow-min-width);
 			}
+
 			// Collapsible to `0`.
 			.grow:empty:first-child,
-			.grow:empty:empty + .grow:empty,
+			.grow:empty + .grow:empty,
 			.grow:empty:last-child {
 				flex: 1 0 0;
 
