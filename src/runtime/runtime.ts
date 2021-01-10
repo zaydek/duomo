@@ -77,6 +77,7 @@ class Duomo implements Runtime {
 	// Tracks whether dark mode was set once; for FOUC.
 	// FOUC: Flash Of Unstyled Content.
 	#didInitDarkMode: boolean = false
+	#shouldNoOpDarkMode: boolean = false
 
 	#deferrers: (() => void)[] = []
 
@@ -144,6 +145,10 @@ class Duomo implements Runtime {
 		return this.#darkMode
 	}
 	setDarkMode(mode: boolean) {
+		if(this.#shouldNoOpDarkMode){ 
+			return
+		}
+
 		this.#darkMode = mode
 
 		const toggle = (mode: boolean) => {
@@ -160,11 +165,13 @@ class Duomo implements Runtime {
 			this.#didInitDarkMode = true
 			return
 		} else {
+			this.#shouldNoOpDarkMode = true
 			this.#html!.setAttribute("data-theme-effect", "true")
 			setTimeout(() => {
 				toggle(mode)
 				setTimeout(() => {
 					this.#html!.removeAttribute("data-theme-effect")
+					this.#shouldNoOpDarkMode = false
 				}, 300)
 			}, 25)
 		}
