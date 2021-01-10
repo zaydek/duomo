@@ -50,7 +50,7 @@ function isKeyDownDarkMode(e: KeyboardEvent) {
 	const ok = (
 		!e.ctrlKey &&
 		!e.altKey &&
-		(e.key.toLowerCase() === "`" || e.keyCode === 68)
+		(e.key.toLowerCase() === "`" || e.keyCode === 192)
 	)
 	return ok
 }
@@ -60,7 +60,7 @@ function isKeyDownDebugMode(e: KeyboardEvent) {
 	const ok = (
 		e.ctrlKey &&
 		!e.altKey &&
-		(e.key.toLowerCase() === "`" || e.keyCode === 68)
+		(e.key.toLowerCase() === "`" || e.keyCode === 192)
 	)
 	return ok
 }
