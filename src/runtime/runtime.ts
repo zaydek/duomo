@@ -65,6 +65,39 @@ function isKeyDownDebugMode(e: KeyboardEvent) {
 	return ok
 }
 
+// Ex:
+//
+// parseDurationMs("")      // -> (error)
+// parseDurationMs("0")     // -> 0
+// parseDurationMs("100")   // -> 100
+// parseDurationMs("100ms") // -> 100
+// parseDurationMs("100s")  // -> 100,000
+// parseDurationMs("100m")  // -> 6,000,000
+//
+function parseDurationMs(durStr : any){
+	let [numStr, unit] = durStr.trim().split(/(ms|s|m)$/);
+	if(!numStr){
+		throw new Error(`parseDurationMs: expected \`ms\`, \`s\`, or \`m\`; durStr=${durStr}`)
+	}
+
+	let n = +numStr;
+  switch (unit) {
+    case 'ms':
+      // No-op
+      break;
+    case 's':
+      n *= 1000;
+      break;
+    case 'm':
+      n *= 1000 * 60;
+      break;
+    default:
+      // No-op
+      break;
+  }
+  return n;
+}
+
 class Duomo implements Runtime {
 	static localStorageKey = "duomo-theme-preference"
 
@@ -145,6 +178,8 @@ class Duomo implements Runtime {
 		return this.#darkMode
 	}
 	setDarkMode(mode: boolean) {
+		const durValue = getComputedStyle(document.documentElement).getPropertyValue('--default-theme-transition-duration');
+		
 		if(this.#shouldNoOpDarkMode){ 
 			return
 		}
@@ -172,7 +207,7 @@ class Duomo implements Runtime {
 				setTimeout(() => {
 					this.#html!.removeAttribute("data-theme-effect")
 					this.#shouldNoOpDarkMode = false
-				}, 300)
+				}, parseDurationMs(durValue))
 			}, 25)
 		}
 	}
