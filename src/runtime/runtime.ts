@@ -1,3 +1,5 @@
+import * as helper from './helper'
+
 declare global {
 	interface Window {
 		Duomo: Runtime
@@ -45,58 +47,6 @@ function matchMediaPreference() {
 	return value
 }
 
-// prettier-ignore
-function isKeyDownDarkMode(e: KeyboardEvent) {
-	const ok = (
-		!e.ctrlKey &&
-		!e.altKey &&
-		(e.key.toLowerCase() === "`" || e.keyCode === 192)
-	)
-	return ok
-}
-
-// prettier-ignore
-function isKeyDownDebugMode(e: KeyboardEvent) {
-	const ok = (
-		e.ctrlKey &&
-		!e.altKey &&
-		(e.key.toLowerCase() === "`" || e.keyCode === 192)
-	)
-	return ok
-}
-
-// Ex:
-//
-// parseDurationMs("")      // -> (error)
-// parseDurationMs("0")     // -> 0
-// parseDurationMs("100")   // -> 100
-// parseDurationMs("100ms") // -> 100
-// parseDurationMs("100s")  // -> 100,000
-// parseDurationMs("100m")  // -> 6,000,000
-//
-function parseDurationMs(durStr : any){
-	let [numStr, unit] = durStr.trim().split(/(ms|s|m)$/);
-	if(!numStr){
-		throw new Error(`parseDurationMs: expected \`ms\`, \`s\`, or \`m\`; durStr=${durStr}`)
-	}
-
-	let n = +numStr;
-  switch (unit) {
-    case 'ms':
-      // No-op
-      break;
-    case 's':
-      n *= 1000;
-      break;
-    case 'm':
-      n *= 1000 * 60;
-      break;
-    default:
-      // No-op
-      break;
-  }
-  return n;
-}
 
 class Duomo implements Runtime {
 	static localStorageKey = "duomo-theme-preference"
@@ -149,14 +99,14 @@ class Duomo implements Runtime {
 		// `keydown` handlers.
 		if (env === "development") {
 			const handleDarkMode = (e: KeyboardEvent) => {
-				if (isKeyDownDarkMode(e)) {
+				if (helper.isKeyDownDarkMode(e)) {
 					this.toggleDarkMode()
 				}
 			}
 			document.addEventListener("keydown", handleDarkMode)
 			this.#deferrers.push(() => document.removeEventListener("keydown", handleDarkMode))
 			const handleDebugMode = (e: KeyboardEvent) => {
-				if (isKeyDownDebugMode(e)) {
+				if (helper.isKeyDownDebugMode(e)) {
 					this.toggleDebugMode()
 				}
 			}
@@ -178,13 +128,10 @@ class Duomo implements Runtime {
 		return this.#darkMode
 	}
 	setDarkMode(mode: boolean) {
-		const durValue = getComputedStyle(document.documentElement).getPropertyValue('--default-theme-transition-duration');
-		
-		if(this.#shouldNoOpDarkMode){ 
-			return
-		}
-
+		if (this.#shouldNoOpDarkMode) return;
 		this.#darkMode = mode
+		
+		const durValue = getComputedStyle(document.documentElement).getPropertyValue('--default-theme-transition-duration');
 
 		const toggle = (mode: boolean) => {
 			const action = !mode
@@ -207,7 +154,7 @@ class Duomo implements Runtime {
 				setTimeout(() => {
 					this.#html!.removeAttribute("data-theme-effect")
 					this.#shouldNoOpDarkMode = false
-				}, parseDurationMs(durValue))
+				}, helper.parseDurationMs(durValue))
 			}, 25)
 		}
 	}
