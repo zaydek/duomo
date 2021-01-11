@@ -19,7 +19,7 @@ export function isKeyDownDebugMode(e: KeyboardEvent) {
 }
   
 // prettier-ignore
-export function parseDurationMs(durStr : any){
+export function parseDurationMs(durStr : string){
 	let [numStr, unit] = durStr.trim().split(/(ms|s|m)$/);
 	if(!numStr){
 		throw new Error(`parseDurationMs: expected \`ms\`, \`s\`, or \`m\`; durStr=${durStr}`)

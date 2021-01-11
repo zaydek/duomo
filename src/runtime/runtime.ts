@@ -1,4 +1,4 @@
-import * as helper from './helper'
+import * as helper from './helpers'
 
 declare global {
 	interface Window {
