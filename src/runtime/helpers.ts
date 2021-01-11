@@ -1,4 +1,31 @@
 // prettier-ignore
+import Duomo from "./runtime"
+
+export function localStoragePreference() {
+	if (!(Duomo.localStorageKey in window.localStorage)) {
+		return null
+	}
+	const value = window.localStorage[Duomo.localStorageKey]
+	if (value !== "light" && value !== "dark") {
+		return null
+	}
+	return value
+}
+
+// prettier-ignore
+export function matchMediaPreference() {
+	if (!("matchMedia" in window)) {
+		return null
+	}
+	const matches = window.matchMedia("(prefers-color-scheme: dark)").matches
+	const value = ({
+		false: "light",
+		true: "dark",
+	} as { [key: string]: string })["" + matches]
+	return value
+}
+
+// prettier-ignore
 export function isKeyDownDarkMode(e: KeyboardEvent) {
 	const ok = (
 		!e.ctrlKey &&
