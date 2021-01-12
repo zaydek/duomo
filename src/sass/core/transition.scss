@@ -5,25 +5,6 @@
 @use "../mixins";
 @use "../utils";
 
-// TODO: Change to `percent-range`.
-//
-// prettier-ignore
-$-range: (
-	   0,
-	 100,
-	 200,
-	 250,
-	 300,
-	 400,
-	 500,
-	 600,
-	 700,
-	 750,
-	 800,
-	 900,
-	1000,
-);
-
 @mixin transition($variants...) {
 	@each $variant in $variants {
 		// TODO: https://github.com/zaydek/duomo/issues/244.
@@ -36,7 +17,7 @@ $-range: (
 			}
 		}
 
-		@each $rv in $-range {
+		@each $rv in get.decimal-range(0, 1000) {
 			.duration-#{$rv} {
 				@include mixins.variants($variant) {
 					--transition-duration: #{$rv + ms};

@@ -57,4 +57,5 @@ test("integration", () => {
 	expect(errSass(`decimal-range(0, 1)`)).toThrowError("0 0.1 0.2 0.25 0.3 0.4 0.5 0.6 0.7 0.75 0.8 0.9 1")
 	expect(errSass(`decimal-range(0, 10)`)).toThrowError("0 1 2 2.5 3 4 5 6 7 7.5 8 9 10")
 	expect(errSass(`decimal-range(0, 100)`)).toThrowError("0 10 20 25 30 40 50 60 70 75 80 90 100")
+	expect(errSass(`decimal-range(1, 1)`)).toThrowError("1 1.1 1.2 1.25 1.3 1.4 1.5 1.6 1.7 1.75 1.8 1.9 2")
 })

@@ -3,29 +3,11 @@
 @use "../mixins";
 @use "../utils";
 
-// TODO: Change to `percent-range`.
-//
-// prettier-ignore
-$-range: (
-	1,
-	1.1,
-	1.2,
-	1.25,
-	1.3,
-	1.4,
-	1.5,
-	1.6,
-	1.7,
-	1.75,
-	1.8,
-	1.9,
-	2,
-);
-
 @mixin line-height($variants...) {
 	@include mixins.compose($variants) using ($composed) {
-		@each $rv in $-range {
-			.leading-#{$rv * 100} {
+		// $rv : 1, 1.1, 1.2, 1.25, 1.3, 1.4, 1.5, 1.6, 1.7, 1.75, 1.8, 1.9, 2
+		@each $rv in get.decimal-range(1, 1) {
+			.leading-#{($rv * 100)} {
 				@include mixins.variants($composed...) {
 					line-height: $rv;
 				}
