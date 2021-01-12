@@ -54,14 +54,14 @@
 	@return conf.$percent-range;
 }
 
-@function decimal-range($begin, $end) {
+@function decimal-range($begin, $multiply) {
 	$list: ();
 	@each $range in conf.$percent-range {
-		$list: list.append($list, $range * $end);
+		$list: list.append($list, $range * $multiply);
 		@if ($begin) {
-			$list: list.append($list, ($range * $end) + $begin);
+			$list: list.append($list, ($range * $multiply) + $begin);
 		} @else {
-			$list: list.append($list, $range * $end);
+			$list: list.append($list, $range * $multiply);
 		}
 	}
 	@return $list;
