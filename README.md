@@ -16,25 +16,25 @@ CodePen to get you started: https://codepen.io/zaydek/pen/ExgxjYy.
 ```html
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Hello, world!</title>
-		<link rel="stylesheet" href="https://unpkg.com/@zaydek/duomo" />
-	</head>
-	<body>
-		<div class="hstack">
-			<div class="hstack space-16">
-				<div class="w-32 h-32 bg-gray-300 rounded-full"></div>
-				<div class="w-32 h-32 bg-gray-300 rounded-full"></div>
-			</div>
-			<div class="spacer"></div>
-			<div class="hstack space-16">
-				<div class="w-32 h-32 bg-gray-300 rounded-full"></div>
-				<div class="w-32 h-32 bg-gray-300 rounded-full"></div>
-			</div>
-		</div>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello, world!</title>
+    <link rel="stylesheet" href="https://unpkg.com/@zaydek/duomo" />
+  </head>
+  <body>
+    <div class="hstack">
+      <div class="hstack space-16">
+        <div class="w-32 h-32 bg-gray-300 rounded-full"></div>
+        <div class="w-32 h-32 bg-gray-300 rounded-full"></div>
+      </div>
+      <div class="spacer"></div>
+      <div class="hstack space-16">
+        <div class="w-32 h-32 bg-gray-300 rounded-full"></div>
+        <div class="w-32 h-32 bg-gray-300 rounded-full"></div>
+      </div>
+    </div>
+  </body>
 </html>
 ```
 
@@ -44,19 +44,19 @@ CodePen to get you started: https://codepen.io/zaydek/pen/ExgxjYy.
 import "@zaydek/duomo"
 
 function Component() {
-	return (
-		<div className="hstack">
-			<div className="hstack space-16">
-				<div className="w-32 h-32 bg-gray-300 rounded-full" />
-				<div className="w-32 h-32 bg-gray-300 rounded-full" />
-			</div>
-			<div className="spacer" />
-			<div className="hstack space-16">
-				<div className="w-32 h-32 bg-gray-300 rounded-full" />
-				<div className="w-32 h-32 bg-gray-300 rounded-full" />
-			</div>
-		</div>
-	)
+  return (
+    <div className="hstack">
+      <div className="hstack space-16">
+        <div className="w-32 h-32 bg-gray-300 rounded-full" />
+        <div className="w-32 h-32 bg-gray-300 rounded-full" />
+      </div>
+      <div className="spacer" />
+      <div className="hstack space-16">
+        <div className="w-32 h-32 bg-gray-300 rounded-full" />
+        <div className="w-32 h-32 bg-gray-300 rounded-full" />
+      </div>
+    </div>
+  )
 }
 ```
 
@@ -108,32 +108,32 @@ opt-out of horizontal centering, use a nested `<div class="spacer">`. To opt-out
 
 ```html
 <!--
-	. . .
-	. x .
-	. . .
+  . . .
+  . x .
+  . . .
 -->
 <div class="hstack">
-	<div class="x"></div>
+  <div class="x"></div>
 </div>
 
 <!--
-	. . .
-	. . x
-	. . .
+  . . .
+  . . x
+  . . .
 -->
 <div class="hstack">
-	<div class="spacer"></div>
-	<div class="x"></div>
+  <div class="spacer"></div>
+  <div class="x"></div>
 </div>
 
 <!--
-	. . .
-	x . .
-	. . .
+  . . .
+  x . .
+  . . .
 -->
 <div class="hstack">
-	<div class="x"></div>
-	<div class="spacer"></div>
+  <div class="x"></div>
+  <div class="spacer"></div>
 </div>
 ```
 
@@ -141,30 +141,30 @@ opt-out of horizontal centering, use a nested `<div class="spacer">`. To opt-out
 
 ```html
 <!--
-	. x .
-	. x .
-	. x .
+  . x .
+  . x .
+  . x .
 -->
 <div class="hstack align-stretch">
-	<div class="x"></div>
+  <div class="x"></div>
 </div>
 
 <!--
-	. x .
-	. . .
-	. . .
+  . x .
+  . . .
+  . . .
 -->
 <div class="hstack align-start">
-	<div class="x"></div>
+  <div class="x"></div>
 </div>
 
 <!--
-	. . .
-	. . .
-	. x .
+  . . .
+  . . .
+  . x .
 -->
 <div class="hstack align-end">
-	<div class="x"></div>
+  <div class="x"></div>
 </div>
 ```
 
@@ -174,7 +174,7 @@ Adapts to a vertical stack at the medium breakpoint.
 
 ```html
 <div class="hstack md:vstack">
-	<!-- ... -->
+  <!-- ... -->
 </div>
 ```
 
@@ -184,7 +184,7 @@ _\*Not yet implemented._
 
 ```html
 <div class="hidden md:vstack">
-	<!-- ... -->
+  <!-- ... -->
 </div>
 ```
 
@@ -194,7 +194,7 @@ _\*Not yet implemented._
 
 ```html
 <div class="hstack md:hidden">
-	<!-- ... -->
+  <!-- ... -->
 </div>
 ```
 
@@ -209,32 +209,32 @@ opt-out of horizontal centering, use a nested `<div class="spacer">`. To opt-out
 
 ```html
 <!--
-	. . .
-	. x .
-	. . .
+  . . .
+  . x .
+  . . .
 -->
 <div class="vstack">
-	<div class="x"></div>
+  <div class="x"></div>
 </div>
 
 <!--
-	. . .
-	. . .
-	. x .
+  . . .
+  . . .
+  . x .
 -->
 <div class="vstack">
-	<div class="spacer"></div>
-	<div class="x"></div>
+  <div class="spacer"></div>
+  <div class="x"></div>
 </div>
 
 <!--
-	. x .
-	. . .
-	. . .
+  . x .
+  . . .
+  . . .
 -->
 <div class="vstack">
-	<div class="x"></div>
-	<div class="spacer"></div>
+  <div class="x"></div>
+  <div class="spacer"></div>
 </div>
 ```
 
@@ -242,30 +242,30 @@ opt-out of horizontal centering, use a nested `<div class="spacer">`. To opt-out
 
 ```html
 <!--
-	. . .
-	x x x
-	. . .
+  . . .
+  x x x
+  . . .
 -->
 <div class="vstack align-stretch">
-	<div class="x"></div>
+  <div class="x"></div>
 </div>
 
 <!--
-	. . .
-	x . .
-	. . .
+  . . .
+  x . .
+  . . .
 -->
 <div class="vstack align-start">
-	<div class="x"></div>
+  <div class="x"></div>
 </div>
 
 <!--
-	. . .
-	. . x
-	. . .
+  . . .
+  . . x
+  . . .
 -->
 <div class="vstack align-end">
-	<div class="x"></div>
+  <div class="x"></div>
 </div>
 ```
 
@@ -275,7 +275,7 @@ Adapts to a horizontal stack at the medium breakpoint.
 
 ```html
 <div class="vstack md:hstack">
-	<!-- ... -->
+  <!-- ... -->
 </div>
 ```
 
@@ -285,7 +285,7 @@ _\*Not yet implemented._
 
 ```html
 <div class="hidden md:vstack">
-	<!-- ... -->
+  <!-- ... -->
 </div>
 ```
 
@@ -295,7 +295,7 @@ _\*Not yet implemented._
 
 ```html
 <div class="vstack md:hidden">
-	<!-- ... -->
+  <!-- ... -->
 </div>
 ```
 
@@ -312,14 +312,14 @@ Simulates `justify-content: flex-start`.
 
 ```html
 <!--
-	. . .
-	. x x
-	. . .
+  . . .
+  . x x
+  . . .
 -->
 <div class="hstack">
-	<div class="spacer"></div>
-	<div class="x"></div>
-	<div class="x"></div>
+  <div class="spacer"></div>
+  <div class="x"></div>
+  <div class="x"></div>
 </div>
 ```
 
@@ -327,14 +327,14 @@ Simulates `justify-content: flex-end`.
 
 ```html
 <!--
-	. . .
-	x x .
-	. . .
+  . . .
+  x x .
+  . . .
 -->
 <div class="hstack">
-	<div class="x"></div>
-	<div class="x"></div>
-	<div class="spacer"></div>
+  <div class="x"></div>
+  <div class="x"></div>
+  <div class="spacer"></div>
 </div>
 ```
 
@@ -342,16 +342,16 @@ Simulates `justify-content: space-evenly`.
 
 ```html
 <!--
-	. . . . .
-	. x . x .
-	. . . . .
+  . . . . .
+  . x . x .
+  . . . . .
 -->
 <div class="hstack">
-	<div class="spacer"></div>
-	<div class="x"></div>
-	<div class="spacer"></div>
-	<div class="x"></div>
-	<div class="spacer"></div>
+  <div class="spacer"></div>
+  <div class="x"></div>
+  <div class="spacer"></div>
+  <div class="x"></div>
+  <div class="spacer"></div>
 </div>
 ```
 
@@ -369,25 +369,25 @@ _\*Not yet implemented._
 
 ```html
 <div class="hstack space-8">
-	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
-	<!-- 8px gap -->
-	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
-	<!-- 8px gap -->
-	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
-	<!-- 8px gap -->
-	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+  <!-- 8px gap -->
+  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+  <!-- 8px gap -->
+  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+  <!-- 8px gap -->
+  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
 </div>
 ```
 
 ```html
 <div class="vstack space-16">
-	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
-	<!-- 16px gap -->
-	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
-	<!-- 16px gap -->
-	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
-	<!-- 16px gap -->
-	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+  <!-- 16px gap -->
+  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+  <!-- 16px gap -->
+  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+  <!-- 16px gap -->
+  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
 </div>
 ```
 
@@ -395,13 +395,13 @@ _\*Not yet implemented._
 
 ```html
 <div class="hstack space-8 md:space-16">
-	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
-	<!-- 8px gap, 16px gap at the medium breakpoint -->
-	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
-	<!-- 8px gap, 16px gap at the medium breakpoint -->
-	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
-	<!-- 8px gap, 16px gap at the medium breakpoint -->
-	<div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+  <!-- 8px gap, 16px gap at the medium breakpoint -->
+  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+  <!-- 8px gap, 16px gap at the medium breakpoint -->
+  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
+  <!-- 8px gap, 16px gap at the medium breakpoint -->
+  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
 </div>
 ```
 
@@ -426,9 +426,9 @@ Layers a red, green, and blue element on top of each other. The blue element is 
 
 ```html
 <div class="zstack">
-	<div class="hstack w-32 h-32 bg-red-400 rounded-full"></div>
-	<div class="hstack w-32 h-32 bg-green-400 rounded-full"></div>
-	<div class="hstack w-32 h-32 bg-blue-400 rounded-full"></div>
+  <div class="hstack w-32 h-32 bg-red-400 rounded-full"></div>
+  <div class="hstack w-32 h-32 bg-green-400 rounded-full"></div>
+  <div class="hstack w-32 h-32 bg-blue-400 rounded-full"></div>
 </div>
 ```
 
@@ -460,11 +460,11 @@ Ranges describe all possible numerical values. Some properties support negative 
 **Standard range:**
 
 ```
-		0-10, increments by  1:   0,   1,   2,   3,   4,   5,   6,   7,   8,   9,
-	10-20, increments by  2:  10,  12,  14,  16,  18
-	20-40, increments by  4:  20,  24,  28,  32,  36,
-	40-80, increments by  8:  40,  48,  56,  64,  72,
-	80-160, increments by 16:  80,  96, 112, 128, 144,
+    0-10, increments by  1:   0,   1,   2,   3,   4,   5,   6,   7,   8,   9,
+  10-20, increments by  2:  10,  12,  14,  16,  18
+  20-40, increments by  4:  20,  24,  28,  32,  36,
+  40-80, increments by  8:  40,  48,  56,  64,  72,
+  80-160, increments by 16:  80,  96, 112, 128, 144,
 160-320, increments by 32: 160, 192, 224, 256, 288, 320,
 ```
 
@@ -504,16 +504,16 @@ If you’re asking yourself **‘Why did you build this from scratch and how is 
 <table>
   <tr>
     <td>
-			<a href="https://youtube.com/watch?v=4PMPkLHD7Os" target="_blank">
-				<img src="https://raw.githubusercontent.com/zaydek/duomo/main/.github/youtube-cover.png">
-				<p><strong>Demo 1: Introducing Stacks</strong></p>
-			</a>
+      <a href="https://youtube.com/watch?v=4PMPkLHD7Os" target="_blank">
+        <img src="https://raw.githubusercontent.com/zaydek/duomo/main/.github/youtube-cover.png">
+        <p><strong>Demo 1: Introducing Stacks</strong></p>
+      </a>
     </td>
     <td>
-			<a href="https://youtube.com/watch?v=vV-A3ywo6v8" target="_blank">
-				<img src="https://raw.githubusercontent.com/zaydek/duomo/main/.github/youtube-cover.png">
-				<p><strong>Demo 2: Introducing Theming</strong></p>
-			</a>
+      <a href="https://youtube.com/watch?v=vV-A3ywo6v8" target="_blank">
+        <img src="https://raw.githubusercontent.com/zaydek/duomo/main/.github/youtube-cover.png">
+        <p><strong>Demo 2: Introducing Theming</strong></p>
+      </a>
     </td>
   </tr>
 </table>
@@ -541,27 +541,27 @@ This is a microcosm of how Duomo works:
 
 ```scss
 .hstack {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 .hstack > * + * {
-	margin-top: 0;
-	margin-left: var(--space, 0);
+  margin-top: 0;
+  margin-left: var(--space, 0);
 }
 
 .vstack {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .vstack > * + * {
-	margin-left: 0;
-	margin-top: var(--space, 0);
+  margin-left: 0;
+  margin-top: var(--space, 0);
 }
 
 .spacer {
-	flex: 1 0 var(--space, 0);
+  flex: 1 0 var(--space, 0);
 }
 ```
 
@@ -575,129 +575,129 @@ And this is a macrocosm of how Duomo works:
 $separator: "\\:";
 
 @function px($value) {
-	@return $value + px;
+  @return $value + px;
 }
 
 @function rem($value) {
-	@return $value / 16 + rem;
+  @return $value / 16 + rem;
 }
 
 @function get-dynamic-ampersand() {
-	@if not & {
-		@return ".";
-	}
-	@return & + $separator;
+  @if not & {
+    @return ".";
+  }
+  @return & + $separator;
 }
 
 @mixin stacks {
-	$amp: get-dynamic-ampersand();
+  $amp: get-dynamic-ampersand();
 
-	#{$amp}hstack {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: stretch;
-	}
-	// NOTE: The root stack context resets `--space`.
-	@if not & {
-		.hstack > * {
-			--space: 0;
-		}
-	}
-	#{$amp}hstack > * + * {
-		margin-top: 0;
-		margin-left: var(--space, 0);
-	}
-	// NOTE: Omit `spacer`s and sibling elements from `var(--space)`.
-	#{$amp}hstack > .spacer:empty,
-	#{$amp}hstack > .spacer:empty + * {
-		margin-left: 0;
-	}
+  #{$amp}hstack {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+  }
+  // NOTE: The root stack context resets `--space`.
+  @if not & {
+    .hstack > * {
+      --space: 0;
+    }
+  }
+  #{$amp}hstack > * + * {
+    margin-top: 0;
+    margin-left: var(--space, 0);
+  }
+  // NOTE: Omit `spacer`s and sibling elements from `var(--space)`.
+  #{$amp}hstack > .spacer:empty,
+  #{$amp}hstack > .spacer:empty + * {
+    margin-left: 0;
+  }
 
-	#{$amp}vstack {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: stretch;
-	}
-	// NOTE: The root stack context resets `--space`.
-	@if not & {
-		.vstack > * {
-			--space: 0;
-		}
-	}
-	#{$amp}vstack > * + * {
-		margin-left: 0;
-		margin-top: var(--space, 0);
-	}
-	// NOTE: Omit `spacer`s and sibling elements from `var(--space)`.
-	#{$amp}vstack > .spacer:empty,
-	#{$amp}vstack > .spacer:empty + * {
-		margin-top: 0;
-	}
+  #{$amp}vstack {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+  }
+  // NOTE: The root stack context resets `--space`.
+  @if not & {
+    .vstack > * {
+      --space: 0;
+    }
+  }
+  #{$amp}vstack > * + * {
+    margin-left: 0;
+    margin-top: var(--space, 0);
+  }
+  // NOTE: Omit `spacer`s and sibling elements from `var(--space)`.
+  #{$amp}vstack > .spacer:empty,
+  #{$amp}vstack > .spacer:empty + * {
+    margin-top: 0;
+  }
 
-	#{$amp}align-start {
-		align-items: flex-start;
-	}
-	#{$amp}align-center {
-		align-items: center;
-	}
-	#{$amp}align-end {
-		align-items: flex-end;
-	}
+  #{$amp}align-start {
+    align-items: flex-start;
+  }
+  #{$amp}align-center {
+    align-items: center;
+  }
+  #{$amp}align-end {
+    align-items: flex-end;
+  }
 
-	@if not & {
-		.spacer {
-			flex-grow: 1;
-			flex-shrink: 0;
-			flex-basis: var(--space, 0);
-		}
-		// NOTE: Edge `spacer`s are collapsible to `0`.
-		.spacer:first-child,
-		.spacer:last-child {
-			flex-basis: 0;
-		}
-	}
+  @if not & {
+    .spacer {
+      flex-grow: 1;
+      flex-shrink: 0;
+      flex-basis: var(--space, 0);
+    }
+    // NOTE: Edge `spacer`s are collapsible to `0`.
+    .spacer:first-child,
+    .spacer:last-child {
+      flex-basis: 0;
+    }
+  }
 
-	@each $value in (4, 8, 12, 16, 20, 24, 28, 32) {
-		#{$amp}space-#{$value} > * {
-			--space: #{rem($value)};
-		}
-	}
+  @each $value in (4, 8, 12, 16, 20, 24, 28, 32) {
+    #{$amp}space-#{$value} > * {
+      --space: #{rem($value)};
+    }
+  }
 }
 
 @mixin reset {
-	*,
-	*::before,
-	*::after {
-		box-sizing: border-box;
-	}
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-	body {
-		margin: 0;
-	}
+  body {
+    margin: 0;
+  }
 }
 
 @mixin debugger {
-	* {
-		outline: 2px solid hsla(215, 100%, 50%, 0.2);
-		outline-offset: -1px;
-	}
+  * {
+    outline: 2px solid hsla(215, 100%, 50%, 0.2);
+    outline-offset: -1px;
+  }
 }
 
 @at-root {
-	@include reset;
-	@include debugger;
-	@include stacks;
-	@each $key, $value in ("sm": 640, "md": 768, "lg": 1024, "xl": 1280) {
-		@media (min-width: #{px($value)}) {
-			.#{$key} {
-				@at-root {
-					@include stacks;
-				}
-			}
-		}
-	}
+  @include reset;
+  @include debugger;
+  @include stacks;
+  @each $key, $value in ("sm": 640, "md": 768, "lg": 1024, "xl": 1280) {
+    @media (min-width: #{px($value)}) {
+      .#{$key} {
+        @at-root {
+          @include stacks;
+        }
+      }
+    }
+  }
 }
 ```
 
