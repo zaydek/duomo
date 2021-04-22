@@ -1,5 +1,6 @@
 @use "../configuration" as conf;
 @use "../utils";
+@use 'sass:list';
 
 // TODO: Add support for `bar`?
 // Then we can have `bar` and `cap`.
@@ -51,4 +52,17 @@
 // parameter to resolve units.
 @function percent-range() {
 	@return conf.$percent-range;
+}
+
+@function decimal-range($begin, $multiply) {
+	$list: ();
+	@each $range in conf.$percent-range {
+		$list: list.append($list, $range * $multiply);
+		@if ($begin) {
+			$list: list.append($list, ($range * $multiply) + $begin);
+		} @else {
+			$list: list.append($list, $range * $multiply);
+		}
+	}
+	@return $list;
 }

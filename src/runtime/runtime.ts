@@ -1,3 +1,5 @@
+import * as helper from './helpers'
+
 declare global {
 	interface Window {
 		Duomo: Runtime
@@ -20,51 +22,6 @@ interface Runtime {
 	init(env?: Env, options?: RuntimeOptions): () => void
 }
 
-// prettier-ignore
-function localStoragePreference() {
-	if (!(Duomo.localStorageKey in window.localStorage)) {
-		return null
-	}
-	const value = window.localStorage[Duomo.localStorageKey]
-	if (value !== "light" && value !== "dark") {
-		return null
-	}
-	return value
-}
-
-// prettier-ignore
-function matchMediaPreference() {
-	if (!("matchMedia" in window)) {
-		return null
-	}
-	const matches = window.matchMedia("(prefers-color-scheme: dark)").matches
-	const value = ({
-		false: "light",
-		true: "dark",
-	} as { [key: string]: string })["" + matches]
-	return value
-}
-
-// prettier-ignore
-function isKeyDownDarkMode(e: KeyboardEvent) {
-	const ok = (
-		!e.ctrlKey &&
-		!e.altKey &&
-		(e.key.toLowerCase() === "`" || e.keyCode === 192)
-	)
-	return ok
-}
-
-// prettier-ignore
-function isKeyDownDebugMode(e: KeyboardEvent) {
-	const ok = (
-		e.ctrlKey &&
-		!e.altKey &&
-		(e.key.toLowerCase() === "`" || e.keyCode === 192)
-	)
-	return ok
-}
-
 class Duomo implements Runtime {
 	static localStorageKey = "duomo-theme-preference"
 
@@ -77,6 +34,7 @@ class Duomo implements Runtime {
 	// Tracks whether dark mode was set once; for FOUC.
 	// FOUC: Flash Of Unstyled Content.
 	#didInitDarkMode: boolean = false
+	#shouldNoOpDarkMode: boolean = false
 
 	#deferrers: (() => void)[] = []
 
@@ -95,8 +53,8 @@ class Duomo implements Runtime {
 
 		this.#html = document.documentElement
 
-		const lsPref = localStoragePreference()
-		const mmPref = matchMediaPreference()
+		const lsPref = helper.localStoragePreference()
+		const mmPref = helper.matchMediaPreference()
 		if (lsPref || mmPref) {
 			this.setDarkMode((lsPref || mmPref) === "dark")
 		}
@@ -115,14 +73,14 @@ class Duomo implements Runtime {
 		// `keydown` handlers.
 		if (env === "development") {
 			const handleDarkMode = (e: KeyboardEvent) => {
-				if (isKeyDownDarkMode(e)) {
+				if (helper.isKeyDownDarkMode(e)) {
 					this.toggleDarkMode()
 				}
 			}
 			document.addEventListener("keydown", handleDarkMode)
 			this.#deferrers.push(() => document.removeEventListener("keydown", handleDarkMode))
 			const handleDebugMode = (e: KeyboardEvent) => {
-				if (isKeyDownDebugMode(e)) {
+				if (helper.isKeyDownDebugMode(e)) {
 					this.toggleDebugMode()
 				}
 			}
@@ -144,7 +102,10 @@ class Duomo implements Runtime {
 		return this.#darkMode
 	}
 	setDarkMode(mode: boolean) {
+		if (this.#shouldNoOpDarkMode) return;
 		this.#darkMode = mode
+		
+		const durValue = getComputedStyle(document.documentElement).getPropertyValue('--default-theme-transition-duration');
 
 		const toggle = (mode: boolean) => {
 			const action = !mode
@@ -160,12 +121,14 @@ class Duomo implements Runtime {
 			this.#didInitDarkMode = true
 			return
 		} else {
+			this.#shouldNoOpDarkMode = true
 			this.#html!.setAttribute("data-theme-effect", "true")
 			setTimeout(() => {
 				toggle(mode)
 				setTimeout(() => {
 					this.#html!.removeAttribute("data-theme-effect")
-				}, 300)
+					this.#shouldNoOpDarkMode = false
+				}, helper.parseDurationMs(durValue))
 			}, 25)
 		}
 	}
