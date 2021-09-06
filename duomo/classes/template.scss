@@ -1,0 +1,42 @@
+@use "sass:map";
+@use "sass:math";
+@use "sass:meta";
+
+@use "variants" as *;
+
+@use "../units";
+@use "../utils";
+
+$-alias-map: (
+	min-content: min,
+	max-content: max,
+	100%: full,
+	100vw: screen,
+	100vh: screen,
+	9999px: full,
+);
+
+// Gets the alias for a value or returns the value as-is.
+@function -get-alias($value) {
+	$got: map.get($-alias-map, $value);
+	@if not $got {
+		@return $value;
+	}
+	@return $got;
+}
+
+@mixin template($properties, $shorthand, $range, $unit-type, $variants...) {
+	@each $value in $range {
+		$n: if(meta.type-of($value) == number and $value < 0, "-", "");
+		$abs: if(meta.type-of($value) == number, math.abs($value), $value);
+		.#{$n}#{$shorthand}-#{-get-alias($abs)} {
+			@include variants($variants...) {
+				@each $property in $properties {
+					#{$property}: units.resolve-unit($value, $unit-type);
+				}
+			}
+		}
+	}
+}
+
+// utils.str-escape("" + -get-alias($value))

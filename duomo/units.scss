@@ -1,0 +1,41 @@
+@use "sass:math";
+@use "sass:meta";
+
+@function -is-unitless-number($value) {
+	@return meta.type-of($value) == number and math.is-unitless($value);
+}
+
+// Converts a unitless number to `rem` units.
+@function rem($value) {
+	@if $value == 0 or not -is-unitless-number($value) {
+		// Passthrough
+		@return $value;
+	}
+	@return math.div($value, 16) + rem;
+}
+
+// Converts a unitless number to `em` units.
+@function em($value) {
+	@if $value == 0 or not -is-unitless-number($value) {
+		// Passthrough
+		@return $value;
+	}
+	@return math.div($value, 16) + em;
+}
+
+// Converts a unitless number to `px` units.
+@function px($value) {
+	@if $value == 0 or not -is-unitless-number($value) {
+		// Passthrough
+		@return $value;
+	}
+	@return $value + px;
+}
+
+@function resolve-unit($value, $unit-type) {
+	@if $value == 0 or not -is-unitless-number($value) or $unit-type == none {
+		// Passthrough
+		@return $value;
+	}
+	@return meta.call(meta.get-function($unit-type), $value);
+}

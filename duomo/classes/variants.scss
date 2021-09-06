@@ -1,0 +1,76 @@
+@use "../utils";
+
+// Higher-order mixin that concatenates the parent class name with the delimiter
+// and the current class name.
+//
+// Input:
+//
+//   @media (min-width: 640px) {
+//     .sm {
+//       .foo {
+//         @include responsive {
+//           bar: baz;
+//         }
+//       }
+//     }
+//   }
+//
+// Output:
+//
+//   @media (min-width: 640px) {
+//     .sm\:foo {
+//       bar: baz;
+//     }
+//   }
+//
+@mixin responsive {
+	@at-root {
+		#{utils.str-replace("" + &, " .", "\\:")} {
+			@content;
+		}
+	}
+}
+
+// Higher-order mixin that enable variants-style mixins to template a class per
+// variant-type.
+//
+// Input:
+//
+//   @mixin abstract-class($variants...) {
+//     .class {
+//       @include variants($variants...) {
+//         bar: baz;
+//       }
+//     }
+//   }
+//
+//   @include abstract-class(root, responsive);
+//
+// Output:
+//
+//   .class {
+//     foo: bar;
+//   }
+//
+//   @media (min-width: 640px) {
+//     .sm\:class {
+//       foo: bar;
+//     }
+//   }
+//
+@mixin variants($variants...) {
+	@each $variant in $variants {
+		@if $variant != root and $variant != responsive {
+			@error "variants: $variant #{$variant} is not one of root, responsive";
+		}
+	}
+	@each $variant in $variants {
+		@if $variant == root {
+			@content;
+		} @else if $variant == responsive {
+			@include responsive {
+				@content;
+			}
+		}
+	}
+}

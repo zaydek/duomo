@@ -1,0 +1,23 @@
+@use "../duomo" as *;
+@use "template" as *;
+@use "variants" as *;
+
+@use "../utils";
+
+$-range: utils.range-from-bounds(
+	duomo(height-bounds),
+	duomo(range),
+	100%,
+	100vh,
+);
+
+@mixin height($variants...) {
+	@include template((height), h, $-range, rem, $variants...);
+	@each $key, $value in (0: 0, 100%: full, 100vh: screen) {
+		.min-h-#{$value} {
+			@include variants($variants...) {
+				min-height: $key;
+			}
+		}
+	}
+}

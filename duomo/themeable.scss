@@ -1,0 +1,43 @@
+@use "sass:selector";
+
+// Enables a property to define both light and dark mode colors.
+//
+// Input:
+//
+//   .foo {
+//     @include color(#000, #fff);
+//   }
+//
+// Output:
+//
+//   .foo {
+//     color: #000;
+//   }
+//   :root[data-theme="dark"] {
+//     color: #fff;
+//   }
+//
+@mixin -themeable($property, $light-value, $optional-dark-value) {
+	#{$property}: $light-value;
+	@if selector.is-superselector(":root", &) or selector.is-superselector(html, &) {
+		// Use `@at-root` to break out of the current selector
+		@at-root {
+			:root[data-theme="dark"] {
+				#{$property}: $optional-dark-value;
+			}
+		}
+	} @else {
+		:root[data-theme="dark"] & {
+			#{$property}: $optional-dark-value;
+		}
+	}
+}
+
+// Properties are based on https://tailwindcss.com/docs/transition-property
+@mixin background-color($light-value, $optional-dark-value: null) { @include -themeable(background-color, $light-value, $optional-dark-value); }
+@mixin border-color($light-value, $optional-dark-value: null)     { @include -themeable(border-color, $light-value, $optional-dark-value); }
+@mixin box-shadow($light-value, $optional-dark-value: null)       { @include -themeable(box-shadow, $light-value, $optional-dark-value); }
+@mixin color($light-value, $optional-dark-value: null)            { @include -themeable(color, $light-value, $optional-dark-value); }
+@mixin fill($light-value, $optional-dark-value: null)             { @include -themeable(fill, $light-value, $optional-dark-value); }
+@mixin opacity($light-value, $optional-dark-value: null)          { @include -themeable(opacity, $light-value, $optional-dark-value); }
+@mixin stroke($light-value, $optional-dark-value: null)           { @include -themeable(stroke, $light-value, $optional-dark-value); }

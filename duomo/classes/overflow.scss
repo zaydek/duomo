@@ -1,0 +1,41 @@
+@use "variants" as *;
+
+$-overflow-types: (
+	scroll,
+	hidden,
+);
+
+@mixin overflow($variants...) {
+	@each $item in $-overflow-types {
+		.overflow-#{$item} {
+			@include variants($variants...) {
+				@if $item == scroll {
+					-webkit-overflow-scrolling: touch;
+				}
+				overflow: $item;
+			}
+		}
+	}
+
+	@each $item in $-overflow-types {
+		.overflow-x-#{$item} {
+			@include variants($variants...) {
+				@if $item == scroll {
+					-webkit-overflow-scrolling: touch;
+				}
+				overflow-x: $item;
+			}
+		}
+	}
+
+	@each $item in $-overflow-types {
+		.overflow-y-#{$item} {
+			@include variants($variants...) {
+				@if $item == scroll {
+					-webkit-overflow-scrolling: touch;
+				}
+				overflow-y: $item;
+			}
+		}
+	}
+}

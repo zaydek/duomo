@@ -1,0 +1,11 @@
+@use "../duomo";
+
+// No-op breakpoints
+@include duomo.configure(
+	(
+		breakpoints: (),
+	),
+);
+
+@include duomo.reset;
+@include duomo.classes;

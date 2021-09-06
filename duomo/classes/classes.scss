@@ -1,0 +1,70 @@
+@use "../duomo" as *;
+@use "position" as *;
+@use "margin" as *;
+@use "padding" as *;
+@use "flexbox" as *;
+@use "hide-show" as *;
+@use "width" as *;
+@use "height" as *;
+@use "aspect-ratio" as *;
+@use "border-width" as *;
+@use "overflow" as *;
+@use "z-index" as *;
+
+@mixin -debugger {
+	// In debug mode, draw an outline around every element. The `-1px` offset
+	// collapses adjacent outlines so they appear as one.
+	[data-debug] * {
+		outline: 2px solid rgba(0, 128, 255, 0.5);
+		outline-offset: -1px;
+	}
+	// Revert the outline for `<svg>` children
+	[data-debug] svg * {
+		outline: revert; // Reset
+	}
+
+	// In debug mode, draw an absolutely positioned pseudo child with its own
+	// outline inside of every empty `.flex-grow` element. The `-1px` offset
+	// collapses adjacent outlines so they appear as one.
+	[data-debug] .flex-grow:empty { // Relative element
+		position: relative;
+		align-self: stretch;
+		outline: revert; // Reset
+	}
+	[data-debug] .flex-grow:empty::before { // Absolute element
+		position: absolute;
+		top: -1px;
+		right: -1px;
+		bottom: -1px;
+		left: -1px;
+		content: ""; // CSS hack
+		background-color: rgba(0, 128, 255, 0.1);
+	}
+}
+
+@mixin -impl($variants...) {
+	@include position($variants...);
+	@include margin($variants...);
+	@include padding($variants...);
+	@include flexbox($variants...);
+	@include hide-show($variants...);
+	@include aspect-ratio($variants...);
+	@include width($variants...);
+	@include height($variants...);
+	@include border-width($variants...);
+	@include overflow($variants...);
+	@include z-index($variants...);
+}
+
+@mixin classes {
+	/*! Duomo | MIT | https://github.com/zaydek/duomo */
+	@include -debugger;
+	@include -impl(root);
+	@each $key, $value in duomo(breakpoints) {
+		@media (min-width: $value) {
+			.#{$key} {
+				@include -impl(responsive);
+			}
+		}
+	}
+}

@@ -1,0 +1,52 @@
+@use "sass:string";
+
+@use "variants" as *;
+
+$-position-types: (
+	relative,
+	absolute,
+	fixed,
+	sticky,
+);
+
+$-placement-types: (
+	all,
+	top-all,
+	top-right-all,
+	right-all,
+	bottom-right-all,
+	bottom-all,
+	bottom-left-all,
+	left-all,
+	top-left-all,
+);
+
+@function -get-placement($direction-type, $placement-type) {
+	@if $placement-type == all or string.index($placement-type, $direction-type) {
+		@return 0;
+	}
+	@return revert;
+}
+
+@mixin position($variants...) {
+	@each $item in $-position-types {
+		.#{$item} {
+			@include variants($variants...) {
+				@if $item == sticky {
+					position: -webkit-sticky;
+				}
+				position: $item;
+			}
+		}
+	}
+
+	@each $item in $-placement-types {
+		.#{$item} {
+			@include variants($variants...) {
+				@each $direction-type in (top, right, bottom, left) {
+					#{$direction-type}: -get-placement($direction-type, $item);
+				}
+			}
+		}
+	}
+}

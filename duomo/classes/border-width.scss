@@ -1,0 +1,19 @@
+@use "../duomo" as *;
+@use "template" as *;
+
+@use "../utils";
+
+$-range: utils.range-from-bounds(
+	duomo(border-width-bounds),
+	duomo(range),
+);
+
+@mixin border-width($variants...) {
+	@include template((border-width), border, $-range, rem, $variants...);
+	@include template((border-left-width, border-right-width), border-x, $-range, rem, $variants...);
+	@include template((border-top-width, border-bottom-width), border-y, $-range, rem, $variants...);
+	@include template((border-top-width), border-top, $-range, rem, $variants...);
+	@include template((border-right-width), border-right, $-range, rem, $variants...);
+	@include template((border-bottom-width), border-bottom, $-range, rem, $variants...);
+	@include template((border-left-width), border-left, $-range, rem, $variants...);
+}

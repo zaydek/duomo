@@ -1,0 +1,18 @@
+@use "sass:list";
+@use "sass:string";
+
+// Returns whether `$str` starts with `$cmp`.
+@function starts-with($str, $cmp) {
+	@return string.slice($str, 1, string.length($cmp)) == $cmp;
+}
+
+// Replaces the first occurrence of `$s1` in `$str` with `$s2`. If there are no
+// occurrences of `$s1` in `$str`, `$str` returns as-is.
+@function replace($str, $s1, $s2) {
+	$index: string.index($str, $s1);
+	@if not $index {
+		// Passthrough
+		@return $str;
+	}
+	@return string.slice($str, 1, $index - 1) + $s2 + string.slice($str, $index + string.length($s1));
+}

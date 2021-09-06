@@ -1,0 +1,19 @@
+@use "../duomo" as *;
+@use "template" as *;
+
+@use "../utils";
+
+$-range: utils.range-from-bounds(
+	duomo(padding-bounds),
+	duomo(range),
+);
+
+@mixin padding($variants...) {
+	@include template((padding), p, $-range, rem, $variants...);
+	@include template((padding-left, padding-right), px, $-range, rem, $variants...);
+	@include template((padding-top, padding-bottom), py, $-range, rem, $variants...);
+	@include template((padding-top), pt, $-range, rem, $variants...);
+	@include template((padding-right), pr, $-range, rem, $variants...);
+	@include template((padding-bottom), pb, $-range, rem, $variants...);
+	@include template((padding-left), pl, $-range, rem, $variants...);
+}

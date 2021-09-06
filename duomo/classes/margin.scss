@@ -1,0 +1,21 @@
+@use "../duomo" as *;
+@use "template" as *;
+
+@use "../utils";
+
+$-range: utils.range-from-bounds(
+	duomo(margin-bounds),
+	duomo(nrange),
+	auto,
+	duomo(range),
+);
+
+@mixin margin($variants...) {
+	@include template((margin), m, $-range, rem, $variants...);
+	@include template((margin-left, margin-right), mx, $-range, rem, $variants...);
+	@include template((margin-top, margin-bottom), my, $-range, rem, $variants...);
+	@include template((margin-top), mt, $-range, rem, $variants...);
+	@include template((margin-right), mr, $-range, rem, $variants...);
+	@include template((margin-bottom), mb, $-range, rem, $variants...);
+	@include template((margin-left), ml, $-range, rem, $variants...);
+}

@@ -1,0 +1,24 @@
+@use "../duomo" as *;
+@use "template" as *;
+@use "variants" as *;
+
+@use "../utils";
+
+$-range: utils.range-from-bounds(
+	duomo(width-bounds),
+	duomo(range),
+	100%,
+	100vw,
+);
+
+@mixin width($variants...) {
+	@include template((width), w, $-range, rem, $variants...);
+	@each $key, $value in duomo(breakpoints) {
+		.w-#{$key} {
+			@include variants($variants...) {
+				width: 100%;
+				max-width: $value;
+			}
+		}
+	}
+}

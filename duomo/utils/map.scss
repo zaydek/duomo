@@ -1,0 +1,22 @@
+@use "sass:map";
+@use "sass:meta";
+
+// Deeply merges maps and preserves key-order. This function is preferred over
+// `map.deep-merge` because `map.deep-merge` doesn't preserve key-order.
+@function ordered-deep-merge($m1, $m2) {
+	@each $k, $v in $m2 {
+		@if map.has-key($m1, $k) {
+			@if meta.type-of($v) == map {
+				// Recurse
+				$m1: map.set($m1, $k, ordered-deep-merge(map.get($m1, $k), $v));
+			} @else {
+				// Set
+				$m1: map.set($m1, $k, $v);
+			}
+		} @else {
+			// Add
+			$m1: map.set($m1, $k, $v);
+		}
+	}
+	@return $m1;
+}

@@ -1,757 +1,698 @@
-# @zaydek/duomo
+# Introducing Duomo
 
-Duomo is a stack-based CSS framework. Contributions are welcome as issues and or pull requests.
+What is Duomo? Duomo is a CSS component that makes implementing layout fun!
 
-To get started, simply run this command:
+Duomo is based on the philosophy that layout and design implementation are separate concerns, and that design should be able to be layered subsequent to layout.
 
-```bash
-yarn add @zaydek/duomo
-# or npm i @zaydek/duomo
-```
+In practice, Duomo is a small collection of utility classes and Sass mixins and functions. Note that Duomo utilities are not strict utility classes in the sense that every class maps to one and only one property / value combination. Instead, Duomo is designed around some higher-order patterns such as `flex-row` instead of `flex flex-row` or `position top-all` instead of `position top-0 right-auto bottom-auto left-auto`.
 
-**Usage: (CDN)**
+**Duomo is not for everyone or every project.** Duomo simply attempts to solve for layout, and needs to be layered with CSS, Sass, etc. in order to be effective. Think of a Duomo as a CSS component, not a CSS library.
 
-CodePen to get you started: https://codepen.io/zaydek/pen/ExgxjYy.
+## Get Started
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello, world!</title>
-    <link rel="stylesheet" href="https://unpkg.com/@zaydek/duomo" />
-  </head>
-  <body>
-    <div class="hstack">
-      <div class="hstack space-16">
-        <div class="w-32 h-32 bg-gray-300 rounded-full"></div>
-        <div class="w-32 h-32 bg-gray-300 rounded-full"></div>
-      </div>
-      <div class="spacer"></div>
-      <div class="hstack space-16">
-        <div class="w-32 h-32 bg-gray-300 rounded-full"></div>
-        <div class="w-32 h-32 bg-gray-300 rounded-full"></div>
-      </div>
-    </div>
-  </body>
-</html>
-```
-
-**Usage (React):**
-
-```tsx
-import "@zaydek/duomo"
-
-function Component() {
-  return (
-    <div className="hstack">
-      <div className="hstack space-16">
-        <div className="w-32 h-32 bg-gray-300 rounded-full" />
-        <div className="w-32 h-32 bg-gray-300 rounded-full" />
-      </div>
-      <div className="spacer" />
-      <div className="hstack space-16">
-        <div className="w-32 h-32 bg-gray-300 rounded-full" />
-        <div className="w-32 h-32 bg-gray-300 rounded-full" />
-      </div>
-    </div>
-  )
-}
-```
-
-## Table of Contents:
-
-- [Why](#why)
-- [HStack](#hstack)
-- [VStack](#vstack)
-- [Spacer](#spacer)
-- [Spacing](#spacing)
-- [ZStack](#zstack)
-- [Range](#range)
-
-## Why
-
-Duomo is a spiritual successor of Tailwind CSS.
-
-Duomo benefits you in the following ways:
-
-- Small and intuitive API
-- Small JavaScript runtime for toggling dark mode, etc.
-- Built in debugging layout utilities
-- Soft landing for iOS / SwiftUI developers
-- Uses HStack and VStack instead of Flexbox for rows and columns
-- Uses ZStack to layer along the z-axis
-- Lightweight CDN footprint (<TODO>kb uncompressed, <TODO>kb with Brotli); no NPM installs required
-- No configuration needed
-- Sass API; easily extend Duomo when you install via NPM
-- Introspection via CSS variables; Duomo tokens can be overridden _without_ Sass
-- Maintenance-friendly HTML / CSS
-
-Reasons you might not want to use Duomo:
-
-- You like Tailwind CSS just fine thank you very much
-- You don’t want to use stacks vs. Flexbox\* (_stacks are based on Flexbox_)
-- You don’t have a need for small CDN footprints
-- Duomo is not 1.0 stable
-
-\*Note that stacks are exported as a standalone dependency; you can experiment with stacks _with_ any CSS library.
-
-## HStack
-
-HStacks `<div class="hstack">` stack children elements _horizontally_. Like `VStack`s, they can be modified with
-`align-{alignment}` and `space-{range}`. By default, children are automatically centered horizontally and vertically. To
-opt-out of horizontal centering, use a nested `<div class="spacer">`. To opt-out of vertical centering, use
-`align-stretch`, `align-start`, or `align-end`.
-
-**Spacer examples:**
+If you need breakpoints, use either one of the following links:
 
 ```html
-<!--
-  . . .
-  . x .
-  . . .
--->
-<div class="hstack">
-  <div class="x"></div>
-</div>
-
-<!--
-  . . .
-  . . x
-  . . .
--->
-<div class="hstack">
-  <div class="spacer"></div>
-  <div class="x"></div>
-</div>
-
-<!--
-  . . .
-  x . .
-  . . .
--->
-<div class="hstack">
-  <div class="x"></div>
-  <div class="spacer"></div>
-</div>
+<link rel="stylesheet" href="https://unpkg.com/duomo/dist/duomo.css" />
+<link rel="stylesheet" href="https://unpkg.com/duomo/dist/duomo.min.css" />
 ```
 
-**Alignment examples:**
+If you don't need breakpoints, use either one of the following links:
 
 ```html
-<!--
-  . x .
-  . x .
-  . x .
--->
-<div class="hstack align-stretch">
-  <div class="x"></div>
-</div>
-
-<!--
-  . x .
-  . . .
-  . . .
--->
-<div class="hstack align-start">
-  <div class="x"></div>
-</div>
-
-<!--
-  . . .
-  . . .
-  . x .
--->
-<div class="hstack align-end">
-  <div class="x"></div>
-</div>
+<link rel="stylesheet" href="https://unpkg.com/duomo/duomo/dist/duomo-root-only.css" />
+<link rel="stylesheet" href="https://unpkg.com/duomo/duomo/dist/duomo-root-only.min.css" />
 ```
 
-**Responsive examples:**
-
-Adapts to a vertical stack at the medium breakpoint.
+If you only need the CSS reset / base, use either one of the following links:
 
 ```html
-<div class="hstack md:vstack">
-  <!-- ... -->
-</div>
+<link rel="stylesheet" href="https://unpkg.com/duomo/duomo/dist/reset.css" />
+<link rel="stylesheet" href="https://unpkg.com/duomo/duomo/dist/reset.min.css" />
 ```
 
-Stack is revealed at the medium breakpoint.\*
+If you need sourcemaps, simply concatenate `.map` to the filename. For example, [`duomo.css.map`](https://unpkg.com/duomo/dist/duomo.css.map).
 
-_\*Not yet implemented._
+## Build Sizes
 
-```html
-<div class="hidden md:vstack">
-  <!-- ... -->
-</div>
-```
-
-Stack is hidden at the medium breakpoint.\*
-
-_\*Not yet implemented._
-
-```html
-<div class="hstack md:hidden">
-  <!-- ... -->
-</div>
-```
-
-## VStack
-
-VStacks `<div class="vstack">` stack children elements _vertically_. Like `HStack`s, they can be modified with
-`align-{alignment}` and `space-{range}`. By default, children are automatically centered horizontally and vertically. To
-opt-out of horizontal centering, use a nested `<div class="spacer">`. To opt-out of horizontal centering, use
-`align-stretch`, `align-start`, or `align-end`.
-
-**Spacer examples:**
-
-```html
-<!--
-  . . .
-  . x .
-  . . .
--->
-<div class="vstack">
-  <div class="x"></div>
-</div>
-
-<!--
-  . . .
-  . . .
-  . x .
--->
-<div class="vstack">
-  <div class="spacer"></div>
-  <div class="x"></div>
-</div>
-
-<!--
-  . x .
-  . . .
-  . . .
--->
-<div class="vstack">
-  <div class="x"></div>
-  <div class="spacer"></div>
-</div>
-```
-
-**Alignment examples:**
-
-```html
-<!--
-  . . .
-  x x x
-  . . .
--->
-<div class="vstack align-stretch">
-  <div class="x"></div>
-</div>
-
-<!--
-  . . .
-  x . .
-  . . .
--->
-<div class="vstack align-start">
-  <div class="x"></div>
-</div>
-
-<!--
-  . . .
-  . . x
-  . . .
--->
-<div class="vstack align-end">
-  <div class="x"></div>
-</div>
-```
-
-**Responsive examples:**
-
-Adapts to a horizontal stack at the medium breakpoint.
-
-```html
-<div class="vstack md:hstack">
-  <!-- ... -->
-</div>
-```
-
-Stack is revealed at the medium breakpoint.\*
-
-_\*Not yet implemented._
-
-```html
-<div class="hidden md:vstack">
-  <!-- ... -->
-</div>
-```
-
-Stack is hidden at the medium breakpoint.\*
-
-_\*Not yet implemented._
-
-```html
-<div class="vstack md:hidden">
-  <!-- ... -->
-</div>
-```
-
-## Spacer
-
-Spacers `<div class="spacer">` create negative space between children elements. They can be used to simulate
-`justify-content: flex-start`, `justify-content: flex-end`, and `justify-content: space-evenly` declaratively.
-
-Spacers, unlike HStacks and VStacks, implement no modifiers.
-
-**Examples:**
-
-Simulates `justify-content: flex-start`.
-
-```html
-<!--
-  . . .
-  . x x
-  . . .
--->
-<div class="hstack">
-  <div class="spacer"></div>
-  <div class="x"></div>
-  <div class="x"></div>
-</div>
-```
-
-Simulates `justify-content: flex-end`.
-
-```html
-<!--
-  . . .
-  x x .
-  . . .
--->
-<div class="hstack">
-  <div class="x"></div>
-  <div class="x"></div>
-  <div class="spacer"></div>
-</div>
-```
-
-Simulates `justify-content: space-evenly`.
-
-```html
-<!--
-  . . . . .
-  . x . x .
-  . . . . .
--->
-<div class="hstack">
-  <div class="spacer"></div>
-  <div class="x"></div>
-  <div class="spacer"></div>
-  <div class="x"></div>
-  <div class="spacer"></div>
-</div>
-```
-
-## Spacing
-
-The spacing modifier `<div class="[h|v]stack space-{px}>` creates consistent spacing between HStack and VStack children
-elements. Spacing can be any negative\* or positive range value.
-
-Note that spacing spaces children elements _horizontally_ or _vertically_ depending on the parent HStack or VStack
-context. **You don’t need to specifiy x-axis or y-axis-specific spacing**.
-
-_\*Not yet implemented._
-
-**Examples:**
-
-```html
-<div class="hstack space-8">
-  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
-  <!-- 8px gap -->
-  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
-  <!-- 8px gap -->
-  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
-  <!-- 8px gap -->
-  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
-</div>
-```
-
-```html
-<div class="vstack space-16">
-  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
-  <!-- 16px gap -->
-  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
-  <!-- 16px gap -->
-  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
-  <!-- 16px gap -->
-  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
-</div>
-```
-
-**Responsive examples:**
-
-```html
-<div class="hstack space-8 md:space-16">
-  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
-  <!-- 8px gap, 16px gap at the medium breakpoint -->
-  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
-  <!-- 8px gap, 16px gap at the medium breakpoint -->
-  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
-  <!-- 8px gap, 16px gap at the medium breakpoint -->
-  <div class="w-32 h-32 bg-gray-400 rounded-full"></div>
-</div>
-```
-
-## ZStack
-
-ZStacks `<div class="zstack">` stack children elements on the z-axis _and_ center children elements across the x- and y-
-axes. ZStacks make layering elements on top of one another easy. ZStacks are intended to be used _with_ HStacks and or
-VStacks; they simply layer and center children elements.
-
-ZStacks, unlike HStacks and VStacks, implement no modifiers.
-
-Note that ZStacks use `position: relative`, so children element that use `position: absolute` are bound to the parent
-ZStack bounding box.
-
-**Examples:**
-
-TODO
-
-<!--
-
-Layers a red, green, and blue element on top of each other. The blue element is visible. The red and green elements are obscured.
-
-```html
-<div class="zstack">
-  <div class="hstack w-32 h-32 bg-red-400 rounded-full"></div>
-  <div class="hstack w-32 h-32 bg-green-400 rounded-full"></div>
-  <div class="hstack w-32 h-32 bg-blue-400 rounded-full"></div>
-</div>
-```
-
--->
-
-## Range
-
-The standard range describes legal range values. Some properties support negative ranges (`margin`) and some properties
-use a sub-range (`border`, etc.).
-
-**The standard range:**
+To see the exact kB size for every artifact, open [`dist/stats.txt`](/dist/stats.txt). Here's an idea of what you can expect:
 
 ```
-   0-10 increments by  1 ->   0   1   2   3   4   5   6   7   8   9
-  10-20 increments by  2 ->  10  12  14  16  18
-  20-40 increments by  4 ->  20  24  28  32  36
-  40-80 increments by  8 ->  40  48  56  64  72
- 80-160 increments by 16 ->  80  96 112 128 144
-160-320 increments by 32 -> 160 192 224 256 288
-320-640 increments by 64 -> 320 384 448 512 576 640
+// This is the non-minified version
+dist/duomo.css
++-----------------+
+| text   |  202kB |
+| gzip   |   26kB |
+| brotli |    9kB |
++-----------------+
+
+// This is the minified version
+dist/duomo.min.css
++-----------------+
+| text   |  142kB |
+| gzip   |   20kB |
+| brotli |    8kB |
++-----------------+
 ```
 
-<!--
+Duomo is only acceptable in production when compressed. Also note that Duomo can and should be cached for a long time if not forever if you hash the filename or concatenate the release version. This means that users should only ever need to download Duomo infrequently and is `<10kB` because of compression.
+
+## Supported Properties
+
+Duomo exports utility classes for the following CSS properties:
+
+- [`position`](/#position)
+- [`margin`](/#margin)
+- [`padding`](/#padding)
+- [`flexbox`](/#flexbox)
+- [`aspect-ratio`](/#aspect-ratio) (polyfill using `padding-bottom`)
+- [`width`](/#width)
+- [`height`](/#height)
+- [`border-width`](/#border-width)
+- [`overflow`](/#overflow)
+- [`z-index`](/#z-index)
+
+## API
+
+The API uses a regex-like pattern to describe all class name combinations.
+
+This means one class name:
+
+```
+class-name
+```
+
+This means one class name, `class-foo` or `class-bar`:
+
+```
+class-(
+  | foo
+  | bar
+)
+```
+
+This means the second class name is optional:
+
+```
+class-name | optional-class-name
+```
+
+This means the second class name is required:
+
+```
+class-name & required-class-name
+```
+
+This means the second class name is optional and one of `foo` or `bar`:
+
+```
+class-name | (
+  | foo
+  | bar
+)
+```
+
+This means the second class name is required and one of `foo` or `bar`:
+
+```
+class-name & (
+  | version-a
+  | version-b
+)
+```
+
+It may seem confusing at first, but because there are many class names, describing them this way should make it easy to reference which class name combinations are supported.
+
+### `position`
+
+```
+relative
+
+(
+  | relative
+  | absolute
+  | fixed
+  | sticky
+) & (
+  | all
+  | top-all
+  | top-right-all
+  | right-all
+  | bottom-right-all
+  | bottom-all
+  | bottom-left-all
+  | left-all
+  | top-left-all
+)
+```
+
+For example:
+
+- `relative`
+- `absolute all`
+
+### `margin`
+
+```
+m-(
+  | <px>
+  | auto
+)
+
+m(
+  | x
+  | y
+  | t
+  | r
+  | b
+  | l
+)-(
+  | <px>
+  | auto
+)
+```
+
+For example:
+
+- `m-16`
+- `m-auto`
+- `mx-16`
+- `mx-auto`
+
+### `padding`
+
+```
+p-<px>
+
+p(
+  | x
+  | y
+  | t
+  | r
+  | b
+  | l
+)-<px>
+```
+
+For example:
+
+- `p-16`
+- `px-16`
+
+### `flexbox`
+
+```
+justify-self-(
+  | stretch
+  | start
+  | center
+  | end
+  | baseline
+)
+
+align-self-(
+  | stretch
+  | start
+  | center
+  | end
+  | baseline
+)
+
+flex-(
+  | row
+  | col
+) | justify-(
+  | stretch
+  | start
+  | center
+  | end
+  | baseline
+) | align-(
+  | stretch
+  | start
+  | center
+  | end
+  | baseline
+) | m-gap-<px>
+
+flex-grow
+```
+
+For example:
+
+- `self-justify-center`
+- `self-justify-center self-align-center`
+- `flex flex-row justify-center`
+- `flex flex-row justify-center align-center`
+- `flex flex-row justify-center align-center m-gap-16`
+- `flex-grow`
+
+### `display`
+
+```
+hide | show
+
+hide & flex-(
+  | row
+  | col
+) & <breakpoint>:show
+
+show & flex-(
+  | row
+  | col
+) & <breakpoint>:hide
+```
+
+For example:
+
+- `hide md:show`
+- `show md:hide`
+- `hide md:show flex-row`
+- `show md:hide flex-row`
+
+### `aspect-ratio`
+
+```
+aspect & aspect-w-<integer> & aspect-h-<integer>
+
+aspect-revert
+```
+
+For example:
+
+- `aspect aspect-w-16 aspect-h-9`
+- `aspect-revert`
+
+### `width`
+
+```
+w-(
+  | <px>
+  | full
+  | screen
+  | sm
+  | md
+  | lg
+  | xl
+)
+```
+
+For example:
+
+- `w-16`
+- `w-full`
+- `w-screen`
+- `w-sm`
+- `w-md`
+- `w-lg`
+- `w-xl`
+
+### `height`
+
+```
+h-(
+  | <px>
+  | full
+  | screen
+)
+
+min-h-(
+  | 0
+  | full
+  | screen
+)
+```
+
+For example:
+
+- `h-16`
+- `h-full`
+- `h-screen`
+- `min-h-0`
+- `min-h-full`
+- `min-h-screen`
+
+### `border-width`
+
+```
+border-<px>
+
+border-(
+  | x
+  | y
+  | top
+  | right
+  | bottom
+  | left
+)-<px>
+```
+
+### `overflow`
+
+For example:
+
+- `border-4`
+- `border-x-4`
+
+```
+overflow-(
+  | scroll
+  | hidden
+)
+
+overflow-(
+  | x
+  | y
+)-(
+  | scroll
+  | hidden
+)
+```
+
+For example:
+
+- `overflow-scroll`
+- `overflow-x-scroll`
+
+### `z-index`
+
+```
+z-<integer>
+```
+
+For example:
+
+- `z-10`
+
+## Meta Classes
+
+You may notice that classes such as `hide` and `show` don't map 1:1 with CSS. This is intentional as Duomo is not strictly a utility CSS library. Duomo uses a combination of selector logic and CSS variables where necessary to achieve higher-level APIs that are intuitive and easy to reason about.
+
+The `m-gap` (short for `margin-gap`), `flex-grow`, `hide`, `show`, and `aspect-ratio` classes are examples of APIs that use selector logic and or CSS variables.
 
 ## Ranges
 
-Ranges describe all possible numerical values. Some properties support negative ranges (`margin`) and some properties use a sub-range (`border`, etc.).
+For classes that use `<px>` values, Duomo uses a standard range (a range is simply a list of integers) that changes its increment at `20`, `40`, `80`, `160`, and `320`.
 
-**Standard range:**
-
-```
-    0-10, increments by  1:   0,   1,   2,   3,   4,   5,   6,   7,   8,   9,
-  10-20, increments by  2:  10,  12,  14,  16,  18
-  20-40, increments by  4:  20,  24,  28,  32,  36,
-  40-80, increments by  8:  40,  48,  56,  64,  72,
-  80-160, increments by 16:  80,  96, 112, 128, 144,
-160-320, increments by 32: 160, 192, 224, 256, 288, 320,
-```
-
-
-
-
-margin:
-
-m-{-range|range} margin-all
-mt-              margin-top
-mr-              margin-right
-mb-              margin-bottom
-ml-              margin-left
-mx-              margin-x-axis
-my-              margin-y-axis
-
-padding:
-
-p-{range}        padding-all
-pt-              padding-top
-pr-              padding-right
-pb-              padding-bottom
-pl-              padding-left
-px-              padding-x-axis
-py-              padding-y-axis
-
-```
-
--->
-
-<!--
-
-## Rationale and Demos
-
-If you’re asking yourself **‘Why did you build this from scratch and how is this different from Tailwind CSS?’**, check out these demos for a primer. Note that these are impromptu demos.
-
-<table>
-  <tr>
-    <td>
-      <a href="https://youtube.com/watch?v=4PMPkLHD7Os" target="_blank">
-        <img src="https://raw.githubusercontent.com/zaydek/duomo/main/.github/youtube-cover.png">
-        <p><strong>Demo 1: Introducing Stacks</strong></p>
-      </a>
-    </td>
-    <td>
-      <a href="https://youtube.com/watch?v=vV-A3ywo6v8" target="_blank">
-        <img src="https://raw.githubusercontent.com/zaydek/duomo/main/.github/youtube-cover.png">
-        <p><strong>Demo 2: Introducing Theming</strong></p>
-      </a>
-    </td>
-  </tr>
-</table>
-
--->
-
-<!--
-
-## Table of Contents
-
-- [Stack-based layouts](#stack-based-layouts)
-- [Utility-first classes](#utility-first-classes)
-- [Emphasis on zero-configuration](#zero-configuration)
-- [Introspection via CSS variables (custom properties)](#introspection)
-
-## [Stack-Based Layouts](#stack-based-layouts)
-
-<sub>Stacks are inspired by [Swift UI](https://developer.apple.com/videos/play/wwdc2020/10031) and [Jon Q’s talk about implementing Swift UI stacks in CSS](https://youtube.com/watch?v=fvOlTDJpNcM).</sub>
-
-What are stack-based layouts? Instead of thinking in terms of Flexbox, think in terms of stacks. A stack simply describes a horizontal or vertical axis, and stacks compose a layout. It’s turtles all the way down, for stacks. 🐢<sub>🐢</sub>
-
-Why stacks? Stacks are a more natural way of thinking about layout. The trouble with Flexbox is that you need to remember `display`, `flex-direction`, `justify-content`, `align-items`, and `flex`, and remember how these properties change in the context of `flex-direction: row` and `flex-direction: column`. Stacks are a much more simple but powerful primitive for describing layout _that is based on Flexbox_.
-
-This is a microcosm of how Duomo works:
+Here's the standard range, which can be user-configured:
 
 ```scss
-.hstack {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-.hstack > * + * {
-  margin-top: 0;
-  margin-left: var(--space, 0);
-}
-
-.vstack {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.vstack > * + * {
-  margin-left: 0;
-  margin-top: var(--space, 0);
-}
-
-.spacer {
-  flex: 1 0 var(--space, 0);
-}
+$-duomo-configuration: (
+  // ...
+  range: (
+      0, // Increment by 2
+      1,
+      2,
+      4,
+      6,
+      8,
+     10,
+     12,
+     14,
+     16,
+     18,
+     20, // Increment by 4
+     24,
+     28,
+     32,
+     36,
+     40, // Increment by 8
+     48,
+     56,
+     64,
+     72,
+     80, // Increment by 16
+     96,
+    112,
+    128,
+    144,
+    160, // Increment by 32
+    192,
+    224,
+    256,
+    288,
+    320, // Increment by 64
+    384,
+    448,
+    512,
+    576,
+    640,
+  ),
+  // ...
+);
 ```
 
--->
+Different properties implement different bounds, which are simply upper and lower limits on the standard range.
 
-<!--
-
-And this is a macrocosm of how Duomo works:
+Here's the range bounds, which can be user-configured:
 
 ```scss
-$separator: "\\:";
-
-@function px($value) {
-  @return $value + px;
-}
-
-@function rem($value) {
-  @return $value / 16 + rem;
-}
-
-@function get-dynamic-ampersand() {
-  @if not & {
-    @return ".";
-  }
-  @return & + $separator;
-}
-
-@mixin stacks {
-  $amp: get-dynamic-ampersand();
-
-  #{$amp}hstack {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: stretch;
-  }
-  // NOTE: The root stack context resets `--space`.
-  @if not & {
-    .hstack > * {
-      --space: 0;
-    }
-  }
-  #{$amp}hstack > * + * {
-    margin-top: 0;
-    margin-left: var(--space, 0);
-  }
-  // NOTE: Omit `spacer`s and sibling elements from `var(--space)`.
-  #{$amp}hstack > .spacer:empty,
-  #{$amp}hstack > .spacer:empty + * {
-    margin-left: 0;
-  }
-
-  #{$amp}vstack {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: stretch;
-  }
-  // NOTE: The root stack context resets `--space`.
-  @if not & {
-    .vstack > * {
-      --space: 0;
-    }
-  }
-  #{$amp}vstack > * + * {
-    margin-left: 0;
-    margin-top: var(--space, 0);
-  }
-  // NOTE: Omit `spacer`s and sibling elements from `var(--space)`.
-  #{$amp}vstack > .spacer:empty,
-  #{$amp}vstack > .spacer:empty + * {
-    margin-top: 0;
-  }
-
-  #{$amp}align-start {
-    align-items: flex-start;
-  }
-  #{$amp}align-center {
-    align-items: center;
-  }
-  #{$amp}align-end {
-    align-items: flex-end;
-  }
-
-  @if not & {
-    .spacer {
-      flex-grow: 1;
-      flex-shrink: 0;
-      flex-basis: var(--space, 0);
-    }
-    // NOTE: Edge `spacer`s are collapsible to `0`.
-    .spacer:first-child,
-    .spacer:last-child {
-      flex-basis: 0;
-    }
-  }
-
-  @each $value in (4, 8, 12, 16, 20, 24, 28, 32) {
-    #{$amp}space-#{$value} > * {
-      --space: #{rem($value)};
-    }
-  }
-}
-
-@mixin reset {
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
-
-  body {
-    margin: 0;
-  }
-}
-
-@mixin debugger {
-  * {
-    outline: 2px solid hsla(215, 100%, 50%, 0.2);
-    outline-offset: -1px;
-  }
-}
-
-@at-root {
-  @include reset;
-  @include debugger;
-  @include stacks;
-  @each $key, $value in ("sm": 640, "md": 768, "lg": 1024, "xl": 1280) {
-    @media (min-width: #{px($value)}) {
-      .#{$key} {
-        @at-root {
-          @include stacks;
-        }
-      }
-    }
-  }
-}
+$-duomo-configuration: (
+  // ...
+  margin-bounds: (
+    -128,
+    128,
+  ),
+  margin-gap-bounds: (
+    0,
+    128,
+  ),
+  padding-bounds: (
+    0,
+    128,
+  ),
+  width-bounds: (
+    0,
+    640,
+  ),
+  height-bounds: (
+    0,
+    640,
+  ),
+  border-width-bounds: (
+    0,
+    8,
+  ),
+  // ...
+);
 ```
 
-This is how Duomo works. Duomo includes a CSS reset, debugger, and many utility classes that follow the same naming conventions as Tailwind CSS. Stacks however are the core of _how_ and _why_ Duomo works.
+This means `margin` supports values inclusively between `-128` and `128`, whereas `border-width` supports values inclusively between `0` and `8`.
 
--->
+## Configuration
 
-<!--
+While Duomo can be configured, Duomo is designed to not rely on configuration. Think of Duomo as a set of immutable classes. Configuring Duomo means the immutability of those classes cannot be guaranteed, therefore only do so when you know what you are doing.
 
-- `hstack`s implements a horizontal stack. Think `flex-direction: row`.
-- `vstack`s implements a vertical stack. Think `flex-direction: column`.
-- `spacer`s implements direction-agnostic spacers. Think `flex: 1`.
+A common use-case for configuration would be disabling some breakpoints or all breakpoints (this is how [`scripts/duomo-root-only.scss`](/scripts/duomo-root-only.scss) works). Another common use-case would be tweaking breakpoint values.
 
-Stacks in Duomo are easy to reason about because they manage Flexbox for you. 💡 Furthermore, Duomo stacks cover edge cases such as every stack resets `--space` and `spacer`s shrink to `--space` (unless they are the start or end element). **This enables you to think declaratively without worrying about implementation details or corner cases.**
+Here's how to disable breakpoints:
 
-## [Utility-First Classes](#utility-first-classes)
+```scss
+@use "../duomo";
 
-TODO
+@include duomo.configure(
+  (
+    breakpoints: (),
+  ),
+);
+```
 
-## [Zero-Configuration](#zero-configuration)
+And Here's how to tweak breakpoints:
 
-TODO
+```scss
+@use "../duomo";
 
-## [Introspection](#introspection)
+@include duomo.configure(
+  (
+    breakpoints: (
+      sm: 512px,
+    ),
+  ),
+);
+```
 
-TODO
+Note that you only need to provide key-value pairs for values you want to change. For example, if you want to tweak the `sm` breakpoint, only provide a key-value pair for `sm`. Under the hood, Duomo uses [ordered deep map merging](/duomo/utils/map.scss).
 
--->
+## Sass Mixins
+
+Duomo exports a few mixins to help you configure Duomo and or generate your own `duomo.css` file.
+
+```scss
+// This is how you import Duomo in Sass-land
+@use "duomo";
+
+// Optionally configure Duomo by providing key-value pairs you want to override
+duomo.configure(
+  breakpoints: (
+    // Tweak `sm` to `512px`
+    sm: 512px,
+  ),
+);
+
+// The CSS reset / base Tailwind CSS uses
+duomo.reset;
+
+// Generate Duomo classes
+duomo.classes;
+```
+
+## Sass Functions
+
+Duomo exports a few functions to help you layer your design implementation.
+
+```scss
+@use "duomo" as *;
+
+// `duomo` is an accessor for configured key-value pairs
+
+@debug duomo(nrange);
+// -> (-640, -576, ...)
+
+@debug duomo(range);
+// -> (0, 1, ...)
+
+@debug duomo(margin-bounds);
+// -> (-128, 128)
+
+@debug duomo(margin-gap-bounds);
+// -> (0, 128)
+
+@debug duomo(padding-bounds);
+// -> (0, 128)
+
+@debug duomo(width-bounds);
+// -> (0, 640)
+
+@debug duomo(height-bounds);
+// -> (0, 640)
+
+@debug duomo(border-width-bounds);
+// -> (0, 8)
+
+@debug duomo(breakpoints);
+// -> (sm: 640px, md: 768px, lg: 1024px, xl: 1280px)
+```
+
+Furthermore, Duomo implements Tailwind CSS's design tokens:
+
+```scss
+@use "duomo" as *;
+
+// `tailwind` is an accessor for configured key-value pairs
+
+// https://tailwindcss.com/docs/font-family
+@debug tailwind(<font>);
+
+// https://tailwindcss.com/docs/customizing-colors
+@debug tailwind(<color>-<key>);
+
+// https://tailwindcss.com/docs/box-shadow
+@debug tailwind(shadow-<key>);
+
+// https://tailwindcss.com/docs/transition-timing-function
+@debug tailwind(ease-<key>);
+```
+
+Note that Tailwind CSS design tokens [can be configured in the same manner as Duomo](#configuration).
+
+And finally, unit functions for converting between types. Note that Duomo relies on `rem` units exclusively behind the scenes.
+
+```scss
+@use "duomo" as *;
+
+// Convert to `rem` units
+@debug rem(16);
+// -> 1rem
+
+// Convert to `em` units
+@debug em(16);
+// -> 1em
+
+// Convert to `px` units
+@debug px(16);
+// -> 16px
+
+// Dynamically convert to `rem`, `em`, or `px` units
+@debug resolve-unit(16, rem);
+// -> 1rem
+```
+
+## Themeable API (Sass)
+
+The `themeable` API exports functions for:
+
+- `background-color`
+- `border-color`
+- `box-shadow`
+- `color`
+- `fill`
+- `opacity`
+- `stroke`
+
+Note that the second argument `$dark-value` is optional.
+
+```scss
+@use "duomo" as *;
+
+// Note that Sass CSS variables need to use interpolation syntax, e.g. `#{...}`
+:root {
+  --color: #{color(#000, #fff)};
+  --background-color: #{background-color(#fff, #000)};
+}
+// -> :root {
+// ->   --color: #000;
+// ->   --background-color: #fff;
+// -> }
+// -> :root[data-theme="dark"] {
+// ->   --color: #fff;
+// ->   --background-color: #000;
+// -> }
+
+.foo {
+  @include color(#000, #fff);
+  @include background-color(#fff, #000);
+}
+// -> .foo {
+// ->   color: #000;
+// ->   background-color: #fff;
+// -> }
+// -> :root[data-theme="dark"] .foo {
+// ->   color: #fff;
+// ->   background-color: #000;
+// -> }
+```
+
+## Transition API (Sass)
+
+```scss
+@use "duomo" as *;
+
+.foo {
+  @include transition((color, background-color), 1s, ease-out);
+}
+// -> .foo {
+// ->   transition: color 1s ease-out,
+// ->     background-color 1s ease-out;
+// -> }
+
+.foo {
+  @include transition((background-color, border-color, box-shadow, color, fill, opacity, stroke), 1s, ease-out);
+}
+// -> .foo {
+// ->   transition: background-color 1s ease-out,
+// ->     border-color 1s ease-out,
+// ->     box-shadow 1s ease-out,
+// ->     color 1s ease-out,
+// ->     fill 1s ease-out,
+// ->     opacity 1s ease-out,
+// ->     stroke 1s ease-out;
+// -> }
+```
+
+Note that the last argument `$delay` is optional.
+
+---
 
 ## License
 
-Licensed as [MIT](./LICENSE).
-
-<!--
-
-Duomo is a utility-first framework for rapid development. Duomo is most similar to Tailwind CSS but differentiates itself in these key ways:
-
-- Emphasis on zero-configuration
-- SCSS-based, designed to be extended
-- Limited API set, oriented for responsive skeleton prototyping
-- Intended to be used in conjunction with CSS or SCSS
-- Multiple CDN links for prototyping, add breakpoints as needed
-- Classes map to utilities but can encompass higher-order patterns like `m-gap`
-
-Furthermore, Duomo is simpler than Tailwind CSS for the following reasons:
-
-- The API surface area is dramatically smaller
-- More consistent class
-- Numerical values are specified using `px` equivalents, not Tailwind units
-- There are intentionally no `hover:`, `focus:`, etc. pseudo classes
-- You are encouraged to use Duomo and CSS or SCSS, not exclusively Tailwind CSS or Duomo
-
-The problem with almost every CSS library and framework is they attempt to _solve_ frontend. Frontend is not a solvable problem. Frontend is the amalgamation of _many_ tools coming together to create user experiences for people. How Duomo fits into this equation is by making it dead-easy to prototype responsive skeletons.
-
-The key to understanding Duomo is to understand that it **does not attempt** to map every CSS property to an arbitrary class. What Duomo does is makes it easier to reason about responsive skeletons, and encourages you to lean into CSS or SCSS when you’re ready to retrofit your skeleton-app with content.
-
--->
+Duomo is licensed as [MIT open source](/LICENSE).

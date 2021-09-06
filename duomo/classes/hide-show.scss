@@ -1,0 +1,28 @@
+@use "variants" as *;
+
+$-display-map: (
+	null: revert,
+	flex-row: flex,
+	flex-col: flex,
+);
+
+// The `.hide` and `.show` classes use selector logic and selector specificity
+// to hide or show a tree of elements.
+//
+// Note that `.hide` and `.show` add `[class]` to arbitrarily increase selector
+// specificity so they are more specific than `.flex-row` and `.flex-col`.
+@mixin hide-show($variants...) {
+	.hide[class] {
+		@include variants($variants...) {
+			display: none;
+		}
+	}
+
+	@each $key, $value in $-display-map {
+		.show#{if(not $key, [class], "." + $key)} {
+			@include variants($variants...) {
+				display: $value;
+			}
+		}
+	}
+}

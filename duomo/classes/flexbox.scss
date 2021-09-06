@@ -1,0 +1,204 @@
+@use "sass:math";
+@use "sass:meta";
+
+@use "../duomo" as *;
+@use "variants" as *;
+
+@use "../units";
+@use "../utils";
+
+$-flex-map: (
+	stretch: stretch,
+	start: flex-start,
+	center: center,
+	end: flex-end,
+	baseline: baseline,
+);
+
+$-range: utils.range-from-bounds(
+	duomo(margin-gap-bounds),
+	duomo(range),
+);
+
+// Reference implementations:
+//
+// - https://codepen.io/zaydek/pen/wvzyZWy
+// - https://codepen.io/zaydek/pen/QWKxYpZ
+//
+@mixin flexbox($variants...) {
+	.flex-row {
+		@include variants($variants...) {
+			display: flex;
+			flex-direction: row;
+
+			// For `.overflow-x-scroll > .flex-row.justify-center`
+			//
+			// Reference implementation: https://codepen.io/zaydek/pen/eYRdQrK
+			min-width: min-content;
+		}
+	}
+
+	@if not & {
+		.flex-row > * {
+			// Use `0` not `revert` because of `flex: 1 0 var(--dm-m-gap)`
+			--dm-m-gap: 0;
+
+			// Compensate for `flex-basis: var(--dm-m-gap)`; `min-width` doesn't
+			// measure `flex-basis`
+			--dm-grow-min-width: var(--dm-m-gap);
+		}
+	}
+	.flex-row > * + * {
+		@include variants($variants...) {
+			margin-top: revert;
+			margin-left: var(--dm-m-gap);
+		}
+	}
+
+	// Reference implementations:
+	//
+	// - https://codepen.io/zaydek/pen/qBaYvWp
+	// - https://codepen.io/zaydek/pen/PoGavmE
+	//
+	.flex-row > .flex-grow:empty:first-child + *,
+	.flex-row > .flex-grow:empty,
+	.flex-row > .flex-grow:empty + *,
+	.flex-row > * + .flex-grow:empty:last-child {
+		@include variants($variants...) {
+			margin-left: revert;
+		}
+	}
+
+	.flex-col {
+		@include variants($variants...) {
+			display: flex;
+			flex-direction: column;
+
+			// For `.overflow-x-scroll > .flex-row.justify-center`
+			//
+			// Reference implementation: https://codepen.io/zaydek/pen/eYRdQrK
+			min-width: min-content;
+		}
+	}
+
+	@if not & {
+		.flex-col > * {
+			// Use `0` not `revert` because of `flex: 1 0 var(--dm-m-gap)`
+			--dm-m-gap: 0;
+
+			// Compensate for `flex-basis: var(--dm-m-gap)`; `min-width` doesn't
+			// measure `flex-basis`
+			--dm-grow-min-width: var(--dm-m-gap);
+		}
+	}
+	.flex-col > * + * {
+		@include variants($variants...) {
+			margin-top: var(--dm-m-gap);
+			margin-left: revert;
+		}
+	}
+
+	// Reference implementations:
+	//
+	// - https://codepen.io/zaydek/pen/qBaYvWp
+	// - https://codepen.io/zaydek/pen/PoGavmE
+	//
+	.flex-col > .flex-grow:empty:first-child + *,
+	.flex-col > .flex-grow:empty,
+	.flex-col > .flex-grow:empty + *,
+	.flex-col > * + .flex-grow:empty:last-child {
+		@include variants($variants...) {
+			margin-top: revert;
+		}
+	}
+
+	// // Takes precedence
+	// @each $key, $value in $-flex-map {
+	// 	.self-#{$key} {
+	// 		@include variants($variants...) {
+	// 			justify-self: $value;
+	// 			align-self: $value;
+	// 		}
+	// 	}
+	// }
+	//
+	// // Takes precedence
+	// @each $key, $value in $-flex-map {
+	// 	.#{$key} {
+	// 		@include variants($variants...) {
+	// 			justify-content: $value;
+	// 			align-items: $value;
+	// 		}
+	// 	}
+	// }
+
+	@each $key, $value in $-flex-map {
+		.justify-self-#{$key} {
+			@include variants($variants...) {
+				justify-self: $value;
+			}
+		}
+	}
+
+	@each $key, $value in $-flex-map {
+		.align-self-#{$key} {
+			@include variants($variants...) {
+				align-self: $value;
+			}
+		}
+	}
+
+	@each $key, $value in $-flex-map {
+		.justify-#{$key} {
+			@include variants($variants...) {
+				justify-content: $value;
+			}
+		}
+	}
+
+	@each $key, $value in $-flex-map {
+		.align-#{$key} {
+			@include variants($variants...) {
+				align-items: $value;
+			}
+		}
+	}
+
+	@each $value in $-range {
+		$n: if(meta.type-of($value) == number and $value < 0, "-", "");
+		$abs: if(meta.type-of($value) == number, math.abs($value), $value);
+		.#{$n}m-gap-#{$abs} > * {
+			@include variants($variants...) {
+				--dm-m-gap: #{units.rem($value)};
+			}
+		}
+	}
+
+	// Reference implementations:
+	//
+	// - https://codepen.io/zaydek/pen/qBaYvWp
+	// - https://codepen.io/zaydek/pen/PoGavmE
+	//
+	@if not & {
+		.flex-grow {
+			flex-grow: 1;
+		}
+
+		.flex-grow:empty {
+			flex: 1 0 var(--dm-m-gap);
+
+			// For `.overflow-x-scroll > .flex-row.justify-center > .flex-grow`
+			min-width: var(--dm-grow-min-width);
+		}
+
+		// Zero-out edges
+		.flex-grow:empty:first-child,
+		.flex-grow:empty + .flex-grow:empty,
+		.flex-grow:empty:last-child {
+			flex: 1 0 0;
+
+			// For `.overflow-x-scroll > .flex-row.justify-center > .flex-grow`
+			min-width: 0;
+		}
+	}
+}

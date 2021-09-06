@@ -1,0 +1,28 @@
+@use "sass:list";
+
+// Convenience function for the `transition` property.
+//
+// Input:
+//
+//   .foo {
+//     @include transition((color, background-color), 1s, ease-out);
+//   }
+//
+// Output:
+//
+//   .foo {
+//     transition: color 1s ease-out,
+//       background-color 1s ease-out;
+//   }
+//
+@mixin transition($properties, $duration, $easing, $optional-delay: null) {
+	$list: ();
+	@each $property in $properties {
+		@if not $optional-delay {
+			$list: list.append($list, $property $duration $easing, comma);
+		} @else {
+			$list: list.append($list, $property $duration $easing $optional-delay, comma);
+		}
+	}
+	transition: $list;
+}

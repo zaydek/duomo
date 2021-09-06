@@ -1,0 +1,42 @@
+dist/duomo-root-only.css
++-----------------+
+| text   |   37kB |
+| gzip   |    6kB |
+| brotli |    4kB |
++-----------------+
+
+dist/duomo-root-only.min.css
++-----------------+
+| text   |   28kB |
+| gzip   |    6kB |
+| brotli |    4kB |
++-----------------+
+
+dist/duomo.css
++-----------------+
+| text   |  199kB |
+| gzip   |   25kB |
+| brotli |    9kB |
++-----------------+
+
+dist/duomo.min.css
++-----------------+
+| text   |  140kB |
+| gzip   |   20kB |
+| brotli |    8kB |
++-----------------+
+
+dist/reset-only.css
++-----------------+
+| text   |    3kB |
+| gzip   |    1kB |
+| brotli |    1kB |
++-----------------+
+
+dist/reset-only.min.css
++-----------------+
+| text   |    3kB |
+| gzip   |    1kB |
+| brotli |    1kB |
++-----------------+
+

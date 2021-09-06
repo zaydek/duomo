@@ -1,4 +1,8 @@
-// For NPM consumers `@use "@zaydek/duomo"`.
+// Forwards `duomo` so that NPM consumers can use `@use "@zaydek/duomo"`
 //
-// NOTE: Consumer must use `sass --load-path=node_modules src.scss out.css`.
-@forward "src/sass";
+//   npx sass \
+//     input.scss \
+//     out.css \
+//     --load-path=node_modules
+//
+@forward "duomo";

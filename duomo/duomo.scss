@@ -1,0 +1,134 @@
+@use "sass:map";
+
+@use "utils";
+
+$-duomo-configuration: (
+	// Negative range values
+	nrange: (
+			-1,
+			-2,
+			-4,
+			-6,
+			-8,
+		 -10,
+		 -12,
+		 -14,
+		 -16,
+		 -18,
+		 -20,
+		 -24,
+		 -28,
+		 -32,
+		 -36,
+		 -40,
+		 -48,
+		 -56,
+		 -64,
+		 -72,
+		 -80,
+		 -96,
+		-112,
+		-128,
+		-144,
+		-160,
+		-192,
+		-224,
+		-256,
+		-288,
+		-320,
+		-384,
+		-448,
+		-512,
+		-576,
+		-640,
+	),
+
+	// Positive range values
+	range: (
+			0,
+			1,
+			2,
+			4,
+			6,
+			8,
+		 10,
+		 12,
+		 14,
+		 16,
+		 18,
+		 20,
+		 24,
+		 28,
+		 32,
+		 36,
+		 40,
+		 48,
+		 56,
+		 64,
+		 72,
+		 80,
+		 96,
+		112,
+		128,
+		144,
+		160,
+		192,
+		224,
+		256,
+		288,
+		320,
+		384,
+		448,
+		512,
+		576,
+		640,
+	),
+
+	// Lower and upper bounds
+	margin-bounds: (
+		-128,
+		128,
+	),
+	margin-gap-bounds: (
+		0,
+		128,
+	),
+	padding-bounds: (
+		0,
+		128,
+	),
+	width-bounds: (
+		0,
+		640,
+	),
+	height-bounds: (
+		0,
+		640,
+	),
+	border-width-bounds: (
+		0,
+		8,
+	),
+
+	// Breakpoint keys and values
+	breakpoints: (
+		sm: 640px,
+		md: 768px,
+		lg: 1024px,
+		xl: 1280px,
+	),
+);
+
+// Configures global Duomo configuration.
+@mixin configure($user-configuration) {
+	$-duomo-configuration: utils.map-ordered-deep-merge($-duomo-configuration, $user-configuration) !global;
+}
+
+// Accessor for global Duomo configuration.
+@function duomo($key) {
+	$got: map.get($-duomo-configuration, $key);
+	@if not $got {
+		@error "duomo(#{$key}) == null";
+	}
+	@return $got;
+}

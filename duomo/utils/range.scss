@@ -1,0 +1,44 @@
+@use "sass:list";
+@use "sass:math";
+@use "sass:meta";
+
+// Returns a new range of values inclusively between `$min` and `$max`.
+@function -limit($range, $min, $max) {
+	$range-out: ();
+	@each $v in $range {
+		@if meta.type-of($v) == number and math.is-unitless($v) {
+			// Number
+			@if $v >= $min and $v <= $max {
+				$range-out: list.append($range-out, $v);
+			}
+		} @else {
+			// Any
+			$range-out: list.append($range-out, $v);
+		}
+	}
+	@return $range-out;
+}
+
+// Returns a new range by merging range or value-based entries.
+@function -merge($entries...) {
+	$range-out: ();
+	@each $entry in $entries {
+		@if meta.type-of($entry) == list or meta.type-of($entry) == arglist {
+			// Add many
+			@each $v in $entry {
+				$range-out: append($range-out, $v);
+			}
+		} @else {
+			// Add one
+			$range-out: append($range-out, $entry);
+		}
+	}
+	@return $range-out;
+}
+
+// Returns a new range from a set of bounds and entries.
+@function from-bounds($bounds, $entries...) {
+	$min: list.nth($bounds, 1);
+	$max: list.nth($bounds, 2);
+	@return -limit(-merge($entries...), $min, $max);
+}
