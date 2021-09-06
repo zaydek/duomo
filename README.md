@@ -668,7 +668,7 @@ Note that the second argument `$dark-value` is optional.
 @use "duomo" as *;
 
 .foo {
-  @include transition((color, background-color), 1s, ease-out);
+  transition: transition((color, background-color), 1s, ease-out);
 }
 // -> .foo {
 // ->   transition: color 1s ease-out,
@@ -676,7 +676,7 @@ Note that the second argument `$dark-value` is optional.
 // -> }
 
 .foo {
-  @include transition((background-color, border-color, box-shadow, color, fill, opacity, stroke), 1s, ease-out);
+  transition: transition((background-color, border-color, box-shadow, color, fill, opacity, stroke), 1s, ease-out);
 }
 // -> .foo {
 // ->   transition: background-color 1s ease-out,

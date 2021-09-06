@@ -5,7 +5,7 @@
 // Input:
 //
 //   .foo {
-//     @include transition((color, background-color), 1s, ease-out);
+//     transition: transition((color, background-color), 1s, ease-out);
 //   }
 //
 // Output:
@@ -15,14 +15,14 @@
 //       background-color 1s ease-out;
 //   }
 //
-@mixin transition($properties, $duration, $easing, $optional-delay: null) {
-	$list: ();
+@function transition($properties, $duration, $easing, $optional-delay: null) {
+	$list-out: ();
 	@each $property in $properties {
 		@if not $optional-delay {
-			$list: list.append($list, $property $duration $easing, comma);
+			$list-out: list-out.append($list-out, $property $duration $easing, comma);
 		} @else {
-			$list: list.append($list, $property $duration $easing $optional-delay, comma);
+			$list-out: list-out.append($list-out, $property $duration $easing $optional-delay, comma);
 		}
 	}
-	transition: $list;
+	@return $list-out;
 }
