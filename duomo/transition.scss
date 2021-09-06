@@ -19,9 +19,9 @@
 	$list-out: ();
 	@each $property in $properties {
 		@if not $optional-delay {
-			$list-out: list-out.append($list-out, $property $duration $easing, comma);
+			$list-out: list.append($list-out, $property $duration $easing, comma);
 		} @else {
-			$list-out: list-out.append($list-out, $property $duration $easing $optional-delay, comma);
+			$list-out: list.append($list-out, $property $duration $easing $optional-delay, comma);
 		}
 	}
 	@return $list-out;
