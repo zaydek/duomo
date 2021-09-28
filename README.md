@@ -6,7 +6,7 @@ Duomo is based on the philosophy that layout and design implementation are separ
 
 In practice, Duomo is a small collection of utility classes and Sass mixins and functions. Note that Duomo utilities are not strict utility classes in the sense that every class maps to one and only one property / value combination. Instead, Duomo is designed around some higher-order patterns such as `flex-row` instead of `flex flex-row` or `position top-all` instead of `position top-0 right-auto bottom-auto left-auto`.
 
-**Duomo is not for everyone or every project.** Duomo simply attempts to solve for layout, and needs to be layered with CSS, Sass, etc. in order to be effective. Think of a Duomo as a CSS component, not a CSS library.
+**Duomo is not for everyone or every project.** Duomo only solves for layout, and needs to be layered with CSS, Sass, etc. in order to be effective. Think of a Duomo as a CSS component, not a CSS library.
 
 ## Get Started
 
